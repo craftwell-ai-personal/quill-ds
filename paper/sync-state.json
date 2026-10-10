@@ -401,11 +401,11 @@
         "src/usage/agent-steps.usage.mjs"
       ],
       "sourceHash": "b5b2c49fe5f459c8",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 4,
-        "nodes": 110,
-        "approximated": 1,
+        "nodes": 112,
+        "approximated": 0,
         "bound": 269,
         "bindable": 277,
         "bindingRate": 0.971
@@ -417,19 +417,19 @@
           "id": "components-agentsteps--in-progress",
           "title": "In Progress",
           "opened": "none",
-          "nodes": 51,
+          "nodes": 52,
           "approximated": 0,
           "bound": 116,
           "bindable": 118,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1M7Z-0",
+              "nodeId": "2DWY-0",
               "size": [
                 448,
                 224.44
               ],
-              "htmlHash": "c00be8d70b9527f5"
+              "htmlHash": "e54804b8a4d950a3"
             }
           ]
         },
@@ -437,19 +437,19 @@
           "id": "components-agentsteps--failed",
           "title": "Failed",
           "opened": "none",
-          "nodes": 17,
-          "approximated": 1,
+          "nodes": 18,
+          "approximated": 0,
           "bound": 51,
           "bindable": 53,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1M9Y-0",
+              "nodeId": "2DYY-0",
               "size": [
                 448,
                 90.81
               ],
-              "htmlHash": "93c881994c7db05c"
+              "htmlHash": "6766dd7fc8984e7a"
             }
           ]
         },
@@ -464,12 +464,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MAQ-0",
+              "nodeId": "2DZR-0",
               "size": [
                 448,
                 90.81
               ],
-              "htmlHash": "cbf72a81887ec1cc"
+              "htmlHash": "2137cb3ad224211e"
             }
           ]
         },
@@ -484,12 +484,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MBG-0",
+              "nodeId": "2E0H-0",
               "size": [
                 448,
                 124.22
               ],
-              "htmlHash": "4d6e41795aa33736"
+              "htmlHash": "7bd4b90c897c875c"
             }
           ]
         }
@@ -509,7 +509,7 @@
         "src/usage/ai-badge.usage.mjs"
       ],
       "sourceHash": "24a0fff831c8882c",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 3,
         "nodes": 12,
@@ -532,7 +532,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MCO-0",
+              "nodeId": "2E1P-0",
               "size": [
                 75.13,
                 20
@@ -552,7 +552,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MCZ-0",
+              "nodeId": "2E20-0",
               "size": [
                 95.23,
                 20
@@ -572,7 +572,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MDA-0",
+              "nodeId": "2E2B-0",
               "size": [
                 182.17,
                 20
@@ -597,7 +597,7 @@
         "src/usage/ai-button.usage.mjs"
       ],
       "sourceHash": "2d8c1a041bf35a35",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 3,
         "nodes": 21,
@@ -620,7 +620,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MDT-0",
+              "nodeId": "2E2U-0",
               "size": [
                 84.83,
                 32
@@ -640,7 +640,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ME5-0",
+              "nodeId": "2E36-0",
               "size": [
                 117.8,
                 32
@@ -660,7 +660,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MEH-0",
+              "nodeId": "2E3I-0",
               "size": [
                 534.86,
                 36
@@ -685,7 +685,7 @@
         "src/usage/ai-feedback.usage.mjs"
       ],
       "sourceHash": "61e1390eb1cd44bb",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 4,
         "nodes": 49,
@@ -710,7 +710,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MFL-0",
+              "nodeId": "2E4M-0",
               "size": [
                 480,
                 208
@@ -730,7 +730,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MGE-0",
+              "nodeId": "2E5F-0",
               "size": [
                 480,
                 20
@@ -750,7 +750,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MGS-0",
+              "nodeId": "2E5T-0",
               "size": [
                 480,
                 166
@@ -770,12 +770,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MHF-0",
+              "nodeId": "2E6G-0",
               "size": [
                 480,
                 90.08
               ],
-              "htmlHash": "cb668b970fff542f"
+              "htmlHash": "a842b977f626a5c1"
             }
           ]
         }
@@ -795,7 +795,7 @@
         "src/usage/ai-mark.usage.mjs"
       ],
       "sourceHash": "2274d9f43d347024",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 2,
         "nodes": 8,
@@ -818,7 +818,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MIG-0",
+              "nodeId": "2E7H-0",
               "size": [
                 18,
                 18
@@ -838,7 +838,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MIQ-0",
+              "nodeId": "2E7R-0",
               "size": [
                 231,
                 48
@@ -863,14 +863,14 @@
         "src/usage/ai-message.usage.mjs"
       ],
       "sourceHash": "d966182f56c93fd7",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 7,
         "nodes": 100,
-        "approximated": 11,
-        "bound": 188,
-        "bindable": 196,
-        "bindingRate": 0.959
+        "approximated": 13,
+        "bound": 184,
+        "bindable": 193,
+        "bindingRate": 0.953
       },
       "notes": [],
       "lost": [],
@@ -886,12 +886,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MJN-0",
+              "nodeId": "2E8O-0",
               "size": [
                 576,
                 165.56
               ],
-              "htmlHash": "9f417cf40e5f84ad"
+              "htmlHash": "fde2b90d9c983006"
             }
           ]
         },
@@ -906,12 +906,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MKP-0",
+              "nodeId": "2E9Q-0",
               "size": [
                 576,
                 137.56
               ],
-              "htmlHash": "b482df3d1913bcb2"
+              "htmlHash": "5d81234e7c0ecbaf"
             }
           ]
         },
@@ -919,19 +919,19 @@
           "id": "components-aimessage--streaming",
           "title": "Streaming",
           "opened": "none",
-          "nodes": 13,
+          "nodes": 14,
           "approximated": 1,
           "bound": 21,
           "bindable": 22,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MLK-0",
+              "nodeId": "2EAL-0",
               "size": [
                 576,
                 85.72
               ],
-              "htmlHash": "21ea8a3a200a0798"
+              "htmlHash": "1e4b1d43c8a66cdf"
             }
           ]
         },
@@ -939,19 +939,19 @@
           "id": "components-aimessage--streaming-no-answer-yet",
           "title": "Streaming No Answer Yet",
           "opened": "none",
-          "nodes": 13,
-          "approximated": 1,
-          "bound": 29,
-          "bindable": 29,
+          "nodes": 12,
+          "approximated": 3,
+          "bound": 25,
+          "bindable": 26,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MM9-0",
+              "nodeId": "2EBB-0",
               "size": [
                 576,
                 63.41
               ],
-              "htmlHash": "d1c173628406bf5a"
+              "htmlHash": "838033c278fa4c38"
             }
           ]
         },
@@ -966,12 +966,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MMY-0",
+              "nodeId": "2EBZ-0",
               "size": [
                 576,
                 112.08
               ],
-              "htmlHash": "881ba368169b1ee9"
+              "htmlHash": "457f885735592c34"
             }
           ]
         },
@@ -986,12 +986,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MNQ-0",
+              "nodeId": "2ECR-0",
               "size": [
                 576,
                 50
               ],
-              "htmlHash": "ccac08f999c619c8"
+              "htmlHash": "f3ed150eeef58029"
             }
           ]
         },
@@ -1006,12 +1006,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MOC-0",
+              "nodeId": "2EDD-0",
               "size": [
                 576,
                 81.11
               ],
-              "htmlHash": "4a713fc27b6f7aa2"
+              "htmlHash": "8ff7df6e6388d12d"
             }
           ]
         }
@@ -1031,7 +1031,7 @@
         "src/usage/ai-notice.usage.mjs"
       ],
       "sourceHash": "b82c12fcdfcc6238",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 2,
         "nodes": 5,
@@ -1054,7 +1054,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MP5-0",
+              "nodeId": "2EE6-0",
               "size": [
                 336.88,
                 16
@@ -1074,7 +1074,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MPD-0",
+              "nodeId": "2EEE-0",
               "size": [
                 421.17,
                 16
@@ -1099,14 +1099,14 @@
         "src/usage/ai-popover.usage.mjs"
       ],
       "sourceHash": "95f5f202e95d636e",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 3,
-        "nodes": 58,
+        "nodes": 74,
         "approximated": 3,
-        "bound": 250,
-        "bindable": 287,
-        "bindingRate": 0.871
+        "bound": 290,
+        "bindable": 331,
+        "bindingRate": 0.876
       },
       "notes": [],
       "lost": [
@@ -1117,28 +1117,28 @@
           "id": "components-aipopover--suggestion",
           "title": "Suggestion",
           "opened": "story",
-          "nodes": 20,
+          "nodes": 28,
           "approximated": 1,
-          "bound": 87,
-          "bindable": 100,
+          "bound": 107,
+          "bindable": 122,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZLP-0",
+              "nodeId": "2EEW-0",
               "size": [
                 416,
                 66.23
               ],
-              "htmlHash": "6f2956f9fafc1866"
+              "htmlHash": "566bdf599d1b92bd"
             },
             {
               "part": "panel-1",
-              "nodeId": "1ZLZ-0",
+              "nodeId": "2EFE-0",
               "size": [
                 384,
                 181.64
               ],
-              "htmlHash": "92c4771028c3f009"
+              "htmlHash": "4fdaabd5a94617f1"
             }
           ]
         },
@@ -1146,28 +1146,28 @@
           "id": "components-aipopover--empty-suggestion",
           "title": "Empty Suggestion",
           "opened": "story",
-          "nodes": 18,
+          "nodes": 26,
           "approximated": 1,
-          "bound": 73,
-          "bindable": 85,
+          "bound": 93,
+          "bindable": 107,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZMR-0",
+              "nodeId": "2EG6-0",
               "size": [
                 416,
                 66.23
               ],
-              "htmlHash": "6f2956f9fafc1866"
+              "htmlHash": "566bdf599d1b92bd"
             },
             {
               "part": "panel-1",
-              "nodeId": "1ZN1-0",
+              "nodeId": "2EGO-0",
               "size": [
                 384,
                 97.41
               ],
-              "htmlHash": "7fa3d2edfe861bbc"
+              "htmlHash": "20f4c8bfec70ff67"
             }
           ]
         },
@@ -1182,7 +1182,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZNR-0",
+              "nodeId": "2EHE-0",
               "size": [
                 416,
                 32
@@ -1191,12 +1191,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1ZO1-0",
+              "nodeId": "2EHO-0",
               "size": [
                 384,
                 181.64
               ],
-              "htmlHash": "a6581d6fef55c67b"
+              "htmlHash": "2ff0d970a1bbc137"
             }
           ]
         }
@@ -1216,14 +1216,14 @@
         "src/usage/ai-thinking.usage.mjs"
       ],
       "sourceHash": "efcd3bb8e0dc70bd",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 3,
         "nodes": 19,
-        "approximated": 1,
-        "bound": 51,
-        "bindable": 52,
-        "bindingRate": 0.981
+        "approximated": 2,
+        "bound": 47,
+        "bindable": 49,
+        "bindingRate": 0.959
       },
       "notes": [],
       "lost": [],
@@ -1232,19 +1232,19 @@
           "id": "components-aithinking--working",
           "title": "Working",
           "opened": "none",
-          "nodes": 7,
-          "approximated": 0,
-          "bound": 21,
-          "bindable": 21,
+          "nodes": 6,
+          "approximated": 2,
+          "bound": 17,
+          "bindable": 18,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MTA-0",
+              "nodeId": "2EII-0",
               "size": [
                 320,
                 47.41
               ],
-              "htmlHash": "8473bfded9621ab8"
+              "htmlHash": "695d8a8df09a818c"
             }
           ]
         },
@@ -1252,19 +1252,19 @@
           "id": "components-aithinking--done",
           "title": "Done",
           "opened": "none",
-          "nodes": 9,
-          "approximated": 1,
+          "nodes": 10,
+          "approximated": 0,
           "bound": 25,
           "bindable": 26,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MTS-0",
+              "nodeId": "2EIZ-0",
               "size": [
                 320,
                 95.41
               ],
-              "htmlHash": "e4804cde60a2dd3b"
+              "htmlHash": "e4957deb939fc178"
             }
           ]
         },
@@ -1279,7 +1279,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MUB-0",
+              "nodeId": "2EJJ-0",
               "size": [
                 320,
                 19.41
@@ -1550,7 +1550,7 @@
         "src/usage/approval-card.usage.mjs"
       ],
       "sourceHash": "8c9d521f0e3d7695",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 3,
         "nodes": 66,
@@ -1575,7 +1575,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1N0G-0",
+              "nodeId": "2EJZ-0",
               "size": [
                 480,
                 256.44
@@ -1595,7 +1595,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1N1M-0",
+              "nodeId": "2EL5-0",
               "size": [
                 480,
                 117.41
@@ -1615,7 +1615,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1N2E-0",
+              "nodeId": "2ELX-0",
               "size": [
                 480,
                 256.44
@@ -3054,11 +3054,11 @@
         "src/usage/citations.usage.mjs"
       ],
       "sourceHash": "1d2f1f3865082aa9",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 4,
-        "nodes": 88,
-        "approximated": 8,
+        "nodes": 93,
+        "approximated": 9,
         "bound": 266,
         "bindable": 274,
         "bindingRate": 0.971
@@ -3070,28 +3070,28 @@
           "id": "components-citations--in-an-answer",
           "title": "In An Answer",
           "opened": "story",
-          "nodes": 30,
+          "nodes": 34,
           "approximated": 2,
           "bound": 91,
           "bindable": 98,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OYT-0",
+              "nodeId": "2EN7-0",
               "size": [
                 544,
                 84.91
               ],
-              "htmlHash": "1fa02792e1a470c8"
+              "htmlHash": "99a9174f0bd893de"
             },
             {
               "part": "panel-1",
-              "nodeId": "1OZP-0",
+              "nodeId": "2EO8-0",
               "size": [
                 288,
                 102.22
               ],
-              "htmlHash": "19c74b212401b77d"
+              "htmlHash": "2040a27e092be3e7"
             }
           ]
         },
@@ -3106,12 +3106,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1P07-0",
+              "nodeId": "2EON-0",
               "size": [
                 544,
                 204.22
               ],
-              "htmlHash": "70bef7e4bf0757e1"
+              "htmlHash": "6afbea67a0d10935"
             }
           ]
         },
@@ -3126,12 +3126,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1P1Q-0",
+              "nodeId": "2EQ6-0",
               "size": [
                 544,
                 97.41
               ],
-              "htmlHash": "128d09a7d725196d"
+              "htmlHash": "c4f6136b91b241b0"
             }
           ]
         },
@@ -3139,19 +3139,19 @@
           "id": "components-citations--long-title-no-label",
           "title": "Long Title No Label",
           "opened": "none",
-          "nodes": 6,
-          "approximated": 1,
+          "nodes": 7,
+          "approximated": 2,
           "bound": 19,
           "bindable": 20,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1P2H-0",
+              "nodeId": "2EQX-0",
               "size": [
                 544,
                 20.45
               ],
-              "htmlHash": "5fcbbe26f09a1e10"
+              "htmlHash": "faddb8fc9cf99e73"
             }
           ]
         }
@@ -5178,11 +5178,11 @@
         "src/usage/model-picker.usage.mjs"
       ],
       "sourceHash": "68a5741c8bbbdf87",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 2,
         "nodes": 46,
-        "approximated": 1,
+        "approximated": 2,
         "bound": 147,
         "bindable": 153,
         "bindingRate": 0.961
@@ -5198,27 +5198,27 @@
           "title": "In The Composer",
           "opened": "story",
           "nodes": 43,
-          "approximated": 1,
+          "approximated": 2,
           "bound": 139,
           "bindable": 144,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QVO-0",
+              "nodeId": "2ERM-0",
               "size": [
                 544,
                 84
               ],
-              "htmlHash": "74e4452e6602c8fd"
+              "htmlHash": "18efba6d4e00cbff"
             },
             {
               "part": "panel-1",
-              "nodeId": "1QWC-0",
+              "nodeId": "2ESC-0",
               "size": [
                 288,
                 249
               ],
-              "htmlHash": "ce52b93967d73520"
+              "htmlHash": "3e5366b5a888c8c9"
             }
           ]
         },
@@ -5233,7 +5233,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QXN-0",
+              "nodeId": "2ETK-0",
               "size": [
                 96.64,
                 28
@@ -5818,38 +5818,37 @@
         "src/usage/prompt-composer.usage.mjs"
       ],
       "sourceHash": "530d9a688ebf62fb",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 10,
-        "nodes": 137,
-        "approximated": 5,
-        "bound": 377,
-        "bindable": 421,
+        "nodes": 149,
+        "approximated": 14,
+        "bound": 375,
+        "bindable": 419,
         "bindingRate": 0.895
       },
       "notes": [],
       "lost": [
-        "button: background-clip: padding-box not carried ×8",
-        "tab-fillet: mask not carried ×2"
+        "button: background-clip: padding-box not carried ×8"
       ],
       "stories": [
         {
           "id": "components-promptcomposer--large",
           "title": "Large",
           "opened": "none",
-          "nodes": 10,
-          "approximated": 0,
+          "nodes": 11,
+          "approximated": 1,
           "bound": 25,
           "bindable": 29,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Y4X-0",
+              "nodeId": "2EU0-0",
               "size": [
                 576,
                 108
               ],
-              "htmlHash": "c1c73892eade5026"
+              "htmlHash": "f2df49b1fe0c54fe"
             }
           ]
         },
@@ -5857,19 +5856,19 @@
           "id": "components-promptcomposer--small",
           "title": "Small",
           "opened": "none",
-          "nodes": 10,
-          "approximated": 0,
+          "nodes": 11,
+          "approximated": 1,
           "bound": 26,
           "bindable": 29,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Y5L-0",
+              "nodeId": "2EUQ-0",
               "size": [
                 576,
                 84
               ],
-              "htmlHash": "28e14d4536d3bd48"
+              "htmlHash": "cb3be249937de3b1"
             }
           ]
         },
@@ -5877,19 +5876,19 @@
           "id": "components-promptcomposer--working",
           "title": "Working",
           "opened": "none",
-          "nodes": 10,
-          "approximated": 0,
-          "bound": 28,
-          "bindable": 31,
+          "nodes": 11,
+          "approximated": 1,
+          "bound": 26,
+          "bindable": 29,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Y69-0",
+              "nodeId": "2EVG-0",
               "size": [
                 576,
                 108
               ],
-              "htmlHash": "af4afb7354499b20"
+              "htmlHash": "8bd22ee273b73ee8"
             }
           ]
         },
@@ -5897,19 +5896,19 @@
           "id": "components-promptcomposer--disabled",
           "title": "Disabled",
           "opened": "none",
-          "nodes": 10,
-          "approximated": 0,
+          "nodes": 11,
+          "approximated": 1,
           "bound": 25,
           "bindable": 29,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Y6X-0",
+              "nodeId": "2EW6-0",
               "size": [
                 576,
                 108
               ],
-              "htmlHash": "c3b905d0a1659083"
+              "htmlHash": "7feb4c7180ff1c7a"
             }
           ]
         },
@@ -5917,19 +5916,19 @@
           "id": "components-promptcomposer--error-state",
           "title": "Error State",
           "opened": "none",
-          "nodes": 13,
+          "nodes": 15,
           "approximated": 1,
           "bound": 32,
           "bindable": 36,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Y7L-0",
+              "nodeId": "2EWW-0",
               "size": [
                 576,
                 133.41
               ],
-              "htmlHash": "8fd33d7707329cb7"
+              "htmlHash": "f6f130b96e410daf"
             }
           ]
         },
@@ -5937,19 +5936,19 @@
           "id": "components-promptcomposer--with-mic",
           "title": "With Mic",
           "opened": "none",
-          "nodes": 9,
-          "approximated": 0,
+          "nodes": 10,
+          "approximated": 1,
           "bound": 20,
           "bindable": 24,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Y89-0",
+              "nodeId": "2EXM-0",
               "size": [
                 576,
                 108
               ],
-              "htmlHash": "9871450b5e3a9c14"
+              "htmlHash": "1c20e10cf2a2b38f"
             }
           ]
         },
@@ -5957,19 +5956,19 @@
           "id": "components-promptcomposer--with-attachments",
           "title": "With Attachments",
           "opened": "none",
-          "nodes": 32,
-          "approximated": 1,
+          "nodes": 33,
+          "approximated": 2,
           "bound": 101,
           "bindable": 107,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Y8W-0",
+              "nodeId": "2EYB-0",
               "size": [
                 576,
                 166
               ],
-              "htmlHash": "6752e483b974e4d7"
+              "htmlHash": "b5c846699f7771bb"
             }
           ]
         },
@@ -5977,19 +5976,19 @@
           "id": "components-promptcomposer--with-modes",
           "title": "With Modes",
           "opened": "none",
-          "nodes": 21,
-          "approximated": 3,
+          "nodes": 24,
+          "approximated": 5,
           "bound": 61,
           "bindable": 74,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1YAB-0",
+              "nodeId": "2EZS-0",
               "size": [
                 576,
                 142.41
               ],
-              "htmlHash": "7448a3f379fbb5a4"
+              "htmlHash": "62d241df8ba9a9ed"
             }
           ]
         },
@@ -5997,19 +5996,19 @@
           "id": "components-promptcomposer--slash-commands",
           "title": "Slash Commands",
           "opened": "none",
-          "nodes": 10,
-          "approximated": 0,
+          "nodes": 11,
+          "approximated": 1,
           "bound": 27,
           "bindable": 28,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1YBB-0",
+              "nodeId": "2F0Y-0",
               "size": [
                 576,
                 84
               ],
-              "htmlHash": "dac8cb3aba5b7663"
+              "htmlHash": "44128d155376f19b"
             }
           ]
         },
@@ -6024,12 +6023,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1YBZ-0",
+              "nodeId": "2F1O-0",
               "size": [
                 576,
                 108
               ],
-              "htmlHash": "748966539e5d78ff"
+              "htmlHash": "4adb0639f13340f6"
             }
           ]
         }
@@ -6049,7 +6048,7 @@
         "src/usage/question-card.usage.mjs"
       ],
       "sourceHash": "381f611a9d43bdcd",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 6,
         "nodes": 224,
@@ -6074,7 +6073,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RMI-0",
+              "nodeId": "2F2K-0",
               "size": [
                 480,
                 321.03
@@ -6094,7 +6093,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RO4-0",
+              "nodeId": "2F46-0",
               "size": [
                 480,
                 361.03
@@ -6114,7 +6113,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RPT-0",
+              "nodeId": "2F5V-0",
               "size": [
                 480,
                 321.03
@@ -6134,7 +6133,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RRB-0",
+              "nodeId": "2F7D-0",
               "size": [
                 480,
                 190.22
@@ -6154,7 +6153,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RS8-0",
+              "nodeId": "2F8A-0",
               "size": [
                 480,
                 305.03
@@ -6174,7 +6173,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RTQ-0",
+              "nodeId": "2F9S-0",
               "size": [
                 480,
                 321.03
@@ -7421,7 +7420,7 @@
         "src/usage/suggested-prompts.usage.mjs"
       ],
       "sourceHash": "2bc5bdb7aa69e83b",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 3,
         "nodes": 42,
@@ -7444,7 +7443,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T2N-0",
+              "nodeId": "2FBH-0",
               "size": [
                 640,
                 32
@@ -7464,7 +7463,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T38-0",
+              "nodeId": "2FC2-0",
               "size": [
                 640,
                 59.41
@@ -7484,7 +7483,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T44-0",
+              "nodeId": "2FCY-0",
               "size": [
                 640,
                 81.81
@@ -8380,7 +8379,7 @@
         "src/usage/usage-meter.usage.mjs"
       ],
       "sourceHash": "3ce9e6081bfa14e4",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 5,
         "nodes": 97,
@@ -8403,7 +8402,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TU7-0",
+              "nodeId": "2FDQ-0",
               "size": [
                 380,
                 271.2
@@ -8423,7 +8422,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TVJ-0",
+              "nodeId": "2FF2-0",
               "size": [
                 380,
                 34.8
@@ -8443,7 +8442,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TW6-0",
+              "nodeId": "2FFP-0",
               "size": [
                 380,
                 271.2
@@ -8463,12 +8462,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TXL-0",
+              "nodeId": "2FH4-0",
               "size": [
                 380,
                 18
               ],
-              "htmlHash": "91b7e934ad9a40a7"
+              "htmlHash": "7337bdc7ce6a1a44"
             }
           ]
         },
@@ -8483,12 +8482,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TY3-0",
+              "nodeId": "2FHM-0",
               "size": [
                 380,
                 18
               ],
-              "htmlHash": "ca3b6725c8d84bba"
+              "htmlHash": "1aa9cb83bec2ad14"
             }
           ]
         }
@@ -8556,14 +8555,14 @@
         "src/usage/ai-chat.usage.mjs"
       ],
       "sourceHash": "3f0159d8ad3b17e2",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 5,
-        "nodes": 431,
-        "approximated": 32,
+        "nodes": 448,
+        "approximated": 39,
         "bound": 1295,
-        "bindable": 1367,
-        "bindingRate": 0.947
+        "bindable": 1370,
+        "bindingRate": 0.945
       },
       "notes": [],
       "lost": [
@@ -8574,19 +8573,19 @@
           "id": "patterns-ai-ai-chat--default",
           "title": "Default",
           "opened": "none",
-          "nodes": 84,
-          "approximated": 6,
-          "bound": 259,
-          "bindable": 271,
+          "nodes": 90,
+          "approximated": 7,
+          "bound": 262,
+          "bindable": 275,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1U14-0",
+              "nodeId": "2FI9-0",
               "size": [
                 1232,
                 640
               ],
-              "htmlHash": "3e7d7eb73f97bd06"
+              "htmlHash": "2df6a405f0b331cf"
             }
           ]
         },
@@ -8595,18 +8594,18 @@
           "title": "App Conversation",
           "opened": "none",
           "nodes": 73,
-          "approximated": 5,
-          "bound": 236,
-          "bindable": 247,
+          "approximated": 8,
+          "bound": 230,
+          "bindable": 242,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1U4K-0",
+              "nodeId": "2FLV-0",
               "size": [
                 1232,
                 640
               ],
-              "htmlHash": "3ea0d2a291bd9891"
+              "htmlHash": "56d55e42c428c410"
             }
           ]
         },
@@ -8614,19 +8613,19 @@
           "id": "patterns-ai-ai-chat--own-sidebar",
           "title": "Own Sidebar",
           "opened": "none",
-          "nodes": 54,
-          "approximated": 3,
+          "nodes": 55,
+          "approximated": 4,
           "bound": 162,
           "bindable": 183,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1U7A-0",
+              "nodeId": "2FOL-0",
               "size": [
                 1232,
                 640
               ],
-              "htmlHash": "91cd8a2fe5fdef42"
+              "htmlHash": "ef6689dbe2f5cc9a"
             }
           ]
         },
@@ -8634,19 +8633,19 @@
           "id": "patterns-ai-ai-chat--no-sidebar",
           "title": "No Sidebar",
           "opened": "none",
-          "nodes": 64,
-          "approximated": 5,
-          "bound": 172,
-          "bindable": 183,
+          "nodes": 70,
+          "approximated": 6,
+          "bound": 175,
+          "bindable": 187,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1U99-0",
+              "nodeId": "2FQL-0",
               "size": [
                 1232,
                 640
               ],
-              "htmlHash": "6d56caf3e764e1d6"
+              "htmlHash": "8627a80fca6c83a0"
             }
           ]
         },
@@ -8654,19 +8653,19 @@
           "id": "patterns-ai-ai-chat--agent-pieces-in-one-thread",
           "title": "Agent Pieces In One Thread",
           "opened": "none",
-          "nodes": 156,
-          "approximated": 13,
+          "nodes": 160,
+          "approximated": 14,
           "bound": 466,
           "bindable": 483,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1UBY-0",
+              "nodeId": "2FTG-0",
               "size": [
                 1232,
                 1367.25
               ],
-              "htmlHash": "acf6bfa3ae77baf8"
+              "htmlHash": "2322bfc6a9f46d1a"
             }
           ]
         }
@@ -8686,38 +8685,37 @@
         "src/usage/ai-home.usage.mjs"
       ],
       "sourceHash": "e2973452a8b54db1",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 1,
-        "nodes": 43,
-        "approximated": 4,
+        "nodes": 46,
+        "approximated": 6,
         "bound": 155,
         "bindable": 168,
         "bindingRate": 0.923
       },
       "notes": [],
       "lost": [
-        "button: background-clip: padding-box not carried",
-        "tab-fillet: mask not carried ×2"
+        "button: background-clip: padding-box not carried"
       ],
       "stories": [
         {
           "id": "patterns-ai-ai-home--default",
           "title": "Default",
           "opened": "none",
-          "nodes": 43,
-          "approximated": 4,
+          "nodes": 46,
+          "approximated": 6,
           "bound": 155,
           "bindable": 168,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1UIE-0",
+              "nodeId": "2G02-0",
               "size": [
                 1232,
                 512
               ],
-              "htmlHash": "6f54af2a02a6b29b"
+              "htmlHash": "26bab82c15007021"
             }
           ]
         }
@@ -8737,14 +8735,14 @@
         "src/usage/ai-side-panel.usage.mjs"
       ],
       "sourceHash": "5941f3f6f5278166",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 3,
-        "nodes": 112,
-        "approximated": 6,
-        "bound": 294,
-        "bindable": 328,
-        "bindingRate": 0.896
+        "nodes": 123,
+        "approximated": 9,
+        "bound": 300,
+        "bindable": 336,
+        "bindingRate": 0.893
       },
       "notes": [],
       "lost": [
@@ -8755,19 +8753,19 @@
           "id": "patterns-ai-ai-side-panel--default",
           "title": "Default",
           "opened": "none",
-          "nodes": 47,
-          "approximated": 3,
-          "bound": 119,
-          "bindable": 133,
+          "nodes": 52,
+          "approximated": 4,
+          "bound": 122,
+          "bindable": 137,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZGJ-0",
+              "nodeId": "2G24-0",
               "size": [
                 384,
                 560
               ],
-              "htmlHash": "5c5bd8e6272cf2d3"
+              "htmlHash": "1d775f4650271eeb"
             }
           ]
         },
@@ -8775,19 +8773,19 @@
           "id": "patterns-ai-ai-side-panel--no-scope",
           "title": "No Scope",
           "opened": "none",
-          "nodes": 42,
-          "approximated": 3,
-          "bound": 108,
-          "bindable": 122,
+          "nodes": 47,
+          "approximated": 4,
+          "bound": 111,
+          "bindable": 126,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZIM-0",
+              "nodeId": "2G4C-0",
               "size": [
                 384,
                 560
               ],
-              "htmlHash": "45224b8d7775d9ed"
+              "htmlHash": "300872226d4b863f"
             }
           ]
         },
@@ -8795,19 +8793,19 @@
           "id": "patterns-ai-ai-side-panel--empty-app-thread",
           "title": "Empty App Thread",
           "opened": "none",
-          "nodes": 23,
-          "approximated": 0,
+          "nodes": 24,
+          "approximated": 1,
           "bound": 67,
           "bindable": 73,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZKH-0",
+              "nodeId": "2G6C-0",
               "size": [
                 384,
                 560
               ],
-              "htmlHash": "c67f3bf2767177e5"
+              "htmlHash": "936f8f8084805fb1"
             }
           ]
         }
@@ -9317,7 +9315,7 @@
         "src/usage/conversation-history.usage.mjs"
       ],
       "sourceHash": "63187b69289b2664",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 3,
         "nodes": 108,
@@ -9340,7 +9338,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZOV-0",
+              "nodeId": "2G7I-0",
               "size": [
                 300,
                 350
@@ -9360,7 +9358,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZQE-0",
+              "nodeId": "2G91-0",
               "size": [
                 300,
                 582
@@ -9380,7 +9378,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZSS-0",
+              "nodeId": "2GBF-0",
               "size": [
                 300,
                 89.41
