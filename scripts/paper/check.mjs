@@ -31,7 +31,7 @@ import { PNG } from 'pngjs'
 import { comparePngs, flatten, padTo, REGRESSION_PCT, REGRESSION_PX, strip } from '../figma-visual-diff.mjs'
 import { connect } from './client.mjs'
 import { parseColor, sameColor } from './color.mjs'
-import { captureStory, launch, normalizeText, visibleTexts } from './convert.mjs'
+import { captureStory, launch, normalizeText, paintOrder, visibleTexts } from './convert.mjs'
 import { openQuillFile, publicText, readState, root } from './file.mjs'
 import { inventory, statusOf } from './pieces.mjs'
 import { ensureStorybook } from './storybook.mjs'
@@ -169,15 +169,16 @@ export function keyNodes(tree) {
   const found = {}
   const walk = (node, parent) => {
     if (typeof node.text === 'string') {
-      if (!found.text && normalizeText(node.text, parent.used.whiteSpace).trim()) found.text = parent
+      if (found.text === undefined && normalizeText(node.text, parent.used.whiteSpace).trim()) found.text = parent
       return
     }
     if (node.ghost || (node !== tree && parseFloat(node.used.opacity) === 0)) return
     // a field's value is the first text Paper holds, but it is styled by the field, not by a text element: no fair pair
-    if (!found.text && ['input', 'textarea', 'select'].includes(node.tag) && !node.textless && (node.value || node.placeholder)) found.text = false
+    if (found.text === undefined && ['input', 'textarea', 'select'].includes(node.tag) && !node.textless && (node.value || node.placeholder)) found.text = false
     if (!found.button && node.slot === 'button') found.button = node
     if (!found.surface && (parseColor(node.used.backgroundColor)?.a ?? 0) > 0 && !['input', 'textarea', 'select', 'img'].includes(node.tag)) found.surface = node
-    for (const child of node.children ?? []) walk(child, node)
+    // in the order Paper holds the layers, so "the first text" is the same text on both sides
+    for (const child of paintOrder(node)) walk(child, node)
   }
   walk(tree, tree)
   if (found.text === false) delete found.text
@@ -202,10 +203,49 @@ export function isOurExport(filePath, { layerName, since, downloads = join(homed
   try { const info = stat(filePath); return info.mtimeMs >= since - 2000 && (info.birthtimeMs ?? info.mtimeMs) >= since - 2000 } catch { return false }
 }
 
+// ------------------------------------------------------------------ the worst region (pure)
+
+/** The colours pixelmatch paints a differing pixel in the diff image (see comparePngs); anti-aliasing is yellow and not counted. */
+export const DIFF_COLORS = [[196, 104, 75], [122, 140, 92]]
+const TILE = 12 * SCALE // 12 CSS px: a 24px tile of the 2x strip
+// How many points worse than accepted the worst region may get. Chosen from the data, see paper/README.md
+export const REGION_POINTS = 8
+
+/**
+ * The share of differing pixels in the worst 12×12 CSS-px tile of a diff image, and where it is (CSS px).
+ * The whole-picture share hides a local fault: a missing 1.5px outline round a composer, or a word drawn as a
+ * blank box, is a fraction of a percent of a big story. Tiles step by half a tile, so a fault on a tile edge
+ * is still seen whole.
+ */
+export function worstRegion(diff, { tile = TILE } = {}) {
+  const { width, height, data } = diff
+  // a running total of differing pixels, so each tile is four lookups
+  const sums = new Float64Array((width + 1) * (height + 1))
+  for (let y = 0; y < height; y++) {
+    let row = 0
+    for (let x = 0; x < width; x++) {
+      const at = (y * width + x) * 4
+      if (DIFF_COLORS.some(([r, g, b]) => data[at] === r && data[at + 1] === g && data[at + 2] === b)) row++
+      sums[(y + 1) * (width + 1) + x + 1] = sums[y * (width + 1) + x + 1] + row
+    }
+  }
+  const starts = (size) => { const last = Math.max(0, size - tile); const list = []; for (let at = 0; at < last; at += tile / 2) list.push(at); list.push(last); return list }
+  let worst = { pct: 0, x: 0, y: 0 }
+  for (const top of starts(height)) {
+    for (const left of starts(width)) {
+      const [right, bottom] = [Math.min(width, left + tile), Math.min(height, top + tile)]
+      const count = sums[bottom * (width + 1) + right] - sums[top * (width + 1) + right] - sums[bottom * (width + 1) + left] + sums[top * (width + 1) + left]
+      const pct = Math.round((count / ((right - left) * (bottom - top))) * 1000) / 10
+      if (pct > worst.pct) worst = { pct, x: left / SCALE, y: top / SCALE }
+    }
+  }
+  return worst
+}
+
 // ------------------------------------------------------------------ baseline and verdicts (pure)
 
 /** What a story measured, in the shape the baseline keeps. */
-export const measured = (row) => ({ diffPct: row.picture.diffPct, paper: row.picture.paper, storybook: row.picture.storybook, text: row.text.ok, values: `${row.valuesOk}/${row.values.length}` })
+export const measured = (row) => ({ diffPct: row.picture.diffPct, ...(row.picture.worstRegion ? { worstRegion: row.picture.worstRegion.pct } : {}), paper: row.picture.paper, storybook: row.picture.storybook, text: row.text.ok, values: `${row.valuesOk}/${row.values.length}` })
 
 /** `ok`, `regression` (with reasons) or `unbaselined`, against the story's own accepted numbers. */
 export function verdictOf(row, accepted) {
@@ -213,6 +253,9 @@ export function verdictOf(row, accepted) {
   if (!accepted) return { verdict: 'unbaselined', reasons: [] }
   const reasons = []
   if (row.picture.diffPct - accepted.diffPct > REGRESSION_PCT) reasons.push(`picture ${row.picture.diffPct.toFixed(2)}% (accepted ${accepted.diffPct.toFixed(2)}%)`)
+  // a local fault (a missing word, a lost outline round one control) barely moves the whole-picture number
+  const region = row.picture.worstRegion
+  if (region && typeof accepted.worstRegion === 'number' && region.pct - accepted.worstRegion > REGION_POINTS) reasons.push(`worst region ${region.pct}% at ${region.x},${region.y} (accepted ${accepted.worstRegion}%)`)
   for (const side of ['paper', 'storybook']) {
     const moved = [0, 1].map((axis) => Math.abs(row.picture[side][axis] - accepted[side][axis]))
     if (moved.some((delta) => delta > REGRESSION_PX)) reasons.push(`${side === 'paper' ? 'Paper' : 'Storybook'} size ${row.picture[side].join('×')} (accepted ${accepted[side].join('×')})`)
@@ -240,7 +283,7 @@ export function acceptInto(baseline, rows, date, { force = false } = {}) {
     stories[row.story] = { ...measured(row), piece: row.piece, at: date }
     accepted.push(row.story)
   }
-  const baselineNext = { $comment: 'Accepted picture difference and sizes per story, Paper against Storybook. Written by `npm run paper:check -- --accept`; a later check fails a story that is more than 1.0 point worse or drifts more than 8px.', platform: process.platform, stories: Object.fromEntries(Object.entries(stories).sort(([a], [b]) => a.localeCompare(b))) }
+  const baselineNext = { $comment: 'Accepted picture difference and sizes per story, Paper against Storybook. Written by `npm run paper:check -- --accept`; a later check fails a story that is more than 1.0 point worse overall, more than ' + REGION_POINTS + ' points worse in its worst 12px region (worstRegion), or drifts more than 8px.', platform: process.platform, stories: Object.fromEntries(Object.entries(stories).sort(([a], [b]) => a.localeCompare(b))) }
   return { baseline: baselineNext, result: { accepted, refused } }
 }
 
@@ -258,6 +301,7 @@ async function checkStory(file, page, piece, story, { table, out, base, open, st
   row.values = []
   let differing = 0
   let area = 0
+  let region = null
   const sizes = { paper: [0, 0], storybook: [0, 0] }
   const strips = []
   for (const { recorded, live } of parts) {
@@ -302,6 +346,9 @@ async function checkStory(file, page, piece, story, { table, out, base, open, st
     const result = comparePngs(paperPng, storybookPng)
     differing += result.differing
     area += result.diff.width * result.diff.height
+    // the worst 12px tile of any part, and which part it is in
+    const local = worstRegion(result.diff)
+    if (!region || local.pct > region.pct) region = { ...local, ...(recorded.part === 'main' ? {} : { part: recorded.part }) }
     strips.push(strip(padTo(paperPng, result.diff.width, result.diff.height), padTo(storybookPng, result.diff.width, result.diff.height), result.diff))
     for (const [side, png] of [['paper', paperPng], ['storybook', storybookPng]]) { sizes[side][0] += png.width / SCALE; sizes[side][1] = Math.max(sizes[side][1], png.height / SCALE) }
   }
@@ -317,7 +364,7 @@ async function checkStory(file, page, piece, story, { table, out, base, open, st
   let y = 0
   for (const png of strips) { PNG.bitblt(png, stacked, 0, 0, png.width, png.height, 0, y); y += png.height + 16 }
   writeFileSync(stripPath, PNG.sync.write(stacked))
-  row.picture = { diffPct: Math.round((differing / Math.max(1, area)) * 10000) / 100, paper: sizes.paper, storybook: sizes.storybook, strip: stripPath.replace(`${root}/`, '') }
+  row.picture = { diffPct: Math.round((differing / Math.max(1, area)) * 10000) / 100, worstRegion: region, paper: sizes.paper, storybook: sizes.storybook, strip: stripPath.replace(`${root}/`, '') }
   return row
 }
 
@@ -330,11 +377,11 @@ export function renderSummary(rows, { accepted = false } = {}) {
   const worst = (row) => (row.verdict === 'regression' ? 0 : row.verdict === 'error' ? 1 : row.verdict === 'unbaselined' ? 2 : 3)
   const shown = rows.filter((row) => row.verdict !== 'ok' || !row.text?.ok || row.valuesOk < row.values?.length).sort((a, b) => worst(a) - worst(b))
   if (shown.length) {
-    lines.push('| piece | story | text | values | picture | size Paper → Storybook (px) | verdict |', '|---|---|---|---|---:|---|---|')
+    lines.push('| piece | story | text | values | picture | worst region | size Paper → Storybook (px) | verdict |', '|---|---|---|---|---:|---:|---|---|')
     for (const row of shown) {
-      if (row.error) { lines.push(`| ${row.piece} | ${row.title} | — | — | — | — | error: ${row.error} |`); continue }
+      if (row.error) { lines.push(`| ${row.piece} | ${row.title} | — | — | — | — | — | error: ${row.error} |`); continue }
       const text = `${row.text.paper}/${row.text.story}${row.text.ok ? '' : ' ✗'}`
-      lines.push(`| ${row.piece} | ${row.title} | ${text} | ${row.valuesOk}/${row.values.length} | ${row.picture.diffPct.toFixed(2)}% | ${row.picture.paper.join('×')} → ${row.picture.storybook.join('×')} | ${row.verdict}${row.reasons?.length ? `: ${row.reasons.join('; ')}` : ''} |`)
+      lines.push(`| ${row.piece} | ${row.title} | ${text} | ${row.valuesOk}/${row.values.length} | ${row.picture.diffPct.toFixed(2)}% | ${row.picture.worstRegion ? `${row.picture.worstRegion.pct}%` : '—'} | ${row.picture.paper.join('×')} → ${row.picture.storybook.join('×')} | ${row.verdict}${row.reasons?.length ? `: ${row.reasons.join('; ')}` : ''} |`)
     }
     lines.push('')
   }
@@ -375,7 +422,7 @@ export async function check({ only = [], all = false, out = DEFAULT_OUT, base = 
         }
         Object.assign(row, verdictOf(row, baseline.stories[story.id]))
         rows.push(row)
-        progress(`${piece.slug.padEnd(22)} ${story.title.padEnd(28).slice(0, 28)} ${row.error ? `error: ${row.error}` : `${String(row.picture.diffPct.toFixed(2)).padStart(6)}%  text ${row.text.ok ? '✓' : '✗'}  values ${row.valuesOk}/${row.values.length}  ${row.verdict}`}`)
+        progress(`${piece.slug.padEnd(22)} ${story.title.padEnd(28).slice(0, 28)} ${row.error ? `error: ${row.error}` : `${String(row.picture.diffPct.toFixed(2)).padStart(6)}%  worst ${String(row.picture.worstRegion?.pct ?? '—').padStart(5)}%  text ${row.text.ok ? '✓' : '✗'}  values ${row.valuesOk}/${row.values.length}  ${row.verdict}`}`)
       }
     }
   } finally {

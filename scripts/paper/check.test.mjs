@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { REGRESSION_PCT, REGRESSION_PX } from '../figma-visual-diff.mjs'
-import { acceptInto, check, compareValues, isOurExport, keyNodes, measured, parseTreeSummary, renderSummary, resolveColor, resolveLength, verdictOf } from './check.mjs'
+import { acceptInto, check, compareValues, DIFF_COLORS, isOurExport, keyNodes, measured, parseTreeSummary, REGION_POINTS, renderSummary, resolveColor, resolveLength, verdictOf, worstRegion } from './check.mjs'
 import { serialize } from './convert.mjs'
 import { orderState, planPages, upsertPiece } from './file.mjs'
 import { ARTBOARD, artboardStyles, header, section } from './page.mjs'
@@ -76,6 +76,37 @@ test('key nodes: the first text\'s owner, the first button, the first filled sur
   assert.equal(keys.text, title)
   assert.equal(keys.button, button)
   assert.equal(keys.surface, card)
+
+  // a field shows the first text (its placeholder), styled by the field: no fair pair, and no later text stands in for it
+  const field = { tag: 'textarea', used: used(), value: '', placeholder: 'Ask anything', children: [] }
+  assert.equal(keyNodes({ tag: 'div', used: used(), children: [field, title] }).text, undefined)
+})
+
+test('the worst region: the share of differing pixels in the worst 12px tile, wherever it is', () => {
+  // a 96×96 diff image (48×48 CSS px at 2x): grey where alike, the diff colour where not
+  const image = (paint) => {
+    const png = { width: 96, height: 96, data: new Uint8Array(96 * 96 * 4) }
+    for (let y = 0; y < 96; y++) for (let x = 0; x < 96; x++) {
+      const [r, g, b] = paint(x, y) ? DIFF_COLORS[0] : [230, 230, 230]
+      png.data.set([r, g, b, 255], (y * 96 + x) * 4)
+    }
+    return png
+  }
+  assert.deepEqual(worstRegion(image(() => false)), { pct: 0, x: 0, y: 0 })
+  // a 12-CSS-px tile (24 device px) covered: 100% there, however small a share of the whole picture (12.5%)
+  const missingEdge = worstRegion(image((x, y) => x >= 48 && y < 24))
+  assert.deepEqual(missingEdge, { pct: 100, x: 24, y: 0 }, 'x and y in CSS px')
+  // half a tile covered, where the half-step tiles cannot line up with it: still read as a half
+  assert.equal(worstRegion(image((x, y) => x >= 90 && y < 24)).pct, 25)
+  // scattered single pixels (text smoothing) stay low
+  assert.ok(worstRegion(image((x, y) => (x * 7 + y * 13) % 29 === 0)).pct < 5)
+  // the second diff colour counts too; anti-aliasing (yellow) does not
+  const alt = image((x, y) => x < 48 && y < 48)
+  for (let index = 0; index < 96 * 96; index++) if (alt.data[index * 4] === DIFF_COLORS[0][0]) alt.data.set(DIFF_COLORS[1], index * 4)
+  assert.equal(worstRegion(alt).pct, 100)
+  const smoothing = image(() => false)
+  for (let index = 0; index < 96 * 96; index++) smoothing.data.set([255, 255, 0], index * 4)
+  assert.equal(worstRegion(smoothing).pct, 0)
 })
 
 test('a story regresses against its own baseline: picture, size, text or values', () => {
@@ -90,6 +121,21 @@ test('a story regresses against its own baseline: picture, size, text or values'
   assert.match(verdictOf({ ...row, text: { ok: false, story: 1, paper: 2 } }, accepted).reasons[0], /text no longer matches/)
   assert.match(verdictOf({ ...row, valuesOk: 1 }, accepted).reasons[0], /values 1\/2 \(accepted 2\/2\)/)
   assert.equal(verdictOf({ ...row, error: 'export produced no file' }, accepted).verdict, 'error')
+})
+
+test('a story whose worst region gets clearly worse regresses, even when the whole-picture number barely moves', () => {
+  const row = { piece: 'ai-thinking', story: 'components-aithinking--working', title: 'Working', text: { ok: true, story: 2, paper: 2 }, values: [], valuesOk: 0, picture: { diffPct: 1.8, paper: [320, 60], storybook: [320, 60], worstRegion: { pct: 29, x: 0, y: 0 } } }
+  const accepted = measured(row)
+  assert.equal(accepted.worstRegion, 29, 'the baseline keeps the worst region\'s share')
+  assert.equal(verdictOf({ ...row, picture: { ...row.picture, worstRegion: { pct: 29 + REGION_POINTS, x: 0, y: 0 } } }, accepted).verdict, 'ok', 'exactly at the tolerance is not worse')
+  // "Thinking" drawn as a gradient box: 0.6 points worse overall, 57 points worse where it is
+  const box = verdictOf({ ...row, picture: { ...row.picture, diffPct: 2.4, worstRegion: { pct: 86, x: 0, y: 4 } } }, accepted)
+  assert.equal(box.verdict, 'regression')
+  assert.deepEqual(box.reasons, ['worst region 86% at 0,4 (accepted 29%)'])
+  // a baseline from before the region was measured judges the picture as before
+  const old = { ...accepted }
+  delete old.worstRegion
+  assert.equal(verdictOf({ ...row, picture: { ...row.picture, worstRegion: { pct: 86, x: 0, y: 4 } } }, old).verdict, 'ok')
 })
 
 test('accepting writes sorted, dated entries, leaves unchecked stories alone, and refuses a text mismatch', () => {
@@ -110,11 +156,11 @@ test('accepting needs a named scope', async () => {
 
 test('the summary leads with the counts and lists what is not ok', () => {
   const ok = { piece: 'button', story: 'a', title: 'Default', verdict: 'ok', reasons: [], text: { ok: true, story: 1, paper: 1 }, values: [{ ok: true }], valuesOk: 1, picture: { diffPct: 6.1, paper: [110, 32], storybook: [110, 32] } }
-  const rows = [ok, { ...ok, story: 'b', title: 'Disabled', verdict: 'regression', reasons: ['picture 12.00% (accepted 6.10%)'], picture: { ...ok.picture, diffPct: 12 } }, { piece: 'tone-badge', story: 'c', title: 'Solid', verdict: 'error', error: 'export produced no file' }]
+  const rows = [ok, { ...ok, story: 'b', title: 'Disabled', verdict: 'regression', reasons: ['picture 12.00% (accepted 6.10%)'], picture: { ...ok.picture, diffPct: 12, worstRegion: { pct: 41.5, x: 12, y: 0 } } }, { piece: 'tone-badge', story: 'c', title: 'Solid', verdict: 'error', error: 'export produced no file' }]
   const summary = renderSummary(rows)
   assert.match(summary, /^## Paper ↔ Storybook check: 3 stories in 2 pieces · 1 regression · 1 error · 0 without a baseline/)
-  assert.match(summary, /\| button \| Disabled \| 1\/1 \| 1\/1 \| 12\.00% \| 110×32 → 110×32 \| regression: picture 12\.00% \(accepted 6\.10%\) \|/)
-  assert.match(summary, /\| tone-badge \| Solid \| — \| — \| — \| — \| error: export produced no file \|/)
+  assert.match(summary, /\| button \| Disabled \| 1\/1 \| 1\/1 \| 12\.00% \| 41\.5% \| 110×32 → 110×32 \| regression: picture 12\.00% \(accepted 6\.10%\) \|/)
+  assert.match(summary, /\| tone-badge \| Solid \| — \| — \| — \| — \| — \| error: export produced no file \|/)
   assert.match(summary, /1 stories match their accepted baseline/)
   assert.equal(summary.includes('| button | Default |'), false, 'a story that is fine is counted, not listed')
 })

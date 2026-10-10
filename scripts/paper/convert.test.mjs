@@ -110,9 +110,19 @@ test('what cannot be carried is reported, not guessed', () => {
   const moved = translateMargins({ axis: 'row', gap: 8 }, [child({ right: 4, top: 6 }), child({ left: -6 })])
   assert.deepEqual(moved.spacers, [])
   assert.equal(moved.negative, true)
-  assert.equal(moved.lost.length, 2)
-  assert.match(moved.lost.join('|'), /6px top margin across the row dropped/)
+  assert.equal(moved.lost.length, 1)
   assert.match(moved.lost.join('|'), /negative left margin \(-6px\) dropped/)
+})
+
+test('a margin across the row (a Retry button nudged down 4px beside its text) pads a frame around the child', () => {
+  assert.deepEqual(translateMargins({ axis: 'row', gap: 4 }, [child({}), child({ top: 4 })]).wraps, [{ index: 1, side: 'top', size: 4 }])
+  const retry = el('button', { slot: 'button', used: { display: 'flex' }, spec: { marginTop: '4px', height: '24px' }, children: [el('p', { children: [{ text: 'Retry' }] })] })
+  const { root } = convertTree(el('div', { used: { display: 'flex', alignItems: 'flex-start' }, children: [el('p', { children: [{ text: 'Couldn\'t open' }] }), retry] }), TABLE)
+  assert.deepEqual([root.children[1].name, root.children[1].style['padding-top'], root.children[1].children[0].name], ['margin', '4px', 'button'])
+  // a growing child keeps growing: the frame takes its place in the row
+  const grows = el('p', { used: { display: 'block', flexGrow: '1', alignSelf: 'center' }, spec: { marginTop: '2px' }, children: [{ text: 'label' }] })
+  const wrapped = convertTree(el('div', { used: { display: 'flex' }, children: [grows] }), TABLE).root.children[0]
+  assert.deepEqual([wrapped.name, wrapped.style['flex-grow'], wrapped.style['align-self'], wrapped.children[0].style['align-self']], ['margin', '1', 'center', undefined])
 })
 
 test('a margin smaller than the gap wraps each child in its own padding instead of a spacer', () => {
@@ -236,6 +246,13 @@ test('colours inside a gradient bind where they are exactly a token', () => {
   assert.equal(binder.colorsIn('linear-gradient(90deg, rgb(138, 69, 48), rgb(1, 2, 3) 50%)'), 'linear-gradient(90deg, var(--color-destructive), #010203 50%)')
 })
 
+test('a gradient that fades out fades its own colour, not black (Paper blends through the see-through stop\'s colour)', () => {
+  const binder = createBinder(TABLE)
+  // the AI wash and glow fade to `transparent`, which the browser reports as see-through black
+  assert.equal(binder.colorsIn('linear-gradient(rgba(196, 149, 68, 0.12) 0%, rgba(0, 0, 0, 0) 100%)'), 'linear-gradient(rgba(196, 149, 68, 0.12) 0%, rgba(196, 149, 68, 0) 100%)')
+  assert.equal(binder.colorsIn('radial-gradient(60% 70% at 30% 40%, rgba(0, 0, 0, 0), rgb(83, 106, 153) 70%)'), 'radial-gradient(60% 70% at 30% 40%, rgba(83, 106, 153, 0), #536A99 70%)')
+})
+
 // ------------------------------------------------------------------ the whole conversion, on a captured tree
 
 const USED = { display: 'block', position: 'static', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'normal', justifyContent: 'normal', alignSelf: 'auto', alignContent: 'normal', justifyItems: 'normal', flexGrow: '0', flexShrink: '1', columnGap: 'normal', rowGap: 'normal', gridTemplateColumns: 'none',
@@ -244,7 +261,7 @@ const USED = { display: 'block', position: 'static', flexDirection: 'row', flexW
   borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderBottomRightRadius: '0px', borderBottomLeftRadius: '0px', boxShadow: 'none', opacity: '1', outlineStyle: 'none', outlineWidth: '0px', outlineColor: 'rgb(0, 0, 0)', outlineOffset: '0px',
   fontFamily: 'Raleway, sans-serif', fontSize: '13.6px', fontWeight: '400', fontStyle: 'normal', lineHeight: '19.4286px', letterSpacing: 'normal', color: 'rgb(42, 38, 34)', textAlign: 'start', whiteSpace: 'normal', textTransform: 'none', textDecorationLine: 'none', textOverflow: 'clip', fontVariationSettings: 'normal', fontVariantNumeric: 'normal',
   verticalAlign: 'baseline', transform: 'none', zIndex: 'auto', clipPath: 'none', maskImage: 'none', filter: 'none', backdropFilter: 'none' }
-const SPEC = { width: 'auto', height: 'auto', minWidth: 'auto', maxWidth: 'none', minHeight: 'auto', maxHeight: 'none', flexBasis: 'auto', marginTop: '0px', marginRight: '0px', marginBottom: '0px', marginLeft: '0px', top: 'auto', right: 'auto', bottom: 'auto', left: 'auto' }
+const SPEC = { width: 'auto', height: 'auto', minWidth: 'auto', maxWidth: 'none', minHeight: 'auto', maxHeight: 'none', flexBasis: 'auto', marginTop: '0px', marginRight: '0px', marginBottom: '0px', marginLeft: '0px', top: 'auto', right: 'auto', bottom: 'auto', left: 'auto', gridTemplateRows: 'none' }
 const el = (tag, { used = {}, spec = {}, rect = { x: 0, y: 0, w: 100, h: 20 }, classes = [], slot = null, role = null, children = [] } = {}) => ({ tag, slot, role, classes, used: { ...USED, ...used }, spec: { ...SPEC, ...spec }, rect, children, pseudo: [] })
 const border = (color) => ({ borderTopWidth: '1px', borderRightWidth: '1px', borderBottomWidth: '1px', borderLeftWidth: '1px', borderTopStyle: 'solid', borderRightStyle: 'solid', borderBottomStyle: 'solid', borderLeftStyle: 'solid', borderTopColor: color, borderRightColor: color, borderBottomColor: color, borderLeftColor: color })
 const radius = (value) => ({ borderTopLeftRadius: value, borderTopRightRadius: value, borderBottomRightRadius: value, borderBottomLeftRadius: value })
@@ -435,4 +452,148 @@ test('an ::after sits under in-flow children that are all positioned above it (a
   plain.pseudo = [{ ...el('div', { used: { position: 'absolute', backgroundColor: 'rgb(232, 220, 192)' }, spec: { width: '16px' }, rect: { x: 0, y: 0, w: 16, h: 20 } }), which: 'after', content: '' }]
   const plainHtml = serialize(convertTree(plain, TABLE).root)
   assert.ok(plainHtml.indexOf('::after') > plainHtml.indexOf('label'), `an ordinary ::after stays on top: ${plainHtml}`)
+})
+
+// ------------------------------------------------------------------ the AI kit's drawing (gradient edge, gradient text, turned icons)
+
+const GOLD = 'rgb(196, 149, 68)'
+const INDIGO = 'rgb(83, 106, 153)'
+const PAPER = 'rgb(245, 237, 221)'
+
+test('a gradient edge (a fill clipped to the padding box over a gradient on the border box) keeps its edge', () => {
+  // `ai-edge`: border 1.5px transparent, background: <paper> padding-box, <gradient> border-box
+  const composer = el('div', { slot: 'prompt-composer', used: { display: 'flex', flexDirection: 'column', backgroundImage: `linear-gradient(${PAPER}, ${PAPER}), linear-gradient(115deg, ${GOLD}, ${INDIGO})`, backgroundClip: 'padding-box, border-box', backgroundSize: 'auto, auto', backgroundPosition: '0% 0%, 0% 0%', backgroundRepeat: 'repeat, repeat', ...border('rgba(0, 0, 0, 0)'), ...radius('16px') }, rect: { x: 0, y: 0, w: 400, h: 100 }, children: [el('p', { children: [{ text: 'Ask anything' }] })] })
+  const { root, stats } = convertTree(composer, TABLE)
+  assert.equal(root.style['background-image'], 'linear-gradient(115deg, #C49544, #536A99)', 'the frame keeps only the border-box layer: Paper paints it under the transparent border')
+  const [fill, text] = root.children
+  assert.equal(fill.name, 'edge fill')
+  assert.deepEqual([fill.style.position, fill.style.left, fill.style.top, fill.style.width, fill.style.height, fill.style['border-radius']], ['absolute', '0px', '0px', '100%', '100%', '15px'])
+  assert.equal(fill.style['background-image'], 'linear-gradient(var(--color-background), var(--color-background))')
+  // Paper paints a positioned layer above unpositioned siblings, so the content is positioned to stay on top
+  assert.equal(text.style.position, 'relative')
+  assert.equal(root.style.position, 'relative')
+  assert.deepEqual(stats.lost, [])
+})
+
+test('gradient text (background-clip: text) is one text layer carrying the gradient, not a gradient box', () => {
+  const label = el('span', { classes: ['ai-shimmer'], used: { display: 'block', backgroundImage: `linear-gradient(90deg, rgb(103, 95, 88), ${GOLD}, rgb(103, 95, 88))`, backgroundClip: 'text', backgroundSize: '200% 100%', color: 'rgba(0, 0, 0, 0)', fontWeight: '600' }, rect: { x: 0, y: 0, w: 60, h: 19 }, children: [{ text: 'Thinking' }] })
+  const { root } = convertTree(el('div', { used: { display: 'flex', flexDirection: 'column' }, children: [label] }), TABLE)
+  const text = root.children[0]
+  assert.equal(text.text, 'Thinking', 'a text layer, not a frame holding an invisible one')
+  assert.equal(text.style['background-clip'], 'text')
+  assert.equal(text.style.color, 'transparent')
+  // Paper drops background-size: the 200% gradient is cut to the half the browser shows (0 → 50 % of it)
+  assert.equal(text.style['background-image'], 'linear-gradient(90deg, var(--color-muted-foreground) 0%, #C49544 100%)')
+})
+
+test('a repeating gradient sized wider than its box is cut to the part the box shows', () => {
+  // `ai-line` with motion off: a 300% sweep at position 0 shows its first third
+  const line = el('div', { used: { display: 'block', backgroundImage: `linear-gradient(90deg, ${GOLD}, ${INDIGO}, ${GOLD}, ${INDIGO})`, backgroundSize: '300% 100%', backgroundRepeat: 'repeat', backgroundPosition: '0% 0%' }, spec: { height: '2px' }, rect: { x: 0, y: 0, w: 300, h: 2 } })
+  const { root } = convertTree(el('div', { used: { display: 'flex', flexDirection: 'column' }, children: [line] }), TABLE)
+  assert.equal(root.children[0].style['background-image'], 'linear-gradient(90deg, #C49544 0%, #536A99 100%)')
+})
+
+test('a turned icon keeps its turn (an open disclosure chevron, a ring started at 12 o\'clock)', () => {
+  const svg = (used) => ({ ...el('svg', { used: { display: 'inline-block', ...used }, spec: { width: '18px', height: '18px' }, rect: { x: 0, y: 0, w: 18, h: 18 } }), svg: '<svg viewBox="0 0 18 18" width="18" height="18"><circle cx="9" cy="9" r="7"></circle></svg>' })
+  const { root } = convertTree(el('div', { used: { display: 'flex' }, children: [svg({ rotate: '-90deg' }), svg({ transform: 'matrix(0, 1, -1, 0, 0, 0)' })] }), TABLE)
+  assert.match(root.children[0].raw, /style="[^"]*rotate:-90deg/)
+  assert.match(root.children[1].raw, /style="[^"]*rotate:90deg/)
+})
+
+test('overlapping children keep the browser\'s stacking: a raised (z-10) row of tabs sits over the box it overlaps', () => {
+  const tabs = el('div', { slot: 'tablist', used: { display: 'flex', position: 'relative', zIndex: '10' }, spec: { marginBottom: '-1.5px' }, rect: { x: 0, y: 0, w: 400, h: 36 }, children: [el('p', { children: [{ text: 'Ask' }] })] })
+  const box = el('div', { slot: 'prompt-composer', used: { display: 'flex' }, rect: { x: 0, y: 34.5, w: 400, h: 100 }, children: [el('p', { children: [{ text: 'Ask anything' }] })] })
+  const { root } = convertTree(el('div', { used: { display: 'flex', flexDirection: 'column' }, rect: { x: 0, y: 0, w: 400, h: 134.5 }, children: [tabs, box] }), TABLE)
+  assert.deepEqual(root.children.map((node) => node.name), ['prompt-composer', 'tablist'], 'later is on top in Paper')
+  assert.deepEqual(visibleTexts(el('div', { used: { display: 'flex', flexDirection: 'column' }, children: [tabs, box] })), ['Ask anything', 'Ask'], 'the text check reads the layers in the order Paper holds them')
+})
+
+test('a focus ring drawn in the browser\'s own style (outline-style: auto) is a plain line in Paper', () => {
+  const tab = el('button', { used: { display: 'flex', outlineStyle: 'auto', outlineWidth: '1px', outlineColor: 'rgb(42, 38, 34)' }, children: [el('p', { children: [{ text: 'Agent' }] })] })
+  assert.equal(convertTree(tab, TABLE).root.style.outline, '1px solid var(--color-foreground)')
+})
+
+test('a round mask that cuts a curve out of a layered fill is folded into one radial fill (a tab\'s curved foot)', () => {
+  const foot = el('span', { slot: 'tab-fillet', used: { display: 'block', position: 'absolute', backgroundImage: `radial-gradient(circle at 0px 0px, rgba(0, 0, 0, 0) 9px, ${PAPER} 9.5px), conic-gradient(from 90deg at 0px 0px, ${GOLD}, ${GOLD} 90deg)`, backgroundClip: 'border-box, border-box', maskImage: 'radial-gradient(circle at 0px 0px, rgba(0, 0, 0, 0) 7.5px, rgb(42, 38, 34) 8px)' }, spec: { width: '9.5px', height: '9.5px' }, rect: { x: 0, y: 26, w: 9.5, h: 9.5 } })
+  const { root, stats } = convertTree(el('div', { used: { display: 'flex', position: 'relative' }, rect: { x: 0, y: 0, w: 100, h: 36 }, children: [foot] }), TABLE)
+  // see-through inside the curve, the ring's colour along it, the page colour beyond it: what the mask left visible.
+  // Spelled the way Paper draws a radial gradient (read back from Paper): a circle to the farthest corner, its centre
+  // and stops in %. The corner of a 9.5px square is 13.44px away, so the curve at 7.5px is 55.82% of the way.
+  assert.equal(root.children[0].style['background-image'], 'radial-gradient(circle at 0% 0%, rgba(196, 149, 68, 0) 55.82%, #C49544 59.55%, #C49544 66.99%, var(--color-background) 70.71%)')
+  assert.ok(!stats.lost.some((line) => /mask/.test(line)), stats.lost.join('|'))
+  assert.match(stats.approximations.flatMap((entry) => entry.reasons).join('|'), /mask folded into the fill/)
+})
+
+test('a sentence that wraps before an inline chip is drawn line by line, as the browser broke it', () => {
+  // "The September dip. It started the day the new / pricing page shipped [changelog]."  (two lines, 22px each)
+  const chip = el('button', { slot: 'citation', used: { display: 'inline-block', backgroundColor: 'rgb(239, 228, 206)', paddingLeft: '8px', paddingRight: '8px' }, spec: { height: '20px', marginLeft: '2px' }, rect: { x: 135, y: 23, w: 72, h: 20 }, children: [{ text: 'changelog', frags: [{ text: 'changelog', x: 143, y: 23, w: 56, h: 20 }] }] })
+  const paragraph = el('p', { used: { lineHeight: '22px' }, rect: { x: 0, y: 0, w: 316, h: 44 }, children: [
+    { text: 'The September dip. It started the day the new pricing page shipped', frags: [{ text: 'The September dip. It started the day the new ', x: 0, y: 0, w: 300, h: 22 }, { text: 'pricing page shipped', x: 0, y: 22, w: 133, h: 22 }] },
+    chip,
+    { text: '.', frags: [{ text: '.', x: 207, y: 22, w: 3, h: 22 }] },
+  ] })
+  const { root, stats } = convertTree(paragraph, TABLE)
+  assert.deepEqual(root.children.map((line) => line.name), ['line', 'line'])
+  assert.deepEqual(root.children[0].children.map((node) => node.text), ['The September dip. It started the day the new'])
+  assert.deepEqual(root.children[1].children.map((node) => node.name ?? node.text), ['pricing page shipped', 'spacer', 'citation', '.'], 'the chip stays on the line it shares with the end of the sentence, after its 2px margin')
+  assert.equal(root.children[1].style['flex-wrap'], undefined, 'a line does not wrap')
+  assert.equal(root.children[1].style['min-height'], '22px')
+  assert.match(stats.approximations.flatMap((entry) => entry.reasons).join('|'), /line by line/)
+  // the text check reads the same pieces Paper holds
+  assert.deepEqual(visibleTexts(paragraph), ['The September dip. It started the day the new', 'pricing page shipped', 'changelog', '.'])
+})
+
+test('a highlight that starts mid-line and wraps keeps its fill on each of its lines', () => {
+  const mark = el('mark', { used: { display: 'inline', backgroundColor: 'rgb(239, 228, 206)', paddingLeft: '2px', paddingRight: '2px' }, rect: { x: 0, y: 0, w: 300, h: 44 }, children: [{ text: 'Signups beat target in July but missed it in September.', frags: [{ text: 'Signups beat target in July ', x: 150, y: 0, w: 150, h: 22 }, { text: 'but missed it in September.', x: 0, y: 22, w: 160, h: 22 }] }] })
+  const paragraph = el('div', { used: { lineHeight: '22px' }, rect: { x: 0, y: 0, w: 316, h: 44 }, children: [{ text: 'Q3 closed ahead of plan. ', frags: [{ text: 'Q3 closed ahead of plan. ', x: 0, y: 0, w: 150, h: 22 }] }, mark] })
+  const { root } = convertTree(paragraph, TABLE)
+  const [first, second] = root.children
+  assert.deepEqual(first.children.map((node) => node.text ?? node.children[0].text), ['Q3 closed ahead of plan. ', 'Signups beat target in July'])
+  assert.deepEqual([first.children[1].style['background-color'], first.children[1].style.padding], ['var(--color-card)', '0px 0px 0px 2px'], 'the left padding only where the highlight starts')
+  assert.deepEqual([second.children[0].style['background-color'], second.children[0].style.padding, second.children[0].children[0].text], ['var(--color-card)', '0px 2px 0px 0px', 'but missed it in September.'])
+})
+
+test('a one-column grid with a 1fr row lets that row take the free height (a panel\'s thread between header and composer)', () => {
+  const part = (slot, y, h) => el('div', { slot, used: { display: 'flex', flexDirection: 'column' }, rect: { x: 0, y, w: 384, h }, children: [el('p', { children: [{ text: slot }] })] })
+  const panel = el('section', { used: { display: 'grid', gridTemplateColumns: '384px' }, spec: { height: '560px', gridTemplateRows: 'auto minmax(0px, 1fr) auto' }, rect: { x: 0, y: 0, w: 384, h: 560 }, children: [part('header', 0, 48), part('thread', 48, 406), part('composer', 454, 106)] })
+  const { root } = convertTree(panel, TABLE)
+  assert.deepEqual(root.children.map((node) => [node.name, node.style['flex-grow'], node.style['flex-basis']]), [['header', undefined, undefined], ['thread', '1', '0px'], ['composer', undefined, undefined]])
+
+  // without a height of its own the grid grows with its content: the 1fr row keeps its content's height and grows from there
+  const open = el('section', { used: { display: 'grid', gridTemplateColumns: '1232px' }, spec: { gridTemplateRows: 'minmax(0px, 1fr) auto' }, rect: { x: 0, y: 0, w: 1232, h: 1371 }, children: [part('thread', 0, 1245), part('composer', 1245, 126)] })
+  assert.deepEqual(convertTree(open, TABLE).root.children.map((node) => [node.style['flex-grow'], node.style['flex-basis']]), [['1', undefined], [undefined, undefined]])
+
+  // a page with a minimum height and one implicit row: the row stretches, and the page inside it with it
+  const page = el('div', { used: { display: 'grid', gridTemplateColumns: '1232px' }, spec: { minHeight: '640px' }, rect: { x: 0, y: 0, w: 1232, h: 640 }, children: [part('section', 0, 640)] })
+  assert.equal(convertTree(page, TABLE).root.children[0].style['flex-grow'], '1')
+  // …but not when the grid packs its rows at the top, or the child has a height of its own
+  const packed = el('div', { used: { display: 'grid', gridTemplateColumns: '384px', alignContent: 'start' }, spec: { height: '300px' }, rect: { x: 0, y: 0, w: 384, h: 300 }, children: [part('a', 0, 20)] })
+  assert.equal(convertTree(packed, TABLE).root.children[0].style['flex-grow'], undefined)
+})
+
+test('a label the browser cut short with "…" is drawn in a box of its measured width, not centred (Paper would wrap it)', () => {
+  const chip = { ...el('button', { slot: 'citation', used: { display: 'inline-block', textAlign: 'center', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflowX: 'hidden', overflowY: 'hidden', backgroundColor: 'rgb(239, 228, 206)', paddingLeft: '8px', paddingRight: '8px' }, spec: { height: '20px', maxWidth: '160px' }, rect: { x: 0, y: 0, w: 160, h: 20 }, children: [{ text: 'Quarterly revenue reconciliation workbook' }] }), truncated: true }
+  const { root } = convertTree(el('div', { used: { display: 'flex' }, children: [chip] }), TABLE)
+  const [frame] = root.children
+  assert.equal(frame.style.width, '160px')
+  assert.deepEqual([frame.children[0].style['text-align'], frame.children[0].style['text-overflow'], frame.children[0].style['white-space']], [undefined, 'ellipsis', 'nowrap'])
+  // the same chip with a title that fits stays centred
+  const fits = convertTree(el('div', { used: { display: 'flex' }, children: [{ ...chip, truncated: false }] }), TABLE).root.children[0]
+  assert.equal(fits.children[0].style['text-align'], 'center')
+})
+
+test('an icon in a line of text nudged by vertical-align keeps its nudge (the "›" after a step that opens)', () => {
+  const chevron = { ...el('svg', { used: { display: 'inline-block', verticalAlign: '-2.04px' }, spec: { width: '14px', height: '14px' }, rect: { x: 200, y: 3, w: 14, h: 14 } }), svg: '<svg viewBox="0 0 24 24" width="14" height="14"></svg>' }
+  const line = el('span', { children: [{ text: 'Compared each month with targets' }, chevron] })
+  assert.match(convertTree(line, TABLE).root.children[1].raw, /style="[^"]*position:relative;top:2\.04px/)
+  // in a flex row vertical-align does nothing, in the browser and here
+  const row = el('div', { used: { display: 'flex' }, children: [chevron] })
+  assert.doesNotMatch(convertTree(row, TABLE).root.children[0].raw, /top:/)
+})
+
+test('a one-cell grid that centres its only child (an avatar) centres it both ways', () => {
+  const mark = { ...el('svg', { used: { display: 'inline-block' }, spec: { width: '15px', height: '15px' }, rect: { x: 6.5, y: 6.5, w: 15, h: 15 } }), svg: '<svg viewBox="0 0 24 24" width="15" height="15"></svg>' }
+  const avatar = el('span', { slot: 'reply-avatar', used: { display: 'grid', gridTemplateColumns: '26px', alignItems: 'center', justifyItems: 'center', ...border('rgb(0, 0, 0)'), ...radius('3.35544e+07px') }, spec: { width: '28px', height: '28px' }, rect: { x: 0, y: 0, w: 28, h: 28 }, children: [mark] })
+  const { root } = convertTree(el('div', { used: { display: 'flex' }, children: [avatar] }), TABLE)
+  assert.deepEqual([root.children[0].style['align-items'], root.children[0].style['justify-content']], ['center', 'center'])
 })
