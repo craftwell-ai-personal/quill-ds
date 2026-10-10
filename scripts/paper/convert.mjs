@@ -489,9 +489,44 @@ export function backgroundLayers(used) {
   return splitTopLevel(used.backgroundImage).map((image, index) => ({ image, clip: clip(index), size: size(index), position: position(index), repeat: repeat(index) }))
 }
 
+/**
+ * A top-to-bottom repeating gradient in px (ruled lines) moved down by `background-position`, which Paper drops:
+ * the move is written into the gradient by turning its stops round by that much within one repeat.
+ * Returns the layer unchanged for anything else.
+ */
+export function shiftRepeating(layer, position = '0% 0%') {
+  const [x, y = '0px'] = position.trim().split(/\s+/)
+  const match = layer.match(/^repeating-linear-gradient\((.*)\)$/)
+  if (!match || !/^0(px|%)?$/.test(x) || !/^-?[\d.]+px$/.test(y) || parseFloat(y) === 0) return layer
+  const parts = splitTopLevel(match[1])
+  if (!LEADING_COLOR.test(parts[0]) && !/^(180deg|to bottom)$/.test(parts[0])) return layer
+  const stops = parts.filter((part) => LEADING_COLOR.test(part)).map((part) => { const at = part.match(/\s+(-?[\d.]+)px$/); return at ? { color: parseColor(part.slice(0, at.index)), at: Number(at[1]) } : null })
+  if (stops.length < 2 || stops.some((stop) => !stop?.color) || stops[0].at !== 0) return layer
+  const period = stops.at(-1).at
+  const shift = ((parseFloat(y) % period) + period) % period
+  const colorAt = (point) => {
+    const after = stops.findIndex((stop) => stop.at >= point)
+    if (after <= 0) return stops[after < 0 ? stops.length - 1 : 0].color
+    const [from, to] = [stops[after - 1], stops[after]]
+    return to.at === from.at ? to.color : parseColor(mixRgb(from.color, to.color, (point - from.at) / (to.at - from.at)))
+  }
+  const seam = period - shift
+  const turned = [
+    { color: colorAt(seam), at: 0 },
+    ...stops.filter((stop) => stop.at > seam).map((stop) => ({ ...stop, at: stop.at - seam })),
+    // where one repeat ends and the next begins
+    { color: stops.at(-1).color, at: shift }, { color: stops[0].color, at: shift },
+    ...stops.filter((stop) => stop.at > 0 && stop.at < seam).map((stop) => ({ ...stop, at: stop.at + shift })),
+    { color: colorAt(seam), at: period },
+  ]
+  const unique = turned.filter((stop, index) => index === 0 || stop.at !== turned[index - 1].at || formatColor(stop.color) !== formatColor(turned[index - 1].color))
+  return `repeating-linear-gradient(${unique.map((stop) => `${formatColor(stop.color)} ${round(stop.at)}px`).join(', ')})`
+}
+
 // A gradient that does not repeat (the usage meter's fill) is drawn as a clipped child layer of its stated size
-// further down; a repeating one is cut to the part its box shows.
-const shownPart = (layer) => (layer.repeat === 'no-repeat' ? layer.image : windowGradient(layer.image, layer.size, layer.position))
+// further down; a repeating one is cut to the part its box shows, and ruled lines are moved to where they start.
+const isCut = (layer) => layer.repeat !== 'no-repeat' && windowGradient(layer.image, layer.size, layer.position) !== layer.image
+const shownPart = (layer) => (layer.repeat === 'no-repeat' ? layer.image : shiftRepeating(windowGradient(layer.image, layer.size, layer.position), layer.position))
 
 const stopOf = (stop) => { const at = stop.match(/\s+(-?[\d.]+px)$/); return { color: parseColor(at ? stop.slice(0, at.index) : stop), at: at?.[1] ?? null } }
 
@@ -561,7 +596,7 @@ function boxStyles(node, context, extraPadding = { top: 0, right: 0, bottom: 0, 
     const folded = foldRoundMask(used, node.rect)
     if (folded) note('approximated', node, 'round mask folded into the fill (Paper has no mask): one radial gradient, its ring in one colour')
     const layers = edge ? edge.outer : backgroundLayers(used)
-    if (!folded && layers.some((layer) => shownPart(layer) !== layer.image)) note('approximated', node, 'a gradient sized wider than its box (background-size) cut to the part its box shows')
+    if (!folded && layers.some(isCut)) note('approximated', node, 'a gradient sized wider than its box (background-size) cut to the part its box shows')
     let image = folded ?? layers.map((layer) => shownPart(layer)).join(', ')
     for (const [, url] of image.matchAll(/url\("([^"]+)"\)/g)) {
       if (context.images?.[url]) image = image.replace(`url("${url}")`, `url('${context.images[url]}')`)
@@ -734,7 +769,7 @@ function textStyles(used, classes, context) {
   if (used.textOverflow === 'ellipsis' && used.overflowX !== 'visible') { style.overflow = 'hidden'; style['text-overflow'] = 'ellipsis' }
   // gradient text: Paper paints a text layer's background through its letters, as the browser does
   if (clipsToText(used)) {
-    if (backgroundLayers(used).some((layer) => shownPart(layer) !== layer.image)) context.note('approximated', { tag: 'gradient text', used }, 'a gradient sized wider than its text (background-size) cut to the part the text shows')
+    if (backgroundLayers(used).some(isCut)) context.note('approximated', { tag: 'gradient text', used }, 'a gradient sized wider than its text (background-size) cut to the part the text shows')
     style['background-image'] = binder.colorsIn(backgroundLayers(used).map((layer) => shownPart(layer)).join(', '))
     style['background-clip'] = 'text'
   }
@@ -958,6 +993,16 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
     let collapse = false
     let marginItems = elements
     const convertChild = (child, extra = {}) => convert(child, { ...childContext, ...extra })
+    // An item in a line of text (an inline block, an icon). Its margins hold it off its neighbours and, top and
+    // bottom, make its line taller; Paper has no margin, so a frame padded by them stands in its place.
+    const inlineItem = (child) => {
+      const converted = convertChild(child, { inlineFlow: true })
+      const margin = marginOf(child)
+      const sidesOf = ['top', 'right', 'bottom', 'left'].map((side) => (margin[side] === 'auto' ? 0 : Math.max(0, margin[side])))
+      // a block among inline content is a line of its own, spaced by the caller
+      if (!converted || child.used.display === 'inline' || !isInlineLevel(child.used.display) || !sidesOf.some((size) => size > 0)) return converted
+      return emit({ tag: 'div', name: 'margin', style: { display: 'flex', padding: shorthand(sidesOf.map(px)), 'flex-shrink': '0' }, children: [converted] })
+    }
 
     if (layout.kind === 'flex') {
       axis = layout.axis
@@ -1089,11 +1134,8 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
           const parts = []
           for (const atom of line.atoms) {
             if (atom.kind === 'item') {
-              const margin = marginOf(atom.child)
-              if (margin.left > 0) parts.push(emit(spacer('row', { size: margin.left })))
-              const converted = convertChild(atom.child, { inlineFlow: true })
+              const converted = inlineItem(atom.child)
               if (converted) parts.push(converted)
-              if (margin.right > 0) parts.push(emit(spacer('row', { size: margin.right })))
               continue
             }
             if (!atom.text.trim()) { if (atom.width > 0.5) parts.push(emit(spacer('row', { size: atom.width }))); continue }
@@ -1105,7 +1147,8 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
             const box = boxStyles(atom.deco, context)
             const pad = sides(atom.deco.used, 'padding').map(num)
             box.padding = shorthand([pad[0], atom.last ? pad[1] : 0, pad[2], atom.first ? pad[3] : 0].map(px))
-            parts.push(emit({ tag: 'div', name: layerName(atom.deco), style: dropDefaults({ display: 'flex', ...box }), children: [run] }))
+            // centred in its line, where the browser's half-leading puts the letters
+            parts.push(emit({ tag: 'div', name: layerName(atom.deco), style: dropDefaults({ display: 'flex', ...box, 'align-self': 'center' }), children: [run] }))
           }
           return emit({ tag: 'div', name: 'line', style: dropDefaults({ display: 'flex', 'align-items': 'baseline', 'justify-content': justify, 'min-height': lineHeight ? px(lineHeight) : undefined, 'flex-shrink': '0' }), children: parts })
         })
@@ -1120,7 +1163,7 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
         if (items.filter(isText).length && items.length > 1) note('approximated', node, `rich text split into ${items.length} one-style runs (it can no longer rewrap as a sentence)`)
         marginItems = []
         children = items.map((child, index) => {
-          if (!isText(child)) return convertChild(child, { inlineFlow: true })
+          if (!isText(child)) return inlineItem(child)
           let text = normalizeText(child.text, node.used.whiteSpace)
           if (index === 0) text = text.trimStart()
           if (index === items.length - 1) text = text.trimEnd()

@@ -495,6 +495,14 @@ test('a repeating gradient sized wider than its box is cut to the part the box s
   assert.match(convertTree(el('div', { used: { display: 'flex', flexDirection: 'column' }, children: [line] }), TABLE).stats.approximations.flatMap((entry) => entry.reasons).join('|'), /cut to the part its box shows/)
 })
 
+test('ruled lines shifted down by background-position are shifted inside the gradient (Paper drops the position)', () => {
+  // the notebook composer: a 1px rule every 32px, started 14px down to sit under each line of text
+  const rule = 'rgba(42, 38, 34, 0.12)'
+  const paper = el('textarea', { used: { display: 'block', backgroundImage: `repeating-linear-gradient(rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 31px, ${rule} 31px, ${rule} 32px)`, backgroundPosition: '0px 14px' }, spec: { height: '64px' }, rect: { x: 0, y: 0, w: 574, h: 64 }, children: [{ text: 'x' }] })
+  const box = convertTree(el('div', { used: { display: 'flex', flexDirection: 'column' }, children: [{ ...paper, tag: 'div' }] }), TABLE).root.children[0]
+  assert.equal(box.style['background-image'], 'repeating-linear-gradient(rgba(42, 38, 34, 0) 0px, rgba(42, 38, 34, 0) 13px, var(--color-border) 13px, var(--color-border) 14px, rgba(42, 38, 34, 0) 14px, rgba(42, 38, 34, 0) 32px)')
+})
+
 test('a turned icon keeps its turn (an open disclosure chevron, a ring started at 12 o\'clock)', () => {
   const svg = (used) => ({ ...el('svg', { used: { display: 'inline-block', ...used }, spec: { width: '18px', height: '18px' }, rect: { x: 0, y: 0, w: 18, h: 18 } }), svg: '<svg viewBox="0 0 18 18" width="18" height="18"><circle cx="9" cy="9" r="7"></circle></svg>' })
   const { root } = convertTree(el('div', { used: { display: 'flex' }, children: [svg({ rotate: '-90deg' }), svg({ transform: 'matrix(0, 1, -1, 0, 0, 0)' })] }), TABLE)
@@ -537,7 +545,8 @@ test('a sentence that wraps before an inline chip is drawn line by line, as the 
   const { root, stats } = convertTree(paragraph, TABLE)
   assert.deepEqual(root.children.map((line) => line.name), ['line', 'line'])
   assert.deepEqual(root.children[0].children.map((node) => node.text), ['The September dip. It started the day the new'])
-  assert.deepEqual(root.children[1].children.map((node) => node.name ?? node.text), ['pricing page shipped', 'spacer', 'citation', '.'], 'the chip stays on the line it shares with the end of the sentence, after its 2px margin')
+  assert.deepEqual(root.children[1].children.map((node) => node.name ?? node.text), ['pricing page shipped', 'margin', '.'], 'the chip stays on the line it shares with the end of the sentence')
+  assert.deepEqual([root.children[1].children[1].style.padding, root.children[1].children[1].children[0].name], ['0px 0px 0px 2px', 'citation'], 'after its 2px margin')
   assert.equal(root.children[1].style['flex-wrap'], undefined, 'a line does not wrap')
   assert.equal(root.children[1].style['min-height'], '22px')
   assert.match(stats.approximations.flatMap((entry) => entry.reasons).join('|'), /line by line/)
@@ -553,6 +562,8 @@ test('a highlight that starts mid-line and wraps keeps its fill on each of its l
   assert.deepEqual(first.children.map((node) => node.text ?? node.children[0].text), ['Q3 closed ahead of plan. ', 'Signups beat target in July'])
   assert.deepEqual([first.children[1].style['background-color'], first.children[1].style.padding], ['var(--color-card)', '0px 0px 0px 2px'], 'the left padding only where the highlight starts')
   assert.deepEqual([second.children[0].style['background-color'], second.children[0].style.padding, second.children[0].children[0].text], ['var(--color-card)', '0px 2px 0px 0px', 'but missed it in September.'])
+  // glyph-tall, centred in its line as the browser's half-leading places it (a line of highlight alone sat 2px high)
+  assert.deepEqual([second.children[0].style['align-self'], second.children[0].children[0].style['line-height']], ['center', '22px'])
 })
 
 test('a one-column grid with a 1fr row lets that row take the free height (a panel\'s thread between header and composer)', () => {
@@ -592,6 +603,13 @@ test('an icon in a line of text nudged by vertical-align keeps its nudge (the "â
   // in a flex row vertical-align does nothing, in the browser and here
   const row = el('div', { used: { display: 'flex' }, children: [chevron] })
   assert.doesNotMatch(convertTree(row, TABLE).root.children[0].raw, /top:/)
+})
+
+test('an inline block keeps its margins in a line of text (a streaming caret 8px down makes its line taller)', () => {
+  const caret = el('span', { slot: 'caret', used: { display: 'inline-block', backgroundColor: 'rgb(42, 38, 34)' }, spec: { width: '7px', height: '14.28px', marginTop: '8px', marginLeft: '2px' }, rect: { x: 401, y: 8, w: 7, h: 14.28 } })
+  const { root } = convertTree(el('div', { children: [el('p', { used: { display: 'inline' }, children: [{ text: 'each beat' }] }), caret] }), TABLE)
+  const wrapped = root.children[1]
+  assert.deepEqual([wrapped.name, wrapped.style.padding, wrapped.children[0].name], ['margin', '8px 0px 0px 2px', 'caret'])
 })
 
 test('a one-cell grid that centres its only child (an avatar) centres it both ways', () => {
