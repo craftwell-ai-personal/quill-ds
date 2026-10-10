@@ -261,8 +261,10 @@ export function verdictOf(row, accepted) {
     if (moved.some((delta) => delta > REGRESSION_PX)) reasons.push(`${side === 'paper' ? 'Paper' : 'Storybook'} size ${row.picture[side].join('×')} (accepted ${accepted[side].join('×')})`)
   }
   if (accepted.text && !row.text.ok) reasons.push(`text no longer matches (${row.text.paper} of ${row.text.story} layers)`)
-  const [okBefore] = String(accepted.values ?? '').split('/').map(Number)
-  if (Number.isFinite(okBefore) && row.valuesOk < okBefore) reasons.push(`values ${row.valuesOk}/${row.values.length} (accepted ${accepted.values})`)
+  // more values failing than were accepted as failing: a value that matched stopped matching (a pair the check no
+  // longer makes, all the others matching, is not worse)
+  const [okBefore, ofBefore] = String(accepted.values ?? '').split('/').map(Number)
+  if (Number.isFinite(okBefore) && Number.isFinite(ofBefore) && row.values.length - row.valuesOk > ofBefore - okBefore) reasons.push(`values ${row.valuesOk}/${row.values.length} (accepted ${accepted.values})`)
   return { verdict: reasons.length ? 'regression' : 'ok', reasons }
 }
 

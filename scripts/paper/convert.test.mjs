@@ -473,6 +473,7 @@ test('a gradient edge (a fill clipped to the padding box over a gradient on the 
   assert.equal(text.style.position, 'relative')
   assert.equal(root.style.position, 'relative')
   assert.deepEqual(stats.lost, [])
+  assert.match(stats.approximations.flatMap((entry) => entry.reasons).join('|'), /gradient edge/)
 })
 
 test('gradient text (background-clip: text) is one text layer carrying the gradient, not a gradient box', () => {
@@ -491,6 +492,7 @@ test('a repeating gradient sized wider than its box is cut to the part the box s
   const line = el('div', { used: { display: 'block', backgroundImage: `linear-gradient(90deg, ${GOLD}, ${INDIGO}, ${GOLD}, ${INDIGO})`, backgroundSize: '300% 100%', backgroundRepeat: 'repeat', backgroundPosition: '0% 0%' }, spec: { height: '2px' }, rect: { x: 0, y: 0, w: 300, h: 2 } })
   const { root } = convertTree(el('div', { used: { display: 'flex', flexDirection: 'column' }, children: [line] }), TABLE)
   assert.equal(root.children[0].style['background-image'], 'linear-gradient(90deg, #C49544 0%, #536A99 100%)')
+  assert.match(convertTree(el('div', { used: { display: 'flex', flexDirection: 'column' }, children: [line] }), TABLE).stats.approximations.flatMap((entry) => entry.reasons).join('|'), /cut to the part its box shows/)
 })
 
 test('a turned icon keeps its turn (an open disclosure chevron, a ring started at 12 o\'clock)', () => {
@@ -573,7 +575,8 @@ test('a one-column grid with a 1fr row lets that row take the free height (a pan
 
 test('a label the browser cut short with "…" is drawn in a box of its measured width, not centred (Paper would wrap it)', () => {
   const chip = { ...el('button', { slot: 'citation', used: { display: 'inline-block', textAlign: 'center', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflowX: 'hidden', overflowY: 'hidden', backgroundColor: 'rgb(239, 228, 206)', paddingLeft: '8px', paddingRight: '8px' }, spec: { height: '20px', maxWidth: '160px' }, rect: { x: 0, y: 0, w: 160, h: 20 }, children: [{ text: 'Quarterly revenue reconciliation workbook' }] }), truncated: true }
-  const { root } = convertTree(el('div', { used: { display: 'flex' }, children: [chip] }), TABLE)
+  const { root, stats } = convertTree(el('div', { used: { display: 'flex' }, children: [chip] }), TABLE)
+  assert.match(stats.approximations.flatMap((entry) => entry.reasons).join('|'), /cut short/)
   const [frame] = root.children
   assert.equal(frame.style.width, '160px')
   assert.deepEqual([frame.children[0].style['text-align'], frame.children[0].style['text-overflow'], frame.children[0].style['white-space']], [undefined, 'ellipsis', 'nowrap'])

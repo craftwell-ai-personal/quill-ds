@@ -121,6 +121,9 @@ test('a story regresses against its own baseline: picture, size, text or values'
   assert.match(verdictOf({ ...row, text: { ok: false, story: 1, paper: 2 } }, accepted).reasons[0], /text no longer matches/)
   assert.match(verdictOf({ ...row, valuesOk: 1 }, accepted).reasons[0], /values 1\/2 \(accepted 2\/2\)/)
   assert.equal(verdictOf({ ...row, error: 'export produced no file' }, accepted).verdict, 'error')
+  // fewer pairs, none failing (a wrong pair the check no longer makes) is not worse; one more failing value is
+  assert.equal(verdictOf({ ...row, values: [{ ok: true }], valuesOk: 1 }, { ...accepted, values: '9/13' }).verdict, 'ok')
+  assert.match(verdictOf({ ...row, values: [{ ok: true }, { ok: false }, { ok: false }], valuesOk: 1 }, { ...accepted, values: '2/3' }).reasons[0], /values 1\/3 \(accepted 2\/3\)/)
 })
 
 test('a story whose worst region gets clearly worse regresses, even when the whole-picture number barely moves', () => {

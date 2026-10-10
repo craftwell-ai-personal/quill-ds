@@ -560,7 +560,9 @@ function boxStyles(node, context, extraPadding = { top: 0, right: 0, bottom: 0, 
   if (used.backgroundImage && used.backgroundImage !== 'none' && !clipsToText(used)) {
     const folded = foldRoundMask(used, node.rect)
     if (folded) note('approximated', node, 'round mask folded into the fill (Paper has no mask): one radial gradient, its ring in one colour')
-    let image = folded ?? (edge ? edge.outer : backgroundLayers(used)).map((layer) => shownPart(layer)).join(', ')
+    const layers = edge ? edge.outer : backgroundLayers(used)
+    if (!folded && layers.some((layer) => shownPart(layer) !== layer.image)) note('approximated', node, 'a gradient sized wider than its box (background-size) cut to the part its box shows')
+    let image = folded ?? layers.map((layer) => shownPart(layer)).join(', ')
     for (const [, url] of image.matchAll(/url\("([^"]+)"\)/g)) {
       if (context.images?.[url]) image = image.replace(`url("${url}")`, `url('${context.images[url]}')`)
       else note('lost', node, `background image not carried (${url.slice(0, 60)})`)
@@ -698,6 +700,7 @@ function sizeStyles(node, context, { parentIsFlex, isRoot = false, cellWidth = n
     // an in-flow layer slid by a transform keeps its place in the layout and is drawn moved over; the browser
     // measured how far (a percentage shift such as `calc(100% - 2px)` cannot be read from the style)
     const shift = node.shift ? { x: node.shift[0], y: node.shift[1] } : turnOf(used).shift
+    if (used.position === 'sticky' && node.shift) context.note('approximated', node, 'sticky: drawn where it stuck in Storybook\'s window, over what scrolls under it')
     // in a line of text, `vertical-align: -0.15em` lowers an icon from the baseline it otherwise sits on
     if (context.inlineFlow && /^-?[\d.]+px$/.test(used.verticalAlign ?? '')) shift.y -= parseFloat(used.verticalAlign)
     if (Math.abs(shift.x) > 0.5 || Math.abs(shift.y) > 0.5) {
@@ -731,6 +734,7 @@ function textStyles(used, classes, context) {
   if (used.textOverflow === 'ellipsis' && used.overflowX !== 'visible') { style.overflow = 'hidden'; style['text-overflow'] = 'ellipsis' }
   // gradient text: Paper paints a text layer's background through its letters, as the browser does
   if (clipsToText(used)) {
+    if (backgroundLayers(used).some((layer) => shownPart(layer) !== layer.image)) context.note('approximated', { tag: 'gradient text', used }, 'a gradient sized wider than its text (background-size) cut to the part the text shows')
     style['background-image'] = binder.colorsIn(backgroundLayers(used).map((layer) => shownPart(layer)).join(', '))
     style['background-clip'] = 'text'
   }
@@ -1070,7 +1074,7 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
         // Text the browser cut short with "…": Paper only truncates a left-aligned line in a box of fixed width (a
         // centred one wraps instead), and the "…" fills the box anyway
         const cut = node.truncated && node.used.textOverflow === 'ellipsis'
-        if (cut) size.width = px(node.rect.w)
+        if (cut) { size.width = px(node.rect.w); note('approximated', node, 'a label cut short with "…": left-aligned in a box of its measured width (Paper wraps a centred one, and cuts at a word)') }
         children = runs.length ? [textNode(runs.join(' ').trim(), node, textClasses, context, cut ? { 'text-align': undefined } : {})] : []
       } else if (inlineLines(node)) {
         // Inline content over several lines: one row per line the browser drew, so a chip after a wrapped
@@ -1248,6 +1252,7 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
       }
       children.unshift(fill)
       frame.position = frame.position ?? 'relative'
+      note('approximated', node, 'gradient edge: the frame carries the border gradient, an inset "edge fill" layer the fill the browser clipped inside the border')
     }
     // Paper keeps a gradient but drops background-size, so a gradient stretched wider than its box (the usage
     // meter shows the first 30 % of a full-width AI gradient) would be squeezed in whole. Draw it as a child

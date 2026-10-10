@@ -81,7 +81,14 @@ For every story of every drawn piece:
 - **Values.** For the first text, the first button and the first filled surface: colour, type size, line height, weight, typeface, padding, radius and border in Paper equal what the browser computed, after resolving Paper's tokens. This proves the tokens are bound and hold the right values.
 - **Picture.** Paper's export of the layer against a screenshot of the story, both at 2x, compared pixel by pixel with the same method and tolerances as the Figma visual diff. A three-panel strip (Paper, Storybook, difference) is saved per story under `.paper/strips/`.
 
-Pictures never match exactly (see "Known differences"), so each story has an **accepted** difference in `paper/visual-baseline.json`. A story *regresses* when its picture is more than 1.0 point worse than accepted, a size drifts more than 8px, or text or a value that matched stops matching. A story with no accepted number yet is reported as "without a baseline" and is not a failure.
+Each picture gets two numbers:
+
+- **picture**: the share of the whole picture that differs.
+- **worst region**: the share that differs inside the worst 12×12 px square (a 24 px square of the 2x strip), and where that square is. The whole-picture number hides a fault in one place: a word drawn as an empty box, an outline missing round one control, an icon off-centre in its circle. On a big story each is a fraction of a percent; in its own square it is most of the square.
+
+Pictures never match exactly (see "Known differences"), so each story has an **accepted** picture difference and worst region (`worstRegion`) in `paper/visual-baseline.json`. A story *regresses* when its picture is more than 1.0 point worse than accepted, its worst region more than 8 points worse, a size drifts more than 8px, or text or a value that matched stops matching. A story with no accepted number yet is reported as "without a baseline" and is not a failure; a baseline written before the worst region was measured is judged on the picture alone until it is accepted again.
+
+Why 8 points: text that sits 1 to 2px lower in Paper (see "Known differences") already fills a square 10 to 30% on most stories, so the worst region is judged against the story's own accepted value, not against a fixed bar. Run against the drawings from before the AI kit was fixed, the faults it was built to catch rose by 10 to 70 points over the fixed drawings (a word drawn as a box, an avatar's mark off-centre, a composer that was not pinned), while unchanged stories measured the same from one run to the next. A thin outline missing round a large box is the one fault it does not see (the worst square is wherever text drifts most); the whole-picture number catches that one.
 
 Paper saves exports into your **Downloads** folder; a script cannot choose another place. The check reads each file and deletes it straight away. It only ever deletes the one exact file Paper said it wrote for that export, and only when that file is in Downloads, carries the exported layer's own name (each story's layer has a unique one), and was created after the export was asked for. It never deletes by pattern. A file it cannot prove is its own is left where it is and named at the end of the run.
 
@@ -149,7 +156,7 @@ Logs: `~/Library/Logs/quill-paper-sync/`, one file per run, the last 14 kept.
 | **Remote access** | Scripts can only reach Paper on a Mac with the app open. GitHub cannot check or repair it, so there is a daily job on this Mac instead of a bot in the cloud. | Move the sync and the check into a GitHub workflow, like `figma-parity`. |
 | **A way back to code** | Paper can show that someone changed a frame, but a frame has no identity that says "this is Quill's Button", and the layers inside are re-made on every sync. Edits made in Paper cannot be pulled into code. | Pull value edits from Paper into code, as `/figma-pull` does. |
 | **Token types for shadow, motion, and font-axis settings** | Shadows and the Fraunces settings are written on each layer as plain values, not tokens. Change a shadow token and Paper only follows after a sync. | Push them as tokens and bind them. |
-| **Some CSS** | `background-clip` (see the button ring below), `scale` and `skew`, masks and clip-paths have no equivalent and are dropped; each loss is listed per piece in the record. Hover and focus behaviour does not exist in a still frame. | Nothing to switch on: re-run the sync and the losses disappear from the record. |
+| **Some CSS** | `background-clip` on a box (see the button ring below), `background-size`, `scale` and `skew`, masks and clip-paths have no equivalent. Where a shape can still be said another way the sync says it that way and counts it as approximated (below); the rest is dropped and listed per piece in the record. Hover and focus behaviour does not exist in a still frame. | Nothing to switch on: re-run the sync and the losses disappear from the record. |
 
 Also worth knowing: a script cannot delete or reorder a page. When a piece is removed from Quill, the sync deletes that piece's artboard (only the one it recorded, and only if it still has the name the sync gave it) and renames the freed page `(unused 1)`. You can delete such a page by hand; if you do not, the sync reuses it for the next new piece.
 
@@ -177,7 +184,21 @@ These are in every comparison and are why pictures are never 0% different. None 
 - **Small text looks slightly lighter**, most on light-on-dark labels. The weight in Paper is right; the two programs draw small type differently.
 - **Open panels are drawn beside their trigger**, not floating over the page with a dimmed background.
 - **Charts are one vector layer each.** They look right but are not editable as charts.
-- **Rich text is split.** A sentence with a bold figure in it becomes separate one-style text layers on a line; it will not re-wrap as a sentence.
+- **Rich text is split.** A sentence with a bold figure in it becomes separate one-style text layers on a line; it will not re-wrap as a sentence. A paragraph that wraps around something inline (a citation chip after a long sentence, a highlight that starts mid-line) is drawn one row per line, broken where the browser broke it.
+
+### How the AI kit is drawn
+
+Quill's AI pieces lean on CSS that Paper has no word for. Each is said another way; the ones that are not exact (the edge, a cut gradient, the feet, sticky, a cut label) are counted as approximated in the record, with the reason:
+
+| In the code | In Paper |
+|---|---|
+| The gradient edge (`ai-edge`): a fill clipped inside a transparent border over a gradient | The frame carries the gradient; an inset layer named `edge fill` carries the fill, with corners 1.5px tighter. The content above it is set to `position: relative` so it stays on top. |
+| Gradient text (`ai-text`, `ai-shimmer`) | A text layer filled with the gradient (`background-clip: text`, which Paper does draw on a text layer). |
+| A gradient sized wider than its box (`ai-line` at 300%, the shimmer at 200%) | The part of the gradient the box shows, as the box's own gradient. The usage meter's fill keeps its clipped child layer. |
+| A fade to `transparent` (the AI wash and glow) | A fade to the same colour, see-through. Paper blends the colours as written, so a fade to see-through black came out grey. |
+| The mode tab's curved feet: a round mask over a radial and a conic fill | One radial gradient: see-through inside the curve, the edge colour along it (one colour, the average of the sweep), the page colour beyond. |
+| A chat composer that is `sticky` at the bottom of the window | Drawn where it stuck, over the end of the thread, as in the browser. |
+| A label cut short with "…" and centred | Left-aligned in a box of its measured width: Paper wraps a centred one instead of cutting it. Paper cuts at a word, so it can stop a word earlier than the browser. |
 
 ## The record: `paper/sync-state.json`
 
