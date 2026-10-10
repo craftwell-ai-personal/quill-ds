@@ -1318,10 +1318,18 @@ export async function captureStory(page, storyId, { base = STORYBOOK, screenshot
   return { roots, images, opened, crash }
 }
 
+/**
+ * The date every story is drawn and checked on. A story that shows today (the calendar's selected day, a chat
+ * list grouped by "Today") would otherwise look different in Storybook every day from what Paper drew, and the
+ * check would call it a regression. Only `Date` is fixed; timers and animations run as usual.
+ */
+export const STORY_DATE = new Date('2026-06-15T12:00:00')
+
 export async function launch() {
   const { chromium } = createRequire(import.meta.url)('playwright')
   const browser = await chromium.launch()
   const page = await browser.newPage({ deviceScaleFactor: SCALE })
+  await page.clock.setFixedTime(STORY_DATE)
   return { browser, page }
 }
 

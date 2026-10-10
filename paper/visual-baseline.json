@@ -1593,19 +1593,19 @@
    "at": "2026-10-07"
   },
   "components-combobox--default": {
-   "diffPct": 4.14,
+   "diffPct": 3.89,
    "paper": [
     464,
     145
    ],
    "storybook": [
     464,
-    119
+    158
    ],
    "text": true,
    "values": "9/10",
    "piece": "combobox",
-   "at": "2026-10-07"
+   "at": "2026-10-10"
   },
   "components-combobox--with-clear": {
    "diffPct": 1.03,
@@ -1620,7 +1620,7 @@
    "text": true,
    "values": "5/5",
    "piece": "combobox",
-   "at": "2026-10-07"
+   "at": "2026-10-10"
   },
   "components-combobox--with-groups": {
    "diffPct": 0.96,
@@ -1635,7 +1635,7 @@
    "text": true,
    "values": "10/10",
    "piece": "combobox",
-   "at": "2026-10-07"
+   "at": "2026-10-10"
   },
   "components-command--as-dialog": {
    "diffPct": 1.29,
