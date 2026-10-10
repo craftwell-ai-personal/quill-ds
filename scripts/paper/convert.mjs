@@ -882,16 +882,20 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
       }
     }
 
+    // Paper stacks by layer order and has no z-index: later is on top
+    const stack = (child) => (child.used.zIndex === 'auto' ? 0 : Number(child.used.zIndex))
+    // An ::after paints over the in-flow children, unless every one of them is positioned with a higher z-index:
+    // a calendar's range-end cell bridges into the band with an ::after that the day button (z-10) covers.
+    const inFlow = node.children.filter((child) => !floating.includes(child))
+    const coveredBy = (pseudo) => inFlow.length > 0 && inFlow.every((child) => !isText(child) && child.used.position !== 'static' && stack(child) > stack(pseudo))
     for (const pseudo of node.pseudo ?? []) {
       const pseudoNode = convert({ ...pseudo, tag: 'div', classes: [], children: pseudo.content ? [{ text: pseudo.content }] : [], slot: `::${pseudo.which}` }, childContext)
       // an underline that only shows on the active tab is fully transparent on the others: nothing to draw
       if (!pseudoNode) continue
-      if (pseudo.which === 'before') children.unshift(pseudoNode)
+      if (pseudo.which === 'before' || coveredBy(pseudo)) children.unshift(pseudoNode)
       else children.push(pseudoNode)
       note('approximated', node, `::${pseudo.which} drawn as a real layer`)
     }
-    // Paper stacks by layer order and has no z-index: later is on top
-    const stack = (child) => (child.used.zIndex === 'auto' ? 0 : Number(child.used.zIndex))
     const behind = [...floating].filter((child) => stack(child) < 0).sort((a, b) => stack(a) - stack(b))
     const above = [...floating].filter((child) => stack(child) >= 0).sort((a, b) => stack(a) - stack(b))
     children.unshift(...behind.map((child) => convertChild(child)).filter(Boolean))
@@ -1318,10 +1322,18 @@ export async function captureStory(page, storyId, { base = STORYBOOK, screenshot
   return { roots, images, opened, crash }
 }
 
+/**
+ * The date every story is drawn and checked on. A story that shows today (the calendar's selected day, a chat
+ * list grouped by "Today") would otherwise look different in Storybook every day from what Paper drew, and the
+ * check would call it a regression. Only `Date` is fixed; timers and animations run as usual.
+ */
+export const STORY_DATE = new Date('2026-06-15T12:00:00')
+
 export async function launch() {
   const { chromium } = createRequire(import.meta.url)('playwright')
   const browser = await chromium.launch()
   const page = await browser.newPage({ deviceScaleFactor: SCALE })
+  await page.clock.setFixedTime(STORY_DATE)
   return { browser, page }
 }
 

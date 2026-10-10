@@ -2492,13 +2492,13 @@
         "src/usage/calendar.usage.mjs"
       ],
       "sourceHash": "9079b21fa707f67b",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 5,
         "nodes": 813,
         "approximated": 2,
-        "bound": 2796,
-        "bindable": 3048,
+        "bound": 2792,
+        "bindable": 3044,
         "bindingRate": 0.917
       },
       "notes": [],
@@ -2515,12 +2515,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NO8-0",
+              "nodeId": "211X-0",
               "size": [
                 212,
                 261.75
               ],
-              "htmlHash": "3bee885395bbb0a2"
+              "htmlHash": "fa50de43a7e2c1e7"
             }
           ]
         },
@@ -2530,17 +2530,17 @@
           "opened": "none",
           "nodes": 265,
           "approximated": 2,
-          "bound": 897,
-          "bindable": 981,
+          "bound": 893,
+          "bindable": 977,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NSQ-0",
+              "nodeId": "216F-0",
               "size": [
                 424,
                 261.75
               ],
-              "htmlHash": "cc00d95de471e131"
+              "htmlHash": "eface46ec874076e"
             }
           ]
         },
@@ -2555,12 +2555,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1O1R-0",
+              "nodeId": "21F8-0",
               "size": [
                 212,
                 261.75
               ],
-              "htmlHash": "93859d126c3fe6a1"
+              "htmlHash": "d692e2b990b998fd"
             }
           ]
         },
@@ -2575,12 +2575,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1O69-0",
+              "nodeId": "21JQ-0",
               "size": [
                 212,
                 261.75
               ],
-              "htmlHash": "fd66a6cb8aba3e2f"
+              "htmlHash": "e14e554a717ebc9b"
             }
           ]
         },
@@ -2595,12 +2595,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OB1-0",
+              "nodeId": "21OI-0",
               "size": [
                 212,
                 261.75
               ],
-              "htmlHash": "f0c8c7ab389b132b"
+              "htmlHash": "b8f56a0b79aeaadf"
             }
           ]
         }
@@ -9021,7 +9021,7 @@
         "src/usage/calendar-page.usage.mjs"
       ],
       "sourceHash": "7551e3bbcaedffb5",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 1,
         "nodes": 165,
@@ -9044,7 +9044,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1V5F-0",
+              "nodeId": "21TL-0",
               "size": [
                 510,
                 352.58
@@ -9069,7 +9069,7 @@
         "src/usage/calendar-range.usage.mjs"
       ],
       "sourceHash": "f15e0aeb119ad391",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 1,
         "nodes": 303,
@@ -9094,12 +9094,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1VB6-0",
+              "nodeId": "21ZC-0",
               "size": [
                 458,
                 449.58
               ],
-              "htmlHash": "c11553cc3ffcff1e"
+              "htmlHash": "6fecfd434769159b"
             }
           ]
         }
