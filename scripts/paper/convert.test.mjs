@@ -420,3 +420,19 @@ test('a grid that only centres a label becomes one centred text layer, not a los
   assert.deepEqual([root.children[0].style['align-items'], root.children[0].style['justify-content'], root.children[0].children[0].text], ['center', 'center', 'PDF'])
   assert.deepEqual(stats.lost, [])
 })
+
+test('an ::after sits under in-flow children that are all positioned above it (a calendar range end)', () => {
+  // the cell bridges into the range band with an ::after; the day button (z-10) covers it in the browser
+  const cell = el('td', { used: { position: 'relative', zIndex: '0', backgroundColor: 'rgb(232, 220, 192)' }, rect: { x: 0, y: 0, w: 28, h: 28 }, children: [
+    el('button', { slot: 'day', used: { position: 'relative', zIndex: '10', backgroundColor: 'rgb(42, 38, 34)' }, rect: { x: 0, y: 0, w: 28, h: 28 }, children: [{ text: '15' }] }),
+  ] })
+  cell.pseudo = [{ ...el('div', { used: { position: 'absolute', zIndex: 'auto', backgroundColor: 'rgb(232, 220, 192)', right: '0px' }, spec: { width: '16px' }, rect: { x: 12, y: 0, w: 16, h: 28 } }), which: 'after', content: '' }]
+  const html = serialize(convertTree(cell, TABLE).root)
+  assert.ok(html.indexOf('::after') < html.indexOf('15'), `the ::after must come before (under) the button: ${html}`)
+
+  // with an in-flow child at the same level, the ::after still paints on top, as in the browser
+  const plain = el('div', { used: { position: 'relative' }, children: [el('span', { used: { display: 'block' }, children: [{ text: 'label' }] })] })
+  plain.pseudo = [{ ...el('div', { used: { position: 'absolute', backgroundColor: 'rgb(232, 220, 192)' }, spec: { width: '16px' }, rect: { x: 0, y: 0, w: 16, h: 20 } }), which: 'after', content: '' }]
+  const plainHtml = serialize(convertTree(plain, TABLE).root)
+  assert.ok(plainHtml.indexOf('::after') > plainHtml.indexOf('label'), `an ordinary ::after stays on top: ${plainHtml}`)
+})

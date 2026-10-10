@@ -882,16 +882,20 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
       }
     }
 
+    // Paper stacks by layer order and has no z-index: later is on top
+    const stack = (child) => (child.used.zIndex === 'auto' ? 0 : Number(child.used.zIndex))
+    // An ::after paints over the in-flow children, unless every one of them is positioned with a higher z-index:
+    // a calendar's range-end cell bridges into the band with an ::after that the day button (z-10) covers.
+    const inFlow = node.children.filter((child) => !floating.includes(child))
+    const coveredBy = (pseudo) => inFlow.length > 0 && inFlow.every((child) => !isText(child) && child.used.position !== 'static' && stack(child) > stack(pseudo))
     for (const pseudo of node.pseudo ?? []) {
       const pseudoNode = convert({ ...pseudo, tag: 'div', classes: [], children: pseudo.content ? [{ text: pseudo.content }] : [], slot: `::${pseudo.which}` }, childContext)
       // an underline that only shows on the active tab is fully transparent on the others: nothing to draw
       if (!pseudoNode) continue
-      if (pseudo.which === 'before') children.unshift(pseudoNode)
+      if (pseudo.which === 'before' || coveredBy(pseudo)) children.unshift(pseudoNode)
       else children.push(pseudoNode)
       note('approximated', node, `::${pseudo.which} drawn as a real layer`)
     }
-    // Paper stacks by layer order and has no z-index: later is on top
-    const stack = (child) => (child.used.zIndex === 'auto' ? 0 : Number(child.used.zIndex))
     const behind = [...floating].filter((child) => stack(child) < 0).sort((a, b) => stack(a) - stack(b))
     const above = [...floating].filter((child) => stack(child) >= 0).sort((a, b) => stack(a) - stack(b))
     children.unshift(...behind.map((child) => convertChild(child)).filter(Boolean))

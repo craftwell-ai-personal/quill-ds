@@ -2515,7 +2515,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "20A9-0",
+              "nodeId": "211X-0",
               "size": [
                 212,
                 261.75
@@ -2535,12 +2535,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "20ER-0",
+              "nodeId": "216F-0",
               "size": [
                 424,
                 261.75
               ],
-              "htmlHash": "51316061383664d0"
+              "htmlHash": "eface46ec874076e"
             }
           ]
         },
@@ -2555,7 +2555,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "20NK-0",
+              "nodeId": "21F8-0",
               "size": [
                 212,
                 261.75
@@ -2575,7 +2575,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "20S2-0",
+              "nodeId": "21JQ-0",
               "size": [
                 212,
                 261.75
@@ -2595,7 +2595,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "20WU-0",
+              "nodeId": "21OI-0",
               "size": [
                 212,
                 261.75
@@ -9021,7 +9021,7 @@
         "src/usage/calendar-page.usage.mjs"
       ],
       "sourceHash": "7551e3bbcaedffb5",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 1,
         "nodes": 165,
@@ -9044,7 +9044,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1V5F-0",
+              "nodeId": "21TL-0",
               "size": [
                 510,
                 352.58
@@ -9069,7 +9069,7 @@
         "src/usage/calendar-range.usage.mjs"
       ],
       "sourceHash": "f15e0aeb119ad391",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 1,
         "nodes": 303,
@@ -9094,12 +9094,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1VB6-0",
+              "nodeId": "21ZC-0",
               "size": [
                 458,
                 449.58
               ],
-              "htmlHash": "c11553cc3ffcff1e"
+              "htmlHash": "6fecfd434769159b"
             }
           ]
         }
