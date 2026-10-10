@@ -610,6 +610,10 @@ test('an inline block keeps its margins in a line of text (a streaming caret 8px
   const { root } = convertTree(el('div', { children: [el('p', { used: { display: 'inline' }, children: [{ text: 'each beat' }] }), caret] }), TABLE)
   const wrapped = root.children[1]
   assert.deepEqual([wrapped.name, wrapped.style.padding, wrapped.children[0].name], ['margin', '8px 0px 0px 2px', 'caret'])
+  // lowered 2.04px by vertical-align, it reaches 2.04px less above the line (and is painted 2.04px lower)
+  const lowered = { ...caret, used: { ...caret.used, verticalAlign: '-2.04px' } }
+  const line = convertTree(el('div', { children: [el('p', { used: { display: 'inline' }, children: [{ text: 'each beat' }] }), lowered] }), TABLE).root.children[1]
+  assert.deepEqual([line.style.padding, line.children[0].style.top], ['5.96px 0px 0px 2px', '2.04px'])
 })
 
 test('a one-cell grid that centres its only child (an avatar) centres it both ways', () => {

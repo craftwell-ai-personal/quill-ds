@@ -999,6 +999,9 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
       const converted = convertChild(child, { inlineFlow: true })
       const margin = marginOf(child)
       const sidesOf = ['top', 'right', 'bottom', 'left'].map((side) => (margin[side] === 'auto' ? 0 : Math.max(0, margin[side])))
+      // lowered by vertical-align, the item reaches that much less above the line (its paint is moved by the child)
+      const lowered = /^-[\d.]+px$/.test(child.used.verticalAlign ?? '') ? -parseFloat(child.used.verticalAlign) : 0
+      sidesOf[0] = round(Math.max(0, sidesOf[0] - lowered))
       // a block among inline content is a line of its own, spaced by the caller
       if (!converted || child.used.display === 'inline' || !isInlineLevel(child.used.display) || !sidesOf.some((size) => size > 0)) return converted
       return emit({ tag: 'div', name: 'margin', style: { display: 'flex', padding: shorthand(sidesOf.map(px)), 'flex-shrink': '0' }, children: [converted] })
