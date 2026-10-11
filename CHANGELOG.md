@@ -13,6 +13,13 @@ within a minute, and that release is what triggers `library-sync` into the apps;
 manual tag races the bot and can leave a tag with no release behind it. The homepage
 footer reads `package.json` directly, so the displayed version updates with the bump.
 
+## [1.23.5] — 2026-10-11
+
+### Fixed
+- fix(paper): Paper draws the AI kit the way the browser does: gradient edges and gradient text, chips and highlights inside sentences, overlapping layers, sticky bars, grid rows, the prompt composer's curved tab. All 20 AI pieces are redrawn and match Storybook (the usage meter was left as it was).
+- fix(paper): the Paper check also scores the worst small region of each story, so a broken detail no longer hides inside a good overall percentage.
+- chore(paper): redraw the five non-AI pieces the converter change touches (alert dialog, button group, collapsible, item, navigation menu); all match Storybook.
+
 ## [1.23.4] — 2026-10-10
 
 ### Changed
