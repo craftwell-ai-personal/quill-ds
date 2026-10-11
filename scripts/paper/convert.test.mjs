@@ -524,7 +524,7 @@ test('a focus ring drawn in the browser\'s own style (outline-style: auto) is a 
 })
 
 test('a round mask that cuts a curve out of a layered fill is folded into one radial fill (a tab\'s curved foot)', () => {
-  const foot = el('span', { slot: 'tab-fillet', used: { display: 'block', position: 'absolute', backgroundImage: `radial-gradient(circle at 0px 0px, rgba(0, 0, 0, 0) 9px, ${PAPER} 9.5px), conic-gradient(from 90deg at 0px 0px, ${GOLD}, ${GOLD} 90deg)`, backgroundClip: 'border-box, border-box', maskImage: 'radial-gradient(circle at 0px 0px, rgba(0, 0, 0, 0) 7.5px, rgb(42, 38, 34) 8px)' }, spec: { width: '9.5px', height: '9.5px' }, rect: { x: 0, y: 26, w: 9.5, h: 9.5 } })
+  const foot = el('span', { slot: 'tab-fillet', used: { display: 'block', position: 'absolute', backgroundImage: `radial-gradient(circle at 0px 0px, rgba(0, 0, 0, 0) 9px, ${PAPER} 9.5px), linear-gradient(${GOLD}, ${GOLD})`, backgroundClip: 'border-box, border-box', maskImage: 'radial-gradient(circle at 0px 0px, rgba(0, 0, 0, 0) 7.5px, rgb(42, 38, 34) 8px)' }, spec: { width: '9.5px', height: '9.5px' }, rect: { x: 0, y: 26, w: 9.5, h: 9.5 } })
   const { root, stats } = convertTree(el('div', { used: { display: 'flex', position: 'relative' }, rect: { x: 0, y: 0, w: 100, h: 36 }, children: [foot] }), TABLE)
   // see-through inside the curve, the ring's colour along it, the page colour beyond it: what the mask left visible.
   // Spelled the way Paper draws a radial gradient (read back from Paper): a circle to the farthest corner, its centre
@@ -532,6 +532,23 @@ test('a round mask that cuts a curve out of a layered fill is folded into one ra
   assert.equal(root.children[0].style['background-image'], 'radial-gradient(circle at 0% 0%, rgba(196, 149, 68, 0) 55.82%, #C49544 59.55%, #C49544 66.99%, var(--color-background) 70.71%)')
   assert.ok(!stats.lost.some((line) => /mask/.test(line)), stats.lost.join('|'))
   assert.match(stats.approximations.flatMap((entry) => entry.reasons).join('|'), /mask folded into the fill/)
+})
+
+test('a curved tab foot whose ring is a colour sweep is drawn as a vector curve that keeps the sweep', () => {
+  // the composer's left foot: a 90deg conic from the tab side's colour (at the top) to the box edge's (at the bottom)
+  const SIDE = 'rgb(196, 149, 68)'
+  const EDGE = 'rgb(83, 106, 153)'
+  const foot = el('span', { slot: 'tab-fillet', used: { display: 'block', position: 'absolute', backgroundImage: `radial-gradient(circle at 0px 0px, rgba(0, 0, 0, 0) 9px, ${PAPER} 9.5px), conic-gradient(from 90deg at 0px 0px, ${SIDE}, ${EDGE} 90deg)`, backgroundClip: 'border-box, border-box', maskImage: 'radial-gradient(circle at 0px 0px, rgba(0, 0, 0, 0) 7.5px, rgb(42, 38, 34) 8px)' }, spec: { width: '9.5px', height: '9.5px' }, rect: { x: 0, y: 26, w: 9.5, h: 9.5 } })
+  const { root, stats } = convertTree(el('div', { used: { display: 'flex', position: 'relative' }, rect: { x: 0, y: 0, w: 100, h: 36 }, children: [foot] }), TABLE)
+  const svg = root.children[0].raw
+  assert.match(svg, /^<svg layer-name="tab-fillet"/)
+  // the ring runs from the top edge (the tab side) to the left edge (the box), its gradient laid along that path
+  assert.match(svg, /x1="8.5" y1="0" x2="0" y2="8.5"/)
+  assert.match(svg, /<stop offset="0" stop-color="#C49544"\/><stop offset="1" stop-color="#536A99"\/>/)
+  assert.match(svg, /stroke-width="1.5"/)
+  // the page colour beyond the curve, bound to its token
+  assert.match(svg, /fill="var\(--color-background\)"/)
+  assert.ok(!stats.lost.some((line) => /mask/.test(line)), stats.lost.join('|'))
 })
 
 test('a sentence that wraps before an inline chip is drawn line by line, as the browser broke it', () => {

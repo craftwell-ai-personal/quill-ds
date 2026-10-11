@@ -5178,7 +5178,7 @@
         "src/usage/model-picker.usage.mjs"
       ],
       "sourceHash": "68a5741c8bbbdf87",
-      "syncedAt": "2026-10-10",
+      "syncedAt": "2026-10-11",
       "counts": {
         "stories": 2,
         "nodes": 46,
@@ -5204,7 +5204,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2ERM-0",
+              "nodeId": "2GUN-0",
               "size": [
                 544,
                 84
@@ -5213,7 +5213,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2ESC-0",
+              "nodeId": "2GVD-0",
               "size": [
                 288,
                 249
@@ -5233,7 +5233,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2ETK-0",
+              "nodeId": "2GWL-0",
               "size": [
                 96.64,
                 28
@@ -5818,14 +5818,14 @@
         "src/usage/prompt-composer.usage.mjs"
       ],
       "sourceHash": "530d9a688ebf62fb",
-      "syncedAt": "2026-10-10",
+      "syncedAt": "2026-10-11",
       "counts": {
         "stories": 10,
         "nodes": 149,
         "approximated": 14,
-        "bound": 375,
-        "bindable": 419,
-        "bindingRate": 0.895
+        "bound": 377,
+        "bindable": 417,
+        "bindingRate": 0.904
       },
       "notes": [],
       "lost": [
@@ -5843,7 +5843,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2EU0-0",
+              "nodeId": "2GX1-0",
               "size": [
                 576,
                 108
@@ -5863,7 +5863,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2EUQ-0",
+              "nodeId": "2GXR-0",
               "size": [
                 576,
                 84
@@ -5883,7 +5883,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2EVG-0",
+              "nodeId": "2GYH-0",
               "size": [
                 576,
                 108
@@ -5903,7 +5903,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2EW6-0",
+              "nodeId": "2GZ7-0",
               "size": [
                 576,
                 108
@@ -5923,7 +5923,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2EWW-0",
+              "nodeId": "2GZX-0",
               "size": [
                 576,
                 133.41
@@ -5943,7 +5943,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2EXM-0",
+              "nodeId": "2H0N-0",
               "size": [
                 576,
                 108
@@ -5963,7 +5963,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2EYB-0",
+              "nodeId": "2H1C-0",
               "size": [
                 576,
                 166
@@ -5978,17 +5978,17 @@
           "opened": "none",
           "nodes": 24,
           "approximated": 5,
-          "bound": 61,
-          "bindable": 74,
+          "bound": 63,
+          "bindable": 72,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2EZS-0",
+              "nodeId": "2H2T-0",
               "size": [
                 576,
                 142.41
               ],
-              "htmlHash": "62d241df8ba9a9ed"
+              "htmlHash": "81547a6d254c5639"
             }
           ]
         },
@@ -6003,7 +6003,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2F0Y-0",
+              "nodeId": "2H43-0",
               "size": [
                 576,
                 84
@@ -6023,7 +6023,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2F1O-0",
+              "nodeId": "2H4T-0",
               "size": [
                 576,
                 108
@@ -8555,7 +8555,7 @@
         "src/usage/ai-chat.usage.mjs"
       ],
       "sourceHash": "3f0159d8ad3b17e2",
-      "syncedAt": "2026-10-10",
+      "syncedAt": "2026-10-11",
       "counts": {
         "stories": 5,
         "nodes": 448,
@@ -8580,7 +8580,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2FI9-0",
+              "nodeId": "2H5P-0",
               "size": [
                 1232,
                 640
@@ -8600,7 +8600,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2FLV-0",
+              "nodeId": "2H9B-0",
               "size": [
                 1232,
                 640
@@ -8620,7 +8620,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2FOL-0",
+              "nodeId": "2HC1-0",
               "size": [
                 1232,
                 640
@@ -8640,7 +8640,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2FQL-0",
+              "nodeId": "2HE1-0",
               "size": [
                 1232,
                 640
@@ -8660,7 +8660,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2FTG-0",
+              "nodeId": "2HGW-0",
               "size": [
                 1232,
                 1367.25
@@ -8685,14 +8685,14 @@
         "src/usage/ai-home.usage.mjs"
       ],
       "sourceHash": "e2973452a8b54db1",
-      "syncedAt": "2026-10-10",
+      "syncedAt": "2026-10-11",
       "counts": {
         "stories": 1,
         "nodes": 46,
         "approximated": 6,
-        "bound": 155,
-        "bindable": 168,
-        "bindingRate": 0.923
+        "bound": 157,
+        "bindable": 166,
+        "bindingRate": 0.946
       },
       "notes": [],
       "lost": [
@@ -8705,17 +8705,17 @@
           "opened": "none",
           "nodes": 46,
           "approximated": 6,
-          "bound": 155,
-          "bindable": 168,
+          "bound": 157,
+          "bindable": 166,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2G02-0",
+              "nodeId": "2HNI-0",
               "size": [
                 1232,
                 512
               ],
-              "htmlHash": "26bab82c15007021"
+              "htmlHash": "b7ea075dd1a2f225"
             }
           ]
         }
@@ -8735,7 +8735,7 @@
         "src/usage/ai-side-panel.usage.mjs"
       ],
       "sourceHash": "5941f3f6f5278166",
-      "syncedAt": "2026-10-10",
+      "syncedAt": "2026-10-11",
       "counts": {
         "stories": 3,
         "nodes": 123,
@@ -8760,7 +8760,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2G24-0",
+              "nodeId": "2HPO-0",
               "size": [
                 384,
                 560
@@ -8780,7 +8780,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2G4C-0",
+              "nodeId": "2HRW-0",
               "size": [
                 384,
                 560
@@ -8800,7 +8800,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2G6C-0",
+              "nodeId": "2HTW-0",
               "size": [
                 384,
                 560

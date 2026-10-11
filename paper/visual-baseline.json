@@ -2634,7 +2634,7 @@
    "text": true,
    "values": "21/21",
    "piece": "model-picker",
-   "at": "2026-10-10"
+   "at": "2026-10-11"
   },
   "components-modelpicker--without-auto": {
    "diffPct": 0.27,
@@ -2650,7 +2650,7 @@
    "text": true,
    "values": "5/5",
    "piece": "model-picker",
-   "at": "2026-10-10"
+   "at": "2026-10-11"
   },
   "components-nativeselect--all-variants": {
    "diffPct": 0.66,
@@ -2951,7 +2951,7 @@
    "text": true,
    "values": "16/16",
    "piece": "prompt-composer",
-   "at": "2026-10-10"
+   "at": "2026-10-11"
   },
   "components-promptcomposer--error-state": {
    "diffPct": 1.17,
@@ -2967,7 +2967,7 @@
    "text": true,
    "values": "16/16",
    "piece": "prompt-composer",
-   "at": "2026-10-10"
+   "at": "2026-10-11"
   },
   "components-promptcomposer--large": {
    "diffPct": 0.44,
@@ -2983,7 +2983,7 @@
    "text": true,
    "values": "16/16",
    "piece": "prompt-composer",
-   "at": "2026-10-10"
+   "at": "2026-10-11"
   },
   "components-promptcomposer--notebook": {
    "diffPct": 0.35,
@@ -2999,7 +2999,7 @@
    "text": true,
    "values": "15/16",
    "piece": "prompt-composer",
-   "at": "2026-10-10"
+   "at": "2026-10-11"
   },
   "components-promptcomposer--slash-commands": {
    "diffPct": 0.5,
@@ -3015,7 +3015,7 @@
    "text": true,
    "values": "16/16",
    "piece": "prompt-composer",
-   "at": "2026-10-10"
+   "at": "2026-10-11"
   },
   "components-promptcomposer--small": {
    "diffPct": 0.79,
@@ -3031,7 +3031,7 @@
    "text": true,
    "values": "16/16",
    "piece": "prompt-composer",
-   "at": "2026-10-10"
+   "at": "2026-10-11"
   },
   "components-promptcomposer--with-attachments": {
    "diffPct": 1.96,
@@ -3047,7 +3047,7 @@
    "text": true,
    "values": "19/21",
    "piece": "prompt-composer",
-   "at": "2026-10-10"
+   "at": "2026-10-11"
   },
   "components-promptcomposer--with-mic": {
    "diffPct": 0.03,
@@ -3063,7 +3063,7 @@
    "text": true,
    "values": "8/8",
    "piece": "prompt-composer",
-   "at": "2026-10-10"
+   "at": "2026-10-11"
   },
   "components-promptcomposer--with-modes": {
    "diffPct": 1.42,
@@ -3079,7 +3079,7 @@
    "text": true,
    "values": "16/16",
    "piece": "prompt-composer",
-   "at": "2026-10-10"
+   "at": "2026-10-11"
   },
   "components-promptcomposer--working": {
    "diffPct": 1.64,
@@ -3095,7 +3095,7 @@
    "text": true,
    "values": "16/16",
    "piece": "prompt-composer",
-   "at": "2026-10-10"
+   "at": "2026-10-11"
   },
   "components-questioncard--default": {
    "diffPct": 5.55,
@@ -4455,7 +4455,7 @@
    "text": true,
    "values": "13/18",
    "piece": "ai-chat",
-   "at": "2026-10-10"
+   "at": "2026-10-11"
   },
   "patterns-ai-ai-chat--app-conversation": {
    "diffPct": 0.81,
@@ -4471,7 +4471,7 @@
    "text": true,
    "values": "18/18",
    "piece": "ai-chat",
-   "at": "2026-10-10"
+   "at": "2026-10-11"
   },
   "patterns-ai-ai-chat--default": {
    "diffPct": 0.55,
@@ -4487,7 +4487,7 @@
    "text": true,
    "values": "18/18",
    "piece": "ai-chat",
-   "at": "2026-10-10"
+   "at": "2026-10-11"
   },
   "patterns-ai-ai-chat--no-sidebar": {
    "diffPct": 0.51,
@@ -4503,7 +4503,7 @@
    "text": true,
    "values": "16/18",
    "piece": "ai-chat",
-   "at": "2026-10-10"
+   "at": "2026-10-11"
   },
   "patterns-ai-ai-chat--own-sidebar": {
    "diffPct": 0.37,
@@ -4519,7 +4519,7 @@
    "text": true,
    "values": "18/18",
    "piece": "ai-chat",
-   "at": "2026-10-10"
+   "at": "2026-10-11"
   },
   "patterns-ai-ai-home--default": {
    "diffPct": 0.23,
@@ -4535,7 +4535,7 @@
    "text": true,
    "values": "21/21",
    "piece": "ai-home",
-   "at": "2026-10-10"
+   "at": "2026-10-11"
   },
   "patterns-ai-ai-side-panel--default": {
    "diffPct": 0.94,
@@ -4551,7 +4551,7 @@
    "text": true,
    "values": "21/21",
    "piece": "ai-side-panel",
-   "at": "2026-10-10"
+   "at": "2026-10-11"
   },
   "patterns-ai-ai-side-panel--empty-app-thread": {
    "diffPct": 0.2,
@@ -4567,7 +4567,7 @@
    "text": true,
    "values": "21/21",
    "piece": "ai-side-panel",
-   "at": "2026-10-10"
+   "at": "2026-10-11"
   },
   "patterns-ai-ai-side-panel--no-scope": {
    "diffPct": 0.51,
@@ -4583,7 +4583,7 @@
    "text": true,
    "values": "21/21",
    "piece": "ai-side-panel",
-   "at": "2026-10-10"
+   "at": "2026-10-11"
   },
   "patterns-ai-conversation-history--default": {
    "diffPct": 1.17,

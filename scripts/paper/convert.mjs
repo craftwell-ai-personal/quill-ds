@@ -568,6 +568,63 @@ export function foldRoundMask(used, box) {
   return `radial-gradient(circle at ${centre.join(' ')}, ${formatColor({ ...ring, a: 0 })} ${share(hole.at)}, ${formatColor(ring)} ${share(solid.at)}, ${formatColor(ring)} ${share(clear.at)}, ${formatColor(page.color)} ${share(page.at)})`
 }
 
+/**
+ * A tab's curved foot whose ring is a colour sweep (a conic gradient from the tab side's colour to the box edge's):
+ * Paper has neither mask nor conic gradient, and one colour along the curve shows a seam at both ends. Drawn as an
+ * SVG instead: the page colour beyond the curve, and the ring as a stroked quarter arc whose gradient runs straight
+ * from one end of the arc to the other, which over a quarter turn reads the same as the sweep.
+ * Returns the SVG markup, or null when the node is anything else.
+ */
+export function filletSvg(used, box) {
+  const mask = used.maskImage?.match(/^radial-gradient\((.*)\)$/)
+  if (!mask || !(box?.w > 0 && box?.h > 0)) return null
+  const [shape, ...maskStops] = splitTopLevel(mask[1])
+  if (!/^circle at /.test(shape) || maskStops.length !== 2) return null
+  const [hole, solid] = maskStops.map(stopOf)
+  if (hole.color?.a !== 0 || !(solid.color?.a > 0) || !hole.at || !solid.at) return null
+  const [top, ...under] = backgroundLayers(used)
+  const topMatch = top?.image.match(/^radial-gradient\((.*)\)$/)
+  const sweep = under.length === 1 ? under[0].image.match(/^conic-gradient\((.*)\)$/) : null
+  if (!topMatch || !sweep) return null
+  const [topShape, ...topStops] = splitTopLevel(topMatch[1])
+  if (topShape !== shape || topStops.length !== 2) return null
+  const [clear, page] = topStops.map(stopOf)
+  if (clear.color?.a !== 0 || !page.color || !clear.at || !page.at) return null
+  const [head, ...sweepStops] = splitTopLevel(sweep[1])
+  const from = head.match(/^from (-?[\d.]+)deg at (\S+) (\S+)$/)
+  if (!from || sweepStops.length !== 2 || !/\s90deg$/.test(sweepStops[1]) || /\sdeg$/.test(sweepStops[0])) return null
+  const [startColor, endColor] = sweepStops.map((stop) => parseColor(stop.replace(/\s+-?[\d.]+deg$/, '')))
+  if (!startColor || !endColor) return null
+  const across = (part, length) => (/%$/.test(part) ? (parseFloat(part) / 100) * length : parseFloat(part))
+  const [cx, cy] = [across(from[2], box.w), across(from[3], box.h)]
+  // only a curve centred on a corner of its box (the foot's own shape)
+  if (![0, box.w].some((edge) => Math.abs(cx - edge) < 0.01) || ![0, box.h].some((edge) => Math.abs(cy - edge) < 0.01)) return null
+  const inner = (parseFloat(hole.at) + parseFloat(solid.at)) / 2
+  const outer = (parseFloat(clear.at) + parseFloat(page.at)) / 2
+  const middle = (inner + outer) / 2
+  // a conic angle starts at the top and turns clockwise
+  const start = Number(from[1])
+  const at = (radius, degrees) => [round(cx + radius * Math.sin((degrees * Math.PI) / 180)), round(cy - radius * Math.cos((degrees * Math.PI) / 180))]
+  const turnFrom = (x, y) => ((((Math.atan2(x - cx, cy - y) * 180) / Math.PI - start) % 360) + 360) % 360
+  const corners = [[0, 0], [box.w, 0], [box.w, box.h], [0, box.h]]
+    .filter(([x, y]) => Math.hypot(x - cx, y - cy) > 0.01)
+    .sort((a, b) => turnFrom(...a) - turnFrom(...b))
+  const [outerStart, outerEnd] = [at(outer, start), at(outer, start + 90)]
+  const [ringStart, ringEnd] = [at(middle, start), at(middle, start + 90)]
+  const w = round(box.w)
+  const h = round(box.h)
+  const id = `fillet-${Math.round(start)}`
+  const beyond = `M${outerStart.join(' ')}${corners.map(([x, y]) => `L${round(x)} ${round(y)}`).join('')}L${outerEnd.join(' ')}A${round(outer)} ${round(outer)} 0 0 0 ${outerStart.join(' ')}Z`
+  return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" fill="none" xmlns="http://www.w3.org/2000/svg">`
+    + `<defs><linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="${ringStart[0]}" y1="${ringStart[1]}" x2="${ringEnd[0]}" y2="${ringEnd[1]}"><stop offset="0" stop-color="${formatColor(startColor)}"/><stop offset="1" stop-color="${formatColor(endColor)}"/></linearGradient></defs>`
+    + `<path d="${beyond}" fill="${rgbOf(page.color)}"/>`
+    + `<path d="M${ringStart.join(' ')}A${round(middle)} ${round(middle)} 0 0 1 ${ringEnd.join(' ')}" stroke="url(#${id})" stroke-width="${round(outer - inner)}"/>`
+    + '</svg>'
+}
+
+// the rgb() spelling, which the SVG pass binds to a token when it is exactly one
+const rgbOf = (color) => `rgb(${[color.r, color.g, color.b].map((channel) => Math.round(channel)).join(', ')})`
+
 /** Gradient text: the background is painted through the letters, so it belongs to the text, not to a box. */
 const clipsToText = (used) => /\btext\b/.test(used.backgroundClip ?? '') && used.backgroundImage && used.backgroundImage !== 'none'
 
@@ -958,6 +1015,11 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
     }
     const size = sizeStyles(node, context, { ...inherited, isRoot })
     if (node.tag === 'svg') return convertSvg(node, context, size)
+    const fillet = node.children.length ? null : filletSvg(node.used, node.rect)
+    if (fillet) {
+      note('approximated', node, 'round mask over a colour sweep drawn as a vector curve (Paper has no mask or conic gradient)')
+      return convertSvg({ ...node, svg: fillet }, context, size)
+    }
     if (node.tag === 'img' || MEDIA.has(node.tag)) return convertMedia(node, context, size)
 
     const layout = layoutOf(node)
