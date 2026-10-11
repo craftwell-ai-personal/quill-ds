@@ -21,7 +21,7 @@
     "sourceHash": "5e888beb6bbbd5e9",
     "theme": "light",
     "notRepresentable": 33,
-    "syncedAt": "2026-10-10"
+    "syncedAt": "2026-10-11"
   },
   "foundations": {
     "page": "Foundations",
@@ -1432,7 +1432,7 @@
         "src/usage/alert-dialog.usage.mjs"
       ],
       "sourceHash": "1f6903282ef3f0a8",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 3,
         "nodes": 39,
@@ -1458,7 +1458,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MY7-0",
+              "nodeId": "2GC3-0",
               "size": [
                 111.2,
                 32
@@ -1467,12 +1467,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1MYC-0",
+              "nodeId": "2GC8-0",
               "size": [
                 384,
                 164.61
               ],
-              "htmlHash": "ea64a625fbc1adad"
+              "htmlHash": "514343e5cc3b9ed5"
             }
           ]
         },
@@ -1487,7 +1487,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MYV-0",
+              "nodeId": "2GCR-0",
               "size": [
                 126.72,
                 32
@@ -1496,7 +1496,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1MZ0-0",
+              "nodeId": "2GCW-0",
               "size": [
                 384,
                 184.02
@@ -1516,7 +1516,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MZP-0",
+              "nodeId": "2GDL-0",
               "size": [
                 89.23,
                 32
@@ -1525,12 +1525,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1MZU-0",
+              "nodeId": "2GDQ-0",
               "size": [
                 320,
                 164.61
               ],
-              "htmlHash": "4eaf6ee6b8c5ecc9"
+              "htmlHash": "a107dc50bf2fe3e3"
             }
           ]
         }
@@ -2322,11 +2322,11 @@
         "src/usage/button-group.usage.mjs"
       ],
       "sourceHash": "711c1ff73c724c45",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 7,
-        "nodes": 78,
-        "approximated": 2,
+        "nodes": 80,
+        "approximated": 0,
         "bound": 303,
         "bindable": 303,
         "bindingRate": 1
@@ -2347,7 +2347,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NJV-0",
+              "nodeId": "2GEC-0",
               "size": [
                 127.41,
                 32
@@ -2367,7 +2367,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NK7-0",
+              "nodeId": "2GEO-0",
               "size": [
                 96,
                 32
@@ -2387,7 +2387,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NKP-0",
+              "nodeId": "2GF6-0",
               "size": [
                 96,
                 32
@@ -2407,7 +2407,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NL7-0",
+              "nodeId": "2GFO-0",
               "size": [
                 84.8,
                 96
@@ -2420,19 +2420,19 @@
           "id": "components-buttongroup--with-separator",
           "title": "With Separator",
           "opened": "none",
-          "nodes": 8,
-          "approximated": 1,
+          "nodes": 9,
+          "approximated": 0,
           "bound": 18,
           "bindable": 18,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NLM-0",
+              "nodeId": "2GG3-0",
               "size": [
                 97,
                 32
               ],
-              "htmlHash": "71af51ab2f565648"
+              "htmlHash": "47b46dc9d4908477"
             }
           ]
         },
@@ -2447,7 +2447,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NM6-0",
+              "nodeId": "2GGO-0",
               "size": [
                 224.7,
                 32
@@ -2460,19 +2460,19 @@
           "id": "components-buttongroup--all-variants",
           "title": "All Variants",
           "opened": "none",
-          "nodes": 35,
-          "approximated": 1,
+          "nodes": 36,
+          "approximated": 0,
           "bound": 138,
           "bindable": 138,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NMO-0",
+              "nodeId": "2GH6-0",
               "size": [
                 177.67,
                 320
               ],
-              "htmlHash": "dd6206a50c59eb17"
+              "htmlHash": "0330d148dff9ebe9"
             }
           ]
         }
@@ -3171,7 +3171,7 @@
         "src/usage/collapsible.usage.mjs"
       ],
       "sourceHash": "6c32f9c58228f4d0",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 2,
         "nodes": 22,
@@ -3196,7 +3196,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1P32-0",
+              "nodeId": "2GIR-0",
               "size": [
                 288,
                 28
@@ -3216,12 +3216,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1P3K-0",
+              "nodeId": "2GJ9-0",
               "size": [
                 288,
                 138.22
               ],
-              "htmlHash": "f94cf61a4ddbd60b"
+              "htmlHash": "28d4f3bf9076373b"
             }
           ]
         }
@@ -4695,7 +4695,7 @@
         "src/usage/item.usage.mjs"
       ],
       "sourceHash": "d5d16ff8507a7428",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-11",
       "counts": {
         "stories": 8,
         "nodes": 192,
@@ -4718,7 +4718,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QH3-0",
+              "nodeId": "2GMF-0",
               "size": [
                 320,
                 146.16
@@ -4738,7 +4738,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QI0-0",
+              "nodeId": "2GNC-0",
               "size": [
                 320,
                 146.16
@@ -4758,7 +4758,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QIX-0",
+              "nodeId": "2GO9-0",
               "size": [
                 320,
                 146.16
@@ -4778,7 +4778,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QJU-0",
+              "nodeId": "2GP6-0",
               "size": [
                 320,
                 140.16
@@ -4798,7 +4798,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QKR-0",
+              "nodeId": "2GQ3-0",
               "size": [
                 320,
                 126.06
@@ -4818,12 +4818,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QLO-0",
+              "nodeId": "2GR0-0",
               "size": [
                 320,
                 293.23
               ],
-              "htmlHash": "e728c56e772ecad6"
+              "htmlHash": "6d2de5b9cf297318"
             }
           ]
         },
@@ -4838,7 +4838,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QN3-0",
+              "nodeId": "2GSF-0",
               "size": [
                 320,
                 277.56
@@ -4858,7 +4858,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QOC-0",
+              "nodeId": "2GTO-0",
               "size": [
                 320,
                 146.16
@@ -5406,7 +5406,7 @@
         "src/usage/navigation-menu.usage.mjs"
       ],
       "sourceHash": "6d7423bb8e6ac28c",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-10",
       "counts": {
         "stories": 2,
         "nodes": 40,
@@ -5431,16 +5431,16 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Y2Q-0",
+              "nodeId": "2GK8-0",
               "size": [
                 245.66,
                 36
               ],
-              "htmlHash": "ea99663e3d8bdcb1"
+              "htmlHash": "0b5fdd4abda9b2b1"
             },
             {
               "part": "panel-1",
-              "nodeId": "1Y3B-0",
+              "nodeId": "2GKT-0",
               "size": [
                 392,
                 127.41
@@ -5460,7 +5460,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Y43-0",
+              "nodeId": "2GLL-0",
               "size": [
                 237.2,
                 36
