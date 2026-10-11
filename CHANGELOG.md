@@ -18,6 +18,7 @@ footer reads `package.json` directly, so the displayed version updates with the 
 ### Fixed
 - fix(paper): Paper draws the AI kit the way the browser does: gradient edges and gradient text, chips and highlights inside sentences, overlapping layers, sticky bars, grid rows, the prompt composer's curved tab. All 20 AI pieces are redrawn and match Storybook (the usage meter was left as it was).
 - fix(paper): the composer tab's curved feet are drawn as small vector curves that keep the code's colour sweep (gold into orange on the left, blue into orange on the right) instead of one averaged brown.
+- fix(ai-edge): the AI gradient edge is 1px, not 1.5px. Chrome and Firefox drew the 1.5px border at 1px, so the selected composer tab's curved feet (drawn at 1.5px) looked thicker than the lines they join and stepped off them. The feet are now 1px, centred on the tab's side and the box's top edge. In Paper, the right foot is pinned to the tab's right edge so it stays joined when Paper rounds the tab's width.
 - fix(paper): the Paper check also scores the worst small region of each story, so a broken detail no longer hides inside a good overall percentage.
 - chore(paper): redraw the five non-AI pieces the converter change touches (alert dialog, button group, collapsible, item, navigation menu); all match Storybook.
 

@@ -16,8 +16,10 @@ const IME_SETTLE_MS = 100
 
 // The selected tab flares into the box: at each base corner a small piece draws an inward curve (CURVE, 8px, the size
 // of the tab's own top corners) in place of the hard T where the tab's side meets the box's top edge. The curve is a ring the
-// edge's 1.5px thickness, coloured from the tab side's colour into the box edge's, with the page showing inside it
-// and the field colour outside it (which hides the straight edge and side it replaces).
+// edge's 1px thickness, centred on the tab's side and the box's top edge so it continues both without a step,
+// coloured from the tab side's colour into the box edge's, with the page showing inside it and the field colour
+// outside it (which hides the straight edge and side it replaces). The edge is 1px, not 1.5: Chrome and Firefox
+// draw a 1.5px border at 1px, so a 1.5px curve looked thicker than the lines it joins.
 // A fixed size, not the large-radius token: apps installed through the CLI never receive that variable.
 const CURVE = '0.5rem'
 const EDGE_A = 'color-mix(in oklab, var(--ai-from) 55%, var(--ai-text-from))'
@@ -31,7 +33,7 @@ function filletStyle(side: 'left' | 'right', lit: boolean, notebook: boolean): R
   const ring = side === 'left'
     ? `conic-gradient(from 90deg at ${at}, ${tabSide}, ${box} 90deg)`
     : `conic-gradient(from 180deg at ${at}, ${box}, ${tabSide} 90deg)`
-  const size = `calc(${CURVE} + 1.5px)`
+  const size = `calc(${CURVE} + 1px)`
   return {
     position: 'absolute',
     bottom: 0,
@@ -39,9 +41,10 @@ function filletStyle(side: 'left' | 'right', lit: boolean, notebook: boolean): R
     width: size,
     height: size,
     pointerEvents: 'none',
-    background: `radial-gradient(circle at ${at}, transparent calc(${CURVE} + 1px), var(--background) ${size}), ${ring}`,
+    // The ring runs from CURVE to CURVE + 1px; each side softens over half a pixel centred on its edge.
+    background: `radial-gradient(circle at ${at}, transparent calc(${CURVE} + 0.75px), var(--background) calc(${CURVE} + 1.25px)), ${ring}`,
     // A mask reads only opacity, so any solid colour works; currentColor keeps raw colours out of shipped code.
-    mask: `radial-gradient(circle at ${at}, transparent calc(${CURVE} - 0.5px), currentColor ${CURVE})`,
+    mask: `radial-gradient(circle at ${at}, transparent calc(${CURVE} - 0.25px), currentColor calc(${CURVE} + 0.25px))`,
   }
 }
 
@@ -228,7 +231,7 @@ export function PromptComposer({
         ) : null}
         {showModes && modes?.length ? (
           // pl-6 (24px) = the box's 16px corner + the tab's 8px base curve, so the curve meets the box's straight edge.
-          <div role="tablist" aria-label="Mode" className="relative z-10 -mb-[1.5px] flex gap-0.5 pl-6">
+          <div role="tablist" aria-label="Mode" className="relative z-10 -mb-px flex gap-0.5 pl-6">
             {modes.map((m) => {
               const selected = m.value === currentMode
               return (
@@ -248,11 +251,11 @@ export function PromptComposer({
                     // edge under it so tab and box read as one shape (approved 2026-10-02). z-10 keeps its
                     // base curves above a neighbouring tab, which would otherwise paint over the right one.
                     selected
-                      ? 'z-10 ai-edge text-foreground after:absolute after:inset-x-0 after:-bottom-[1.5px] after:h-0.5 after:bg-background'
+                      ? 'z-10 ai-edge text-foreground after:absolute after:inset-x-0 after:-bottom-px after:h-0.5 after:bg-background'
                       // Unselected tabs keep a subtle muted fill and a hairline outline so they still
-                      // read as tabs (the fill alone vanishes on the dark themes), and stop 1.5px short
+                      // read as tabs (the fill alone vanishes on the dark themes), and stop 1px short
                       // so the box's gradient edge runs in front of them; only the selected tab joins the box.
-                      : 'mb-[1.5px] border border-b-0 border-border bg-muted text-muted-foreground hover:text-foreground',
+                      : 'mb-px border border-b-0 border-border bg-muted text-muted-foreground hover:text-foreground',
                   )}
                 >
                   {selected ? (

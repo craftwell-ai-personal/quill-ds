@@ -843,7 +843,7 @@
 }
 
 @utility ai-edge {
-  border: 1.5px solid transparent;
+  border: 1px solid transparent;
   background: linear-gradient(var(--background), var(--background)) padding-box, linear-gradient(115deg, color-mix(in oklab, color-mix(in oklab, var(--ai-from) 55%, var(--ai-text-from)) 45%, var(--line-control)), color-mix(in oklab, var(--ai-via) 45%, var(--line-control)) 50%, color-mix(in oklab, var(--ai-to) 45%, var(--line-control))) border-box;
   &:focus-within, &[data-lit] {
     background: linear-gradient(var(--background), var(--background)) padding-box, linear-gradient(115deg, color-mix(in oklab, var(--ai-from) 55%, var(--ai-text-from)), var(--ai-via) 50%, var(--ai-to)) border-box;
@@ -851,7 +851,7 @@
 }
 
 @utility ai-edge-working {
-  border: 1.5px solid transparent;
+  border: 1px solid transparent;
   background: linear-gradient(var(--background), var(--background)) padding-box, linear-gradient(90deg, color-mix(in oklab, var(--ai-from) 55%, var(--ai-text-from)), var(--ai-via), var(--ai-to), var(--ai-via), color-mix(in oklab, var(--ai-from) 55%, var(--ai-text-from))) border-box;
   background-size: 100% 100%, 300% 100%;
   animation: ai-sweep 2.4s linear infinite;

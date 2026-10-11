@@ -1025,7 +1025,12 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
     if (fillet) {
       note('approximated', node, 'round mask over a colour sweep drawn as a vector curve (Paper has no mask or conic gradient)')
       const placed = { ...size, width: px(round(node.rect.w) + 1) }
-      if (fillet.grow === 'left' && placed.left) placed.left = px(parseFloat(placed.left) - 1)
+      // A right-hand foot is pinned to the parent's right edge: Paper rounds a text-hugging tab's width up, which
+      // would leave a foot placed from the left short of the side it continues.
+      if (fillet.grow === 'left' && placed.left && context.parentRect) {
+        delete placed.left
+        placed.right = px(context.parentRect.x + context.parentRect.w - (context.parentBorder?.right ?? 0) - (node.rect.x + node.rect.w))
+      }
       return convertSvg({ ...node, svg: fillet.markup }, context, placed)
     }
     if (node.tag === 'img' || MEDIA.has(node.tag)) return convertMedia(node, context, size)
@@ -1035,7 +1040,7 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
     const floating = node.children.filter(outOfFlow)
     const elements = flowing.filter((child) => !isText(child))
     const runs = flowing.filter(isText).map((child) => normalizeText(child.text, node.used.whiteSpace)).filter((text) => text.trim())
-    const childContext = { textClasses, parentAutoHeight: !/px$/.test(node.spec.height ?? ''), windowShift: inherited.windowShift, reach: inherited.reach, parentRect: node.rect, parentBorder: { left: num(node.used.borderLeftWidth), top: num(node.used.borderTopWidth) } }
+    const childContext = { textClasses, parentAutoHeight: !/px$/.test(node.spec.height ?? ''), windowShift: inherited.windowShift, reach: inherited.reach, parentRect: node.rect, parentBorder: { left: num(node.used.borderLeftWidth), top: num(node.used.borderTopWidth), right: num(node.used.borderRightWidth) } }
 
     // A form field shows its value (or its placeholder) as text; the caret and selection are not design.
     if (FIELDS.has(node.tag)) {
