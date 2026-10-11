@@ -546,6 +546,9 @@ test('a curved tab foot whose ring is a colour sweep is drawn as a vector curve 
   assert.match(svg, /x1="8.5" y1="0" x2="0" y2="8.5"/)
   assert.match(svg, /<stop offset="0" stop-color="#C49544"\/><stop offset="1" stop-color="#536A99"\/>/)
   assert.match(svg, /stroke-width="1.5"/)
+  // one pixel wider on the tab's side, so no seam is left between the foot and the tab
+  assert.match(svg, /width="10.5" height="9.5" viewBox="0 0 10.5 9.5"/)
+  assert.match(root.children[0].raw, /width:10.5px/)
   // the page colour beyond the curve, bound to its token
   assert.match(svg, /fill="var\(--color-background\)"/)
   assert.ok(!stats.lost.some((line) => /mask/.test(line)), stats.lost.join('|'))

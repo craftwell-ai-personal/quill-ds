@@ -573,7 +573,7 @@ export function foldRoundMask(used, box) {
  * Paper has neither mask nor conic gradient, and one colour along the curve shows a seam at both ends. Drawn as an
  * SVG instead: the page colour beyond the curve, and the ring as a stroked quarter arc whose gradient runs straight
  * from one end of the arc to the other, which over a quarter turn reads the same as the sweep.
- * Returns the SVG markup, or null when the node is anything else.
+ * Returns `{ markup, grow }` (the side it was widened on), or null when the node is anything else.
  */
 export function filletSvg(used, box) {
   const mask = used.maskImage?.match(/^radial-gradient\((.*)\)$/)
@@ -613,13 +613,19 @@ export function filletSvg(used, box) {
   const [ringStart, ringEnd] = [at(middle, start), at(middle, start + 90)]
   const w = round(box.w)
   const h = round(box.h)
+  // Paper leaves a hairline seam between the foot and the tab's inside, and the tab's gradient edge shows through
+  // it; one more pixel of page colour on the tab's side overlaps the tab instead
+  const grow = cx < box.w / 2 ? 'right' : 'left'
+  const [left, wide] = grow === 'right' ? [0, w + 1] : [-1, w + 1]
+  const overlap = grow === 'right' ? `M${w} 0H${w + 1}V${h}H${w}Z` : `M-1 0H0V${h}H-1Z`
   const id = `fillet-${Math.round(start)}`
   const beyond = `M${outerStart.join(' ')}${corners.map(([x, y]) => `L${round(x)} ${round(y)}`).join('')}L${outerEnd.join(' ')}A${round(outer)} ${round(outer)} 0 0 0 ${outerStart.join(' ')}Z`
-  return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" fill="none" xmlns="http://www.w3.org/2000/svg">`
+  const markup = `<svg width="${wide}" height="${h}" viewBox="${left} 0 ${wide} ${h}" fill="none" xmlns="http://www.w3.org/2000/svg">`
     + `<defs><linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="${ringStart[0]}" y1="${ringStart[1]}" x2="${ringEnd[0]}" y2="${ringEnd[1]}"><stop offset="0" stop-color="${formatColor(startColor)}"/><stop offset="1" stop-color="${formatColor(endColor)}"/></linearGradient></defs>`
-    + `<path d="${beyond}" fill="${rgbOf(page.color)}"/>`
+    + `<path d="${beyond}${overlap}" fill="${rgbOf(page.color)}"/>`
     + `<path d="M${ringStart.join(' ')}A${round(middle)} ${round(middle)} 0 0 1 ${ringEnd.join(' ')}" stroke="url(#${id})" stroke-width="${round(outer - inner)}"/>`
     + '</svg>'
+  return { markup, grow }
 }
 
 // the rgb() spelling, which the SVG pass binds to a token when it is exactly one
@@ -1018,7 +1024,9 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
     const fillet = node.children.length ? null : filletSvg(node.used, node.rect)
     if (fillet) {
       note('approximated', node, 'round mask over a colour sweep drawn as a vector curve (Paper has no mask or conic gradient)')
-      return convertSvg({ ...node, svg: fillet }, context, size)
+      const placed = { ...size, width: px(round(node.rect.w) + 1) }
+      if (fillet.grow === 'left' && placed.left) placed.left = px(parseFloat(placed.left) - 1)
+      return convertSvg({ ...node, svg: fillet.markup }, context, placed)
     }
     if (node.tag === 'img' || MEDIA.has(node.tag)) return convertMedia(node, context, size)
 
