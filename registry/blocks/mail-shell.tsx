@@ -85,7 +85,7 @@ export function MailShell() {
           <Button variant="ghost" size="icon-sm" aria-label="Delete">
             <Icon name="delete" size={18} />
           </Button>
-          <Separator orientation="vertical" className="mx-1 h-4" />
+          <Separator orientation="vertical" className="mx-1 h-4 data-vertical:self-center" />
           <Button variant="ghost" size="icon-sm" aria-label="Reply">
             <Icon name="reply" size={18} />
           </Button>
@@ -127,7 +127,8 @@ export function MailShell() {
             Reply
           </Label>
           <Input id="mail-reply" placeholder="Reply to Ada…" className="flex-1" />
-          <Button size="sm">
+          {/* Default size, so Send matches the 32px field beside it. */}
+          <Button>
             Send <Icon name="send" size={14} />
           </Button>
         </div>

@@ -3,7 +3,7 @@ import { Separator } from '@/components/ui/separator'
 const stats = [
   { value: '56', label: 'Components' },
   { value: '40+', label: 'Patterns' },
-  { value: '2', label: 'Themes, light & dusk' },
+  { value: '5', label: 'Themes, light and dark' },
   { value: 'AA', label: 'WCAG 2.1 target' },
 ]
 

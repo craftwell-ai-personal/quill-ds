@@ -78,7 +78,8 @@ export const Default: Story = {
 
 export const WithValue: Story = {
   render: () => (
-    <Select defaultValue="calligraphy">
+    // items maps each value to its label; without it the closed trigger shows the raw value ("calligraphy").
+    <Select defaultValue="calligraphy" items={{ watercolor: 'Watercolor', calligraphy: 'Calligraphy', pottery: 'Pottery', journaling: 'Journaling', poetry: 'Poetry' }}>
       <SelectTrigger className="w-full" aria-label="Select category">
         <SelectValue placeholder="Select category…" />
       </SelectTrigger>

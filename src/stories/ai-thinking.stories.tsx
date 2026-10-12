@@ -1,5 +1,6 @@
 import * as React from 'react'
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import { Button } from '@/components/ui/button'
 import { expect, userEvent, waitFor } from 'storybook/test'
 import { AiThinking, formatThoughtFor } from '../../registry/lib/ai-thinking'
 import { usage } from '@/usage/ai-thinking.usage.mjs'
@@ -49,7 +50,7 @@ export const StatusRegionPersistsWhenDone: Story = {
     return (
       <>
         <AiThinking {...args} status={done ? 'done' : 'working'} />
-        <button type="button" onClick={() => setDone(true)}>Finish</button>
+        <Button type="button" variant="outline" size="sm" className="w-fit" onClick={() => setDone(true)}>Finish</Button>
       </>
     )
   },
@@ -94,7 +95,7 @@ export const ActivityUpdatesTheSameRegion: Story = {
     return (
       <>
         <AiThinking {...args} activity={activity} />
-        <button type="button" onClick={() => setActivity('Comparing with targets')}>Next</button>
+        <Button type="button" variant="outline" size="sm" className="w-fit" onClick={() => setActivity('Comparing with targets')}>Next</Button>
       </>
     )
   },

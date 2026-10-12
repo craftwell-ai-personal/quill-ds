@@ -1,6 +1,6 @@
 {
-  "$comment": "Figma-side baseline of every mirrored pattern and template frame (texts in document order, icon components used, top-level component instances, variables bound outside instances). Written by the pattern baseline read on 2026-09-18 via the Plugin API; refreshed by scripts/figma-drift.mjs from the REST file API. Compared against the code-side expectation by scripts/figma-pattern-parity.test.mjs.",
-  "syncedAt": "2026-09-19",
+  "$comment": "Figma-side baseline of every mirrored pattern frame (texts in document order, icon components used, top-level component instances). Rewritten by `node scripts/figma-drift.mjs --snapshot-patterns` from the REST file API; compared against the code-side expectation by scripts/figma-pattern-parity.test.mjs.",
+  "syncedAt": "2026-10-12",
   "frames": {
     "activity-feed": {
       "frameId": "696:2",
@@ -162,7 +162,7 @@
         "Readers",
         "Subscribers",
         "Engagements",
-        "Weekly sales this month.",
+        "Weekly engagements this month.",
         "28",
         "21",
         "14",
@@ -388,6 +388,26 @@
         "Button"
       ]
     },
+    "chat": {
+      "frameId": "696:7",
+      "texts": [
+        "GH",
+        "Grace Hopper",
+        "Online",
+        "Hey! Did the new tokens land?",
+        "Yep — merged this morning. Dark mode flows automatically now.",
+        "Amazing. The badges look so much cleaner.",
+        "Right? Everything binds to the foundation.",
+        "Message…"
+      ],
+      "icons": [
+        "arrow_forward"
+      ],
+      "instances": [
+        "Input",
+        "Button"
+      ]
+    },
     "checkout": {
       "frameId": "696:8",
       "texts": [
@@ -500,668 +520,6 @@
         "ChatRow"
       ]
     },
-    "faq": {
-      "frameId": "696:19",
-      "texts": [
-        "FAQ",
-        "Common questions",
-        "Everything else lives in the docs — or ask us directly.",
-        "Can I use Quill in a commercial project?",
-        "Yes. The theme, tokens, and every pattern ship under a permissive license — attribution is appreciated, never required.",
-        "How do I install the theme?",
-        "Does dark mode come for free?",
-        "What about accessibility?",
-        "Still curious?",
-        "Talk to the team"
-      ],
-      "icons": [
-        "keyboard_arrow_down",
-        "keyboard_arrow_down",
-        "keyboard_arrow_down",
-        "keyboard_arrow_up"
-      ],
-      "instances": [
-        "Button"
-      ]
-    },
-    "file-upload": {
-      "frameId": "696:21",
-      "texts": [
-        "Upload assets",
-        "SVG, PNG, PDF or ZIP — up to 25 MB each.",
-        "Drag files here or click to browse",
-        "Your files stay private.",
-        "brand-lockups.zip",
-        "4.2 MB",
-        "declaration.webp",
-        "189 KB",
-        "field-notes-issue-001.pdf",
-        "2.8 MB",
-        "Cancel",
-        "Done"
-      ],
-      "icons": [
-        "check",
-        "check",
-        "close",
-        "close",
-        "close",
-        "cloud_upload",
-        "draft"
-      ],
-      "instances": [
-        "Separator",
-        "Button",
-        "Button",
-        "Progress",
-        "Button",
-        "Button",
-        "Button"
-      ]
-    },
-    "forgot-password": {
-      "frameId": "696:23",
-      "texts": [
-        "Reset your password",
-        "Enter the email you signed up with and we’ll send you a reset link.",
-        "Email",
-        "you@example.com",
-        "Send reset link",
-        "Back to sign in"
-      ],
-      "icons": [
-        "arrow_back"
-      ],
-      "instances": [
-        "Label",
-        "Input",
-        "Button",
-        "Button"
-      ]
-    },
-    "invoice": {
-      "frameId": "696:26",
-      "texts": [
-        "Invoice 0042",
-        "Issued June 30, 2026 · Due July 14, 2026",
-        "Paid",
-        "From",
-        "Craftwell",
-        "hello@craftwell.ai",
-        "Billed to",
-        "Northwind Ltd.",
-        "accounts@northwind.com",
-        "Description",
-        "Qty",
-        "Rate",
-        "Amount",
-        "Design system retainer — June",
-        "1",
-        "$3,200.00",
-        "$3,200.00",
-        "Brand lock-up refinements",
-        "6",
-        "$140.00",
-        "$840.00",
-        "Storybook pattern library",
-        "12",
-        "$95.00",
-        "$1,140.00",
-        "Total",
-        "$5,180.00",
-        "Thank you — see you next issue.",
-        "Download PDF"
-      ],
-      "icons": [
-        "download"
-      ],
-      "instances": [
-        "Tone badge",
-        "Separator",
-        "Button"
-      ]
-    },
-    "login": {
-      "frameId": "696:29",
-      "texts": [
-        "Sign in",
-        "Welcome back — enter your details to continue.",
-        "Email",
-        "you@example.com",
-        "Password",
-        "••••••••",
-        "Remember me for 30 days",
-        "Sign in",
-        "Forgot your password?"
-      ],
-      "icons": [],
-      "instances": [
-        "Label",
-        "Input",
-        "Label",
-        "Input",
-        "Checkbox",
-        "Label",
-        "Button",
-        "Button"
-      ]
-    },
-    "login-minimal": {
-      "frameId": "696:35",
-      "texts": [
-        "Q",
-        "Sign in to Quill",
-        "Email",
-        "you@example.com",
-        "Continue",
-        "We’ll email you a one-time code. No password needed."
-      ],
-      "icons": [
-        "arrow_forward"
-      ],
-      "instances": [
-        "Label",
-        "Input",
-        "Button"
-      ]
-    },
-    "login-split-panel": {
-      "frameId": "696:37",
-      "texts": [
-        "Quill",
-        "“The most crafted-feeling system we’ve ever shipped on. It reads like a notebook, not a dashboard.”",
-        "Sofia Almeida — Head of Product, Northwind",
-        "Welcome back",
-        "Sign in to your team account.",
-        "Email",
-        "you@example.com",
-        "Password",
-        "Forgot?",
-        "••••••••",
-        "Sign in",
-        "or",
-        "Continue with a magic link"
-      ],
-      "icons": [
-        "mail"
-      ],
-      "instances": [
-        "Label",
-        "Input",
-        "Label",
-        "Button",
-        "Input",
-        "Button",
-        "Separator",
-        "Separator",
-        "Button"
-      ]
-    },
-    "mail-shell": {
-      "frameId": "696:38",
-      "texts": [
-        "Inbox",
-        "2 unread",
-        "Search mail…",
-        "Ada Lovelace",
-        "9:12",
-        "Scope for the Q3 engagement",
-        "Revised deliverables are in the shared folder — see the summary…",
-        "Nadia Okonjo",
-        "Yesterday",
-        "Component API revisions",
-        "I reworked the variant props so they compose cleanly at three scales…",
-        "Marcus Reed",
-        "Tue",
-        "Discovery findings, second pass",
-        "Interview notes are synthesised — summary tomorrow morning…",
-        "1 of 24",
-        "AL",
-        "Ada Lovelace",
-        "to Client · 9:12",
-        "Client",
-        "Scope for the Q3 engagement",
-        "Revised deliverables are in the shared folder — the component inventory held up even at the smallest breakpoint, and the dark variants read exactly as we hoped.",
-        "I’ve queued the remaining two flows for tomorrow. If review lands on time we should have the full set ready by Thursday.",
-        "— A.",
-        "Reply to Ada…",
-        "Send"
-      ],
-      "icons": [
-        "archive",
-        "delete",
-        "forward",
-        "reply",
-        "send"
-      ],
-      "instances": [
-        "Badge",
-        "Input",
-        "Separator",
-        "Button",
-        "Button",
-        "Button",
-        "Button",
-        "Avatar",
-        "Badge",
-        "Separator",
-        "Separator",
-        "Input",
-        "Button"
-      ]
-    },
-    "newsletter": {
-      "frameId": "696:40",
-      "texts": [
-        "The Brief",
-        "One letter a month on design systems and the teams that ship them. No spam, no noise — unsubscribe any time.",
-        "you@example.com",
-        "Subscribe",
-        "Joined by 4,200 fellow practitioners."
-      ],
-      "icons": [
-        "mail"
-      ],
-      "instances": [
-        "Input",
-        "Button"
-      ]
-    },
-    "otp-verification": {
-      "frameId": "696:42",
-      "texts": [
-        "Check your email",
-        "We sent a six-digit code to",
-        "ada@example.com",
-        ".",
-        "The code expires in 10 minutes.",
-        "Verify",
-        "Didn’t get it? Resend code"
-      ],
-      "icons": [
-        "remove"
-      ],
-      "instances": [
-        "InputOTP",
-        "Button",
-        "Button"
-      ]
-    },
-    "sidebar-nav": {
-      "frameId": "699:788",
-      "texts": [
-        "Q",
-        "Quill",
-        "Workspace",
-        "Overview",
-        "Engagements",
-        "4",
-        "Clients",
-        "Deliverables",
-        "12",
-        "Team",
-        "Collaborators",
-        "Settings",
-        "JD",
-        "John Doe",
-        "Team plan",
-        "Workspace",
-        "Overview",
-        "Active engagements",
-        "Nothing pressing.",
-        "Review queue",
-        "Nothing pressing.",
-        "Client notes",
-        "Nothing pressing."
-      ],
-      "icons": [
-        "chevron_right",
-        "dock_to_left",
-        "group",
-        "ink_pen",
-        "palette",
-        "photo_library",
-        "settings",
-        "space_dashboard"
-      ],
-      "instances": [
-        "Separator",
-        "Separator",
-        "Avatar",
-        "Button"
-      ]
-    },
-    "signup-social": {
-      "frameId": "696:55",
-      "texts": [
-        "Create your account",
-        "Start with a provider, or use your email.",
-        "Continue with GitHub",
-        "Continue with Google",
-        "or with email",
-        "Email",
-        "you@example.com",
-        "Password",
-        "At least 12 characters",
-        "Create account",
-        "By continuing you agree to the team terms and privacy note."
-      ],
-      "icons": [],
-      "instances": [
-        "Button",
-        "Button",
-        "Separator",
-        "Separator",
-        "Label",
-        "Input",
-        "Label",
-        "Input",
-        "Button"
-      ]
-    },
-    "stat-cards": {
-      "frameId": "699:786",
-      "texts": [
-        "Total revenue",
-        "$48,120",
-        "+12.4%",
-        "vs last month",
-        "Active users",
-        "3,842",
-        "+4.1%",
-        "vs last month",
-        "Churn",
-        "1.9%",
-        "−0.3%",
-        "vs last month",
-        "Open tickets",
-        "27",
-        "+6",
-        "vs last month"
-      ],
-      "icons": [],
-      "instances": [
-        "Badge",
-        "Badge",
-        "Badge",
-        "Badge"
-      ]
-    },
-    "stats-band": {
-      "frameId": "696:56",
-      "texts": [
-        "By the numbers",
-        "A system that keeps its promises",
-        "56",
-        "Components",
-        "40+",
-        "Patterns",
-        "2",
-        "Themes, light & dusk",
-        "AA",
-        "WCAG 2.1 target"
-      ],
-      "icons": [],
-      "instances": []
-    },
-    "team-section": {
-      "frameId": "696:64",
-      "texts": [
-        "The team",
-        "Curated collections, crafted by intelligence",
-        "A small team who believe interfaces should feel like well-kept notebooks.",
-        "JD",
-        "John Doe",
-        "Founder & Principal",
-        "Strategy",
-        "AL",
-        "Ada Lovelace",
-        "Engineering",
-        "Systems",
-        "NO",
-        "Nadia Okonjo",
-        "Product Design",
-        "Design",
-        "MR",
-        "Marcus Reed",
-        "Research",
-        "Research"
-      ],
-      "icons": [
-        "mail",
-        "mail",
-        "mail",
-        "mail"
-      ],
-      "instances": [
-        "Avatar",
-        "Badge",
-        "Button",
-        "Avatar",
-        "Badge",
-        "Button",
-        "Avatar",
-        "Badge",
-        "Button",
-        "Avatar",
-        "Badge",
-        "Button"
-      ]
-    },
-    "theme-selector": {
-      "frameId": "696:71",
-      "texts": [
-        "Dawn"
-      ],
-      "icons": [
-        "keyboard_arrow_down",
-        "light_mode"
-      ],
-      "instances": [
-        "Button"
-      ]
-    },
-    "hero": {
-      "frameId": "696:25",
-      "texts": [
-        "New — v2.0 is here",
-        "The calm design system for building things by hand",
-        "Accessible, themeable components and a single-source token foundation that flows to code and Figma alike.",
-        "Get started",
-        "Read the docs"
-      ],
-      "icons": [
-        "arrow_forward",
-        "menu_book"
-      ],
-      "instances": [
-        "Badge",
-        "Button",
-        "Button"
-      ]
-    },
-    "navbar": {
-      "frameId": "696:39",
-      "texts": [
-        "Quill",
-        "Product",
-        "Solutions",
-        "Pricing",
-        "Docs",
-        "Sign in",
-        "Get started"
-      ],
-      "icons": [
-        "arrow_forward"
-      ],
-      "instances": [
-        "Button",
-        "Button"
-      ]
-    },
-    "footer": {
-      "frameId": "696:22",
-      "texts": [
-        "Quill",
-        "A calm, editorial design system for building by hand.",
-        "Product",
-        "Overview",
-        "Components",
-        "Tokens",
-        "Changelog",
-        "Resources",
-        "Docs",
-        "Guides",
-        "Figma kit",
-        "Support",
-        "Company",
-        "About",
-        "Blog",
-        "Careers",
-        "Contact",
-        "© 2026 Quill. All rights reserved.",
-        "Privacy",
-        "Terms"
-      ],
-      "icons": [],
-      "instances": [
-        "Separator"
-      ]
-    },
-    "feature-section": {
-      "frameId": "696:20",
-      "texts": [
-        "Why Quill",
-        "A calm, editorial design system",
-        "Everything connected to tokens, so it stays consistent as it grows.",
-        "Design tokens",
-        "One source of truth flows to code and Figma alike.",
-        "Composable",
-        "Build screens fast from accessible, themeable components.",
-        "Accessible",
-        "WCAG 2.1 AA out of the box, verified in CI."
-      ],
-      "icons": [
-        "check_circle",
-        "dashboard",
-        "palette"
-      ],
-      "instances": []
-    },
-    "testimonial": {
-      "frameId": "696:65",
-      "texts": [
-        "“Quill let our team ship consistent, accessible screens in days — the token foundation means design and code never drift.”",
-        "RP",
-        "Riley Park",
-        "Head of Design, Northwind"
-      ],
-      "icons": [],
-      "instances": []
-    },
-    "pricing": {
-      "frameId": "696:51",
-      "texts": [
-        "Starter",
-        "For trying things out.",
-        "$0",
-        "/mo",
-        "1 project",
-        "Community support",
-        "1 GB storage",
-        "Get started",
-        "Pro",
-        "Popular",
-        "For growing teams.",
-        "$18",
-        "/mo",
-        "Unlimited projects",
-        "Priority support",
-        "100 GB storage",
-        "Analytics",
-        "Start free trial",
-        "Enterprise",
-        "For large organizations.",
-        "Custom",
-        "SSO & SAML",
-        "Dedicated support",
-        "Unlimited storage",
-        "Audit logs",
-        "Contact sales"
-      ],
-      "icons": [
-        "check",
-        "check",
-        "check",
-        "check",
-        "check",
-        "check",
-        "check",
-        "check",
-        "check",
-        "check",
-        "check"
-      ],
-      "instances": [
-        "Button",
-        "Badge",
-        "Button",
-        "Button"
-      ]
-    },
-    "page-header": {
-      "frameId": "696:50",
-      "texts": [
-        "Projects",
-        "Acme site",
-        "Settings",
-        "Project settings",
-        "Manage configuration, members, and integrations for this project.",
-        "Duplicate",
-        "New"
-      ],
-      "icons": [
-        "add",
-        "content_copy"
-      ],
-      "instances": [
-        "Breadcrumb",
-        "Button",
-        "Button"
-      ]
-    },
-    "error-404": {
-      "frameId": "696:18",
-      "texts": [
-        "404",
-        "Page not found",
-        "The page you’re looking for doesn’t exist or may have been moved.",
-        "Go back",
-        "Take me home"
-      ],
-      "icons": [
-        "arrow_back"
-      ],
-      "instances": [
-        "Button",
-        "Button"
-      ]
-    },
-    "empty-state": {
-      "frameId": "696:17",
-      "texts": [
-        "No projects yet",
-        "Create your first project and it’ll show up here.",
-        "New project"
-      ],
-      "icons": [
-        "add",
-        "folder_open"
-      ],
-      "instances": [
-        "Button"
-      ]
-    },
     "cookie-consent": {
       "frameId": "696:10",
       "texts": [
@@ -1269,180 +627,225 @@
         "Button"
       ]
     },
-    "list-detail": {
-      "frameId": "696:28",
+    "empty-state": {
+      "frameId": "696:17",
       "texts": [
-        "Inbox",
-        "3",
-        "Grace Hopper",
-        "9:41",
-        "Re: Q3 roadmap",
-        "Looks great — one note on timing…",
-        "Alan Turing",
-        "8:02",
-        "Deploy window",
-        "Can we push to Thursday?",
-        "Katherine J.",
-        "Yesterday",
-        "Design review",
-        "Left comments on the flows.",
-        "Re: Q3 roadmap",
-        "Grace Hopper · 9:41 AM",
-        "Hi Ada,",
-        "Looks great — one note on timing: can we align the beta with the marketing push in week 6? That gives us room to bake in the feedback from the design review.",
-        "Thanks, Grace"
-      ],
-      "icons": [
-        "delete",
-        "folder_open"
-      ],
-      "instances": [
-        "Badge",
-        "Separator",
-        "Button",
-        "Button",
-        "Separator"
-      ]
-    },
-    "settings": {
-      "frameId": "696:53",
-      "texts": [
-        "Profile",
-        "Update your public profile and notification preferences.",
-        "First name",
-        "Ada",
-        "Last name",
-        "Lovelace",
-        "Bio",
-        "Tell us a little about yourself…",
-        "Email notifications",
-        "Get notified about activity.",
-        "Cancel",
-        "Save changes"
-      ],
-      "icons": [],
-      "instances": [
-        "Label",
-        "Input",
-        "Label",
-        "Input",
-        "Label",
-        "Textarea",
-        "Separator",
-        "Label",
-        "Switch",
-        "Button",
-        "Button"
-      ]
-    },
-    "tabs-page": {
-      "frameId": "696:63",
-      "texts": [
-        "Account",
-        "Notifications",
-        "Security",
-        "Account",
-        "Update your account details.",
-        "Display name",
-        "Ada Lovelace",
-        "Email",
-        "ada@example.com"
-      ],
-      "icons": [],
-      "instances": [
-        "Tabs",
-        "Label",
-        "Input",
-        "Label",
-        "Input"
-      ]
-    },
-    "profile-card": {
-      "frameId": "696:52",
-      "texts": [
-        "AL",
-        "Ada Lovelace",
-        "Principal Engineer",
-        "Pro",
-        "24",
-        "Projects",
-        "1.2k",
-        "Followers",
-        "318",
-        "Following",
-        "Follow",
-        "Message"
+        "No projects yet",
+        "Create your first project and it’ll show up here.",
+        "New project"
       ],
       "icons": [
         "add",
-        "mail"
+        "folder_open"
       ],
       "instances": [
-        "Badge",
-        "Separator",
+        "Button"
+      ]
+    },
+    "error-404": {
+      "frameId": "696:18",
+      "texts": [
+        "404",
+        "Page not found",
+        "The page you’re looking for doesn’t exist or may have been moved.",
+        "Go back",
+        "Take me home"
+      ],
+      "icons": [
+        "arrow_back"
+      ],
+      "instances": [
         "Button",
         "Button"
       ]
     },
-    "notifications": {
-      "frameId": "699:789",
+    "faq": {
+      "frameId": "696:19",
       "texts": [
-        "Notifications",
-        "Mark all read",
-        "New member joined",
-        "Grace Hopper accepted your invite.",
-        "2m",
-        "Deploy succeeded",
-        "acme-site is live in production.",
-        "1h",
-        "Backup complete",
-        "Weekly backup finished successfully.",
-        "4h"
+        "FAQ",
+        "Common questions",
+        "Everything else lives in the docs — or ask us directly.",
+        "Can I use Quill in a commercial project?",
+        "Yes. The theme, tokens, and every pattern ship under a permissive license — attribution is appreciated, never required.",
+        "How do I install the theme?",
+        "Does dark mode come for free?",
+        "What about accessibility?",
+        "Still curious?",
+        "Talk to the team"
+      ],
+      "icons": [
+        "keyboard_arrow_down",
+        "keyboard_arrow_down",
+        "keyboard_arrow_down",
+        "keyboard_arrow_up"
+      ],
+      "instances": [
+        "Button"
+      ]
+    },
+    "feature-section": {
+      "frameId": "696:20",
+      "texts": [
+        "Why Quill",
+        "A calm, editorial design system",
+        "Everything connected to tokens, so it stays consistent as it grows.",
+        "Design tokens",
+        "One source of truth flows to code and Figma alike.",
+        "Composable",
+        "Build screens fast from accessible, themeable components.",
+        "Accessible",
+        "WCAG 2.1 AA out of the box, verified in CI."
       ],
       "icons": [
         "check_circle",
-        "content_copy",
-        "group"
+        "dashboard",
+        "palette"
+      ],
+      "instances": []
+    },
+    "file-upload": {
+      "frameId": "696:21",
+      "texts": [
+        "Upload assets",
+        "SVG, PNG, PDF or ZIP — up to 25 MB each.",
+        "Drag files here or click to browse",
+        "Your files stay private.",
+        "brand-lockups.zip",
+        "4.2 MB",
+        "declaration.webp",
+        "189 KB",
+        "field-notes-issue-001.pdf",
+        "2.8 MB",
+        "Cancel",
+        "Done"
+      ],
+      "icons": [
+        "check",
+        "check",
+        "close",
+        "close",
+        "close",
+        "cloud_upload",
+        "draft"
       ],
       "instances": [
-        "Button",
         "Separator",
+        "Button",
+        "Button",
+        "Progress",
+        "Button",
+        "Button",
+        "Button"
+      ]
+    },
+    "footer": {
+      "frameId": "696:22",
+      "texts": [
+        "Quill",
+        "A calm, editorial design system for building by hand.",
+        "Product",
+        "Overview",
+        "Components",
+        "Tokens",
+        "Changelog",
+        "Resources",
+        "Docs",
+        "Guides",
+        "Figma kit",
+        "Support",
+        "Company",
+        "About",
+        "Blog",
+        "Careers",
+        "Contact",
+        "© 2026 Quill. All rights reserved.",
+        "Privacy",
+        "Terms"
+      ],
+      "icons": [],
+      "instances": [
         "Separator"
       ]
     },
-    "search-results": {
-      "frameId": "699:787",
+    "forgot-password": {
+      "frameId": "696:23",
       "texts": [
-        "token",
-        "4 results for “token”",
-        "Design tokens",
-        "Docs › Foundations",
-        "Guide",
-        "Button component",
-        "Components › Button",
-        "Component",
-        "Theming & dark mode",
-        "Docs › Theming",
-        "Guide",
-        "Accessibility checklist",
-        "Docs › A11y",
-        "Guide"
+        "Reset your password",
+        "Enter the email you signed up with and we’ll send you a reset link.",
+        "Email",
+        "you@example.com",
+        "Send reset link",
+        "Back to sign in"
       ],
       "icons": [
-        "description",
-        "description",
-        "description",
-        "description"
+        "arrow_back"
       ],
       "instances": [
+        "Label",
         "Input",
+        "Button",
+        "Button"
+      ]
+    },
+    "hero": {
+      "frameId": "696:25",
+      "texts": [
+        "New — v2.0 is here",
+        "The calm design system for building things by hand",
+        "Accessible, themeable components and a single-source token foundation that flows to code and Figma alike.",
+        "Get started",
+        "Read the docs"
+      ],
+      "icons": [
+        "arrow_forward",
+        "menu_book"
+      ],
+      "instances": [
         "Badge",
+        "Button",
+        "Button"
+      ]
+    },
+    "invoice": {
+      "frameId": "696:26",
+      "texts": [
+        "Invoice 0042",
+        "Issued June 30, 2026 · Due July 14, 2026",
+        "Paid",
+        "From",
+        "Craftwell",
+        "hello@craftwell.ai",
+        "Billed to",
+        "Northwind Ltd.",
+        "accounts@northwind.com",
+        "Description",
+        "Qty",
+        "Rate",
+        "Amount",
+        "Design system retainer — June",
+        "1",
+        "$3,200.00",
+        "$3,200.00",
+        "Brand lock-up refinements",
+        "6",
+        "$140.00",
+        "$840.00",
+        "Storybook pattern library",
+        "12",
+        "$95.00",
+        "$1,140.00",
+        "Total",
+        "$5,180.00",
+        "Thank you — see you next issue.",
+        "Download PDF"
+      ],
+      "icons": [
+        "download"
+      ],
+      "instances": [
+        "Tone badge",
         "Separator",
-        "Badge",
-        "Separator",
-        "Badge",
-        "Separator",
-        "Badge"
+        "Button"
       ]
     },
     "kanban": {
@@ -1493,23 +896,501 @@
         "Badge"
       ]
     },
-    "chat": {
-      "frameId": "696:7",
+    "list-detail": {
+      "frameId": "696:28",
       "texts": [
-        "GH",
+        "Inbox",
+        "3",
         "Grace Hopper",
-        "Online",
-        "Hey! Did the new tokens land?",
-        "Yep — merged this morning. Dark mode flows automatically now.",
-        "Amazing. The badges look so much cleaner.",
-        "Right? Everything binds to the foundation.",
-        "Message…"
+        "9:41",
+        "Re: Q3 roadmap",
+        "Looks great — one note on timing…",
+        "Alan Turing",
+        "8:02",
+        "Deploy window",
+        "Can we push to Thursday?",
+        "Katherine J.",
+        "Yesterday",
+        "Design review",
+        "Left comments on the flows.",
+        "Re: Q3 roadmap",
+        "Grace Hopper · 9:41 AM",
+        "Hi Ada,",
+        "Looks great — one note on timing: can we align the beta with the marketing push in week 6? That gives us room to bake in the feedback from the design review.",
+        "Thanks, Grace"
+      ],
+      "icons": [
+        "delete",
+        "folder_open"
+      ],
+      "instances": [
+        "Badge",
+        "Separator",
+        "Button",
+        "Button",
+        "Separator"
+      ]
+    },
+    "login": {
+      "frameId": "696:29",
+      "texts": [
+        "Sign in",
+        "Welcome back — enter your details to continue.",
+        "Email",
+        "you@example.com",
+        "Password",
+        "••••••••",
+        "Remember me for 30 days",
+        "Sign in",
+        "Forgot your password?"
+      ],
+      "icons": [],
+      "instances": [
+        "Label",
+        "Input",
+        "Label",
+        "Input",
+        "Checkbox",
+        "Label",
+        "Button",
+        "Button"
+      ]
+    },
+    "login-minimal": {
+      "frameId": "696:35",
+      "texts": [
+        "Q",
+        "Sign in to Quill",
+        "Email",
+        "you@example.com",
+        "Continue",
+        "We’ll email you a one-time code. No password needed."
       ],
       "icons": [
         "arrow_forward"
       ],
       "instances": [
+        "Label",
         "Input",
+        "Button"
+      ]
+    },
+    "login-oauth": {
+      "frameId": "696:36",
+      "texts": [
+        "Q",
+        "Sign in to Quill",
+        "Use the account you already have.",
+        "Continue with Google",
+        "Continue with GitHub",
+        "Continue with Apple",
+        "or",
+        "Email",
+        "you@example.com",
+        "Continue with email",
+        "By continuing you agree to the Terms and Privacy Policy."
+      ],
+      "icons": [],
+      "instances": [
+        "Separator",
+        "Separator",
+        "Label",
+        "Input",
+        "Button"
+      ]
+    },
+    "login-split-panel": {
+      "frameId": "696:37",
+      "texts": [
+        "Quill",
+        "“The most crafted-feeling system we’ve ever shipped on. It reads like a notebook, not a dashboard.”",
+        "Sofia Almeida — Head of Product, Northwind",
+        "Welcome back",
+        "Sign in to your team account.",
+        "Email",
+        "you@example.com",
+        "Password",
+        "Forgot?",
+        "••••••••",
+        "Sign in",
+        "or",
+        "Continue with a magic link"
+      ],
+      "icons": [
+        "mail"
+      ],
+      "instances": [
+        "Label",
+        "Input",
+        "Label",
+        "Button",
+        "Input",
+        "Button",
+        "Separator",
+        "Separator",
+        "Button"
+      ]
+    },
+    "mail-shell": {
+      "frameId": "696:38",
+      "texts": [
+        "Inbox",
+        "2 unread",
+        "Search mail…",
+        "Ada Lovelace",
+        "9:12",
+        "Scope for the Q3 engagement",
+        "Revised deliverables are in the shared folder — see the summary…",
+        "Nadia Okonjo",
+        "Yesterday",
+        "Component API revisions",
+        "I reworked the variant props so they compose cleanly at three scales…",
+        "Marcus Reed",
+        "Tue",
+        "Discovery findings, second pass",
+        "Interview notes are synthesised — summary tomorrow morning…",
+        "1 of 24",
+        "AL",
+        "Ada Lovelace",
+        "to Client · 9:12",
+        "Client",
+        "Scope for the Q3 engagement",
+        "Revised deliverables are in the shared folder — the component inventory held up even at the smallest breakpoint, and the dark variants read exactly as we hoped.",
+        "I’ve queued the remaining two flows for tomorrow. If review lands on time we should have the full set ready by Thursday.",
+        "— A.",
+        "Reply to Ada…",
+        "Send"
+      ],
+      "icons": [
+        "archive",
+        "delete",
+        "forward",
+        "reply",
+        "send"
+      ],
+      "instances": [
+        "Badge",
+        "Input",
+        "Separator",
+        "Button",
+        "Button",
+        "Button",
+        "Button",
+        "Avatar",
+        "Badge",
+        "Separator",
+        "Separator",
+        "Input",
+        "Button"
+      ]
+    },
+    "navbar": {
+      "frameId": "696:39",
+      "texts": [
+        "Quill",
+        "Product",
+        "Solutions",
+        "Pricing",
+        "Docs",
+        "Sign in",
+        "Get started"
+      ],
+      "icons": [
+        "arrow_forward"
+      ],
+      "instances": [
+        "Button",
+        "Button"
+      ]
+    },
+    "newsletter": {
+      "frameId": "696:40",
+      "texts": [
+        "The Brief",
+        "One letter a month on design systems and the teams that ship them. No spam, no noise — unsubscribe any time.",
+        "you@example.com",
+        "Subscribe",
+        "Joined by 4,200 fellow practitioners."
+      ],
+      "icons": [
+        "mail"
+      ],
+      "instances": [
+        "Input",
+        "Button"
+      ]
+    },
+    "notifications": {
+      "frameId": "699:789",
+      "texts": [
+        "Notifications",
+        "Mark all read",
+        "New member joined",
+        "Grace Hopper accepted your invite.",
+        "2m",
+        "Deploy succeeded",
+        "acme-site is live in production.",
+        "1h",
+        "Backup complete",
+        "Weekly backup finished successfully.",
+        "4h"
+      ],
+      "icons": [
+        "check_circle",
+        "content_copy",
+        "group"
+      ],
+      "instances": [
+        "Button",
+        "Separator",
+        "Separator"
+      ]
+    },
+    "onboarding": {
+      "frameId": "696:41",
+      "texts": [
+        "Get set up",
+        "2 of 4 complete — you’re almost there.",
+        "Create your account",
+        "Name your workspace",
+        "Invite your team",
+        "Start",
+        "Connect a repository",
+        "Start"
+      ],
+      "icons": [
+        "check",
+        "check"
+      ],
+      "instances": [
+        "Button",
+        "Button"
+      ]
+    },
+    "otp-verification": {
+      "frameId": "696:42",
+      "texts": [
+        "Check your email",
+        "We sent a six-digit code to",
+        "ada@example.com",
+        ".",
+        "The code expires in 10 minutes.",
+        "Verify",
+        "Didn’t get it? Resend code"
+      ],
+      "icons": [
+        "remove"
+      ],
+      "instances": [
+        "InputOTP",
+        "Button",
+        "Button"
+      ]
+    },
+    "page-header": {
+      "frameId": "696:50",
+      "texts": [
+        "Projects",
+        "Acme site",
+        "Settings",
+        "Project settings",
+        "Manage configuration, members, and integrations for this project.",
+        "Duplicate",
+        "New"
+      ],
+      "icons": [
+        "add",
+        "content_copy"
+      ],
+      "instances": [
+        "Breadcrumb",
+        "Button",
+        "Button"
+      ]
+    },
+    "pricing": {
+      "frameId": "696:51",
+      "texts": [
+        "Starter",
+        "For trying things out.",
+        "$0",
+        "/mo",
+        "1 project",
+        "Community support",
+        "1 GB storage",
+        "Get started",
+        "Pro",
+        "Popular",
+        "For growing teams.",
+        "$18",
+        "/mo",
+        "Unlimited projects",
+        "Priority support",
+        "100 GB storage",
+        "Analytics",
+        "Start free trial",
+        "Enterprise",
+        "For large organizations.",
+        "Custom",
+        "SSO & SAML",
+        "Dedicated support",
+        "Unlimited storage",
+        "Audit logs",
+        "Contact sales"
+      ],
+      "icons": [
+        "check",
+        "check",
+        "check",
+        "check",
+        "check",
+        "check",
+        "check",
+        "check",
+        "check",
+        "check",
+        "check"
+      ],
+      "instances": [
+        "Button",
+        "Badge",
+        "Button",
+        "Button"
+      ]
+    },
+    "profile-card": {
+      "frameId": "696:52",
+      "texts": [
+        "AL",
+        "Ada Lovelace",
+        "Principal Engineer",
+        "Pro",
+        "24",
+        "Projects",
+        "1.2k",
+        "Followers",
+        "318",
+        "Following",
+        "Follow",
+        "Message"
+      ],
+      "icons": [
+        "add",
+        "mail"
+      ],
+      "instances": [
+        "Badge",
+        "Button",
+        "Button"
+      ]
+    },
+    "search-results": {
+      "frameId": "699:787",
+      "texts": [
+        "token",
+        "4 results for “token”",
+        "Design tokens",
+        "Docs › Foundations",
+        "Guide",
+        "Button component",
+        "Components › Button",
+        "Component",
+        "Theming & dark mode",
+        "Docs › Theming",
+        "Guide",
+        "Accessibility checklist",
+        "Docs › A11y",
+        "Guide"
+      ],
+      "icons": [
+        "description",
+        "description",
+        "description",
+        "description"
+      ],
+      "instances": [
+        "Input",
+        "Badge",
+        "Separator",
+        "Badge",
+        "Separator",
+        "Badge",
+        "Separator",
+        "Badge"
+      ]
+    },
+    "settings": {
+      "frameId": "696:53",
+      "texts": [
+        "Profile",
+        "Update your public profile and notification preferences.",
+        "First name",
+        "Ada",
+        "Last name",
+        "Lovelace",
+        "Bio",
+        "Tell us a little about yourself…",
+        "Email notifications",
+        "Get notified about activity.",
+        "Cancel",
+        "Save changes"
+      ],
+      "icons": [],
+      "instances": [
+        "Label",
+        "Input",
+        "Label",
+        "Input",
+        "Label",
+        "Textarea",
+        "Separator",
+        "Label",
+        "Switch",
+        "Button",
+        "Button"
+      ]
+    },
+    "sidebar-nav": {
+      "frameId": "699:788",
+      "texts": [
+        "Q",
+        "Quill",
+        "Workspace",
+        "Overview",
+        "Engagements",
+        "4",
+        "Clients",
+        "Deliverables",
+        "12",
+        "Team",
+        "Collaborators",
+        "Settings",
+        "JD",
+        "John Doe",
+        "Team plan",
+        "Workspace",
+        "Overview",
+        "Active engagements",
+        "Nothing pressing.",
+        "Review queue",
+        "Nothing pressing.",
+        "Client notes",
+        "Nothing pressing."
+      ],
+      "icons": [
+        "chevron_right",
+        "dock_to_left",
+        "group",
+        "ink_pen",
+        "palette",
+        "photo_library",
+        "settings",
+        "space_dashboard"
+      ],
+      "instances": [
+        "Separator",
+        "Separator",
+        "Avatar",
         "Button"
       ]
     },
@@ -1539,27 +1420,166 @@
         "Button"
       ]
     },
-    "login-oauth": {
-      "frameId": "696:36",
+    "signup-social": {
+      "frameId": "696:55",
       "texts": [
-        "Q",
-        "Sign in to Quill",
-        "Use the account you already have.",
-        "Continue with Google",
+        "Create your account",
+        "Start with a provider, or use your email.",
         "Continue with GitHub",
-        "Continue with Apple",
-        "or",
+        "Continue with Google",
+        "or with email",
         "Email",
         "you@example.com",
-        "Continue with email",
-        "By continuing you agree to the Terms and Privacy Policy."
+        "Password",
+        "At least 12 characters",
+        "Create account",
+        "By continuing you agree to the team terms and privacy note."
       ],
       "icons": [],
       "instances": [
+        "Button",
+        "Button",
         "Separator",
         "Separator",
         "Label",
         "Input",
+        "Label",
+        "Input",
+        "Button"
+      ]
+    },
+    "stat-cards": {
+      "frameId": "699:786",
+      "texts": [
+        "Total revenue",
+        "$48,120",
+        "+12.4%",
+        "vs last month",
+        "Active users",
+        "3,842",
+        "+4.1%",
+        "vs last month",
+        "Churn",
+        "1.9%",
+        "−0.3%",
+        "vs last month",
+        "Open tickets",
+        "27",
+        "+6",
+        "vs last month"
+      ],
+      "icons": [],
+      "instances": [
+        "Badge",
+        "Badge",
+        "Badge",
+        "Badge"
+      ]
+    },
+    "stats-band": {
+      "frameId": "696:56",
+      "texts": [
+        "By the numbers",
+        "A system that keeps its promises",
+        "56",
+        "Components",
+        "40+",
+        "Patterns",
+        "5",
+        "Themes, light and dark",
+        "AA",
+        "WCAG 2.1 target"
+      ],
+      "icons": [],
+      "instances": []
+    },
+    "tabs-page": {
+      "frameId": "696:63",
+      "texts": [
+        "Account",
+        "Notifications",
+        "Security",
+        "Account",
+        "Update your account details.",
+        "Display name",
+        "Ada Lovelace",
+        "Email",
+        "ada@example.com"
+      ],
+      "icons": [],
+      "instances": [
+        "Tabs",
+        "Label",
+        "Input",
+        "Label",
+        "Input"
+      ]
+    },
+    "team-section": {
+      "frameId": "696:64",
+      "texts": [
+        "The team",
+        "Curated collections, crafted by intelligence",
+        "A small team who believe interfaces should feel like well-kept notebooks.",
+        "JD",
+        "John Doe",
+        "Founder & Principal",
+        "Strategy",
+        "AL",
+        "Ada Lovelace",
+        "Engineering",
+        "Systems",
+        "NO",
+        "Nadia Okonjo",
+        "Product Design",
+        "Design",
+        "MR",
+        "Marcus Reed",
+        "Research",
+        "Research"
+      ],
+      "icons": [
+        "mail",
+        "mail",
+        "mail",
+        "mail"
+      ],
+      "instances": [
+        "Avatar",
+        "Badge",
+        "Button",
+        "Avatar",
+        "Badge",
+        "Button",
+        "Avatar",
+        "Badge",
+        "Button",
+        "Avatar",
+        "Badge",
+        "Button"
+      ]
+    },
+    "testimonial": {
+      "frameId": "696:65",
+      "texts": [
+        "“Quill let our team ship consistent, accessible screens in days — the token foundation means design and code never drift.”",
+        "RP",
+        "Riley Park",
+        "Head of Design, Northwind"
+      ],
+      "icons": [],
+      "instances": []
+    },
+    "theme-selector": {
+      "frameId": "696:71",
+      "texts": [
+        "Dawn"
+      ],
+      "icons": [
+        "keyboard_arrow_down",
+        "light_mode"
+      ],
+      "instances": [
         "Button"
       ]
     },
@@ -1593,25 +1613,117 @@
         "Button"
       ]
     },
-    "onboarding": {
-      "frameId": "696:41",
+    "example-app-page": {
+      "frameId": "700:274",
       "texts": [
-        "Get set up",
-        "2 of 4 complete — you’re almost there.",
-        "Create your account",
-        "Name your workspace",
-        "Invite your team",
-        "Start",
-        "Connect a repository",
-        "Start"
+        "Q",
+        "Quill",
+        "Workspace",
+        "Overview",
+        "Engagements",
+        "4",
+        "Clients",
+        "Deliverables",
+        "12",
+        "Team",
+        "Collaborators",
+        "Settings",
+        "JD",
+        "John Doe",
+        "Team plan",
+        "Workspace",
+        "Projects",
+        "Acme site",
+        "Settings",
+        "Project settings",
+        "Manage configuration, members, and integrations for this project.",
+        "Duplicate",
+        "New",
+        "Total revenue",
+        "$48,120",
+        "+12.4%",
+        "vs last month",
+        "Active users",
+        "3,842",
+        "+4.1%",
+        "vs last month",
+        "Churn",
+        "1.9%",
+        "−0.3%",
+        "vs last month",
+        "Open tickets",
+        "27",
+        "+6",
+        "vs last month",
+        "Filter members…",
+        "Filter",
+        "Invite",
+        "Name",
+        "Role",
+        "Status",
+        "Ada Lovelace",
+        "ada@example.com",
+        "Owner",
+        "Active",
+        "Alan Turing",
+        "alan@example.com",
+        "Admin",
+        "Active",
+        "Grace Hopper",
+        "grace@example.com",
+        "Editor",
+        "Invited",
+        "Katherine Johnson",
+        "kat@example.com",
+        "Viewer",
+        "Active"
       ],
       "icons": [
-        "check",
-        "check"
+        "add",
+        "add",
+        "content_copy",
+        "dock_to_left",
+        "filter_list",
+        "group",
+        "ink_pen",
+        "more_horiz",
+        "more_horiz",
+        "more_horiz",
+        "more_horiz",
+        "palette",
+        "photo_library",
+        "settings",
+        "space_dashboard"
       ],
       "instances": [
-        "Button",
-        "Button"
+        "Sidebar nav",
+        "Page header",
+        "Stat cards",
+        "Data table"
+      ]
+    },
+    "example-auth-page": {
+      "frameId": "697:289",
+      "texts": [
+        "Quill",
+        "“The most crafted-feeling system we’ve ever shipped on. It reads like a notebook, not a dashboard.”",
+        "Sofia Almeida — Head of Product, Northwind",
+        "Welcome back",
+        "Sign in to your team account.",
+        "Email",
+        "you@example.com",
+        "Password",
+        "Forgot?",
+        "••••••••",
+        "Sign in",
+        "or",
+        "Continue with a magic link"
+      ],
+      "icons": [
+        "mail"
+      ],
+      "instances": [
+        "Login split panel"
       ]
     },
     "example-marketing-page": {
@@ -1715,119 +1827,6 @@
         "Pricing",
         "Testimonial",
         "Footer"
-      ]
-    },
-    "example-auth-page": {
-      "frameId": "697:289",
-      "texts": [
-        "Quill",
-        "“The most crafted-feeling system we’ve ever shipped on. It reads like a notebook, not a dashboard.”",
-        "Sofia Almeida — Head of Product, Northwind",
-        "Welcome back",
-        "Sign in to your team account.",
-        "Email",
-        "you@example.com",
-        "Password",
-        "Forgot?",
-        "••••••••",
-        "Sign in",
-        "or",
-        "Continue with a magic link"
-      ],
-      "icons": [
-        "mail"
-      ],
-      "instances": [
-        "Login split panel"
-      ]
-    },
-    "example-app-page": {
-      "frameId": "700:274",
-      "texts": [
-        "Q",
-        "Quill",
-        "Workspace",
-        "Overview",
-        "Engagements",
-        "4",
-        "Clients",
-        "Deliverables",
-        "12",
-        "Team",
-        "Collaborators",
-        "Settings",
-        "JD",
-        "John Doe",
-        "Team plan",
-        "Workspace",
-        "Projects",
-        "Acme site",
-        "Settings",
-        "Project settings",
-        "Manage configuration, members, and integrations for this project.",
-        "Duplicate",
-        "New",
-        "Total revenue",
-        "$48,120",
-        "+12.4%",
-        "vs last month",
-        "Active users",
-        "3,842",
-        "+4.1%",
-        "vs last month",
-        "Churn",
-        "1.9%",
-        "−0.3%",
-        "vs last month",
-        "Open tickets",
-        "27",
-        "+6",
-        "vs last month",
-        "Filter members…",
-        "Filter",
-        "Invite",
-        "Name",
-        "Role",
-        "Status",
-        "Ada Lovelace",
-        "ada@example.com",
-        "Owner",
-        "Active",
-        "Alan Turing",
-        "alan@example.com",
-        "Admin",
-        "Active",
-        "Grace Hopper",
-        "grace@example.com",
-        "Editor",
-        "Invited",
-        "Katherine Johnson",
-        "kat@example.com",
-        "Viewer",
-        "Active"
-      ],
-      "icons": [
-        "add",
-        "add",
-        "content_copy",
-        "dock_to_left",
-        "filter_list",
-        "group",
-        "ink_pen",
-        "more_horiz",
-        "more_horiz",
-        "more_horiz",
-        "more_horiz",
-        "palette",
-        "photo_library",
-        "settings",
-        "space_dashboard"
-      ],
-      "instances": [
-        "Sidebar nav",
-        "Page header",
-        "Stat cards",
-        "Data table"
       ]
     }
   }

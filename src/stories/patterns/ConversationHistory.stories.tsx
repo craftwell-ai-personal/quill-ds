@@ -345,7 +345,7 @@ function Leavable(args: Args) {
   const [here, setHere] = React.useState(true)
   return (
     <div className="grid gap-3">
-      <button type="button" onClick={() => setHere(false)}>Leave</button>
+      <Button type="button" variant="outline" size="sm" className="w-fit" onClick={() => setHere(false)}>Leave</Button>
       {here ? <Owned {...args} /> : <p>Gone</p>}
     </div>
   )
@@ -422,7 +422,9 @@ export const LongAndLinked: Story = {
 export const RowShowsFocusRing: Story = {
   render: (args) => <Owned {...args} />,
   play: async ({ canvas }) => {
-    await expectFocusRing(canvas.getByRole('button', { name: 'Launch brief draft' }))
+    const open = canvas.getByRole('button', { name: 'Launch brief draft' })
+    // The ring is the row's, so it wraps the ⋯ button too rather than stopping at the title.
+    await expectFocusRing(open, open.closest<HTMLElement>('.group\\/row')!)
   },
 }
 
@@ -470,10 +472,10 @@ function Staged({ closeOnDelete, pinAfter, hideable, slowDelete, ...args }: Args
   return (
     <div className="grid gap-3">
       <div className="flex gap-3">
-        <button type="button" onClick={() => setHere(false)}>Leave</button>
-        <button type="button" onClick={() => setShown((was) => !was)}>{shown ? 'Hide' : 'Show'}</button>
-        <button type="button" onClick={() => setChats((all) => all.filter((chat) => chat.id !== 'c'))}>Remove elsewhere</button>
-        <button type="button" onClick={() => setChats((all) => all.map((chat) => (chat.id === 'd' ? { ...chat, updatedAt: NOW } : chat)))}>Bump elsewhere</button>
+        <Button type="button" variant="outline" size="sm" className="w-fit" onClick={() => setHere(false)}>Leave</Button>
+        <Button type="button" variant="outline" size="sm" className="w-fit" onClick={() => setShown((was) => !was)}>{shown ? 'Hide' : 'Show'}</Button>
+        <Button type="button" variant="outline" size="sm" className="w-fit" onClick={() => setChats((all) => all.filter((chat) => chat.id !== 'c'))}>Remove elsewhere</Button>
+        <Button type="button" variant="outline" size="sm" className="w-fit" onClick={() => setChats((all) => all.map((chat) => (chat.id === 'd' ? { ...chat, updatedAt: NOW } : chat)))}>Bump elsewhere</Button>
       </div>
       {here ? (hideable ? <React.Activity mode={shown ? 'visible' : 'hidden'}>{list}</React.Activity> : list) : <p>Gone</p>}
     </div>

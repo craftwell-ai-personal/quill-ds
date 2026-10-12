@@ -10,10 +10,11 @@ export const tabTo = async (element: HTMLElement, maxPresses = 30) => {
 }
 
 // The stock Button draws its keyboard focus as a 3px ring (a box-shadow); an unfocused control has none.
-export const expectFocusRing = async (element: HTMLElement) => {
-  await expect(getComputedStyle(element).boxShadow).toBe('none')
+// ringOn: the box that draws the ring when it is not the focused control itself (a whole row around its link).
+export const expectFocusRing = async (element: HTMLElement, ringOn: HTMLElement = element) => {
+  await expect(getComputedStyle(ringOn).boxShadow).toBe('none')
   await tabTo(element)
   // :focus-visible only matches while this frame is the focused one; under parallel load another frame can hold it.
   await expect(document.hasFocus(), 'the test frame is not the focused frame, so :focus-visible cannot match').toBe(true)
-  await waitFor(() => expect(getComputedStyle(element).boxShadow).not.toBe('none'))
+  await waitFor(() => expect(getComputedStyle(ringOn).boxShadow).not.toBe('none'))
 }

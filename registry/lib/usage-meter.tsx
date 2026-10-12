@@ -15,6 +15,8 @@ export type UsageMeterProps = {
   label?: string
   /** The plural the numbers count: "credits", "messages". */
   unit?: string
+  /** The same word for exactly one: "credit". Defaults to `unit` without its final "s"; pass it for a plural that is not just +s. */
+  unitOne?: string
   /** When it refills, as a finished phrase: "Renews 1 November". */
   renews?: string
   /** What the rest will buy, in plain words: "About 150 more long answers." */
@@ -53,7 +55,7 @@ const FILL = '[&_[data-slot=progress-indicator]]:rounded-full [&_[data-slot=prog
 
 /** Shows how much AI credit is left — the number, a bar in the AI gradient, when it renews, what the rest will buy, and a breakdown — with a compact ring for a composer footer. */
 export function UsageMeter({
-  remaining, total, label = 'AI credits', unit = 'credits', renews, estimate, breakdown, action,
+  remaining, total, label = 'AI credits', unit = 'credits', unitOne, renews, estimate, breakdown, action,
   lowAt = 0.1, lowLabel = 'Running low', variant = 'card', locale = 'en-US', className,
 }: UsageMeterProps) {
   const titleId = React.useId()
@@ -66,7 +68,9 @@ export function UsageMeter({
   const low = share <= Math.min(1, Math.max(0, finite(lowAt)))
   const whole = new Intl.NumberFormat(locale)
   const short = new Intl.NumberFormat(locale, { notation: 'compact', maximumFractionDigits: 1 })
-  const spoken = `${whole.format(left)} of ${whole.format(max)} ${unit} left${low ? `. ${lowLabel}` : ''}`
+  // "1 credits left" read wrong; one left takes the singular.
+  const leftUnit = left === 1 ? (unitOne ?? unit.replace(/s$/, '')) : unit
+  const spoken = `${whole.format(left)} of ${whole.format(max)} ${leftUnit} left${low ? `. ${lowLabel}` : ''}`
   const rows = breakdown ?? []
 
   if (variant === 'compact') {
@@ -92,7 +96,7 @@ export function UsageMeter({
         {/* The visible line is the same low or not; low is for screen readers only, said before the amount. */}
         <span>
           {low ? <span className="sr-only">{lowLabel}: </span> : null}
-          {short.format(left)} {unit} left
+          {short.format(left)} {leftUnit} left
           <span className="sr-only"> of {whole.format(max)}</span>
         </span>
       </span>

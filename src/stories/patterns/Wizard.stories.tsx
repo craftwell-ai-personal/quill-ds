@@ -30,7 +30,7 @@ export const DoDont: Story = {
       usage={usage}
       id="always-show-full-sequence"
       doExample={
-        <div className="flex w-[300px] flex-col gap-3 rounded-xl bg-card ring-1 ring-foreground/10 p-4">
+        <div className="flex w-[380px] max-w-full flex-col gap-3 rounded-xl bg-card ring-1 ring-foreground/10 p-4">
           <ol className="flex items-center gap-2">
             {wizardSteps.map((s, i) => {
               const state = i === 0 ? 'done' : i === 1 ? 'current' : 'todo'
@@ -59,7 +59,7 @@ export const DoDont: Story = {
         </div>
       }
       dontExample={
-        <div className="flex w-[300px] flex-col gap-3 rounded-xl bg-card ring-1 ring-foreground/10 p-4">
+        <div className="flex w-[380px] max-w-full flex-col gap-3 rounded-xl bg-card ring-1 ring-foreground/10 p-4">
           <span className="text-xs font-medium text-muted-foreground">Step 2</span>
           <span className="text-sm font-medium text-foreground">Name your workspace</span>
         </div>

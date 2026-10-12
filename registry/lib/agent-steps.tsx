@@ -90,7 +90,8 @@ export function AgentSteps({ title, steps, onRetry, className }: {
   return (
     <div data-slot="agent-steps" role="group" aria-labelledby={`${baseId}-title`}
       className={cn('grid gap-2.5 rounded-xl border border-border bg-card px-4 py-3.5 text-sm shadow-sm', className)}>
-      <div className="flex items-center gap-2">
+      {/* px-1 matches the rows' inset, so the mark lines up with the dots and the count with the times. */}
+      <div className="flex items-center gap-2 px-1">
         <AiMark size={15} />
         <p id={`${baseId}-title`} className="min-w-0 flex-1 font-semibold text-ink-soft">{title}</p>
         {/* Hidden from screen readers only while the status region below is saying the same count. */}

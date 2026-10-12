@@ -40,13 +40,13 @@ export const Default: Story = {
       <AccordionItem value="item-1">
         <AccordionTrigger>What is Quill?</AccordionTrigger>
         <AccordionContent>
-          Quill is a design system — a platform for publishing hand-crafted skill courses.
+          Quill is a calm, editorial design system for building interfaces by hand.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-2">
         <AccordionTrigger>What fonts does it use?</AccordionTrigger>
         <AccordionContent>
-          Fraunces for display and editorial moments; Inter for interface text.
+          Fraunces for display and editorial moments; Raleway for interface text.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-3">
@@ -65,13 +65,13 @@ export const DefaultOpen: Story = {
       <AccordionItem value="item-1">
         <AccordionTrigger>What is Quill?</AccordionTrigger>
         <AccordionContent>
-          Quill is a design system — a platform for publishing hand-crafted skill courses.
+          Quill is a calm, editorial design system for building interfaces by hand.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-2">
         <AccordionTrigger>What fonts does it use?</AccordionTrigger>
         <AccordionContent>
-          Fraunces for display and editorial moments; Inter for interface text.
+          Fraunces for display and editorial moments; Raleway for interface text.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-3">
@@ -90,13 +90,13 @@ export const MultipleOpen: Story = {
       <AccordionItem value="a">
         <AccordionTrigger>What is Quill?</AccordionTrigger>
         <AccordionContent>
-          Quill is a design system — a platform for publishing hand-crafted skill courses.
+          Quill is a calm, editorial design system for building interfaces by hand.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="b">
         <AccordionTrigger>What fonts does it use?</AccordionTrigger>
         <AccordionContent>
-          Fraunces for display and editorial moments; Inter for interface text.
+          Fraunces for display and editorial moments; Raleway for interface text.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="c">
@@ -116,13 +116,13 @@ export const Dark: Story = {
       <AccordionItem value="item-1">
         <AccordionTrigger>What is Quill?</AccordionTrigger>
         <AccordionContent>
-          Quill is a design system — a platform for publishing hand-crafted skill courses.
+          Quill is a calm, editorial design system for building interfaces by hand.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-2">
         <AccordionTrigger>What fonts does it use?</AccordionTrigger>
         <AccordionContent>
-          Fraunces for display and editorial moments; Inter for interface text.
+          Fraunces for display and editorial moments; Raleway for interface text.
         </AccordionContent>
       </AccordionItem>
     </Accordion>
@@ -140,7 +140,7 @@ export const DoDont: Story = {
           <AccordionItem value="item-1">
             <AccordionTrigger>What is Quill?</AccordionTrigger>
             <AccordionContent>
-              Quill is a design system — a platform for publishing hand-crafted skill courses.
+              Quill is a calm, editorial design system for building interfaces by hand.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
@@ -159,7 +159,7 @@ export const DoDont: Story = {
                 reads in a static screenshot — a real hover only fires on interaction. */}
             <AccordionTrigger className="bg-paper-deep no-underline">What is Quill?</AccordionTrigger>
             <AccordionContent>
-              Quill is a design system — a platform for publishing hand-crafted skill courses.
+              Quill is a calm, editorial design system for building interfaces by hand.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">

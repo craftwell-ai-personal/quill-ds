@@ -36,7 +36,7 @@ export function Signup() {
         <Button className="w-full">Create account</Button>
         <p className="text-center text-xs text-muted-foreground">
           Already have an account?{' '}
-          <a href="#" className="text-primary underline underline-offset-4">
+          <a href="#" className="rounded-sm text-primary underline underline-offset-4 outline-hidden focus-visible:ring-3 focus-visible:ring-ring/50">
             Sign in
           </a>
         </p>

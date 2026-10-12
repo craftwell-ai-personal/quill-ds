@@ -13,7 +13,7 @@ export function Newsletter() {
       </span>
       <div className="flex flex-col gap-1">
         <h2 className="font-heading text-xl text-foreground">The Brief</h2>
-        <p className="text-sm leading-relaxed text-muted-foreground">
+        <p className="text-sm leading-relaxed text-pretty text-muted-foreground">
           One letter a month on design systems and the teams that ship them. No spam, no noise —
           unsubscribe any time.
         </p>

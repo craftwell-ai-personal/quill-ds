@@ -27,7 +27,7 @@ export function Dashboard() {
         {nav.map((n) => (
           <button
             key={n.label}
-            className={`flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-left text-sm transition-colors ${
+            className={`flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-left text-sm transition-colors outline-hidden focus-visible:ring-3 focus-visible:ring-ring/50 ${
               n.active ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
             }`}
           >

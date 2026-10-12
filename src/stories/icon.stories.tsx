@@ -1,3 +1,4 @@
+import * as React from 'react'
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import { Icon } from '@/components/ui/icon'
 import { icons } from '@/components/ui/icons.core.mjs'
@@ -48,7 +49,10 @@ export const CoreSet: Story = {
       {coreNames.map((name) => (
         <figure key={name} className="m-0 flex flex-col items-center gap-1.5 text-center">
           <Icon name={name} size={22} />
-          <figcaption className="font-mono text-2xs text-muted-foreground break-all">{name}</figcaption>
+          {/* Break only after an underscore: break-all split names mid-word ("check_box_outline_b / lank"). */}
+          <figcaption className="font-mono text-2xs text-muted-foreground break-words">
+            {name.split('_').map((part, index) => (index ? <React.Fragment key={index}>_<wbr />{part}</React.Fragment> : part))}
+          </figcaption>
         </figure>
       ))}
     </div>

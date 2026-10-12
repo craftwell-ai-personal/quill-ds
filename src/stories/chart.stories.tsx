@@ -109,6 +109,7 @@ export const WithLegend: Story = {
 
 export const DoDont: Story = {
   parameters: { layout: 'padded', controls: { disable: true } },
+  // At h-40 Recharts drops whichever tick label would crowd (it hid 45, leaving 0/15/30/60); three ticks always fit.
   render: () => (
     <DoDontPair
       usage={usage}
@@ -117,7 +118,7 @@ export const DoDont: Story = {
         <ChartContainer config={multiSeriesConfig} className="h-40 w-full">
           <BarChart data={multiSeriesData}>
             <XAxis dataKey="month" />
-            <YAxis />
+            <YAxis tickCount={3} />
             <Bar dataKey="lessons" fill="var(--color-lessons)" radius={4} />
             <Bar dataKey="completions" fill="var(--color-completions)" radius={4} />
           </BarChart>
@@ -127,7 +128,7 @@ export const DoDont: Story = {
         <ChartContainer config={rawPigmentConfig} className="h-40 w-full">
           <BarChart data={multiSeriesData}>
             <XAxis dataKey="month" />
-            <YAxis />
+            <YAxis tickCount={3} />
             <Bar dataKey="lessons" fill="var(--color-lessons)" radius={4} />
             <Bar dataKey="completions" fill="var(--color-completions)" radius={4} />
           </BarChart>

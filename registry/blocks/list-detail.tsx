@@ -23,7 +23,7 @@ export function ListDetail() {
           {threads.map((t) => (
             <li key={t.subject}>
               <button
-                className={`flex w-full flex-col gap-0.5 border-b border-border px-4 py-3 text-left transition-colors hover:bg-accent ${
+                className={`flex w-full flex-col gap-0.5 border-b border-border px-4 py-3 text-left transition-colors hover:bg-accent outline-hidden focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-ring/50 ${
                   t.active ? 'bg-accent' : ''
                 }`}
               >

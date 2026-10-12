@@ -218,7 +218,8 @@ export function PromptComposer({
               <CommandGroup heading={trigger === '/' ? 'Commands' : 'Add context'}>
                 {options.map((c) => (
                   <CommandItem key={c.value} value={c.value} onSelect={() => pick(c)} className="gap-2.5">
-                    {c.ai ? <AiMark size={18} /> : null}
+                    {/* An empty slot the mark's width (the item draws every svg at 16px) keeps labels on one edge when only some commands carry it. */}
+                    {c.ai ? <AiMark size={18} /> : options.some((o) => o.ai) ? <span aria-hidden className="size-4 shrink-0" /> : null}
                     <span className="grid"><span>{c.label}</span>{c.description ? <span className="text-xs text-muted-foreground">{c.description}</span> : null}</span>
                   </CommandItem>
                 ))}
@@ -243,7 +244,9 @@ export function PromptComposer({
                   // whose ends poked out past the tab's base; an inline width always wins.
                   style={selected ? { borderBottomWidth: 0 } : undefined}
                   className={cn(
-                    'relative inline-flex items-center gap-1.5 rounded-t-lg px-3.5 pt-1.5 pb-2 text-sm font-semibold',
+                    // Without outline-hidden a keyboard-focused tab drew the browser's own focus ring, not Quill's. Inset, so the
+                    // ring stays inside the tab and does not lay a bar across the box edge the tab joins.
+                    'relative inline-flex items-center gap-1.5 rounded-t-lg px-3.5 pt-1.5 pb-2 text-sm font-semibold outline-hidden focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-ring/50',
                     // The selected tab shares the AI edge; the after: strip covers the box's top
                     // edge under it so tab and box read as one shape (approved 2026-10-02). z-10 keeps its
                     // base curves above a neighbouring tab, which would otherwise paint over the right one.
@@ -298,7 +301,7 @@ export function PromptComposer({
                   </span>
                   {onRemoveAttachment ? (
                     <button type="button" aria-label={`Remove ${a.name}`} onClick={() => onRemoveAttachment(a.id)}
-                      className="absolute top-1/2 right-1 grid size-6 -translate-y-1/2 place-items-center rounded-full text-muted-foreground hover:bg-muted hover:text-foreground">
+                      className="absolute top-1/2 right-1 grid size-6 -translate-y-1/2 place-items-center rounded-full text-muted-foreground hover:bg-muted hover:text-foreground outline-hidden focus-visible:ring-3 focus-visible:ring-ring/50">
                       <Icon name="close" className="size-3.5" />
                     </button>
                   ) : null}
@@ -356,7 +359,7 @@ export function PromptComposer({
                 {t.label}
                 {onRemoveTool ? (
                   <button type="button" aria-label={`Turn off ${t.label}`} onClick={() => onRemoveTool(t.id)}
-                    className="grid size-5 place-items-center rounded-full text-muted-foreground hover:bg-muted hover:text-foreground">
+                    className="grid size-5 place-items-center rounded-full text-muted-foreground hover:bg-muted hover:text-foreground outline-hidden focus-visible:ring-3 focus-visible:ring-ring/50">
                     <Icon name="close" className="size-3" />
                   </button>
                 ) : null}

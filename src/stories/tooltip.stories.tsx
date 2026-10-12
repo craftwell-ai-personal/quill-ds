@@ -72,10 +72,11 @@ export const DoDont: Story = {
       usage={usage}
       id="tooltip-is-supplementary"
       doExample={
-        // pt-8 reserves room above the trigger for the defaultOpen tooltip
+        // pt-8 reserves room above the trigger for the defaultOpen tooltip, and the trigger is centred so the tooltip,
+        // centred on it, stays inside the frame instead of hanging off its left edge.
         // (portal-rendered above the trigger by default, positioned by
         // floating-ui) so it doesn't spill past the card's own top border.
-        <div className="pt-8">
+        <div className="flex justify-center pt-8">
           <Tooltip defaultOpen>
             <TooltipTrigger render={<Button variant="outline">Save</Button>} />
             <TooltipContent>Save your progress to the cloud</TooltipContent>
@@ -83,7 +84,7 @@ export const DoDont: Story = {
         </div>
       }
       dontExample={
-        <div className="pt-8">
+        <div className="flex justify-center pt-8">
           <Tooltip defaultOpen>
             <TooltipTrigger
               render={

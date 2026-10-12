@@ -26,7 +26,7 @@ export function Chat() {
         {messages.map((m, i) => (
           <div key={i} className={`flex ${m.from === 'me' ? 'justify-end' : 'justify-start'}`}>
             <div
-              className={`max-w-[80%] rounded-2xl px-3 py-2 text-sm ${
+              className={`max-w-[80%] rounded-2xl px-3 py-2 text-sm text-pretty ${
                 m.from === 'me' ? 'bg-primary text-primary-foreground' : 'bg-muted text-foreground'
               }`}
             >

@@ -2,7 +2,6 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Icon } from '@/components/ui/icon'
-import { Separator } from '@/components/ui/separator'
 
 /** A compact, centered profile card — avatar initials, role, follower stats, and follow/message actions. */
 export function ProfileCard() {
@@ -30,7 +29,6 @@ export function ProfileCard() {
           ))}
         </div>
       </CardContent>
-      <Separator />
       <CardFooter className="gap-2 pt-4">
         <Button className="flex-1">
           <Icon name="add" size={16} /> Follow

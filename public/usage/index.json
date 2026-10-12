@@ -632,7 +632,7 @@
       "name": "search-results",
       "kind": "pattern",
       "summary": "A docs search panel — query input, result count, and a linked result list with breadcrumbs and type badges.",
-      "hash": "a72058c785fe2e61ba2bfad0324ff044c97e4ec41d242fb50ab6d49905562f9c"
+      "hash": "f7999766398aa9727d3e687ae27c6ff484d8af888f80c8b39183787e721243ff"
     },
     {
       "name": "select",
