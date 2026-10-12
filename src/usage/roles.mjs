@@ -65,9 +65,8 @@ export const STATUS_INTENTS = {
 }
 
 /**
- * Sanctioned opacity forms. Figma holds each as a `tint/*` variable because a paint
- * opacity on a bound colour dies inside a nested instance; code writes the Tailwind
- * opacity modifier. Keyed by the Figma name; `code` is what an agent types.
+ * Sanctioned opacity forms: a role or pigment at a fixed alpha, written as the Tailwind
+ * opacity modifier. Keyed by the tint's name (`tint/<of>/<pct>`); `code` is what an agent types.
  */
 export const TINT_INTENTS = {
   'tint/destructive/10': { code: '`bg-destructive/10`', use: 'The fill of the destructive button and badge, and the focused destructive menu item.', never: 'A whole alert or panel. The destructive Alert stays on `card`; only its text turns.' },

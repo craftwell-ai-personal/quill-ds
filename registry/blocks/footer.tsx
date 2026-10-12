@@ -2,7 +2,7 @@ import { Separator } from '@/components/ui/separator'
 
 const columns = [
   { title: 'Product', links: ['Overview', 'Components', 'Tokens', 'Changelog'] },
-  { title: 'Resources', links: ['Docs', 'Guides', 'Figma kit', 'Support'] },
+  { title: 'Resources', links: ['Docs', 'Guides', 'Design kit', 'Support'] },
   { title: 'Company', links: ['About', 'Blog', 'Careers', 'Contact'] },
 ]
 

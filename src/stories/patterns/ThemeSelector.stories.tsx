@@ -81,8 +81,8 @@ function Demo() {
   )
 }
 
-// The block is the trigger. Its own story shows exactly that, so the Figma page (the trigger)
-// and the story stay a pair for the visual diff; the scene around it is the Demo story.
+// The block is the trigger. Its own story shows exactly that, so Paper's page (the trigger)
+// and the story stay a pair; the scene around it is the Demo story.
 export const ThemeSelector: Story = {
   render: () => <ThemeSelectorBlock />,
 }

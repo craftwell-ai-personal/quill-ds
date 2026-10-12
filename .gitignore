@@ -66,10 +66,11 @@ docs/superpowers/plans/
 src/components/ui/icons.all.generated.mjs
 public/storybook
 
-# scratch for scripts/figma-type-audit
-.figma-type-audit/
+# reports from npm run test-storybook:theme (scripts/theme-qa)
+.theme-qa/
 
-# scratch for scripts/figma-visual-diff.mjs (static Storybook + pair images)
+# leftovers from the retired Figma tooling (2026-10-11); safe to delete locally
+.figma-type-audit/
 .visual/
 
 # scratch for scripts/paper/check.mjs (strips) and its report, rewritten on every run

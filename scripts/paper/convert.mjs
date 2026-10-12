@@ -992,7 +992,7 @@ const MAX_IMAGE_BYTES = 1_500_000
 /* Runs inside the page. Self-contained: it cannot see anything in this module but its arguments. */
 async function captureInPage({ usedProperties, specProperties, panelSelector, breakMark, maxImageBytes, unwrap }) {
   const wrapper = document.querySelector('#storybook-root > div')
-  // the same element the Figma visual diff shoots: the theme wrapper's one real child, without the canvas padding
+  // the theme wrapper's one real child, without the canvas padding
   const kids = [...(wrapper?.children ?? [])].filter((element) => !element.matches('section[aria-label], ol[data-sonner-toaster]'))
   let target = kids.length === 1 ? kids[0] : wrapper
   if (!target) return { roots: [], images: {}, unread: [] }
@@ -1229,7 +1229,7 @@ const renderPhase = () => window.__STORYBOOK_PREVIEW__?.currentRender?.phase ?? 
 const ENDED = ['completed', 'finished', 'errored', 'aborted']
 
 /**
- * Open a story the way the Figma visual diff does (Dawn, motion frozen, fonts loaded) and leave the page on
+ * Open a story the way paper:check compares it (Dawn, motion frozen, fonts loaded) and leave the page on
  * its END state: a story with a play function (one that types, clicks or opens something) is read only after
  * the play has finished. A story that ends in an error (a failed render, a play function that threw) is a
  * failure: it throws rather than have its error screen drawn into Paper.

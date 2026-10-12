@@ -49,85 +49,22 @@ grouped so a partial bump — which would simply be broken — cannot be propose
 Minor and patch bumps now merge themselves once green (see Automation below);
 majors are commented on and left for a human.
 
-## Tier 3 — Figma ↔ code parity (scheduled detection + on-demand repair)
+## Tier 3 — the Paper mirror (code → Paper, one way)
 
-**Component parity is scheduled since v0.8.15, with auto-repair since v0.8.16**:
-`figma-parity.yml` (daily, 13:00 UTC) runs `scripts/figma-drift.mjs --repair`,
-which compares each synced component's live Figma node — via the REST file API,
-which works headless on the Pro plan — against the committed baseline in
-`figma/sync-state.json`, in both directions:
+The Paper file "Quill Design System" is the design mirror of the code (Figma was retired
+2026-10-11). Code is the source; Paper is redrawn from Storybook by script and never edited
+by hand. Details: `paper/README.md`.
 
-- **Value-level Figma drift** (a re-bound token, changed text) has a provably
-  correct translation, so the workflow repairs it itself — a deterministic
-  binding→class rewrite committed to the `auto/figma-pull` branch as an
-  auto-merging PR, self-heal style. Baseline updated in the same commit.
-- **Structural Figma drift** (children added/removed, strokes, unknown
-  variables) needs judgment → the job fails naming the fix: run
-  `/figma-pull <name>` in an interactive session.
-- **Code moved without a mirror** → run `/figma-push <name>`. This direction is
-  never a bot: Figma has no headless node-write API on any plan.
-
-The slash commands rewrite the baseline as their last step, which is also how
-an obsolete `auto/figma-pull` PR gets closed (the workflow closes it when drift
-disappears). The job skips cleanly until a `FIGMA_TOKEN` repo secret exists
-(Figma personal access token, file read scope).
-
-**Every primitive has a declared status** (since v0.9.48): `components` (checked daily),
-`candidates` (twin exists, not yet adopted) or `declined` (no twin, reason recorded) —
-`scripts/figma-component-coverage.test.mjs` fails on a file in `src/components/ui` with
-none of the three, the same shape as the pattern map.
-
-**Coverage grows by adoption, not by hand.** `figma/sync-state.json` lists
-`candidates` (twins built before the check existed); the workflow's `adopt`
-input reads each over REST, keeps the ones whose bindings already match a class
-string in code, reports the rest, and opens a human-merged PR. See
-`figma/README.md`, "Adopting existing twins into the daily check".
-
-**Pattern pages are covered for presence, not values** (since v0.9.42). The
-block folder had grown to 51 while Figma held pattern pages for 23, and no
-check compared the two lists. `figma/sync-state.json` → `patterns` is now the
-record — one entry per `registry/blocks` file: `mirrored` (❖ page + pattern
-frame ids), `missing` (not built yet) or `declined` (reason recorded).
-`scripts/figma-pattern-coverage.test.mjs` (Tier 1, in `test:tokens`) fails
-when a block has no entry; the daily run fetches every mirrored page at depth 1
-and fails when a page is gone, renamed, or has lost its frame. Token bindings
-inside pattern frames are not diffed — they are instances of the atoms above,
-which are.
-
-**Pattern content (since v0.9.49).** The daily run also fetches every mirrored
-frame at full depth and diffs what a designer sees — visible texts, icon
-components, top-level instances — against `figma/pattern-baseline.json`,
-naming the page and the change (`text gone`, `icon added`, `instances …`) and
-exiting 2 for a human. The code side is `scripts/figma-pattern-expect.mjs`
-(each block rendered with react-dom/server); `scripts/figma-pattern-parity.test.mjs`
-(Tier 1) requires a stamped page to match its block exactly on strings and
-icons. `--snapshot-patterns` rewrites the baseline after a page is synced; the
-**Figma parity** workflow's `snapshot` input runs it headlessly and opens a PR
-with the new baseline (never self-merging), so no local Figma token is needed.
-
-**Re-stamp guard (Tier 1, since v0.9.46).** Pushing to Figma can never be a bot
-(no headless node-write API on any plan), so the only way drift stays at zero is
-to make the Figma update part of the PR. Each mirrored pattern records
-`codeHash` + `syncedAt` (the block source, comments and whitespace ignored, at
-its last sync) or `stale: <reason>`; `foundations.tokensHash` records the token
-source at the last foundations sync. `scripts/figma-restamp.test.mjs` fails when
-either moves without a re-sync and names the command
-(`node scripts/figma-stamp.mjs --block <name>` / `--tokens`). The stale list may
-only shrink (CRA-223 rebuilds the July pages). Ledger: CRA-217.
-
-The **variable/style-level** check below still needs interactive Figma MCP auth
-(variable definitions are Enterprise-gated over REST), so it stays on-demand —
-run it in an interactive session (e.g. ask Claude to "run the Figma parity
-check") when doing Figma work. It compares the live Figma variables against the
-repo's source of truth:
-
-- `semantic/link`, `semantic/ring`, `semantic/sidebar-ring` alias
-  `color/pigment/<DEFAULT_ACCENT>/deep` (the repo default accent);
-- `semantic/chart-1..5` alias `color/chart-series-1..5`, and those primitives'
-  per-mode values match `tokens.color.chart.series` in `src/tokens/quill.tokens.mjs`.
-
-The repo-side half of this (DTCG export vs. code) is already a Tier 1 check; only
-the live-file comparison is manual, and it naturally coincides with Figma edits.
+- **Coverage (Tier 1, in `test:tokens`).** `scripts/paper-coverage.test.mjs` fails when a
+  component, block or template has no entry in `paper/sync-state.json` (`synced`,
+  `pending`, or `declined` with a reason). The fix needs no Paper:
+  `npm run paper:status -- --record-pending`, then commit the record.
+- **Staleness (report, not a failure).** CI cannot reach Paper, so a piece whose code moved
+  is listed by `npm run paper:status` and cleared by `npm run paper:sync` on the Mac with
+  Paper open.
+- **Picture check.** `npm run paper:check` compares each drawn story with Storybook against
+  `paper/visual-baseline.json`; `npm run paper:daily` runs sync + check once a day on this
+  Mac and opens a pull request, never merging.
 
 ## Automation — the loop that closes itself
 

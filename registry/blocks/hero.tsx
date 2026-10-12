@@ -12,7 +12,7 @@ export function Hero() {
       </h1>
       <p className="max-w-xl text-base text-pretty text-muted-foreground">
         Accessible, themeable components and a single-source token foundation that flows to code
-        and Figma alike.
+        and design files alike.
       </p>
       <div className="flex flex-wrap items-center justify-center gap-3">
         <Button size="lg">

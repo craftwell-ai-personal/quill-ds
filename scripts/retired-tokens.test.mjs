@@ -12,7 +12,7 @@ import { tokens } from '../src/tokens/quill.tokens.mjs'
 // with three names that never existed. Retired in 0.10.0 (kept emitting so an app
 // that wrote `var(--text-strong)` kept its colour), removed from the CSS in 0.13.0
 // once the one live app was confirmed off them. The list survives in the source so
-// `@quill/check` can still name each one, and so Figma keeps its variable parked.
+// `@quill/check` can still name each one.
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const names = Object.keys(tokens.retired)
 const re = new RegExp(`--(${names.join('|')})(?![a-z0-9-])`, 'g')

@@ -34,8 +34,8 @@ the text between the markers; the same renderer feeds llms.txt.
 that of an exclusive, premium and trusted product agency that sells apps — warm, unhurried and quietly confident.
 
 Source of truth for all token values: `src/tokens/quill.tokens.mjs` — edit
-there, then `npm run build:tokens` regenerates the CSS token blocks, the Figma
-token JSON, and the generated exports.
+there, then `npm run build:tokens` regenerates the CSS token blocks and the
+generated exports.
 
 ---
 

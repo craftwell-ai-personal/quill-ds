@@ -5,7 +5,7 @@
  * what Paper has that Quill does not. It only deletes with `prune`.
  * The mapping (names, values, types, what cannot be represented) lives in ./tokens.mjs.
  */
-import { tokensHash } from '../figma-stamp.mjs'
+import { tokensHash } from '../lib/source-hash.mjs'
 import { today } from './file.mjs'
 import { payloadHash, planTokenSync, quillPaperTokens, resolveValue } from './tokens.mjs'
 

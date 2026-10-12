@@ -13,6 +13,23 @@ within a minute, and that release is what triggers `library-sync` into the apps;
 manual tag races the bot and can leave a tag with no release behind it. The homepage
 footer reads `package.json` directly, so the displayed version updates with the bump.
 
+## [1.26.0] — 2026-10-11
+
+Figma is retired. Paper is Quill's design file, drawn from the code one way (code → Paper); nothing connects to, reads from or updates Figma any more.
+
+### Removed
+- The Figma tooling: the `/figma-push` and `/figma-pull` skills, the `figma-parity` daily bot, the `figma/` folder (sync state, baselines, plugin scripts), the Figma scripts and their eight checks in `test:tokens` (re-stamp guard, pattern parity and coverage, component coverage, names, text styles, AI edge, drift), the Figma type audit, `npm run figma:visual`, and the `/ftc` (Figma-to-code) command.
+- The Figma token export: `npm run build:tokens` no longer writes `tokens/quill.figma.json`, and the theme list drops its Figma mode names. The tint list keeps its opacities and drops the Figma-only `text` flag.
+
+### Changed
+- Paper's tooling owns what it shared with Figma: the content hashes (`scripts/lib/source-hash.mjs`, byte-identical, so the Paper record stays in step) and the picture comparison (`scripts/paper/png-diff.mjs`).
+- Rules and docs: AGENTS.md says Figma is retired and must not be reconnected; README, DESIGN.md, the drift-audit notes, the Paper README and the Storybook Tokens and Typography pages no longer mention a Figma sync. The Tokens page drops its Figma-name column.
+- Sample copy in the hero and feature-section blocks says "code and design files alike" instead of naming Figma; the footer's "Figma kit" link is "Design kit".
+- `npm run test-storybook:theme` writes its reports to `.theme-qa/`.
+
+### Kept
+- Guards the Figma checks carried that still matter: every role colour reads a declared variable, and every tint is cut from a real colour (both in `build-tokens.test.mjs`).
+
 ## [1.25.2] — 2026-10-11
 
 ### Fixed

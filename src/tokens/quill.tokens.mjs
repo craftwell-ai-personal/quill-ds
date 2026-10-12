@@ -164,7 +164,7 @@ export const tokens = {
   // The line height each `text-*` utility carries. Not new values: these are
   // what the classes have always rendered — Tailwind's default pairings,
   // inherited silently when Quill re-cut the sizes (`text-sm` = 13.6px on a
-  // 142.857% line). Declared so Figma's text styles, the docs and the apps read
+  // 142.857% line). Declared so the docs, Paper and the apps read
   // one number instead of each typing their own. `2xs` is Quill's own size and
   // has no pairing on purpose: it inherits from its parent.
   textLeading: {
@@ -271,8 +271,7 @@ export const tokens = {
     'sidebar-accent': 'var(--paper-deep)', 'sidebar-accent-foreground': 'var(--ink)',
     'sidebar-border': 'var(--line-faint)', 'sidebar-ring': 'var(--accent-pigment-text)',
   },
-  // Roles the contract has no word for: the accent mechanism and status. They sit
-  // beside the contract in Figma's one `semantic` group. Each also gets a text
+  // Roles the contract has no word for: the accent mechanism and status. Each gets a text
   // class (`text-success`) — without one, six of them had no reader anywhere and
   // an agent had no way to write a success or warning colour. The exception is a
   // key that already starts with `text-`, which would make `text-text-…`.
@@ -293,10 +292,8 @@ export const tokens = {
     'queued': 'var(--ink-muted)',
   },
   // The opacities the system uses on purpose: a role or a pigment at a fixed alpha.
-  // Code writes the Tailwind modifier (`bg-destructive/10`); Figma needs a variable
-  // per tint (`tint/destructive/10`), because a paint opacity on a bound colour dies
-  // inside a nested instance. `of` is a contract role or a pigment's CSS name;
-  // `text` marks a tint that colours text, so Figma offers it for text fills.
+  // Code writes the Tailwind modifier (`bg-destructive/10`); the docs name each as
+  // `tint/destructive/10`. `of` is a contract role or a pigment's CSS name.
   // What each is for: src/usage/roles.mjs (TINT_INTENTS).
   tints: [
     { of: 'destructive', pct: 10 },
@@ -304,10 +301,9 @@ export const tokens = {
     { of: 'foreground', pct: 10 }, { of: 'input', pct: 30 },
     { of: 'chart-1', pct: 20 }, { of: 'chart-2', pct: 20 },
     { of: 'muted', pct: 50 }, { of: 'primary', pct: 10 },
-    { of: 'sidebar-border', pct: 8 }, { of: 'sidebar-foreground', pct: 70, text: true },
+    { of: 'sidebar-border', pct: 8 }, { of: 'sidebar-foreground', pct: 70 },
     // The state rings every control shares: focus is `ring-ring/50`, invalid is
-    // `ring-destructive/20`; a disabled field washes with `bg-input/50`. Declared so
-    // the Figma State variants can bind them (CRA-221).
+    // `ring-destructive/20`; a disabled field washes with `bg-input/50`.
     { of: 'ring', pct: 50 }, { of: 'destructive', pct: 20 }, { of: 'input', pct: 50 },
     // Button states: the default button hovers to `bg-primary/80`; the secondary one to
     // `color-mix(secondary, foreground 5%)`, which two stacked fills render exactly; the
@@ -320,8 +316,7 @@ export const tokens = {
   // contract already says (`--surface-card` is `--card`), which no shipped component
   // and no utility ever used while DESIGN.md told agents to reach for it. No longer
   // emitted anywhere: the list stays so `@quill/check` can name each one with the
-  // value it had (retired-tokens.test.mjs), and so Figma keeps its variable parked
-  // under `deprecated/*` — the Icon vector fill is still bound to one.
+  // value it had (retired-tokens.test.mjs).
   retired: {
     'surface-page': 'var(--paper)', 'surface-card': 'var(--paper-warm)', 'surface-well': 'var(--paper-deep)',
     'text-strong': 'var(--ink)', 'text-body': 'var(--ink-soft)', 'text-muted-color': 'var(--ink-muted)',

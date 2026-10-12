@@ -19,7 +19,7 @@ A self-hosted [shadcn registry](https://ui.shadcn.com/docs/registry) — a token
 `src/tokens/quill.tokens.mjs` is the single source of truth for colour, type, spacing, radius, shadow and motion. CI regenerates and diffs these paths on every PR (`ci.yml:33-37`) — hand-editing any of them fails the build:
 
 ```
-src/app/globals.css   src/tokens/generated   registry/themes   tokens
+src/app/globals.css   src/tokens/generated   registry/themes
 src/components/ui/icons.core.mjs   src/components/ui/icons.generated.d.ts   public/icons
 registry.json   registry/agent-rules   registry/check   public/r   public/llms.txt   DESIGN.md (the spans between generated:… markers)
 ```
@@ -79,12 +79,14 @@ npx tsc --noEmit
 
 - `main` is protected. The required check is `Lint · types · tests · build`. Land work through a PR.
 - **Never tag or publish a release manually.** The release bot tags and publishes after merge — it fires within a minute, and a manual tag races it.
-- Eleven workflows run automation (`drift-audit`, `self-heal`, `library-sync`, `figma-parity`, `pattern-scan`, `release`, `dependabot-*`, `claude-repair`). They all open PRs; nothing writes to `main` directly. See `scripts/DRIFT-AUDIT.md`.
+- Nine workflows run automation (`drift-audit`, `self-heal`, `library-sync`, `pattern-scan`, `release`, three `dependabot-*`, `claude-repair`). They all open PRs; nothing writes to `main` directly. See `scripts/DRIFT-AUDIT.md`.
 - Releases are pushed downstream into consumer apps by `library-sync`. A change to the shipped theme reaches real apps — treat `registry/themes/quill.css` and `registry.json` as public API.
 
 ## Paper
 
-The Paper file "Quill Design System" is a second mirror of the code, beside Figma: one page per component (`❖`), block (`◆`) and template (`▣`), drawn from Storybook by script. Read `paper/README.md` first.
+The Paper file "Quill Design System" is Quill's design file: one page per component (`❖`), block (`◆`) and template (`▣`), drawn from Storybook by script. Code is the source and Paper mirrors it, one way (code → Paper). Read `paper/README.md` first.
+
+**Figma is retired (2026-10-11).** Do not connect to, read from, or update Figma for Quill work, and do not add Figma tooling back. A visual change is finished when the code is merged and Paper is redrawn.
 
 | Path | Role |
 |---|---|
@@ -100,9 +102,6 @@ The Paper file "Quill Design System" is a second mirror of the code, beside Figm
 - **Stale is not a failure.** CI cannot reach Paper, so a piece whose code moved is reported by `npm run paper:status`, not by the build.
 - Paper has no components, themes or shared libraries: the file is Dawn only and every piece is plain frames.
 
-## Skills and commands
+## Commands
 
-- `/figma-pull` — bring a component's Figma edits into its code twin
-- `/figma-push` — push a code component's state onto its Figma twin
-
-Four commands in `.claude/commands` route a prompt to the shadcn-studio MCP server and follow the instructions it returns: `/cui` (create), `/rui` (refine), `/iui` (inspire), `/ftc` (Figma-to-code). That server lives in your own Claude Code settings, not in this repo, and the `@ss-*` registries in `components.json` need a shadcn-studio licence (`EMAIL` and `LICENSE_KEY` in `.env`), so the commands only work where both are set up. They generate UI from outside Quill's own system, so anything they produce still has to be reconciled against `DESIGN.md` and the documented tokens before it lands.
+Three commands in `.claude/commands` route a prompt to the shadcn-studio MCP server and follow the instructions it returns: `/cui` (create), `/rui` (refine), `/iui` (inspire). That server lives in your own Claude Code settings, not in this repo, and the `@ss-*` registries in `components.json` need a shadcn-studio licence (`EMAIL` and `LICENSE_KEY` in `.env`), so the commands only work where both are set up. They generate UI from outside Quill's own system, so anything they produce still has to be reconciled against `DESIGN.md` and the documented tokens before it lands.

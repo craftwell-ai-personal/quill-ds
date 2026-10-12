@@ -9,7 +9,7 @@ import { join, relative, resolve, dirname, extname } from 'node:path'
 import { createRequire } from 'node:module'
 
 export const DATA = {
- "version": "1.25.2",
+ "version": "1.26.0",
  "prefixes": [
   "bg",
   "text",
@@ -1318,7 +1318,7 @@ export const DATA = {
 }
 
 // ------------------------------------------------------------------ files
-const SKIP_DIRS = new Set(['node_modules', '.next', 'dist', 'build', 'out', 'storybook-static', 'public', '.git', 'coverage', '.figma-type-audit'])
+const SKIP_DIRS = new Set(['node_modules', '.next', 'dist', 'build', 'out', 'storybook-static', 'public', '.git', 'coverage'])
 const EXTS = new Set(['.tsx', '.jsx', '.ts', '.js', '.mdx', '.html'])
 // Never scan the check itself (its fix strings look like classes).
 const SELF = /(^|[\\/])quill-check(\.template)?\.mjs$/

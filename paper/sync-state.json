@@ -18,7 +18,7 @@
       "radius": 9
     },
     "payloadHash": "aca158e47906f799",
-    "sourceHash": "5f87b4efe427162a",
+    "sourceHash": "0d8db8d5e26b218d",
     "theme": "light",
     "notRepresentable": 33,
     "syncedAt": "2026-10-12"
@@ -8736,7 +8736,7 @@
         "src/stories/patterns/AiSidePanel.stories.tsx",
         "src/usage/ai-side-panel.usage.mjs"
       ],
-      "sourceHash": "7cfd92363cf4c8f8",
+      "sourceHash": "8977a9575629e255",
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
@@ -8762,7 +8762,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2ND8-0",
+              "nodeId": "2TB6-0",
               "size": [
                 384,
                 560
@@ -8782,7 +8782,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2NFB-0",
+              "nodeId": "2TD9-0",
               "size": [
                 384,
                 560
@@ -8802,7 +8802,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2NH6-0",
+              "nodeId": "2TF4-0",
               "size": [
                 384,
                 560
@@ -9702,7 +9702,7 @@
         "src/stories/patterns/FeatureSection.stories.tsx",
         "src/usage/feature-section.usage.mjs"
       ],
-      "sourceHash": "55dcfabde32a9236",
+      "sourceHash": "2764549e023583f9",
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
@@ -9726,12 +9726,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2O0S-0",
+              "nodeId": "2TG9-0",
               "size": [
                 1200,
                 406.63
               ],
-              "htmlHash": "b3f330a6bc5523fc"
+              "htmlHash": "c0a57438cf1d801a"
             }
           ]
         }
@@ -9800,7 +9800,7 @@
         "src/stories/patterns/Footer.stories.tsx",
         "src/usage/footer.usage.mjs"
       ],
-      "sourceHash": "81434e87935ade60",
+      "sourceHash": "1954b196f0f699c0",
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
@@ -9824,12 +9824,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2O1Z-0",
+              "nodeId": "2THG-0",
               "size": [
                 1232,
                 306.03
               ],
-              "htmlHash": "ce052d9427fb4b5d"
+              "htmlHash": "d920267a77da2a34"
             }
           ]
         }
@@ -9898,7 +9898,7 @@
         "src/stories/patterns/Hero.stories.tsx",
         "src/usage/hero.usage.mjs"
       ],
-      "sourceHash": "fdb7f0003b1971eb",
+      "sourceHash": "1cf5b7202fd42d5e",
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
@@ -9924,12 +9924,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2O3B-0",
+              "nodeId": "2TIS-0",
               "size": [
                 1232,
                 610.77
               ],
-              "htmlHash": "5fc793f364221ecf"
+              "htmlHash": "f6438451a012493e"
             }
           ]
         }

@@ -1,7 +1,7 @@
 // Theme + accent metadata. The single list of what themes exist.
 //
 // This lives here, not in scripts/build-tokens.mjs, because both sides need it:
-// the build (node) generates CSS and the DTCG export from it, and the browser
+// the build (node) generates CSS from it, and the browser
 // (Storybook's preview config, and any app UI that offers a theme picker) needs
 // the same list to render a switcher. build-tokens.mjs imports node:fs, so it
 // can never be pulled into a browser bundle — which is how five separate
@@ -14,10 +14,10 @@
 // theme-selector block). Prose that needs a qualifier — "(default)" — composes it
 // from `colorScheme` / DEFAULT_MODE rather than baking it into the name.
 export const MODES = [
-  { key: 'dark', prefix: 'dk', attr: 'dark', colorScheme: 'dark', figmaMode: 'Dark', label: 'Dusk' },
-  { key: 'classicLight', prefix: 'cl', attr: 'classic-light', colorScheme: 'light', figmaMode: 'Classic Light', label: 'Classic Light' },
-  { key: 'classicDark', prefix: 'cd', attr: 'classic-dark', colorScheme: 'dark', figmaMode: 'Classic Dark', label: 'Classic Dark' },
-  { key: 'intelligent', prefix: 'int', attr: 'intelligent', colorScheme: 'dark', figmaMode: 'Intelligent', label: 'Intelligent' },
+  { key: 'dark', prefix: 'dk', attr: 'dark', colorScheme: 'dark', label: 'Dusk' },
+  { key: 'classicLight', prefix: 'cl', attr: 'classic-light', colorScheme: 'light', label: 'Classic Light' },
+  { key: 'classicDark', prefix: 'cd', attr: 'classic-dark', colorScheme: 'dark', label: 'Classic Dark' },
+  { key: 'intelligent', prefix: 'int', attr: 'intelligent', colorScheme: 'dark', label: 'Intelligent' },
 ]
 
 // Dawn is the default: it lives directly in :root rather than behind a
@@ -27,13 +27,12 @@ export const DEFAULT_MODE = {
   key: 'light',
   attr: 'light',
   colorScheme: 'light',
-  figmaMode: 'Light',
   label: 'Dawn',
 }
 
 export const ALL_MODES = [DEFAULT_MODE, ...MODES]
 
-// The accent that ships unset: `--accent-pigment` at :root and the Figma DTCG
-// pin both resolve to this pigment. Single source of truth so downstream docs,
+// The accent that ships unset: `--accent-pigment` at :root resolves to this
+// pigment. Single source of truth so downstream docs,
 // drift checks and preview defaults read it rather than restating it.
 export const DEFAULT_ACCENT = 'moss'

@@ -18,9 +18,8 @@
  * accent copy, generated-file sync, changelog, registry file paths) live in the
  * test suite and run on every PR instead.
  *
- * Figma↔code parity is intentionally NOT here: it needs interactive Figma MCP
- * auth a headless run doesn't have. See scripts/DRIFT-AUDIT.md for the
- * on-demand procedure.
+ * The Paper mirror is intentionally NOT here: Paper is reachable only from a
+ * Mac with the app open. See scripts/DRIFT-AUDIT.md, Tier 3.
  */
 import { execSync } from 'node:child_process'
 import { readFileSync, mkdtempSync, copyFileSync, rmSync } from 'node:fs'

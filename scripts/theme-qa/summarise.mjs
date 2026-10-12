@@ -1,12 +1,12 @@
 // Turn the per-theme vitest JSON reports into a readable list: which story
 // failed, on which element, at what contrast. Usage:
 //   node scripts/theme-qa/summarise.mjs [theme ...]   (default: the four non-default themes)
-// Reads .figma-type-audit/theme-qa/<theme>.json, written by `npm run test-storybook:theme`.
+// Reads .theme-qa/<theme>.json, written by `npm run test-storybook:theme`.
 import fs from 'node:fs'
 import path from 'node:path'
 
 const repo = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..')
-const reportDir = path.join(repo, '.figma-type-audit/theme-qa')
+const reportDir = path.join(repo, '.theme-qa')
 const themes = process.argv.slice(2).length
   ? process.argv.slice(2)
   : ['dark', 'classic-light', 'classic-dark', 'intelligent']

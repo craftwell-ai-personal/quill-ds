@@ -16,17 +16,16 @@ import { compositeOver, contrastRatio, surfaceBehind, washedTop } from '../contr
 import { expectFocusRing, tabTo } from '../focus-ring'
 
 // In the canvas the panel gives way to a window shorter than itself, keeping the wrapper's 24px margin (3rem both sides);
-// on the Docs page the window is the whole long page, so it keeps its full height. The story is tagged `framed` so the
-// Figma visual diff adds those 48px to its window and still captures the 560px panel.
+// on the Docs page the window is the whole long page, so it keeps its full height.
 const fitHeight = (viewMode: string, docs: string, canvas: string) => (viewMode === 'docs' ? docs : canvas)
 
 const meta = {
   title: 'Patterns / AI / AI Side Panel',
   component: AiSidePanel,
-  tags: ['autodocs', 'framed'],
+  tags: ['autodocs'],
   // Centred by the theme wrapper in .storybook/preview.tsx, not by Storybook's own `layout: 'centered'`: that is a
   // class on the preview page, which the test runner's page does not have, so the guard tests below could not see it.
-  // The panel stays the wrapper's only element, which is what the Figma visual diff screenshots.
+  // The panel stays the wrapper's only element, which is what Paper draws and paper:check screenshots.
   parameters: { layout: 'fullscreen', quillCentered: true, docs: { description: { component: renderUsageDocs(usage) } } },
   args: { onSubmit: fn(), onHistory: fn(), onScopeRemove: fn(), onOpenChange: fn() },
   afterEach: async ({ canvasElement, viewMode }) => {
@@ -36,8 +35,7 @@ const meta = {
     await expect(target).not.toBeNull()
     await expectCentredWithMargin(target as HTMLElement)
   },
-  // The panel drawn inline, as one root element: this is what the docs page, the Figma frame and the visual
-  // diff show. The Sheet itself is the InASheet story.
+  // The panel drawn inline, as one root element: this is what the docs page and Paper show. The Sheet itself is the InASheet story.
   render: (args, { viewMode }) => (
     <AiPanel title={args.title} scope={args.scope} onSubmit={args.onSubmit} onHistory={args.onHistory} onScopeRemove={args.onScopeRemove}
       className={`${fitHeight(viewMode, 'h-[35rem]', 'h-[min(35rem,calc(100dvh-3rem))]')} w-full max-w-sm rounded-xl border border-border shadow-md`} />
@@ -88,7 +86,7 @@ const expectLevelWithAvatar = async (firstRow: Element) => {
 
 const DESKTOP = { parameters: { viewport: { options: VIEWPORTS } }, globals: { viewport: { value: 'desktop', isRotated: false } } } as const
 
-// Read-only on purpose: this is the story the Figma frame is compared with.
+// Read-only on purpose: this is the story Paper draws and compares with.
 export const Default: Story = {
   ...DESKTOP,
   play: async ({ canvas }) => {
