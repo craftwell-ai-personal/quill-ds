@@ -44,3 +44,20 @@
     scrollTo({ top: 0, behavior: 'instant' })
   })
 </script>
+
+<!-- A tab opened before a deploy asks for story files the new deploy renamed away, and the story
+     shows "Failed to fetch dynamically imported module". Vite raises vite:preloadError when an
+     import fails; reloading fetches the current deploy. At most once a minute, so a file that is
+     genuinely broken still shows its error instead of reloading forever. -->
+<script>
+  window.addEventListener('vite:preloadError', function (event) {
+    // Without storage there is no loop guard, so the error is left to show.
+    try {
+      var last = Number(sessionStorage.getItem('quill-preload-reload') || 0)
+      if (Date.now() - last < 60000) return
+      sessionStorage.setItem('quill-preload-reload', String(Date.now()))
+      event.preventDefault()
+      window.top.location.reload()
+    } catch (_) {}
+  })
+</script>
