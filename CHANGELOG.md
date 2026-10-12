@@ -39,6 +39,10 @@ footer reads `package.json` directly, so the displayed version updates with the 
   - A space between two inline elements (a button and the sentence after it) is kept as a gap.
   - A grid cell spanning rows (an alert dialog's icon beside its title and text) is pinned in place instead of pushing the next row down.
   - Masked shapes are photographed on their own at 4x with a see-through background.
+  - The composer's tab-base curve (a ring cut by a mask) is drawn as vector paths with its real colours instead of a photo, so it stays sharp at any zoom and meets the tab's edge.
+  - Focus a story's play leaves behind is let go before the capture (and given back if letting go changed more than styling), so focus-lit looks, such as the composer's bright AI edge, are drawn at rest as Storybook shows them.
+  - A positioned `::before`/`::after` is placed from inside its parent's border, as the browser places it; the strip under the selected tab sat 1px up and left, hiding the foot of the tab's side.
+  - A gradient edge's fill frame always reaches the bottom, as a padding box does; a 0.4px band of edge showed across the selected tab's base.
   - Balanced text (`text-wrap: balance`) keeps the width the browser's lines took, so it breaks at the same words (Feature Section's headline wrapped differently).
   - Keyboard focus rings left by a story's play are not drawn: in Storybook the story frame is not focused, so they do not show there.
   - Overlapping layers are ordered by z-index, so the composer's selected tab covers the box edge under it (the faint line across the tab) and its base curve sits over the neighbouring tab.

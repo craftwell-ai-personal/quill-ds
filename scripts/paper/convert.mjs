@@ -1057,9 +1057,12 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
       // ai-edge's fill is spelled `linear-gradient(X, X)`, one colour: Paper gets it as the plain fill it is
       const solid = layers[0].match(/^linear-gradient\((?:in [a-z]+ )?([^,]+(?:\([^)]*\))?),\s*([^,]+(?:\([^)]*\))?)\)$/)
       const fill = solid && solid[1].trim() === solid[2].trim() ? { 'background-color': solid[1].trim(), 'background-image': undefined } : { 'background-image': layers[0] }
-      const inner = { ...frame, ...fill, 'flex-grow': '1', 'border-radius': [corner('TopLeft', top, left), corner('TopRight', top, right), corner('BottomRight', bottom, right), corner('BottomLeft', bottom, left)].join(' ') }
+      const inner = { ...frame, ...fill, 'border-radius': [corner('TopLeft', top, left), corner('TopRight', top, right), corner('BottomRight', bottom, right), corner('BottomLeft', bottom, left)].join(' ') }
       for (const property of OUTER) if (property in frame) { outer[property] = frame[property]; if (property !== 'border-radius') delete inner[property] }
       for (const property of Object.keys(inner)) if (/^border(-(top|right|bottom|left))?$/.test(property)) delete inner[property]
+      // set after the move above, which takes the piece's own flex-grow to the outer frame: the fill always reaches
+      // the bottom, as a padding box does (a tab stretched taller than its content left a strip of edge showing)
+      inner['flex-grow'] = '1'
       // an inset shadow (a keyboard focus ring kept inside the tab) belongs over the fill, not under it
       if (outer['box-shadow']) {
         const shadows = splitLayers(outer['box-shadow'])
@@ -1173,6 +1176,50 @@ async function captureInPage({ usedProperties, specProperties, panelSelector, br
   let masked = 0
   let rootOrigin = { x: 0, y: 0 }
 
+  // The prompt composer's tab-base curve is a ring cut by a mask: a circle centred on one corner of a small square,
+  // masked out up to an inner radius, coloured by a conic gradient up to an outer radius and by a fill beyond it.
+  // That shape is drawn as vector paths, crisp at any zoom; a photo of it (the fallback for any other mask) blurred
+  // and drifted against the tab's vector edge. Returns SVG markup, or null for a mask of any other shape.
+  const cornerRing = (computed, box) => {
+    const color = '((?:rgba?|oklab|oklch|lab|lch|color)\\([^)]*\\))'
+    const at = '(\\S+) (\\S+)'
+    const mask = computed.maskImage.match(new RegExp(`^radial-gradient\\(circle at ${at}, rgba\\(0, 0, 0, 0\\) ([\\d.]+)px, ${color} ([\\d.]+)px\\)$`))
+    const paint = computed.backgroundImage.match(new RegExp(`^radial-gradient\\(circle at ${at}, rgba\\(0, 0, 0, 0\\) ([\\d.]+)px, ${color} ([\\d.]+)px\\), conic-gradient\\(from ([\\d.]+)deg at ${at}, ${color}, ${color} 90deg\\)$`))
+    if (!mask || !paint) return null
+    const { width: w, height: h } = box
+    const place = (value, size) => (value.endsWith('%') ? (parseFloat(value) / 100) * size : parseFloat(value))
+    const cx = place(mask[1], w)
+    const cy = place(mask[2], h)
+    const centres = [[paint[1], paint[2]], [paint[7], paint[8]]].map(([x, y]) => [place(x, w), place(y, h)])
+    if (centres.some(([x, y]) => Math.abs(x - cx) > 0.01 || Math.abs(y - cy) > 0.01)) return null
+    const corner = (value, size) => Math.abs(value) < 0.01 || Math.abs(value - size) < 0.01
+    if (!corner(cx, w) || !corner(cy, h)) return null
+    // each soft edge is drawn at its midpoint, as the eye reads it
+    const inner = (parseFloat(mask[3]) + parseFloat(mask[5])) / 2
+    const outer = (parseFloat(paint[3]) + parseFloat(paint[5])) / 2
+    if (outer <= inner || outer > Math.min(w, h) + 0.01) return null
+    const n = (value) => String(Math.round(value * 1000) / 1000)
+    const sx = cx < w / 2 ? 1 : -1
+    const sy = cy < h / 2 ? 1 : -1
+    // from the point on the square's horizontal edge to the one on its vertical edge: clockwise when sx and sy agree
+    const sweep = sx * sy > 0 ? 1 : 0
+    const across = (r) => `${n(cx + sx * r)} ${n(cy)}`
+    const down = (r) => `${n(cx)} ${n(cy + sy * r)}`
+    const ring = `M${across(outer)}A${n(outer)} ${n(outer)} 0 0 ${sweep} ${down(outer)}L${down(inner)}A${n(inner)} ${n(inner)} 0 0 ${1 - sweep} ${across(inner)}Z`
+    const beyond = `M${across(outer)}L${n(cx + sx * w)} ${n(cy)}L${n(cx + sx * w)} ${n(cy + sy * h)}L${n(cx)} ${n(cy + sy * h)}L${down(outer)}A${n(outer)} ${n(outer)} 0 0 ${1 - sweep} ${across(outer)}Z`
+    // A conic gradient's angle runs clockwise from straight up; its two stops sit a quarter turn apart, at the two
+    // ends of the ring, so a straight gradient between those ends reads the same along a quarter circle.
+    const middle = (inner + outer) / 2
+    const turn = (parseFloat(paint[6]) * Math.PI) / 180
+    const end = (angle) => [cx + middle * Math.sin(angle), cy - middle * Math.cos(angle)]
+    const [x1, y1] = end(turn)
+    const [x2, y2] = end(turn + Math.PI / 2)
+    const id = `paper-ring-${masked++}`
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${n(w)}" height="${n(h)}" viewBox="0 0 ${n(w)} ${n(h)}" fill="none">`
+      + `<defs><linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="${n(x1)}" y1="${n(y1)}" x2="${n(x2)}" y2="${n(y2)}"><stop offset="0" stop-color="${paint[9]}"/><stop offset="1" stop-color="${paint[10]}"/></linearGradient></defs>`
+      + `<path d="${ring}" fill="url(#${id})"/><path d="${beyond}" fill="${paint[4]}"/></svg>`
+  }
+
   const hidden = (element, computed) => {
     // never drawn, whatever their computed display says (<noscript> reports `inline` while scripts run)
     if (element.matches('noscript, script, style, template, link, meta, title')) return true
@@ -1272,7 +1319,9 @@ async function captureInPage({ usedProperties, specProperties, panelSelector, br
         const parent = element.getBoundingClientRect()
         const left = parseFloat(computed.left)
         const top = parseFloat(computed.top)
-        captured.rect = { x: trim(parent.x - origin.x + (Number.isFinite(left) ? left : 0)), y: trim(parent.y - origin.y + (Number.isFinite(top) ? top : 0)), ...size }
+        // an absolute pseudo-element's offsets run from inside its parent's border, not from the outer edge
+        const inset = computed.position === 'absolute' ? { x: element.clientLeft, y: element.clientTop } : { x: 0, y: 0 }
+        captured.rect = { x: trim(parent.x - origin.x + inset.x + (Number.isFinite(left) ? left : 0)), y: trim(parent.y - origin.y + inset.y + (Number.isFinite(top) ? top : 0)), ...size }
         found.push({ which, content: text, ...captured })
       }
       return found
@@ -1304,6 +1353,8 @@ async function captureInPage({ usedProperties, specProperties, panelSelector, br
       if (tag === 'img') { node.src = element.currentSrc || element.src; node.alt = element.alt; if (node.src) urls.add(node.src); return node }
       // an empty masked shape is photographed (see captureStory): Paper cannot cut a fill to a mask
       if (computed.maskImage && computed.maskImage !== 'none' && !element.childNodes.length) {
+        const ring = cornerRing(computed, element.getBoundingClientRect())
+        if (ring) { node.tag = 'svg'; node.svg = ring; return node }
         node.photo = `paper-mask:${masked}`
         element.setAttribute('data-paper-mask', String(masked++))
         return node
@@ -1469,6 +1520,20 @@ export async function openStory(page, storyId, base = STORYBOOK) {
   await page.addStyleTag({ content: '*:focus-visible { --tw-ring-shadow: 0 0 #0000 !important; --tw-ring-offset-shadow: 0 0 #0000 !important; outline-style: none !important; }' })
   // one more beat for whatever the last interaction set moving (a menu mounting, a toast sliding in)
   await page.waitForTimeout(phase === 'unknown' ? 1500 : 600)
+  // The same goes for :focus-within looks (the composer's lit AI edge, its selected tab): Storybook's unfocused frame
+  // shows them at rest. Headless Chrome cannot take focus from the page, so the element is blurred instead, and
+  // focused again if that changed more than styling (a preview that closes on blur, a field that shows an error).
+  await page.evaluate(async () => {
+    const focused = document.activeElement
+    if (!focused || focused === document.body || focused === document.documentElement) return
+    const watcher = new MutationObserver(() => {})
+    watcher.observe(document.body, { subtree: true, childList: true, characterData: true, attributeFilter: ['data-state', 'aria-expanded', 'open', 'hidden'] })
+    focused.blur()
+    await new Promise((resolve) => setTimeout(resolve, 100))
+    const changed = watcher.takeRecords().length > 0
+    watcher.disconnect()
+    if (changed) focused.focus({ preventScroll: true })
+  })
   // Recharts draws its lines and bars in with a script, not CSS, so the freeze above misses it; its default run is
   // 1.5s and a capture any sooner draws a line that stops partway. (Reduced motion would stop it, but would also
   // flatten the AI shimmer text that Paper draws as it looks.)

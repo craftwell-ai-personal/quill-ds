@@ -1518,13 +1518,13 @@
    "at": "2026-10-07"
   },
   "components-citations--in-an-answer": {
-   "diffPct": 2.18,
+   "diffPct": 1.59,
    "paper": [
-    832,
+    544,
     107.5
    ],
    "storybook": [
-    832,
+    544,
     108
    ],
    "text": true,
@@ -1563,7 +1563,7 @@
    "at": "2026-10-12"
   },
   "components-citations--sources-list": {
-   "diffPct": 1.05,
+   "diffPct": 1.02,
    "paper": [
     544,
     206
