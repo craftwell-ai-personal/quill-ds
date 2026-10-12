@@ -228,12 +228,12 @@ export const AI_RULES = {
     color: 'transparent',
   },
   '@utility ai-edge': {
-    border: '1.5px solid transparent',
+    border: '1px solid transparent',
     background: `${PAD}, linear-gradient(115deg, ${mute(EDGE_FROM)}, ${mute('var(--ai-via)')} 50%, ${mute('var(--ai-to)')}) border-box`,
     '&:focus-within, &[data-lit]': { background: `${PAD}, linear-gradient(115deg, ${EDGE_STOPS}) border-box` },
   },
   '@utility ai-edge-working': {
-    border: '1.5px solid transparent',
+    border: '1px solid transparent',
     background: `${PAD}, linear-gradient(90deg, ${EDGE_SWEEP}) border-box`,
     'background-size': '100% 100%, 300% 100%',
     animation: 'ai-sweep 2.4s linear infinite',

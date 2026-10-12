@@ -688,6 +688,16 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
       return emit({ tag: 'div', name: `${label(node)} (hidden)`, style: dropDefaults({ display: 'flex', width: px(node.rect.w), height: px(node.rect.h), 'flex-shrink': '0', ...(inherited.parentIsFlex ? { 'align-self': node.used.alignSelf } : {}) }), children: [] })
     }
     const size = sizeStyles(node, context, { ...inherited, isRoot })
+    // A curve past its parent's right side (the selected tab's right foot) is pinned to that side: Paper rounds a
+    // text-hugging tab's width up, which would leave a foot placed from the left short of the side it continues.
+    if (node.ring && size.left && context.parentRect) {
+      const side = context.parentRect.x + context.parentRect.w - (context.parentBorder?.right ?? 0)
+      if (node.rect.x >= side - 0.5) {
+        const pinned = { ...size, right: px(side - (node.rect.x + node.rect.w)) }
+        delete pinned.left
+        return convertSvg(node, context, pinned)
+      }
+    }
     if (node.tag === 'svg') return convertSvg(node, context, size)
     if (node.tag === 'img' || MEDIA.has(node.tag)) return convertMedia(node, context, size)
     // A paragraph traced line by line (see captureInPage: a highlight that wraps): marks underneath, text runs on top
@@ -712,7 +722,7 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
     const floating = node.children.filter(outOfFlow)
     const elements = flowing.filter((child) => !isText(child))
     const runs = flowing.filter(isText).map((child) => normalizeText(child.text, node.used.whiteSpace)).filter((text) => text.trim())
-    const childContext = { textClasses, parentAutoHeight: !/px$/.test(node.spec.height ?? ''), windowShift: inherited.windowShift, reach: inherited.reach, parentRect: node.rect, parentBorder: { left: num(node.used.borderLeftWidth), top: num(node.used.borderTopWidth) } }
+    const childContext = { textClasses, parentAutoHeight: !/px$/.test(node.spec.height ?? ''), windowShift: inherited.windowShift, reach: inherited.reach, parentRect: node.rect, parentBorder: { left: num(node.used.borderLeftWidth), top: num(node.used.borderTopWidth), right: num(node.used.borderRightWidth) } }
 
     // A form field shows its value (or its placeholder) as text; the caret and selection are not design.
     if (FIELDS.has(node.tag)) {
@@ -1179,7 +1189,7 @@ async function captureInPage({ usedProperties, specProperties, panelSelector, br
   // The prompt composer's tab-base curve is a ring cut by a mask: a circle centred on one corner of a small square,
   // masked out up to an inner radius, coloured by a conic gradient up to an outer radius and by a fill beyond it.
   // That shape is drawn as vector paths, crisp at any zoom; a photo of it (the fallback for any other mask) blurred
-  // and drifted against the tab's vector edge. Returns SVG markup, or null for a mask of any other shape.
+  // and drifted against the tab's vector edge. Returns the SVG markup and its bleed, or null for a mask of any other shape.
   const cornerRing = (computed, box) => {
     const color = '((?:rgba?|oklab|oklch|lab|lch|color)\\([^)]*\\))'
     const at = '(\\S+) (\\S+)'
@@ -1206,7 +1216,10 @@ async function captureInPage({ usedProperties, specProperties, panelSelector, br
     const across = (r) => `${n(cx + sx * r)} ${n(cy)}`
     const down = (r) => `${n(cx)} ${n(cy + sy * r)}`
     const ring = `M${across(outer)}A${n(outer)} ${n(outer)} 0 0 ${sweep} ${down(outer)}L${down(inner)}A${n(inner)} ${n(inner)} 0 0 ${1 - sweep} ${across(inner)}Z`
-    const beyond = `M${across(outer)}L${n(cx + sx * w)} ${n(cy)}L${n(cx + sx * w)} ${n(cy + sy * h)}L${n(cx)} ${n(cy + sy * h)}L${down(outer)}A${n(outer)} ${n(outer)} 0 0 ${1 - sweep} ${across(outer)}Z`
+    // The fill beyond the ring bleeds 1px past the square on the two sides away from the centre (into the tab and the
+    // box, both that same colour): ending exactly on the box edge's last, half-covered pixel row left it showing as a hairline.
+    const far = { x: cx + sx * (w + 1), y: cy + sy * (h + 1) }
+    const beyond = `M${across(outer)}L${n(far.x)} ${n(cy)}L${n(far.x)} ${n(far.y)}L${n(cx)} ${n(far.y)}L${down(outer)}A${n(outer)} ${n(outer)} 0 0 ${1 - sweep} ${across(outer)}Z`
     // A conic gradient's angle runs clockwise from straight up; its two stops sit a quarter turn apart, at the two
     // ends of the ring, so a straight gradient between those ends reads the same along a quarter circle.
     const middle = (inner + outer) / 2
@@ -1215,9 +1228,11 @@ async function captureInPage({ usedProperties, specProperties, panelSelector, br
     const [x1, y1] = end(turn)
     const [x2, y2] = end(turn + Math.PI / 2)
     const id = `paper-ring-${masked++}`
-    return `<svg xmlns="http://www.w3.org/2000/svg" width="${n(w)}" height="${n(h)}" viewBox="0 0 ${n(w)} ${n(h)}" fill="none">`
+    const bleed = { x: Math.min(0, far.x), y: Math.min(0, far.y) }
+    const markup = `<svg xmlns="http://www.w3.org/2000/svg" width="${n(w + 1)}" height="${n(h + 1)}" viewBox="${n(bleed.x)} ${n(bleed.y)} ${n(w + 1)} ${n(h + 1)}" fill="none">`
       + `<defs><linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="${n(x1)}" y1="${n(y1)}" x2="${n(x2)}" y2="${n(y2)}"><stop offset="0" stop-color="${paint[9]}"/><stop offset="1" stop-color="${paint[10]}"/></linearGradient></defs>`
       + `<path d="${ring}" fill="url(#${id})"/><path d="${beyond}" fill="${paint[4]}"/></svg>`
+    return { markup, bleed }
   }
 
   const hidden = (element, computed) => {
@@ -1354,7 +1369,11 @@ async function captureInPage({ usedProperties, specProperties, panelSelector, br
       // an empty masked shape is photographed (see captureStory): Paper cannot cut a fill to a mask
       if (computed.maskImage && computed.maskImage !== 'none' && !element.childNodes.length) {
         const ring = cornerRing(computed, element.getBoundingClientRect())
-        if (ring) { node.tag = 'svg'; node.svg = ring; return node }
+        if (ring) {
+          node.tag = 'svg'; node.svg = ring.markup; node.ring = true
+          node.rect = { x: trim(node.rect.x + ring.bleed.x), y: trim(node.rect.y + ring.bleed.y), w: trim(node.rect.w + 1), h: trim(node.rect.h + 1) }
+          return node
+        }
         node.photo = `paper-mask:${masked}`
         element.setAttribute('data-paper-mask', String(masked++))
         return node

@@ -16,6 +16,7 @@ footer reads `package.json` directly, so the displayed version updates with the 
 ## [1.26.1] — 2026-10-11
 
 ### Fixed
+- **AI edge is 1px, not 1.5px** (`ai-edge`, `ai-edge-working`). Chrome and Firefox drew the 1.5px border at 1px, so the selected composer tab's curved feet (drawn at 1.5px) looked thicker than the lines they join and stepped off them. The feet are now 1px, centred on the tab's side and the box's top edge, and the tab row overlaps the box by 1px. Carried over from #302, which has not merged.
 - **Carousel · Vertical story:** the cards now fill the 256px slide, so the Next button sits the same 20px below the card as the Previous button sits above it. Before, each card was only as tall as its number, leaving a large empty gap above the bottom button. Story-only change; the shipped carousel is unchanged.
 - **Carousel stories:** each card now sits in 4px of padding (`p-1`, as shadcn's own carousel examples do). The track crops at the slide edge, which cut off the card's 1px outer ring along its straight edges and left only the curved corners showing as dark crescents.
 - **Citations:** the source chip now keeps 6px clear on both sides (`mx-1.5`, was `ml-0.5`), so its 3px focus ring never touches the words around it.
@@ -39,7 +40,7 @@ footer reads `package.json` directly, so the displayed version updates with the 
   - A space between two inline elements (a button and the sentence after it) is kept as a gap.
   - A grid cell spanning rows (an alert dialog's icon beside its title and text) is pinned in place instead of pushing the next row down.
   - Masked shapes are photographed on their own at 4x with a see-through background.
-  - The composer's tab-base curve (a ring cut by a mask) is drawn as vector paths with its real colours instead of a photo, so it stays sharp at any zoom and meets the tab's edge.
+  - The composer's tab-base curve (a ring cut by a mask) is drawn as vector paths with its real colours instead of a photo, so it stays sharp at any zoom and meets the tab's edge. Its fill bleeds 1px into the tab and the box, so the box edge's last half-covered pixel row no longer shows under it as a hairline; the right foot is pinned to the tab's right side.
   - Focus a story's play leaves behind is let go before the capture (and given back if letting go changed more than styling), so focus-lit looks, such as the composer's bright AI edge, are drawn at rest as Storybook shows them.
   - A positioned `::before`/`::after` is placed from inside its parent's border, as the browser places it; the strip under the selected tab sat 1px up and left, hiding the foot of the tab's side.
   - A gradient edge's fill frame always reaches the bottom, as a padding box does; a 0.4px band of edge showed across the selected tab's base.
