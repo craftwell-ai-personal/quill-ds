@@ -17,6 +17,7 @@ footer reads `package.json` directly, so the displayed version updates with the 
 
 ### Fixed
 - **Carousel · Vertical story:** the cards now fill the 256px slide, so the Next button sits the same 20px below the card as the Previous button sits above it. Before, each card was only as tall as its number, leaving a large empty gap above the bottom button. Story-only change; the shipped carousel is unchanged.
+- **Paper sync:** a rotated layer that is positioned absolutely is now placed correctly. Paper turns such a layer about its top-left corner (and ignores `transform-origin` there), while the browser turns it about its centre, so the Carousel's vertical buttons were drawn 28px left of centre and the Tooltip arrows a few pixels off. The converter now moves the layer to compensate. Carousel and Tooltip redrawn.
 
 ## [1.26.0] — 2026-10-11
 

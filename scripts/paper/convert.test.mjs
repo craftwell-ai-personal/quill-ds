@@ -335,8 +335,7 @@ test('what Paper cannot draw is listed as lost; a rotation and a blur are kept',
   assert.equal(stats.lost.length, 2, 'the root\'s own translate only places it on the page')
   assert.match(stats.lost.join('|'), /transform not carried/)
   assert.match(stats.lost.join('|'), /mask not carried/)
-  assert.deepEqual([root.children[1].style.rotate, root.children[1].style.filter, root.children[2].style.rotate], ['180deg', 'blur(2px)', '45deg'])
-})
+  assert.deepEqual([root.children[1].style.rotate, root.children[1].style.filter, root.children[2].style.rotate], ['180deg', 'blur(2px)', '45deg'])})
 
 test('an out-of-flow child is placed where the browser measured it, inside its parent; z-index becomes layer order', () => {
   const badge = el('span', { used: { position: 'absolute', display: 'block', zIndex: '2', backgroundColor: 'rgb(42, 38, 34)' }, spec: { right: '-2px', bottom: '-2px' }, rect: { x: 31, y: 31, w: 10, h: 10 } })
@@ -346,6 +345,13 @@ test('an out-of-flow child is placed where the browser measured it, inside its p
   assert.equal(root.style.position, 'relative')
   assert.deepEqual(root.children.map((node) => node.style.position ?? 'flow'), ['absolute', 'flow', 'absolute'], 'a negative z-index goes underneath, the rest on top')
   assert.deepEqual([root.children[2].style.left, root.children[2].style.top, root.children[2].style.width], ['30px', '30px', '10px'], 'measured from inside the parent\'s border')
+})
+
+test('a turned out-of-flow child is moved so Paper\'s turn about its top-left corner lands it where the browser drew it', () => {
+  // the vertical carousel's Previous button: 28px square, rotate-90
+  const button = el('button', { used: { position: 'absolute', display: 'flex', rotate: '90deg' }, rect: { x: 50, y: 10, w: 28, h: 28 } })
+  const { root } = convertTree(el('div', { used: { display: 'flex' }, rect: { x: 0, y: 0, w: 100, h: 100 }, children: [button] }), TABLE)
+  assert.deepEqual([root.children[0].style.left, root.children[0].style.top], ['78px', '10px'])
 })
 
 test('overlapping children (negative margins) are traced by position; mx-auto becomes align-self', () => {

@@ -523,8 +523,16 @@ function sizeStyles(node, context, { parentIsFlex, isRoot = false, cellWidth = n
     // `fixed` is pinned to the browser window, which Paper does not have: the piece's own box stands in for it,
     // so a sidebar fixed at the window's left edge sits at the piece's left edge instead of hanging outside it
     const shift = used.position === 'fixed' ? context.windowShift ?? { x: 0, y: 0 } : { x: 0, y: 0 }
-    const left = rect.x + shift.x + (rect.w - own.w) / 2
-    const top = rect.y + shift.y + (rect.h - own.h) / 2
+    let left = rect.x + shift.x + (rect.w - own.w) / 2
+    let top = rect.y + shift.y + (rect.h - own.h) / 2
+    if (turned) {
+      // Paper turns an absolute layer about its top-left corner (it ignores transform-origin there); the browser
+      // turned it about its centre. Move the corner so the centre lands where the browser drew it.
+      const angle = (turnOf(used).degrees * Math.PI) / 180
+      const [halfW, halfH] = [own.w / 2, own.h / 2]
+      left += halfW - (halfW * Math.cos(angle) - halfH * Math.sin(angle))
+      top += halfH - (halfW * Math.sin(angle) + halfH * Math.cos(angle))
+    }
     if (used.position === 'fixed') context.reach?.(left + own.w, top + own.h)
     style.left = px(left - (context.parentRect?.x ?? 0) - border.left)
     style.top = px(top - (context.parentRect?.y ?? 0) - border.top)
