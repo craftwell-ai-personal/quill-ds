@@ -390,5 +390,8 @@ export const AgentPiecesInOneThread: Story = {
     // A thumbs-down on the last reply opens the feedback form under it.
     await userEvent.click(canvas.getByRole('button', { name: 'Bad answer' }))
     await expect(await canvas.findByRole('group', { name: 'What was wrong?' })).toBeVisible()
+    // The page scrolls and the composer is pinned to its bottom, so the form opened behind the composer. Scrolling to
+    // the end, as an app does for a new turn, shows it above the composer.
+    window.scrollTo({ top: document.documentElement.scrollHeight })
   },
 }

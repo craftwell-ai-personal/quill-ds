@@ -303,7 +303,7 @@
    "at": "2026-10-07"
   },
   "components-aimessage--hidden-name": {
-   "diffPct": 2.25,
+   "diffPct": 2.12,
    "paper": [
     576,
     81
@@ -315,10 +315,10 @@
    "text": true,
    "values": "21/21",
    "piece": "ai-message",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-aimessage--reply": {
-   "diffPct": 1.49,
+   "diffPct": 1.44,
    "paper": [
     576,
     166
@@ -330,10 +330,10 @@
    "text": true,
    "values": "20/21",
    "piece": "ai-message",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-aimessage--stopped": {
-   "diffPct": 0.88,
+   "diffPct": 0.8,
    "paper": [
     576,
     112
@@ -345,10 +345,10 @@
    "text": true,
    "values": "21/21",
    "piece": "ai-message",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-aimessage--stopped-no-answer": {
-   "diffPct": 0.24,
+   "diffPct": 0.01,
    "paper": [
     576,
     50
@@ -360,10 +360,10 @@
    "text": true,
    "values": "13/13",
    "piece": "ai-message",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-aimessage--streaming": {
-   "diffPct": 1.81,
+   "diffPct": 1.68,
    "paper": [
     576,
     85.5
@@ -375,10 +375,10 @@
    "text": true,
    "values": "13/13",
    "piece": "ai-message",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-aimessage--streaming-no-answer-yet": {
-   "diffPct": 4.16,
+   "diffPct": 1.89,
    "paper": [
     576,
     64
@@ -390,10 +390,10 @@
    "text": true,
    "values": "13/13",
    "piece": "ai-message",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-aimessage--with-thinking": {
-   "diffPct": 0.54,
+   "diffPct": 0.39,
    "paper": [
     576,
     137.5
@@ -403,9 +403,9 @@
     138
    ],
    "text": true,
-   "values": "19/21",
+   "values": "17/21",
    "piece": "ai-message",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-ainotice--default": {
    "diffPct": 0,
@@ -437,11 +437,26 @@
    "piece": "ai-notice",
    "at": "2026-10-07"
   },
-  "components-aipopover--opens-from-a-button": {
-   "diffPct": 3.01,
+  "components-aipopover--empty-suggestion": {
+   "diffPct": 2.32,
    "paper": [
     800,
-    181.5
+    98
+   ],
+   "storybook": [
+    800,
+    98
+   ],
+   "text": true,
+   "values": "0/0",
+   "piece": "ai-popover",
+   "at": "2026-10-12"
+  },
+  "components-aipopover--opens-from-a-button": {
+   "diffPct": 3.42,
+   "paper": [
+    800,
+    185
    ],
    "storybook": [
     800,
@@ -450,22 +465,22 @@
    "text": true,
    "values": "13/13",
    "piece": "ai-popover",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-aipopover--suggestion": {
-   "diffPct": 4.31,
+   "diffPct": 3.3,
    "paper": [
     800,
-    181.5
+    185
    ],
    "storybook": [
     800,
     182
    ],
    "text": true,
-   "values": "11/11",
+   "values": "0/0",
    "piece": "ai-popover",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-aithinking--done": {
    "diffPct": 5.18,
@@ -1503,22 +1518,22 @@
    "at": "2026-10-07"
   },
   "components-citations--in-an-answer": {
-   "diffPct": 3.49,
+   "diffPct": 1.59,
    "paper": [
-    832,
-    102
+    544,
+    107.5
    ],
    "storybook": [
-    832,
-    103
+    544,
+    108
    ],
    "text": true,
-   "values": "11/11",
+   "values": "4/13",
    "piece": "citations",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-citations--long-title-no-label": {
-   "diffPct": 2.58,
+   "diffPct": 3.97,
    "paper": [
     544,
     21
@@ -1530,10 +1545,10 @@
    "text": true,
    "values": "11/11",
    "piece": "citations",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-citations--one-source": {
-   "diffPct": 0.41,
+   "diffPct": 0.65,
    "paper": [
     544,
     98
@@ -1545,10 +1560,10 @@
    "text": true,
    "values": "13/13",
    "piece": "citations",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-citations--sources-list": {
-   "diffPct": 0.99,
+   "diffPct": 1.02,
    "paper": [
     544,
     206
@@ -1560,7 +1575,7 @@
    "text": true,
    "values": "13/13",
    "piece": "citations",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-collapsible--default": {
    "diffPct": 2.19,
@@ -1593,22 +1608,22 @@
    "at": "2026-10-07"
   },
   "components-combobox--default": {
-   "diffPct": 3.89,
+   "diffPct": 3.51,
    "paper": [
     464,
-    145
+    157.5
    ],
    "storybook": [
     464,
     158
    ],
    "text": true,
-   "values": "9/10",
+   "values": "10/10",
    "piece": "combobox",
-   "at": "2026-10-10"
+   "at": "2026-10-12"
   },
   "components-combobox--with-clear": {
-   "diffPct": 1.03,
+   "diffPct": 0.82,
    "paper": [
     435,
     258.5
@@ -1620,7 +1635,7 @@
    "text": true,
    "values": "5/5",
    "piece": "combobox",
-   "at": "2026-10-10"
+   "at": "2026-10-12"
   },
   "components-combobox--with-groups": {
    "diffPct": 0.96,
@@ -1635,7 +1650,7 @@
    "text": true,
    "values": "10/10",
    "piece": "combobox",
-   "at": "2026-10-10"
+   "at": "2026-10-12"
   },
   "components-command--as-dialog": {
    "diffPct": 1.29,
@@ -2568,7 +2583,7 @@
    "at": "2026-10-07"
   },
   "components-modelpicker--in-the-composer": {
-   "diffPct": 1.04,
+   "diffPct": 0.93,
    "paper": [
     832,
     249
@@ -2578,9 +2593,9 @@
     249
    ],
    "text": true,
-   "values": "21/21",
+   "values": "16/21",
    "piece": "model-picker",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-modelpicker--without-auto": {
    "diffPct": 0.27,
@@ -2595,7 +2610,7 @@
    "text": true,
    "values": "5/5",
    "piece": "model-picker",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-nativeselect--all-variants": {
    "diffPct": 0.66,
@@ -2883,7 +2898,7 @@
    "at": "2026-10-07"
   },
   "components-promptcomposer--disabled": {
-   "diffPct": 2.07,
+   "diffPct": 0.33,
    "paper": [
     576,
     108
@@ -2893,12 +2908,12 @@
     108
    ],
    "text": true,
-   "values": "16/16",
+   "values": "13/16",
    "piece": "prompt-composer",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-promptcomposer--error-state": {
-   "diffPct": 2.73,
+   "diffPct": 1,
    "paper": [
     576,
     134
@@ -2908,12 +2923,12 @@
     134
    ],
    "text": true,
-   "values": "18/21",
+   "values": "15/21",
    "piece": "prompt-composer",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-promptcomposer--large": {
-   "diffPct": 2.22,
+   "diffPct": 0.27,
    "paper": [
     576,
     108
@@ -2923,12 +2938,12 @@
     108
    ],
    "text": true,
-   "values": "16/16",
+   "values": "13/16",
    "piece": "prompt-composer",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-promptcomposer--notebook": {
-   "diffPct": 0.35,
+   "diffPct": 0.37,
    "paper": [
     576,
     108
@@ -2940,10 +2955,10 @@
    "text": true,
    "values": "16/21",
    "piece": "prompt-composer",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-promptcomposer--slash-commands": {
-   "diffPct": 2.69,
+   "diffPct": 0.34,
    "paper": [
     576,
     84
@@ -2953,12 +2968,12 @@
     84
    ],
    "text": true,
-   "values": "16/16",
+   "values": "13/16",
    "piece": "prompt-composer",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-promptcomposer--small": {
-   "diffPct": 2.97,
+   "diffPct": 0.49,
    "paper": [
     576,
     84
@@ -2968,12 +2983,12 @@
     84
    ],
    "text": true,
-   "values": "16/16",
+   "values": "13/16",
    "piece": "prompt-composer",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-promptcomposer--with-attachments": {
-   "diffPct": 2.7,
+   "diffPct": 1.11,
    "paper": [
     576,
     166
@@ -2983,12 +2998,12 @@
     166
    ],
    "text": true,
-   "values": "19/21",
+   "values": "11/21",
    "piece": "prompt-composer",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-promptcomposer--with-mic": {
-   "diffPct": 1.85,
+   "diffPct": 0,
    "paper": [
     576,
     108
@@ -3000,10 +3015,10 @@
    "text": true,
    "values": "8/8",
    "piece": "prompt-composer",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-promptcomposer--with-modes": {
-   "diffPct": 3,
+   "diffPct": 0.8,
    "paper": [
     576,
     142.5
@@ -3012,13 +3027,13 @@
     576,
     143
    ],
-   "text": true,
-   "values": "20/21",
+   "text": false,
+   "values": "10/21",
    "piece": "prompt-composer",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-promptcomposer--working": {
-   "diffPct": 2.35,
+   "diffPct": 0.83,
    "paper": [
     576,
     108
@@ -3028,9 +3043,9 @@
     108
    ],
    "text": true,
-   "values": "16/16",
+   "values": "12/16",
    "piece": "prompt-composer",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-questioncard--default": {
    "diffPct": 5.55,
@@ -3198,64 +3213,64 @@
    "at": "2026-10-07"
   },
   "components-resizable--horizontal": {
-   "diffPct": 0.41,
+   "diffPct": 0.2,
    "paper": [
     448,
-    53.5
+    192
    ],
    "storybook": [
     448,
-    54
+    192
    ],
    "text": true,
    "values": "10/10",
    "piece": "resizable",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-resizable--three-panel": {
-   "diffPct": 0.31,
+   "diffPct": 0.19,
    "paper": [
     672,
-    53.5
+    192
    ],
    "storybook": [
     672,
-    54
+    192
    ],
    "text": true,
    "values": "10/10",
    "piece": "resizable",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-resizable--vertical": {
-   "diffPct": 0,
+   "diffPct": 0.19,
    "paper": [
     384,
-    3
+    256
    ],
    "storybook": [
     384,
-    3
+    256
    ],
    "text": true,
    "values": "10/10",
    "piece": "resizable",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-resizable--with-handle": {
-   "diffPct": 0.42,
+   "diffPct": 0.24,
    "paper": [
     448,
-    53.5
+    192
    ],
    "storybook": [
     448,
-    54
+    192
    ],
    "text": true,
    "values": "10/10",
    "piece": "resizable",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-scrollarea--default": {
    "diffPct": 1.77,
@@ -3900,22 +3915,22 @@
    "text": true,
    "values": "11/11",
    "piece": "tabs",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-tabs--default": {
-   "diffPct": 1.41,
+   "diffPct": 1.62,
    "paper": [
     320,
-    128
+    112
    ],
    "storybook": [
     320,
-    127
+    111
    ],
    "text": true,
    "values": "11/11",
    "piece": "tabs",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-tabs--line-variant": {
    "diffPct": 2.51,
@@ -3930,7 +3945,7 @@
    "text": true,
    "values": "5/5",
    "piece": "tabs",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-tabs--vertical": {
    "diffPct": 3.17,
@@ -3945,7 +3960,7 @@
    "text": true,
    "values": "11/11",
    "piece": "tabs",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "components-textarea--all-variants": {
    "diffPct": 2.84,
@@ -4323,19 +4338,19 @@
    "at": "2026-10-07"
   },
   "examples-app-page--app-page": {
-   "diffPct": 0.94,
+   "diffPct": 1.44,
    "paper": [
     1232,
-    900
+    560
    ],
    "storybook": [
     1232,
-    900
+    560
    ],
    "text": true,
    "values": "18/18",
    "piece": "example-app-page",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "examples-auth-page--auth-page": {
    "diffPct": 0.52,
@@ -4368,7 +4383,7 @@
    "at": "2026-10-07"
   },
   "patterns-ai-ai-chat--agent-pieces-in-one-thread": {
-   "diffPct": 1.59,
+   "diffPct": 1.52,
    "paper": [
     1232,
     1371
@@ -4380,10 +4395,10 @@
    "text": true,
    "values": "13/18",
    "piece": "ai-chat",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "patterns-ai-ai-chat--app-conversation": {
-   "diffPct": 1.38,
+   "diffPct": 1.34,
    "paper": [
     1232,
     640
@@ -4395,10 +4410,10 @@
    "text": true,
    "values": "18/18",
    "piece": "ai-chat",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "patterns-ai-ai-chat--default": {
-   "diffPct": 0.97,
+   "diffPct": 1.04,
    "paper": [
     1232,
     640
@@ -4410,10 +4425,10 @@
    "text": true,
    "values": "18/18",
    "piece": "ai-chat",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "patterns-ai-ai-chat--no-sidebar": {
-   "diffPct": 0.92,
+   "diffPct": 1,
    "paper": [
     1232,
     640
@@ -4423,12 +4438,12 @@
     640
    ],
    "text": true,
-   "values": "16/18",
+   "values": "14/18",
    "piece": "ai-chat",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "patterns-ai-ai-chat--own-sidebar": {
-   "diffPct": 0.77,
+   "diffPct": 0.89,
    "paper": [
     1232,
     640
@@ -4440,10 +4455,10 @@
    "text": true,
    "values": "18/18",
    "piece": "ai-chat",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
-  "patterns-ai-ai-home--default": {
-   "diffPct": 0.46,
+  "patterns-ai-ai-home--agent-tab": {
+   "diffPct": 0.14,
    "paper": [
     1232,
     512
@@ -4452,10 +4467,25 @@
     1232,
     512
    ],
-   "text": true,
+   "text": false,
    "values": "13/21",
    "piece": "ai-home",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
+  },
+  "patterns-ai-ai-home--default": {
+   "diffPct": 0.15,
+   "paper": [
+    1232,
+    512
+   ],
+   "storybook": [
+    1232,
+    512
+   ],
+   "text": false,
+   "values": "13/21",
+   "piece": "ai-home",
+   "at": "2026-10-12"
   },
   "patterns-ai-ai-side-panel--default": {
    "diffPct": 3.74,
@@ -4683,19 +4713,19 @@
    "at": "2026-10-07"
   },
   "patterns-data-badge-on-card--badge-on-card": {
-   "diffPct": 1.24,
+   "diffPct": 1.81,
    "paper": [
     280,
-    76
+    52
    ],
    "storybook": [
     280,
-    76
+    52
    ],
    "text": true,
    "values": "11/11",
    "piece": "badge-on-card",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "patterns-data-calendar-page--calendar-page": {
    "diffPct": 1.53,
@@ -4788,19 +4818,19 @@
    "at": "2026-10-07"
   },
   "patterns-data-notifications--notifications": {
-   "diffPct": 2.16,
+   "diffPct": 1.88,
    "paper": [
     360,
-    270
+    290
    ],
    "storybook": [
     360,
-    267
+    286
    ],
    "text": true,
    "values": "19/19",
    "piece": "notifications",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "patterns-data-order-summary--order-summary": {
    "diffPct": 3.22,
@@ -4818,19 +4848,19 @@
    "at": "2026-10-07"
   },
   "patterns-data-profile-card--profile-card": {
-   "diffPct": 1.22,
+   "diffPct": 1.21,
    "paper": [
     340,
-    350
+    333
    ],
    "storybook": [
     340,
-    349
+    332
    ],
    "text": true,
    "values": "19/19",
    "piece": "profile-card",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "patterns-data-search-results--search-results": {
    "diffPct": 1.4,
@@ -4995,7 +5025,7 @@
    "text": true,
    "values": "10/10",
    "piece": "feature-section",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "patterns-marketing-footer--footer": {
    "diffPct": 0.53,
@@ -5208,19 +5238,19 @@
    "at": "2026-10-07"
   },
   "patterns-shells-sidebar-navigation--sidebar-nav": {
-   "diffPct": 0.18,
+   "diffPct": 0.28,
    "paper": [
     1232,
-    900
+    560
    ],
    "storybook": [
     1232,
-    900
+    560
    ],
    "text": true,
    "values": "10/10",
    "piece": "sidebar-nav",
-   "at": "2026-10-07"
+   "at": "2026-10-12"
   },
   "patterns-shells-tabs-page--tabs-page": {
    "diffPct": 2.93,

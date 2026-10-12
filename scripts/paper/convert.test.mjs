@@ -107,12 +107,18 @@ test('a transform is read as the rotation Paper can hold, plus whether anything 
 })
 
 test('what cannot be carried is reported, not guessed', () => {
-  const moved = translateMargins({ axis: 'row', gap: 8 }, [child({ right: 4, top: 6 }), child({ left: -6 })])
+  const moved = translateMargins({ axis: 'row', gap: 8 }, [child({ right: 4 }), child({ left: -6 })])
   assert.deepEqual(moved.spacers, [])
   assert.equal(moved.negative, true)
-  assert.equal(moved.lost.length, 2)
-  assert.match(moved.lost.join('|'), /6px top margin across the row dropped/)
+  assert.equal(moved.lost.length, 1)
   assert.match(moved.lost.join('|'), /negative left margin \(-6px\) dropped/)
+})
+
+test('a margin across the axis is carried by a padded wrapper (a search box inset m-1 in a column panel)', () => {
+  const moved = translateMargins({ axis: 'column' }, [child({ top: 4, left: 4, right: 4 }), child({})])
+  assert.deepEqual(moved.padding, { top: 4, right: 0, bottom: 0, left: 0 })
+  assert.deepEqual(moved.wraps, [{ index: 0, side: 'left', size: 4 }, { index: 0, side: 'right', size: 4 }])
+  assert.deepEqual(moved.lost, [])
 })
 
 test('a margin smaller than the gap wraps each child in its own padding instead of a spacer', () => {
@@ -335,8 +341,7 @@ test('what Paper cannot draw is listed as lost; a rotation and a blur are kept',
   assert.equal(stats.lost.length, 2, 'the root\'s own translate only places it on the page')
   assert.match(stats.lost.join('|'), /transform not carried/)
   assert.match(stats.lost.join('|'), /mask not carried/)
-  assert.deepEqual([root.children[1].style.rotate, root.children[1].style.filter, root.children[2].style.rotate], ['180deg', 'blur(2px)', '45deg'])
-})
+  assert.deepEqual([root.children[1].style.rotate, root.children[1].style.filter, root.children[2].style.rotate], ['180deg', 'blur(2px)', '45deg'])})
 
 test('an out-of-flow child is placed where the browser measured it, inside its parent; z-index becomes layer order', () => {
   const badge = el('span', { used: { position: 'absolute', display: 'block', zIndex: '2', backgroundColor: 'rgb(42, 38, 34)' }, spec: { right: '-2px', bottom: '-2px' }, rect: { x: 31, y: 31, w: 10, h: 10 } })
@@ -346,6 +351,13 @@ test('an out-of-flow child is placed where the browser measured it, inside its p
   assert.equal(root.style.position, 'relative')
   assert.deepEqual(root.children.map((node) => node.style.position ?? 'flow'), ['absolute', 'flow', 'absolute'], 'a negative z-index goes underneath, the rest on top')
   assert.deepEqual([root.children[2].style.left, root.children[2].style.top, root.children[2].style.width], ['30px', '30px', '10px'], 'measured from inside the parent\'s border')
+})
+
+test('a turned out-of-flow child is moved so Paper\'s turn about its top-left corner lands it where the browser drew it', () => {
+  // the vertical carousel's Previous button: 28px square, rotate-90
+  const button = el('button', { used: { position: 'absolute', display: 'flex', rotate: '90deg' }, rect: { x: 50, y: 10, w: 28, h: 28 } })
+  const { root } = convertTree(el('div', { used: { display: 'flex' }, rect: { x: 0, y: 0, w: 100, h: 100 }, children: [button] }), TABLE)
+  assert.deepEqual([root.children[0].style.left, root.children[0].style.top], ['78px', '10px'])
 })
 
 test('overlapping children (negative margins) are traced by position; mx-auto becomes align-self', () => {

@@ -130,7 +130,8 @@ export function translateMargins({ axis, gap = 0, collapse = false }, children) 
     // `mx-auto` in a column centres the child; one auto side pushes it to the other edge
     const autos = [margin[crossStart] === 'auto', margin[crossEnd] === 'auto']
     if (autos[0] || autos[1]) align.push({ index, value: autos[0] && autos[1] ? 'center' : autos[0] ? 'flex-end' : 'flex-start' })
-    for (const side of [crossStart, crossEnd]) if (margin[side] > 0) lost.push(`${margin[side]}px ${side} margin across the ${axis} dropped`)
+    // a margin across the axis (a search box inset `m-1` in a column) has no flex spelling: a padded wrapper carries it
+    for (const side of [crossStart, crossEnd]) if (margin[side] > 0) wraps.push({ index, side, size: margin[side] })
     for (const side of [start, end, crossStart, crossEnd]) if (margin[side] < 0) lost.push(`negative ${side} margin (${margin[side]}px) dropped`)
     const before = margin[start]
     const previous = index > 0 ? children[index - 1].margin[end] : null
@@ -364,6 +365,19 @@ export function shorthand(values) {
  * Tailwind composes `box-shadow` from five variables, so a plain `shadow-sm` computes to four
  * invisible layers and the real one. Keep the layers that draw something.
  */
+/** A comma list split only at its top level: `linear-gradient(rgb(1, 2, 3), …), …` keeps each gradient whole. */
+export function splitLayers(value) {
+  const layers = ['']
+  let depth = 0
+  for (const character of value) {
+    if (character === '(') depth++
+    if (character === ')') depth--
+    if (character === ',' && depth === 0) layers.push('')
+    else layers[layers.length - 1] += character
+  }
+  return layers.map((layer) => layer.trim())
+}
+
 export function visibleShadows(value) {
   const layers = value.split(/,(?![^(]*\))/).map((layer) => layer.trim())
   const drawn = layers.filter((layer) => { const color = parseColor(layer.match(/#[0-9a-fA-F]{3,8}\b|\b(?:rgba?|oklab|oklch|color)\([^()]*\)/)?.[0] ?? ''); return !color || color.a > 0 })
@@ -523,8 +537,16 @@ function sizeStyles(node, context, { parentIsFlex, isRoot = false, cellWidth = n
     // `fixed` is pinned to the browser window, which Paper does not have: the piece's own box stands in for it,
     // so a sidebar fixed at the window's left edge sits at the piece's left edge instead of hanging outside it
     const shift = used.position === 'fixed' ? context.windowShift ?? { x: 0, y: 0 } : { x: 0, y: 0 }
-    const left = rect.x + shift.x + (rect.w - own.w) / 2
-    const top = rect.y + shift.y + (rect.h - own.h) / 2
+    let left = rect.x + shift.x + (rect.w - own.w) / 2
+    let top = rect.y + shift.y + (rect.h - own.h) / 2
+    if (turned) {
+      // Paper turns an absolute layer about its top-left corner (it ignores transform-origin there); the browser
+      // turned it about its centre. Move the corner so the centre lands where the browser drew it.
+      const angle = (turnOf(used).degrees * Math.PI) / 180
+      const [halfW, halfH] = [own.w / 2, own.h / 2]
+      left += halfW - (halfW * Math.cos(angle) - halfH * Math.sin(angle))
+      top += halfH - (halfW * Math.sin(angle) + halfH * Math.cos(angle))
+    }
     if (used.position === 'fixed') context.reach?.(left + own.w, top + own.h)
     style.left = px(left - (context.parentRect?.x ?? 0) - border.left)
     style.top = px(top - (context.parentRect?.y ?? 0) - border.top)
@@ -618,7 +640,8 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
   const textNode = (text, owner, classes, context, extra = {}) => emit({
     tag: 'span',
     text,
-    style: dropDefaults({ ...textStyles(owner.used, classes, context), ...extra }),
+    // balanced text (see captureInPage) wraps at the browser's words when held to the width its lines took
+    style: dropDefaults({ ...textStyles(owner.used, classes, context), ...(owner.balancedWidth ? { 'max-width': px(Math.ceil(owner.balancedWidth) + 1) } : {}), ...extra }),
     children: [],
   })
 
@@ -633,7 +656,9 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
     })
     // gradient stops stay literal (Paper does not resolve a token there) but in the short spelling
     markup = markup.replace(/stop-color="([^"]+)"/g, (_, value) => { const parsed = parseColor(value); return `stop-color="${parsed ? formatColor(parsed) : value}"` })
-    const style = dropDefaults({ ...extra, 'flex-shrink': '0', opacity: String(round(num(node.used.opacity), 3)) })
+    // an icon turned to show state (an open disclosure's chevron, rotate-90) keeps its turn
+    const turn = turnOf(node.used).degrees
+    const style = dropDefaults({ ...extra, 'flex-shrink': '0', opacity: String(round(num(node.used.opacity), 3)), rotate: turn ? `${turn}deg` : undefined })
     const css = Object.entries(style).map(([property, value]) => `${property}:${value}`).join(';')
     const name = node.slot || 'svg'
     return emit({ tag: 'svg', raw: markup.replace(/^<svg/, `<svg layer-name="${escapeAttr(name)}" style="${escapeAttr(css)}"`), style: {}, children: [] })
@@ -663,15 +688,41 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
       return emit({ tag: 'div', name: `${label(node)} (hidden)`, style: dropDefaults({ display: 'flex', width: px(node.rect.w), height: px(node.rect.h), 'flex-shrink': '0', ...(inherited.parentIsFlex ? { 'align-self': node.used.alignSelf } : {}) }), children: [] })
     }
     const size = sizeStyles(node, context, { ...inherited, isRoot })
+    // A curve past its parent's right side (the selected tab's right foot) is pinned to that side: Paper rounds a
+    // text-hugging tab's width up, which would leave a foot placed from the left short of the side it continues.
+    if (node.ring && size.left && context.parentRect) {
+      const side = context.parentRect.x + context.parentRect.w - (context.parentBorder?.right ?? 0)
+      if (node.rect.x >= side - 0.5) {
+        const pinned = { ...size, right: px(side - (node.rect.x + node.rect.w)) }
+        delete pinned.left
+        return convertSvg(node, context, pinned)
+      }
+    }
     if (node.tag === 'svg') return convertSvg(node, context, size)
     if (node.tag === 'img' || MEDIA.has(node.tag)) return convertMedia(node, context, size)
+    // A paragraph traced line by line (see captureInPage: a highlight that wraps): marks underneath, text runs on top
+    if (node.lines) {
+      note('approximated', node, 'a highlight wrapping across lines: the paragraph is traced line by line')
+      const marks = node.lines.marks.map((mark) => emit({ tag: 'div', name: 'highlight', style: dropDefaults({ display: 'flex', position: 'absolute', left: px(mark.x), top: px(mark.y), width: px(mark.w), height: px(mark.h), 'background-color': binder.color('background', mark.color), 'border-radius': mark.radius ? px(mark.radius) : undefined }), children: [] }))
+      const runs = node.lines.runs.map((run) => textNode(run.text.replace(/\s+$/, ''), { used: run.used }, [], context, { position: 'absolute', left: px(run.x), top: px(run.y), 'white-space': 'pre' }))
+      // a box in the line (a chip) is placed where the browser put it, as any pinned layer is
+      const placed = { textClasses: [], parentAutoHeight: false, windowShift: inherited.windowShift, reach: inherited.reach, parentRect: node.rect, parentBorder: { left: num(node.used.borderLeftWidth), top: num(node.used.borderTopWidth) } }
+      const boxes = (node.lines.boxes ?? []).map((box) => convert({ ...box, used: { ...box.used, position: 'absolute' } }, placed)).filter(Boolean)
+      return emit({ tag: 'div', name: layerName(node), style: dropDefaults({ display: 'flex', ...boxStyles(node, context), ...size, position: size.position ?? 'relative', width: px(node.rect.w), height: px(node.rect.h) }), children: [...marks, ...runs, ...boxes] })
+    }
+    // A masked shape (the prompt composer's tab-base curve) is drawn from a photo of itself: Paper has no mask, and
+    // without one the shape's fill shows as a solid square. The photo already holds its fill, edge and see-through parts.
+    if (node.photo && images[node.photo]) {
+      const css = Object.entries(dropDefaults({ ...size, width: px(node.rect.w), height: px(node.rect.h), 'flex-shrink': '0' })).map(([property, value]) => `${property}:${value}`).join(';')
+      return emit({ tag: 'img', raw: `<img layer-name="${escapeAttr(label(node))}" src="${escapeAttr(images[node.photo])}" style="${escapeAttr(css)}">`, style: {}, children: [] })
+    }
 
     const layout = layoutOf(node)
     const flowing = node.children.filter((child) => !outOfFlow(child))
     const floating = node.children.filter(outOfFlow)
     const elements = flowing.filter((child) => !isText(child))
     const runs = flowing.filter(isText).map((child) => normalizeText(child.text, node.used.whiteSpace)).filter((text) => text.trim())
-    const childContext = { textClasses, parentAutoHeight: !/px$/.test(node.spec.height ?? ''), windowShift: inherited.windowShift, reach: inherited.reach, parentRect: node.rect, parentBorder: { left: num(node.used.borderLeftWidth), top: num(node.used.borderTopWidth) } }
+    const childContext = { textClasses, parentAutoHeight: !/px$/.test(node.spec.height ?? ''), windowShift: inherited.windowShift, reach: inherited.reach, parentRect: node.rect, parentBorder: { left: num(node.used.borderLeftWidth), top: num(node.used.borderTopWidth), right: num(node.used.borderRightWidth) } }
 
     // A form field shows its value (or its placeholder) as text; the caret and selection are not design.
     if (FIELDS.has(node.tag)) {
@@ -744,6 +795,12 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
         // in a column, `justify-items` is the cross axis and `align-content` the main one
         if (!['normal', 'stretch', 'legacy'].includes(node.used.justifyItems)) frame['align-items'] = node.used.justifyItems
         if (!['normal', 'stretch'].includes(node.used.alignContent)) frame['justify-content'] = node.used.alignContent
+        // One row (a `grid place-items-center` badge round an icon): the row fills the box and align-items places the
+        // item within it, so top to bottom it is centred too. With more rows each is only as tall as its content.
+        else if (elements.length === 1) {
+          const place = { center: 'center', start: 'flex-start', 'flex-start': 'flex-start', end: 'flex-end', 'flex-end': 'flex-end' }[node.used.alignItems]
+          if (place) frame['justify-content'] = place
+        }
         children = elements.map((child) => convertChild(child))
       } else {
         note('approximated', node, `${columns.length}-column grid drawn as flex rows with measured cell widths`)
@@ -756,6 +813,25 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
           const own = row.map((cell) => elements[cell.index].rect).filter((box) => box.y + box.h <= limit + 1)
           return own.length ? px(Math.max(...own.map((box) => box.h))) : undefined
         }
+        // A cell that spans rows (an alert dialog's icon beside both its title and its text) would make its first row
+        // as tall as itself and push the next row down. It is pinned where the browser put it, an empty slot of its width
+        // holding its place in the row.
+        const spanning = new Set()
+        plan.rows.forEach((row, position) => {
+          const next = plan.rows[position + 1]
+          if (!next) return
+          const limit = elements[next[0].index].rect.y
+          for (const cell of row) if (elements[cell.index].rect.y + elements[cell.index].rect.h > limit + 1) spanning.add(cell.index)
+        })
+        const pinned = [...spanning].map((index) => {
+          const child = elements[index]
+          const converted = convertChild(child, { cellWidth: child.rect.w })
+          const place = { position: 'absolute', left: px(child.rect.x - node.rect.x - num(node.used.borderLeftWidth)), top: px(child.rect.y - node.rect.y - num(node.used.borderTopWidth)), width: px(child.rect.w), height: px(child.rect.h) }
+          if (converted.raw) converted.raw = converted.raw.replace(/style="/, `style="${Object.entries(place).map(([property, value]) => `${property}:${value}`).join(';')};`)
+          else Object.assign(converted.style, place)
+          return converted
+        })
+        if (pinned.length) note('approximated', node, 'a grid cell spanning rows is pinned where the browser put it')
         children = plan.rows.map((row, position) => emit({
           tag: 'div',
           name: 'row',
@@ -763,9 +839,13 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
           style: dropDefaults({ display: 'flex', gap: binder.length('spacing', plan.columnGap), 'align-items': ['normal', 'stretch'].includes(node.used.alignItems) ? 'stretch' : node.used.alignItems, 'min-height': rowHeight(row, position), 'flex-shrink': '0' }),
           children: row.flatMap((cell) => [
             ...(cell.offset > 0.5 ? [emit(spacer('row', { size: cell.offset - plan.columnGap }))] : []),
-            convertChild(elements[cell.index], { cellWidth: cell.width }),
+            spanning.has(cell.index) ? emit(spacer('row', { size: cell.width })) : convertChild(elements[cell.index], { cellWidth: cell.width }),
           ]),
         }))
+        if (pinned.length) {
+          children.push(...pinned)
+          frame.position = 'relative'
+        }
       }
     } else if (layout.kind === 'table' || layout.kind === 'section') {
       // rows stack; a calendar spaces its weeks with a margin on each row, which the usual margin step carries
@@ -799,12 +879,30 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
         frame['flex-wrap'] = node.used.whiteSpace === 'nowrap' ? 'nowrap' : 'wrap'
         frame['align-items'] = 'baseline'
         frame['justify-content'] = { center: 'center', right: 'flex-end', end: 'flex-end' }[node.used.textAlign]
-        const items = flowing.filter((child) => !isText(child) || normalizeText(child.text, node.used.whiteSpace).trim())
+        // A space between two elements (`<Button/> <span>`) is a run of its own that would be dropped as empty; it
+        // becomes a gap the width the browser measured between them, when they share a line.
+        const items = []
+        flowing.forEach((child, index) => {
+          if (!isText(child) || normalizeText(child.text, node.used.whiteSpace).trim()) { items.push(child); return }
+          const [before, after] = [flowing[index - 1], flowing[index + 1]]
+          if (!before || !after || isText(before) || isText(after) || Math.abs(before.rect.y + before.rect.h / 2 - (after.rect.y + after.rect.h / 2)) > before.rect.h / 2) return
+          const width = after.rect.x - (before.rect.x + before.rect.w)
+          if (width > 0.5) items.push({ gap: width })
+        })
         const mixed = inline.length !== elements.length
         if (items.filter(isText).length && items.length > 1) note('approximated', node, `rich text split into ${items.length} one-style runs (it can no longer rewrap as a sentence)`)
         marginItems = []
         children = items.map((child, index) => {
-          if (!isText(child)) return convertChild(child)
+          if (child.gap) return emit(spacer('row', { size: child.gap }))
+          if (!isText(child)) {
+            // An inline box's side margins travel with it on the line (a citation chip spaced off the words around it);
+            // a padded frame does the same, where a spacer could end up alone at the start of a wrapped line.
+            const converted = convertChild(child)
+            const { left, right } = marginOf(child)
+            const [before, after] = [left, right].map((value) => (typeof value === 'number' && value > 0 ? value : 0))
+            if (converted.raw || (!before && !after)) return converted
+            return emit({ tag: 'div', name: 'margin', style: dropDefaults({ display: 'flex', 'align-items': 'baseline', 'padding-left': before ? px(before) : undefined, 'padding-right': after ? px(after) : undefined }), children: [converted] })
+          }
           let text = normalizeText(child.text, node.used.whiteSpace)
           if (index === 0) text = text.trimStart()
           if (index === items.length - 1) text = text.trimEnd()
@@ -819,7 +917,7 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
           const lines = []
           const sources = []
           items.forEach((child, position) => {
-            const blockLevel = !isText(child) && !isInlineLevel(child.used.display)
+            const blockLevel = !isText(child) && !child.gap && !isInlineLevel(child.used.display)
             const last = lines.at(-1)
             if (blockLevel) { lines.push(children[position]); sources.push(child) }
             else if (last?.line) last.children.push(children[position])
@@ -856,6 +954,10 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
           if (target.raw) target.raw = target.raw.replace(/style="/, `style="${Object.entries(place).map(([property, value]) => `${property}:${value}`).join(';')};`)
           else Object.assign(target.style, place)
         })
+        // Overlapping, so paint order shows: Paper paints later layers on top and has no z-index, so order them by
+        // theirs (the composer's tab row, z-10, covers the box's top edge it overlaps by 1.5px). The sort is stable.
+        const level = (child) => (child.used.position !== 'static' && child.used.zIndex !== 'auto' ? Number(child.used.zIndex) || 0 : 0)
+        children = marginItems.map((child, position) => ({ level: level(child), converted: children[position] })).sort((a, b) => a.level - b.level).map((entry) => entry.converted)
         traced = true
       } else {
         extraPadding = moved.padding
@@ -879,6 +981,28 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
         }
         children = children.map((child) => child.wrapper ?? child)
         for (const entry of moved.spacers.filter((candidate) => !candidate.grow).sort((a, b) => b.before - a.before)) children.splice(entry.before, 0, emit(spacer(axis, entry)))
+      }
+    }
+
+    // A raised child whose own pinned pieces spill over its neighbours (the selected composer tab, z-10, whose base
+    // curve reaches over the next tab) must be drawn after them, and Paper honours neither z-index nor positioning on an
+    // in-flow layer. Trace the row as the overlap case above does and order it by z-index; only this case, so ordinary
+    // rows keep their flex layout.
+    if (!traced) {
+      const sources = flowing.filter((child) => !isText(child))
+      const level = (child) => (child.used.position !== 'static' && child.used.zIndex !== 'auto' ? Number(child.used.zIndex) || 0 : 0)
+      const spills = (child) => child.children?.some((piece) => !isText(piece) && piece.used.position === 'absolute' && (piece.rect.x < child.rect.x - 0.5 || piece.rect.x + piece.rect.w > child.rect.x + child.rect.w + 0.5))
+      if (sources.length > 1 && sources.length === children.length && new Set(sources.map(level)).size > 1 && sources.some((child) => level(child) > 0 && spills(child))) {
+        note('approximated', node, 'a raised child overlaps its neighbours: the row is placed by measured position, ordered by z-index')
+        const placed = sources.map((child, position) => {
+          const target = children[position].wrapper ? children[position].children[0] : children[position]
+          const place = { position: 'absolute', left: px(child.rect.x - node.rect.x - num(node.used.borderLeftWidth)), top: px(child.rect.y - node.rect.y - num(node.used.borderTopWidth)), width: px(child.rect.w), height: px(child.rect.h) }
+          if (target.raw) target.raw = target.raw.replace(/style="/, `style="${Object.entries(place).map(([property, value]) => `${property}:${value}`).join(';')};`)
+          else Object.assign(target.style, place)
+          return { level: level(child), converted: target }
+        })
+        children = placed.sort((a, b) => a.level - b.level).map((entry) => entry.converted)
+        traced = true
       }
     }
 
@@ -911,6 +1035,13 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
     // Paper keeps a gradient but drops background-size, so a gradient stretched wider than its box (the usage
     // meter shows the first 30 % of a full-width AI gradient) would be squeezed in whole. Draw it as a child
     // layer of the stated size, clipped by this frame.
+    // Gradient text (AI Thinking's shimmer label): the box's gradient is clipped to its text. Paper does clip a fill to
+    // text, but only on the text layer itself; left on the frame it paints a solid block over see-through letters.
+    const textChild = children.length === 1 && typeof children[0].text === 'string' ? children[0] : null
+    if (node.used.backgroundClip === 'text' && frame['background-image'] && textChild) {
+      Object.assign(textChild.style, { 'background-image': frame['background-image'], 'background-clip': 'text' })
+      for (const property of ['background-image', 'background-size', 'background-position', 'background-repeat']) delete frame[property]
+    }
     const stretched = frame['background-image'] && node.used.backgroundRepeat === 'no-repeat' && node.used.backgroundSize.match(/^([\d.]+)% ([\d.]+)%$/)
     if (stretched && (Number(stretched[1]) !== 100 || Number(stretched[2]) !== 100)) {
       children.unshift(emit({ tag: 'div', name: 'gradient', style: { display: 'flex', position: 'absolute', left: '0px', top: '0px', width: `${round(Number(stretched[1]))}%`, height: `${round(Number(stretched[2]))}%`, 'background-image': frame['background-image'] }, children: [] }))
@@ -918,6 +1049,45 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
       frame.overflow = 'hidden'
       frame.position = frame.position ?? 'relative'
       note('approximated', node, 'background-size is not kept by Paper: the gradient is a clipped child layer')
+    }
+    // A gradient edge (Quill's ai-edge): a fill clipped to the padding box over a gradient that shows through a
+    // see-through border. Paper has no background-clip, so the fill would cover the gradient and the edge vanish.
+    // An outer frame keeps the gradient and the place in the layout, padded by the border's width; an inner frame
+    // holds the fill (corners shrunk by the border) and everything the box lays out. (A fill laid in as an absolute
+    // layer would paint over the contents: positioned layers paint above unpositioned ones.)
+    const clips = node.used.backgroundClip?.split(',').map((clip) => clip.trim())
+    const layers = frame['background-image'] ? splitLayers(frame['background-image']) : []
+    const borders = sides(node.used, 'border', 'Width').map(num)
+    const seeThrough = sides(node.used, 'border', 'Color').every((color) => parseColor(color)?.a === 0)
+    if (clips?.[0] === 'padding-box' && clips[1] === 'border-box' && layers.length === 2 && seeThrough && borders.some((width) => width > 0)) {
+      const [top, right, bottom, left] = borders
+      const corner = (name, a, b) => px(Math.max(0, num(node.used[`border${name}Radius`]) - Math.max(a, b)))
+      const OUTER = ['width', 'height', 'min-width', 'max-width', 'min-height', 'max-height', 'flex-grow', 'flex-shrink', 'flex-basis', 'align-self', 'position', 'left', 'top', 'rotate', 'box-shadow', 'opacity', 'border-radius', 'outline', 'outline-offset']
+      const outer = { display: 'flex', 'flex-direction': 'column', 'background-image': layers[1], padding: [top, right, bottom, left].map(px).join(' ') }
+      // ai-edge's fill is spelled `linear-gradient(X, X)`, one colour: Paper gets it as the plain fill it is
+      const solid = layers[0].match(/^linear-gradient\((?:in [a-z]+ )?([^,]+(?:\([^)]*\))?),\s*([^,]+(?:\([^)]*\))?)\)$/)
+      const fill = solid && solid[1].trim() === solid[2].trim() ? { 'background-color': solid[1].trim(), 'background-image': undefined } : { 'background-image': layers[0] }
+      const inner = { ...frame, ...fill, 'border-radius': [corner('TopLeft', top, left), corner('TopRight', top, right), corner('BottomRight', bottom, right), corner('BottomLeft', bottom, left)].join(' ') }
+      for (const property of OUTER) if (property in frame) { outer[property] = frame[property]; if (property !== 'border-radius') delete inner[property] }
+      for (const property of Object.keys(inner)) if (/^border(-(top|right|bottom|left))?$/.test(property)) delete inner[property]
+      // set after the move above, which takes the piece's own flex-grow to the outer frame: the fill always reaches
+      // the bottom, as a padding box does (a tab stretched taller than its content left a strip of edge showing)
+      inner['flex-grow'] = '1'
+      // an inset shadow (a keyboard focus ring kept inside the tab) belongs over the fill, not under it
+      if (outer['box-shadow']) {
+        const shadows = splitLayers(outer['box-shadow'])
+        const insets = shadows.filter((shadow) => /\binset\b/.test(shadow))
+        if (insets.length) {
+          inner['box-shadow'] = insets.join(', ')
+          const rest = shadows.filter((shadow) => !insets.includes(shadow))
+          if (rest.length) outer['box-shadow'] = rest.join(', ')
+          else delete outer['box-shadow']
+        }
+      }
+      // absolute children (the tab's base curves) still measure from a positioned box
+      if (frame.position || floating.length) inner.position = 'relative'
+      note('approximated', node, 'gradient edge (background-clip) drawn as a gradient frame around a fill frame')
+      return emit({ tag: 'div', name: layerName(node), style: dropDefaults(outer), children: [emit({ tag: 'div', name: 'fill', style: dropDefaults(inner), children })] })
     }
     // Paper drops an absolutely positioned child unless its parent is positioned, as CSS does
     if (floating.length && !frame.position) frame.position = 'relative'
@@ -966,6 +1136,8 @@ export function visibleTexts(tree) {
     if (isText(node)) { const text = normalizeText(node.text, whiteSpace).replace(/\s+/g, ' ').trim(); if (text) texts.push(text); return }
     // fully transparent: Paper draws nothing for it, and neither does the browser
     if (node.ghost || (node !== tree && num(node.used.opacity) === 0)) return
+    // a paragraph traced line by line holds its text as runs
+    if (node.lines) { for (const run of node.lines.runs) { const text = run.text.replace(/\s+/g, ' ').trim(); if (text) texts.push(text) } for (const box of node.lines.boxes ?? []) walk(box, node.used.whiteSpace); return }
     if (FIELDS.has(node.tag)) { const shown = node.textless ? '' : node.value || node.placeholder; if (shown?.trim()) texts.push(shown.replace(/\s+/g, ' ').trim()); return }
     for (const child of node.children ?? []) walk(child, node.used.whiteSpace)
   }
@@ -1011,7 +1183,57 @@ async function captureInPage({ usedProperties, specProperties, panelSelector, br
   }
   const trim = (value) => Math.round(value * 100) / 100
   const urls = new Set()
+  let masked = 0
   let rootOrigin = { x: 0, y: 0 }
+
+  // The prompt composer's tab-base curve is a ring cut by a mask: a circle centred on one corner of a small square,
+  // masked out up to an inner radius, coloured by a conic gradient up to an outer radius and by a fill beyond it.
+  // That shape is drawn as vector paths, crisp at any zoom; a photo of it (the fallback for any other mask) blurred
+  // and drifted against the tab's vector edge. Returns the SVG markup and its bleed, or null for a mask of any other shape.
+  const cornerRing = (computed, box) => {
+    const color = '((?:rgba?|oklab|oklch|lab|lch|color)\\([^)]*\\))'
+    const at = '(\\S+) (\\S+)'
+    const mask = computed.maskImage.match(new RegExp(`^radial-gradient\\(circle at ${at}, rgba\\(0, 0, 0, 0\\) ([\\d.]+)px, ${color} ([\\d.]+)px\\)$`))
+    const paint = computed.backgroundImage.match(new RegExp(`^radial-gradient\\(circle at ${at}, rgba\\(0, 0, 0, 0\\) ([\\d.]+)px, ${color} ([\\d.]+)px\\), conic-gradient\\(from ([\\d.]+)deg at ${at}, ${color}, ${color} 90deg\\)$`))
+    if (!mask || !paint) return null
+    const { width: w, height: h } = box
+    const place = (value, size) => (value.endsWith('%') ? (parseFloat(value) / 100) * size : parseFloat(value))
+    const cx = place(mask[1], w)
+    const cy = place(mask[2], h)
+    const centres = [[paint[1], paint[2]], [paint[7], paint[8]]].map(([x, y]) => [place(x, w), place(y, h)])
+    if (centres.some(([x, y]) => Math.abs(x - cx) > 0.01 || Math.abs(y - cy) > 0.01)) return null
+    const corner = (value, size) => Math.abs(value) < 0.01 || Math.abs(value - size) < 0.01
+    if (!corner(cx, w) || !corner(cy, h)) return null
+    // each soft edge is drawn at its midpoint, as the eye reads it
+    const inner = (parseFloat(mask[3]) + parseFloat(mask[5])) / 2
+    const outer = (parseFloat(paint[3]) + parseFloat(paint[5])) / 2
+    if (outer <= inner || outer > Math.min(w, h) + 0.01) return null
+    const n = (value) => String(Math.round(value * 1000) / 1000)
+    const sx = cx < w / 2 ? 1 : -1
+    const sy = cy < h / 2 ? 1 : -1
+    // from the point on the square's horizontal edge to the one on its vertical edge: clockwise when sx and sy agree
+    const sweep = sx * sy > 0 ? 1 : 0
+    const across = (r) => `${n(cx + sx * r)} ${n(cy)}`
+    const down = (r) => `${n(cx)} ${n(cy + sy * r)}`
+    const ring = `M${across(outer)}A${n(outer)} ${n(outer)} 0 0 ${sweep} ${down(outer)}L${down(inner)}A${n(inner)} ${n(inner)} 0 0 ${1 - sweep} ${across(inner)}Z`
+    // The fill beyond the ring bleeds 1px past the square on the two sides away from the centre (into the tab and the
+    // box, both that same colour): ending exactly on the box edge's last, half-covered pixel row left it showing as a hairline.
+    const far = { x: cx + sx * (w + 1), y: cy + sy * (h + 1) }
+    const beyond = `M${across(outer)}L${n(far.x)} ${n(cy)}L${n(far.x)} ${n(far.y)}L${n(cx)} ${n(far.y)}L${down(outer)}A${n(outer)} ${n(outer)} 0 0 ${1 - sweep} ${across(outer)}Z`
+    // A conic gradient's angle runs clockwise from straight up; its two stops sit a quarter turn apart, at the two
+    // ends of the ring, so a straight gradient between those ends reads the same along a quarter circle.
+    const middle = (inner + outer) / 2
+    const turn = (parseFloat(paint[6]) * Math.PI) / 180
+    const end = (angle) => [cx + middle * Math.sin(angle), cy - middle * Math.cos(angle)]
+    const [x1, y1] = end(turn)
+    const [x2, y2] = end(turn + Math.PI / 2)
+    const id = `paper-ring-${masked++}`
+    const bleed = { x: Math.min(0, far.x), y: Math.min(0, far.y) }
+    const markup = `<svg xmlns="http://www.w3.org/2000/svg" width="${n(w + 1)}" height="${n(h + 1)}" viewBox="${n(bleed.x)} ${n(bleed.y)} ${n(w + 1)} ${n(h + 1)}" fill="none">`
+      + `<defs><linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="${n(x1)}" y1="${n(y1)}" x2="${n(x2)}" y2="${n(y2)}"><stop offset="0" stop-color="${paint[9]}"/><stop offset="1" stop-color="${paint[10]}"/></linearGradient></defs>`
+      + `<path d="${ring}" fill="url(#${id})"/><path d="${beyond}" fill="${paint[4]}"/></svg>`
+    return { markup, bleed }
+  }
 
   const hidden = (element, computed) => {
     // never drawn, whatever their computed display says (<noscript> reports `inline` while scripts run)
@@ -1112,7 +1334,9 @@ async function captureInPage({ usedProperties, specProperties, panelSelector, br
         const parent = element.getBoundingClientRect()
         const left = parseFloat(computed.left)
         const top = parseFloat(computed.top)
-        captured.rect = { x: trim(parent.x - origin.x + (Number.isFinite(left) ? left : 0)), y: trim(parent.y - origin.y + (Number.isFinite(top) ? top : 0)), ...size }
+        // an absolute pseudo-element's offsets run from inside its parent's border, not from the outer edge
+        const inset = computed.position === 'absolute' ? { x: element.clientLeft, y: element.clientTop } : { x: 0, y: 0 }
+        captured.rect = { x: trim(parent.x - origin.x + inset.x + (Number.isFinite(left) ? left : 0)), y: trim(parent.y - origin.y + inset.y + (Number.isFinite(top) ? top : 0)), ...size }
         found.push({ which, content: text, ...captured })
       }
       return found
@@ -1142,12 +1366,75 @@ async function captureInPage({ usedProperties, specProperties, panelSelector, br
       if (unseenField(element, computed)) { node.ghost = true; return node }
       if (tag === 'svg') { node.svg = svgMarkup(element, computed); return node }
       if (tag === 'img') { node.src = element.currentSrc || element.src; node.alt = element.alt; if (node.src) urls.add(node.src); return node }
+      // an empty masked shape is photographed (see captureStory): Paper cannot cut a fill to a mask
+      if (computed.maskImage && computed.maskImage !== 'none' && !element.childNodes.length) {
+        const ring = cornerRing(computed, element.getBoundingClientRect())
+        if (ring) {
+          node.tag = 'svg'; node.svg = ring.markup; node.ring = true
+          node.rect = { x: trim(node.rect.x + ring.bleed.x), y: trim(node.rect.y + ring.bleed.y), w: trim(node.rect.w + 1), h: trim(node.rect.h + 1) }
+          return node
+        }
+        node.photo = `paper-mask:${masked}`
+        element.setAttribute('data-paper-mask', String(masked++))
+        return node
+      }
       if (tag === 'input' || tag === 'textarea' || tag === 'select') {
         node.textless = tag === 'input' && ['checkbox', 'radio', 'range', 'color', 'file', 'image'].includes(element.type)
         node.value = tag === 'select' ? element.selectedOptions[0]?.textContent ?? '' : element.type === 'password' ? '•'.repeat(element.value.length) : element.value
         node.placeholder = element.getAttribute('placeholder')
         node.placeholderColor = getComputedStyle(element, '::placeholder').color
         return node
+      }
+      // A paragraph with a highlight that wraps (an AI popover's marked sentence): the browser paints the highlight line
+      // by line, inside the sentence. Paper text holds one style and cannot do that, so the lines are traced: each
+      // highlight piece is a rectangle, each run of one style on one line is a text layer, all where the browser put them.
+      const wrappingHighlight = !/^inline/.test(computed.display) && [...element.querySelectorAll('*')].some((inner) => {
+        const style = getComputedStyle(inner)
+        return style.display === 'inline' && style.backgroundColor !== 'rgba(0, 0, 0, 0)' && inner.getClientRects().length > 1
+      })
+      // The same for a paragraph that wraps with a box inside it (a citation chip after a claim): split into one-style
+      // runs it can no longer rewrap, the sentence would take the whole width and push the chip onto a line of its own.
+      const inlineBoxes = /^inline/.test(computed.display) ? [] : [...element.children].filter((inner) => /^inline-(block|flex|grid)$/.test(getComputedStyle(inner).display))
+      const wraps = element.getBoundingClientRect().height > 1.5 * (parseFloat(computed.lineHeight) || Infinity)
+      const wrappingMixed = inlineBoxes.length > 0 && wraps && [...element.childNodes].some((child) => child.nodeType === Node.TEXT_NODE && child.data.trim())
+      if (wrappingHighlight || wrappingMixed) {
+        const box = element.getBoundingClientRect()
+        const at = (rect) => ({ x: trim(rect.x - box.x), y: trim(rect.y - box.y) })
+        node.lines = { marks: [], runs: [], boxes: inlineBoxes.map(walk).filter(Boolean) }
+        for (const inner of element.querySelectorAll('*')) {
+          const style = getComputedStyle(inner)
+          if (style.display !== 'inline' || style.backgroundColor === 'rgba(0, 0, 0, 0)') continue
+          for (const rect of inner.getClientRects()) node.lines.marks.push({ ...at(rect), w: trim(rect.width), h: trim(rect.height), color: style.backgroundColor, radius: parseFloat(style.borderTopLeftRadius) || 0 })
+        }
+        // text inside a traced box (the chip's label) belongs to that box
+        const texts = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, { acceptNode: (text) => (inlineBoxes.some((inner) => inner.contains(text)) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT) })
+        const range = document.createRange()
+        for (let text = texts.nextNode(); text; text = texts.nextNode()) {
+          const style = getComputedStyle(text.parentElement)
+          const used = read(style, null, null).used
+          for (const word of text.data.matchAll(/\s*\S+\s*/g)) {
+            range.setStart(text, word.index)
+            range.setEnd(text, word.index + word[0].length)
+            const rect = [...range.getClientRects()].find((candidate) => candidate.width > 0)
+            if (!rect) continue
+            // the range measures the glyphs; the text layer is a whole line box tall, half the leading above them
+            const leading = ((parseFloat(style.lineHeight) || rect.height) - rect.height) / 2
+            const last = node.lines.runs.at(-1)
+            // one run per text node and line: text after a chip starts its own run, where the browser put it
+            if (last && last.source === text && Math.abs(last.top - rect.top) < 2) last.text += word[0]
+            else node.lines.runs.push({ source: text, top: rect.top, text: word[0], ...at(rect), y: trim(rect.y - box.y - leading), used })
+          }
+        }
+        for (const run of node.lines.runs) { delete run.source; delete run.top }
+        return node
+      }
+      // `text-wrap: balance` evens the lines out; Paper wraps greedily and would break elsewhere. The width the browser's
+      // balanced lines actually take is kept, so the text layer wraps at the same words.
+      if (/balance/.test(`${computed.textWrapStyle ?? ''} ${computed.textWrap ?? ''}`)) {
+        const range = document.createRange()
+        range.selectNodeContents(element)
+        const rects = [...range.getClientRects()]
+        if (new Set(rects.map((rect) => Math.round(rect.top))).size > 1) node.balancedWidth = trim(Math.max(...rects.map((rect) => rect.right)) - Math.min(...rects.map((rect) => rect.left)))
       }
       const append = (text) => { const last = node.children.at(-1); if (last && typeof last.text === 'string') last.text += text; else node.children.push({ text }) }
       for (const child of element.childNodes) {
@@ -1246,8 +1533,30 @@ export async function openStory(page, storyId, base = STORYBOOK) {
   if (phase === 'timeout') throw new Error(`${storyId}: the story's play function had not finished after 30s (stuck at "${await page.evaluate(renderPhase)}")`)
   await page.evaluate(() => document.fonts.ready)
   await page.addStyleTag({ content: '*, *::before, *::after { animation: none !important; transition: none !important; }' })
+  // A play that clicks or tabs leaves something focused, and this page has the window's focus, so its keyboard ring
+  // paints. In Storybook the story sits in a frame that does not have focus (you clicked the sidebar), and no ring
+  // shows. Draw what people see there: the ring is hidden, the focus itself kept (a preview opened by focus stays open).
+  await page.addStyleTag({ content: '*:focus-visible { --tw-ring-shadow: 0 0 #0000 !important; --tw-ring-offset-shadow: 0 0 #0000 !important; outline-style: none !important; }' })
   // one more beat for whatever the last interaction set moving (a menu mounting, a toast sliding in)
   await page.waitForTimeout(phase === 'unknown' ? 1500 : 600)
+  // The same goes for :focus-within looks (the composer's lit AI edge, its selected tab): Storybook's unfocused frame
+  // shows them at rest. Headless Chrome cannot take focus from the page, so the element is blurred instead, and
+  // focused again if that changed more than styling (a preview that closes on blur, a field that shows an error).
+  await page.evaluate(async () => {
+    const focused = document.activeElement
+    if (!focused || focused === document.body || focused === document.documentElement) return
+    const watcher = new MutationObserver(() => {})
+    watcher.observe(document.body, { subtree: true, childList: true, characterData: true, attributeFilter: ['data-state', 'aria-expanded', 'open', 'hidden'] })
+    focused.blur()
+    await new Promise((resolve) => setTimeout(resolve, 100))
+    const changed = watcher.takeRecords().length > 0
+    watcher.disconnect()
+    if (changed) focused.focus({ preventScroll: true })
+  })
+  // Recharts draws its lines and bars in with a script, not CSS, so the freeze above misses it; its default run is
+  // 1.5s and a capture any sooner draws a line that stops partway. (Reduced motion would stop it, but would also
+  // flatten the AI shimmer text that Paper draws as it looks.)
+  if (await page.$('.recharts-wrapper')) await page.waitForTimeout(1600)
 }
 
 /** Storybook's error screen, as a one-line message; null when the story is showing. */
@@ -1310,6 +1619,22 @@ export async function captureStory(page, storyId, { base = STORYBOOK, screenshot
   if (!roots.length) throw new Error(`${storyId}: the story rendered nothing visible`)
   for (const [position, url] of unread.entries()) {
     try { images[url] = `data:image/png;base64,${(await page.locator(`[data-paper-image="${position}"]`).screenshot({ type: 'png' })).toString('base64')}` } catch { /* stays a placeholder, and is reported */ }
+  }
+  // A masked shape is photographed on its own: everything else hidden and no page behind it, so the photo is just
+  // the shape, see-through where it is (Paper draws its own layers behind it), and at 4x so it stays sharp when zoomed.
+  const masks = await page.$$('[data-paper-mask]')
+  if (masks.length) {
+    const viewport = page.viewportSize()
+    const cdp = await page.context().newCDPSession(page)
+    await cdp.send('Emulation.setDeviceMetricsOverride', { width: viewport.width, height: viewport.height, deviceScaleFactor: 4, mobile: false })
+    const isolate = await page.addStyleTag({ content: 'html, body, #storybook-root { background: transparent !important } body * { visibility: hidden !important } [data-paper-mask] { visibility: visible !important }' })
+    for (const element of masks) {
+      const key = `paper-mask:${await element.getAttribute('data-paper-mask')}`
+      try { images[key] = `data:image/png;base64,${(await element.screenshot({ type: 'png', omitBackground: true, scale: 'device' })).toString('base64')}` } catch { /* drawn unmasked, and reported */ }
+    }
+    await isolate.evaluate((tag) => tag.remove())
+    await cdp.send('Emulation.setDeviceMetricsOverride', { width: viewport.width, height: viewport.height, deviceScaleFactor: SCALE, mobile: false })
+    await cdp.detach()
   }
   if (screenshot) {
     // Paper draws all text with grayscale smoothing; without the same here, light-on-dark labels read a weight heavier.

@@ -20,7 +20,8 @@ export type Source = {
 
 // The focus ring is the stock Button's, so these plain buttons and links match the controls around them.
 // Truncation keeps a long title from turning one chip into a line-wide bar; the full title stays in the accessible name.
-const CHIP = 'ml-0.5 inline-block h-5 max-w-40 truncate rounded-md bg-muted px-2 text-center align-middle text-2xs font-semibold leading-5 text-ink-soft no-underline hover:bg-foreground hover:text-background outline-hidden focus-visible:ring-3 focus-visible:ring-ring/50'
+// mx-1.5 leaves 3px clear outside the 3px focus ring on both sides, so the chip never touches the words around it however it is placed.
+const CHIP = 'mx-1.5 inline-block h-5 max-w-40 truncate rounded-md bg-muted px-2 text-center align-middle text-2xs font-semibold leading-5 text-ink-soft no-underline hover:bg-foreground hover:text-background outline-hidden focus-visible:ring-3 focus-visible:ring-ring/50'
 const kindIcon = (s: Source) => (s.kind === 'web' ? 'language' : 'description')
 
 function where(s: Source) {

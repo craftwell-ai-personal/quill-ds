@@ -45,6 +45,17 @@ export const Default: Story = {
   },
 }
 
+// The same page with the Agent tab chosen: its own placeholder, and the selected tab's curves sit over Ask.
+export const AgentTab: Story = {
+  parameters: { viewport: { options: VIEWPORTS } },
+  globals: { viewport: { value: 'desktop', isRotated: false } },
+  play: async ({ canvas }) => {
+    await userEvent.click(canvas.getByRole('tab', { name: 'Agent' }))
+    await expect(canvas.getByRole('tab', { name: 'Agent', selected: true })).toBeVisible()
+    await expect(canvas.getByRole('textbox', { name: 'Message' })).toHaveAttribute('placeholder', 'What should your agent take on?')
+  },
+}
+
 export const Phone: Story = {
   parameters: { viewport: { options: VIEWPORTS } },
   globals: { viewport: { value: 'phone', isRotated: false } },

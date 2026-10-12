@@ -40,7 +40,8 @@ export const Default: Story = {
     return (
       <Collapsible open={open} onOpenChange={setOpen}>
         <div className="flex items-center justify-between">
-          <span className="text-sm font-medium text-ink">Repositories (3)</span>
+          {/* A count is data: lining figures sit on the line with the brackets (Raleway's default old-style 3 dips below it) */}
+          <span className="text-sm font-medium text-ink">Repositories <span className="tabular-nums">(3)</span></span>
           <CollapsibleTrigger render={<Button variant="ghost" size="icon-sm" aria-label="Toggle repositories" />}>
             <Icon name="keyboard_arrow_down" className={`transition-transform ${open ? 'rotate-180' : ''}`} />
           </CollapsibleTrigger>
@@ -61,7 +62,7 @@ export const DefaultOpen: Story = {
     return (
       <Collapsible open={open} onOpenChange={setOpen}>
         <div className="flex items-center justify-between">
-          <span className="text-sm font-medium text-ink">Repositories (3)</span>
+          <span className="text-sm font-medium text-ink">Repositories <span className="tabular-nums">(3)</span></span>
           <CollapsibleTrigger render={<Button variant="ghost" size="icon-sm" aria-label="Toggle repositories" />}>
             <Icon name="keyboard_arrow_down" className={`transition-transform ${open ? 'rotate-180' : ''}`} />
           </CollapsibleTrigger>
@@ -85,7 +86,7 @@ export const DoDont: Story = {
       doExample={
         <Collapsible defaultOpen>
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-ink">Repositories (3)</span>
+            <span className="text-sm font-medium text-ink">Repositories <span className="tabular-nums">(3)</span></span>
             <CollapsibleTrigger render={<Button variant="ghost" size="icon-sm" aria-label="Toggle repositories" />}>
               <Icon name="keyboard_arrow_down" className="rotate-180 transition-transform" />
             </CollapsibleTrigger>
@@ -98,7 +99,7 @@ export const DoDont: Story = {
       dontExample={
         <Collapsible defaultOpen>
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-ink">Repositories (3)</span>
+            <span className="text-sm font-medium text-ink">Repositories <span className="tabular-nums">(3)</span></span>
             <CollapsibleTrigger render={<Button variant="ghost" size="sm" aria-label="Toggle repositories" />}>
               Toggle
             </CollapsibleTrigger>

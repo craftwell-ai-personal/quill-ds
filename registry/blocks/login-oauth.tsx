@@ -54,7 +54,8 @@ function GitHubMark() {
 
 function AppleMark() {
   return (
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden focusable="false">
+    // viewBox cropped to the glyph's own bounds (centred): in a 0 0 24 24 box it drew 12px tall beside a 16px Google and GitHub mark.
+    <svg viewBox="2.17 2.4 18.51 18.51" width="16" height="16" fill="currentColor" aria-hidden focusable="false">
       <path d="M16.4 12.8c0-2.4 2-3.6 2-3.6-1.1-1.6-2.8-1.8-3.4-1.9-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.7 2.3 2.9 2.2 1.1 0 1.6-.7 3-.7s1.8.7 3 .7c1.2 0 2-1.1 2.8-2.2.9-1.2 1.2-2.4 1.2-2.5 0 0-2.4-.9-2.4-3.4ZM14.2 5.3c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.6 1.4-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.6-1.3Z" />
     </svg>
   )
@@ -74,15 +75,16 @@ export function LoginOauth() {
         </p>
       </div>
 
+      {/* Each label is at least as wide as the longest, so the three centred logos line up in one column. */}
       <div className="flex flex-col gap-2">
         <Button variant="outline" className="w-full justify-center gap-2">
-          <GoogleMark /> Continue with Google
+          <GoogleMark /> <span className="min-w-[8.75rem] text-left">Continue with Google</span>
         </Button>
         <Button variant="outline" className="w-full justify-center gap-2">
-          <GitHubMark /> Continue with GitHub
+          <GitHubMark /> <span className="min-w-[8.75rem] text-left">Continue with GitHub</span>
         </Button>
         <Button variant="outline" className="w-full justify-center gap-2">
-          <AppleMark /> Continue with Apple
+          <AppleMark /> <span className="min-w-[8.75rem] text-left">Continue with Apple</span>
         </Button>
       </div>
 

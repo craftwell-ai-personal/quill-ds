@@ -108,13 +108,14 @@ export function ApprovalCard({
         // The control line is kept for things people press or type in.
         <div data-slot="proposal" className="grid grid-cols-[minmax(0,1fr)] gap-1.5 rounded-lg border border-border bg-background px-3 py-2.5">
           {rows.length ? (
-            <dl className="grid grid-cols-[max-content_minmax(0,1fr)] gap-x-3 gap-y-1">
+            // Each row reads as a line, one space after the colon ("To: growth@…"), not as two aligned columns.
+            <dl className="grid gap-y-1">
               {rows.map((row, index) => (
                 // Labels may repeat (two Cc rows); the list is never reordered, so position is a stable key.
-                <React.Fragment key={index}>
-                  <dt className="text-muted-foreground">{withColon(row.label)}</dt>
-                  <dd className="min-w-0 break-words text-foreground">{row.value}</dd>
-                </React.Fragment>
+                <div key={index} className="min-w-0 break-words">
+                  <dt className="inline text-muted-foreground">{withColon(row.label)}</dt>{' '}
+                  <dd className="inline text-foreground">{row.value}</dd>
+                </div>
               ))}
             </dl>
           ) : null}

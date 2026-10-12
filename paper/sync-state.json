@@ -336,7 +336,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2KWK-0",
+              "nodeId": "4525-0",
               "size": [
                 320,
                 126.22
@@ -356,7 +356,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2KXH-0",
+              "nodeId": "4532-0",
               "size": [
                 320,
                 175.03
@@ -376,7 +376,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2KYH-0",
+              "nodeId": "4542-0",
               "size": [
                 320,
                 223.84
@@ -404,10 +404,10 @@
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
-        "nodes": 110,
-        "approximated": 1,
-        "bound": 277,
-        "bindable": 285,
+        "nodes": 111,
+        "approximated": 0,
+        "bound": 276,
+        "bindable": 284,
         "bindingRate": 0.972
       },
       "notes": [],
@@ -424,12 +424,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2PK8-0",
+              "nodeId": "455A-0",
               "size": [
                 448,
                 224.44
               ],
-              "htmlHash": "f6281ab4d23dd07b"
+              "htmlHash": "9b12f666539ce15d"
             }
           ]
         },
@@ -437,19 +437,19 @@
           "id": "components-agentsteps--failed",
           "title": "Failed",
           "opened": "none",
-          "nodes": 17,
-          "approximated": 1,
-          "bound": 53,
-          "bindable": 55,
+          "nodes": 18,
+          "approximated": 0,
+          "bound": 52,
+          "bindable": 54,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2PM7-0",
+              "nodeId": "4579-0",
               "size": [
                 448,
                 90.81
               ],
-              "htmlHash": "1218d6098115693b"
+              "htmlHash": "5248f582979b9bd3"
             }
           ]
         },
@@ -464,12 +464,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2PMZ-0",
+              "nodeId": "4582-0",
               "size": [
                 448,
                 90.81
               ],
-              "htmlHash": "9f97a8c1080d63ed"
+              "htmlHash": "3afecdb294f41e5c"
             }
           ]
         },
@@ -484,12 +484,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2PNP-0",
+              "nodeId": "458S-0",
               "size": [
                 448,
                 124.22
               ],
-              "htmlHash": "ea7c19bd2e3d1de0"
+              "htmlHash": "d2575f5423b99360"
             }
           ]
         }
@@ -509,7 +509,7 @@
         "src/usage/ai-badge.usage.mjs"
       ],
       "sourceHash": "24a0fff831c8882c",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 12,
@@ -532,7 +532,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MCO-0",
+              "nodeId": "45A0-0",
               "size": [
                 75.13,
                 20
@@ -552,7 +552,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MCZ-0",
+              "nodeId": "45AB-0",
               "size": [
                 95.23,
                 20
@@ -572,7 +572,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MDA-0",
+              "nodeId": "45AM-0",
               "size": [
                 182.17,
                 20
@@ -597,7 +597,7 @@
         "src/usage/ai-button.usage.mjs"
       ],
       "sourceHash": "2d8c1a041bf35a35",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 21,
@@ -620,7 +620,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MDT-0",
+              "nodeId": "45B5-0",
               "size": [
                 84.83,
                 32
@@ -640,7 +640,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ME5-0",
+              "nodeId": "45BH-0",
               "size": [
                 117.8,
                 32
@@ -660,7 +660,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MEH-0",
+              "nodeId": "45BT-0",
               "size": [
                 534.86,
                 36
@@ -685,18 +685,18 @@
         "src/usage/ai-feedback.usage.mjs"
       ],
       "sourceHash": "61e1390eb1cd44bb",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 49,
         "approximated": 6,
-        "bound": 166,
-        "bindable": 171,
+        "bound": 165,
+        "bindable": 170,
         "bindingRate": 0.971
       },
       "notes": [],
       "lost": [
-        "button: background-clip: padding-box not carried ×2"
+        "button: background-clip: padding-box not carried ×3"
       ],
       "stories": [
         {
@@ -710,12 +710,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MFL-0",
+              "nodeId": "45CX-0",
               "size": [
                 480,
                 208
               ],
-              "htmlHash": "0de33b005f322fb1"
+              "htmlHash": "3d473698a0db8964"
             }
           ]
         },
@@ -730,7 +730,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MGE-0",
+              "nodeId": "45DQ-0",
               "size": [
                 480,
                 20
@@ -750,12 +750,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MGS-0",
+              "nodeId": "45E4-0",
               "size": [
                 480,
                 166
               ],
-              "htmlHash": "950539a58780479e"
+              "htmlHash": "7ba554cc1a0c9bed"
             }
           ]
         },
@@ -765,17 +765,17 @@
           "opened": "none",
           "nodes": 17,
           "approximated": 2,
-          "bound": 32,
-          "bindable": 33,
+          "bound": 31,
+          "bindable": 32,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MHF-0",
+              "nodeId": "45ER-0",
               "size": [
                 480,
                 90.08
               ],
-              "htmlHash": "cb668b970fff542f"
+              "htmlHash": "de9b81abef888f0c"
             }
           ]
         }
@@ -795,7 +795,7 @@
         "src/usage/ai-mark.usage.mjs"
       ],
       "sourceHash": "2274d9f43d347024",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
         "nodes": 8,
@@ -818,7 +818,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MIG-0",
+              "nodeId": "45FS-0",
               "size": [
                 18,
                 18
@@ -838,7 +838,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MIQ-0",
+              "nodeId": "45G2-0",
               "size": [
                 231,
                 48
@@ -866,10 +866,10 @@
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 7,
-        "nodes": 100,
-        "approximated": 11,
-        "bound": 188,
-        "bindable": 196,
+        "nodes": 101,
+        "approximated": 12,
+        "bound": 189,
+        "bindable": 197,
         "bindingRate": 0.959
       },
       "notes": [],
@@ -881,17 +881,17 @@
           "opened": "none",
           "nodes": 21,
           "approximated": 2,
-          "bound": 49,
-          "bindable": 52,
+          "bound": 48,
+          "bindable": 51,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2L4E-0",
+              "nodeId": "45GZ-0",
               "size": [
                 576,
                 165.56
               ],
-              "htmlHash": "9f417cf40e5f84ad"
+              "htmlHash": "95370c0833535fcf"
             }
           ]
         },
@@ -900,18 +900,18 @@
           "title": "With Thinking",
           "opened": "none",
           "nodes": 17,
-          "approximated": 2,
-          "bound": 32,
-          "bindable": 33,
+          "approximated": 3,
+          "bound": 34,
+          "bindable": 35,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2L5G-0",
+              "nodeId": "45I1-0",
               "size": [
                 576,
                 137.56
               ],
-              "htmlHash": "b482df3d1913bcb2"
+              "htmlHash": "38332a33b40bbc67"
             }
           ]
         },
@@ -919,19 +919,19 @@
           "id": "components-aimessage--streaming",
           "title": "Streaming",
           "opened": "none",
-          "nodes": 13,
+          "nodes": 14,
           "approximated": 1,
           "bound": 21,
           "bindable": 22,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2L6B-0",
+              "nodeId": "45IW-0",
               "size": [
                 576,
                 85.72
               ],
-              "htmlHash": "21ea8a3a200a0798"
+              "htmlHash": "35be3a424d174022"
             }
           ]
         },
@@ -946,12 +946,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2L70-0",
+              "nodeId": "45JM-0",
               "size": [
                 576,
                 63.41
               ],
-              "htmlHash": "d1c173628406bf5a"
+              "htmlHash": "db25ae40f0214363"
             }
           ]
         },
@@ -966,12 +966,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2L7P-0",
+              "nodeId": "45KB-0",
               "size": [
                 576,
                 112.08
               ],
-              "htmlHash": "881ba368169b1ee9"
+              "htmlHash": "457f885735592c34"
             }
           ]
         },
@@ -986,12 +986,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2L8H-0",
+              "nodeId": "45L3-0",
               "size": [
                 576,
                 50
               ],
-              "htmlHash": "ccac08f999c619c8"
+              "htmlHash": "f3ed150eeef58029"
             }
           ]
         },
@@ -1006,12 +1006,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2L93-0",
+              "nodeId": "45LP-0",
               "size": [
                 576,
                 81.11
               ],
-              "htmlHash": "4a713fc27b6f7aa2"
+              "htmlHash": "8ff7df6e6388d12d"
             }
           ]
         }
@@ -1031,7 +1031,7 @@
         "src/usage/ai-notice.usage.mjs"
       ],
       "sourceHash": "b82c12fcdfcc6238",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
         "nodes": 5,
@@ -1054,7 +1054,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MP5-0",
+              "nodeId": "45MI-0",
               "size": [
                 336.88,
                 16
@@ -1074,7 +1074,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MPD-0",
+              "nodeId": "45MQ-0",
               "size": [
                 421.17,
                 16
@@ -1102,11 +1102,11 @@
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
-        "nodes": 58,
+        "nodes": 67,
         "approximated": 3,
-        "bound": 250,
-        "bindable": 287,
-        "bindingRate": 0.871
+        "bound": 253,
+        "bindable": 294,
+        "bindingRate": 0.861
       },
       "notes": [],
       "lost": [
@@ -1117,28 +1117,28 @@
           "id": "components-aipopover--suggestion",
           "title": "Suggestion",
           "opened": "story",
-          "nodes": 20,
+          "nodes": 24,
           "approximated": 1,
-          "bound": 87,
-          "bindable": 100,
+          "bound": 88,
+          "bindable": 103,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2L9Z-0",
+              "nodeId": "45N8-0",
               "size": [
                 416,
                 66.23
               ],
-              "htmlHash": "6f2956f9fafc1866"
+              "htmlHash": "f268757bf6c9d1d6"
             },
             {
               "part": "panel-1",
-              "nodeId": "2LA9-0",
+              "nodeId": "45NR-0",
               "size": [
                 384,
                 181.64
               ],
-              "htmlHash": "92c4771028c3f009"
+              "htmlHash": "17b07e9a553e515f"
             }
           ]
         },
@@ -1146,28 +1146,28 @@
           "id": "components-aipopover--empty-suggestion",
           "title": "Empty Suggestion",
           "opened": "story",
-          "nodes": 18,
+          "nodes": 22,
           "approximated": 1,
-          "bound": 73,
-          "bindable": 85,
+          "bound": 75,
+          "bindable": 89,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LB1-0",
+              "nodeId": "45OJ-0",
               "size": [
                 416,
                 66.23
               ],
-              "htmlHash": "6f2956f9fafc1866"
+              "htmlHash": "f268757bf6c9d1d6"
             },
             {
               "part": "panel-1",
-              "nodeId": "2LBB-0",
+              "nodeId": "45P2-0",
               "size": [
                 384,
                 97.41
               ],
-              "htmlHash": "7fa3d2edfe861bbc"
+              "htmlHash": "0bf2d024e10da99b"
             }
           ]
         },
@@ -1175,28 +1175,28 @@
           "id": "components-aipopover--opens-from-a-button",
           "title": "Opens From A Button",
           "opened": "story",
-          "nodes": 20,
+          "nodes": 21,
           "approximated": 1,
           "bound": 90,
           "bindable": 102,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LC1-0",
+              "nodeId": "45PS-0",
               "size": [
                 416,
                 32
               ],
-              "htmlHash": "e8bb02aab80cc4b6"
+              "htmlHash": "46fe016af2e71cd6"
             },
             {
               "part": "panel-1",
-              "nodeId": "2LCB-0",
+              "nodeId": "45Q4-0",
               "size": [
                 384,
                 181.64
               ],
-              "htmlHash": "a6581d6fef55c67b"
+              "htmlHash": "50f62cbdf8e3c1ca"
             }
           ]
         }
@@ -1215,14 +1215,14 @@
         "src/stories/ai-thinking.stories.tsx",
         "src/usage/ai-thinking.usage.mjs"
       ],
-      "sourceHash": "bb64edbbfdceba0a",
+      "sourceHash": "299332cfa0effbce",
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 19,
         "approximated": 1,
-        "bound": 51,
-        "bindable": 52,
+        "bound": 53,
+        "bindable": 54,
         "bindingRate": 0.981
       },
       "notes": [],
@@ -1239,12 +1239,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LD5-0",
+              "nodeId": "45QY-0",
               "size": [
                 320,
                 47.41
               ],
-              "htmlHash": "8473bfded9621ab8"
+              "htmlHash": "d31b18eeabf050ba"
             }
           ]
         },
@@ -1254,17 +1254,17 @@
           "opened": "none",
           "nodes": 9,
           "approximated": 1,
-          "bound": 25,
-          "bindable": 26,
+          "bound": 27,
+          "bindable": 28,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LDN-0",
+              "nodeId": "45RG-0",
               "size": [
                 320,
                 95.41
               ],
-              "htmlHash": "e4804cde60a2dd3b"
+              "htmlHash": "9b9e125361328c89"
             }
           ]
         },
@@ -1279,7 +1279,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LE6-0",
+              "nodeId": "45RZ-0",
               "size": [
                 320,
                 19.41
@@ -1304,7 +1304,7 @@
         "src/usage/alert.usage.mjs"
       ],
       "sourceHash": "23541fd8b7efa656",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 5,
         "nodes": 60,
@@ -1327,7 +1327,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MUR-0",
+              "nodeId": "45SF-0",
               "size": [
                 384,
                 58.81
@@ -1347,7 +1347,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MV9-0",
+              "nodeId": "45SX-0",
               "size": [
                 384,
                 58.81
@@ -1367,7 +1367,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MVR-0",
+              "nodeId": "45TF-0",
               "size": [
                 384,
                 78.22
@@ -1387,7 +1387,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MW4-0",
+              "nodeId": "45TS-0",
               "size": [
                 384,
                 78.22
@@ -1407,7 +1407,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MWR-0",
+              "nodeId": "45UF-0",
               "size": [
                 384,
                 310.06
@@ -1432,10 +1432,10 @@
         "src/usage/alert-dialog.usage.mjs"
       ],
       "sourceHash": "1f6903282ef3f0a8",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
-        "nodes": 39,
+        "nodes": 40,
         "approximated": 5,
         "bound": 220,
         "bindable": 220,
@@ -1458,7 +1458,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MY7-0",
+              "nodeId": "45VV-0",
               "size": [
                 111.2,
                 32
@@ -1467,7 +1467,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1MYC-0",
+              "nodeId": "45W0-0",
               "size": [
                 384,
                 164.61
@@ -1480,14 +1480,14 @@
           "id": "components-alertdialog--with-media",
           "title": "With Media",
           "opened": "click",
-          "nodes": 16,
+          "nodes": 17,
           "approximated": 2,
           "bound": 78,
           "bindable": 78,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MYV-0",
+              "nodeId": "45WJ-0",
               "size": [
                 126.72,
                 32
@@ -1496,12 +1496,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1MZ0-0",
+              "nodeId": "45WO-0",
               "size": [
                 384,
                 184.02
               ],
-              "htmlHash": "f6116b5a6b126271"
+              "htmlHash": "5ad816cfa007a1e9"
             }
           ]
         },
@@ -1516,7 +1516,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MZP-0",
+              "nodeId": "45XE-0",
               "size": [
                 89.23,
                 32
@@ -1525,7 +1525,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1MZU-0",
+              "nodeId": "45XJ-0",
               "size": [
                 320,
                 164.61
@@ -1549,38 +1549,38 @@
         "src/stories/approval-card.stories.tsx",
         "src/usage/approval-card.usage.mjs"
       ],
-      "sourceHash": "8c9d521f0e3d7695",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "4480c8ffe48c332f",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
-        "nodes": 66,
-        "approximated": 2,
-        "bound": 232,
-        "bindable": 238,
-        "bindingRate": 0.975
+        "nodes": 70,
+        "approximated": 0,
+        "bound": 226,
+        "bindable": 232,
+        "bindingRate": 0.974
       },
       "notes": [],
       "lost": [
-        "button: background-clip: padding-box not carried"
+        "button: background-clip: padding-box not carried ×3"
       ],
       "stories": [
         {
           "id": "components-approvalcard--send-email",
           "title": "Send Email",
           "opened": "none",
-          "nodes": 27,
-          "approximated": 1,
-          "bound": 99,
-          "bindable": 101,
+          "nodes": 29,
+          "approximated": 0,
+          "bound": 96,
+          "bindable": 98,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1N0G-0",
+              "nodeId": "45Y5-0",
               "size": [
                 480,
                 256.44
               ],
-              "htmlHash": "1884baa41e4abaa8"
+              "htmlHash": "34bf2af37bdc95fe"
             }
           ]
         },
@@ -1590,17 +1590,17 @@
           "opened": "none",
           "nodes": 15,
           "approximated": 0,
-          "bound": 50,
-          "bindable": 52,
+          "bound": 49,
+          "bindable": 51,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1N1M-0",
+              "nodeId": "45ZD-0",
               "size": [
                 480,
                 117.41
               ],
-              "htmlHash": "35a7ea8051767b82"
+              "htmlHash": "25f55663fb488159"
             }
           ]
         },
@@ -1608,19 +1608,19 @@
           "id": "components-approvalcard--not-editable",
           "title": "Not Editable",
           "opened": "none",
-          "nodes": 24,
-          "approximated": 1,
-          "bound": 83,
-          "bindable": 85,
+          "nodes": 26,
+          "approximated": 0,
+          "bound": 81,
+          "bindable": 83,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1N2E-0",
+              "nodeId": "4605-0",
               "size": [
                 480,
                 256.44
               ],
-              "htmlHash": "1dd49aa6e2a721e9"
+              "htmlHash": "da31a7d0aaabe33d"
             }
           ]
         }
@@ -1640,7 +1640,7 @@
         "src/usage/aspect-ratio.usage.mjs"
       ],
       "sourceHash": "88dbab4d0f63c54c",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 29,
@@ -1663,7 +1663,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1N3L-0",
+              "nodeId": "461E-0",
               "size": [
                 288,
                 162
@@ -1683,7 +1683,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1N3W-0",
+              "nodeId": "461P-0",
               "size": [
                 288,
                 162
@@ -1703,7 +1703,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1N4A-0",
+              "nodeId": "4623-0",
               "size": [
                 288,
                 288
@@ -1723,7 +1723,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1N4O-0",
+              "nodeId": "462H-0",
               "size": [
                 288,
                 80
@@ -1771,7 +1771,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2SUR-0",
+              "nodeId": "463F-0",
               "size": [
                 32,
                 32
@@ -1791,7 +1791,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2SV1-0",
+              "nodeId": "463P-0",
               "size": [
                 32,
                 32
@@ -1811,7 +1811,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2SVC-0",
+              "nodeId": "4640-0",
               "size": [
                 151.33,
                 64
@@ -1831,7 +1831,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2SWO-0",
+              "nodeId": "465C-0",
               "size": [
                 136,
                 216
@@ -1851,7 +1851,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2SZC-0",
+              "nodeId": "4680-0",
               "size": [
                 195.23,
                 64
@@ -1876,7 +1876,7 @@
         "src/usage/badge.usage.mjs"
       ],
       "sourceHash": "0875e78c5dabe6ba",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 8,
         "nodes": 27,
@@ -1899,7 +1899,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NBP-0",
+              "nodeId": "469I-0",
               "size": [
                 43.92,
                 20
@@ -1919,7 +1919,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NBX-0",
+              "nodeId": "469Q-0",
               "size": [
                 43.97,
                 20
@@ -1939,7 +1939,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NC5-0",
+              "nodeId": "469Y-0",
               "size": [
                 45.31,
                 20
@@ -1959,7 +1959,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NCD-0",
+              "nodeId": "46A6-0",
               "size": [
                 45.89,
                 20
@@ -1979,7 +1979,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NCL-0",
+              "nodeId": "46AE-0",
               "size": [
                 60.17,
                 20
@@ -1999,7 +1999,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NCT-0",
+              "nodeId": "46AM-0",
               "size": [
                 85.91,
                 20
@@ -2019,7 +2019,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ND1-0",
+              "nodeId": "46AU-0",
               "size": [
                 97.2,
                 20
@@ -2039,7 +2039,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ND9-0",
+              "nodeId": "46B2-0",
               "size": [
                 400.97,
                 20
@@ -2064,7 +2064,7 @@
         "src/usage/breadcrumb.usage.mjs"
       ],
       "sourceHash": "c77040c340898acf",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 51,
@@ -2087,7 +2087,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NE2-0",
+              "nodeId": "46BV-0",
               "size": [
                 255.02,
                 19.41
@@ -2107,7 +2107,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NES-0",
+              "nodeId": "46CL-0",
               "size": [
                 268.14,
                 20
@@ -2127,7 +2127,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NFR-0",
+              "nodeId": "46DK-0",
               "size": [
                 243.48,
                 19.41
@@ -2147,7 +2147,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NGD-0",
+              "nodeId": "46E6-0",
               "size": [
                 255.02,
                 19.41
@@ -2172,7 +2172,7 @@
         "src/usage/button.usage.mjs"
       ],
       "sourceHash": "2857523c5976c05e",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 6,
         "nodes": 41,
@@ -2197,7 +2197,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZDW-0",
+              "nodeId": "46F1-0",
               "size": [
                 110.44,
                 32
@@ -2217,7 +2217,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZE4-0",
+              "nodeId": "46F9-0",
               "size": [
                 78,
                 32
@@ -2237,7 +2237,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZEC-0",
+              "nodeId": "46FH-0",
               "size": [
                 112.94,
                 32
@@ -2257,7 +2257,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZEN-0",
+              "nodeId": "46FS-0",
               "size": [
                 32,
                 32
@@ -2277,7 +2277,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZEW-0",
+              "nodeId": "46G1-0",
               "size": [
                 458.67,
                 32
@@ -2297,7 +2297,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZFK-0",
+              "nodeId": "46GP-0",
               "size": [
                 308.72,
                 88
@@ -2322,11 +2322,11 @@
         "src/usage/button-group.usage.mjs"
       ],
       "sourceHash": "711c1ff73c724c45",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 7,
-        "nodes": 78,
-        "approximated": 2,
+        "nodes": 80,
+        "approximated": 0,
         "bound": 303,
         "bindable": 303,
         "bindingRate": 1
@@ -2347,7 +2347,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NJV-0",
+              "nodeId": "46HO-0",
               "size": [
                 127.41,
                 32
@@ -2367,7 +2367,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NK7-0",
+              "nodeId": "46I0-0",
               "size": [
                 96,
                 32
@@ -2387,7 +2387,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NKP-0",
+              "nodeId": "46II-0",
               "size": [
                 96,
                 32
@@ -2407,7 +2407,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NL7-0",
+              "nodeId": "46J0-0",
               "size": [
                 84.8,
                 96
@@ -2420,19 +2420,19 @@
           "id": "components-buttongroup--with-separator",
           "title": "With Separator",
           "opened": "none",
-          "nodes": 8,
-          "approximated": 1,
+          "nodes": 9,
+          "approximated": 0,
           "bound": 18,
           "bindable": 18,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NLM-0",
+              "nodeId": "46JF-0",
               "size": [
                 97,
                 32
               ],
-              "htmlHash": "71af51ab2f565648"
+              "htmlHash": "2a2aa79620c370cd"
             }
           ]
         },
@@ -2447,7 +2447,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NM6-0",
+              "nodeId": "46K0-0",
               "size": [
                 224.7,
                 32
@@ -2460,19 +2460,19 @@
           "id": "components-buttongroup--all-variants",
           "title": "All Variants",
           "opened": "none",
-          "nodes": 35,
-          "approximated": 1,
+          "nodes": 36,
+          "approximated": 0,
           "bound": 138,
           "bindable": 138,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NMO-0",
+              "nodeId": "46KI-0",
               "size": [
                 177.67,
                 320
               ],
-              "htmlHash": "dd6206a50c59eb17"
+              "htmlHash": "7df32cc3759906fe"
             }
           ]
         }
@@ -2515,7 +2515,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2POX-0",
+              "nodeId": "46M3-0",
               "size": [
                 212,
                 261.75
@@ -2535,7 +2535,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2PUJ-0",
+              "nodeId": "46RP-0",
               "size": [
                 424,
                 261.75
@@ -2555,7 +2555,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2Q5C-0",
+              "nodeId": "472I-0",
               "size": [
                 212,
                 261.75
@@ -2575,7 +2575,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2QAY-0",
+              "nodeId": "4784-0",
               "size": [
                 212,
                 261.75
@@ -2595,7 +2595,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2QGU-0",
+              "nodeId": "47E0-0",
               "size": [
                 212,
                 261.75
@@ -2620,7 +2620,7 @@
         "src/usage/card.usage.mjs"
       ],
       "sourceHash": "87adb649835831df",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 5,
         "nodes": 52,
@@ -2645,7 +2645,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OFW-0",
+              "nodeId": "47JR-0",
               "size": [
                 320,
                 196.11
@@ -2665,7 +2665,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OGG-0",
+              "nodeId": "47KB-0",
               "size": [
                 320,
                 149.89
@@ -2685,7 +2685,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OH1-0",
+              "nodeId": "47KW-0",
               "size": [
                 320,
                 74.09
@@ -2705,7 +2705,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OHG-0",
+              "nodeId": "47LB-0",
               "size": [
                 320,
                 336.7
@@ -2725,7 +2725,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OI2-0",
+              "nodeId": "47LX-0",
               "size": [
                 320,
                 201.8
@@ -2749,14 +2749,14 @@
         "src/stories/carousel.stories.tsx",
         "src/usage/carousel.usage.mjs"
       ],
-      "sourceHash": "49d826da90f59971",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "ccd8ed0e366bc8fa",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
-        "nodes": 89,
+        "nodes": 105,
         "approximated": 3,
-        "bound": 316,
-        "bindable": 316,
+        "bound": 380,
+        "bindable": 380,
         "bindingRate": 1
       },
       "notes": [],
@@ -2766,19 +2766,19 @@
           "id": "components-carousel--default",
           "title": "Default",
           "opened": "none",
-          "nodes": 28,
+          "nodes": 33,
           "approximated": 1,
-          "bound": 98,
-          "bindable": 98,
+          "bound": 118,
+          "bindable": 118,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OIT-0",
+              "nodeId": "47MO-0",
               "size": [
                 320,
                 224
               ],
-              "htmlHash": "b57c0824311ce9d1"
+              "htmlHash": "f0cb2ffb1448231b"
             }
           ]
         },
@@ -2786,19 +2786,19 @@
           "id": "components-carousel--multiple-items",
           "title": "Multiple Items",
           "opened": "none",
-          "nodes": 32,
+          "nodes": 38,
           "approximated": 1,
-          "bound": 116,
-          "bindable": 116,
+          "bound": 140,
+          "bindable": 140,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OJX-0",
+              "nodeId": "47O5-0",
               "size": [
                 320,
-                90.66
+                97.59
               ],
-              "htmlHash": "0b852d1cd8e1ed38"
+              "htmlHash": "60aa6b7fbc5919d6"
             }
           ]
         },
@@ -2806,19 +2806,19 @@
           "id": "components-carousel--vertical",
           "title": "Vertical",
           "opened": "none",
-          "nodes": 29,
+          "nodes": 34,
           "approximated": 1,
-          "bound": 102,
-          "bindable": 102,
+          "bound": 122,
+          "bindable": 122,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OLE-0",
+              "nodeId": "47PS-0",
               "size": [
                 320,
                 368
               ],
-              "htmlHash": "c69c92588cf33dc5"
+              "htmlHash": "a8556b8ef5979bc2"
             }
           ]
         }
@@ -2861,7 +2861,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2QML-0",
+              "nodeId": "47RH-0",
               "size": [
                 1200,
                 256
@@ -2881,12 +2881,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2QPJ-0",
+              "nodeId": "47UF-0",
               "size": [
                 1200,
                 256
               ],
-              "htmlHash": "5e932021d36908e4"
+              "htmlHash": "674ccc304e719539"
             }
           ]
         },
@@ -2901,7 +2901,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2QS7-0",
+              "nodeId": "47X3-0",
               "size": [
                 1200,
                 256
@@ -2926,7 +2926,7 @@
         "src/usage/checkbox.usage.mjs"
       ],
       "sourceHash": "9312d36422b4be3c",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 5,
         "nodes": 43,
@@ -2949,7 +2949,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OW9-0",
+              "nodeId": "4810-0",
               "size": [
                 206.47,
                 16
@@ -2969,7 +2969,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OWK-0",
+              "nodeId": "481B-0",
               "size": [
                 121.92,
                 16
@@ -2989,7 +2989,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OWY-0",
+              "nodeId": "481P-0",
               "size": [
                 143.17,
                 16
@@ -3009,7 +3009,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OX9-0",
+              "nodeId": "4820-0",
               "size": [
                 112.95,
                 16
@@ -3029,7 +3029,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OXK-0",
+              "nodeId": "482B-0",
               "size": [
                 154.33,
                 128
@@ -3053,15 +3053,15 @@
         "src/stories/citations.stories.tsx",
         "src/usage/citations.usage.mjs"
       ],
-      "sourceHash": "ed611389e93f369d",
+      "sourceHash": "71673f15c8a9ea8d",
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
-        "nodes": 87,
+        "nodes": 82,
         "approximated": 8,
-        "bound": 266,
-        "bindable": 274,
-        "bindingRate": 0.971
+        "bound": 241,
+        "bindable": 249,
+        "bindingRate": 0.968
       },
       "notes": [],
       "lost": [],
@@ -3069,29 +3069,20 @@
         {
           "id": "components-citations--in-an-answer",
           "title": "In An Answer",
-          "opened": "story",
-          "nodes": 29,
+          "opened": "none",
+          "nodes": 23,
           "approximated": 2,
-          "bound": 91,
-          "bindable": 98,
+          "bound": 66,
+          "bindable": 73,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LO8-0",
+              "nodeId": "483H-0",
               "size": [
                 544,
-                84.91
+                107.36
               ],
-              "htmlHash": "1fa02792e1a470c8"
-            },
-            {
-              "part": "panel-1",
-              "nodeId": "2LP4-0",
-              "size": [
-                288,
-                102.22
-              ],
-              "htmlHash": "2040a27e092be3e7"
+              "htmlHash": "e6718dd22f478546"
             }
           ]
         },
@@ -3106,12 +3097,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LPJ-0",
+              "nodeId": "484G-0",
               "size": [
                 544,
                 204.22
               ],
-              "htmlHash": "70bef7e4bf0757e1"
+              "htmlHash": "769009c8256603e0"
             }
           ]
         },
@@ -3126,12 +3117,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LR2-0",
+              "nodeId": "485Z-0",
               "size": [
                 544,
                 97.41
               ],
-              "htmlHash": "128d09a7d725196d"
+              "htmlHash": "c4f6136b91b241b0"
             }
           ]
         },
@@ -3139,19 +3130,19 @@
           "id": "components-citations--long-title-no-label",
           "title": "Long Title No Label",
           "opened": "none",
-          "nodes": 6,
+          "nodes": 7,
           "approximated": 1,
           "bound": 19,
           "bindable": 20,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LRT-0",
+              "nodeId": "486Q-0",
               "size": [
                 544,
                 20.45
               ],
-              "htmlHash": "5fcbbe26f09a1e10"
+              "htmlHash": "339383d29c289801"
             }
           ]
         }
@@ -3170,14 +3161,14 @@
         "src/stories/collapsible.stories.tsx",
         "src/usage/collapsible.usage.mjs"
       ],
-      "sourceHash": "6c32f9c58228f4d0",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "ee0ad9e8ebaacc6d",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
-        "nodes": 22,
-        "approximated": 0,
-        "bound": 60,
-        "bindable": 60,
+        "nodes": 26,
+        "approximated": 2,
+        "bound": 70,
+        "bindable": 70,
         "bindingRate": 1
       },
       "notes": [],
@@ -3189,19 +3180,19 @@
           "id": "components-collapsible--default",
           "title": "Default",
           "opened": "none",
-          "nodes": 6,
-          "approximated": 0,
-          "bound": 10,
-          "bindable": 10,
+          "nodes": 8,
+          "approximated": 1,
+          "bound": 15,
+          "bindable": 15,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1P32-0",
+              "nodeId": "487C-0",
               "size": [
                 288,
                 28
               ],
-              "htmlHash": "5cbca492ecb6f49a"
+              "htmlHash": "31d2ef70511268fe"
             }
           ]
         },
@@ -3209,19 +3200,19 @@
           "id": "components-collapsible--default-open",
           "title": "Default Open",
           "opened": "none",
-          "nodes": 16,
-          "approximated": 0,
-          "bound": 50,
-          "bindable": 50,
+          "nodes": 18,
+          "approximated": 1,
+          "bound": 55,
+          "bindable": 55,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1P3K-0",
+              "nodeId": "487W-0",
               "size": [
                 288,
                 138.22
               ],
-              "htmlHash": "f94cf61a4ddbd60b"
+              "htmlHash": "72f397f6beaab009"
             }
           ]
         }
@@ -3241,11 +3232,11 @@
         "src/usage/combobox.usage.mjs"
       ],
       "sourceHash": "ce96db870fc02959",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
-        "nodes": 44,
-        "approximated": 2,
+        "nodes": 43,
+        "approximated": 1,
         "bound": 191,
         "bindable": 197,
         "bindingRate": 0.97
@@ -3260,27 +3251,27 @@
           "title": "Default",
           "opened": "story",
           "nodes": 15,
-          "approximated": 1,
+          "approximated": 0,
           "bound": 60,
           "bindable": 61,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1P4J-0",
+              "nodeId": "488X-0",
               "size": [
                 256,
-                144.91
+                157.41
               ],
-              "htmlHash": "d68f89a6ddfdc8c8"
+              "htmlHash": "de272a25c77048c0"
             },
             {
               "part": "panel-1",
-              "nodeId": "1P4T-0",
+              "nodeId": "4897-0",
               "size": [
                 208,
                 71.41
               ],
-              "htmlHash": "43785737414b735e"
+              "htmlHash": "16728839a1395955"
             }
           ]
         },
@@ -3288,28 +3279,28 @@
           "id": "components-combobox--with-clear",
           "title": "With Clear Button",
           "opened": "click",
-          "nodes": 23,
+          "nodes": 22,
           "approximated": 1,
           "bound": 111,
           "bindable": 116,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1P5E-0",
+              "nodeId": "489Q-0",
               "size": [
                 256,
                 258.44
               ],
-              "htmlHash": "c0b79cb86d74a9e8"
+              "htmlHash": "03fef6dd9c3415cd"
             },
             {
               "part": "panel-1",
-              "nodeId": "1P5R-0",
+              "nodeId": "48A3-0",
               "size": [
                 179,
                 172.44
               ],
-              "htmlHash": "09201cbd10d53338"
+              "htmlHash": "2ec2b140d58b113c"
             }
           ]
         },
@@ -3324,7 +3315,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1P6L-0",
+              "nodeId": "48AU-0",
               "size": [
                 256,
                 80
@@ -3349,7 +3340,7 @@
         "src/usage/command.usage.mjs"
       ],
       "sourceHash": "1daf08b05ff3d16c",
-      "syncedAt": "2026-10-10",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 64,
@@ -3374,7 +3365,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZWA-0",
+              "nodeId": "48BC-0",
               "size": [
                 288,
                 213.22
@@ -3394,7 +3385,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZXO-0",
+              "nodeId": "48CQ-0",
               "size": [
                 189.92,
                 80
@@ -3414,7 +3405,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZY2-0",
+              "nodeId": "48D4-0",
               "size": [
                 288,
                 144.81
@@ -3439,10 +3430,10 @@
         "src/usage/context-menu.usage.mjs"
       ],
       "sourceHash": "7dfb589c98667350",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
-        "nodes": 78,
+        "nodes": 76,
         "approximated": 2,
         "bound": 303,
         "bindable": 303,
@@ -3458,14 +3449,14 @@
           "id": "components-contextmenu--default",
           "title": "Default",
           "opened": "context",
-          "nodes": 20,
+          "nodes": 19,
           "approximated": 1,
           "bound": 83,
           "bindable": 83,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PA0-0",
+              "nodeId": "48E9-0",
               "size": [
                 256,
                 96
@@ -3474,12 +3465,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1PA5-0",
+              "nodeId": "48EE-0",
               "size": [
                 144,
                 135.63
               ],
-              "htmlHash": "726989cd32cd867b"
+              "htmlHash": "651275ba8f0e8d67"
             }
           ]
         },
@@ -3494,7 +3485,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PB1-0",
+              "nodeId": "48F7-0",
               "size": [
                 256,
                 96
@@ -3514,7 +3505,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PB9-0",
+              "nodeId": "48FF-0",
               "size": [
                 256,
                 96
@@ -3527,14 +3518,14 @@
           "id": "components-contextmenu--all-variants",
           "title": "All Variants",
           "opened": "context",
-          "nodes": 54,
+          "nodes": 53,
           "approximated": 1,
           "bound": 202,
           "bindable": 202,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PBK-0",
+              "nodeId": "48FQ-0",
               "size": [
                 256,
                 96
@@ -3543,12 +3534,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1PBP-0",
+              "nodeId": "48FV-0",
               "size": [
                 144,
                 390.06
               ],
-              "htmlHash": "7704014a33d1efd6"
+              "htmlHash": "93538c475d255f6c"
             }
           ]
         }
@@ -3568,7 +3559,7 @@
         "src/usage/dialog.usage.mjs"
       ],
       "sourceHash": "c4847a51331c3e04",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
         "nodes": 46,
@@ -3593,7 +3584,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PDW-0",
+              "nodeId": "48HZ-0",
               "size": [
                 90.33,
                 32
@@ -3602,12 +3593,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1PE1-0",
+              "nodeId": "48I4-0",
               "size": [
                 384,
                 310.2
               ],
-              "htmlHash": "b8f120a2152df969"
+              "htmlHash": "b877162f64aa949f"
             }
           ]
         },
@@ -3622,7 +3613,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PF0-0",
+              "nodeId": "48J3-0",
               "size": [
                 102.75,
                 32
@@ -3631,12 +3622,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1PF5-0",
+              "nodeId": "48J8-0",
               "size": [
                 384,
                 310.2
               ],
-              "htmlHash": "a6c3310409bb7677"
+              "htmlHash": "b55c56f54055cfc9"
             }
           ]
         }
@@ -3656,7 +3647,7 @@
         "src/usage/drawer.usage.mjs"
       ],
       "sourceHash": "453c935954a19b6f",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
         "nodes": 49,
@@ -3681,7 +3672,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PG5-0",
+              "nodeId": "48K8-0",
               "size": [
                 104.78,
                 32
@@ -3690,12 +3681,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1PGA-0",
+              "nodeId": "48KD-0",
               "size": [
                 1280,
                 336.39
               ],
-              "htmlHash": "8024587b9b4899d0"
+              "htmlHash": "a16b0e060825e889"
             }
           ]
         },
@@ -3710,7 +3701,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PHA-0",
+              "nodeId": "48LD-0",
               "size": [
                 125.84,
                 32
@@ -3719,12 +3710,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1PHF-0",
+              "nodeId": "48LI-0",
               "size": [
                 384,
                 900
               ],
-              "htmlHash": "e2012027f76fdf62"
+              "htmlHash": "865bd909a628c1ce"
             }
           ]
         }
@@ -3744,10 +3735,10 @@
         "src/usage/dropdown-menu.usage.mjs"
       ],
       "sourceHash": "6ff67cf525953e75",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
-        "nodes": 63,
+        "nodes": 60,
         "approximated": 1,
         "bound": 253,
         "bindable": 256,
@@ -3760,14 +3751,14 @@
           "id": "components-dropdownmenu--default",
           "title": "Default",
           "opened": "story",
-          "nodes": 23,
+          "nodes": 22,
           "approximated": 1,
           "bound": 88,
           "bindable": 89,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PII-0",
+              "nodeId": "48ML-0",
               "size": [
                 80,
                 157.22
@@ -3776,12 +3767,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1PIR-0",
+              "nodeId": "48MU-0",
               "size": [
                 128,
                 150.63
               ],
-              "htmlHash": "4784b7b015db5446"
+              "htmlHash": "bded948b5dff5889"
             }
           ]
         },
@@ -3789,14 +3780,14 @@
           "id": "components-dropdownmenu--with-checkbox-items",
           "title": "With Checkbox Items",
           "opened": "click",
-          "nodes": 19,
+          "nodes": 18,
           "approximated": 0,
           "bound": 76,
           "bindable": 77,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PJN-0",
+              "nodeId": "48NN-0",
               "size": [
                 151.69,
                 198.22
@@ -3805,12 +3796,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1PJV-0",
+              "nodeId": "48NV-0",
               "size": [
                 192,
                 114.22
               ],
-              "htmlHash": "03280be95570f0a0"
+              "htmlHash": "a790c6312ed56c7f"
             }
           ]
         },
@@ -3818,14 +3809,14 @@
           "id": "components-dropdownmenu--with-radio-group",
           "title": "With Radio Group",
           "opened": "click",
-          "nodes": 21,
+          "nodes": 20,
           "approximated": 0,
           "bound": 89,
           "bindable": 90,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PKQ-0",
+              "nodeId": "48ON-0",
               "size": [
                 159.39,
                 225.63
@@ -3834,12 +3825,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1PKY-0",
+              "nodeId": "48OV-0",
               "size": [
                 160,
                 141.63
               ],
-              "htmlHash": "51a821a583f6a5dd"
+              "htmlHash": "cd1a67b9aa0b3187"
             }
           ]
         }
@@ -3859,7 +3850,7 @@
         "src/usage/empty.usage.mjs"
       ],
       "sourceHash": "e593a7bfd92371a6",
-      "syncedAt": "2026-10-10",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
         "nodes": 26,
@@ -3884,12 +3875,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZZ4-0",
+              "nodeId": "48PS-0",
               "size": [
                 320,
                 257.56
               ],
-              "htmlHash": "fc7f1fb52213e857"
+              "htmlHash": "1f54ca61ea3f9e8d"
             }
           ]
         },
@@ -3904,12 +3895,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZZR-0",
+              "nodeId": "48QF-0",
               "size": [
                 320,
                 279.64
               ],
-              "htmlHash": "fc6a7870846276f0"
+              "htmlHash": "280f35d85467fc95"
             }
           ]
         }
@@ -3929,7 +3920,7 @@
         "src/usage/field.usage.mjs"
       ],
       "sourceHash": "48e2982c31407775",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 5,
         "nodes": 47,
@@ -3952,7 +3943,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PND-0",
+              "nodeId": "48R7-0",
               "size": [
                 288,
                 107.47
@@ -3972,7 +3963,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PNU-0",
+              "nodeId": "48RO-0",
               "size": [
                 288,
                 86.09
@@ -3992,7 +3983,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1POB-0",
+              "nodeId": "48S5-0",
               "size": [
                 288,
                 87.08
@@ -4012,7 +4003,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1POS-0",
+              "nodeId": "48SM-0",
               "size": [
                 288,
                 37.38
@@ -4032,7 +4023,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PP7-0",
+              "nodeId": "48T1-0",
               "size": [
                 288,
                 300.25
@@ -4080,7 +4071,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LSH-0",
+              "nodeId": "48U3-0",
               "size": [
                 62.92,
                 16
@@ -4089,7 +4080,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2LSJ-0",
+              "nodeId": "48U5-0",
               "size": [
                 256,
                 95.41
@@ -4109,7 +4100,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LT8-0",
+              "nodeId": "48UU-0",
               "size": [
                 71.69,
                 16
@@ -4118,7 +4109,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2LTA-0",
+              "nodeId": "48UW-0",
               "size": [
                 256,
                 99.41
@@ -4166,7 +4157,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LTU-0",
+              "nodeId": "48VG-0",
               "size": [
                 24,
                 24
@@ -4186,7 +4177,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LU3-0",
+              "nodeId": "48VP-0",
               "size": [
                 145.67,
                 19.41
@@ -4206,7 +4197,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LUG-0",
+              "nodeId": "48W2-0",
               "size": [
                 20,
                 20
@@ -4226,7 +4217,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LUP-0",
+              "nodeId": "48WB-0",
               "size": [
                 1200,
                 908.5
@@ -4251,7 +4242,7 @@
         "src/usage/input.usage.mjs"
       ],
       "sourceHash": "011bf2e462813fdb",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 7,
         "nodes": 32,
@@ -4274,7 +4265,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Q7K-0",
+              "nodeId": "49G3-0",
               "size": [
                 288,
                 32
@@ -4294,7 +4285,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Q7V-0",
+              "nodeId": "49GE-0",
               "size": [
                 288,
                 32
@@ -4314,7 +4305,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Q86-0",
+              "nodeId": "49GP-0",
               "size": [
                 288,
                 32
@@ -4334,7 +4325,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Q8H-0",
+              "nodeId": "49H0-0",
               "size": [
                 288,
                 32
@@ -4354,7 +4345,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Q8S-0",
+              "nodeId": "49HB-0",
               "size": [
                 288,
                 32
@@ -4374,7 +4365,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Q93-0",
+              "nodeId": "49HM-0",
               "size": [
                 288,
                 51.59
@@ -4394,7 +4385,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Q9H-0",
+              "nodeId": "49I0-0",
               "size": [
                 288,
                 208
@@ -4419,7 +4410,7 @@
         "src/usage/input-group.usage.mjs"
       ],
       "sourceHash": "f19ea2773569f045",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 7,
         "nodes": 71,
@@ -4442,7 +4433,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QAA-0",
+              "nodeId": "49IT-0",
               "size": [
                 320,
                 32
@@ -4462,7 +4453,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QAQ-0",
+              "nodeId": "49J9-0",
               "size": [
                 320,
                 32
@@ -4482,7 +4473,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QB9-0",
+              "nodeId": "49JS-0",
               "size": [
                 320,
                 32
@@ -4502,7 +4493,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QBO-0",
+              "nodeId": "49K7-0",
               "size": [
                 320,
                 32
@@ -4522,7 +4513,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QC8-0",
+              "nodeId": "49KR-0",
               "size": [
                 320,
                 32
@@ -4542,7 +4533,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QCO-0",
+              "nodeId": "49L7-0",
               "size": [
                 320,
                 99.41
@@ -4562,7 +4553,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QD3-0",
+              "nodeId": "49LM-0",
               "size": [
                 320,
                 275.41
@@ -4610,7 +4601,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2QW4-0",
+              "nodeId": "49MZ-0",
               "size": [
                 224.92,
                 83.41
@@ -4630,7 +4621,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2QWT-0",
+              "nodeId": "49NO-0",
               "size": [
                 128,
                 59.41
@@ -4650,7 +4641,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2QXA-0",
+              "nodeId": "49O5-0",
               "size": [
                 208,
                 59.41
@@ -4670,7 +4661,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2QXX-0",
+              "nodeId": "49OS-0",
               "size": [
                 223.28,
                 83.41
@@ -4695,7 +4686,7 @@
         "src/usage/item.usage.mjs"
       ],
       "sourceHash": "d5d16ff8507a7428",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 8,
         "nodes": 192,
@@ -4718,7 +4709,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QH3-0",
+              "nodeId": "49PM-0",
               "size": [
                 320,
                 146.16
@@ -4738,7 +4729,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QI0-0",
+              "nodeId": "49QJ-0",
               "size": [
                 320,
                 146.16
@@ -4758,7 +4749,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QIX-0",
+              "nodeId": "49RG-0",
               "size": [
                 320,
                 146.16
@@ -4778,7 +4769,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QJU-0",
+              "nodeId": "49SD-0",
               "size": [
                 320,
                 140.16
@@ -4798,7 +4789,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QKR-0",
+              "nodeId": "49TA-0",
               "size": [
                 320,
                 126.06
@@ -4818,7 +4809,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QLO-0",
+              "nodeId": "49U7-0",
               "size": [
                 320,
                 293.23
@@ -4838,7 +4829,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QN3-0",
+              "nodeId": "49VM-0",
               "size": [
                 320,
                 277.56
@@ -4858,7 +4849,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QOC-0",
+              "nodeId": "49WV-0",
               "size": [
                 320,
                 146.16
@@ -4883,7 +4874,7 @@
         "src/usage/kbd.usage.mjs"
       ],
       "sourceHash": "c24b052c858fca26",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 5,
         "nodes": 83,
@@ -4906,7 +4897,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QP8-0",
+              "nodeId": "49XR-0",
               "size": [
                 20,
                 20
@@ -4926,7 +4917,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QPG-0",
+              "nodeId": "49XZ-0",
               "size": [
                 20,
                 20
@@ -4946,7 +4937,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QPO-0",
+              "nodeId": "49Y7-0",
               "size": [
                 20,
                 20
@@ -4966,7 +4957,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QPX-0",
+              "nodeId": "49YG-0",
               "size": [
                 419.64,
                 128
@@ -4986,7 +4977,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QR4-0",
+              "nodeId": "49ZN-0",
               "size": [
                 300.98,
                 56
@@ -5011,7 +5002,7 @@
         "src/usage/label.usage.mjs"
       ],
       "sourceHash": "89500131188f54b1",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 14,
@@ -5034,7 +5025,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QST-0",
+              "nodeId": "4A1C-0",
               "size": [
                 256,
                 51.59
@@ -5054,7 +5045,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QT5-0",
+              "nodeId": "4A1O-0",
               "size": [
                 175.22,
                 16
@@ -5074,7 +5065,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QTG-0",
+              "nodeId": "4A1Z-0",
               "size": [
                 256,
                 51.59
@@ -5099,10 +5090,10 @@
         "src/usage/menubar.usage.mjs"
       ],
       "sourceHash": "3772aa77ddd3ea3e",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
-        "nodes": 27,
+        "nodes": 26,
         "approximated": 1,
         "bound": 142,
         "bindable": 150,
@@ -5117,14 +5108,14 @@
           "id": "components-menubar--default",
           "title": "Default",
           "opened": "click",
-          "nodes": 24,
+          "nodes": 23,
           "approximated": 1,
           "bound": 123,
           "bindable": 127,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QU0-0",
+              "nodeId": "4A2J-0",
               "size": [
                 1200,
                 32
@@ -5133,12 +5124,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1QUC-0",
+              "nodeId": "4A2V-0",
               "size": [
                 144,
                 126.63
               ],
-              "htmlHash": "2240b1ab31ebd17a"
+              "htmlHash": "93ce33831473f0bf"
             }
           ]
         },
@@ -5153,7 +5144,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QV5-0",
+              "nodeId": "4A3L-0",
               "size": [
                 1200,
                 32
@@ -5178,13 +5169,13 @@
         "src/usage/model-picker.usage.mjs"
       ],
       "sourceHash": "68a5741c8bbbdf87",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
         "nodes": 46,
-        "approximated": 1,
-        "bound": 147,
-        "bindable": 153,
+        "approximated": 2,
+        "bound": 146,
+        "bindable": 152,
         "bindingRate": 0.961
       },
       "notes": [],
@@ -5198,27 +5189,27 @@
           "title": "In The Composer",
           "opened": "story",
           "nodes": 43,
-          "approximated": 1,
-          "bound": 139,
-          "bindable": 144,
+          "approximated": 2,
+          "bound": 138,
+          "bindable": 143,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QVO-0",
+              "nodeId": "4A44-0",
               "size": [
                 544,
                 84
               ],
-              "htmlHash": "74e4452e6602c8fd"
+              "htmlHash": "adbccb71a39598fd"
             },
             {
               "part": "panel-1",
-              "nodeId": "1QWC-0",
+              "nodeId": "4A4V-0",
               "size": [
                 288,
                 249
               ],
-              "htmlHash": "ce52b93967d73520"
+              "htmlHash": "aa135738b7985b9c"
             }
           ]
         },
@@ -5233,7 +5224,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QXN-0",
+              "nodeId": "4A63-0",
               "size": [
                 96.64,
                 28
@@ -5258,7 +5249,7 @@
         "src/usage/native-select.usage.mjs"
       ],
       "sourceHash": "70e6920dabcc1cab",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 6,
         "nodes": 45,
@@ -5281,7 +5272,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QY3-0",
+              "nodeId": "4A6J-0",
               "size": [
                 256,
                 32
@@ -5301,7 +5292,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QYI-0",
+              "nodeId": "4A6Y-0",
               "size": [
                 256,
                 57.41
@@ -5321,7 +5312,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QYZ-0",
+              "nodeId": "4A7F-0",
               "size": [
                 256,
                 32
@@ -5341,7 +5332,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QZE-0",
+              "nodeId": "4A7U-0",
               "size": [
                 256,
                 28.7
@@ -5361,7 +5352,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QZT-0",
+              "nodeId": "4A89-0",
               "size": [
                 256,
                 32
@@ -5381,7 +5372,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1R08-0",
+              "nodeId": "4A8O-0",
               "size": [
                 256,
                 160.7
@@ -5406,7 +5397,7 @@
         "src/usage/navigation-menu.usage.mjs"
       ],
       "sourceHash": "6d7423bb8e6ac28c",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
         "nodes": 40,
@@ -5431,16 +5422,16 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Y2Q-0",
+              "nodeId": "4A9T-0",
               "size": [
                 245.66,
                 36
               ],
-              "htmlHash": "ea99663e3d8bdcb1"
+              "htmlHash": "0b5fdd4abda9b2b1"
             },
             {
               "part": "panel-1",
-              "nodeId": "1Y3B-0",
+              "nodeId": "4AAE-0",
               "size": [
                 392,
                 127.41
@@ -5460,7 +5451,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Y43-0",
+              "nodeId": "4AB6-0",
               "size": [
                 237.2,
                 36
@@ -5485,7 +5476,7 @@
         "src/usage/pagination.usage.mjs"
       ],
       "sourceHash": "610573aaf28f70a9",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 106,
@@ -5508,7 +5499,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1R3N-0",
+              "nodeId": "4AC0-0",
               "size": [
                 336.41,
                 32.19
@@ -5528,7 +5519,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1R4T-0",
+              "nodeId": "4AD6-0",
               "size": [
                 336.41,
                 32.19
@@ -5548,7 +5539,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1R5Z-0",
+              "nodeId": "4AEC-0",
               "size": [
                 336.41,
                 32.19
@@ -5568,7 +5559,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1R75-0",
+              "nodeId": "4AFI-0",
               "size": [
                 404.41,
                 32.19
@@ -5618,7 +5609,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MEK-0",
+              "nodeId": "4AH5-0",
               "size": [
                 161.14,
                 223.91
@@ -5627,12 +5618,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2MES-0",
+              "nodeId": "4AHD-0",
               "size": [
                 288,
                 139.91
               ],
-              "htmlHash": "59e09e237c0146f8"
+              "htmlHash": "615edc237cfdbc61"
             }
           ]
         },
@@ -5647,7 +5638,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MFG-0",
+              "nodeId": "4AI1-0",
               "size": [
                 195.45,
                 245.31
@@ -5656,12 +5647,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2MFO-0",
+              "nodeId": "4AI9-0",
               "size": [
                 288,
                 161.31
               ],
-              "htmlHash": "637481ad0ddd7678"
+              "htmlHash": "2421bde97ca5586d"
             }
           ]
         },
@@ -5676,7 +5667,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MGG-0",
+              "nodeId": "4AJ1-0",
               "size": [
                 512,
                 320
@@ -5685,7 +5676,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2MGV-0",
+              "nodeId": "4AJG-0",
               "size": [
                 288,
                 57.72
@@ -5733,7 +5724,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2QYR-0",
+              "nodeId": "4AJY-0",
               "size": [
                 288,
                 35.41
@@ -5753,7 +5744,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2QZ8-0",
+              "nodeId": "4AKF-0",
               "size": [
                 288,
                 35.41
@@ -5773,7 +5764,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2QZP-0",
+              "nodeId": "4AKW-0",
               "size": [
                 288,
                 35.41
@@ -5793,7 +5784,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2R06-0",
+              "nodeId": "4ALD-0",
               "size": [
                 288,
                 241.03
@@ -5817,39 +5808,38 @@
         "src/stories/prompt-composer.stories.tsx",
         "src/usage/prompt-composer.usage.mjs"
       ],
-      "sourceHash": "ea0e7596e19b853f",
+      "sourceHash": "186a880278677a35",
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 10,
-        "nodes": 137,
-        "approximated": 5,
-        "bound": 375,
-        "bindable": 419,
-        "bindingRate": 0.895
+        "nodes": 149,
+        "approximated": 13,
+        "bound": 370,
+        "bindable": 416,
+        "bindingRate": 0.889
       },
       "notes": [],
       "lost": [
-        "button: background-clip: padding-box not carried ×8",
-        "tab-fillet: mask not carried ×2"
+        "button: background-clip: padding-box not carried ×9"
       ],
       "stories": [
         {
           "id": "components-promptcomposer--large",
           "title": "Large",
           "opened": "none",
-          "nodes": 10,
-          "approximated": 0,
+          "nodes": 11,
+          "approximated": 1,
           "bound": 25,
           "bindable": 29,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2R1J-0",
+              "nodeId": "4AMQ-0",
               "size": [
                 576,
                 108
               ],
-              "htmlHash": "c1c73892eade5026"
+              "htmlHash": "19400d027bd6b661"
             }
           ]
         },
@@ -5857,19 +5847,19 @@
           "id": "components-promptcomposer--small",
           "title": "Small",
           "opened": "none",
-          "nodes": 10,
-          "approximated": 0,
+          "nodes": 11,
+          "approximated": 1,
           "bound": 26,
           "bindable": 29,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2R27-0",
+              "nodeId": "4ANH-0",
               "size": [
                 576,
                 84
               ],
-              "htmlHash": "28e14d4536d3bd48"
+              "htmlHash": "8a6886ef05ab8f63"
             }
           ]
         },
@@ -5877,19 +5867,19 @@
           "id": "components-promptcomposer--working",
           "title": "Working",
           "opened": "none",
-          "nodes": 10,
-          "approximated": 0,
-          "bound": 28,
-          "bindable": 31,
+          "nodes": 11,
+          "approximated": 1,
+          "bound": 27,
+          "bindable": 30,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2R2V-0",
+              "nodeId": "4AO8-0",
               "size": [
                 576,
                 108
               ],
-              "htmlHash": "af4afb7354499b20"
+              "htmlHash": "e85d6c53bd02d87c"
             }
           ]
         },
@@ -5897,19 +5887,19 @@
           "id": "components-promptcomposer--disabled",
           "title": "Disabled",
           "opened": "none",
-          "nodes": 10,
-          "approximated": 0,
+          "nodes": 11,
+          "approximated": 1,
           "bound": 25,
           "bindable": 29,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2R3J-0",
+              "nodeId": "4AOZ-0",
               "size": [
                 576,
                 108
               ],
-              "htmlHash": "c3b905d0a1659083"
+              "htmlHash": "8e3ae864c3856237"
             }
           ]
         },
@@ -5917,19 +5907,19 @@
           "id": "components-promptcomposer--error-state",
           "title": "Error State",
           "opened": "none",
-          "nodes": 13,
+          "nodes": 15,
           "approximated": 1,
           "bound": 32,
           "bindable": 36,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2R47-0",
+              "nodeId": "4APQ-0",
               "size": [
                 576,
                 133.41
               ],
-              "htmlHash": "8fd33d7707329cb7"
+              "htmlHash": "a9053b35e8fa90ff"
             }
           ]
         },
@@ -5937,19 +5927,19 @@
           "id": "components-promptcomposer--with-mic",
           "title": "With Mic",
           "opened": "none",
-          "nodes": 9,
-          "approximated": 0,
+          "nodes": 10,
+          "approximated": 1,
           "bound": 20,
           "bindable": 24,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2R4V-0",
+              "nodeId": "4AQG-0",
               "size": [
                 576,
                 108
               ],
-              "htmlHash": "9871450b5e3a9c14"
+              "htmlHash": "33f8a9e6eb1e0877"
             }
           ]
         },
@@ -5957,19 +5947,19 @@
           "id": "components-promptcomposer--with-attachments",
           "title": "With Attachments",
           "opened": "none",
-          "nodes": 32,
-          "approximated": 1,
-          "bound": 100,
+          "nodes": 33,
+          "approximated": 2,
+          "bound": 98,
           "bindable": 106,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2R5I-0",
+              "nodeId": "4AR6-0",
               "size": [
                 576,
                 166
               ],
-              "htmlHash": "32f6d187a2f8ff68"
+              "htmlHash": "e0ad17cb53ef9778"
             }
           ]
         },
@@ -5977,19 +5967,19 @@
           "id": "components-promptcomposer--with-modes",
           "title": "With Modes",
           "opened": "none",
-          "nodes": 21,
-          "approximated": 3,
+          "nodes": 24,
+          "approximated": 4,
           "bound": 60,
-          "bindable": 73,
+          "bindable": 71,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2R6X-0",
+              "nodeId": "4ASO-0",
               "size": [
                 576,
                 142.41
               ],
-              "htmlHash": "c9f22a23e7b6eec7"
+              "htmlHash": "05e0b2d48a7cc474"
             }
           ]
         },
@@ -5997,19 +5987,19 @@
           "id": "components-promptcomposer--slash-commands",
           "title": "Slash Commands",
           "opened": "none",
-          "nodes": 10,
-          "approximated": 0,
-          "bound": 27,
+          "nodes": 11,
+          "approximated": 1,
+          "bound": 25,
           "bindable": 28,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2R7X-0",
+              "nodeId": "4ATX-0",
               "size": [
                 576,
                 84
               ],
-              "htmlHash": "dac8cb3aba5b7663"
+              "htmlHash": "6bdae358fce4e22c"
             }
           ]
         },
@@ -6024,12 +6014,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2R8L-0",
+              "nodeId": "4AUO-0",
               "size": [
                 576,
                 108
               ],
-              "htmlHash": "8b26604cb0e6b0a1"
+              "htmlHash": "6cf4bf4460cae69f"
             }
           ]
         }
@@ -6049,18 +6039,18 @@
         "src/usage/question-card.usage.mjs"
       ],
       "sourceHash": "381f611a9d43bdcd",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 6,
         "nodes": 224,
         "approximated": 23,
-        "bound": 727,
-        "bindable": 744,
+        "bound": 725,
+        "bindable": 742,
         "bindingRate": 0.977
       },
       "notes": [],
       "lost": [
-        "button: background-clip: padding-box not carried ×3"
+        "button: background-clip: padding-box not carried ×5"
       ],
       "stories": [
         {
@@ -6069,17 +6059,17 @@
           "opened": "none",
           "nodes": 42,
           "approximated": 4,
-          "bound": 135,
-          "bindable": 138,
+          "bound": 134,
+          "bindable": 137,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RMI-0",
+              "nodeId": "4AVK-0",
               "size": [
                 480,
                 321.03
               ],
-              "htmlHash": "d774aed68a9bd9fd"
+              "htmlHash": "c9d23d5e49f382c3"
             }
           ]
         },
@@ -6089,17 +6079,17 @@
           "opened": "none",
           "nodes": 45,
           "approximated": 4,
-          "bound": 149,
-          "bindable": 152,
+          "bound": 148,
+          "bindable": 151,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RO4-0",
+              "nodeId": "4AX6-0",
               "size": [
                 480,
                 361.03
               ],
-              "htmlHash": "87d9a1b8c3407554"
+              "htmlHash": "1a9fdfc81f082394"
             }
           ]
         },
@@ -6114,7 +6104,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RPT-0",
+              "nodeId": "4AYV-0",
               "size": [
                 480,
                 321.03
@@ -6134,7 +6124,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RRB-0",
+              "nodeId": "4B0D-0",
               "size": [
                 480,
                 190.22
@@ -6154,7 +6144,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RS8-0",
+              "nodeId": "4B1A-0",
               "size": [
                 480,
                 305.03
@@ -6174,7 +6164,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RTQ-0",
+              "nodeId": "4B2S-0",
               "size": [
                 480,
                 321.03
@@ -6199,7 +6189,7 @@
         "src/usage/radio-group.usage.mjs"
       ],
       "sourceHash": "477af01994482219",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 5,
         "nodes": 100,
@@ -6222,7 +6212,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RVF-0",
+              "nodeId": "4B4H-0",
               "size": [
                 105.66,
                 64
@@ -6242,7 +6232,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RW2-0",
+              "nodeId": "4B54-0",
               "size": [
                 105.66,
                 40
@@ -6262,7 +6252,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RWK-0",
+              "nodeId": "4B5M-0",
               "size": [
                 244.02,
                 67.41
@@ -6282,7 +6272,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RX2-0",
+              "nodeId": "4B64-0",
               "size": [
                 152.02,
                 95.41
@@ -6302,7 +6292,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RXS-0",
+              "nodeId": "4B6U-0",
               "size": [
                 244.02,
                 311.63
@@ -6350,7 +6340,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MPB-0",
+              "nodeId": "4B8F-0",
               "size": [
                 448,
                 192
@@ -6370,7 +6360,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MPV-0",
+              "nodeId": "4B8Z-0",
               "size": [
                 384,
                 256
@@ -6390,7 +6380,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MQF-0",
+              "nodeId": "4B9J-0",
               "size": [
                 448,
                 192
@@ -6410,7 +6400,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MR0-0",
+              "nodeId": "4BA4-0",
               "size": [
                 672,
                 192
@@ -6435,7 +6425,7 @@
         "src/usage/scroll-area.usage.mjs"
       ],
       "sourceHash": "8c89bdb30b30d0ca",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 117,
@@ -6458,7 +6448,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1S21-0",
+              "nodeId": "4BB3-0",
               "size": [
                 224,
                 256
@@ -6478,7 +6468,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1S3X-0",
+              "nodeId": "4BCZ-0",
               "size": [
                 224,
                 256
@@ -6498,7 +6488,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1S5T-0",
+              "nodeId": "4BEV-0",
               "size": [
                 288,
                 80
@@ -6528,8 +6518,8 @@
         "stories": 5,
         "nodes": 125,
         "approximated": 4,
-        "bound": 491,
-        "bindable": 492,
+        "bound": 490,
+        "bindable": 491,
         "bindingRate": 0.998
       },
       "notes": [
@@ -6543,12 +6533,12 @@
           "opened": "story",
           "nodes": 29,
           "approximated": 1,
-          "bound": 117,
-          "bindable": 117,
+          "bound": 116,
+          "bindable": 116,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MS2-0",
+              "nodeId": "4BG1-0",
               "size": [
                 256,
                 32
@@ -6557,12 +6547,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2MSE-0",
+              "nodeId": "4BGD-0",
               "size": [
                 256,
                 210.03
               ],
-              "htmlHash": "74923e657ea1c0fe"
+              "htmlHash": "69f1fcb04610b499"
             }
           ]
         },
@@ -6577,7 +6567,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MTF-0",
+              "nodeId": "4BHE-0",
               "size": [
                 256,
                 32
@@ -6586,7 +6576,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2MTR-0",
+              "nodeId": "4BHQ-0",
               "size": [
                 256,
                 210.03
@@ -6606,7 +6596,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MUV-0",
+              "nodeId": "4BIU-0",
               "size": [
                 256,
                 51.59
@@ -6615,7 +6605,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2MV9-0",
+              "nodeId": "4BJ8-0",
               "size": [
                 256,
                 210.03
@@ -6635,7 +6625,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MWA-0",
+              "nodeId": "4BK9-0",
               "size": [
                 256,
                 28
@@ -6644,7 +6634,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2MWM-0",
+              "nodeId": "4BKL-0",
               "size": [
                 256,
                 210.03
@@ -6664,7 +6654,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MXK-0",
+              "nodeId": "4BLJ-0",
               "size": [
                 256,
                 32
@@ -6712,7 +6702,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MY4-0",
+              "nodeId": "4BM3-0",
               "size": [
                 256,
                 63.81
@@ -6732,7 +6722,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MYJ-0",
+              "nodeId": "4BMI-0",
               "size": [
                 256,
                 108.22
@@ -6752,7 +6742,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MZ2-0",
+              "nodeId": "4BN1-0",
               "size": [
                 256,
                 19.41
@@ -6772,7 +6762,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MZL-0",
+              "nodeId": "4BNK-0",
               "size": [
                 256,
                 155.22
@@ -6797,7 +6787,7 @@
         "src/usage/sheet.usage.mjs"
       ],
       "sourceHash": "3d8b3ed0497dc3d3",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 59,
@@ -6822,7 +6812,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1SFT-0",
+              "nodeId": "4BOJ-0",
               "size": [
                 112.19,
                 32
@@ -6831,12 +6821,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1SFY-0",
+              "nodeId": "4BOO-0",
               "size": [
                 384,
                 900
               ],
-              "htmlHash": "191e24b68c01b171"
+              "htmlHash": "0908886cad929b0b"
             }
           ]
         },
@@ -6851,7 +6841,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1SGY-0",
+              "nodeId": "4BPO-0",
               "size": [
                 128.31,
                 32
@@ -6860,7 +6850,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1SH3-0",
+              "nodeId": "4BPT-0",
               "size": [
                 384,
                 900
@@ -6880,7 +6870,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1SHW-0",
+              "nodeId": "4BQM-0",
               "size": [
                 107.31,
                 32
@@ -6889,7 +6879,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1SI1-0",
+              "nodeId": "4BQR-0",
               "size": [
                 1280,
                 237.2
@@ -6937,7 +6927,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2R9H-0",
+              "nodeId": "4BRI-0",
               "size": [
                 1232,
                 900
@@ -6957,7 +6947,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RCP-0",
+              "nodeId": "4BUQ-0",
               "size": [
                 1232,
                 900
@@ -6977,12 +6967,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RFG-0",
+              "nodeId": "4BXH-0",
               "size": [
                 1232,
                 900
               ],
-              "htmlHash": "aaab3431be813ad6"
+              "htmlHash": "1457d3b8aa3e3c1f"
             }
           ]
         },
@@ -6997,7 +6987,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RHV-0",
+              "nodeId": "4BZW-0",
               "size": [
                 1232,
                 900
@@ -7022,7 +7012,7 @@
         "src/usage/skeleton.usage.mjs"
       ],
       "sourceHash": "a67f223533abead3",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 39,
@@ -7045,7 +7035,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1STL-0",
+              "nodeId": "4C2N-0",
               "size": [
                 288,
                 16
@@ -7065,7 +7055,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1STT-0",
+              "nodeId": "4C2V-0",
               "size": [
                 288,
                 286
@@ -7085,7 +7075,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1SUF-0",
+              "nodeId": "4C3H-0",
               "size": [
                 288,
                 468
@@ -7110,7 +7100,7 @@
         "src/usage/slider.usage.mjs"
       ],
       "sourceHash": "181484a033c5515c",
-      "syncedAt": "2026-10-10",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 5,
         "nodes": 60,
@@ -7133,7 +7123,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "205U-0",
+              "nodeId": "4C4M-0",
               "size": [
                 288,
                 26
@@ -7153,7 +7143,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "206D-0",
+              "nodeId": "4C55-0",
               "size": [
                 288,
                 4
@@ -7173,7 +7163,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "206W-0",
+              "nodeId": "4C5O-0",
               "size": [
                 288,
                 4
@@ -7193,7 +7183,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "207D-0",
+              "nodeId": "4C65-0",
               "size": [
                 288,
                 4
@@ -7213,7 +7203,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "207U-0",
+              "nodeId": "4C6M-0",
               "size": [
                 288,
                 176
@@ -7238,7 +7228,7 @@
         "src/usage/sonner.usage.mjs"
       ],
       "sourceHash": "688e00785174f557",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 29,
@@ -7261,7 +7251,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1SYY-0",
+              "nodeId": "4C80-0",
               "size": [
                 92.23,
                 32
@@ -7270,7 +7260,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1SZ3-0",
+              "nodeId": "4C85-0",
               "size": [
                 356,
                 53.5
@@ -7290,7 +7280,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1SZH-0",
+              "nodeId": "4C8J-0",
               "size": [
                 431.97,
                 32
@@ -7299,7 +7289,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1T02-0",
+              "nodeId": "4C94-0",
               "size": [
                 356,
                 53.5
@@ -7319,7 +7309,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T0G-0",
+              "nodeId": "4C9I-0",
               "size": [
                 130.88,
                 32
@@ -7328,7 +7318,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1T0L-0",
+              "nodeId": "4C9N-0",
               "size": [
                 356,
                 58
@@ -7353,7 +7343,7 @@
         "src/usage/spinner.usage.mjs"
       ],
       "sourceHash": "77b092d85aae079a",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
         "nodes": 26,
@@ -7376,7 +7366,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T13-0",
+              "nodeId": "4CA5-0",
               "size": [
                 129.38,
                 19.41
@@ -7396,7 +7386,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T1E-0",
+              "nodeId": "4CAG-0",
               "size": [
                 132,
                 199.41
@@ -7421,7 +7411,7 @@
         "src/usage/suggested-prompts.usage.mjs"
       ],
       "sourceHash": "2bc5bdb7aa69e83b",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 42,
@@ -7444,12 +7434,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T2N-0",
+              "nodeId": "4CBP-0",
               "size": [
                 640,
                 32
               ],
-              "htmlHash": "ad72abf0f88e5127"
+              "htmlHash": "11387f6354151d71"
             }
           ]
         },
@@ -7464,12 +7454,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T38-0",
+              "nodeId": "4CCA-0",
               "size": [
                 640,
                 59.41
               ],
-              "htmlHash": "19fd68b5abd74cca"
+              "htmlHash": "8b0018614c669be6"
             }
           ]
         },
@@ -7484,12 +7474,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T44-0",
+              "nodeId": "4CD6-0",
               "size": [
                 640,
                 81.81
               ],
-              "htmlHash": "3ba72159cef463aa"
+              "htmlHash": "30d935b133237575"
             }
           ]
         }
@@ -7509,7 +7499,7 @@
         "src/usage/switch.usage.mjs"
       ],
       "sourceHash": "af3d344749890220",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 54,
@@ -7532,7 +7522,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T4W-0",
+              "nodeId": "4CDY-0",
               "size": [
                 155.17,
                 18.39
@@ -7552,7 +7542,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T58-0",
+              "nodeId": "4CEA-0",
               "size": [
                 123.78,
                 48.78
@@ -7572,7 +7562,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T5Q-0",
+              "nodeId": "4CES-0",
               "size": [
                 151.61,
                 103.2
@@ -7592,7 +7582,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T6E-0",
+              "nodeId": "4CFG-0",
               "size": [
                 155.17,
                 109.56
@@ -7640,7 +7630,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RKM-0",
+              "nodeId": "4CGF-0",
               "size": [
                 1200,
                 259.31
@@ -7660,7 +7650,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RMS-0",
+              "nodeId": "4CIL-0",
               "size": [
                 1200,
                 222.91
@@ -7680,7 +7670,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2ROQ-0",
+              "nodeId": "4CKJ-0",
               "size": [
                 1200,
                 184.13
@@ -7728,7 +7718,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2N0H-0",
+              "nodeId": "4CLO-0",
               "size": [
                 320,
                 110.81
@@ -7748,12 +7738,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2N13-0",
+              "nodeId": "4CMA-0",
               "size": [
                 320,
                 71.41
               ],
-              "htmlHash": "fad7df61b5c6bd16"
+              "htmlHash": "9bb33146e5f09398"
             }
           ]
         },
@@ -7768,7 +7758,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2N1P-0",
+              "nodeId": "4CMW-0",
               "size": [
                 320,
                 82.22
@@ -7788,12 +7778,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2N2A-0",
+              "nodeId": "4CNH-0",
               "size": [
                 320,
                 492.44
               ],
-              "htmlHash": "3b3178123f7cf0be"
+              "htmlHash": "dc34bb71fb477e42"
             }
           ]
         }
@@ -7813,7 +7803,7 @@
         "src/usage/textarea.usage.mjs"
       ],
       "sourceHash": "55e834fb489e3611",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 41,
@@ -7836,7 +7826,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TGI-0",
+              "nodeId": "4CPK-0",
               "size": [
                 320,
                 85.59
@@ -7856,7 +7846,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TGX-0",
+              "nodeId": "4CPZ-0",
               "size": [
                 320,
                 85.59
@@ -7876,7 +7866,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1THC-0",
+              "nodeId": "4CQE-0",
               "size": [
                 320,
                 109.59
@@ -7896,7 +7886,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1THT-0",
+              "nodeId": "4CQV-0",
               "size": [
                 320,
                 402.59
@@ -7921,7 +7911,7 @@
         "src/usage/toggle.usage.mjs"
       ],
       "sourceHash": "940d0b63378a95de",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 44,
@@ -7944,7 +7934,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TIV-0",
+              "nodeId": "4CRX-0",
               "size": [
                 36,
                 32
@@ -7964,7 +7954,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TJ4-0",
+              "nodeId": "4CS6-0",
               "size": [
                 38,
                 32
@@ -7984,7 +7974,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TJD-0",
+              "nodeId": "4CSF-0",
               "size": [
                 69.72,
                 32
@@ -8004,7 +7994,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TJO-0",
+              "nodeId": "4CSQ-0",
               "size": [
                 122,
                 276.19
@@ -8029,7 +8019,7 @@
         "src/usage/toggle-group.usage.mjs"
       ],
       "sourceHash": "2c546d3428add085",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 5,
         "nodes": 97,
@@ -8052,7 +8042,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TLC-0",
+              "nodeId": "4CUE-0",
               "size": [
                 124,
                 32
@@ -8072,7 +8062,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TLU-0",
+              "nodeId": "4CUW-0",
               "size": [
                 124,
                 32
@@ -8092,7 +8082,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TMC-0",
+              "nodeId": "4CVE-0",
               "size": [
                 130,
                 32
@@ -8112,7 +8102,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TMU-0",
+              "nodeId": "4CVW-0",
               "size": [
                 100,
                 80
@@ -8132,7 +8122,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TNM-0",
+              "nodeId": "4CWO-0",
               "size": [
                 130,
                 536
@@ -8180,7 +8170,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2P67-0",
+              "nodeId": "4CZB-0",
               "size": [
                 77.03,
                 20
@@ -8200,7 +8190,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2P6F-0",
+              "nodeId": "4CZJ-0",
               "size": [
                 78.94,
                 20
@@ -8220,7 +8210,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2P6N-0",
+              "nodeId": "4CZR-0",
               "size": [
                 74.94,
                 16
@@ -8240,7 +8230,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2P6V-0",
+              "nodeId": "4CZZ-0",
               "size": [
                 454.02,
                 48
@@ -8288,7 +8278,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2N4G-0",
+              "nodeId": "4D15-0",
               "size": [
                 83.66,
                 32
@@ -8297,12 +8287,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2N4L-0",
+              "nodeId": "4D1A-0",
               "size": [
                 129.78,
                 28
               ],
-              "htmlHash": "e22f8e022fa9f08c"
+              "htmlHash": "651381d837fde384"
             }
           ]
         },
@@ -8317,7 +8307,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2N4Y-0",
+              "nodeId": "4D1N-0",
               "size": [
                 24,
                 35.19
@@ -8326,12 +8316,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2N54-0",
+              "nodeId": "4D1T-0",
               "size": [
                 263.7,
                 28
               ],
-              "htmlHash": "85fa328f2590a0f6"
+              "htmlHash": "d192ae7c1bf91590"
             }
           ]
         },
@@ -8346,7 +8336,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2N5H-0",
+              "nodeId": "4D26-0",
               "size": [
                 247.66,
                 28
@@ -8355,12 +8345,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2N5W-0",
+              "nodeId": "4D2L-0",
               "size": [
                 100.3,
                 28
               ],
-              "htmlHash": "d1bf2ad8a464ead4"
+              "htmlHash": "2369491291893629"
             }
           ]
         }
@@ -8403,7 +8393,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RPV-0",
+              "nodeId": "4D30-0",
               "size": [
                 380,
                 271.2
@@ -8423,7 +8413,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RR7-0",
+              "nodeId": "4D4C-0",
               "size": [
                 380,
                 34.8
@@ -8443,7 +8433,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RRU-0",
+              "nodeId": "4D4Z-0",
               "size": [
                 380,
                 271.2
@@ -8463,12 +8453,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RT9-0",
+              "nodeId": "4D6E-0",
               "size": [
                 380,
                 18
               ],
-              "htmlHash": "dc3095a8f378ace7"
+              "htmlHash": "a376e5c8475736a2"
             }
           ]
         },
@@ -8483,12 +8473,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RTR-0",
+              "nodeId": "4D6W-0",
               "size": [
                 380,
                 18
               ],
-              "htmlHash": "8554d95aa79c1f81"
+              "htmlHash": "d723d1b9fa1e588a"
             }
           ]
         }
@@ -8511,7 +8501,7 @@
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
-        "nodes": 62,
+        "nodes": 70,
         "approximated": 5,
         "bound": 144,
         "bindable": 157,
@@ -8524,19 +8514,19 @@
           "id": "patterns-data-activity-feed--activity-feed",
           "title": "Activity Feed",
           "opened": "none",
-          "nodes": 62,
+          "nodes": 70,
           "approximated": 5,
           "bound": 144,
           "bindable": 157,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2NAU-0",
+              "nodeId": "4D7J-0",
               "size": [
                 420,
                 315.05
               ],
-              "htmlHash": "880fdaec2f706627"
+              "htmlHash": "d2e8f05f38abb7fe"
             }
           ]
         }
@@ -8555,38 +8545,38 @@
         "src/stories/patterns/AiChat.stories.tsx",
         "src/usage/ai-chat.usage.mjs"
       ],
-      "sourceHash": "3f0159d8ad3b17e2",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "f15bc45fd05336f4",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 5,
-        "nodes": 431,
-        "approximated": 32,
-        "bound": 1295,
-        "bindable": 1367,
-        "bindingRate": 0.947
+        "nodes": 442,
+        "approximated": 37,
+        "bound": 1302,
+        "bindable": 1378,
+        "bindingRate": 0.945
       },
       "notes": [],
       "lost": [
-        "button: background-clip: padding-box not carried ×7"
+        "button: background-clip: padding-box not carried ×8"
       ],
       "stories": [
         {
           "id": "patterns-ai-ai-chat--default",
           "title": "Default",
           "opened": "none",
-          "nodes": 84,
-          "approximated": 6,
-          "bound": 259,
-          "bindable": 271,
+          "nodes": 86,
+          "approximated": 8,
+          "bound": 262,
+          "bindable": 277,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1U14-0",
+              "nodeId": "4DA5-0",
               "size": [
                 1232,
                 640
               ],
-              "htmlHash": "3e7d7eb73f97bd06"
+              "htmlHash": "2d09eac0bec7308d"
             }
           ]
         },
@@ -8594,19 +8584,19 @@
           "id": "patterns-ai-ai-chat--app-conversation",
           "title": "App Conversation",
           "opened": "none",
-          "nodes": 73,
-          "approximated": 5,
+          "nodes": 74,
+          "approximated": 6,
           "bound": 236,
           "bindable": 247,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1U4K-0",
+              "nodeId": "4DDN-0",
               "size": [
                 1232,
                 640
               ],
-              "htmlHash": "3ea0d2a291bd9891"
+              "htmlHash": "d59c155e43c9fe10"
             }
           ]
         },
@@ -8614,19 +8604,19 @@
           "id": "patterns-ai-ai-chat--own-sidebar",
           "title": "Own Sidebar",
           "opened": "none",
-          "nodes": 54,
-          "approximated": 3,
+          "nodes": 55,
+          "approximated": 4,
           "bound": 162,
           "bindable": 183,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1U7A-0",
+              "nodeId": "4DGE-0",
               "size": [
                 1232,
                 640
               ],
-              "htmlHash": "91cd8a2fe5fdef42"
+              "htmlHash": "ecd163580f3909da"
             }
           ]
         },
@@ -8634,19 +8624,19 @@
           "id": "patterns-ai-ai-chat--no-sidebar",
           "title": "No Sidebar",
           "opened": "none",
-          "nodes": 64,
-          "approximated": 5,
-          "bound": 172,
-          "bindable": 183,
+          "nodes": 66,
+          "approximated": 7,
+          "bound": 177,
+          "bindable": 189,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1U99-0",
+              "nodeId": "4DIE-0",
               "size": [
                 1232,
                 640
               ],
-              "htmlHash": "6d56caf3e764e1d6"
+              "htmlHash": "035aa866d483d2f6"
             }
           ]
         },
@@ -8654,19 +8644,19 @@
           "id": "patterns-ai-ai-chat--agent-pieces-in-one-thread",
           "title": "Agent Pieces In One Thread",
           "opened": "none",
-          "nodes": 156,
-          "approximated": 13,
-          "bound": 466,
-          "bindable": 483,
+          "nodes": 161,
+          "approximated": 12,
+          "bound": 465,
+          "bindable": 482,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1UBY-0",
+              "nodeId": "4DL5-0",
               "size": [
                 1232,
                 1367.25
               ],
-              "htmlHash": "acf6bfa3ae77baf8"
+              "htmlHash": "9d8d98adba872889"
             }
           ]
         }
@@ -8685,39 +8675,58 @@
         "src/stories/patterns/AiHome.stories.tsx",
         "src/usage/ai-home.usage.mjs"
       ],
-      "sourceHash": "e2973452a8b54db1",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "2876c16614425cbf",
+      "syncedAt": "2026-10-12",
       "counts": {
-        "stories": 1,
-        "nodes": 43,
-        "approximated": 4,
-        "bound": 155,
-        "bindable": 168,
-        "bindingRate": 0.923
+        "stories": 2,
+        "nodes": 92,
+        "approximated": 10,
+        "bound": 306,
+        "bindable": 332,
+        "bindingRate": 0.922
       },
       "notes": [],
       "lost": [
-        "button: background-clip: padding-box not carried",
-        "tab-fillet: mask not carried ×2"
+        "button: background-clip: padding-box not carried"
       ],
       "stories": [
         {
           "id": "patterns-ai-ai-home--default",
           "title": "Default",
           "opened": "none",
-          "nodes": 43,
-          "approximated": 4,
-          "bound": 155,
-          "bindable": 168,
+          "nodes": 46,
+          "approximated": 5,
+          "bound": 153,
+          "bindable": 166,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1UIE-0",
+              "nodeId": "4DRS-0",
               "size": [
                 1232,
                 512
               ],
-              "htmlHash": "6f54af2a02a6b29b"
+              "htmlHash": "2732ea86bb9dfc90"
+            }
+          ]
+        },
+        {
+          "id": "patterns-ai-ai-home--agent-tab",
+          "title": "Agent Tab",
+          "opened": "none",
+          "nodes": 46,
+          "approximated": 5,
+          "bound": 153,
+          "bindable": 166,
+          "parts": [
+            {
+              "part": "main",
+              "nodeId": "4DTS-0",
+              "size": [
+                1232,
+                512
+              ],
+              "htmlHash": "f7ef6f9f82e2bfda"
             }
           ]
         }
@@ -8740,11 +8749,11 @@
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
-        "nodes": 112,
-        "approximated": 6,
-        "bound": 294,
-        "bindable": 328,
-        "bindingRate": 0.896
+        "nodes": 117,
+        "approximated": 9,
+        "bound": 298,
+        "bindable": 336,
+        "bindingRate": 0.887
       },
       "notes": [],
       "lost": [
@@ -8755,19 +8764,19 @@
           "id": "patterns-ai-ai-side-panel--default",
           "title": "Default",
           "opened": "none",
-          "nodes": 47,
-          "approximated": 3,
-          "bound": 119,
-          "bindable": 133,
+          "nodes": 49,
+          "approximated": 4,
+          "bound": 122,
+          "bindable": 137,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2TB6-0",
+              "nodeId": "4DVX-0",
               "size": [
                 384,
                 560
               ],
-              "htmlHash": "a55b885e64137777"
+              "htmlHash": "4918d19832dfd850"
             }
           ]
         },
@@ -8775,19 +8784,19 @@
           "id": "patterns-ai-ai-side-panel--no-scope",
           "title": "No Scope",
           "opened": "none",
-          "nodes": 42,
-          "approximated": 3,
-          "bound": 108,
-          "bindable": 122,
+          "nodes": 44,
+          "approximated": 4,
+          "bound": 111,
+          "bindable": 126,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2TD9-0",
+              "nodeId": "4DY2-0",
               "size": [
                 384,
                 560
               ],
-              "htmlHash": "82cb096ebe2fa182"
+              "htmlHash": "667a49dec82154a6"
             }
           ]
         },
@@ -8795,19 +8804,19 @@
           "id": "patterns-ai-ai-side-panel--empty-app-thread",
           "title": "Empty App Thread",
           "opened": "none",
-          "nodes": 23,
-          "approximated": 0,
-          "bound": 67,
+          "nodes": 24,
+          "approximated": 1,
+          "bound": 65,
           "bindable": 73,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2TF4-0",
+              "nodeId": "4DZZ-0",
               "size": [
                 384,
                 560
               ],
-              "htmlHash": "a0d6a21ae0789d59"
+              "htmlHash": "da44a9bf2b1e7ff0"
             }
           ]
         }
@@ -8827,7 +8836,7 @@
         "src/usage/alerts.usage.mjs"
       ],
       "sourceHash": "ca5f8bb76664e23f",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 22,
@@ -8850,7 +8859,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1UWD-0",
+              "nodeId": "4E15-0",
               "size": [
                 512,
                 208.44
@@ -8881,8 +8890,8 @@
         "nodes": 33,
         "approximated": 1,
         "bound": 94,
-        "bindable": 164,
-        "bindingRate": 0.573
+        "bindable": 162,
+        "bindingRate": 0.58
       },
       "notes": [],
       "lost": [],
@@ -8894,16 +8903,16 @@
           "nodes": 33,
           "approximated": 1,
           "bound": 94,
-          "bindable": 164,
+          "bindable": 162,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RUE-0",
+              "nodeId": "4E27-0",
               "size": [
                 880,
                 316.3
               ],
-              "htmlHash": "1c0892016e3d1f1d"
+              "htmlHash": "27080f842d50b145"
             }
           ]
         }
@@ -8923,7 +8932,7 @@
         "src/usage/announcement-banner.usage.mjs"
       ],
       "sourceHash": "8a7f2fac98d37b24",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 21,
@@ -8948,7 +8957,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1V3S-0",
+              "nodeId": "4E8G-0",
               "size": [
                 880,
                 120
@@ -8996,7 +9005,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2NOO-0",
+              "nodeId": "4E9G-0",
               "size": [
                 280,
                 52
@@ -9044,7 +9053,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2S0R-0",
+              "nodeId": "4EA3-0",
               "size": [
                 510,
                 352.58
@@ -9094,7 +9103,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2S7M-0",
+              "nodeId": "4EGY-0",
               "size": [
                 458,
                 449.58
@@ -9144,7 +9153,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2NPB-0",
+              "nodeId": "4ETE-0",
               "size": [
                 400,
                 480
@@ -9194,7 +9203,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2P7Y-0",
+              "nodeId": "4EUH-0",
               "size": [
                 820,
                 461.67
@@ -9219,7 +9228,7 @@
         "src/usage/command-palette.usage.mjs"
       ],
       "sourceHash": "b5787d117e2518ed",
-      "syncedAt": "2026-10-10",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 43,
@@ -9242,7 +9251,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "200J-0",
+              "nodeId": "4EWZ-0",
               "size": [
                 440,
                 274.03
@@ -9267,7 +9276,7 @@
         "src/usage/contact-form.usage.mjs"
       ],
       "sourceHash": "b2b05e604bdcea11",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 40,
@@ -9292,7 +9301,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1VQU-0",
+              "nodeId": "4EYU-0",
               "size": [
                 440,
                 465.67
@@ -9340,7 +9349,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2NSW-0",
+              "nodeId": "4F0H-0",
               "size": [
                 300,
                 350
@@ -9360,7 +9369,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2NUF-0",
+              "nodeId": "4F20-0",
               "size": [
                 300,
                 582
@@ -9380,7 +9389,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2NWT-0",
+              "nodeId": "4F4E-0",
               "size": [
                 300,
                 89.41
@@ -9405,7 +9414,7 @@
         "src/usage/cookie-consent.usage.mjs"
       ],
       "sourceHash": "08d46c8a2e73a59d",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 12,
@@ -9430,7 +9439,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1VWZ-0",
+              "nodeId": "4F4Z-0",
               "size": [
                 520,
                 110.81
@@ -9480,7 +9489,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2PAG-0",
+              "nodeId": "4F5O-0",
               "size": [
                 1232,
                 600
@@ -9530,7 +9539,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2SK2-0",
+              "nodeId": "4F8D-0",
               "size": [
                 1200,
                 295.13
@@ -9555,7 +9564,7 @@
         "src/usage/empty-state.usage.mjs"
       ],
       "sourceHash": "41851eea3dacbae8",
-      "syncedAt": "2026-10-10",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 9,
@@ -9580,7 +9589,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "202E-0",
+              "nodeId": "4FBC-0",
               "size": [
                 420,
                 246.03
@@ -9630,7 +9639,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2PD5-0",
+              "nodeId": "4FC0-0",
               "size": [
                 1232,
                 500
@@ -9655,7 +9664,7 @@
         "src/usage/faq.usage.mjs"
       ],
       "sourceHash": "eb36aaf24cbb0c44",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 37,
@@ -9678,7 +9687,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1W4P-0",
+              "nodeId": "4FCP-0",
               "size": [
                 560,
                 419.5
@@ -9726,12 +9735,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2TG9-0",
+              "nodeId": "4FEC-0",
               "size": [
                 1200,
                 406.63
               ],
-              "htmlHash": "c0a57438cf1d801a"
+              "htmlHash": "809aae4cfea131a5"
             }
           ]
         }
@@ -9751,14 +9760,14 @@
         "src/usage/file-upload.usage.mjs"
       ],
       "sourceHash": "2008e47bc4f5cb4a",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 46,
         "approximated": 0,
-        "bound": 151,
+        "bound": 150,
         "bindable": 152,
-        "bindingRate": 0.993
+        "bindingRate": 0.987
       },
       "notes": [],
       "lost": [
@@ -9771,17 +9780,17 @@
           "opened": "none",
           "nodes": 46,
           "approximated": 0,
-          "bound": 151,
+          "bound": 150,
           "bindable": 152,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1W7J-0",
+              "nodeId": "4FFJ-0",
               "size": [
                 440,
                 483.7
               ],
-              "htmlHash": "e9e2795b241906b9"
+              "htmlHash": "c51541c60ca785fd"
             }
           ]
         }
@@ -9824,7 +9833,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2THG-0",
+              "nodeId": "4FHL-0",
               "size": [
                 1232,
                 306.03
@@ -9849,7 +9858,7 @@
         "src/usage/forgot-password.usage.mjs"
       ],
       "sourceHash": "e2142a990c344283",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 16,
@@ -9874,7 +9883,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1WAX-0",
+              "nodeId": "4FIX-0",
               "size": [
                 380,
                 268.3
@@ -9924,7 +9933,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2TIS-0",
+              "nodeId": "4FJR-0",
               "size": [
                 1232,
                 610.77
@@ -9972,7 +9981,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2SN1-0",
+              "nodeId": "4FKJ-0",
               "size": [
                 640,
                 429.97
@@ -10020,7 +10029,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2O43-0",
+              "nodeId": "4FN8-0",
               "size": [
                 1200,
                 258.22
@@ -10068,7 +10077,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2O6T-0",
+              "nodeId": "4FPY-0",
               "size": [
                 1232,
                 520
@@ -10093,7 +10102,7 @@
         "src/usage/login.usage.mjs"
       ],
       "sourceHash": "1536c8d78f7cd47b",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 24,
@@ -10118,7 +10127,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1WJO-0",
+              "nodeId": "4FRO-0",
               "size": [
                 380,
                 348.48
@@ -10168,7 +10177,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2O8J-0",
+              "nodeId": "4FSP-0",
               "size": [
                 320,
                 235.72
@@ -10192,7 +10201,7 @@
         "src/stories/login-oauth.stories.tsx",
         "src/usage/login-oauth.usage.mjs"
       ],
-      "sourceHash": "5ed49054b6a2470a",
+      "sourceHash": "0310ff39695562e8",
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
@@ -10218,12 +10227,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2O9C-0",
+              "nodeId": "4FTI-0",
               "size": [
                 340,
                 423.13
               ],
-              "htmlHash": "6eff50fa9000813e"
+              "htmlHash": "b9fe08723929c73b"
             }
           ]
         }
@@ -10268,7 +10277,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2OAQ-0",
+              "nodeId": "4FUW-0",
               "size": [
                 1232,
                 560
@@ -10318,7 +10327,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2OCC-0",
+              "nodeId": "4FWI-0",
               "size": [
                 1232,
                 560
@@ -10368,7 +10377,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2OF9-0",
+              "nodeId": "4FZF-0",
               "size": [
                 1232,
                 56
@@ -10418,7 +10427,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2OG9-0",
+              "nodeId": "4G0F-0",
               "size": [
                 560,
                 297.75
@@ -10466,7 +10475,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2OH1-0",
+              "nodeId": "4G17-0",
               "size": [
                 360,
                 285.84
@@ -10491,7 +10500,7 @@
         "src/usage/onboarding.usage.mjs"
       ],
       "sourceHash": "db75939c3c77d3e3",
-      "syncedAt": "2026-10-10",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 26,
@@ -10514,7 +10523,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2095-0",
+              "nodeId": "4G2S-0",
               "size": [
                 400,
                 276.3
@@ -10564,7 +10573,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2PDU-0",
+              "nodeId": "4G3W-0",
               "size": [
                 400,
                 326.73
@@ -10614,7 +10623,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2SPQ-0",
+              "nodeId": "4G51-0",
               "size": [
                 380,
                 257.3
@@ -10664,7 +10673,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2PEZ-0",
+              "nodeId": "4G66-0",
               "size": [
                 1200,
                 97.47
@@ -10714,7 +10723,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2PG3-0",
+              "nodeId": "4G7A-0",
               "size": [
                 1200,
                 328.52
@@ -10764,7 +10773,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2PJ4-0",
+              "nodeId": "4GAB-0",
               "size": [
                 340,
                 331.83
@@ -10812,7 +10821,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2OJQ-0",
+              "nodeId": "4GBF-0",
               "size": [
                 440,
                 314.63
@@ -10837,7 +10846,7 @@
         "src/usage/settings.usage.mjs"
       ],
       "sourceHash": "87ce4cc26be35dfa",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 35,
@@ -10862,7 +10871,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1X5A-0",
+              "nodeId": "4GD9-0",
               "size": [
                 560,
                 386.48
@@ -10910,7 +10919,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2SQV-0",
+              "nodeId": "4GEL-0",
               "size": [
                 1232,
                 560
@@ -10960,7 +10969,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2OPG-0",
+              "nodeId": "4GIH-0",
               "size": [
                 380,
                 368.08
@@ -10985,7 +10994,7 @@
         "src/usage/signup-social.usage.mjs"
       ],
       "sourceHash": "fd791842679c34e9",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 30,
@@ -11010,7 +11019,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1XBI-0",
+              "nodeId": "4GJK-0",
               "size": [
                 380,
                 427.98
@@ -11035,10 +11044,10 @@
         "src/usage/stat-cards.usage.mjs"
       ],
       "sourceHash": "272d14a4d86fcb7f",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
-        "nodes": 34,
+        "nodes": 38,
         "approximated": 1,
         "bound": 170,
         "bindable": 170,
@@ -11051,19 +11060,19 @@
           "id": "patterns-data-stat-cards--stat-cards",
           "title": "Stat Cards",
           "opened": "none",
-          "nodes": 34,
+          "nodes": 38,
           "approximated": 1,
           "bound": 170,
           "bindable": 170,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1XCZ-0",
+              "nodeId": "4GL1-0",
               "size": [
                 1200,
                 134.06
               ],
-              "htmlHash": "e3fd0c992e66d3d9"
+              "htmlHash": "fadfa1a7037b5f93"
             }
           ]
         }
@@ -11106,7 +11115,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2OQJ-0",
+              "nodeId": "4GMJ-0",
               "size": [
                 880,
                 250.06
@@ -11131,7 +11140,7 @@
         "src/usage/tabs-page.usage.mjs"
       ],
       "sourceHash": "ce743b1bc35e4f0b",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 25,
@@ -11154,7 +11163,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1XFF-0",
+              "nodeId": "4GNL-0",
               "size": [
                 560,
                 251.48
@@ -11202,7 +11211,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2ORL-0",
+              "nodeId": "4GOO-0",
               "size": [
                 880,
                 308.14
@@ -11250,7 +11259,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2OTV-0",
+              "nodeId": "4GQY-0",
               "size": [
                 520,
                 348
@@ -11275,7 +11284,7 @@
         "src/usage/theme-selector.usage.mjs"
       ],
       "sourceHash": "b4575ac94d1e6e50",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
         "nodes": 27,
@@ -11300,7 +11309,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1XJC-0",
+              "nodeId": "4GRI-0",
               "size": [
                 92.05,
                 28
@@ -11320,7 +11329,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1XJQ-0",
+              "nodeId": "4GRW-0",
               "size": [
                 520,
                 366.5
@@ -11344,7 +11353,7 @@
         "src/stories/patterns/Wizard.stories.tsx",
         "src/usage/wizard.usage.mjs"
       ],
-      "sourceHash": "5cd79da25e4cbd11",
+      "sourceHash": "edde39a35eb203df",
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
@@ -11370,12 +11379,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2OUF-0",
+              "nodeId": "4GSX-0",
               "size": [
                 460,
                 312.48
               ],
-              "htmlHash": "5fd9c1386f546d88"
+              "htmlHash": "8edb79e2cdd3a473"
             }
           ]
         }
@@ -11395,13 +11404,13 @@
         "src/usage/examples.mjs"
       ],
       "sourceHash": "38c820c171c4bf39",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
-        "nodes": 204,
+        "nodes": 208,
         "approximated": 8,
-        "bound": 707,
-        "bindable": 713,
+        "bound": 706,
+        "bindable": 712,
         "bindingRate": 0.992
       },
       "notes": [],
@@ -11413,19 +11422,19 @@
           "id": "examples-app-page--app-page",
           "title": "App Page",
           "opened": "none",
-          "nodes": 204,
+          "nodes": 208,
           "approximated": 8,
-          "bound": 707,
-          "bindable": 713,
+          "bound": 706,
+          "bindable": 712,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1YTU-0",
+              "nodeId": "4GUD-0",
               "size": [
                 1232,
-                900
+                560
               ],
-              "htmlHash": "d5b443030db8d9d3"
+              "htmlHash": "2e9252566544e7e8"
             }
           ]
         }
@@ -11445,7 +11454,7 @@
         "src/usage/examples.mjs"
       ],
       "sourceHash": "34a0afcd82935b37",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 35,
@@ -11470,12 +11479,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1XU8-0",
+              "nodeId": "4H2I-0",
               "size": [
                 1232,
                 900
               ],
-              "htmlHash": "9c9c1720ecbaa2a6"
+              "htmlHash": "115e199622ce1cb3"
             }
           ]
         }
@@ -11495,7 +11504,7 @@
         "src/usage/examples.mjs"
       ],
       "sourceHash": "1df36d535fa2e414",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 176,
@@ -11520,12 +11529,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1XVX-0",
+              "nodeId": "4H47-0",
               "size": [
                 1232,
                 2439.94
               ],
-              "htmlHash": "dc7e51efdf98eb95"
+              "htmlHash": "e632f454e8eabc6b"
             }
           ]
         }
