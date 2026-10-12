@@ -38,6 +38,7 @@ footer reads `package.json` directly, so the displayed version updates with the 
   - A space between two inline elements (a button and the sentence after it) is kept as a gap.
   - A grid cell spanning rows (an alert dialog's icon beside its title and text) is pinned in place instead of pushing the next row down.
   - Masked shapes are photographed on their own at 4x with a see-through background.
+  - Balanced text (`text-wrap: balance`) keeps the width the browser's lines took, so it breaks at the same words (Feature Section's headline wrapped differently).
   - Keyboard focus rings left by a story's play are not drawn: in Storybook the story frame is not focused, so they do not show there.
   - Overlapping layers are ordered by z-index, so the composer's selected tab covers the box edge under it (the faint line across the tab) and its base curve sits over the neighbouring tab.
 - **Paper sync:** a rotated layer that is positioned absolutely is now placed correctly. Paper turns such a layer about its top-left corner (and ignores `transform-origin` there), while the browser turns it about its centre, so the Carousel's vertical buttons were drawn 28px left of centre and the Tooltip arrows a few pixels off. The converter now moves the layer to compensate. Carousel and Tooltip redrawn.

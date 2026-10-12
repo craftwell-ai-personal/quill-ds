@@ -640,7 +640,8 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
   const textNode = (text, owner, classes, context, extra = {}) => emit({
     tag: 'span',
     text,
-    style: dropDefaults({ ...textStyles(owner.used, classes, context), ...extra }),
+    // balanced text (see captureInPage) wraps at the browser's words when held to the width its lines took
+    style: dropDefaults({ ...textStyles(owner.used, classes, context), ...(owner.balancedWidth ? { 'max-width': px(Math.ceil(owner.balancedWidth) + 1) } : {}), ...extra }),
     children: [],
   })
 
@@ -1356,6 +1357,14 @@ async function captureInPage({ usedProperties, specProperties, panelSelector, br
         }
         for (const run of node.lines.runs) { delete run.source; delete run.top }
         return node
+      }
+      // `text-wrap: balance` evens the lines out; Paper wraps greedily and would break elsewhere. The width the browser's
+      // balanced lines actually take is kept, so the text layer wraps at the same words.
+      if (/balance/.test(`${computed.textWrapStyle ?? ''} ${computed.textWrap ?? ''}`)) {
+        const range = document.createRange()
+        range.selectNodeContents(element)
+        const rects = [...range.getClientRects()]
+        if (new Set(rects.map((rect) => Math.round(rect.top))).size > 1) node.balancedWidth = trim(Math.max(...rects.map((rect) => rect.right)) - Math.min(...rects.map((rect) => rect.left)))
       }
       const append = (text) => { const last = node.children.at(-1); if (last && typeof last.text === 'string') last.text += text; else node.children.push({ text }) }
       for (const child of element.childNodes) {

@@ -336,7 +336,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2KWK-0",
+              "nodeId": "3E4Y-0",
               "size": [
                 320,
                 126.22
@@ -356,7 +356,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2KXH-0",
+              "nodeId": "3E5V-0",
               "size": [
                 320,
                 175.03
@@ -376,7 +376,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2KYH-0",
+              "nodeId": "3E6V-0",
               "size": [
                 320,
                 223.84
@@ -424,12 +424,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2WJL-0",
+              "nodeId": "3E83-0",
               "size": [
                 448,
                 224.44
               ],
-              "htmlHash": "3c7b490d93ab0e8e"
+              "htmlHash": "9b12f666539ce15d"
             }
           ]
         },
@@ -444,12 +444,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2WLK-0",
+              "nodeId": "3EA2-0",
               "size": [
                 448,
                 90.81
               ],
-              "htmlHash": "d8b6f338fe873b72"
+              "htmlHash": "80c294c04fb04b16"
             }
           ]
         },
@@ -464,7 +464,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2WMD-0",
+              "nodeId": "3EAV-0",
               "size": [
                 448,
                 90.81
@@ -484,7 +484,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2WN3-0",
+              "nodeId": "3EBL-0",
               "size": [
                 448,
                 124.22
@@ -509,7 +509,7 @@
         "src/usage/ai-badge.usage.mjs"
       ],
       "sourceHash": "24a0fff831c8882c",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 12,
@@ -532,7 +532,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MCO-0",
+              "nodeId": "3ECT-0",
               "size": [
                 75.13,
                 20
@@ -552,7 +552,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MCZ-0",
+              "nodeId": "3ED4-0",
               "size": [
                 95.23,
                 20
@@ -572,7 +572,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MDA-0",
+              "nodeId": "3EDF-0",
               "size": [
                 182.17,
                 20
@@ -597,7 +597,7 @@
         "src/usage/ai-button.usage.mjs"
       ],
       "sourceHash": "2d8c1a041bf35a35",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 21,
@@ -620,7 +620,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MDT-0",
+              "nodeId": "3EDY-0",
               "size": [
                 84.83,
                 32
@@ -640,7 +640,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ME5-0",
+              "nodeId": "3EEA-0",
               "size": [
                 117.8,
                 32
@@ -660,7 +660,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MEH-0",
+              "nodeId": "3EEM-0",
               "size": [
                 534.86,
                 36
@@ -685,7 +685,7 @@
         "src/usage/ai-feedback.usage.mjs"
       ],
       "sourceHash": "61e1390eb1cd44bb",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 49,
@@ -710,12 +710,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MFL-0",
+              "nodeId": "3EFQ-0",
               "size": [
                 480,
                 208
               ],
-              "htmlHash": "0de33b005f322fb1"
+              "htmlHash": "78d182fbf8db3493"
             }
           ]
         },
@@ -730,7 +730,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MGE-0",
+              "nodeId": "3EGJ-0",
               "size": [
                 480,
                 20
@@ -750,12 +750,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MGS-0",
+              "nodeId": "3EGX-0",
               "size": [
                 480,
                 166
               ],
-              "htmlHash": "950539a58780479e"
+              "htmlHash": "72a94b48f4ea9f74"
             }
           ]
         },
@@ -770,12 +770,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MHF-0",
+              "nodeId": "3EHK-0",
               "size": [
                 480,
                 90.08
               ],
-              "htmlHash": "cb668b970fff542f"
+              "htmlHash": "571b83f4fe92e581"
             }
           ]
         }
@@ -795,7 +795,7 @@
         "src/usage/ai-mark.usage.mjs"
       ],
       "sourceHash": "2274d9f43d347024",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
         "nodes": 8,
@@ -818,7 +818,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MIG-0",
+              "nodeId": "3EIL-0",
               "size": [
                 18,
                 18
@@ -838,7 +838,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MIQ-0",
+              "nodeId": "3EIV-0",
               "size": [
                 231,
                 48
@@ -886,12 +886,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2YWF-0",
+              "nodeId": "3EJS-0",
               "size": [
                 576,
                 165.56
               ],
-              "htmlHash": "fde2b90d9c983006"
+              "htmlHash": "189f7496ed9f62a5"
             }
           ]
         },
@@ -906,7 +906,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2YXH-0",
+              "nodeId": "3EKU-0",
               "size": [
                 576,
                 137.56
@@ -926,7 +926,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2YYC-0",
+              "nodeId": "3ELP-0",
               "size": [
                 576,
                 85.72
@@ -946,7 +946,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2YZ2-0",
+              "nodeId": "3EMF-0",
               "size": [
                 576,
                 63.41
@@ -966,7 +966,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2YZR-0",
+              "nodeId": "3EN4-0",
               "size": [
                 576,
                 112.08
@@ -986,7 +986,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2Z0J-0",
+              "nodeId": "3ENW-0",
               "size": [
                 576,
                 50
@@ -1006,7 +1006,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2Z15-0",
+              "nodeId": "3EOI-0",
               "size": [
                 576,
                 81.11
@@ -1031,7 +1031,7 @@
         "src/usage/ai-notice.usage.mjs"
       ],
       "sourceHash": "b82c12fcdfcc6238",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
         "nodes": 5,
@@ -1054,7 +1054,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MP5-0",
+              "nodeId": "3EPB-0",
               "size": [
                 336.88,
                 16
@@ -1074,7 +1074,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MPD-0",
+              "nodeId": "3EPJ-0",
               "size": [
                 421.17,
                 16
@@ -1124,7 +1124,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2X24-0",
+              "nodeId": "3EQ1-0",
               "size": [
                 416,
                 66.23
@@ -1133,12 +1133,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2X2N-0",
+              "nodeId": "3EQK-0",
               "size": [
                 384,
                 181.64
               ],
-              "htmlHash": "92c4771028c3f009"
+              "htmlHash": "24eb27ef7e23e3ac"
             }
           ]
         },
@@ -1153,7 +1153,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2X3F-0",
+              "nodeId": "3ERC-0",
               "size": [
                 416,
                 66.23
@@ -1162,12 +1162,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2X3Y-0",
+              "nodeId": "3ERV-0",
               "size": [
                 384,
                 97.41
               ],
-              "htmlHash": "7fa3d2edfe861bbc"
+              "htmlHash": "07a34c21ce798f46"
             }
           ]
         },
@@ -1182,7 +1182,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2X4O-0",
+              "nodeId": "3ESL-0",
               "size": [
                 416,
                 32
@@ -1191,12 +1191,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2X50-0",
+              "nodeId": "3ESX-0",
               "size": [
                 384,
                 181.64
               ],
-              "htmlHash": "a6581d6fef55c67b"
+              "htmlHash": "b619c00969994e01"
             }
           ]
         }
@@ -1239,7 +1239,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2WWT-0",
+              "nodeId": "3ETR-0",
               "size": [
                 320,
                 47.41
@@ -1259,12 +1259,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2WXB-0",
+              "nodeId": "3EU9-0",
               "size": [
                 320,
                 95.41
               ],
-              "htmlHash": "43e76ed449abbc11"
+              "htmlHash": "9b9e125361328c89"
             }
           ]
         },
@@ -1279,7 +1279,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2WXU-0",
+              "nodeId": "3EUS-0",
               "size": [
                 320,
                 19.41
@@ -1304,7 +1304,7 @@
         "src/usage/alert.usage.mjs"
       ],
       "sourceHash": "23541fd8b7efa656",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 5,
         "nodes": 60,
@@ -1327,7 +1327,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MUR-0",
+              "nodeId": "3EV8-0",
               "size": [
                 384,
                 58.81
@@ -1347,7 +1347,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MV9-0",
+              "nodeId": "3EVQ-0",
               "size": [
                 384,
                 58.81
@@ -1367,7 +1367,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MVR-0",
+              "nodeId": "3EW8-0",
               "size": [
                 384,
                 78.22
@@ -1387,7 +1387,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MW4-0",
+              "nodeId": "3EWL-0",
               "size": [
                 384,
                 78.22
@@ -1407,7 +1407,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MWR-0",
+              "nodeId": "3EX8-0",
               "size": [
                 384,
                 310.06
@@ -1458,7 +1458,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2ZX7-0",
+              "nodeId": "3EYO-0",
               "size": [
                 111.2,
                 32
@@ -1467,7 +1467,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2ZXC-0",
+              "nodeId": "3EYT-0",
               "size": [
                 384,
                 164.61
@@ -1487,7 +1487,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2ZXV-0",
+              "nodeId": "3EZC-0",
               "size": [
                 126.72,
                 32
@@ -1496,7 +1496,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2ZY0-0",
+              "nodeId": "3EZH-0",
               "size": [
                 384,
                 184.02
@@ -1516,7 +1516,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2ZYQ-0",
+              "nodeId": "3F07-0",
               "size": [
                 89.23,
                 32
@@ -1525,7 +1525,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2ZYV-0",
+              "nodeId": "3F0C-0",
               "size": [
                 320,
                 164.61
@@ -1575,12 +1575,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2ZZH-0",
+              "nodeId": "3F0Y-0",
               "size": [
                 480,
                 256.44
               ],
-              "htmlHash": "580429cd9763e464"
+              "htmlHash": "380377741f9331c3"
             }
           ]
         },
@@ -1595,12 +1595,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "300P-0",
+              "nodeId": "3F26-0",
               "size": [
                 480,
                 117.41
               ],
-              "htmlHash": "35a7ea8051767b82"
+              "htmlHash": "4f6a167acbcfaf64"
             }
           ]
         },
@@ -1615,7 +1615,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "301H-0",
+              "nodeId": "3F2Y-0",
               "size": [
                 480,
                 256.44
@@ -1640,7 +1640,7 @@
         "src/usage/aspect-ratio.usage.mjs"
       ],
       "sourceHash": "88dbab4d0f63c54c",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 29,
@@ -1663,7 +1663,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1N3L-0",
+              "nodeId": "3F47-0",
               "size": [
                 288,
                 162
@@ -1683,7 +1683,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1N3W-0",
+              "nodeId": "3F4I-0",
               "size": [
                 288,
                 162
@@ -1703,7 +1703,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1N4A-0",
+              "nodeId": "3F4W-0",
               "size": [
                 288,
                 288
@@ -1723,7 +1723,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1N4O-0",
+              "nodeId": "3F5A-0",
               "size": [
                 288,
                 80
@@ -1771,7 +1771,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2Y0L-0",
+              "nodeId": "3F68-0",
               "size": [
                 32,
                 32
@@ -1791,7 +1791,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2Y0V-0",
+              "nodeId": "3F6I-0",
               "size": [
                 32,
                 32
@@ -1811,7 +1811,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2Y16-0",
+              "nodeId": "3F6T-0",
               "size": [
                 151.33,
                 64
@@ -1831,7 +1831,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2Y2I-0",
+              "nodeId": "3F85-0",
               "size": [
                 136,
                 216
@@ -1851,7 +1851,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2Y56-0",
+              "nodeId": "3FAT-0",
               "size": [
                 195.23,
                 64
@@ -1876,7 +1876,7 @@
         "src/usage/badge.usage.mjs"
       ],
       "sourceHash": "0875e78c5dabe6ba",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 8,
         "nodes": 27,
@@ -1899,7 +1899,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NBP-0",
+              "nodeId": "3FCB-0",
               "size": [
                 43.92,
                 20
@@ -1919,7 +1919,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NBX-0",
+              "nodeId": "3FCJ-0",
               "size": [
                 43.97,
                 20
@@ -1939,7 +1939,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NC5-0",
+              "nodeId": "3FCR-0",
               "size": [
                 45.31,
                 20
@@ -1959,7 +1959,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NCD-0",
+              "nodeId": "3FCZ-0",
               "size": [
                 45.89,
                 20
@@ -1979,7 +1979,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NCL-0",
+              "nodeId": "3FD7-0",
               "size": [
                 60.17,
                 20
@@ -1999,7 +1999,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NCT-0",
+              "nodeId": "3FDF-0",
               "size": [
                 85.91,
                 20
@@ -2019,7 +2019,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ND1-0",
+              "nodeId": "3FDN-0",
               "size": [
                 97.2,
                 20
@@ -2039,7 +2039,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ND9-0",
+              "nodeId": "3FDV-0",
               "size": [
                 400.97,
                 20
@@ -2064,7 +2064,7 @@
         "src/usage/breadcrumb.usage.mjs"
       ],
       "sourceHash": "c77040c340898acf",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 51,
@@ -2087,7 +2087,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NE2-0",
+              "nodeId": "3FEO-0",
               "size": [
                 255.02,
                 19.41
@@ -2107,7 +2107,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NES-0",
+              "nodeId": "3FFE-0",
               "size": [
                 268.14,
                 20
@@ -2127,7 +2127,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NFR-0",
+              "nodeId": "3FGD-0",
               "size": [
                 243.48,
                 19.41
@@ -2147,7 +2147,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NGD-0",
+              "nodeId": "3FGZ-0",
               "size": [
                 255.02,
                 19.41
@@ -2172,7 +2172,7 @@
         "src/usage/button.usage.mjs"
       ],
       "sourceHash": "2857523c5976c05e",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 6,
         "nodes": 41,
@@ -2197,7 +2197,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZDW-0",
+              "nodeId": "3FHU-0",
               "size": [
                 110.44,
                 32
@@ -2217,7 +2217,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZE4-0",
+              "nodeId": "3FI2-0",
               "size": [
                 78,
                 32
@@ -2237,7 +2237,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZEC-0",
+              "nodeId": "3FIA-0",
               "size": [
                 112.94,
                 32
@@ -2257,7 +2257,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZEN-0",
+              "nodeId": "3FIL-0",
               "size": [
                 32,
                 32
@@ -2277,7 +2277,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZEW-0",
+              "nodeId": "3FIU-0",
               "size": [
                 458.67,
                 32
@@ -2297,7 +2297,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZFK-0",
+              "nodeId": "3FJI-0",
               "size": [
                 308.72,
                 88
@@ -2322,11 +2322,11 @@
         "src/usage/button-group.usage.mjs"
       ],
       "sourceHash": "711c1ff73c724c45",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 7,
-        "nodes": 78,
-        "approximated": 2,
+        "nodes": 80,
+        "approximated": 0,
         "bound": 303,
         "bindable": 303,
         "bindingRate": 1
@@ -2347,7 +2347,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NJV-0",
+              "nodeId": "3FKH-0",
               "size": [
                 127.41,
                 32
@@ -2367,7 +2367,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NK7-0",
+              "nodeId": "3FKT-0",
               "size": [
                 96,
                 32
@@ -2387,7 +2387,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NKP-0",
+              "nodeId": "3FLB-0",
               "size": [
                 96,
                 32
@@ -2407,7 +2407,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NL7-0",
+              "nodeId": "3FLT-0",
               "size": [
                 84.8,
                 96
@@ -2420,19 +2420,19 @@
           "id": "components-buttongroup--with-separator",
           "title": "With Separator",
           "opened": "none",
-          "nodes": 8,
-          "approximated": 1,
+          "nodes": 9,
+          "approximated": 0,
           "bound": 18,
           "bindable": 18,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NLM-0",
+              "nodeId": "3FM8-0",
               "size": [
                 97,
                 32
               ],
-              "htmlHash": "71af51ab2f565648"
+              "htmlHash": "2a2aa79620c370cd"
             }
           ]
         },
@@ -2447,7 +2447,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NM6-0",
+              "nodeId": "3FMT-0",
               "size": [
                 224.7,
                 32
@@ -2460,19 +2460,19 @@
           "id": "components-buttongroup--all-variants",
           "title": "All Variants",
           "opened": "none",
-          "nodes": 35,
-          "approximated": 1,
+          "nodes": 36,
+          "approximated": 0,
           "bound": 138,
           "bindable": 138,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NMO-0",
+              "nodeId": "3FNB-0",
               "size": [
                 177.67,
                 320
               ],
-              "htmlHash": "dd6206a50c59eb17"
+              "htmlHash": "7df32cc3759906fe"
             }
           ]
         }
@@ -2515,7 +2515,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2POX-0",
+              "nodeId": "3FOW-0",
               "size": [
                 212,
                 261.75
@@ -2535,7 +2535,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2PUJ-0",
+              "nodeId": "3FUI-0",
               "size": [
                 424,
                 261.75
@@ -2555,7 +2555,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2Q5C-0",
+              "nodeId": "3G5B-0",
               "size": [
                 212,
                 261.75
@@ -2575,7 +2575,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2QAY-0",
+              "nodeId": "3GAX-0",
               "size": [
                 212,
                 261.75
@@ -2595,7 +2595,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2QGU-0",
+              "nodeId": "3GGT-0",
               "size": [
                 212,
                 261.75
@@ -2620,7 +2620,7 @@
         "src/usage/card.usage.mjs"
       ],
       "sourceHash": "87adb649835831df",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 5,
         "nodes": 52,
@@ -2645,7 +2645,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OFW-0",
+              "nodeId": "3GMK-0",
               "size": [
                 320,
                 196.11
@@ -2665,7 +2665,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OGG-0",
+              "nodeId": "3GN4-0",
               "size": [
                 320,
                 149.89
@@ -2685,7 +2685,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OH1-0",
+              "nodeId": "3GNP-0",
               "size": [
                 320,
                 74.09
@@ -2705,7 +2705,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OHG-0",
+              "nodeId": "3GO4-0",
               "size": [
                 320,
                 336.7
@@ -2725,7 +2725,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OI2-0",
+              "nodeId": "3GOQ-0",
               "size": [
                 320,
                 201.8
@@ -2773,7 +2773,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2TZV-0",
+              "nodeId": "3GPH-0",
               "size": [
                 320,
                 224
@@ -2793,7 +2793,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2U1C-0",
+              "nodeId": "3GQY-0",
               "size": [
                 320,
                 97.59
@@ -2813,7 +2813,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2U2Z-0",
+              "nodeId": "3GSL-0",
               "size": [
                 320,
                 368
@@ -2861,7 +2861,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2U4O-0",
+              "nodeId": "3GUA-0",
               "size": [
                 1200,
                 256
@@ -2881,7 +2881,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2U7M-0",
+              "nodeId": "3GX8-0",
               "size": [
                 1200,
                 256
@@ -2901,7 +2901,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2UAA-0",
+              "nodeId": "3GZW-0",
               "size": [
                 1200,
                 256
@@ -2926,7 +2926,7 @@
         "src/usage/checkbox.usage.mjs"
       ],
       "sourceHash": "9312d36422b4be3c",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 5,
         "nodes": 43,
@@ -2949,7 +2949,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OW9-0",
+              "nodeId": "3H3T-0",
               "size": [
                 206.47,
                 16
@@ -2969,7 +2969,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OWK-0",
+              "nodeId": "3H44-0",
               "size": [
                 121.92,
                 16
@@ -2989,7 +2989,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OWY-0",
+              "nodeId": "3H4I-0",
               "size": [
                 143.17,
                 16
@@ -3009,7 +3009,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OX9-0",
+              "nodeId": "3H4T-0",
               "size": [
                 112.95,
                 16
@@ -3029,7 +3029,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OXK-0",
+              "nodeId": "3H54-0",
               "size": [
                 154.33,
                 128
@@ -3077,16 +3077,16 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2ZSX-0",
+              "nodeId": "3H6D-0",
               "size": [
                 544,
                 107.36
               ],
-              "htmlHash": "3d1fcc0ec9d65bac"
+              "htmlHash": "e6718dd22f478546"
             },
             {
               "part": "panel-1",
-              "nodeId": "2ZTT-0",
+              "nodeId": "3H79-0",
               "size": [
                 288,
                 102.22
@@ -3106,12 +3106,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2ZU8-0",
+              "nodeId": "3H7O-0",
               "size": [
                 544,
                 204.22
               ],
-              "htmlHash": "6afbea67a0d10935"
+              "htmlHash": "d37a94c93a7b8237"
             }
           ]
         },
@@ -3126,7 +3126,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2ZVR-0",
+              "nodeId": "3H97-0",
               "size": [
                 544,
                 97.41
@@ -3146,7 +3146,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2ZWI-0",
+              "nodeId": "3H9Y-0",
               "size": [
                 544,
                 20.45
@@ -3196,7 +3196,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2YUX-0",
+              "nodeId": "3HAK-0",
               "size": [
                 288,
                 28
@@ -3216,7 +3216,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2YVH-0",
+              "nodeId": "3HB4-0",
               "size": [
                 288,
                 138.22
@@ -3266,7 +3266,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2UPD-0",
+              "nodeId": "3HC5-0",
               "size": [
                 256,
                 157.41
@@ -3275,12 +3275,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2UPN-0",
+              "nodeId": "3HCF-0",
               "size": [
                 208,
                 71.41
               ],
-              "htmlHash": "577b222b00cb447a"
+              "htmlHash": "c489533110d4651e"
             }
           ]
         },
@@ -3295,16 +3295,16 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2UQ6-0",
+              "nodeId": "3HCY-0",
               "size": [
                 256,
                 258.44
               ],
-              "htmlHash": "c0b79cb86d74a9e8"
+              "htmlHash": "03fef6dd9c3415cd"
             },
             {
               "part": "panel-1",
-              "nodeId": "2UQJ-0",
+              "nodeId": "3HDB-0",
               "size": [
                 179,
                 172.44
@@ -3324,7 +3324,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2URA-0",
+              "nodeId": "3HE2-0",
               "size": [
                 256,
                 80
@@ -3349,7 +3349,7 @@
         "src/usage/command.usage.mjs"
       ],
       "sourceHash": "1daf08b05ff3d16c",
-      "syncedAt": "2026-10-10",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 64,
@@ -3374,7 +3374,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZWA-0",
+              "nodeId": "3HEK-0",
               "size": [
                 288,
                 213.22
@@ -3394,7 +3394,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZXO-0",
+              "nodeId": "3HFY-0",
               "size": [
                 189.92,
                 80
@@ -3414,7 +3414,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZY2-0",
+              "nodeId": "3HGC-0",
               "size": [
                 288,
                 144.81
@@ -3439,10 +3439,10 @@
         "src/usage/context-menu.usage.mjs"
       ],
       "sourceHash": "7dfb589c98667350",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
-        "nodes": 78,
+        "nodes": 76,
         "approximated": 2,
         "bound": 303,
         "bindable": 303,
@@ -3458,14 +3458,14 @@
           "id": "components-contextmenu--default",
           "title": "Default",
           "opened": "context",
-          "nodes": 20,
+          "nodes": 19,
           "approximated": 1,
           "bound": 83,
           "bindable": 83,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PA0-0",
+              "nodeId": "3HHH-0",
               "size": [
                 256,
                 96
@@ -3474,12 +3474,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1PA5-0",
+              "nodeId": "3HHM-0",
               "size": [
                 144,
                 135.63
               ],
-              "htmlHash": "726989cd32cd867b"
+              "htmlHash": "651275ba8f0e8d67"
             }
           ]
         },
@@ -3494,7 +3494,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PB1-0",
+              "nodeId": "3HIF-0",
               "size": [
                 256,
                 96
@@ -3514,7 +3514,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PB9-0",
+              "nodeId": "3HIN-0",
               "size": [
                 256,
                 96
@@ -3527,14 +3527,14 @@
           "id": "components-contextmenu--all-variants",
           "title": "All Variants",
           "opened": "context",
-          "nodes": 54,
+          "nodes": 53,
           "approximated": 1,
           "bound": 202,
           "bindable": 202,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PBK-0",
+              "nodeId": "3HIY-0",
               "size": [
                 256,
                 96
@@ -3543,12 +3543,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1PBP-0",
+              "nodeId": "3HJ3-0",
               "size": [
                 144,
                 390.06
               ],
-              "htmlHash": "7704014a33d1efd6"
+              "htmlHash": "93538c475d255f6c"
             }
           ]
         }
@@ -3568,7 +3568,7 @@
         "src/usage/dialog.usage.mjs"
       ],
       "sourceHash": "c4847a51331c3e04",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
         "nodes": 46,
@@ -3593,7 +3593,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PDW-0",
+              "nodeId": "3HL7-0",
               "size": [
                 90.33,
                 32
@@ -3602,12 +3602,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1PE1-0",
+              "nodeId": "3HLC-0",
               "size": [
                 384,
                 310.2
               ],
-              "htmlHash": "b8f120a2152df969"
+              "htmlHash": "b877162f64aa949f"
             }
           ]
         },
@@ -3622,7 +3622,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PF0-0",
+              "nodeId": "3HMB-0",
               "size": [
                 102.75,
                 32
@@ -3631,12 +3631,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1PF5-0",
+              "nodeId": "3HMG-0",
               "size": [
                 384,
                 310.2
               ],
-              "htmlHash": "a6c3310409bb7677"
+              "htmlHash": "b55c56f54055cfc9"
             }
           ]
         }
@@ -3656,7 +3656,7 @@
         "src/usage/drawer.usage.mjs"
       ],
       "sourceHash": "453c935954a19b6f",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
         "nodes": 49,
@@ -3681,7 +3681,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PG5-0",
+              "nodeId": "3HNG-0",
               "size": [
                 104.78,
                 32
@@ -3690,7 +3690,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1PGA-0",
+              "nodeId": "3HNL-0",
               "size": [
                 1280,
                 336.39
@@ -3710,7 +3710,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PHA-0",
+              "nodeId": "3HOL-0",
               "size": [
                 125.84,
                 32
@@ -3719,7 +3719,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1PHF-0",
+              "nodeId": "3HOQ-0",
               "size": [
                 384,
                 900
@@ -3744,10 +3744,10 @@
         "src/usage/dropdown-menu.usage.mjs"
       ],
       "sourceHash": "6ff67cf525953e75",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
-        "nodes": 63,
+        "nodes": 60,
         "approximated": 1,
         "bound": 253,
         "bindable": 256,
@@ -3760,14 +3760,14 @@
           "id": "components-dropdownmenu--default",
           "title": "Default",
           "opened": "story",
-          "nodes": 23,
+          "nodes": 22,
           "approximated": 1,
           "bound": 88,
           "bindable": 89,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PII-0",
+              "nodeId": "3HPT-0",
               "size": [
                 80,
                 157.22
@@ -3776,12 +3776,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1PIR-0",
+              "nodeId": "3HQ2-0",
               "size": [
                 128,
                 150.63
               ],
-              "htmlHash": "4784b7b015db5446"
+              "htmlHash": "57602219bc690caf"
             }
           ]
         },
@@ -3789,14 +3789,14 @@
           "id": "components-dropdownmenu--with-checkbox-items",
           "title": "With Checkbox Items",
           "opened": "click",
-          "nodes": 19,
+          "nodes": 18,
           "approximated": 0,
           "bound": 76,
           "bindable": 77,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PJN-0",
+              "nodeId": "3HQV-0",
               "size": [
                 151.69,
                 198.22
@@ -3805,12 +3805,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1PJV-0",
+              "nodeId": "3HR3-0",
               "size": [
                 192,
                 114.22
               ],
-              "htmlHash": "03280be95570f0a0"
+              "htmlHash": "a790c6312ed56c7f"
             }
           ]
         },
@@ -3818,14 +3818,14 @@
           "id": "components-dropdownmenu--with-radio-group",
           "title": "With Radio Group",
           "opened": "click",
-          "nodes": 21,
+          "nodes": 20,
           "approximated": 0,
           "bound": 89,
           "bindable": 90,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PKQ-0",
+              "nodeId": "3HRV-0",
               "size": [
                 159.39,
                 225.63
@@ -3834,12 +3834,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1PKY-0",
+              "nodeId": "3HS3-0",
               "size": [
                 160,
                 141.63
               ],
-              "htmlHash": "51a821a583f6a5dd"
+              "htmlHash": "cd1a67b9aa0b3187"
             }
           ]
         }
@@ -3859,7 +3859,7 @@
         "src/usage/empty.usage.mjs"
       ],
       "sourceHash": "e593a7bfd92371a6",
-      "syncedAt": "2026-10-10",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
         "nodes": 26,
@@ -3884,12 +3884,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZZ4-0",
+              "nodeId": "3HT0-0",
               "size": [
                 320,
                 257.56
               ],
-              "htmlHash": "fc7f1fb52213e857"
+              "htmlHash": "1f54ca61ea3f9e8d"
             }
           ]
         },
@@ -3904,12 +3904,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZZR-0",
+              "nodeId": "3HTN-0",
               "size": [
                 320,
                 279.64
               ],
-              "htmlHash": "fc6a7870846276f0"
+              "htmlHash": "280f35d85467fc95"
             }
           ]
         }
@@ -3929,7 +3929,7 @@
         "src/usage/field.usage.mjs"
       ],
       "sourceHash": "48e2982c31407775",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 5,
         "nodes": 47,
@@ -3952,7 +3952,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PND-0",
+              "nodeId": "3HUF-0",
               "size": [
                 288,
                 107.47
@@ -3972,7 +3972,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PNU-0",
+              "nodeId": "3HUW-0",
               "size": [
                 288,
                 86.09
@@ -3992,7 +3992,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1POB-0",
+              "nodeId": "3HVD-0",
               "size": [
                 288,
                 87.08
@@ -4012,7 +4012,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1POS-0",
+              "nodeId": "3HVU-0",
               "size": [
                 288,
                 37.38
@@ -4032,7 +4032,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PP7-0",
+              "nodeId": "3HW9-0",
               "size": [
                 288,
                 300.25
@@ -4080,7 +4080,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LSH-0",
+              "nodeId": "3HXB-0",
               "size": [
                 62.92,
                 16
@@ -4089,7 +4089,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2LSJ-0",
+              "nodeId": "3HXD-0",
               "size": [
                 256,
                 95.41
@@ -4109,7 +4109,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LT8-0",
+              "nodeId": "3HY2-0",
               "size": [
                 71.69,
                 16
@@ -4118,7 +4118,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2LTA-0",
+              "nodeId": "3HY4-0",
               "size": [
                 256,
                 99.41
@@ -4166,7 +4166,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LTU-0",
+              "nodeId": "3HYO-0",
               "size": [
                 24,
                 24
@@ -4186,7 +4186,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LU3-0",
+              "nodeId": "3HYX-0",
               "size": [
                 145.67,
                 19.41
@@ -4206,7 +4206,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LUG-0",
+              "nodeId": "3HZA-0",
               "size": [
                 20,
                 20
@@ -4226,7 +4226,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LUP-0",
+              "nodeId": "3HZJ-0",
               "size": [
                 1200,
                 908.5
@@ -4251,7 +4251,7 @@
         "src/usage/input.usage.mjs"
       ],
       "sourceHash": "011bf2e462813fdb",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 7,
         "nodes": 32,
@@ -4274,7 +4274,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Q7K-0",
+              "nodeId": "3IJB-0",
               "size": [
                 288,
                 32
@@ -4294,7 +4294,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Q7V-0",
+              "nodeId": "3IJM-0",
               "size": [
                 288,
                 32
@@ -4314,7 +4314,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Q86-0",
+              "nodeId": "3IJX-0",
               "size": [
                 288,
                 32
@@ -4334,7 +4334,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Q8H-0",
+              "nodeId": "3IK8-0",
               "size": [
                 288,
                 32
@@ -4354,7 +4354,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Q8S-0",
+              "nodeId": "3IKJ-0",
               "size": [
                 288,
                 32
@@ -4374,7 +4374,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Q93-0",
+              "nodeId": "3IKU-0",
               "size": [
                 288,
                 51.59
@@ -4394,7 +4394,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Q9H-0",
+              "nodeId": "3IL8-0",
               "size": [
                 288,
                 208
@@ -4419,7 +4419,7 @@
         "src/usage/input-group.usage.mjs"
       ],
       "sourceHash": "f19ea2773569f045",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 7,
         "nodes": 71,
@@ -4442,7 +4442,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QAA-0",
+              "nodeId": "3IM1-0",
               "size": [
                 320,
                 32
@@ -4462,7 +4462,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QAQ-0",
+              "nodeId": "3IMH-0",
               "size": [
                 320,
                 32
@@ -4482,7 +4482,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QB9-0",
+              "nodeId": "3IN0-0",
               "size": [
                 320,
                 32
@@ -4502,7 +4502,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QBO-0",
+              "nodeId": "3INF-0",
               "size": [
                 320,
                 32
@@ -4522,7 +4522,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QC8-0",
+              "nodeId": "3INZ-0",
               "size": [
                 320,
                 32
@@ -4542,7 +4542,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QCO-0",
+              "nodeId": "3IOF-0",
               "size": [
                 320,
                 99.41
@@ -4562,7 +4562,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QD3-0",
+              "nodeId": "3IOU-0",
               "size": [
                 320,
                 275.41
@@ -4610,7 +4610,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2QW4-0",
+              "nodeId": "3IQ7-0",
               "size": [
                 224.92,
                 83.41
@@ -4630,7 +4630,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2QWT-0",
+              "nodeId": "3IQW-0",
               "size": [
                 128,
                 59.41
@@ -4650,7 +4650,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2QXA-0",
+              "nodeId": "3IRD-0",
               "size": [
                 208,
                 59.41
@@ -4670,7 +4670,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2QXX-0",
+              "nodeId": "3IS0-0",
               "size": [
                 223.28,
                 83.41
@@ -4695,7 +4695,7 @@
         "src/usage/item.usage.mjs"
       ],
       "sourceHash": "d5d16ff8507a7428",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 8,
         "nodes": 192,
@@ -4718,7 +4718,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QH3-0",
+              "nodeId": "3ISU-0",
               "size": [
                 320,
                 146.16
@@ -4738,7 +4738,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QI0-0",
+              "nodeId": "3ITR-0",
               "size": [
                 320,
                 146.16
@@ -4758,7 +4758,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QIX-0",
+              "nodeId": "3IUO-0",
               "size": [
                 320,
                 146.16
@@ -4778,7 +4778,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QJU-0",
+              "nodeId": "3IVL-0",
               "size": [
                 320,
                 140.16
@@ -4798,7 +4798,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QKR-0",
+              "nodeId": "3IWI-0",
               "size": [
                 320,
                 126.06
@@ -4818,7 +4818,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QLO-0",
+              "nodeId": "3IXF-0",
               "size": [
                 320,
                 293.23
@@ -4838,7 +4838,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QN3-0",
+              "nodeId": "3IYU-0",
               "size": [
                 320,
                 277.56
@@ -4858,7 +4858,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QOC-0",
+              "nodeId": "3J03-0",
               "size": [
                 320,
                 146.16
@@ -4883,7 +4883,7 @@
         "src/usage/kbd.usage.mjs"
       ],
       "sourceHash": "c24b052c858fca26",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 5,
         "nodes": 83,
@@ -4906,7 +4906,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QP8-0",
+              "nodeId": "3J0Z-0",
               "size": [
                 20,
                 20
@@ -4926,7 +4926,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QPG-0",
+              "nodeId": "3J17-0",
               "size": [
                 20,
                 20
@@ -4946,7 +4946,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QPO-0",
+              "nodeId": "3J1F-0",
               "size": [
                 20,
                 20
@@ -4966,7 +4966,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QPX-0",
+              "nodeId": "3J1O-0",
               "size": [
                 419.64,
                 128
@@ -4986,7 +4986,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QR4-0",
+              "nodeId": "3J2V-0",
               "size": [
                 300.98,
                 56
@@ -5011,7 +5011,7 @@
         "src/usage/label.usage.mjs"
       ],
       "sourceHash": "89500131188f54b1",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 14,
@@ -5034,7 +5034,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QST-0",
+              "nodeId": "3J4K-0",
               "size": [
                 256,
                 51.59
@@ -5054,7 +5054,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QT5-0",
+              "nodeId": "3J4W-0",
               "size": [
                 175.22,
                 16
@@ -5074,7 +5074,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QTG-0",
+              "nodeId": "3J57-0",
               "size": [
                 256,
                 51.59
@@ -5099,10 +5099,10 @@
         "src/usage/menubar.usage.mjs"
       ],
       "sourceHash": "3772aa77ddd3ea3e",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
-        "nodes": 27,
+        "nodes": 26,
         "approximated": 1,
         "bound": 142,
         "bindable": 150,
@@ -5117,14 +5117,14 @@
           "id": "components-menubar--default",
           "title": "Default",
           "opened": "click",
-          "nodes": 24,
+          "nodes": 23,
           "approximated": 1,
           "bound": 123,
           "bindable": 127,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QU0-0",
+              "nodeId": "3J5R-0",
               "size": [
                 1200,
                 32
@@ -5133,12 +5133,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1QUC-0",
+              "nodeId": "3J63-0",
               "size": [
                 144,
                 126.63
               ],
-              "htmlHash": "2240b1ab31ebd17a"
+              "htmlHash": "93ce33831473f0bf"
             }
           ]
         },
@@ -5153,7 +5153,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QV5-0",
+              "nodeId": "3J6T-0",
               "size": [
                 1200,
                 32
@@ -5178,11 +5178,11 @@
         "src/usage/model-picker.usage.mjs"
       ],
       "sourceHash": "68a5741c8bbbdf87",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
         "nodes": 46,
-        "approximated": 1,
+        "approximated": 2,
         "bound": 147,
         "bindable": 153,
         "bindingRate": 0.961
@@ -5198,27 +5198,27 @@
           "title": "In The Composer",
           "opened": "story",
           "nodes": 43,
-          "approximated": 1,
+          "approximated": 2,
           "bound": 139,
           "bindable": 144,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QVO-0",
+              "nodeId": "3J7C-0",
               "size": [
                 544,
                 84
               ],
-              "htmlHash": "74e4452e6602c8fd"
+              "htmlHash": "adbccb71a39598fd"
             },
             {
               "part": "panel-1",
-              "nodeId": "1QWC-0",
+              "nodeId": "3J83-0",
               "size": [
                 288,
                 249
               ],
-              "htmlHash": "ce52b93967d73520"
+              "htmlHash": "0a29c1af14f5b448"
             }
           ]
         },
@@ -5233,7 +5233,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QXN-0",
+              "nodeId": "3J9B-0",
               "size": [
                 96.64,
                 28
@@ -5258,7 +5258,7 @@
         "src/usage/native-select.usage.mjs"
       ],
       "sourceHash": "70e6920dabcc1cab",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 6,
         "nodes": 45,
@@ -5281,7 +5281,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QY3-0",
+              "nodeId": "3J9R-0",
               "size": [
                 256,
                 32
@@ -5301,7 +5301,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QYI-0",
+              "nodeId": "3JA6-0",
               "size": [
                 256,
                 57.41
@@ -5321,7 +5321,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QYZ-0",
+              "nodeId": "3JAN-0",
               "size": [
                 256,
                 32
@@ -5341,7 +5341,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QZE-0",
+              "nodeId": "3JB2-0",
               "size": [
                 256,
                 28.7
@@ -5361,7 +5361,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QZT-0",
+              "nodeId": "3JBH-0",
               "size": [
                 256,
                 32
@@ -5381,7 +5381,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1R08-0",
+              "nodeId": "3JBW-0",
               "size": [
                 256,
                 160.7
@@ -5406,7 +5406,7 @@
         "src/usage/navigation-menu.usage.mjs"
       ],
       "sourceHash": "6d7423bb8e6ac28c",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
         "nodes": 40,
@@ -5431,16 +5431,16 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Y2Q-0",
+              "nodeId": "3JD1-0",
               "size": [
                 245.66,
                 36
               ],
-              "htmlHash": "ea99663e3d8bdcb1"
+              "htmlHash": "0b5fdd4abda9b2b1"
             },
             {
               "part": "panel-1",
-              "nodeId": "1Y3B-0",
+              "nodeId": "3JDM-0",
               "size": [
                 392,
                 127.41
@@ -5460,7 +5460,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Y43-0",
+              "nodeId": "3JEE-0",
               "size": [
                 237.2,
                 36
@@ -5485,7 +5485,7 @@
         "src/usage/pagination.usage.mjs"
       ],
       "sourceHash": "610573aaf28f70a9",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 106,
@@ -5508,7 +5508,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1R3N-0",
+              "nodeId": "3JF8-0",
               "size": [
                 336.41,
                 32.19
@@ -5528,7 +5528,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1R4T-0",
+              "nodeId": "3JGE-0",
               "size": [
                 336.41,
                 32.19
@@ -5548,7 +5548,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1R5Z-0",
+              "nodeId": "3JHK-0",
               "size": [
                 336.41,
                 32.19
@@ -5568,7 +5568,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1R75-0",
+              "nodeId": "3JIQ-0",
               "size": [
                 404.41,
                 32.19
@@ -5618,7 +5618,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MEK-0",
+              "nodeId": "3JKD-0",
               "size": [
                 161.14,
                 223.91
@@ -5627,12 +5627,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2MES-0",
+              "nodeId": "3JKL-0",
               "size": [
                 288,
                 139.91
               ],
-              "htmlHash": "59e09e237c0146f8"
+              "htmlHash": "615edc237cfdbc61"
             }
           ]
         },
@@ -5647,7 +5647,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MFG-0",
+              "nodeId": "3JL9-0",
               "size": [
                 195.45,
                 245.31
@@ -5656,12 +5656,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2MFO-0",
+              "nodeId": "3JLH-0",
               "size": [
                 288,
                 161.31
               ],
-              "htmlHash": "637481ad0ddd7678"
+              "htmlHash": "2421bde97ca5586d"
             }
           ]
         },
@@ -5676,7 +5676,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MGG-0",
+              "nodeId": "3JM9-0",
               "size": [
                 512,
                 320
@@ -5685,7 +5685,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2MGV-0",
+              "nodeId": "3JMO-0",
               "size": [
                 288,
                 57.72
@@ -5733,7 +5733,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2QYR-0",
+              "nodeId": "3JN6-0",
               "size": [
                 288,
                 35.41
@@ -5753,7 +5753,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2QZ8-0",
+              "nodeId": "3JNN-0",
               "size": [
                 288,
                 35.41
@@ -5773,7 +5773,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2QZP-0",
+              "nodeId": "3JO4-0",
               "size": [
                 288,
                 35.41
@@ -5793,7 +5793,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2R06-0",
+              "nodeId": "3JOL-0",
               "size": [
                 288,
                 241.03
@@ -5843,7 +5843,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "313E-0",
+              "nodeId": "3JPY-0",
               "size": [
                 576,
                 108
@@ -5863,7 +5863,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "3145-0",
+              "nodeId": "3JQP-0",
               "size": [
                 576,
                 84
@@ -5883,7 +5883,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "314W-0",
+              "nodeId": "3JRG-0",
               "size": [
                 576,
                 108
@@ -5903,7 +5903,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "315N-0",
+              "nodeId": "3JS7-0",
               "size": [
                 576,
                 108
@@ -5923,7 +5923,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "316E-0",
+              "nodeId": "3JSY-0",
               "size": [
                 576,
                 133.41
@@ -5943,7 +5943,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "3174-0",
+              "nodeId": "3JTO-0",
               "size": [
                 576,
                 108
@@ -5963,7 +5963,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "317U-0",
+              "nodeId": "3JUE-0",
               "size": [
                 576,
                 166
@@ -5983,7 +5983,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "319C-0",
+              "nodeId": "3JVW-0",
               "size": [
                 576,
                 142.41
@@ -6003,7 +6003,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "31AH-0",
+              "nodeId": "3JX1-0",
               "size": [
                 576,
                 84
@@ -6023,7 +6023,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "31B8-0",
+              "nodeId": "3JXS-0",
               "size": [
                 576,
                 108
@@ -6048,7 +6048,7 @@
         "src/usage/question-card.usage.mjs"
       ],
       "sourceHash": "381f611a9d43bdcd",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 6,
         "nodes": 224,
@@ -6073,12 +6073,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RMI-0",
+              "nodeId": "3JYO-0",
               "size": [
                 480,
                 321.03
               ],
-              "htmlHash": "d774aed68a9bd9fd"
+              "htmlHash": "c44a67910bfb05f0"
             }
           ]
         },
@@ -6093,12 +6093,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RO4-0",
+              "nodeId": "3K0A-0",
               "size": [
                 480,
                 361.03
               ],
-              "htmlHash": "87d9a1b8c3407554"
+              "htmlHash": "940815cb83469768"
             }
           ]
         },
@@ -6113,7 +6113,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RPT-0",
+              "nodeId": "3K1Z-0",
               "size": [
                 480,
                 321.03
@@ -6133,7 +6133,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RRB-0",
+              "nodeId": "3K3H-0",
               "size": [
                 480,
                 190.22
@@ -6153,7 +6153,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RS8-0",
+              "nodeId": "3K4E-0",
               "size": [
                 480,
                 305.03
@@ -6173,7 +6173,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RTQ-0",
+              "nodeId": "3K5W-0",
               "size": [
                 480,
                 321.03
@@ -6198,7 +6198,7 @@
         "src/usage/radio-group.usage.mjs"
       ],
       "sourceHash": "477af01994482219",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 5,
         "nodes": 100,
@@ -6221,7 +6221,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RVF-0",
+              "nodeId": "3K7L-0",
               "size": [
                 105.66,
                 64
@@ -6241,7 +6241,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RW2-0",
+              "nodeId": "3K88-0",
               "size": [
                 105.66,
                 40
@@ -6261,7 +6261,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RWK-0",
+              "nodeId": "3K8Q-0",
               "size": [
                 244.02,
                 67.41
@@ -6281,7 +6281,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RX2-0",
+              "nodeId": "3K98-0",
               "size": [
                 152.02,
                 95.41
@@ -6301,7 +6301,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RXS-0",
+              "nodeId": "3K9Y-0",
               "size": [
                 244.02,
                 311.63
@@ -6349,7 +6349,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MPB-0",
+              "nodeId": "3KBJ-0",
               "size": [
                 448,
                 192
@@ -6369,7 +6369,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MPV-0",
+              "nodeId": "3KC3-0",
               "size": [
                 384,
                 256
@@ -6389,7 +6389,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MQF-0",
+              "nodeId": "3KCN-0",
               "size": [
                 448,
                 192
@@ -6409,7 +6409,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MR0-0",
+              "nodeId": "3KD8-0",
               "size": [
                 672,
                 192
@@ -6434,7 +6434,7 @@
         "src/usage/scroll-area.usage.mjs"
       ],
       "sourceHash": "8c89bdb30b30d0ca",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 117,
@@ -6457,7 +6457,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1S21-0",
+              "nodeId": "3KE7-0",
               "size": [
                 224,
                 256
@@ -6477,7 +6477,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1S3X-0",
+              "nodeId": "3KG3-0",
               "size": [
                 224,
                 256
@@ -6497,7 +6497,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1S5T-0",
+              "nodeId": "3KHZ-0",
               "size": [
                 288,
                 80
@@ -6547,7 +6547,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MS2-0",
+              "nodeId": "3KJ5-0",
               "size": [
                 256,
                 32
@@ -6556,12 +6556,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2MSE-0",
+              "nodeId": "3KJH-0",
               "size": [
                 256,
                 210.03
               ],
-              "htmlHash": "74923e657ea1c0fe"
+              "htmlHash": "9e9914a42ef68530"
             }
           ]
         },
@@ -6576,7 +6576,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MTF-0",
+              "nodeId": "3KKI-0",
               "size": [
                 256,
                 32
@@ -6585,7 +6585,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2MTR-0",
+              "nodeId": "3KKU-0",
               "size": [
                 256,
                 210.03
@@ -6605,7 +6605,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MUV-0",
+              "nodeId": "3KLY-0",
               "size": [
                 256,
                 51.59
@@ -6614,7 +6614,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2MV9-0",
+              "nodeId": "3KMC-0",
               "size": [
                 256,
                 210.03
@@ -6634,7 +6634,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MWA-0",
+              "nodeId": "3KND-0",
               "size": [
                 256,
                 28
@@ -6643,7 +6643,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2MWM-0",
+              "nodeId": "3KNP-0",
               "size": [
                 256,
                 210.03
@@ -6663,7 +6663,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MXK-0",
+              "nodeId": "3KON-0",
               "size": [
                 256,
                 32
@@ -6711,7 +6711,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MY4-0",
+              "nodeId": "3KP7-0",
               "size": [
                 256,
                 63.81
@@ -6731,7 +6731,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MYJ-0",
+              "nodeId": "3KPM-0",
               "size": [
                 256,
                 108.22
@@ -6751,7 +6751,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MZ2-0",
+              "nodeId": "3KQ5-0",
               "size": [
                 256,
                 19.41
@@ -6771,7 +6771,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MZL-0",
+              "nodeId": "3KQO-0",
               "size": [
                 256,
                 155.22
@@ -6796,7 +6796,7 @@
         "src/usage/sheet.usage.mjs"
       ],
       "sourceHash": "3d8b3ed0497dc3d3",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 59,
@@ -6821,7 +6821,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1SFT-0",
+              "nodeId": "3KRN-0",
               "size": [
                 112.19,
                 32
@@ -6830,12 +6830,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1SFY-0",
+              "nodeId": "3KRS-0",
               "size": [
                 384,
                 900
               ],
-              "htmlHash": "191e24b68c01b171"
+              "htmlHash": "0908886cad929b0b"
             }
           ]
         },
@@ -6850,7 +6850,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1SGY-0",
+              "nodeId": "3KSS-0",
               "size": [
                 128.31,
                 32
@@ -6859,7 +6859,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1SH3-0",
+              "nodeId": "3KSX-0",
               "size": [
                 384,
                 900
@@ -6879,7 +6879,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1SHW-0",
+              "nodeId": "3KTQ-0",
               "size": [
                 107.31,
                 32
@@ -6888,7 +6888,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1SI1-0",
+              "nodeId": "3KTV-0",
               "size": [
                 1280,
                 237.2
@@ -6936,7 +6936,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2R9H-0",
+              "nodeId": "3KUM-0",
               "size": [
                 1232,
                 900
@@ -6956,7 +6956,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RCP-0",
+              "nodeId": "3KXU-0",
               "size": [
                 1232,
                 900
@@ -6976,12 +6976,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RFG-0",
+              "nodeId": "3L0L-0",
               "size": [
                 1232,
                 900
               ],
-              "htmlHash": "aaab3431be813ad6"
+              "htmlHash": "03d514536b3e7cbc"
             }
           ]
         },
@@ -6996,7 +6996,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RHV-0",
+              "nodeId": "3L30-0",
               "size": [
                 1232,
                 900
@@ -7021,7 +7021,7 @@
         "src/usage/skeleton.usage.mjs"
       ],
       "sourceHash": "a67f223533abead3",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 39,
@@ -7044,7 +7044,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1STL-0",
+              "nodeId": "3L5R-0",
               "size": [
                 288,
                 16
@@ -7064,7 +7064,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1STT-0",
+              "nodeId": "3L5Z-0",
               "size": [
                 288,
                 286
@@ -7084,7 +7084,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1SUF-0",
+              "nodeId": "3L6L-0",
               "size": [
                 288,
                 468
@@ -7109,7 +7109,7 @@
         "src/usage/slider.usage.mjs"
       ],
       "sourceHash": "181484a033c5515c",
-      "syncedAt": "2026-10-10",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 5,
         "nodes": 60,
@@ -7132,7 +7132,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "205U-0",
+              "nodeId": "3L7Q-0",
               "size": [
                 288,
                 26
@@ -7152,7 +7152,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "206D-0",
+              "nodeId": "3L89-0",
               "size": [
                 288,
                 4
@@ -7172,7 +7172,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "206W-0",
+              "nodeId": "3L8S-0",
               "size": [
                 288,
                 4
@@ -7192,7 +7192,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "207D-0",
+              "nodeId": "3L99-0",
               "size": [
                 288,
                 4
@@ -7212,7 +7212,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "207U-0",
+              "nodeId": "3L9Q-0",
               "size": [
                 288,
                 176
@@ -7237,7 +7237,7 @@
         "src/usage/sonner.usage.mjs"
       ],
       "sourceHash": "688e00785174f557",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 29,
@@ -7260,7 +7260,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1SYY-0",
+              "nodeId": "3LB4-0",
               "size": [
                 92.23,
                 32
@@ -7269,7 +7269,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1SZ3-0",
+              "nodeId": "3LB9-0",
               "size": [
                 356,
                 53.5
@@ -7289,7 +7289,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1SZH-0",
+              "nodeId": "3LBN-0",
               "size": [
                 431.97,
                 32
@@ -7298,7 +7298,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1T02-0",
+              "nodeId": "3LC8-0",
               "size": [
                 356,
                 53.5
@@ -7318,7 +7318,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T0G-0",
+              "nodeId": "3LCM-0",
               "size": [
                 130.88,
                 32
@@ -7327,7 +7327,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1T0L-0",
+              "nodeId": "3LCR-0",
               "size": [
                 356,
                 58
@@ -7352,7 +7352,7 @@
         "src/usage/spinner.usage.mjs"
       ],
       "sourceHash": "77b092d85aae079a",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
         "nodes": 26,
@@ -7375,7 +7375,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T13-0",
+              "nodeId": "3LD9-0",
               "size": [
                 129.38,
                 19.41
@@ -7395,7 +7395,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T1E-0",
+              "nodeId": "3LDK-0",
               "size": [
                 132,
                 199.41
@@ -7420,7 +7420,7 @@
         "src/usage/suggested-prompts.usage.mjs"
       ],
       "sourceHash": "2bc5bdb7aa69e83b",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 42,
@@ -7443,12 +7443,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T2N-0",
+              "nodeId": "3LET-0",
               "size": [
                 640,
                 32
               ],
-              "htmlHash": "ad72abf0f88e5127"
+              "htmlHash": "c53c67200abb3348"
             }
           ]
         },
@@ -7463,12 +7463,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T38-0",
+              "nodeId": "3LFE-0",
               "size": [
                 640,
                 59.41
               ],
-              "htmlHash": "19fd68b5abd74cca"
+              "htmlHash": "131cd93e7aaaa51b"
             }
           ]
         },
@@ -7483,12 +7483,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T44-0",
+              "nodeId": "3LGA-0",
               "size": [
                 640,
                 81.81
               ],
-              "htmlHash": "3ba72159cef463aa"
+              "htmlHash": "30d935b133237575"
             }
           ]
         }
@@ -7508,7 +7508,7 @@
         "src/usage/switch.usage.mjs"
       ],
       "sourceHash": "af3d344749890220",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 54,
@@ -7531,7 +7531,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T4W-0",
+              "nodeId": "3LH2-0",
               "size": [
                 155.17,
                 18.39
@@ -7551,7 +7551,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T58-0",
+              "nodeId": "3LHE-0",
               "size": [
                 123.78,
                 48.78
@@ -7571,7 +7571,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T5Q-0",
+              "nodeId": "3LHW-0",
               "size": [
                 151.61,
                 103.2
@@ -7591,7 +7591,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T6E-0",
+              "nodeId": "3LIK-0",
               "size": [
                 155.17,
                 109.56
@@ -7639,7 +7639,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RKM-0",
+              "nodeId": "3LJJ-0",
               "size": [
                 1200,
                 259.31
@@ -7659,7 +7659,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RMS-0",
+              "nodeId": "3LLP-0",
               "size": [
                 1200,
                 222.91
@@ -7679,7 +7679,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2ROQ-0",
+              "nodeId": "3LNN-0",
               "size": [
                 1200,
                 184.13
@@ -7727,7 +7727,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2N0H-0",
+              "nodeId": "3LOS-0",
               "size": [
                 320,
                 110.81
@@ -7747,7 +7747,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2N13-0",
+              "nodeId": "3LPE-0",
               "size": [
                 320,
                 71.41
@@ -7767,7 +7767,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2N1P-0",
+              "nodeId": "3LQ0-0",
               "size": [
                 320,
                 82.22
@@ -7787,7 +7787,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2N2A-0",
+              "nodeId": "3LQL-0",
               "size": [
                 320,
                 492.44
@@ -7812,7 +7812,7 @@
         "src/usage/textarea.usage.mjs"
       ],
       "sourceHash": "55e834fb489e3611",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 41,
@@ -7835,7 +7835,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TGI-0",
+              "nodeId": "3LSO-0",
               "size": [
                 320,
                 85.59
@@ -7855,7 +7855,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TGX-0",
+              "nodeId": "3LT3-0",
               "size": [
                 320,
                 85.59
@@ -7875,7 +7875,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1THC-0",
+              "nodeId": "3LTI-0",
               "size": [
                 320,
                 109.59
@@ -7895,7 +7895,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1THT-0",
+              "nodeId": "3LTZ-0",
               "size": [
                 320,
                 402.59
@@ -7920,7 +7920,7 @@
         "src/usage/toggle.usage.mjs"
       ],
       "sourceHash": "940d0b63378a95de",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 44,
@@ -7943,7 +7943,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TIV-0",
+              "nodeId": "3LV1-0",
               "size": [
                 36,
                 32
@@ -7963,7 +7963,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TJ4-0",
+              "nodeId": "3LVA-0",
               "size": [
                 38,
                 32
@@ -7983,7 +7983,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TJD-0",
+              "nodeId": "3LVJ-0",
               "size": [
                 69.72,
                 32
@@ -8003,7 +8003,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TJO-0",
+              "nodeId": "3LVU-0",
               "size": [
                 122,
                 276.19
@@ -8028,7 +8028,7 @@
         "src/usage/toggle-group.usage.mjs"
       ],
       "sourceHash": "2c546d3428add085",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 5,
         "nodes": 97,
@@ -8051,7 +8051,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TLC-0",
+              "nodeId": "3LXI-0",
               "size": [
                 124,
                 32
@@ -8071,7 +8071,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TLU-0",
+              "nodeId": "3LY0-0",
               "size": [
                 124,
                 32
@@ -8091,7 +8091,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TMC-0",
+              "nodeId": "3LYI-0",
               "size": [
                 130,
                 32
@@ -8111,7 +8111,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TMU-0",
+              "nodeId": "3LZ0-0",
               "size": [
                 100,
                 80
@@ -8131,7 +8131,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TNM-0",
+              "nodeId": "3LZS-0",
               "size": [
                 130,
                 536
@@ -8179,7 +8179,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2P67-0",
+              "nodeId": "3M2F-0",
               "size": [
                 77.03,
                 20
@@ -8199,7 +8199,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2P6F-0",
+              "nodeId": "3M2N-0",
               "size": [
                 78.94,
                 20
@@ -8219,7 +8219,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2P6N-0",
+              "nodeId": "3M2V-0",
               "size": [
                 74.94,
                 16
@@ -8239,7 +8239,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2P6V-0",
+              "nodeId": "3M33-0",
               "size": [
                 454.02,
                 48
@@ -8287,7 +8287,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2TY0-0",
+              "nodeId": "3M49-0",
               "size": [
                 83.66,
                 32
@@ -8296,7 +8296,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2TY5-0",
+              "nodeId": "3M4E-0",
               "size": [
                 129.78,
                 28
@@ -8316,7 +8316,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2TYI-0",
+              "nodeId": "3M4R-0",
               "size": [
                 24,
                 35.19
@@ -8325,7 +8325,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2TYO-0",
+              "nodeId": "3M4X-0",
               "size": [
                 263.7,
                 28
@@ -8345,7 +8345,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2TZ1-0",
+              "nodeId": "3M5A-0",
               "size": [
                 247.66,
                 28
@@ -8354,7 +8354,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "2TZG-0",
+              "nodeId": "3M5P-0",
               "size": [
                 100.3,
                 28
@@ -8402,7 +8402,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RPV-0",
+              "nodeId": "3M64-0",
               "size": [
                 380,
                 271.2
@@ -8422,7 +8422,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RR7-0",
+              "nodeId": "3M7G-0",
               "size": [
                 380,
                 34.8
@@ -8442,7 +8442,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RRU-0",
+              "nodeId": "3M83-0",
               "size": [
                 380,
                 271.2
@@ -8462,12 +8462,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RT9-0",
+              "nodeId": "3M9I-0",
               "size": [
                 380,
                 18
               ],
-              "htmlHash": "dc3095a8f378ace7"
+              "htmlHash": "a376e5c8475736a2"
             }
           ]
         },
@@ -8482,12 +8482,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RTR-0",
+              "nodeId": "3MA0-0",
               "size": [
                 380,
                 18
               ],
-              "htmlHash": "8554d95aa79c1f81"
+              "htmlHash": "d723d1b9fa1e588a"
             }
           ]
         }
@@ -8510,7 +8510,7 @@
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
-        "nodes": 62,
+        "nodes": 70,
         "approximated": 5,
         "bound": 144,
         "bindable": 157,
@@ -8523,19 +8523,19 @@
           "id": "patterns-data-activity-feed--activity-feed",
           "title": "Activity Feed",
           "opened": "none",
-          "nodes": 62,
+          "nodes": 70,
           "approximated": 5,
           "bound": 144,
           "bindable": 157,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2NAU-0",
+              "nodeId": "3MAN-0",
               "size": [
                 420,
                 315.05
               ],
-              "htmlHash": "880fdaec2f706627"
+              "htmlHash": "d2e8f05f38abb7fe"
             }
           ]
         }
@@ -8580,12 +8580,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "30KD-0",
+              "nodeId": "3MD9-0",
               "size": [
                 1232,
                 640
               ],
-              "htmlHash": "f042503e62fb709f"
+              "htmlHash": "08d484e14d7c3da2"
             }
           ]
         },
@@ -8600,12 +8600,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "30NV-0",
+              "nodeId": "3MGR-0",
               "size": [
                 1232,
                 640
               ],
-              "htmlHash": "0f06bd658378e0a9"
+              "htmlHash": "d59c155e43c9fe10"
             }
           ]
         },
@@ -8620,7 +8620,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "30QM-0",
+              "nodeId": "3MJI-0",
               "size": [
                 1232,
                 640
@@ -8640,7 +8640,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "30SM-0",
+              "nodeId": "3MLI-0",
               "size": [
                 1232,
                 640
@@ -8660,12 +8660,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "30VD-0",
+              "nodeId": "3MO9-0",
               "size": [
                 1232,
                 1367.25
               ],
-              "htmlHash": "b21c9323a635c827"
+              "htmlHash": "d52a001277c1ea2d"
             }
           ]
         }
@@ -8710,12 +8710,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2XT3-0",
+              "nodeId": "3MUW-0",
               "size": [
                 1232,
                 512
               ],
-              "htmlHash": "e9bb80f012ed7799"
+              "htmlHash": "2601920c41e74ba5"
             }
           ]
         }
@@ -8738,11 +8738,11 @@
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
-        "nodes": 115,
+        "nodes": 117,
         "approximated": 9,
-        "bound": 294,
-        "bindable": 328,
-        "bindingRate": 0.896
+        "bound": 300,
+        "bindable": 336,
+        "bindingRate": 0.893
       },
       "notes": [],
       "lost": [
@@ -8753,19 +8753,19 @@
           "id": "patterns-ai-ai-side-panel--default",
           "title": "Default",
           "opened": "none",
-          "nodes": 48,
+          "nodes": 49,
           "approximated": 4,
-          "bound": 119,
-          "bindable": 133,
+          "bound": 122,
+          "bindable": 137,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2ZNO-0",
+              "nodeId": "3MWX-0",
               "size": [
                 384,
                 560
               ],
-              "htmlHash": "bd6570d4b40d0fb9"
+              "htmlHash": "4918d19832dfd850"
             }
           ]
         },
@@ -8773,19 +8773,19 @@
           "id": "patterns-ai-ai-side-panel--no-scope",
           "title": "No Scope",
           "opened": "none",
-          "nodes": 43,
+          "nodes": 44,
           "approximated": 4,
-          "bound": 108,
-          "bindable": 122,
+          "bound": 111,
+          "bindable": 126,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2ZPS-0",
+              "nodeId": "3MZ2-0",
               "size": [
                 384,
                 560
               ],
-              "htmlHash": "9cd610fc16d1c13c"
+              "htmlHash": "667a49dec82154a6"
             }
           ]
         },
@@ -8800,12 +8800,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2ZRO-0",
+              "nodeId": "3N0Z-0",
               "size": [
                 384,
                 560
               ],
-              "htmlHash": "02cd6e9053f4b833"
+              "htmlHash": "e51218eb0d873a5a"
             }
           ]
         }
@@ -8825,7 +8825,7 @@
         "src/usage/alerts.usage.mjs"
       ],
       "sourceHash": "ca5f8bb76664e23f",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 22,
@@ -8848,7 +8848,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1UWD-0",
+              "nodeId": "3N25-0",
               "size": [
                 512,
                 208.44
@@ -8879,8 +8879,8 @@
         "nodes": 33,
         "approximated": 1,
         "bound": 94,
-        "bindable": 164,
-        "bindingRate": 0.573
+        "bindable": 162,
+        "bindingRate": 0.58
       },
       "notes": [],
       "lost": [],
@@ -8892,16 +8892,16 @@
           "nodes": 33,
           "approximated": 1,
           "bound": 94,
-          "bindable": 164,
+          "bindable": 162,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2RUE-0",
+              "nodeId": "3N37-0",
               "size": [
                 880,
                 316.3
               ],
-              "htmlHash": "1c0892016e3d1f1d"
+              "htmlHash": "27080f842d50b145"
             }
           ]
         }
@@ -8921,7 +8921,7 @@
         "src/usage/announcement-banner.usage.mjs"
       ],
       "sourceHash": "8a7f2fac98d37b24",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 21,
@@ -8946,7 +8946,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1V3S-0",
+              "nodeId": "3N9G-0",
               "size": [
                 880,
                 120
@@ -8994,7 +8994,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2NOO-0",
+              "nodeId": "3NAG-0",
               "size": [
                 280,
                 52
@@ -9042,7 +9042,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2S0R-0",
+              "nodeId": "3NB3-0",
               "size": [
                 510,
                 352.58
@@ -9092,7 +9092,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2S7M-0",
+              "nodeId": "3NHY-0",
               "size": [
                 458,
                 449.58
@@ -9142,7 +9142,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2NPB-0",
+              "nodeId": "3NUE-0",
               "size": [
                 400,
                 480
@@ -9192,7 +9192,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2P7Y-0",
+              "nodeId": "3NVH-0",
               "size": [
                 820,
                 461.67
@@ -9217,7 +9217,7 @@
         "src/usage/command-palette.usage.mjs"
       ],
       "sourceHash": "b5787d117e2518ed",
-      "syncedAt": "2026-10-10",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 43,
@@ -9240,7 +9240,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "200J-0",
+              "nodeId": "3NXZ-0",
               "size": [
                 440,
                 274.03
@@ -9265,7 +9265,7 @@
         "src/usage/contact-form.usage.mjs"
       ],
       "sourceHash": "b2b05e604bdcea11",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 40,
@@ -9290,7 +9290,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1VQU-0",
+              "nodeId": "3NZU-0",
               "size": [
                 440,
                 465.67
@@ -9338,7 +9338,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2NSW-0",
+              "nodeId": "3O1H-0",
               "size": [
                 300,
                 350
@@ -9358,7 +9358,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2NUF-0",
+              "nodeId": "3O30-0",
               "size": [
                 300,
                 582
@@ -9378,7 +9378,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2NWT-0",
+              "nodeId": "3O5E-0",
               "size": [
                 300,
                 89.41
@@ -9403,7 +9403,7 @@
         "src/usage/cookie-consent.usage.mjs"
       ],
       "sourceHash": "08d46c8a2e73a59d",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 12,
@@ -9428,7 +9428,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1VWZ-0",
+              "nodeId": "3O5Z-0",
               "size": [
                 520,
                 110.81
@@ -9478,7 +9478,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2PAG-0",
+              "nodeId": "3O6O-0",
               "size": [
                 1232,
                 600
@@ -9528,7 +9528,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2SK2-0",
+              "nodeId": "3O9D-0",
               "size": [
                 1200,
                 295.13
@@ -9553,7 +9553,7 @@
         "src/usage/empty-state.usage.mjs"
       ],
       "sourceHash": "41851eea3dacbae8",
-      "syncedAt": "2026-10-10",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 9,
@@ -9578,7 +9578,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "202E-0",
+              "nodeId": "3OCC-0",
               "size": [
                 420,
                 246.03
@@ -9628,7 +9628,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2PD5-0",
+              "nodeId": "3OD0-0",
               "size": [
                 1232,
                 500
@@ -9653,7 +9653,7 @@
         "src/usage/faq.usage.mjs"
       ],
       "sourceHash": "eb36aaf24cbb0c44",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 37,
@@ -9676,7 +9676,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1W4P-0",
+              "nodeId": "3ODP-0",
               "size": [
                 560,
                 419.5
@@ -9724,12 +9724,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2TG9-0",
+              "nodeId": "3OFC-0",
               "size": [
                 1200,
                 406.63
               ],
-              "htmlHash": "c0a57438cf1d801a"
+              "htmlHash": "809aae4cfea131a5"
             }
           ]
         }
@@ -9774,7 +9774,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2X5U-0",
+              "nodeId": "3OGJ-0",
               "size": [
                 440,
                 483.7
@@ -9822,7 +9822,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2THG-0",
+              "nodeId": "3OIL-0",
               "size": [
                 1232,
                 306.03
@@ -9847,7 +9847,7 @@
         "src/usage/forgot-password.usage.mjs"
       ],
       "sourceHash": "e2142a990c344283",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 16,
@@ -9872,7 +9872,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1WAX-0",
+              "nodeId": "3OJX-0",
               "size": [
                 380,
                 268.3
@@ -9922,7 +9922,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2TIS-0",
+              "nodeId": "3OKR-0",
               "size": [
                 1232,
                 610.77
@@ -9970,7 +9970,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2SN1-0",
+              "nodeId": "3OLJ-0",
               "size": [
                 640,
                 429.97
@@ -10018,7 +10018,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2O43-0",
+              "nodeId": "3OO8-0",
               "size": [
                 1200,
                 258.22
@@ -10066,7 +10066,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2O6T-0",
+              "nodeId": "3OQY-0",
               "size": [
                 1232,
                 520
@@ -10091,7 +10091,7 @@
         "src/usage/login.usage.mjs"
       ],
       "sourceHash": "1536c8d78f7cd47b",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 24,
@@ -10116,7 +10116,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1WJO-0",
+              "nodeId": "3OSO-0",
               "size": [
                 380,
                 348.48
@@ -10166,7 +10166,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2O8J-0",
+              "nodeId": "3OTP-0",
               "size": [
                 320,
                 235.72
@@ -10216,7 +10216,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "3120-0",
+              "nodeId": "3OUI-0",
               "size": [
                 340,
                 423.13
@@ -10266,7 +10266,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2OAQ-0",
+              "nodeId": "3OVW-0",
               "size": [
                 1232,
                 560
@@ -10316,7 +10316,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2OCC-0",
+              "nodeId": "3OXI-0",
               "size": [
                 1232,
                 560
@@ -10366,7 +10366,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2OF9-0",
+              "nodeId": "3P0F-0",
               "size": [
                 1232,
                 56
@@ -10416,7 +10416,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2OG9-0",
+              "nodeId": "3P1F-0",
               "size": [
                 560,
                 297.75
@@ -10464,7 +10464,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2OH1-0",
+              "nodeId": "3P27-0",
               "size": [
                 360,
                 285.84
@@ -10489,7 +10489,7 @@
         "src/usage/onboarding.usage.mjs"
       ],
       "sourceHash": "db75939c3c77d3e3",
-      "syncedAt": "2026-10-10",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 26,
@@ -10512,7 +10512,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2095-0",
+              "nodeId": "3P3S-0",
               "size": [
                 400,
                 276.3
@@ -10562,7 +10562,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2PDU-0",
+              "nodeId": "3P4W-0",
               "size": [
                 400,
                 326.73
@@ -10612,7 +10612,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2SPQ-0",
+              "nodeId": "3P61-0",
               "size": [
                 380,
                 257.3
@@ -10662,7 +10662,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2PEZ-0",
+              "nodeId": "3P76-0",
               "size": [
                 1200,
                 97.47
@@ -10712,7 +10712,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2PG3-0",
+              "nodeId": "3P8A-0",
               "size": [
                 1200,
                 328.52
@@ -10762,7 +10762,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2PJ4-0",
+              "nodeId": "3PBB-0",
               "size": [
                 340,
                 331.83
@@ -10810,7 +10810,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2OJQ-0",
+              "nodeId": "3PCF-0",
               "size": [
                 440,
                 314.63
@@ -10835,7 +10835,7 @@
         "src/usage/settings.usage.mjs"
       ],
       "sourceHash": "87ce4cc26be35dfa",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 35,
@@ -10860,7 +10860,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1X5A-0",
+              "nodeId": "3PE9-0",
               "size": [
                 560,
                 386.48
@@ -10908,7 +10908,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2SQV-0",
+              "nodeId": "3PFL-0",
               "size": [
                 1232,
                 560
@@ -10958,7 +10958,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2OPG-0",
+              "nodeId": "3PJH-0",
               "size": [
                 380,
                 368.08
@@ -10983,7 +10983,7 @@
         "src/usage/signup-social.usage.mjs"
       ],
       "sourceHash": "fd791842679c34e9",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 30,
@@ -11008,7 +11008,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1XBI-0",
+              "nodeId": "3PKK-0",
               "size": [
                 380,
                 427.98
@@ -11056,7 +11056,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2X7W-0",
+              "nodeId": "3PM1-0",
               "size": [
                 1200,
                 134.06
@@ -11104,7 +11104,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2OQJ-0",
+              "nodeId": "3PNJ-0",
               "size": [
                 880,
                 250.06
@@ -11129,7 +11129,7 @@
         "src/usage/tabs-page.usage.mjs"
       ],
       "sourceHash": "ce743b1bc35e4f0b",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 25,
@@ -11152,7 +11152,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1XFF-0",
+              "nodeId": "3POL-0",
               "size": [
                 560,
                 251.48
@@ -11200,7 +11200,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2ORL-0",
+              "nodeId": "3PPO-0",
               "size": [
                 880,
                 308.14
@@ -11248,7 +11248,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2OTV-0",
+              "nodeId": "3PRY-0",
               "size": [
                 520,
                 348
@@ -11273,7 +11273,7 @@
         "src/usage/theme-selector.usage.mjs"
       ],
       "sourceHash": "b4575ac94d1e6e50",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
         "nodes": 27,
@@ -11298,7 +11298,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1XJC-0",
+              "nodeId": "3PSI-0",
               "size": [
                 92.05,
                 28
@@ -11318,7 +11318,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1XJQ-0",
+              "nodeId": "3PSW-0",
               "size": [
                 520,
                 366.5
@@ -11368,7 +11368,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2XIX-0",
+              "nodeId": "3PTX-0",
               "size": [
                 460,
                 312.48
@@ -11418,7 +11418,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2X9E-0",
+              "nodeId": "3PVD-0",
               "size": [
                 1232,
                 560
@@ -11443,7 +11443,7 @@
         "src/usage/examples.mjs"
       ],
       "sourceHash": "34a0afcd82935b37",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 35,
@@ -11468,12 +11468,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1XU8-0",
+              "nodeId": "3Q3I-0",
               "size": [
                 1232,
                 900
               ],
-              "htmlHash": "9c9c1720ecbaa2a6"
+              "htmlHash": "115e199622ce1cb3"
             }
           ]
         }
@@ -11493,7 +11493,7 @@
         "src/usage/examples.mjs"
       ],
       "sourceHash": "1df36d535fa2e414",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 176,
@@ -11518,12 +11518,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1XVX-0",
+              "nodeId": "3Q57-0",
               "size": [
                 1232,
                 2439.94
               ],
-              "htmlHash": "dc7e51efdf98eb95"
+              "htmlHash": "e632f454e8eabc6b"
             }
           ]
         }
