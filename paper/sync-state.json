@@ -18,7 +18,7 @@
       "radius": 9
     },
     "payloadHash": "aca158e47906f799",
-    "sourceHash": "5e888beb6bbbd5e9",
+    "sourceHash": "5f87b4efe427162a",
     "theme": "light",
     "notRepresentable": 33,
     "syncedAt": "2026-10-12"
@@ -29,7 +29,7 @@
     "artboardId": "21M-0",
     "sections": 8,
     "htmlHash": "74f3157a717123f0",
-    "syncedAt": "2026-10-07"
+    "syncedAt": "2026-10-12"
   },
   "pages": {
     "Foundations": "p-1-0",
@@ -424,12 +424,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2KZP-0",
+              "nodeId": "2PK8-0",
               "size": [
                 448,
                 224.44
               ],
-              "htmlHash": "93fee4aa87e4d99d"
+              "htmlHash": "f6281ab4d23dd07b"
             }
           ]
         },
@@ -444,12 +444,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2L1O-0",
+              "nodeId": "2PM7-0",
               "size": [
                 448,
                 90.81
               ],
-              "htmlHash": "0eade9b73dd53703"
+              "htmlHash": "1218d6098115693b"
             }
           ]
         },
@@ -464,12 +464,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2L2G-0",
+              "nodeId": "2PMZ-0",
               "size": [
                 448,
                 90.81
               ],
-              "htmlHash": "61f5c001bdb0ab06"
+              "htmlHash": "9f97a8c1080d63ed"
             }
           ]
         },
@@ -484,12 +484,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2L36-0",
+              "nodeId": "2PNP-0",
               "size": [
                 448,
                 124.22
               ],
-              "htmlHash": "a8dbf3cec1af122c"
+              "htmlHash": "ea7c19bd2e3d1de0"
             }
           ]
         }
@@ -2492,7 +2492,7 @@
         "src/usage/calendar.usage.mjs"
       ],
       "sourceHash": "9079b21fa707f67b",
-      "syncedAt": "2026-10-10",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 5,
         "nodes": 813,
@@ -2515,12 +2515,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "211X-0",
+              "nodeId": "2POX-0",
               "size": [
                 212,
                 261.75
               ],
-              "htmlHash": "fa50de43a7e2c1e7"
+              "htmlHash": "7c1e63af3cef0f95"
             }
           ]
         },
@@ -2535,12 +2535,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "216F-0",
+              "nodeId": "2PUJ-0",
               "size": [
                 424,
                 261.75
               ],
-              "htmlHash": "eface46ec874076e"
+              "htmlHash": "0c72a4362ac409a3"
             }
           ]
         },
@@ -2555,12 +2555,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "21F8-0",
+              "nodeId": "2Q5C-0",
               "size": [
                 212,
                 261.75
               ],
-              "htmlHash": "d692e2b990b998fd"
+              "htmlHash": "0634ac3ced2262f0"
             }
           ]
         },
@@ -2575,12 +2575,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "21JQ-0",
+              "nodeId": "2QAY-0",
               "size": [
                 212,
                 261.75
               ],
-              "htmlHash": "e14e554a717ebc9b"
+              "htmlHash": "22b93c9fc45ab50e"
             }
           ]
         },
@@ -2595,12 +2595,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "21OI-0",
+              "nodeId": "2QGU-0",
               "size": [
                 212,
                 261.75
               ],
-              "htmlHash": "b8f56a0b79aeaadf"
+              "htmlHash": "0f0a7a7b01f143f0"
             }
           ]
         }
@@ -2861,7 +2861,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LEM-0",
+              "nodeId": "2QML-0",
               "size": [
                 1200,
                 256
@@ -2881,12 +2881,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LHK-0",
+              "nodeId": "2QPJ-0",
               "size": [
                 1200,
                 256
               ],
-              "htmlHash": "4223863475d0650a"
+              "htmlHash": "5e932021d36908e4"
             }
           ]
         },
@@ -2901,12 +2901,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2LK8-0",
+              "nodeId": "2QS7-0",
               "size": [
                 1200,
                 256
               ],
-              "htmlHash": "9aa93a77f347efc6"
+              "htmlHash": "7acca4f4f17ac388"
             }
           ]
         }
@@ -4587,7 +4587,7 @@
         "src/usage/input-otp.usage.mjs"
       ],
       "sourceHash": "599eb371119f0819",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 57,
@@ -4610,7 +4610,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QEG-0",
+              "nodeId": "2QW4-0",
               "size": [
                 224.92,
                 83.41
@@ -4630,7 +4630,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QF5-0",
+              "nodeId": "2QWT-0",
               "size": [
                 128,
                 59.41
@@ -4650,7 +4650,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QFM-0",
+              "nodeId": "2QXA-0",
               "size": [
                 208,
                 59.41
@@ -4670,7 +4670,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1QG9-0",
+              "nodeId": "2QXX-0",
               "size": [
                 223.28,
                 83.41
@@ -5710,7 +5710,7 @@
         "src/usage/progress.usage.mjs"
       ],
       "sourceHash": "b086adc6771054df",
-      "syncedAt": "2026-10-10",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 53,
@@ -5733,12 +5733,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2032-0",
+              "nodeId": "2QYR-0",
               "size": [
                 288,
                 35.41
               ],
-              "htmlHash": "1bd4f03d7c703567"
+              "htmlHash": "60550f3458f6b555"
             }
           ]
         },
@@ -5753,12 +5753,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "203J-0",
+              "nodeId": "2QZ8-0",
               "size": [
                 288,
                 35.41
               ],
-              "htmlHash": "fbec74e3fd3c1a48"
+              "htmlHash": "94b90cea8085da0a"
             }
           ]
         },
@@ -5773,12 +5773,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2040-0",
+              "nodeId": "2QZP-0",
               "size": [
                 288,
                 35.41
               ],
-              "htmlHash": "1dba762149bde8e5"
+              "htmlHash": "366f9eb30e8f8213"
             }
           ]
         },
@@ -5793,12 +5793,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "204H-0",
+              "nodeId": "2R06-0",
               "size": [
                 288,
                 241.03
               ],
-              "htmlHash": "44f2f34365a4798b"
+              "htmlHash": "ffe7c75510f6e45a"
             }
           ]
         }
@@ -5844,7 +5844,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MHD-0",
+              "nodeId": "2R1J-0",
               "size": [
                 576,
                 108
@@ -5864,7 +5864,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MI1-0",
+              "nodeId": "2R27-0",
               "size": [
                 576,
                 84
@@ -5884,7 +5884,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MIP-0",
+              "nodeId": "2R2V-0",
               "size": [
                 576,
                 108
@@ -5904,7 +5904,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MJD-0",
+              "nodeId": "2R3J-0",
               "size": [
                 576,
                 108
@@ -5924,7 +5924,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MK1-0",
+              "nodeId": "2R47-0",
               "size": [
                 576,
                 133.41
@@ -5944,7 +5944,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MKP-0",
+              "nodeId": "2R4V-0",
               "size": [
                 576,
                 108
@@ -5964,7 +5964,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MLC-0",
+              "nodeId": "2R5I-0",
               "size": [
                 576,
                 166
@@ -5984,7 +5984,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MMR-0",
+              "nodeId": "2R6X-0",
               "size": [
                 576,
                 142.41
@@ -6004,7 +6004,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MNR-0",
+              "nodeId": "2R7X-0",
               "size": [
                 576,
                 84
@@ -6024,12 +6024,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2MOF-0",
+              "nodeId": "2R8L-0",
               "size": [
                 576,
                 108
               ],
-              "htmlHash": "748966539e5d78ff"
+              "htmlHash": "8b26604cb0e6b0a1"
             }
           ]
         }
@@ -6914,7 +6914,7 @@
         "src/usage/sidebar.usage.mjs"
       ],
       "sourceHash": "01d5dbd1bb3a18a8",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 246,
@@ -6937,12 +6937,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1YCV-0",
+              "nodeId": "2R9H-0",
               "size": [
                 1232,
                 900
               ],
-              "htmlHash": "dfe061dbb51b3ebd"
+              "htmlHash": "94bca77527b730c7"
             }
           ]
         },
@@ -6957,7 +6957,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1YG3-0",
+              "nodeId": "2RCP-0",
               "size": [
                 1232,
                 900
@@ -6977,12 +6977,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1YIU-0",
+              "nodeId": "2RFG-0",
               "size": [
                 1232,
                 900
               ],
-              "htmlHash": "fd112a10e162d381"
+              "htmlHash": "aaab3431be813ad6"
             }
           ]
         },
@@ -6997,12 +6997,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1YL9-0",
+              "nodeId": "2RHV-0",
               "size": [
                 1232,
                 900
               ],
-              "htmlHash": "522b0a158bb9fd72"
+              "htmlHash": "71f3f34de3c53773"
             }
           ]
         }
@@ -7617,7 +7617,7 @@
         "src/usage/table.usage.mjs"
       ],
       "sourceHash": "74b69f043a3bf680",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 143,
@@ -7640,12 +7640,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T7D-0",
+              "nodeId": "2RKM-0",
               "size": [
                 1200,
                 259.31
               ],
-              "htmlHash": "f71d6f4ed2236030"
+              "htmlHash": "76460e96b887b75e"
             }
           ]
         },
@@ -7660,12 +7660,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1T9J-0",
+              "nodeId": "2RMS-0",
               "size": [
                 1200,
                 222.91
               ],
-              "htmlHash": "951c25cacd782fe7"
+              "htmlHash": "27dcf71e900bfe9e"
             }
           ]
         },
@@ -7680,12 +7680,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TBH-0",
+              "nodeId": "2ROQ-0",
               "size": [
                 1200,
                 184.13
               ],
-              "htmlHash": "cc3fc49e872d9387"
+              "htmlHash": "2c94ec10fee05bce"
             }
           ]
         }
@@ -8156,8 +8156,8 @@
         "src/stories/tone-badge.stories.tsx",
         "src/usage/tone-badge.usage.mjs"
       ],
-      "sourceHash": "2011697b18721d33",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "c92dec1d85caa80b",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 33,
@@ -8180,7 +8180,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TQ9-0",
+              "nodeId": "2P67-0",
               "size": [
                 77.03,
                 20
@@ -8200,7 +8200,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TQH-0",
+              "nodeId": "2P6F-0",
               "size": [
                 78.94,
                 20
@@ -8220,7 +8220,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TQP-0",
+              "nodeId": "2P6N-0",
               "size": [
                 74.94,
                 16
@@ -8240,12 +8240,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TQX-0",
+              "nodeId": "2P6V-0",
               "size": [
                 454.02,
                 48
               ],
-              "htmlHash": "aab9cf3546399be9"
+              "htmlHash": "cf2447f322785942"
             }
           ]
         }
@@ -8403,12 +8403,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2N6B-0",
+              "nodeId": "2RPV-0",
               "size": [
                 380,
                 271.2
               ],
-              "htmlHash": "f7255efdda9b9c4a"
+              "htmlHash": "aa70f25ae2acda38"
             }
           ]
         },
@@ -8423,12 +8423,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2N7N-0",
+              "nodeId": "2RR7-0",
               "size": [
                 380,
                 34.8
               ],
-              "htmlHash": "f647527935b269ca"
+              "htmlHash": "647a0f3f3846eede"
             }
           ]
         },
@@ -8443,12 +8443,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2N8A-0",
+              "nodeId": "2RRU-0",
               "size": [
                 380,
                 271.2
               ],
-              "htmlHash": "d1bf71aba9aadf86"
+              "htmlHash": "1bcb46d9a7edae0c"
             }
           ]
         },
@@ -8463,12 +8463,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2N9P-0",
+              "nodeId": "2RT9-0",
               "size": [
                 380,
                 18
               ],
-              "htmlHash": "91b7e934ad9a40a7"
+              "htmlHash": "dc3095a8f378ace7"
             }
           ]
         },
@@ -8483,12 +8483,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2NA7-0",
+              "nodeId": "2RTR-0",
               "size": [
                 380,
                 18
               ],
-              "htmlHash": "ca3b6725c8d84bba"
+              "htmlHash": "8554d95aa79c1f81"
             }
           ]
         }
@@ -8898,12 +8898,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2NIB-0",
+              "nodeId": "2RUE-0",
               "size": [
                 880,
                 316.3
               ],
-              "htmlHash": "cb48b5569a3b7773"
+              "htmlHash": "1c0892016e3d1f1d"
             }
           ]
         }
@@ -9021,7 +9021,7 @@
         "src/usage/calendar-page.usage.mjs"
       ],
       "sourceHash": "7551e3bbcaedffb5",
-      "syncedAt": "2026-10-10",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 165,
@@ -9044,12 +9044,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "21TL-0",
+              "nodeId": "2S0R-0",
               "size": [
                 510,
                 352.58
               ],
-              "htmlHash": "48f6f2787241c17b"
+              "htmlHash": "22ce643068cff183"
             }
           ]
         }
@@ -9069,7 +9069,7 @@
         "src/usage/calendar-range.usage.mjs"
       ],
       "sourceHash": "f15e0aeb119ad391",
-      "syncedAt": "2026-10-10",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 303,
@@ -9094,12 +9094,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "21ZC-0",
+              "nodeId": "2S7M-0",
               "size": [
                 458,
                 449.58
               ],
-              "htmlHash": "6fecfd434769159b"
+              "htmlHash": "170e778b26b1e5d9"
             }
           ]
         }
@@ -9168,7 +9168,7 @@
         "src/stories/patterns/Checkout.stories.tsx",
         "src/usage/checkout.usage.mjs"
       ],
-      "sourceHash": "7136a11e974ef06e",
+      "sourceHash": "92bfdc88ac1086e1",
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
@@ -9194,12 +9194,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2NQE-0",
+              "nodeId": "2P7Y-0",
               "size": [
                 820,
                 461.67
               ],
-              "htmlHash": "7fff43de57f98159"
+              "htmlHash": "cf4bf1746114f05e"
             }
           ]
         }
@@ -9454,14 +9454,14 @@
         "src/stories/patterns/DashboardShell.stories.tsx",
         "src/usage/dashboard.usage.mjs"
       ],
-      "sourceHash": "c05b0a8e07892852",
+      "sourceHash": "4f1d703c6f8c9ce8",
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 59,
         "approximated": 1,
-        "bound": 262,
-        "bindable": 262,
+        "bound": 261,
+        "bindable": 261,
         "bindingRate": 1
       },
       "notes": [],
@@ -9475,17 +9475,17 @@
           "opened": "none",
           "nodes": 59,
           "approximated": 1,
-          "bound": 262,
-          "bindable": 262,
+          "bound": 261,
+          "bindable": 261,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2NXE-0",
+              "nodeId": "2PAG-0",
               "size": [
                 1232,
                 600
               ],
-              "htmlHash": "c1fc515ed06d65cc"
+              "htmlHash": "de217fa973c5c5fe"
             }
           ]
         }
@@ -9505,7 +9505,7 @@
         "src/usage/data-table.usage.mjs"
       ],
       "sourceHash": "549d8a0234c54844",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 77,
@@ -9530,12 +9530,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1W0D-0",
+              "nodeId": "2SK2-0",
               "size": [
                 1200,
                 295.13
               ],
-              "htmlHash": "9a65f29ee275df92"
+              "htmlHash": "5e1308825514c940"
             }
           ]
         }
@@ -9604,15 +9604,15 @@
         "src/stories/patterns/Error404.stories.tsx",
         "src/usage/error-404.usage.mjs"
       ],
-      "sourceHash": "65e786b053f35049",
+      "sourceHash": "84c6b3a5706e93b2",
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 11,
         "approximated": 0,
-        "bound": 46,
-        "bindable": 48,
-        "bindingRate": 0.958
+        "bound": 45,
+        "bindable": 47,
+        "bindingRate": 0.957
       },
       "notes": [],
       "lost": [
@@ -9625,17 +9625,17 @@
           "opened": "none",
           "nodes": 11,
           "approximated": 0,
-          "bound": 46,
-          "bindable": 48,
+          "bound": 45,
+          "bindable": 47,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2O03-0",
+              "nodeId": "2PD5-0",
               "size": [
                 1232,
                 500
               ],
-              "htmlHash": "64cd63101f276016"
+              "htmlHash": "bf4dfdc88fd0446d"
             }
           ]
         }
@@ -9949,7 +9949,7 @@
         "src/usage/invoice.usage.mjs"
       ],
       "sourceHash": "08acd3f8449f6bec",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 71,
@@ -9972,12 +9972,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1WCJ-0",
+              "nodeId": "2SN1-0",
               "size": [
                 640,
                 429.97
               ],
-              "htmlHash": "b8b7a7df2e8a047a"
+              "htmlHash": "efff7842de82b836"
             }
           ]
         }
@@ -10538,8 +10538,8 @@
         "src/stories/patterns/OrderSummary.stories.tsx",
         "src/usage/order-summary.usage.mjs"
       ],
-      "sourceHash": "49c2f90d081eb517",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "d1b5d75c2d5bf698",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 27,
@@ -10564,12 +10564,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1WVV-0",
+              "nodeId": "2PDU-0",
               "size": [
                 400,
                 326.73
               ],
-              "htmlHash": "78320fb05d1b1c65"
+              "htmlHash": "dff92e97493966c3"
             }
           ]
         }
@@ -10589,7 +10589,7 @@
         "src/usage/otp-verification.usage.mjs"
       ],
       "sourceHash": "2f452380f96e3fe9",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 27,
@@ -10614,7 +10614,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1WX0-0",
+              "nodeId": "2SPQ-0",
               "size": [
                 380,
                 257.3
@@ -10638,14 +10638,14 @@
         "src/stories/patterns/PageHeader.stories.tsx",
         "src/usage/page-header.usage.mjs"
       ],
-      "sourceHash": "bb0c9bec8e02aceb",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "68ce6fd238d01906",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 24,
         "approximated": 1,
-        "bound": 61,
-        "bindable": 61,
+        "bound": 60,
+        "bindable": 60,
         "bindingRate": 1
       },
       "notes": [],
@@ -10659,17 +10659,17 @@
           "opened": "none",
           "nodes": 24,
           "approximated": 1,
-          "bound": 61,
-          "bindable": 61,
+          "bound": 60,
+          "bindable": 60,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1WY5-0",
+              "nodeId": "2PEZ-0",
               "size": [
                 1200,
                 97.47
               ],
-              "htmlHash": "3c2ba35a30acd47a"
+              "htmlHash": "56539e8026d9c1ae"
             }
           ]
         }
@@ -10688,8 +10688,8 @@
         "src/stories/patterns/Pricing.stories.tsx",
         "src/usage/pricing.usage.mjs"
       ],
-      "sourceHash": "4954cf3bcc706b0f",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "5473c51ab51a4895",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 75,
@@ -10714,12 +10714,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1WZ9-0",
+              "nodeId": "2PG3-0",
               "size": [
                 1200,
                 328.52
               ],
-              "htmlHash": "e125e53d705c008d"
+              "htmlHash": "d7ec5f9eb2c9d2a9"
             }
           ]
         }
@@ -10738,7 +10738,7 @@
         "src/stories/patterns/ProfileCard.stories.tsx",
         "src/usage/profile-card.usage.mjs"
       ],
-      "sourceHash": "9530882373112ec5",
+      "sourceHash": "05497aee4d17631c",
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
@@ -10764,12 +10764,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2OIM-0",
+              "nodeId": "2PJ4-0",
               "size": [
                 340,
                 331.83
               ],
-              "htmlHash": "e6a09a715f0d34ac"
+              "htmlHash": "36791c6ad0f01d77"
             }
           ]
         }
@@ -10910,12 +10910,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "2OLK-0",
+              "nodeId": "2SQV-0",
               "size": [
                 1232,
                 560
               ],
-              "htmlHash": "d7bbae916107bc12"
+              "htmlHash": "7a1be25b97e89cbf"
             }
           ]
         }

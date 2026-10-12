@@ -9,7 +9,7 @@ export function Error404() {
         404
       </span>
       <div className="flex flex-col gap-1">
-        <h1 className="text-2xl font-medium">Page not found</h1>
+        <h1 className="fraunces-text font-heading text-2xl">Page not found</h1>
         <p className="max-w-sm text-sm text-pretty text-muted-foreground">
           The page you’re looking for doesn’t exist or may have been moved.
         </p>

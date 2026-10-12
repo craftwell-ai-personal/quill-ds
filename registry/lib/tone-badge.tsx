@@ -24,7 +24,7 @@ const TINT: Record<Tone, string> = {
   // tint fails AA in light themes.
   gold: 'bg-gold/25 text-gold-text',
   terracotta: 'bg-terracotta/16 text-terracotta-deep',
-  indigo: 'bg-indigo/20 text-indigo-deep',
+  indigo: 'bg-indigo/30 text-indigo-deep',
   neutral: 'bg-paper-deep text-ink-soft',
   muted: 'bg-paper-deep text-ink-muted',
 }

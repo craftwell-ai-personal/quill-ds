@@ -29,7 +29,7 @@ export function Pricing() {
             </div>
             <CardDescription>{p.blurb}</CardDescription>
             <div className="pt-2">
-              <span className="text-3xl font-medium text-foreground">{p.price}</span>
+              <span className="text-3xl font-medium text-foreground tabular-nums">{p.price}</span>
               {p.price !== 'Custom' && <span className="text-sm text-muted-foreground">/mo</span>}
             </div>
           </CardHeader>

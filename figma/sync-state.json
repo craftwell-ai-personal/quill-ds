@@ -142,7 +142,7 @@
     "VariableID:705:3": "tint/moss/20",
     "VariableID:705:4": "tint/gold/25",
     "VariableID:705:5": "tint/terracotta/16",
-    "VariableID:705:6": "tint/indigo/20",
+    "VariableID:705:6": "tint/indigo/30",
     "VariableID:705:7": "tint/foreground/10",
     "VariableID:705:8": "tint/input/30",
     "VariableID:705:9": "tint/chart-1/20",
@@ -2538,7 +2538,7 @@
       "page": "❖ Checkout",
       "pageId": "203:2",
       "frameId": "696:8",
-      "codeHash": "68ddc9a134ee5837",
+      "codeHash": "c6fd59feb4c0872f",
       "syncedAt": "2026-10-12"
     },
     {
@@ -2579,7 +2579,7 @@
       "page": "❖ Dashboard",
       "pageId": "578:2",
       "frameId": "696:11",
-      "codeHash": "1fd7c9dfa6f968c9",
+      "codeHash": "15729eb22280b74f",
       "syncedAt": "2026-10-12"
     },
     {
@@ -2606,7 +2606,7 @@
       "page": "❖ Error 404",
       "pageId": "574:104",
       "frameId": "696:18",
-      "codeHash": "4a61e10588abddd8",
+      "codeHash": "7deab1eec0f33906",
       "syncedAt": "2026-10-12"
     },
     {
@@ -2791,8 +2791,8 @@
       "page": "❖ Page header",
       "pageId": "574:85",
       "frameId": "696:50",
-      "codeHash": "1b2792dda2413fac",
-      "syncedAt": "2026-09-18"
+      "codeHash": "ab4faf4003a9f6a0",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "pricing",
@@ -2800,8 +2800,8 @@
       "page": "❖ Pricing",
       "pageId": "574:2",
       "frameId": "696:51",
-      "codeHash": "92c5724f0519a892",
-      "syncedAt": "2026-09-23"
+      "codeHash": "f94d0382a856ab07",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "profile-card",
@@ -2809,7 +2809,7 @@
       "page": "❖ Profile card",
       "pageId": "580:104",
       "frameId": "696:52",
-      "codeHash": "46f248114e57d58f",
+      "codeHash": "27e09a5631f34f36",
       "syncedAt": "2026-10-12"
     },
     {
@@ -2951,8 +2951,8 @@
     }
   ],
   "foundations": {
-    "tokensHash": "5e888beb6bbbd5e9",
-    "syncedAt": "2026-10-02"
+    "tokensHash": "5f87b4efe427162a",
+    "syncedAt": "2026-10-12"
   },
   "declined": [
     {

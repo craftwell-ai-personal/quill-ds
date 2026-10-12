@@ -958,6 +958,15 @@
   .font-heading:not(h1, h2, h3, h4, h5, h6) {
     font-variation-settings: var(--fraunces-text);
   }
+
+  /* Raleway's default digits are old-style and uneven in width, so dates, codes, amounts
+     and counts bounced and their columns did not line up. Where numbers are data they sit
+     on the line at one width; running text keeps old-style. Setting --tw-numeric-figure
+     too makes the stock `tabular-nums` utility, which leaves it empty, lining as well. */
+  [data-slot=calendar], [data-slot=table], [data-slot=input-otp], [data-slot=input-otp-group], [data-slot=chart], [data-slot=progress], .tabular-nums {
+    --tw-numeric-figure: lining-nums;
+    font-variant-numeric: lining-nums tabular-nums;
+  }
   a {
     /* --text-accent-color resolves to --terracotta-deep (WCAG AA 4.5:1 on paper);
        plain --terracotta (3.32:1) is reserved for fills, icons, and large display. */

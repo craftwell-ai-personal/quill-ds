@@ -51,7 +51,7 @@ export function Dashboard() {
         <main className="flex flex-1 flex-col gap-5 overflow-auto p-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-medium">Overview</h1>
+              <h1 className="fraunces-text font-heading text-2xl">Overview</h1>
               <p className="text-sm text-muted-foreground">Welcome back, Ada.</p>
             </div>
             <Button>

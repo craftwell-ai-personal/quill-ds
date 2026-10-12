@@ -30,7 +30,7 @@ export function PageHeader() {
       </Breadcrumb>
       <div className="flex items-end justify-between gap-4">
         <div className="flex flex-col gap-1">
-          <h1 className="text-2xl font-medium">Project settings</h1>
+          <h1 className="fraunces-text font-heading text-2xl">Project settings</h1>
           <p className="text-sm text-muted-foreground">
             Manage configuration, members, and integrations for this project.
           </p>
