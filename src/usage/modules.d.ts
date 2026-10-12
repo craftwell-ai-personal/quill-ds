@@ -281,6 +281,21 @@ declare module '@/usage/error-404.usage.mjs' {
   export const usage: Usage
 }
 
+declare module '@/usage/example-app-page.usage.mjs' {
+  import type { Usage } from '@/usage/types'
+  export const usage: Usage
+}
+
+declare module '@/usage/example-auth-page.usage.mjs' {
+  import type { Usage } from '@/usage/types'
+  export const usage: Usage
+}
+
+declare module '@/usage/example-marketing-page.usage.mjs' {
+  import type { Usage } from '@/usage/types'
+  export const usage: Usage
+}
+
 declare module '@/usage/faq.usage.mjs' {
   import type { Usage } from '@/usage/types'
   export const usage: Usage

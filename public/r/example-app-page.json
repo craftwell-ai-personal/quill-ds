@@ -12,7 +12,7 @@
   "files": [
     {
       "path": "registry/examples/example-app-page.tsx",
-      "content": "import { SidebarNav } from '@/components/quill/sidebar-nav'\nimport { PageHeader } from '@/components/quill/page-header'\nimport { StatCards } from '@/components/quill/stat-cards'\nimport { DataTable } from '@/components/quill/data-table'\n\n/**\n * An app page, composed: the sidebar-nav shell frames the page, page-header\n * says what the page is about, and stat-cards and the data-table sit inside\n * that frame in reading order. The shell stacks its children on `gap-6` —\n * components sit on `--space-4` / `--space-6`, and nothing here needs more.\n */\nexport function ExampleAppPage() {\n  return (\n    <SidebarNav>\n      <PageHeader />\n      <StatCards />\n      <DataTable />\n    </SidebarNav>\n  )\n}\n",
+      "content": "import { SidebarNav } from '@/components/quill/sidebar-nav'\nimport { PageHeader } from '@/components/quill/page-header'\nimport { StatCards } from '@/components/quill/stat-cards'\nimport { DataTable } from '@/components/quill/data-table'\n\n// An app page, composed: the sidebar-nav shell frames the page, page-header\n// says what the page is about, and stat-cards and the data-table sit inside\n// that frame in reading order. The shell stacks its children on `gap-6` —\n// components sit on `--space-4` / `--space-6`, and nothing here needs more.\n/** A whole signed-in app page, composed: the sidebar-nav shell around a page-header, then stat-cards, then a data-table. */\nexport function ExampleAppPage() {\n  return (\n    <SidebarNav>\n      <PageHeader />\n      <StatCards />\n      <DataTable />\n    </SidebarNav>\n  )\n}\n",
       "type": "registry:component",
       "target": "components/examples/example-app-page.tsx"
     }

@@ -58,6 +58,9 @@ import { usage as dropdownMenu } from './dropdown-menu.usage.mjs'
 import { usage as empty } from './empty.usage.mjs'
 import { usage as emptyState } from './empty-state.usage.mjs'
 import { usage as error404 } from './error-404.usage.mjs'
+import { usage as exampleAppPage } from './example-app-page.usage.mjs'
+import { usage as exampleAuthPage } from './example-auth-page.usage.mjs'
+import { usage as exampleMarketingPage } from './example-marketing-page.usage.mjs'
 import { usage as faq } from './faq.usage.mjs'
 import { usage as featureSection } from './feature-section.usage.mjs'
 import { usage as field } from './field.usage.mjs'
@@ -187,6 +190,9 @@ export const ALL_USAGE = [
   empty,
   emptyState,
   error404,
+  exampleAppPage,
+  exampleAuthPage,
+  exampleMarketingPage,
   faq,
   featureSection,
   field,

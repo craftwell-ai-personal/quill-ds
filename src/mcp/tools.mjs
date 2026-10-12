@@ -58,10 +58,12 @@ function editDistance(a, b) {
 export function getComponent(name) {
   const key = normalizeName(name)
   const u = usageByName.get(key)
-  if (u) {
-    return { ok: true, text: `${renderPage(u).trimEnd()}\n\n### Install\n\`${installCommand(key)}\`\n` }
-  }
   const example = EXAMPLES.find((e) => e.name === key)
+  if (u) {
+    // an example page's guide is followed by its order, which lives in src/usage/examples.mjs, not in the guide
+    const composition = example ? `\n\nComposition: ${example.blocks.join(' → ')}.` : ''
+    return { ok: true, text: `${renderPage(u).trimEnd()}${composition}\n\n### Install\n\`${installCommand(key)}\`\n` }
+  }
   if (example) {
     return {
       ok: true,

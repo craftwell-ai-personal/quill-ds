@@ -354,6 +354,24 @@
       "hash": "764889243cc0bf94568affc97d68d204312d2b706afddbd54ed2c2f5ebce6860"
     },
     {
+      "name": "example-app-page",
+      "kind": "pattern",
+      "summary": "A whole signed-in app page, composed: the sidebar-nav shell around a page-header, then stat-cards, then a data-table.",
+      "hash": "3a649e1150835773e7e35261a4d067e4fa9b527da6803169cf21bd917cfdef73"
+    },
+    {
+      "name": "example-auth-page",
+      "kind": "pattern",
+      "summary": "A whole sign-in page, composed: login-split-panel alone on the page, with nothing competing with the one task.",
+      "hash": "0fec652bc25b96240c1dc8428f27304f92e02f78f759213911383afab4a10249"
+    },
+    {
+      "name": "example-marketing-page",
+      "kind": "pattern",
+      "summary": "A whole public marketing page, composed: navbar, hero, feature-section, pricing, testimonial and footer, one idea per section.",
+      "hash": "2f9327949d1c3fdfb7cdd438cc3e04436b3a6d5ae4cf68cb160746de7192eea7"
+    },
+    {
       "name": "faq",
       "kind": "pattern",
       "summary": "A centered FAQ section — an accordion of common questions with a contact call-to-action footer.",

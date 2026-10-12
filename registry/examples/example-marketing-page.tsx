@@ -5,13 +5,12 @@ import { Pricing } from '@/components/quill/pricing'
 import { Testimonial } from '@/components/quill/testimonial'
 import { Footer } from '@/components/quill/footer'
 
-/**
- * A marketing page, composed: navbar, then one idea per section — hero,
- * feature-section, pricing, testimonial — then the footer. Sections breathe at
- * the vertical rhythm (`py-24`, `py-14` on mobile) inside the 1400px marketing
- * width with `px-12` / `px-6` side padding; blocks that carry their own rhythm
- * (hero, feature-section) are left alone.
- */
+// A marketing page, composed: navbar, then one idea per section — hero,
+// feature-section, pricing, testimonial — then the footer. Sections breathe at
+// the vertical rhythm (`py-24`, `py-14` on mobile) inside the 1400px marketing
+// width with `px-12` / `px-6` side padding; blocks that carry their own rhythm
+// (hero, feature-section) are left alone.
+/** A whole public marketing page, composed: navbar, hero, feature-section, pricing, testimonial and footer, one idea per section. */
 export function ExampleMarketingPage() {
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">

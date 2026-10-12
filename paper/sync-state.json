@@ -11401,9 +11401,10 @@
       "sources": [
         "registry/examples/example-app-page.tsx",
         "src/stories/examples/AppPage.stories.tsx",
+        "src/usage/example-app-page.usage.mjs",
         "src/usage/examples.mjs"
       ],
-      "sourceHash": "38c820c171c4bf39",
+      "sourceHash": "6b21b6df9d29e5a8",
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
@@ -11429,7 +11430,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4GUD-0",
+              "nodeId": "4HAX-0",
               "size": [
                 1232,
                 560
@@ -11451,9 +11452,10 @@
       "sources": [
         "registry/examples/example-auth-page.tsx",
         "src/stories/examples/AuthPage.stories.tsx",
+        "src/usage/example-auth-page.usage.mjs",
         "src/usage/examples.mjs"
       ],
-      "sourceHash": "34a0afcd82935b37",
+      "sourceHash": "145f3924fc63578d",
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
@@ -11479,7 +11481,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4H2I-0",
+              "nodeId": "4HJ2-0",
               "size": [
                 1232,
                 900
@@ -11501,9 +11503,10 @@
       "sources": [
         "registry/examples/example-marketing-page.tsx",
         "src/stories/examples/MarketingPage.stories.tsx",
+        "src/usage/example-marketing-page.usage.mjs",
         "src/usage/examples.mjs"
       ],
-      "sourceHash": "1df36d535fa2e414",
+      "sourceHash": "3bc4e6c240fdb535",
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
@@ -11529,7 +11532,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4H47-0",
+              "nodeId": "4HKR-0",
               "size": [
                 1232,
                 2439.94
