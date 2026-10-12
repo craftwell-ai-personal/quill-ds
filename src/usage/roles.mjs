@@ -74,7 +74,7 @@ export const TINT_INTENTS = {
   'tint/moss/20': { code: '`<ToneBadge tone="moss">`', use: 'The wash behind a moss ToneBadge: positive, current.', never: 'A hand-built pill or panel. Every tag renders through ToneBadge.' },
   'tint/gold/25': { code: '`<ToneBadge tone="gold">`', use: 'The wash behind a gold ToneBadge: caution.', never: 'A hand-built pill or panel.' },
   'tint/terracotta/16': { code: '`<ToneBadge tone="terracotta">`', use: 'The wash behind a terracotta ToneBadge: needs attention.', never: 'A hand-built pill or panel.' },
-  'tint/indigo/20': { code: '`<ToneBadge tone="indigo">`', use: 'The wash behind an indigo ToneBadge: informational.', never: 'A hand-built pill or panel.' },
+  'tint/indigo/30': { code: '`<ToneBadge tone="indigo">`', use: 'The wash behind an indigo ToneBadge: informational.', never: 'A hand-built pill or panel.' },
   'tint/foreground/10': { code: '`ring-1 ring-foreground/10`', use: 'The hairline ring around a Card and every floating panel, hand-built ones included.', never: 'A fill or text; nor dividers, list and table wrappers or field edges. Those are `border`.' },
   'tint/input/30': { code: '`bg-input/30`', use: 'The faint fill inside form controls on dark themes, and the search field inside the command palette and combobox.', never: 'The control\'s edge on the page. That stays solid `input` to keep 3:1.' },
   'tint/chart-1/20': { code: '`fill="var(--chart-1)" fillOpacity={0.2}`', use: 'The soft area under the first series\' line, below a full-strength stroke of the same series.', never: 'UI tints, or a series other than the stroke\'s own.' },

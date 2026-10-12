@@ -13,6 +13,15 @@ within a minute, and that release is what triggers `library-sync` into the apps;
 manual tag races the bot and can leave a tag with no release behind it. The homepage
 footer reads `package.json` directly, so the displayed version updates with the bump.
 
+## [1.25.0] — 2026-10-11
+
+Three design calls from the 1.24.0 sweep, chosen by Ryan from side-by-side pictures.
+
+### Changed
+- Numbers that are data sit on the line at one width. Raleway's default old-style digits bounced and their columns did not align, so the theme sets lining, equal-width digits in calendars, tables, one-time-code fields, charts and progress values, and wherever `tabular-nums` is used (now added to the prices in pricing, order summary and checkout, and the profile card's stats). Running text keeps old-style digits. Figma's plugin API cannot set number style, so the Figma pages keep the default digits; Paper shows the change.
+- Page titles in Dashboard, Page header and 404 are Fraunces (the text cut, regular weight), like Quill's other headings. They had been Raleway with the display letter-spacing tuned for Fraunces, which crowded the letters.
+- The tinted Indigo tone badge washes at 30% (was 20%), so it reads as a cool colour beside Neutral and Muted instead of matching them. Text contrast measured in all five themes: 4.61–6.53 : 1. The Figma variable is renamed in place to `tint/indigo/30`, so bound instances follow.
+
 ## [1.24.0] — 2026-10-11
 
 A visual-defect sweep of every Storybook story (714, in Dawn): each one captured and measured, then read by eye.

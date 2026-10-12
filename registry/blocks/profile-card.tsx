@@ -23,7 +23,7 @@ export function ProfileCard() {
             { label: 'Following', value: '318' },
           ].map((s) => (
             <div key={s.label} className="flex flex-col items-center">
-              <span className="text-base font-medium text-foreground">{s.value}</span>
+              <span className="text-base font-medium text-foreground tabular-nums">{s.value}</span>
               <span className="text-xs text-muted-foreground">{s.label}</span>
             </div>
           ))}

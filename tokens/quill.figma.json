@@ -1921,9 +1921,9 @@
       "text": false
     },
     {
-      "name": "tint/indigo/20",
+      "name": "tint/indigo/30",
       "base": "color/indigo",
-      "alpha": 0.2,
+      "alpha": 0.3,
       "cssVar": "--indigo",
       "text": false
     },

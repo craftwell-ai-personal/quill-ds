@@ -27,7 +27,7 @@ export function OrderSummary() {
         {lines.map((l) => (
           <div key={l.name} className="flex items-center justify-between text-sm">
             <span className="text-foreground">{l.name}</span>
-            <span className="text-muted-foreground">{l.price}</span>
+            <span className="text-muted-foreground tabular-nums">{l.price}</span>
           </div>
         ))}
         <Separator />
@@ -38,7 +38,7 @@ export function OrderSummary() {
         <Separator />
         <div className="flex items-center justify-between">
           <span className="text-sm text-muted-foreground">Total due today</span>
-          <span className="text-lg font-medium text-foreground">$258.00</span>
+          <span className="text-lg font-medium text-foreground tabular-nums">$258.00</span>
         </div>
       </CardContent>
       <CardFooter>

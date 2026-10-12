@@ -73,20 +73,20 @@ export function Checkout() {
         <CardContent className="flex flex-col gap-2 text-sm">
           <div className="flex justify-between">
             <span className="text-muted-foreground">The Brief, annual</span>
-            <span className="text-foreground">$48.00</span>
+            <span className="text-foreground tabular-nums">$48.00</span>
           </div>
           <div className="flex justify-between">
             <span className="text-muted-foreground">Additional seats</span>
-            <span className="text-foreground">$14.00</span>
+            <span className="text-foreground tabular-nums">$14.00</span>
           </div>
           <div className="flex justify-between">
             <span className="text-muted-foreground">Early-bird discount</span>
-            <span className="text-foreground">−$4.00</span>
+            <span className="text-foreground tabular-nums">−$4.00</span>
           </div>
           <Separator className="my-2" />
           <div className="flex justify-between font-medium">
             <span className="text-foreground">Total</span>
-            <span className="text-foreground">$58.00</span>
+            <span className="text-foreground tabular-nums">$58.00</span>
           </div>
         </CardContent>
       </Card>

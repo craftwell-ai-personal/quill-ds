@@ -300,7 +300,7 @@ export const tokens = {
   // What each is for: src/usage/roles.mjs (TINT_INTENTS).
   tints: [
     { of: 'destructive', pct: 10 },
-    { of: 'moss', pct: 20 }, { of: 'gold', pct: 25 }, { of: 'terracotta', pct: 16 }, { of: 'indigo', pct: 20 },
+    { of: 'moss', pct: 20 }, { of: 'gold', pct: 25 }, { of: 'terracotta', pct: 16 }, { of: 'indigo', pct: 30 },
     { of: 'foreground', pct: 10 }, { of: 'input', pct: 30 },
     { of: 'chart-1', pct: 20 }, { of: 'chart-2', pct: 20 },
     { of: 'muted', pct: 50 }, { of: 'primary', pct: 10 },
