@@ -20,7 +20,7 @@
  * at PAPER_STORYBOOK_URL). Exit code 1 when a piece failed.
  */
 import { writeFileSync } from 'node:fs'
-import { tokensHash } from '../figma-stamp.mjs'
+import { tokensHash } from '../lib/source-hash.mjs'
 import { connect, PaperError } from './client.mjs'
 import { convertStory, launch, quillTokenTable, serialize } from './convert.mjs'
 import { arrangePages, digest, ensureArtboard, FOUNDATIONS, openQuillFile, readState, today, upsertPiece, publicText, removeArtboard, writeState, writeTree } from './file.mjs'

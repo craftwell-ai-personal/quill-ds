@@ -400,127 +400,6 @@ export function renderManager(t) {
   }
 }
 
-// --- DTCG / Figma token export ---
-const figmaModes = (mv) => ({
-  Light: mv.light,
-  ...Object.fromEntries(MODES.map((m) => [m.figmaMode, mv[m.key]])),
-})
-const colorToken = (mv) => ({
-  $type: 'color', $value: mv.light,
-  $extensions: { 'com.figma': { modes: figmaModes(mv) } },
-})
-const dim = (v) => ({ $type: 'dimension', $value: v })
-const shadow = (mv) => ({
-  $type: 'shadow', $value: mv.light,
-  $extensions: { 'com.figma': { modes: figmaModes(mv) } },
-})
-// Figma variable names follow the CSS name with ONE group level, so a designer's
-// picker and an engineer's stylesheet say the same word: `--paper-warm` is
-// `color/paper-warm`, `--space-2_5` is `space/2_5`. `legacyName` is what the
-// variable was called before 0.10.0 — the sync finds it by that name and renames
-// it in place (ids and every binding survive) instead of creating a twin.
-const named = (token, name, legacyName) => {
-  const ext = { ...(token.$extensions?.['com.figma'] ?? {}), name, ...(legacyName && legacyName !== name ? { legacyName } : {}) }
-  return { ...token, $extensions: { ...token.$extensions, 'com.figma': ext } }
-}
-// The pre-0.10.0 Semantic collection bucketed Quill's own roles by prefix.
-const legacyRoleName = (k) => {
-  const bucket = ['text', 'surface', 'border'].find((b) => k.startsWith(b + '-')) ?? 'status'
-  return `${bucket}/${bucket === 'status' ? k : k.slice(bucket.length + 1)}`
-}
-const other = (v) => ({ $type: 'other', $value: v, $description: 'CSS-only — not a Figma variable' })
-// `calc(1.25 / 0.875)` or a bare number → the ratio itself. Figma cannot bind a
-// percentage line height to a variable, so these stay out of the variable sync
-// and feed the text styles, which take a percentage.
-const ratio = (css) => {
-  const m = css.match(/^calc\(([\d.]+)\s*\/\s*([\d.]+)\)$/)
-  const n = m ? Number(m[1]) / Number(m[2]) : Number(css)
-  if (!Number.isFinite(n)) throw new Error(`line height '${css}' is neither a number nor calc(a / b)`)
-  return { $type: 'number', $value: n, $description: 'Line height as a ratio of the font size — read by the text styles, not a Figma variable' }
-}
-export function renderDtcg(t) {
-  // Build lookup: CSS var name (e.g. '--terracotta-deep') → full DTCG dot-path
-  // (e.g. 'Primitives.color.pigment.terracotta.deep') while walking the color tree.
-  const varToDtcg = {}
-  const buildMap = (obj, path) => {
-    for (const [k, v] of Object.entries(obj)) {
-      const nextPath = [...path, k]
-      if (v && typeof v === 'object' && 'light' in v && 'dark' in v) {
-        varToDtcg[cssVarName(nextPath)] = 'Primitives.color.' + nextPath.join('.')
-      } else if (v && typeof v === 'object') {
-        buildMap(v, nextPath)
-      }
-    }
-  }
-  buildMap(t.color, [])
-  // Accent aliases are runtime-switchable (data-accent); Figma variables are
-  // not, so the DTCG export pins them to the default (moss) pigment.
-  varToDtcg['--accent-pigment'] = `Primitives.color.pigment.${DEFAULT_ACCENT}.base`
-  varToDtcg['--accent-pigment-text'] = `Primitives.color.pigment.${DEFAULT_ACCENT}.deep`
-
-  // var(--x) → DTCG alias using the real primitive path from the lookup map.
-  const alias = (ref) => {
-    const varName = ref.replace(/^var\(|\)$/g, '') // strip var( and ) → '--terracotta-deep'
-    const fullPath = varToDtcg[varName]
-    if (!fullPath) throw new Error(`DTCG alias not resolved: '${ref}' — '${varName}' not in primitive map`)
-    return { $value: `{${fullPath}}` }
-  }
-
-  const primColor = {}
-  const emit = (obj, prefix, sink) => {
-    for (const [k, v] of Object.entries(obj)) {
-      if (v && 'light' in v && 'dark' in v) sink[k] = named(colorToken(v), 'color/' + cssVarName([...prefix, k]).slice(2), 'color/' + [...prefix, k].join('/'))
-      else { sink[k] = {}; emit(v, [...prefix, k], sink[k]) }
-    }
-  }
-  emit(t.color, [], primColor)
-  const font = Object.fromEntries(Object.entries(t.font).map(([k, v]) => [k, named({ $type: 'fontFamily', $value: v }, `font/${k}`)]))
-  const us = (k) => String(k).replace('.', '_') // Figma names cannot hold a dot; neither can the CSS name
-  const spacing = Object.fromEntries(Object.entries(t.spacing).map(([k, v]) => [k, named(dim(v), `space/${us(k)}`, `spacing/${us(k)}`)]))
-  const radius = Object.fromEntries(Object.entries(t.radius).map(([k, v]) => [k, named(dim(v), `radius/${k}`, `corner-radius/${k}`)]))
-  const borderWidth = Object.fromEntries(Object.entries(t.borderWidth).map(([k, v]) => [k, named(dim(v), `border-width/${k}`)]))
-  const type = Object.fromEntries(Object.entries(t.text).map(([k, v]) => [k, named(dim(v), `text/${k}`, `type/${k}`)]))
-  const lineHeight = Object.fromEntries(Object.entries(t.textLeading).map(([k, v]) => [k, ratio(v)]))
-  const leading = Object.fromEntries(Object.entries(t.leading).map(([k, v]) => [k, ratio(v)]))
-  // Figma takes letter spacing as a percentage of the font size: -0.03em → -3.
-  const tracking = Object.fromEntries(Object.entries(t.tracking).map(([k, v]) => {
-    if (!/^-?[\d.]+em$/.test(v)) throw new Error(`tracking '${v}' must be in em`)
-    return [k, { $type: 'number', $value: Math.round(parseFloat(v) * 1e6) / 1e4, $description: 'Letter spacing as a percentage of the font size — read by the text styles, not a Figma variable' }]
-  }))
-  const elevation = Object.fromEntries(Object.entries(t.shadow).map(([k, v]) => [k, shadow(v)]))
-  const motion = Object.fromEntries(Object.entries(t.motion).map(([k, v]) => [k, other(v)]))
-  const fraunces = Object.fromEntries(Object.entries(t.fraunces).map(([k, v]) => [k, other(v)]))
-
-  // One group in Figma: the contract, then the roles it has no word for.
-  const Theme = { semantic: {} }
-  for (const [k, v] of Object.entries(t.semantic)) Theme.semantic[k] = named(alias(v), `semantic/${k}`, `shadcn/${k}`)
-  for (const [k, v] of Object.entries(t.status)) Theme.semantic[k] = named(alias(v), `semantic/${k}`, legacyRoleName(k))
-  // Each tint names the Figma variable it is cut from: a contract role, else the
-  // colour primitive whose CSS name it carries.
-  const colourNames = new Map()
-  const collectColours = (node) => { for (const v of Object.values(node)) { if (v.$type === 'color') { const n = v.$extensions['com.figma'].name; colourNames.set(n.slice('color/'.length), n) } else collectColours(v) } }
-  collectColours(primColor)
-  const Tints = t.tints.map(({ of, pct, text = false }) => {
-    const base = of in t.semantic ? `semantic/${of}` : colourNames.get(of)
-    if (!base) throw new Error(`tint '${of}/${pct}': '${of}' is neither a contract role nor a colour primitive`)
-    return { name: `tint/${of}/${pct}`, base, alpha: pct / 100, cssVar: `--${of}`, text }
-  })
-
-  // Retired names are not tokens any more, so they carry no value here — only the
-  // rename that parks their Figma variable under `deprecated/`, hidden from
-  // publishing. Never deleted: a file that consumes the library may be bound to one
-  // (the Icon vector fill is), which is why the list outlives its CSS.
-  const Deprecated = Object.fromEntries(Object.keys(t.retired).map((k) => [k, named({ $description: 'Retired 0.10.0 — use the semantic contract' }, `deprecated/${k}`, legacyRoleName(k))]))
-
-  return {
-    $description: 'Quill Design System tokens (DTCG). Colors/dimensions → Figma variables; shadows → effect styles; motion/fraunces are CSS-only.',
-    Primitives: { color: primColor, font, spacing, radius, borderWidth, type, lineHeight, leading, tracking, elevation, motion, fraunces },
-    Theme,
-    Deprecated,
-    Tints,
-  }
-}
-
 // --- main (not exercised by unit tests) ---
 function globalsBlock(css) {
   return `${darkVariant()}\n\n@theme inline {\n${css.theme}\n}\n\n:root {\n${css.root}\n}\n\n${modeBlocks(css)}\n\n${renderAiUtilities()}\n\n${renderForcedColors()}`
@@ -537,8 +416,6 @@ export function main() {
     join(root, 'src/tokens/generated/manager-theme.mjs'),
     `// GENERATED by scripts/build-tokens.mjs — do not edit.\nexport const managerTheme = ${JSON.stringify(renderManager(tokens), null, 2)}\n`,
   )
-  mkdirSync(join(root, 'tokens'), { recursive: true })
-  writeFileSync(join(root, 'tokens/quill.figma.json'), JSON.stringify(renderDtcg(tokens), null, 2) + '\n')
 
   // The `quill` registry item carries the token layer through shadcn's own
   // channel. registry.json is committed and partly generated (build-usage writes

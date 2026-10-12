@@ -5,9 +5,8 @@ name: Drift audit
 # per-PR CI can't catch (dependency freshness, security advisories, release
 # housekeeping) to the run's step summary. Fails — and so emails — only on an
 # actionable high/critical advisory. Per-PR deterministic invariants live in the
-# test suite. Figma↔code COMPONENT parity lives in its own daily workflow,
-# figma-parity.yml — detection + deterministic value-level repair PRs there;
-# structural repair stays on-demand via /figma-pull and /figma-push.
+# test suite. The Paper mirror is checked on the Mac that runs Paper
+# (npm run paper:daily); see scripts/DRIFT-AUDIT.md.
 
 on:
   schedule:

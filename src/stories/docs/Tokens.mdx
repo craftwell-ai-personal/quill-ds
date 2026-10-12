@@ -8,16 +8,15 @@ import { tokens } from '../../tokens/quill.tokens.mjs'
 
 Every Quill token, rendered live from the single source
 (`src/tokens/quill.tokens.mjs`). Editing that file and running
-`npm run build:tokens` regenerates the CSS, the shipped registry theme, the
-Storybook manager theme, and the Figma (DTCG) export — this page updates
+`npm run build:tokens` regenerates the CSS, the shipped registry theme and the
+Storybook manager theme — this page updates
 automatically because it imports the source directly.
 
-export const Row = ({ name, value, figma, swatch }) => (
+export const Row = ({ name, value, swatch }) => (
   <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '8px 0', borderBottom: '1px solid rgba(42,38,34,0.08)', fontSize: 12 }}>
     {swatch}
     <code style={{ width: 200 }}>{name}</code>
     <span style={{ color: '#675F58', flex: 1 }}>{value}</span>
-    {figma && <code style={{ color: '#944A33' }}>{figma}</code>}
   </div>
 )
 
@@ -34,7 +33,7 @@ export const colorRows = (obj, prefix = []) => Object.entries(obj).flatMap(([k, 
   ('light' in v && 'dark' in v)
     ? [<Row key={[...prefix, k].join('-')} swatch={<ColorSwatch v={v} />}
         name={'--' + [...prefix, k].filter(p => p !== 'base').join('-')}
-        value={`${v.light} / ${v.dark}`} figma={`color/${[...prefix, k].join('/')}`} />]
+        value={`${v.light} / ${v.dark}`} />]
     : colorRows(v, [...prefix, k])
 )
 
@@ -56,35 +55,35 @@ Labels are fixed-width on the left; the specimen sits on the right and is clippe
 ## Border radius
 
 <div>{Object.entries(tokens.radius).map(([k, v]) => (
-  <Row key={k} name={`--radius-${k}`} value={v} figma={`corner-radius/${k}`}
+  <Row key={k} name={`--radius-${k}`} value={v}
     swatch={<span style={{ width: 22, height: 22, background: '#E8DCC0', borderRadius: v }} />} />
 ))}</div>
 
 ## Spacing
 
 <div>{Object.entries(tokens.spacing).map(([k, v]) => (
-  <Row key={k} name={`--space-${k}`} value={v} figma={`spacing/${k}`}
+  <Row key={k} name={`--space-${k}`} value={v}
     swatch={<span style={{ height: 16, width: Math.min(parseFloat(v) * 16, 96), background: '#C4684B', opacity: 0.7, borderRadius: 2, display: 'inline-block', flexShrink: 0 }} />} />
 ))}</div>
 
 ## Border width
 
 <div>{Object.entries(tokens.borderWidth).map(([k, v]) => (
-  <Row key={k} name={`--border-width-${k}`} value={v} figma={`border-width/${k}`}
+  <Row key={k} name={`--border-width-${k}`} value={v}
     swatch={<span style={{ width: 24, height: 22, borderLeft: `${v} solid #2A2622`, background: '#EFE4CE', display: 'inline-block', flexShrink: 0 }} />} />
 ))}</div>
 
 ## Elevation
 
 <div>{Object.entries(tokens.shadow).map(([k, v]) => (
-  <Row key={k} name={k === 'base' ? '--shadow' : `--shadow-${k}`} value="light / dark" figma={`elevation/${k}`}
+  <Row key={k} name={k === 'base' ? '--shadow' : `--shadow-${k}`} value="light / dark"
     swatch={<span style={{ width: 22, height: 22, borderRadius: 5, background: '#F5EDDD', boxShadow: v.light }} />} />
 ))}</div>
 
 ## Fonts
 
 <div>{Object.entries(tokens.font).map(([k, v]) => (
-  <Row key={k} name={`--font-${k}`} value={v} figma={`font/${k}`}
+  <Row key={k} name={`--font-${k}`} value={v}
     swatch={<span style={{ fontFamily: v, width: 40 }}>Aa</span>} />
 ))}</div>
 
@@ -101,7 +100,7 @@ The 31 colour roles every component speaks. The names are shadcn-compatible, so 
 
 ## Status and accent roles
 
-Roles the contract has no word for. Plain variables, in the same `semantic` group in Figma.
+Roles the contract has no word for. Plain variables beside the contract.
 
 <div>{Object.entries(tokens.status).map(([name, alias]) => (
   <Row key={name}
@@ -112,7 +111,7 @@ Roles the contract has no word for. Plain variables, in the same `semantic` grou
 
 ## Fraunces presets · Motion — CSS-only
 
-These have no Figma variable type; they live in CSS and are documented here, not exported as variables.
+These live in CSS only and are documented here.
 
 <div>{Object.entries(tokens.fraunces).map(([k, v]) => <Row key={k} name={`--fraunces-${k}`} value={v} />)}</div>
 <div>{Object.entries(tokens.motion).map(([k, v]) => <Row key={k} name={`--${k.replace(/([A-Z])/g, '-$1').toLowerCase()}`} value={v} />)}</div>

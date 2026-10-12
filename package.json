@@ -1,6 +1,6 @@
 {
   "name": "quill-ds",
-  "version": "1.25.2",
+  "version": "1.26.0",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -39,8 +39,7 @@
     "pretest-storybook:coverage": "npm run build:icons",
     "test-storybook:coverage": "vitest --project=storybook run --coverage",
     "pretest-storybook:theme": "npm run build:icons",
-    "test-storybook:theme": "vitest --config scripts/theme-qa/vitest.config.ts --project=storybook run --reporter=dot --reporter=json --outputFile.json=.figma-type-audit/theme-qa/${QUILL_THEME:-light}.json",
-    "figma:visual": "node --env-file=.env scripts/figma-visual-diff.mjs --out .visual/out --sb .visual/sb"
+    "test-storybook:theme": "vitest --config scripts/theme-qa/vitest.config.ts --project=storybook run --reporter=dot --reporter=json --outputFile.json=.theme-qa/${QUILL_THEME:-light}.json"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",

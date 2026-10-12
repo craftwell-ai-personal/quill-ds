@@ -19,12 +19,12 @@ const eslintConfig = defineConfig([
     "public/storybook/**",
     "storybook-static/**",
     ".vercel/**",
-    // Scratch for the audit harnesses (gitignored; each holds a static Storybook build):
+    // Scratch (gitignored): theme-qa reports, and leftovers from the retired Figma tooling:
+    ".theme-qa/**",
     ".figma-type-audit/**",
     ".visual/**",
-    // Vendored minified library + Figma plugin-sandbox scripts (not app code):
+    // Vendored minified library (not app code):
     "public/axe.min.js",
-    "figma/**",
     // Generated icon modules (scripts/build-icons.mjs) — machine-written; their
     // ~1000 anonymous default exports drowned every real warning in lint output:
     "src/components/ui/icons/**",

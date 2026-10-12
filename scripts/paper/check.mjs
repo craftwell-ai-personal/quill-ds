@@ -6,13 +6,13 @@
  *   values   a few key layers (first text, first button, first filled surface) carry the
  *            colours, sizes and type the browser computed, with Paper's tokens resolved
  *   picture  Paper's 2x export of the layer against a 2x screenshot of the story, with
- *            the pixel method the Figma visual diff uses; a strip (Paper | Storybook | diff)
+ *            a pixel diff (./png-diff.mjs); a strip (Paper | Storybook | diff)
  *            is saved per story
  *
  * A story REGRESSES when it is worse than its own accepted baseline
  * (paper/visual-baseline.json): the picture differs by more than 1.0 point over the
  * accepted number, a size moved more than 8px, or text or a value that matched no longer
- * does. Same rule and numbers as the Figma visual diff.
+ * does.
  *
  *   npm run paper:check                          # every synced piece; exit 1 on a regression
  *   npm run paper:check -- --only button,faq
@@ -28,7 +28,7 @@ import { existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } 
 import { homedir } from 'node:os'
 import { basename, dirname, join, resolve } from 'node:path'
 import { PNG } from 'pngjs'
-import { comparePngs, flatten, padTo, REGRESSION_PCT, REGRESSION_PX, strip } from '../figma-visual-diff.mjs'
+import { comparePngs, flatten, padTo, REGRESSION_PCT, REGRESSION_PX, strip } from './png-diff.mjs'
 import { connect } from './client.mjs'
 import { parseColor, sameColor } from './color.mjs'
 import { captureStory, launch, normalizeText, visibleTexts } from './convert.mjs'

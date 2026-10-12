@@ -1,13 +1,13 @@
 /**
- * What the Paper file holds: one page per piece, as the Figma library has and as the
- * owner's other Paper library ("Mantis Design System") is laid out.
+ * What the Paper file holds: one page per piece, laid out like the owner's other
+ * Paper library ("Mantis Design System").
  *
  *   Foundations
  *   ❖ <Component>   one page per component, title case, alphabetical
  *   ◆ <Block>       one page per block
  *   ▣ <Template>    one page per page template
  *
- * The list is derived from the same folders the Figma coverage tests read, so a new
+ * The list is derived from the source folders, so a new
  * component, block or template shows up here (as `pending`) the moment its file exists:
  *
  *   components   src/components/ui/*.tsx and registry/lib/*.tsx (one piece per name)
@@ -20,8 +20,8 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { basename, join } from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { blockHash } from '../figma-stamp.mjs'
-import { canonicalStory } from '../figma-visual-diff.mjs'
+import { blockHash } from '../lib/source-hash.mjs'
+import { canonicalStory } from './png-diff.mjs'
 import { root } from './file.mjs'
 import { CONFIG, MAX_STORIES, NAMES } from './pieces.config.mjs'
 
@@ -124,7 +124,7 @@ const NEVER = [/--docs$/, /do-?dont$/, /--dark$/]
 /**
  * The stories a page shows, from Storybook's index (`entries`: id → entry with tags).
  *   never    the docs page, Do/Don't pairs, `Dark` stories, stories tagged `!autodocs` (the repo's mark for test-only stories)
- *   always   the canonical story (the one the Figma visual diff uses), first
+ *   always   the canonical story (./png-diff.mjs canonicalStory), first
  *   plus     every other story with no play function (Storybook tags those `play-fn`): a story that
  *            needs a script to reach its state is a test, a story that renders its state is a design
  *   then     the piece's `include` / `exclude` in pieces.config.mjs, and a cap (canonical kept)
@@ -148,7 +148,7 @@ export function selectStories(piece, entries, { max = MAX_STORIES } = {}) {
 
 // ------------------------------------------------------------------ source hash, summary, staleness
 
-/** The code behind a piece, hashed the way the Figma stamp is: comments and whitespace do not count. */
+/** The code behind a piece, hashed by scripts/lib/source-hash.mjs: comments and whitespace do not count. */
 export function sourceHash(piece, read = (path) => readFileSync(join(root, path), 'utf8')) {
   return blockHash(piece.sources.map(read).join('\n'))
 }

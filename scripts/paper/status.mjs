@@ -12,7 +12,7 @@
  *
  * Always exits 0: a stale piece is a to-do for whoever has Paper open, not a failure.
  */
-import { tokensHash } from '../figma-stamp.mjs'
+import { tokensHash } from '../lib/source-hash.mjs'
 import { readState, today, writeState } from './file.mjs'
 import { inventory, pageName, statusOf, storyFiles } from './pieces.mjs'
 import { isMain } from '../lib/is-main.mjs'

@@ -105,6 +105,10 @@ npx tsc --noEmit
 npm run lint
 ```
 
+Design files: the Paper file "Quill Design System" mirrors the code, one page per component,
+block and template, redrawn from Storybook with `npm run paper:sync` (Paper open on a Mac).
+Code is the source; Paper is never edited by hand. See `paper/README.md`.
+
 ### The generated layer
 
 `src/tokens/quill.tokens.mjs` is the single source of truth for colour, type, spacing,
@@ -113,7 +117,7 @@ regenerates all of it on every PR and fails on any diff, so never hand-edit thes
 
 | Command | Writes |
 |---|---|
-| `npm run build:tokens` | `src/app/globals.css`, `registry/themes/quill.css`, `tokens/quill.figma.json` |
+| `npm run build:tokens` | `src/app/globals.css`, `registry/themes/quill.css`, `src/tokens/generated` |
 | `npm run build:icons` | `src/components/ui/icons.core.mjs`, per-icon modules, the `IconName` union |
 | `npm run build:usage` | `public/usage/*.md`, registry `docs`/`description` fields |
 | `npm run build:agent-rules` | `registry/agent-rules/quill.md` — the rules file the `@quill/agent-rules` item installs into apps |
@@ -133,5 +137,5 @@ from there into Storybook, the published usage pages, the registry item, and llm
 - Every feature or fix PR bumps `version` in `package.json` and adds a `CHANGELOG.md` entry.
   Tagging and the GitHub release happen automatically after merge.
 - `main` is protected; changes land through a PR with CI green.
-- Scheduled bots handle dependency bumps, generated-file drift, releases, Figma parity, and
-  pushing each release out to the apps built on Quill. See `scripts/DRIFT-AUDIT.md`.
+- Scheduled bots handle dependency bumps, generated-file drift, releases, and pushing each
+  release out to the apps built on Quill. See `scripts/DRIFT-AUDIT.md`.

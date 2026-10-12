@@ -66,7 +66,7 @@ const closeMenu = async () => {
 }
 const groupLabels = (canvasElement: HTMLElement) => [...canvasElement.querySelectorAll('[data-slot="chat-group"]')].map((heading) => heading.textContent)
 
-// With no props: the sample, kept by the list itself. This is what the docs page and the Figma frame show.
+// With no props: the sample, kept by the list itself. This is what the docs page and Paper show.
 export const Default: Story = {
   play: async ({ canvas, canvasElement }) => {
     const nav = canvas.getByRole('navigation', { name: 'Past chats' })
@@ -81,8 +81,8 @@ export const Default: Story = {
   },
 }
 
-// The sample is live: it can be renamed without an app behind it. Kept out of Default, whose end state is what the
-// Figma visual diff captures.
+// The sample is live: it can be renamed without an app behind it. Kept out of Default, whose end state is what
+// Paper draws.
 export const SampleIsLive: Story = {
   play: async ({ canvas }) => {
     await userEvent.click(await within(await openMenu(canvas, 'Launch brief draft')).findByRole('menuitem', { name: 'Rename' }))

@@ -1,8 +1,5 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
-import { fileURLToPath } from 'node:url'
-import { dirname, join } from 'node:path'
 import { renderCss } from './build-tokens.mjs'
 import { tokens } from '../src/tokens/quill.tokens.mjs'
 import { ROLE_INTENTS, STATUS_INTENTS, TINT_INTENTS, renderRolesSection } from '../src/usage/roles.mjs'
@@ -10,7 +7,6 @@ import { ROLE_INTENTS, STATUS_INTENTS, TINT_INTENTS, renderRolesSection } from '
 // The agent docs named 3 to 12 of the 31 colour roles and said when to use none.
 // src/usage/roles.mjs now carries one line per role; these tests keep it complete
 // (a role cannot ship without a line) and true (a line cannot name what does not ship).
-const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const { theme, root: rootCss } = renderCss(tokens)
 const colourClasses = new Set([...theme.matchAll(/--color-([a-z0-9-]+):/g)].map((m) => m[1]))
 const variables = new Set([...rootCss.matchAll(/^\s*(--[a-z0-9-]+):/gm)].map((m) => m[1]))
@@ -20,8 +16,6 @@ test('every role that ships has an intent line, and nothing else does', () => {
   assert.deepEqual(Object.keys(STATUS_INTENTS), Object.keys(tokens.status))
   const tints = tokens.tints.map((t) => `tint/${t.of}/${t.pct}`)
   assert.equal(tints.length, 20)
-  // The Figma sync must read them from the export, not keep a table of its own.
-  assert.equal(/const TINTS = \[/.test(readFileSync(join(root, 'figma/sync-foundations.figma.js'), 'utf8')), false)
   assert.deepEqual(Object.keys(TINT_INTENTS), tints)
 })
 

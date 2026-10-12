@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { REGRESSION_PCT, REGRESSION_PX } from '../figma-visual-diff.mjs'
+import { REGRESSION_PCT, REGRESSION_PX } from './png-diff.mjs'
 import { acceptInto, check, compareValues, isOurExport, keyNodes, measured, parseTreeSummary, renderSummary, resolveColor, resolveLength, verdictOf } from './check.mjs'
 import { serialize } from './convert.mjs'
 import { orderState, planPages, upsertPiece } from './file.mjs'

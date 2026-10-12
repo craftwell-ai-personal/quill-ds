@@ -10,7 +10,7 @@ for t in dark classic-light classic-dark intelligent; do QUILL_THEME=$t npm run 
 node scripts/theme-qa/summarise.mjs                    # failing stories, element, measured contrast
 ```
 
-Reports land in `.figma-type-audit/theme-qa/<theme>.json` (gitignored). Each story also
+Reports land in `.theme-qa/<theme>.json` (gitignored). Each story also
 asserts that the wrapper really carries the requested `data-theme`, so a run that quietly
 rendered Dawn fails instead of passing for the wrong reason.
 

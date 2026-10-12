@@ -2,7 +2,7 @@
 
 Quill's components, blocks and page templates, drawn into the Paper file **Quill Design System** by script and kept in step with the code.
 
-Code is the source. Paper is a picture of it that a designer can open, measure and copy from. **To change what Paper shows, change the code and re-run the sync.**
+Paper is Quill's design file; Figma was retired on 2026-10-11 and is not kept in sync any more. Code is the source. Paper is a picture of it that a designer can open, measure and copy from. **To change what Paper shows, change the code and re-run the sync.**
 
 **Every page in this file belongs to the sync. Design in your own Paper file and copy frames from here.**
 
@@ -26,7 +26,7 @@ Each page has one artboard (Paper's word for a frame on the canvas), 1440 wide, 
 
 A piece that is closed until you use it (a dialog, a menu, a tooltip) is drawn **open**: its trigger on the left, the open panel beside it.
 
-The layers are named after the code (`button`, `usage-meter`, `chat-row`, `icon`), and colours, type, spacing and corner radius are bound to **tokens** (named values, like Figma variables), so the inspector reads `var(--color-card)` where the code says `bg-card`.
+The layers are named after the code (`button`, `usage-meter`, `chat-row`, `icon`), and colours, type, spacing and corner radius are bound to **tokens** (named values), so the inspector reads `var(--color-card)` where the code says `bg-card`.
 
 ### Which stories get drawn
 
@@ -79,7 +79,7 @@ For every story of every drawn piece:
 
 - **Text.** The text layers in Paper, in order, are exactly the text the story shows.
 - **Values.** For the first text, the first button and the first filled surface: colour, type size, line height, weight, typeface, padding, radius and border in Paper equal what the browser computed, after resolving Paper's tokens. This proves the tokens are bound and hold the right values.
-- **Picture.** Paper's export of the layer against a screenshot of the story, both at 2x, compared pixel by pixel with the same method and tolerances as the Figma visual diff. A three-panel strip (Paper, Storybook, difference) is saved per story under `.paper/strips/`.
+- **Picture.** Paper's export of the layer against a screenshot of the story, both at 2x, compared pixel by pixel, with a tolerance for font rasterisation (`scripts/paper/png-diff.mjs`). A three-panel strip (Paper, Storybook, difference) is saved per story under `.paper/strips/`.
 
 Pictures never match exactly (see "Known differences"), so each story has an **accepted** difference in `paper/visual-baseline.json`. A story *regresses* when its picture is more than 1.0 point worse than accepted, a size drifts more than 8px, or text or a value that matched stops matching. A story with no accepted number yet is reported as "without a baseline" and is not a failure.
 
@@ -94,7 +94,7 @@ The Paper file lives in Paper's cloud, like any Paper file. Two things are worth
 
 ## The daily check
 
-The closest thing to the Figma bot that Paper allows: a job on this Mac that does the sync and the check once a day and opens a pull request when something changed.
+A job on this Mac that does the sync and the check once a day and opens a pull request when something changed.
 
 **What it does each day**
 
@@ -146,27 +146,12 @@ Logs: `~/Library/Logs/quill-paper-sync/`, one file per run, the last 14 kept.
 | **Linked components** (a main component with instances and variants) | Every button on every page is a separate copy. Editing one changes nothing else. You can copy a Quill piece into a design, but it will not update when Quill does: it has to be copied again. | Draw each piece once as a component and place instances; give variants their own properties instead of separate sections. |
 | **Shared libraries** | The tokens and frames live in this one file. Another Paper file cannot subscribe to them. | Publish this file as the library; stop pushing tokens file by file. |
 | **Themes** (one token, several values) | The file is Dawn, with the moss accent. Dusk, the two Classic themes, Intelligent and the other accents are not there. | Push all five themes as modes of the same tokens and drop the Dawn-only rule. |
-| **Remote access** | Scripts can only reach Paper on a Mac with the app open. GitHub cannot check or repair it, so there is a daily job on this Mac instead of a bot in the cloud. | Move the sync and the check into a GitHub workflow, like `figma-parity`. |
-| **A way back to code** | Paper can show that someone changed a frame, but a frame has no identity that says "this is Quill's Button", and the layers inside are re-made on every sync. Edits made in Paper cannot be pulled into code. | Pull value edits from Paper into code, as `/figma-pull` does. |
+| **Remote access** | Scripts can only reach Paper on a Mac with the app open. GitHub cannot check or repair it, so there is a daily job on this Mac instead of a bot in the cloud. | Move the sync and the check into a GitHub workflow, like the other bots. |
+| **A way back to code** | Paper can show that someone changed a frame, but a frame has no identity that says "this is Quill's Button", and the layers inside are re-made on every sync. Edits made in Paper cannot be pulled into code. | Decide then whether value edits made in Paper should flow back into code. |
 | **Token types for shadow, motion, and font-axis settings** | Shadows and the Fraunces settings are written on each layer as plain values, not tokens. Change a shadow token and Paper only follows after a sync. | Push them as tokens and bind them. |
 | **Some CSS** | `background-clip` (see the button ring below), `scale` and `skew`, masks and clip-paths have no equivalent and are dropped; each loss is listed per piece in the record. Hover and focus behaviour does not exist in a still frame. | Nothing to switch on: re-run the sync and the losses disappear from the record. |
 
 Also worth knowing: a script cannot delete or reorder a page. When a piece is removed from Quill, the sync deletes that piece's artboard (only the one it recorded, and only if it still has the name the sync gave it) and renames the freed page `(unused 1)`. You can delete such a page by hand; if you do not, the sync reuses it for the next new piece.
-
-## Paper and Figma, job by job
-
-| Job | Figma | Paper |
-|---|---|---|
-| Source of truth | Code | Code |
-| Tokens | Variables with five modes, synced from the token source | Tokens with one value each (Dawn), pushed from the shipped theme |
-| A component | A main component with variants; instances update everywhere | Plain frames, one section per story; copies do not update |
-| Reaching a designer's other files | Published library | Not possible: copy and paste |
-| Getting a piece in | Built per piece (by hand or `/figma-push`), then stamped | Converted from the rendered story by script, every piece the same way |
-| Coverage record | `figma/sync-state.json` | `paper/sync-state.json` |
-| "Did the code move?" | The re-stamp guard fails the build | `paper:status` reports it; the build does not fail |
-| Picture comparison | Nightly on GitHub, `figma/visual-baseline.json` | `paper:check` on this Mac, `paper/visual-baseline.json` |
-| Daily parity bot | `figma-parity` on GitHub; repairs value drift and merges itself | `paper:daily` on this Mac, only while it is on with Paper open; opens a pull request, never merges |
-| Design edits flowing back to code | `/figma-pull` | Not possible |
 
 ## Known differences from the browser
 

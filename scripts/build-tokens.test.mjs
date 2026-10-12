@@ -2,7 +2,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { transform } from 'lightningcss'
 import { readFileSync } from 'node:fs'
-import { renderCss, injectMarkers, cssVarName, registryBlock, registryPayload, renderManager, renderDtcg, darkVariant, MODES, renderAiUtilities, AI_UTILITIES, AI_RULES, FORCED_COLORS_RULES, renderForcedColors } from './build-tokens.mjs'
+import { renderCss, injectMarkers, cssVarName, registryBlock, registryPayload, renderManager, darkVariant, MODES, renderAiUtilities, AI_UTILITIES, AI_RULES, FORCED_COLORS_RULES, renderForcedColors } from './build-tokens.mjs'
 import { tokens } from '../src/tokens/quill.tokens.mjs'
 import { renderPrinciples } from '../src/usage/foundations.mjs'
 
@@ -66,13 +66,6 @@ test('renderCss emits prefixed vars + remaps for the classic modes', () => {
   assert.equal(byAttr['dark'].body, renderCss(tokens).dark)
 })
 
-test('DTCG color tokens carry all four Figma modes', () => {
-  const d = renderDtcg(tokens)
-  const paper = d.Primitives.color.paper.base
-  assert.equal(paper.$extensions['com.figma'].modes['Classic Light'], '#FFFFFF')
-  assert.equal(paper.$extensions['com.figma'].modes['Classic Dark'], '#000000')
-})
-
 test('accent blocks emit after theme blocks so the chosen accent wins on <html>', () => {
   const css = renderCss(tokens)
   const block = registryBlock(css)
@@ -119,49 +112,13 @@ test('manager theme resolves literals incl. readable input border', () => {
   assert.equal(m.textColor, '#2A2622')     // ink light
 })
 
-test('DTCG Primitives.font entries have fontFamily type and correct value', () => {
-  const d = renderDtcg(tokens)
-  assert.equal(d.Primitives.font.sans.$type, 'fontFamily')
-  assert.equal(d.Primitives.font.sans.$value, tokens.font.sans)
-  assert.equal(d.Primitives.font.display.$type, 'fontFamily')
-  assert.equal(d.Primitives.font.display.$value, tokens.font.display)
-  assert.equal(d.Primitives.font.heading.$type, 'fontFamily')
-  assert.equal(d.Primitives.font.mono.$type, 'fontFamily')
-})
-
-test('DTCG export types + modes + Figma-friendly grouping', () => {
-  const d = renderDtcg(tokens)
-  const paper = d.Primitives.color.paper.base
-  assert.equal(paper.$type, 'color')
-  assert.equal(paper.$extensions['com.figma'].modes.Light, '#F5EDDD')
-  assert.equal(paper.$extensions['com.figma'].modes.Dark, '#20180E')
-  assert.equal(d.Primitives.radius.lg.$type, 'dimension')
-  assert.equal(d.Primitives.elevation.pop.$type, 'shadow')
-  // motion is explicitly non-variable
-  assert.equal(d.Primitives.motion.dur.$type, 'other')
-  // semantic aliases must resolve to real $type-bearing leaves in the document
-  const resolveAlias = (val) => {
-    const match = val.match(/^\{(.+)\}$/)
-    assert.ok(match, `$value '${val}' is not a DTCG alias reference`)
-    return match[1].split('.').reduce((node, seg) => {
-      assert.ok(node && typeof node === 'object', `path segment '${seg}' not found in document`)
-      return node[seg]
-    }, d)
-  }
-  // spot-check: text-accent-color must resolve to Primitives.color.pigment.moss.deep
-  const accentAlias = d.Theme.semantic['text-accent-color']
-  assert.equal(accentAlias.$value, '{Primitives.color.pigment.moss.deep}')
-  const accentLeaf = resolveAlias(accentAlias.$value)
-  assert.equal(accentLeaf.$type, 'color', `text-accent-color alias did not resolve to a color leaf`)
-  // iterate every Theme.*.*  alias and assert it resolves to a leaf with $type
-  for (const [bucket, entries] of Object.entries(d.Theme)) {
-    for (const [tokenName, tokenObj] of Object.entries(entries)) {
-      const leaf = resolveAlias(tokenObj.$value)
-      assert.ok(
-        leaf && typeof leaf.$type === 'string',
-        `Theme.${bucket}['${tokenName}'] alias '${tokenObj.$value}' does not resolve to a leaf with $type`,
-      )
-    }
+test('every role colour reads a variable the theme declares', () => {
+  // A role that names a missing primitive compiles to an unset variable and paints nothing.
+  const { root } = renderCss(tokens)
+  for (const [k, v] of Object.entries({ ...tokens.semantic, ...tokens.status })) {
+    const name = /^var\((--[a-z0-9-]+)\)$/.exec(v)?.[1]
+    assert.ok(name, `${k}: '${v}' is not var(--x)`)
+    assert.match(root, new RegExp(`${name}:`), `${k} reads ${name}, which :root never declares`)
   }
 })
 
@@ -211,7 +168,7 @@ test('a colour utility is spelled like the CSS variable it reads', () => {
 test('every type size ships the line height its utility renders', () => {
   // `text-sm` has always rendered 13.6px on a 142.857% line: Tailwind's default
   // pairing, inherited silently when Quill re-cut the sizes. Nothing declared it,
-  // so Figma's text styles were typed by hand and drifted (Body/S at 160%).
+  // so hand-typed text styles drifted (Body/S at 160%).
   // `2xs` is Quill's own size with no pairing — it inherits, on purpose.
   const { theme } = renderCss(tokens)
   for (const size of Object.keys(tokens.text)) {
@@ -220,12 +177,6 @@ test('every type size ships the line height its utility renders', () => {
     assert.ok(declared, `--text-${size}--line-height should ship`)
     assert.equal(declared[1], tokens.textLeading[size])
   }
-  // The export carries them as plain ratios so the Figma sync can write percentages.
-  const d = renderDtcg(tokens)
-  assert.equal(d.Primitives.lineHeight.sm.$type, 'number')
-  assert.ok(Math.abs(d.Primitives.lineHeight.sm.$value - 1.25 / 0.875) < 1e-6)
-  assert.equal(d.Primitives.lineHeight['5xl'].$value, 1)
-  assert.equal(d.Primitives.lineHeight['2xs'], undefined)
 })
 
 test('the leading and tracking roles ship as utilities and as variables', () => {
@@ -239,11 +190,6 @@ test('the leading and tracking roles ship as utilities and as variables', () => 
     assert.match(theme, new RegExp(`--tracking-${k}:\\s*${v.replace('.', '\\.')};`), `tracking-${k} utility`)
     assert.match(root, new RegExp(`--tracking-${k}:\\s*${v.replace('.', '\\.')};`), `--tracking-${k} variable`)
   }
-  const d = renderDtcg(tokens)
-  assert.equal(d.Primitives.leading.reading.$value, 1.7)
-  // Figma takes letter spacing as a percentage of the font size: -0.03em is -3.
-  assert.equal(d.Primitives.tracking.display.$value, -3)
-  assert.equal(d.Primitives.tracking.eyebrow.$value, 15)
 })
 
 test('a leading or tracking role never reuses one of Tailwind\'s own names', () => {
@@ -258,32 +204,23 @@ test('a leading or tracking role never reuses one of Tailwind\'s own names', () 
   assert.deepEqual(Object.keys(tokens.tracking).filter((k) => owned('tracking').has(k)), [])
 })
 
-test('the sanctioned tints are declared in the token source and exported for Figma', () => {
-  // They lived in a table inside the Figma sync snippet: a design decision (which
-  // opacities the system uses on purpose) that the token source knew nothing about.
+test('the sanctioned tints are declared in the token source, each cut from a real colour', () => {
+  // Which opacities the system uses on purpose is a design decision, so it lives in the
+  // token source; src/usage/roles.mjs says what each is for.
   assert.equal(tokens.tints.length, 20)
-  const d = renderDtcg(tokens)
-  assert.equal(d.Tints.length, tokens.tints.length)
-  assert.deepEqual(d.Tints.find((t) => t.name === 'tint/ring/50'), { name: 'tint/ring/50', base: 'semantic/ring', alpha: 0.5, cssVar: '--ring', text: false })
-  const names = new Set()
-  const collect = (o) => { for (const v of Object.values(o)) { if (!v || typeof v !== 'object') continue; const f = v.$extensions?.['com.figma']; if (f?.name) names.add(f.name); else collect(v) } }
-  collect(d.Primitives); collect(d.Theme)
-  for (const t of d.Tints) {
-    assert.match(t.name, /^tint\/[a-z0-9-]+\/\d+$/)
-    assert.ok(names.has(t.base), `${t.name}: base '${t.base}' is not a variable the export produces`)
-    assert.ok(t.alpha > 0 && t.alpha < 1)
-    assert.match(t.cssVar, /^--[a-z0-9-]+$/)
+  const colours = new Set()
+  const walk = (o, path) => { for (const [k, v] of Object.entries(o)) { if (v && 'light' in v && 'dark' in v) colours.add(cssVarName([...path, k]).slice(2)); else if (v && typeof v === 'object') walk(v, [...path, k]) } }
+  walk(tokens.color, [])
+  for (const { of, pct } of tokens.tints) {
+    assert.ok(of in tokens.semantic || colours.has(of), `tint '${of}/${pct}': '${of}' is neither a contract role nor a colour primitive`)
+    assert.ok(pct > 0 && pct < 100, `tint '${of}/${pct}': opacity out of range`)
   }
-  const byName = Object.fromEntries(d.Tints.map((t) => [t.name, t]))
-  assert.deepEqual(byName['tint/destructive/10'], { name: 'tint/destructive/10', base: 'semantic/destructive', alpha: 0.1, cssVar: '--destructive', text: false })
-  assert.equal(byName['tint/moss/20'].base, 'color/moss')
-  assert.equal(byName['tint/sidebar-foreground/70'].text, true) // a text tint gets text scopes in Figma
 })
 
 test('--space-N is the step Tailwind renders for p-N, so the variable and the class never disagree', () => {
   // Nothing reads --space-* (not shipped code, not the site, not the app): components
-  // write `p-4`. The variables stay because they are the CSS name behind Figma's
-  // `space/*` and the documented scale — which is only honest while both are 0.25rem × N.
+  // write `p-4`. The variables stay because they are the CSS name behind Paper's
+  // `--spacing-*` tokens and the documented scale — only honest while both are 0.25rem × N.
   const defaults = readFileSync(new URL('../node_modules/tailwindcss/theme.css', import.meta.url), 'utf8')
   const step = defaults.match(/--spacing:\s*([\d.]+)rem;/)
   assert.ok(step, 'Tailwind theme not read — guard is vacuous')

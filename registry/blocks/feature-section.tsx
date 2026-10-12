@@ -1,7 +1,7 @@
 import { Icon, type IconName } from '@/components/ui/icon'
 
 const features: { icon: IconName; title: string; body: string }[] = [
-  { icon: 'palette', title: 'Design tokens', body: 'One source of truth flows to code and Figma alike.' },
+  { icon: 'palette', title: 'Design tokens', body: 'One source of truth flows to code and design files alike.' },
   { icon: 'dashboard', title: 'Composable', body: 'Build screens fast from accessible, themeable components.' },
   { icon: 'check_circle', title: 'Accessible', body: 'WCAG 2.1 AA out of the box, verified in CI.' },
 ]

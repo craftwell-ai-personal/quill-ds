@@ -7,7 +7,7 @@ import { inventory, KINDS, pageName, storyFiles } from './paper/pieces.mjs'
 
 // Does every component, block and template have a declared place in the Paper file?
 //
-// The same question the Figma coverage tests ask, over the same folders
+// Asked over the source folders
 // (src/components/ui, registry/lib, registry/blocks, registry/examples). Paper can only
 // be written from a Mac with the app open, so a piece is allowed to be `pending`: what is
 // not allowed is a piece nobody has accounted for. Being out of date is NOT a failure here

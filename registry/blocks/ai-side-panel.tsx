@@ -16,8 +16,7 @@ const SOURCE: Source = { title: 'Changelog: new pricing page', label: 'changelog
 
 type Turn = { id: number; ask: string; reply: 'working' | 'stopped' }
 
-// One literal on purpose: the Figma parity check counts every <Icon name="…"> in this file, and the panel drawn on
-// its own shows a single close (the chip's). The Sheet's Close reuses this.
+// One close icon, shared: the Sheet's Close reuses this.
 const closeIcon = (size?: number) => <Icon name="close" size={size} />
 
 // The thread has to move this many px before the fade appears: its top padding. Less than that and nothing has gone
