@@ -41,11 +41,14 @@ export const Default: Story = {
       <CarouselContent>
         {Array.from({ length: 5 }, (_, i) => (
           <CarouselItem key={i}>
-            <Card>
-              <CardContent className="flex aspect-square items-center justify-center p-6">
-                <span className="text-4xl font-semibold text-ink">{i + 1}</span>
-              </CardContent>
-            </Card>
+            {/* Room for the card's outer ring: the track clips at the slide edge, which would leave only the ring's corners showing */}
+            <div className="p-1">
+              <Card>
+                <CardContent className="flex aspect-square items-center justify-center p-6">
+                  <span className="text-4xl font-semibold text-ink">{i + 1}</span>
+                </CardContent>
+              </Card>
+            </div>
           </CarouselItem>
         ))}
       </CarouselContent>
@@ -61,11 +64,13 @@ export const MultipleItems: Story = {
       <CarouselContent className="-ml-2">
         {Array.from({ length: 6 }, (_, i) => (
           <CarouselItem key={i} className="pl-2 basis-1/3">
-            <Card>
-              <CardContent className="flex aspect-square items-center justify-center p-3">
-                <span className="text-xl font-semibold text-ink">{i + 1}</span>
-              </CardContent>
-            </Card>
+            <div className="p-1">
+              <Card>
+                <CardContent className="flex aspect-square items-center justify-center p-3">
+                  <span className="text-xl font-semibold text-ink">{i + 1}</span>
+                </CardContent>
+              </Card>
+            </div>
           </CarouselItem>
         ))}
       </CarouselContent>
@@ -82,11 +87,13 @@ export const Vertical: Story = {
         {Array.from({ length: 5 }, (_, i) => (
           <CarouselItem key={i}>
             {/* Fill the slide: a card shorter than the h-64 viewport leaves a gap above the Next button that the Previous button doesn't have */}
-            <Card className="h-full">
-              <CardContent className="flex flex-1 items-center justify-center p-6">
-                <span className="text-4xl font-semibold text-ink">{i + 1}</span>
-              </CardContent>
-            </Card>
+            <div className="h-full p-1">
+              <Card className="h-full">
+                <CardContent className="flex flex-1 items-center justify-center p-6">
+                  <span className="text-4xl font-semibold text-ink">{i + 1}</span>
+                </CardContent>
+              </Card>
+            </div>
           </CarouselItem>
         ))}
       </CarouselContent>
@@ -111,11 +118,13 @@ export const DoDont: Story = {
             <CarouselContent>
               {Array.from({ length: 2 }, (_, i) => (
                 <CarouselItem key={i}>
-                  <Card>
-                    <CardContent className="flex aspect-square items-center justify-center p-4">
-                      <span className="text-2xl font-semibold text-ink">{i + 1}</span>
-                    </CardContent>
-                  </Card>
+                  <div className="p-1">
+                    <Card>
+                      <CardContent className="flex aspect-square items-center justify-center p-4">
+                        <span className="text-2xl font-semibold text-ink">{i + 1}</span>
+                      </CardContent>
+                    </Card>
+                  </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -130,11 +139,13 @@ export const DoDont: Story = {
             <CarouselContent>
               {Array.from({ length: 2 }, (_, i) => (
                 <CarouselItem key={i}>
-                  <Card>
-                    <CardContent className="flex aspect-square items-center justify-center p-4">
-                      <span className="text-2xl font-semibold text-ink">{i + 1}</span>
-                    </CardContent>
-                  </Card>
+                  <div className="p-1">
+                    <Card>
+                      <CardContent className="flex aspect-square items-center justify-center p-4">
+                        <span className="text-2xl font-semibold text-ink">{i + 1}</span>
+                      </CardContent>
+                    </Card>
+                  </div>
                 </CarouselItem>
               ))}
             </CarouselContent>

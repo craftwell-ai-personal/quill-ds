@@ -2749,14 +2749,14 @@
         "src/stories/carousel.stories.tsx",
         "src/usage/carousel.usage.mjs"
       ],
-      "sourceHash": "da59d2e700d8ba2f",
+      "sourceHash": "ccd8ed0e366bc8fa",
       "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
-        "nodes": 89,
+        "nodes": 105,
         "approximated": 3,
-        "bound": 316,
-        "bindable": 316,
+        "bound": 380,
+        "bindable": 380,
         "bindingRate": 1
       },
       "notes": [],
@@ -2766,19 +2766,19 @@
           "id": "components-carousel--default",
           "title": "Default",
           "opened": "none",
-          "nodes": 28,
+          "nodes": 33,
           "approximated": 1,
-          "bound": 98,
-          "bindable": 98,
+          "bound": 118,
+          "bindable": 118,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2TTS-0",
+              "nodeId": "2TZV-0",
               "size": [
                 320,
                 224
               ],
-              "htmlHash": "b57c0824311ce9d1"
+              "htmlHash": "f0cb2ffb1448231b"
             }
           ]
         },
@@ -2786,19 +2786,19 @@
           "id": "components-carousel--multiple-items",
           "title": "Multiple Items",
           "opened": "none",
-          "nodes": 32,
+          "nodes": 38,
           "approximated": 1,
-          "bound": 116,
-          "bindable": 116,
+          "bound": 140,
+          "bindable": 140,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2TUW-0",
+              "nodeId": "2U1C-0",
               "size": [
                 320,
-                90.66
+                97.59
               ],
-              "htmlHash": "0b852d1cd8e1ed38"
+              "htmlHash": "60aa6b7fbc5919d6"
             }
           ]
         },
@@ -2806,19 +2806,19 @@
           "id": "components-carousel--vertical",
           "title": "Vertical",
           "opened": "none",
-          "nodes": 29,
+          "nodes": 34,
           "approximated": 1,
-          "bound": 102,
-          "bindable": 102,
+          "bound": 122,
+          "bindable": 122,
           "parts": [
             {
               "part": "main",
-              "nodeId": "2TWD-0",
+              "nodeId": "2U2Z-0",
               "size": [
                 320,
                 368
               ],
-              "htmlHash": "8e523e93d795c087"
+              "htmlHash": "a8556b8ef5979bc2"
             }
           ]
         }
