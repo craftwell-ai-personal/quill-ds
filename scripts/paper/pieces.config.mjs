@@ -59,7 +59,8 @@ export const CONFIG = {
   'ai-side-panel': { include: ['patterns-ai-ai-side-panel--no-scope', 'patterns-ai-ai-side-panel--empty-app-thread'] },
   // not `history-in-the-panel`: its play ends on a different chat in a built Storybook than in the dev server,
   // so it is not one stable picture (found when the daily job's static build disagreed with a local sync)
-  // ai-home has two stories and the other is the same page at phone width, which needs a phone-sized window
+  // ai-home's Agent tab is reached by a play; Phone is left out, the same page at phone width needs a phone-sized window
+  'ai-home': { include: ['patterns-ai-ai-home--agent-tab'] },
 
   // ---- the five pieces of the first spike keep their hand-picked stories where the rule differs
   // every other story of these four asserts something with a play function; these are the states worth drawing

@@ -8684,15 +8684,15 @@
         "src/stories/patterns/AiHome.stories.tsx",
         "src/usage/ai-home.usage.mjs"
       ],
-      "sourceHash": "e2973452a8b54db1",
+      "sourceHash": "2876c16614425cbf",
       "syncedAt": "2026-10-12",
       "counts": {
-        "stories": 1,
-        "nodes": 46,
-        "approximated": 5,
-        "bound": 153,
-        "bindable": 162,
-        "bindingRate": 0.944
+        "stories": 2,
+        "nodes": 92,
+        "approximated": 10,
+        "bound": 304,
+        "bindable": 324,
+        "bindingRate": 0.938
       },
       "notes": [],
       "lost": [
@@ -8710,12 +8710,32 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "3MUW-0",
+              "nodeId": "3QBX-0",
               "size": [
                 1232,
                 512
               ],
               "htmlHash": "2601920c41e74ba5"
+            }
+          ]
+        },
+        {
+          "id": "patterns-ai-ai-home--agent-tab",
+          "title": "Agent Tab",
+          "opened": "none",
+          "nodes": 46,
+          "approximated": 5,
+          "bound": 151,
+          "bindable": 162,
+          "parts": [
+            {
+              "part": "main",
+              "nodeId": "3QDT-0",
+              "size": [
+                1232,
+                512
+              ],
+              "htmlHash": "72a9b99ac71d095f"
             }
           ]
         }

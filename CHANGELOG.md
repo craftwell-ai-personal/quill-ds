@@ -24,6 +24,7 @@ footer reads `package.json` directly, so the displayed version updates with the 
 - **Login with OAuth:** the Apple logo's drawing area is cropped to the glyph, so it is as tall as the Google and GitHub logos (16px, was 12px); each label is at least as wide as the longest, so the three logos line up in one column.
 - **Wizard:** only steps followed by a connector stretch, so the stepper spans the whole header instead of stopping short.
 - **Collapsible story:** the "(3)" count uses lining figures, so the 3 sits level with its brackets (Raleway's default old-style 3 dips below them).
+- **AI Home · Agent Tab story:** the page with the Agent tab chosen, so the design file shows both modes (it showed only Ask).
 - **AI Chat story (Agent pieces in one thread):** the page scrolls to the end after the feedback form opens, as an app does for a new turn, so the form is no longer hidden under the pinned composer.
 - **Paper sync, from review comments in Paper:**
   - Recharts draws its lines and bars in with a script that the CSS freeze misses; the sync now waits it out, so a line chart no longer stops short of its last point.

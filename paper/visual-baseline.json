@@ -4457,6 +4457,21 @@
    "piece": "ai-chat",
    "at": "2026-10-12"
   },
+  "patterns-ai-ai-home--agent-tab": {
+   "diffPct": 0.14,
+   "paper": [
+    1232,
+    512
+   ],
+   "storybook": [
+    1232,
+    512
+   ],
+   "text": false,
+   "values": "13/21",
+   "piece": "ai-home",
+   "at": "2026-10-12"
+  },
   "patterns-ai-ai-home--default": {
    "diffPct": 0.15,
    "paper": [
