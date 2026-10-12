@@ -13,6 +13,11 @@ within a minute, and that release is what triggers `library-sync` into the apps;
 manual tag races the bot and can leave a tag with no release behind it. The homepage
 footer reads `package.json` directly, so the displayed version updates with the bump.
 
+## [1.26.1] — 2026-10-11
+
+### Fixed
+- **Carousel · Vertical story:** the cards now fill the 256px slide, so the Next button sits the same 20px below the card as the Previous button sits above it. Before, each card was only as tall as its number, leaving a large empty gap above the bottom button. Story-only change; the shipped carousel is unchanged.
+
 ## [1.26.0] — 2026-10-11
 
 Figma is retired. Paper is Quill's design file, drawn from the code one way (code → Paper); nothing connects to, reads from or updates Figma any more.

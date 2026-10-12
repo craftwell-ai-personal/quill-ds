@@ -81,8 +81,9 @@ export const Vertical: Story = {
       <CarouselContent className="h-64">
         {Array.from({ length: 5 }, (_, i) => (
           <CarouselItem key={i}>
-            <Card>
-              <CardContent className="flex items-center justify-center p-6">
+            {/* Fill the slide: a card shorter than the h-64 viewport leaves a gap above the Next button that the Previous button doesn't have */}
+            <Card className="h-full">
+              <CardContent className="flex flex-1 items-center justify-center p-6">
                 <span className="text-4xl font-semibold text-ink">{i + 1}</span>
               </CardContent>
             </Card>

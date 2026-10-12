@@ -2749,8 +2749,8 @@
         "src/stories/carousel.stories.tsx",
         "src/usage/carousel.usage.mjs"
       ],
-      "sourceHash": "49d826da90f59971",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "da59d2e700d8ba2f",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 89,
@@ -2773,7 +2773,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OIT-0",
+              "nodeId": "2TJK-0",
               "size": [
                 320,
                 224
@@ -2793,7 +2793,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OJX-0",
+              "nodeId": "2TKO-0",
               "size": [
                 320,
                 90.66
@@ -2813,12 +2813,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OLE-0",
+              "nodeId": "2TM5-0",
               "size": [
                 320,
                 368
               ],
-              "htmlHash": "c69c92588cf33dc5"
+              "htmlHash": "f285fc1a83ca4ad1"
             }
           ]
         }
