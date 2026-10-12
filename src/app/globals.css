@@ -963,9 +963,16 @@
      and counts bounced and their columns did not line up. Where numbers are data they sit
      on the line at one width; running text keeps old-style. Setting --tw-numeric-figure
      too makes the stock `tabular-nums` utility, which leaves it empty, lining as well. */
-  [data-slot=calendar], [data-slot=table], [data-slot=input-otp], [data-slot=input-otp-group], [data-slot=chart], [data-slot=progress], .tabular-nums {
+  [data-slot=calendar], [data-slot=table], [data-slot=input-otp], [data-slot=input-otp-group], [data-slot=chart], [data-slot=progress], [data-slot=avatar-group-count], .tabular-nums {
     --tw-numeric-figure: lining-nums;
     font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  /* An avatar group's +N count: centred by its line box, the digits sat 1px high (the box keeps
+     room above cap height that numerals never fill). 2px of top padding moves the centred text
+     down 1px, measured on-centre at all three avatar sizes. A count showing an icon is left alone. */
+  [data-slot=avatar-group-count]:not(:has(> svg)) {
+    padding-top: 2px;
   }
   a {
     /* --text-accent-color resolves to --terracotta-deep (WCAG AA 4.5:1 on paper);

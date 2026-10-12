@@ -9,7 +9,7 @@ import { join, relative, resolve, dirname, extname } from 'node:path'
 import { createRequire } from 'node:module'
 
 export const DATA = {
- "version": "1.25.0",
+ "version": "1.25.1",
  "prefixes": [
   "bg",
   "text",

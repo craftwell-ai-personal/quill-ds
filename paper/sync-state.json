@@ -1748,13 +1748,13 @@
         "src/usage/avatar.usage.mjs"
       ],
       "sourceHash": "b1ab367abc501ac2",
-      "syncedAt": "2026-10-07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 5,
         "nodes": 94,
         "approximated": 21,
-        "bound": 114,
-        "bindable": 114,
+        "bound": 117,
+        "bindable": 117,
         "bindingRate": 1
       },
       "notes": [],
@@ -1771,7 +1771,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1N5M-0",
+              "nodeId": "2SUR-0",
               "size": [
                 32,
                 32
@@ -1791,7 +1791,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1N5W-0",
+              "nodeId": "2SV1-0",
               "size": [
                 32,
                 32
@@ -1811,7 +1811,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1N67-0",
+              "nodeId": "2SVC-0",
               "size": [
                 151.33,
                 64
@@ -1826,17 +1826,17 @@
           "opened": "none",
           "nodes": 46,
           "approximated": 12,
-          "bound": 55,
-          "bindable": 55,
+          "bound": 58,
+          "bindable": 58,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1N7J-0",
+              "nodeId": "2SWO-0",
               "size": [
                 136,
                 216
               ],
-              "htmlHash": "e16af9d6829e7649"
+              "htmlHash": "b23405eacaac80fe"
             }
           ]
         },
@@ -1851,7 +1851,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1NA7-0",
+              "nodeId": "2SZC-0",
               "size": [
                 195.23,
                 64
