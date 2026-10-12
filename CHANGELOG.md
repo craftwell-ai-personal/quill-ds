@@ -13,6 +13,11 @@ within a minute, and that release is what triggers `library-sync` into the apps;
 manual tag races the bot and can leave a tag with no release behind it. The homepage
 footer reads `package.json` directly, so the displayed version updates with the bump.
 
+## [1.25.2] — 2026-10-11
+
+### Fixed
+- Storybook (site only): a tab opened before a deploy no longer stops at "Failed to fetch dynamically imported module". Each deploy renames Storybook's story files; when one fails to load, Vite raises `vite:preloadError`, and the preview now reloads to the current deploy (at most once a minute, so a genuinely broken file still shows its error). Vercel Skew Protection was already on for the project, but it cannot cover Storybook's static files, and pinning them by cookie would keep a reload on the old deploy. Nothing ships to apps.
+
 ## [1.25.1] — 2026-10-11
 
 ### Fixed
