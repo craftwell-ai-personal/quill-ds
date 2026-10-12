@@ -655,7 +655,9 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
     })
     // gradient stops stay literal (Paper does not resolve a token there) but in the short spelling
     markup = markup.replace(/stop-color="([^"]+)"/g, (_, value) => { const parsed = parseColor(value); return `stop-color="${parsed ? formatColor(parsed) : value}"` })
-    const style = dropDefaults({ ...extra, 'flex-shrink': '0', opacity: String(round(num(node.used.opacity), 3)) })
+    // an icon turned to show state (an open disclosure's chevron, rotate-90) keeps its turn
+    const turn = turnOf(node.used).degrees
+    const style = dropDefaults({ ...extra, 'flex-shrink': '0', opacity: String(round(num(node.used.opacity), 3)), rotate: turn ? `${turn}deg` : undefined })
     const css = Object.entries(style).map(([property, value]) => `${property}:${value}`).join(';')
     const name = node.slot || 'svg'
     return emit({ tag: 'svg', raw: markup.replace(/^<svg/, `<svg layer-name="${escapeAttr(name)}" style="${escapeAttr(css)}"`), style: {}, children: [] })
@@ -687,6 +689,16 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
     const size = sizeStyles(node, context, { ...inherited, isRoot })
     if (node.tag === 'svg') return convertSvg(node, context, size)
     if (node.tag === 'img' || MEDIA.has(node.tag)) return convertMedia(node, context, size)
+    // A paragraph traced line by line (see captureInPage: a highlight that wraps): marks underneath, text runs on top
+    if (node.lines) {
+      note('approximated', node, 'a highlight wrapping across lines: the paragraph is traced line by line')
+      const marks = node.lines.marks.map((mark) => emit({ tag: 'div', name: 'highlight', style: dropDefaults({ display: 'flex', position: 'absolute', left: px(mark.x), top: px(mark.y), width: px(mark.w), height: px(mark.h), 'background-color': binder.color('background', mark.color), 'border-radius': mark.radius ? px(mark.radius) : undefined }), children: [] }))
+      const runs = node.lines.runs.map((run) => textNode(run.text.replace(/\s+$/, ''), { used: run.used }, [], context, { position: 'absolute', left: px(run.x), top: px(run.y), 'white-space': 'pre' }))
+      // a box in the line (a chip) is placed where the browser put it, as any pinned layer is
+      const placed = { textClasses: [], parentAutoHeight: false, windowShift: inherited.windowShift, reach: inherited.reach, parentRect: node.rect, parentBorder: { left: num(node.used.borderLeftWidth), top: num(node.used.borderTopWidth) } }
+      const boxes = (node.lines.boxes ?? []).map((box) => convert({ ...box, used: { ...box.used, position: 'absolute' } }, placed)).filter(Boolean)
+      return emit({ tag: 'div', name: layerName(node), style: dropDefaults({ display: 'flex', ...boxStyles(node, context), ...size, position: size.position ?? 'relative', width: px(node.rect.w), height: px(node.rect.h) }), children: [...marks, ...runs, ...boxes] })
+    }
     // A masked shape (the prompt composer's tab-base curve) is drawn from a photo of itself: Paper has no mask, and
     // without one the shape's fill shows as a solid square. The photo already holds its fill, edge and see-through parts.
     if (node.photo && images[node.photo]) {
@@ -772,6 +784,12 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
         // in a column, `justify-items` is the cross axis and `align-content` the main one
         if (!['normal', 'stretch', 'legacy'].includes(node.used.justifyItems)) frame['align-items'] = node.used.justifyItems
         if (!['normal', 'stretch'].includes(node.used.alignContent)) frame['justify-content'] = node.used.alignContent
+        // One row (a `grid place-items-center` badge round an icon): the row fills the box and align-items places the
+        // item within it, so top to bottom it is centred too. With more rows each is only as tall as its content.
+        else if (elements.length === 1) {
+          const place = { center: 'center', start: 'flex-start', 'flex-start': 'flex-start', end: 'flex-end', 'flex-end': 'flex-end' }[node.used.alignItems]
+          if (place) frame['justify-content'] = place
+        }
         children = elements.map((child) => convertChild(child))
       } else {
         note('approximated', node, `${columns.length}-column grid drawn as flex rows with measured cell widths`)
@@ -784,6 +802,25 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
           const own = row.map((cell) => elements[cell.index].rect).filter((box) => box.y + box.h <= limit + 1)
           return own.length ? px(Math.max(...own.map((box) => box.h))) : undefined
         }
+        // A cell that spans rows (an alert dialog's icon beside both its title and its text) would make its first row
+        // as tall as itself and push the next row down. It is pinned where the browser put it, an empty slot of its width
+        // holding its place in the row.
+        const spanning = new Set()
+        plan.rows.forEach((row, position) => {
+          const next = plan.rows[position + 1]
+          if (!next) return
+          const limit = elements[next[0].index].rect.y
+          for (const cell of row) if (elements[cell.index].rect.y + elements[cell.index].rect.h > limit + 1) spanning.add(cell.index)
+        })
+        const pinned = [...spanning].map((index) => {
+          const child = elements[index]
+          const converted = convertChild(child, { cellWidth: child.rect.w })
+          const place = { position: 'absolute', left: px(child.rect.x - node.rect.x - num(node.used.borderLeftWidth)), top: px(child.rect.y - node.rect.y - num(node.used.borderTopWidth)), width: px(child.rect.w), height: px(child.rect.h) }
+          if (converted.raw) converted.raw = converted.raw.replace(/style="/, `style="${Object.entries(place).map(([property, value]) => `${property}:${value}`).join(';')};`)
+          else Object.assign(converted.style, place)
+          return converted
+        })
+        if (pinned.length) note('approximated', node, 'a grid cell spanning rows is pinned where the browser put it')
         children = plan.rows.map((row, position) => emit({
           tag: 'div',
           name: 'row',
@@ -791,9 +828,13 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
           style: dropDefaults({ display: 'flex', gap: binder.length('spacing', plan.columnGap), 'align-items': ['normal', 'stretch'].includes(node.used.alignItems) ? 'stretch' : node.used.alignItems, 'min-height': rowHeight(row, position), 'flex-shrink': '0' }),
           children: row.flatMap((cell) => [
             ...(cell.offset > 0.5 ? [emit(spacer('row', { size: cell.offset - plan.columnGap }))] : []),
-            convertChild(elements[cell.index], { cellWidth: cell.width }),
+            spanning.has(cell.index) ? emit(spacer('row', { size: cell.width })) : convertChild(elements[cell.index], { cellWidth: cell.width }),
           ]),
         }))
+        if (pinned.length) {
+          children.push(...pinned)
+          frame.position = 'relative'
+        }
       }
     } else if (layout.kind === 'table' || layout.kind === 'section') {
       // rows stack; a calendar spaces its weeks with a margin on each row, which the usual margin step carries
@@ -827,11 +868,21 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
         frame['flex-wrap'] = node.used.whiteSpace === 'nowrap' ? 'nowrap' : 'wrap'
         frame['align-items'] = 'baseline'
         frame['justify-content'] = { center: 'center', right: 'flex-end', end: 'flex-end' }[node.used.textAlign]
-        const items = flowing.filter((child) => !isText(child) || normalizeText(child.text, node.used.whiteSpace).trim())
+        // A space between two elements (`<Button/> <span>`) is a run of its own that would be dropped as empty; it
+        // becomes a gap the width the browser measured between them, when they share a line.
+        const items = []
+        flowing.forEach((child, index) => {
+          if (!isText(child) || normalizeText(child.text, node.used.whiteSpace).trim()) { items.push(child); return }
+          const [before, after] = [flowing[index - 1], flowing[index + 1]]
+          if (!before || !after || isText(before) || isText(after) || Math.abs(before.rect.y + before.rect.h / 2 - (after.rect.y + after.rect.h / 2)) > before.rect.h / 2) return
+          const width = after.rect.x - (before.rect.x + before.rect.w)
+          if (width > 0.5) items.push({ gap: width })
+        })
         const mixed = inline.length !== elements.length
         if (items.filter(isText).length && items.length > 1) note('approximated', node, `rich text split into ${items.length} one-style runs (it can no longer rewrap as a sentence)`)
         marginItems = []
         children = items.map((child, index) => {
+          if (child.gap) return emit(spacer('row', { size: child.gap }))
           if (!isText(child)) {
             // An inline box's side margins travel with it on the line (a citation chip spaced off the words around it);
             // a padded frame does the same, where a spacer could end up alone at the start of a wrapped line.
@@ -855,7 +906,7 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
           const lines = []
           const sources = []
           items.forEach((child, position) => {
-            const blockLevel = !isText(child) && !isInlineLevel(child.used.display)
+            const blockLevel = !isText(child) && !child.gap && !isInlineLevel(child.used.display)
             const last = lines.at(-1)
             if (blockLevel) { lines.push(children[position]); sources.push(child) }
             else if (last?.line) last.children.push(children[position])
@@ -973,6 +1024,13 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
     // Paper keeps a gradient but drops background-size, so a gradient stretched wider than its box (the usage
     // meter shows the first 30 % of a full-width AI gradient) would be squeezed in whole. Draw it as a child
     // layer of the stated size, clipped by this frame.
+    // Gradient text (AI Thinking's shimmer label): the box's gradient is clipped to its text. Paper does clip a fill to
+    // text, but only on the text layer itself; left on the frame it paints a solid block over see-through letters.
+    const textChild = children.length === 1 && typeof children[0].text === 'string' ? children[0] : null
+    if (node.used.backgroundClip === 'text' && frame['background-image'] && textChild) {
+      Object.assign(textChild.style, { 'background-image': frame['background-image'], 'background-clip': 'text' })
+      for (const property of ['background-image', 'background-size', 'background-position', 'background-repeat']) delete frame[property]
+    }
     const stretched = frame['background-image'] && node.used.backgroundRepeat === 'no-repeat' && node.used.backgroundSize.match(/^([\d.]+)% ([\d.]+)%$/)
     if (stretched && (Number(stretched[1]) !== 100 || Number(stretched[2]) !== 100)) {
       children.unshift(emit({ tag: 'div', name: 'gradient', style: { display: 'flex', position: 'absolute', left: '0px', top: '0px', width: `${round(Number(stretched[1]))}%`, height: `${round(Number(stretched[2]))}%`, 'background-image': frame['background-image'] }, children: [] }))
@@ -1064,6 +1122,8 @@ export function visibleTexts(tree) {
     if (isText(node)) { const text = normalizeText(node.text, whiteSpace).replace(/\s+/g, ' ').trim(); if (text) texts.push(text); return }
     // fully transparent: Paper draws nothing for it, and neither does the browser
     if (node.ghost || (node !== tree && num(node.used.opacity) === 0)) return
+    // a paragraph traced line by line holds its text as runs
+    if (node.lines) { for (const run of node.lines.runs) { const text = run.text.replace(/\s+/g, ' ').trim(); if (text) texts.push(text) } for (const box of node.lines.boxes ?? []) walk(box, node.used.whiteSpace); return }
     if (FIELDS.has(node.tag)) { const shown = node.textless ? '' : node.value || node.placeholder; if (shown?.trim()) texts.push(shown.replace(/\s+/g, ' ').trim()); return }
     for (const child of node.children ?? []) walk(child, node.used.whiteSpace)
   }
@@ -1254,6 +1314,49 @@ async function captureInPage({ usedProperties, specProperties, panelSelector, br
         node.placeholderColor = getComputedStyle(element, '::placeholder').color
         return node
       }
+      // A paragraph with a highlight that wraps (an AI popover's marked sentence): the browser paints the highlight line
+      // by line, inside the sentence. Paper text holds one style and cannot do that, so the lines are traced: each
+      // highlight piece is a rectangle, each run of one style on one line is a text layer, all where the browser put them.
+      const wrappingHighlight = !/^inline/.test(computed.display) && [...element.querySelectorAll('*')].some((inner) => {
+        const style = getComputedStyle(inner)
+        return style.display === 'inline' && style.backgroundColor !== 'rgba(0, 0, 0, 0)' && inner.getClientRects().length > 1
+      })
+      // The same for a paragraph that wraps with a box inside it (a citation chip after a claim): split into one-style
+      // runs it can no longer rewrap, the sentence would take the whole width and push the chip onto a line of its own.
+      const inlineBoxes = /^inline/.test(computed.display) ? [] : [...element.children].filter((inner) => /^inline-(block|flex|grid)$/.test(getComputedStyle(inner).display))
+      const wraps = element.getBoundingClientRect().height > 1.5 * (parseFloat(computed.lineHeight) || Infinity)
+      const wrappingMixed = inlineBoxes.length > 0 && wraps && [...element.childNodes].some((child) => child.nodeType === Node.TEXT_NODE && child.data.trim())
+      if (wrappingHighlight || wrappingMixed) {
+        const box = element.getBoundingClientRect()
+        const at = (rect) => ({ x: trim(rect.x - box.x), y: trim(rect.y - box.y) })
+        node.lines = { marks: [], runs: [], boxes: inlineBoxes.map(walk).filter(Boolean) }
+        for (const inner of element.querySelectorAll('*')) {
+          const style = getComputedStyle(inner)
+          if (style.display !== 'inline' || style.backgroundColor === 'rgba(0, 0, 0, 0)') continue
+          for (const rect of inner.getClientRects()) node.lines.marks.push({ ...at(rect), w: trim(rect.width), h: trim(rect.height), color: style.backgroundColor, radius: parseFloat(style.borderTopLeftRadius) || 0 })
+        }
+        // text inside a traced box (the chip's label) belongs to that box
+        const texts = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, { acceptNode: (text) => (inlineBoxes.some((inner) => inner.contains(text)) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT) })
+        const range = document.createRange()
+        for (let text = texts.nextNode(); text; text = texts.nextNode()) {
+          const style = getComputedStyle(text.parentElement)
+          const used = read(style, null, null).used
+          for (const word of text.data.matchAll(/\s*\S+\s*/g)) {
+            range.setStart(text, word.index)
+            range.setEnd(text, word.index + word[0].length)
+            const rect = [...range.getClientRects()].find((candidate) => candidate.width > 0)
+            if (!rect) continue
+            // the range measures the glyphs; the text layer is a whole line box tall, half the leading above them
+            const leading = ((parseFloat(style.lineHeight) || rect.height) - rect.height) / 2
+            const last = node.lines.runs.at(-1)
+            // one run per text node and line: text after a chip starts its own run, where the browser put it
+            if (last && last.source === text && Math.abs(last.top - rect.top) < 2) last.text += word[0]
+            else node.lines.runs.push({ source: text, top: rect.top, text: word[0], ...at(rect), y: trim(rect.y - box.y - leading), used })
+          }
+        }
+        for (const run of node.lines.runs) { delete run.source; delete run.top }
+        return node
+      }
       const append = (text) => { const last = node.children.at(-1); if (last && typeof last.text === 'string') last.text += text; else node.children.push({ text }) }
       for (const child of element.childNodes) {
         // React writes `of {total}` as two text nodes; to the reader, and to Paper, they are one run
@@ -1351,6 +1454,10 @@ export async function openStory(page, storyId, base = STORYBOOK) {
   if (phase === 'timeout') throw new Error(`${storyId}: the story's play function had not finished after 30s (stuck at "${await page.evaluate(renderPhase)}")`)
   await page.evaluate(() => document.fonts.ready)
   await page.addStyleTag({ content: '*, *::before, *::after { animation: none !important; transition: none !important; }' })
+  // A play that clicks or tabs leaves something focused, and this page has the window's focus, so its keyboard ring
+  // paints. In Storybook the story sits in a frame that does not have focus (you clicked the sidebar), and no ring
+  // shows. Draw what people see there: the ring is hidden, the focus itself kept (a preview opened by focus stays open).
+  await page.addStyleTag({ content: '*:focus-visible { --tw-ring-shadow: 0 0 #0000 !important; --tw-ring-offset-shadow: 0 0 #0000 !important; outline-style: none !important; }' })
   // one more beat for whatever the last interaction set moving (a menu mounting, a toast sliding in)
   await page.waitForTimeout(phase === 'unknown' ? 1500 : 600)
   // Recharts draws its lines and bars in with a script, not CSS, so the freeze above misses it; its default run is
@@ -1420,10 +1527,21 @@ export async function captureStory(page, storyId, { base = STORYBOOK, screenshot
   for (const [position, url] of unread.entries()) {
     try { images[url] = `data:image/png;base64,${(await page.locator(`[data-paper-image="${position}"]`).screenshot({ type: 'png' })).toString('base64')}` } catch { /* stays a placeholder, and is reported */ }
   }
-  // a masked shape photographed as the page paints it, what lies behind included (it is drawn on top of the same)
-  for (const element of await page.$$('[data-paper-mask]')) {
-    const key = `paper-mask:${await element.getAttribute('data-paper-mask')}`
-    try { images[key] = `data:image/png;base64,${(await element.screenshot({ type: 'png' })).toString('base64')}` } catch { /* drawn unmasked, and reported */ }
+  // A masked shape is photographed on its own: everything else hidden and no page behind it, so the photo is just
+  // the shape, see-through where it is (Paper draws its own layers behind it), and at 4x so it stays sharp when zoomed.
+  const masks = await page.$$('[data-paper-mask]')
+  if (masks.length) {
+    const viewport = page.viewportSize()
+    const cdp = await page.context().newCDPSession(page)
+    await cdp.send('Emulation.setDeviceMetricsOverride', { width: viewport.width, height: viewport.height, deviceScaleFactor: 4, mobile: false })
+    const isolate = await page.addStyleTag({ content: 'html, body, #storybook-root { background: transparent !important } body * { visibility: hidden !important } [data-paper-mask] { visibility: visible !important }' })
+    for (const element of masks) {
+      const key = `paper-mask:${await element.getAttribute('data-paper-mask')}`
+      try { images[key] = `data:image/png;base64,${(await element.screenshot({ type: 'png', omitBackground: true, scale: 'device' })).toString('base64')}` } catch { /* drawn unmasked, and reported */ }
+    }
+    await isolate.evaluate((tag) => tag.remove())
+    await cdp.send('Emulation.setDeviceMetricsOverride', { width: viewport.width, height: viewport.height, deviceScaleFactor: SCALE, mobile: false })
+    await cdp.detach()
   }
   if (screenshot) {
     // Paper draws all text with grayscale smoothing; without the same here, light-on-dark labels read a weight heavier.

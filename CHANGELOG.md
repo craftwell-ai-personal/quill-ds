@@ -19,12 +19,26 @@ footer reads `package.json` directly, so the displayed version updates with the 
 - **Carousel · Vertical story:** the cards now fill the 256px slide, so the Next button sits the same 20px below the card as the Previous button sits above it. Before, each card was only as tall as its number, leaving a large empty gap above the bottom button. Story-only change; the shipped carousel is unchanged.
 - **Carousel stories:** each card now sits in 4px of padding (`p-1`, as shadcn's own carousel examples do). The track crops at the slide edge, which cut off the card's 1px outer ring along its straight edges and left only the curved corners showing as dark crescents.
 - **Citations:** the source chip now keeps 6px clear on both sides (`mx-1.5`, was `ml-0.5`), so its 3px focus ring never touches the words around it.
+- **AI Thinking:** the "Thought for …" toggle has 4px either side (`-mx-1 px-1`), so its focus ring no longer touches the chevron or the last letter; the chevron stays in line with the steps below.
+- **Approval card:** each detail row reads as a line, one space after the colon ("To: growth@example.com"), not as two aligned columns.
+- **Login with OAuth:** the Apple logo's drawing area is cropped to the glyph, so it is as tall as the Google and GitHub logos (16px, was 12px); each label is at least as wide as the longest, so the three logos line up in one column.
+- **Wizard:** only steps followed by a connector stretch, so the stepper spans the whole header instead of stopping short.
+- **Collapsible story:** the "(3)" count uses lining figures, so the 3 sits level with its brackets (Raleway's default old-style 3 dips below them).
+- **AI Chat story (Agent pieces in one thread):** the page scrolls to the end after the feedback form opens, as an app does for a new turn, so the form is no longer hidden under the pinned composer.
 - **Paper sync, from review comments in Paper:**
   - Recharts draws its lines and bars in with a script that the CSS freeze misses; the sync now waits it out, so a line chart no longer stops short of its last point.
   - A margin on a chip sitting in a line of text (a citation) is kept, as padding around it.
   - A margin across a box's main direction (the combobox search field's `m-1` inside its panel) is kept, as a padded wrapper, instead of dropped.
   - A masked shape (the prompt composer's tab-base curves) is drawn from a photo of itself; Paper has no mask, so it showed as a solid square.
   - Quill's gradient edge (`ai-edge`, a fill clipped to the padding box over a gradient) is drawn as a gradient frame around a fill frame; it used to vanish.
+  - A one-cell grid centres its item top to bottom too (`grid place-items-center`: checkmarks, sparks, initials in their circles).
+  - Gradient text (AI Thinking's shimmer) keeps its gradient on the text layer, where Paper clips it to the letters; it was a solid block.
+  - An icon turned to show state (an open disclosure's chevron) keeps its turn.
+  - A highlight that wraps across lines, or a chip inside a paragraph that wraps, is traced line by line, each run and chip where the browser put it.
+  - A space between two inline elements (a button and the sentence after it) is kept as a gap.
+  - A grid cell spanning rows (an alert dialog's icon beside its title and text) is pinned in place instead of pushing the next row down.
+  - Masked shapes are photographed on their own at 4x with a see-through background.
+  - Keyboard focus rings left by a story's play are not drawn: in Storybook the story frame is not focused, so they do not show there.
   - Overlapping layers are ordered by z-index, so the composer's selected tab covers the box edge under it (the faint line across the tab) and its base curve sits over the neighbouring tab.
 - **Paper sync:** a rotated layer that is positioned absolutely is now placed correctly. Paper turns such a layer about its top-left corner (and ignores `transform-origin` there), while the browser turns it about its centre, so the Carousel's vertical buttons were drawn 28px left of centre and the Tooltip arrows a few pixels off. The converter now moves the layer to compensate. Carousel and Tooltip redrawn.
 

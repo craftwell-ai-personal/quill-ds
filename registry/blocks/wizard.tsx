@@ -22,7 +22,8 @@ export function Wizard() {
           {steps.map((s, i) => {
             const state = i === 0 ? 'done' : i === 1 ? 'current' : 'todo'
             return (
-              <li key={s} className="flex flex-1 items-center gap-2">
+              // only steps followed by a connector stretch: the last ends flush with the header's right edge instead of leaving a gap
+              <li key={s} className={`flex items-center gap-2 ${i < steps.length - 1 ? 'flex-1' : ''}`}>
                 <span
                   className={`flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-medium ${
                     state === 'done'
