@@ -1,5 +1,6 @@
 import * as React from 'react'
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import { Button } from '@/components/ui/button'
 import { expect, userEvent, waitFor, within } from 'storybook/test'
 import { Citation, Sources, type Source } from '../../registry/lib/citations'
 import { usage } from '@/usage/citations.usage.mjs'
@@ -113,7 +114,7 @@ export const MousePressPinsHoverPreview: Story = {
   },
 }
 export const BlurClosesPinned: Story = {
-  render: () => <p className="text-sm">Signups beat target<Citation source={SOURCES[0]} /> <button type="button">Elsewhere</button></p>,
+  render: () => <p className="text-sm">Signups beat target<Citation source={SOURCES[0]} /> <Button type="button" variant="outline" size="sm" className="w-fit">Elsewhere</Button></p>,
   play: async ({ canvas }) => {
     const chip = canvas.getByRole('button', NO_HREF_CHIP)
     chip.focus()
@@ -133,7 +134,7 @@ export const BlurClosesPinned: Story = {
   },
 }
 export const TabAwayClosesPinned: Story = {
-  render: () => <p className="text-sm">Signups beat target<Citation source={SOURCES[0]} /> <button type="button">Elsewhere</button></p>,
+  render: () => <p className="text-sm">Signups beat target<Citation source={SOURCES[0]} /> <Button type="button" variant="outline" size="sm" className="w-fit">Elsewhere</Button></p>,
   play: async ({ canvas }) => {
     const chip = canvas.getByRole('button', NO_HREF_CHIP)
     chip.focus()
@@ -164,7 +165,7 @@ function HrefSwitch() {
   return (
     <p className="text-sm">
       Signups beat target<Citation source={{ ...SOURCES[0], href }} />.
-      <button type="button" data-testid="give-href" onClick={() => setHref('https://craftwell.ai/q3')}>Give it a link</button>
+      <Button type="button" variant="outline" size="sm" className="ml-2" data-testid="give-href" onClick={() => setHref('https://craftwell.ai/q3')}>Give it a link</Button>
     </p>
   )
 }

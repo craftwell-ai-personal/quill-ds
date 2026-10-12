@@ -120,7 +120,7 @@ export const DoDont: Story = {
         // pb-20 reserves room below the trigger for the pinned-open card
         // (portal-rendered, positioned by floating-ui) so it doesn't cover
         // the figcaption underneath.
-        <div className="pb-20">
+        <div className="flex justify-center pb-20">
           <HoverCard open onOpenChange={pinOpen}>
             <HoverCardTrigger href="#" className="text-sm underline-offset-4 hover:underline">
               @janedoe
@@ -135,7 +135,7 @@ export const DoDont: Story = {
         </div>
       }
       dontExample={
-        <div className="pb-20">
+        <div className="flex justify-center pb-20">
           <HoverCard open onOpenChange={pinOpen}>
             <HoverCardTrigger href="#" className="text-sm underline-offset-4 hover:underline">
               @janedoe

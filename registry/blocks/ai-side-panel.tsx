@@ -141,7 +141,8 @@ export function AiPanel({
   return (
     // One wash on the panel itself, top to bottom, behind all three parts: a band on the header alone reads as a hard edge.
     <section ref={panelRef} aria-labelledby={titleId} className={cn('ai-wash grid min-h-0 grid-rows-[auto_minmax(0,1fr)_auto] bg-popover text-sm text-popover-foreground', className)}>
-      <div className="flex items-center gap-2 py-2.5 pr-2.5 pl-3.5">
+      {/* min-h-12 = a 28px button plus the padding, so the header keeps its height with or without History and Close. */}
+      <div className="flex min-h-12 items-center gap-2 py-2.5 pr-2.5 pl-3.5">
         <AiMark size={18} />
         {/* A paragraph, not a heading: headings take the serif display preset. */}
         <p id={titleId} className="min-w-0 flex-1 truncate font-semibold text-foreground">{title}</p>

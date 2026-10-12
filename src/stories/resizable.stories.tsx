@@ -31,7 +31,7 @@ type Story = StoryObj<typeof meta>
 
 export const Horizontal: Story = {
   render: () => (
-    <ResizablePanelGroup orientation="horizontal" className="h-48 max-w-md rounded-lg border border-border">
+    <ResizablePanelGroup orientation="horizontal" className="h-48! max-w-md rounded-lg border border-border">
       <ResizablePanel defaultSize={50}>
         <div className="flex h-full items-center justify-center p-4 text-sm text-ink-muted">Panel A</div>
       </ResizablePanel>
@@ -43,9 +43,10 @@ export const Horizontal: Story = {
   ),
 }
 
+// The panel library sets an inline height: 100% on the group, which beats a plain h-* class; the ! makes the height stick.
 export const Vertical: Story = {
   render: () => (
-    <ResizablePanelGroup orientation="vertical" className="h-64 max-w-sm rounded-lg border border-border">
+    <ResizablePanelGroup orientation="vertical" className="h-64! max-w-sm rounded-lg border border-border">
       <ResizablePanel defaultSize={60}>
         <div className="flex h-full items-center justify-center p-4 text-sm text-ink-muted">Top panel</div>
       </ResizablePanel>
@@ -59,7 +60,7 @@ export const Vertical: Story = {
 
 export const WithHandle: Story = {
   render: () => (
-    <ResizablePanelGroup orientation="horizontal" className="h-48 max-w-md rounded-lg border border-border">
+    <ResizablePanelGroup orientation="horizontal" className="h-48! max-w-md rounded-lg border border-border">
       <ResizablePanel defaultSize={50}>
         <div className="flex h-full items-center justify-center p-4 text-sm text-ink-muted">Sidebar</div>
       </ResizablePanel>
@@ -73,7 +74,7 @@ export const WithHandle: Story = {
 
 export const ThreePanel: Story = {
   render: () => (
-    <ResizablePanelGroup orientation="horizontal" className="h-48 max-w-2xl rounded-lg border border-border">
+    <ResizablePanelGroup orientation="horizontal" className="h-48! max-w-2xl rounded-lg border border-border">
       <ResizablePanel defaultSize={25}>
         <div className="flex h-full items-center justify-center p-4 text-sm text-ink-muted">File tree</div>
       </ResizablePanel>
@@ -96,7 +97,7 @@ export const DoDont: Story = {
       usage={usage}
       id="withhandle-for-visible-grip"
       doExample={
-        <ResizablePanelGroup orientation="horizontal" className="h-32 max-w-xs rounded-lg border border-border">
+        <ResizablePanelGroup orientation="horizontal" className="h-32! max-w-xs rounded-lg border border-border">
           <ResizablePanel defaultSize={50}>
             <div className="flex h-full items-center justify-center p-4 text-sm text-ink-muted">A</div>
           </ResizablePanel>
@@ -107,7 +108,7 @@ export const DoDont: Story = {
         </ResizablePanelGroup>
       }
       dontExample={
-        <ResizablePanelGroup orientation="horizontal" className="h-32 max-w-xs rounded-lg border border-border">
+        <ResizablePanelGroup orientation="horizontal" className="h-32! max-w-xs rounded-lg border border-border">
           <ResizablePanel defaultSize={50}>
             <div className="flex h-full items-center justify-center p-4 text-sm text-ink-muted">A</div>
           </ResizablePanel>

@@ -31,7 +31,7 @@ export const DoDont: Story = {
       id="reserve-destructive"
       doExample={
         <Card className="w-[280px]">
-          <CardContent className="flex gap-2 pt-6">
+          <CardContent className="flex gap-2">
             <Badge>Default</Badge>
             <Badge variant="secondary">Secondary</Badge>
             <Badge variant="destructive">Overdue</Badge>
@@ -40,7 +40,7 @@ export const DoDont: Story = {
       }
       dontExample={
         <Card className="w-[280px]">
-          <CardContent className="flex gap-2 pt-6">
+          <CardContent className="flex gap-2">
             <Badge>Default</Badge>
             <Badge variant="secondary">Secondary</Badge>
             <Badge variant="destructive">Featured</Badge>

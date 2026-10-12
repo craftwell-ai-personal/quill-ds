@@ -96,7 +96,7 @@ export const DoDont: Story = {
         // pb-28 reserves room below the trigger for the defaultOpen popover
         // (portal-rendered, positioned by floating-ui) so it doesn't cover
         // the figcaption underneath or bleed past the card's own border.
-        <div className="pb-28">
+        <div className="flex justify-center pb-28">
           <Popover defaultOpen>
             <PopoverTrigger render={<Button variant="outline">Rename workspace</Button>} />
             <PopoverContent>
@@ -114,7 +114,7 @@ export const DoDont: Story = {
         </div>
       }
       dontExample={
-        <div className="pb-28">
+        <div className="flex justify-center pb-28">
           <Popover defaultOpen>
             <PopoverTrigger render={<Button variant="outline">Rename workspace</Button>} />
             <PopoverContent>

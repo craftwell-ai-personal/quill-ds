@@ -81,7 +81,7 @@ export function AnalyticsCharts() {
       <Card>
         <CardHeader>
           <CardTitle>Engagements</CardTitle>
-          <CardDescription>Weekly sales this month.</CardDescription>
+          <CardDescription>Weekly engagements this month.</CardDescription>
         </CardHeader>
         <CardContent>
           <ChartContainer config={salesConfig} className="h-56 w-full">

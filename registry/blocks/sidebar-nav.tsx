@@ -42,8 +42,10 @@ const team = [
 /** A collapsible icon-sidebar app shell with grouped menus, badges, a top bar, and a main area for the page — a card grid by default, or the children you pass in. */
 export function SidebarNav({ children }: { children?: React.ReactNode }) {
   return (
-    <SidebarProvider>
-      <div className="flex h-[560px] w-full">
+    // The stock sidebar is fixed to the window (full height, top 0) while this shell is a 560px box, so the
+    // sidebar ran past the main area and ignored the page's margin; it is placed inside the shell instead.
+    <SidebarProvider className="min-h-0">
+      <div className="relative flex h-[560px] w-full [&_[data-slot=sidebar-container]]:absolute [&_[data-slot=sidebar-container]]:h-full">
         <Sidebar collapsible="icon">
           <SidebarHeader className="px-4 py-3">
             <div className="flex items-center gap-2">
@@ -106,7 +108,7 @@ export function SidebarNav({ children }: { children?: React.ReactNode }) {
         <div className="flex min-w-0 flex-1 flex-col">
           <header className="flex items-center gap-3 border-b border-border px-4 py-3">
             <SidebarTrigger />
-            <Separator orientation="vertical" className="h-4" />
+            <Separator orientation="vertical" className="h-4 data-vertical:self-center" />
             {children ? (
               // A page passed in brings its own page-header breadcrumb, so the
               // shell keeps the top bar to the trigger and the workspace name.

@@ -30,7 +30,7 @@ export const DoDont: Story = {
       id="time-is-relative"
       doExample={
         <Card className="w-[320px]">
-          <CardContent className="pt-6">
+          <CardContent>
             <ol className="flex flex-col gap-4">
               <li className="flex items-start gap-3">
                 <Avatar>
@@ -64,7 +64,7 @@ export const DoDont: Story = {
       }
       dontExample={
         <Card className="w-[320px]">
-          <CardContent className="pt-6">
+          <CardContent>
             <ol className="flex flex-col gap-4">
               <li className="flex items-start gap-3">
                 <Avatar>

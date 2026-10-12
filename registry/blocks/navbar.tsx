@@ -13,7 +13,7 @@ export function Navbar() {
           <li key={l}>
             <a
               href="#"
-              className="rounded-lg px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+              className="rounded-lg px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground outline-hidden focus-visible:ring-3 focus-visible:ring-ring/50"
             >
               {l}
             </a>

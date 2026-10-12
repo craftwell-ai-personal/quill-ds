@@ -41,21 +41,21 @@ export const Default: Story = {
       </TabsList>
       <TabsContent value="overview">
         <Card>
-          <CardContent className="pt-4 text-sm text-ink-soft">
+          <CardContent className="text-sm text-ink-soft">
             An introduction to the course structure, goals, and materials needed.
           </CardContent>
         </Card>
       </TabsContent>
       <TabsContent value="curriculum">
         <Card>
-          <CardContent className="pt-4 text-sm text-ink-soft">
+          <CardContent className="text-sm text-ink-soft">
             12 lessons covering foundational to advanced techniques.
           </CardContent>
         </Card>
       </TabsContent>
       <TabsContent value="reviews">
         <Card>
-          <CardContent className="pt-4 text-sm text-ink-soft">
+          <CardContent className="text-sm text-ink-soft">
             4.8 stars · 124 reviews
           </CardContent>
         </Card>

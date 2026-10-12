@@ -2474,8 +2474,8 @@
       "page": "❖ AI side panel",
       "pageId": "1180:2",
       "frameId": "1180:208",
-      "codeHash": "4e5513c2783ea00b",
-      "syncedAt": "2026-10-07"
+      "codeHash": "5f77099117ef2dbb",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "alerts",
@@ -2488,8 +2488,8 @@
       "page": "❖ Analytics charts",
       "pageId": "213:2",
       "frameId": "696:3",
-      "codeHash": "c95c5e19ef702e10",
-      "syncedAt": "2026-09-18"
+      "codeHash": "c44dd9fc9a98cab2",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "announcement-banner",
@@ -2529,8 +2529,8 @@
       "page": "❖ Chat",
       "pageId": "581:159",
       "frameId": "696:7",
-      "codeHash": "bfc31ca54e0c2e5a",
-      "syncedAt": "2026-09-22"
+      "codeHash": "d7ed57cd57b0be4f",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "checkout",
@@ -2538,8 +2538,8 @@
       "page": "❖ Checkout",
       "pageId": "203:2",
       "frameId": "696:8",
-      "codeHash": "f8e28c86929ea0b2",
-      "syncedAt": "2026-09-18"
+      "codeHash": "68ddc9a134ee5837",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "command-palette",
@@ -2561,8 +2561,8 @@
       "page": "❖ Conversation history",
       "pageId": "1210:7",
       "frameId": "1214:22",
-      "codeHash": "ca200a22eba08c14",
-      "syncedAt": "2026-10-07"
+      "codeHash": "afbec502f671937b",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "cookie-consent",
@@ -2579,8 +2579,8 @@
       "page": "❖ Dashboard",
       "pageId": "578:2",
       "frameId": "696:11",
-      "codeHash": "4754c2587edfc0a4",
-      "syncedAt": "2026-09-21"
+      "codeHash": "1fd7c9dfa6f968c9",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "data-table",
@@ -2606,8 +2606,8 @@
       "page": "❖ Error 404",
       "pageId": "574:104",
       "frameId": "696:18",
-      "codeHash": "49fa3199e550bd2c",
-      "syncedAt": "2026-09-21"
+      "codeHash": "4a61e10588abddd8",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "faq",
@@ -2624,8 +2624,8 @@
       "page": "❖ Feature section",
       "pageId": "572:2",
       "frameId": "696:20",
-      "codeHash": "43f1ea9038a24126",
-      "syncedAt": "2026-09-22"
+      "codeHash": "6fb94fa92f0cee1c",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "file-upload",
@@ -2642,8 +2642,8 @@
       "page": "❖ Footer",
       "pageId": "571:19",
       "frameId": "696:22",
-      "codeHash": "be2e65665cd4e01e",
-      "syncedAt": "2026-09-21"
+      "codeHash": "62e70a30c2833083",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "forgot-password",
@@ -2660,8 +2660,8 @@
       "page": "❖ Hero",
       "pageId": "568:2",
       "frameId": "696:25",
-      "codeHash": "68bfa1af639e9b10",
-      "syncedAt": "2026-09-22"
+      "codeHash": "c165b9ac212ccb55",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "invoice",
@@ -2678,8 +2678,8 @@
       "page": "❖ Kanban",
       "pageId": "581:85",
       "frameId": "696:27",
-      "codeHash": "f3723bf3cf600684",
-      "syncedAt": "2026-09-23"
+      "codeHash": "3ceb08c5de0fd613",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "list-detail",
@@ -2687,8 +2687,8 @@
       "page": "❖ List detail",
       "pageId": "580:2",
       "frameId": "696:28",
-      "codeHash": "d4cc405c3691177a",
-      "syncedAt": "2026-09-18"
+      "codeHash": "9906c15a80ed7f4b",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "login",
@@ -2705,8 +2705,8 @@
       "page": "❖ Login — minimal",
       "pageId": "215:187",
       "frameId": "696:35",
-      "codeHash": "233b629bcabe1180",
-      "syncedAt": "2026-09-18"
+      "codeHash": "b7ef08f1a31156d6",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "login-oauth",
@@ -2714,8 +2714,8 @@
       "page": "❖ Login — OAuth",
       "pageId": "585:2",
       "frameId": "696:36",
-      "codeHash": "1205294d63f63e53",
-      "syncedAt": "2026-09-23"
+      "codeHash": "6184b765da342a5a",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "login-split-panel",
@@ -2723,8 +2723,8 @@
       "page": "❖ Login — split panel",
       "pageId": "215:154",
       "frameId": "696:37",
-      "codeHash": "4c28c46d39d982e7",
-      "syncedAt": "2026-09-18"
+      "codeHash": "b4c1148c6f1b310f",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "mail-shell",
@@ -2732,8 +2732,8 @@
       "page": "❖ Mail inbox",
       "pageId": "215:2",
       "frameId": "696:38",
-      "codeHash": "b8681671c0303715",
-      "syncedAt": "2026-10-07"
+      "codeHash": "e431ffa4c2d8be6e",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "navbar",
@@ -2741,8 +2741,8 @@
       "page": "❖ Navbar",
       "pageId": "571:2",
       "frameId": "696:39",
-      "codeHash": "52b1c0d907a90d7a",
-      "syncedAt": "2026-09-21"
+      "codeHash": "d2c0b6a4cd7d0dfb",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "newsletter",
@@ -2750,8 +2750,8 @@
       "page": "❖ Newsletter",
       "pageId": "185:2",
       "frameId": "696:40",
-      "codeHash": "8c38ce87f1b52470",
-      "syncedAt": "2026-09-18"
+      "codeHash": "9a0fa1c3a36a7033",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "notifications",
@@ -2759,8 +2759,8 @@
       "page": "❖ Notifications",
       "pageId": "581:2",
       "frameId": "699:789",
-      "codeHash": "e490738d4c1696e8",
-      "syncedAt": "2026-09-19"
+      "codeHash": "d54e4f74a10b85d5",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "onboarding",
@@ -2809,8 +2809,8 @@
       "page": "❖ Profile card",
       "pageId": "580:104",
       "frameId": "696:52",
-      "codeHash": "c144a2fcc0c6be38",
-      "syncedAt": "2026-09-18"
+      "codeHash": "46f248114e57d58f",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "search-results",
@@ -2818,8 +2818,8 @@
       "page": "❖ Search results",
       "pageId": "581:40",
       "frameId": "699:787",
-      "codeHash": "5c1a4d06d24377a6",
-      "syncedAt": "2026-09-18"
+      "codeHash": "d8dfc06006a9fa3b",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "settings",
@@ -2836,8 +2836,8 @@
       "page": "❖ Sidebar navigation",
       "pageId": "214:2",
       "frameId": "699:788",
-      "codeHash": "1a0f26fc5958399a",
-      "syncedAt": "2026-09-18"
+      "codeHash": "402503a8eeb292d1",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "signup",
@@ -2845,8 +2845,8 @@
       "page": "❖ Signup",
       "pageId": "584:2",
       "frameId": "696:54",
-      "codeHash": "788e5aa783de6823",
-      "syncedAt": "2026-09-18"
+      "codeHash": "fdf8b0fd8b3f6006",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "signup-social",
@@ -2872,8 +2872,8 @@
       "page": "❖ Stats band",
       "pageId": "204:2",
       "frameId": "696:56",
-      "codeHash": "fbd41ca1e068d72e",
-      "syncedAt": "2026-09-22"
+      "codeHash": "83502ff85cc04866",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "tabs-page",
@@ -2890,8 +2890,8 @@
       "page": "❖ Team section",
       "pageId": "207:2",
       "frameId": "696:64",
-      "codeHash": "d61deeaa0387bb05",
-      "syncedAt": "2026-09-21"
+      "codeHash": "6db7318450b6d99f",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "testimonial",
@@ -2899,8 +2899,8 @@
       "page": "❖ Testimonial",
       "pageId": "572:27",
       "frameId": "696:65",
-      "codeHash": "f6f86f78e8b8a4d2",
-      "syncedAt": "2026-09-22"
+      "codeHash": "ff2291eca7893c5c",
+      "syncedAt": "2026-10-12"
     },
     {
       "block": "theme-selector",

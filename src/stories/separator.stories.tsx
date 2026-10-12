@@ -56,14 +56,15 @@ export const Vertical: Story = {
   render: () => (
     <div className="flex items-center gap-3 text-sm text-ink-soft">
       <span>Edit</span>
-      <Separator orientation="vertical" className="h-4" />
+      <Separator orientation="vertical" className="h-4 data-vertical:self-center" />
       <span>Preview</span>
-      <Separator orientation="vertical" className="h-4" />
+      <Separator orientation="vertical" className="h-4 data-vertical:self-center" />
       <span>Share</span>
     </div>
   ),
 }
 
+// The separator stretches by default (self-stretch); with a fixed h-4 that pins it to the top of the row, so data-vertical:self-center (a plain self-center loses to the data-vertical variant).
 export const AllVariants: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
@@ -80,9 +81,9 @@ export const AllVariants: Story = {
         <p className="text-xs text-ink-muted mb-3">Vertical (in toolbar)</p>
         <div className="flex items-center gap-2 text-sm text-ink-soft">
           <span>Cut</span>
-          <Separator orientation="vertical" className="h-4" />
+          <Separator orientation="vertical" className="h-4 data-vertical:self-center" />
           <span>Copy</span>
-          <Separator orientation="vertical" className="h-4" />
+          <Separator orientation="vertical" className="h-4 data-vertical:self-center" />
           <span>Paste</span>
         </div>
       </div>
@@ -99,7 +100,7 @@ export const DoDont: Story = {
       doExample={
         <div className="flex items-center gap-3 text-sm text-ink-soft">
           <span>Edit</span>
-          <Separator orientation="vertical" className="h-4" />
+          <Separator orientation="vertical" className="h-4 data-vertical:self-center" />
           <span>Preview</span>
         </div>
       }

@@ -33,7 +33,8 @@ export function Notifications() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-muted-foreground">{it.time}</span>
-                {it.unread && <span className="size-2 rounded-full bg-primary" role="img" aria-label="Unread" />}
+                {/* A read row keeps the dot's space, so every time sits in one column. */}
+                {it.unread ? <span className="size-2 rounded-full bg-primary" role="img" aria-label="Unread" /> : <span aria-hidden className="size-2" />}
               </div>
             </div>
           </div>

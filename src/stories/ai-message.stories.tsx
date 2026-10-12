@@ -1,5 +1,6 @@
 import * as React from 'react'
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import { Button } from '@/components/ui/button'
 import { expect, fn, spyOn, userEvent, waitFor } from 'storybook/test'
 import { AiMessage, UserMessage } from '../../registry/lib/ai-message'
 import { AiThinking } from '../../registry/lib/ai-thinking'
@@ -161,7 +162,7 @@ export const StoppedIsAnnounced: Story = {
     return (
       <>
         <AiMessage {...args} stopped={stopped} />
-        <button type="button" onClick={() => setStopped(true)}>Stop</button>
+        <Button type="button" variant="outline" size="sm" className="w-fit" onClick={() => setStopped(true)}>Stop</Button>
       </>
     )
   },
@@ -237,7 +238,7 @@ export const CopyTimerClearedOnUnmount: Story = {
     return (
       <>
         {shown ? <AiMessage {...args} /> : null}
-        <button type="button" onClick={() => setShown(false)}>Remove</button>
+        <Button type="button" variant="outline" size="sm" className="w-fit" onClick={() => setShown(false)}>Remove</Button>
       </>
     )
   },
@@ -285,7 +286,7 @@ export const CopyThatFinishesAfterUnmountSetsNoTimer: Story = {
     return (
       <>
         {shown ? <AiMessage {...args} /> : null}
-        <button type="button" onClick={() => setShown(false)}>Remove</button>
+        <Button type="button" variant="outline" size="sm" className="w-fit" onClick={() => setShown(false)}>Remove</Button>
       </>
     )
   },

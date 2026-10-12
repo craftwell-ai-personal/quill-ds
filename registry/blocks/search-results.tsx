@@ -22,7 +22,7 @@ export function SearchResults() {
             {i > 0 && <Separator />}
             <a
               href="#"
-              className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-accent"
+              className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-accent outline-hidden focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-ring/50"
             >
               <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground">
                 <Icon name="description" size={18} />

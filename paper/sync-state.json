@@ -21,7 +21,7 @@
     "sourceHash": "5e888beb6bbbd5e9",
     "theme": "light",
     "notRepresentable": 33,
-    "syncedAt": "2026-10-10"
+    "syncedAt": "2026-10-12"
   },
   "foundations": {
     "page": "Foundations",
@@ -312,8 +312,8 @@
         "src/stories/accordion.stories.tsx",
         "src/usage/accordion.usage.mjs"
       ],
-      "sourceHash": "e518bea29ff0878b",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "8192549e16ba8092",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 69,
@@ -336,7 +336,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1M4U-0",
+              "nodeId": "2KWK-0",
               "size": [
                 320,
                 126.22
@@ -356,12 +356,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1M5R-0",
+              "nodeId": "2KXH-0",
               "size": [
                 320,
                 175.03
               ],
-              "htmlHash": "bb880df8575e2737"
+              "htmlHash": "40a882d48b3d0b36"
             }
           ]
         },
@@ -376,12 +376,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1M6R-0",
+              "nodeId": "2KYH-0",
               "size": [
                 320,
                 223.84
               ],
-              "htmlHash": "e0db105497f4d270"
+              "htmlHash": "5c643f4aa0e31678"
             }
           ]
         }
@@ -400,15 +400,15 @@
         "src/stories/agent-steps.stories.tsx",
         "src/usage/agent-steps.usage.mjs"
       ],
-      "sourceHash": "b5b2c49fe5f459c8",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "d77cb7d1db16e8d0",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 110,
         "approximated": 1,
-        "bound": 269,
-        "bindable": 277,
-        "bindingRate": 0.971
+        "bound": 277,
+        "bindable": 285,
+        "bindingRate": 0.972
       },
       "notes": [],
       "lost": [],
@@ -419,17 +419,17 @@
           "opened": "none",
           "nodes": 51,
           "approximated": 0,
-          "bound": 116,
-          "bindable": 118,
+          "bound": 118,
+          "bindable": 120,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1M7Z-0",
+              "nodeId": "2KZP-0",
               "size": [
                 448,
                 224.44
               ],
-              "htmlHash": "c00be8d70b9527f5"
+              "htmlHash": "93fee4aa87e4d99d"
             }
           ]
         },
@@ -439,17 +439,17 @@
           "opened": "none",
           "nodes": 17,
           "approximated": 1,
-          "bound": 51,
-          "bindable": 53,
+          "bound": 53,
+          "bindable": 55,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1M9Y-0",
+              "nodeId": "2L1O-0",
               "size": [
                 448,
                 90.81
               ],
-              "htmlHash": "93c881994c7db05c"
+              "htmlHash": "0eade9b73dd53703"
             }
           ]
         },
@@ -459,17 +459,17 @@
           "opened": "none",
           "nodes": 15,
           "approximated": 0,
-          "bound": 38,
-          "bindable": 40,
+          "bound": 40,
+          "bindable": 42,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MAQ-0",
+              "nodeId": "2L2G-0",
               "size": [
                 448,
                 90.81
               ],
-              "htmlHash": "cbf72a81887ec1cc"
+              "htmlHash": "61f5c001bdb0ab06"
             }
           ]
         },
@@ -479,17 +479,17 @@
           "opened": "none",
           "nodes": 27,
           "approximated": 0,
-          "bound": 64,
-          "bindable": 66,
+          "bound": 66,
+          "bindable": 68,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MBG-0",
+              "nodeId": "2L36-0",
               "size": [
                 448,
                 124.22
               ],
-              "htmlHash": "4d6e41795aa33736"
+              "htmlHash": "a8dbf3cec1af122c"
             }
           ]
         }
@@ -862,8 +862,8 @@
         "src/stories/ai-message.stories.tsx",
         "src/usage/ai-message.usage.mjs"
       ],
-      "sourceHash": "d966182f56c93fd7",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "508db5cb03b9c950",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 7,
         "nodes": 100,
@@ -886,7 +886,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MJN-0",
+              "nodeId": "2L4E-0",
               "size": [
                 576,
                 165.56
@@ -906,7 +906,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MKP-0",
+              "nodeId": "2L5G-0",
               "size": [
                 576,
                 137.56
@@ -926,7 +926,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MLK-0",
+              "nodeId": "2L6B-0",
               "size": [
                 576,
                 85.72
@@ -946,7 +946,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MM9-0",
+              "nodeId": "2L70-0",
               "size": [
                 576,
                 63.41
@@ -966,7 +966,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MMY-0",
+              "nodeId": "2L7P-0",
               "size": [
                 576,
                 112.08
@@ -986,7 +986,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MNQ-0",
+              "nodeId": "2L8H-0",
               "size": [
                 576,
                 50
@@ -1006,7 +1006,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MOC-0",
+              "nodeId": "2L93-0",
               "size": [
                 576,
                 81.11
@@ -1098,8 +1098,8 @@
         "src/stories/ai-popover.stories.tsx",
         "src/usage/ai-popover.usage.mjs"
       ],
-      "sourceHash": "95f5f202e95d636e",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "77349f2bda17e5ae",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 58,
@@ -1124,7 +1124,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZLP-0",
+              "nodeId": "2L9Z-0",
               "size": [
                 416,
                 66.23
@@ -1133,7 +1133,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1ZLZ-0",
+              "nodeId": "2LA9-0",
               "size": [
                 384,
                 181.64
@@ -1153,7 +1153,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZMR-0",
+              "nodeId": "2LB1-0",
               "size": [
                 416,
                 66.23
@@ -1162,7 +1162,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1ZN1-0",
+              "nodeId": "2LBB-0",
               "size": [
                 384,
                 97.41
@@ -1182,7 +1182,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZNR-0",
+              "nodeId": "2LC1-0",
               "size": [
                 416,
                 32
@@ -1191,7 +1191,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1ZO1-0",
+              "nodeId": "2LCB-0",
               "size": [
                 384,
                 181.64
@@ -1215,8 +1215,8 @@
         "src/stories/ai-thinking.stories.tsx",
         "src/usage/ai-thinking.usage.mjs"
       ],
-      "sourceHash": "efcd3bb8e0dc70bd",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "bb64edbbfdceba0a",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 19,
@@ -1239,7 +1239,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MTA-0",
+              "nodeId": "2LD5-0",
               "size": [
                 320,
                 47.41
@@ -1259,7 +1259,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MTS-0",
+              "nodeId": "2LDN-0",
               "size": [
                 320,
                 95.41
@@ -1279,7 +1279,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1MUB-0",
+              "nodeId": "2LE6-0",
               "size": [
                 320,
                 19.41
@@ -2837,8 +2837,8 @@
         "src/stories/chart.stories.tsx",
         "src/usage/chart.usage.mjs"
       ],
-      "sourceHash": "630c5e30b0eef849",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "4b61348c8eec0e42",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 23,
@@ -2861,7 +2861,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OMQ-0",
+              "nodeId": "2LEM-0",
               "size": [
                 1200,
                 256
@@ -2881,12 +2881,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OPO-0",
+              "nodeId": "2LHK-0",
               "size": [
                 1200,
                 256
               ],
-              "htmlHash": "a6617bf86b06d5b8"
+              "htmlHash": "4223863475d0650a"
             }
           ]
         },
@@ -2901,7 +2901,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OSC-0",
+              "nodeId": "2LK8-0",
               "size": [
                 1200,
                 256
@@ -3053,11 +3053,11 @@
         "src/stories/citations.stories.tsx",
         "src/usage/citations.usage.mjs"
       ],
-      "sourceHash": "1d2f1f3865082aa9",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "ed611389e93f369d",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
-        "nodes": 88,
+        "nodes": 87,
         "approximated": 8,
         "bound": 266,
         "bindable": 274,
@@ -3070,14 +3070,14 @@
           "id": "components-citations--in-an-answer",
           "title": "In An Answer",
           "opened": "story",
-          "nodes": 30,
+          "nodes": 29,
           "approximated": 2,
           "bound": 91,
           "bindable": 98,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1OYT-0",
+              "nodeId": "2LO8-0",
               "size": [
                 544,
                 84.91
@@ -3086,12 +3086,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1OZP-0",
+              "nodeId": "2LP4-0",
               "size": [
                 288,
                 102.22
               ],
-              "htmlHash": "19c74b212401b77d"
+              "htmlHash": "2040a27e092be3e7"
             }
           ]
         },
@@ -3106,7 +3106,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1P07-0",
+              "nodeId": "2LPJ-0",
               "size": [
                 544,
                 204.22
@@ -3126,7 +3126,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1P1Q-0",
+              "nodeId": "2LR2-0",
               "size": [
                 544,
                 97.41
@@ -3146,7 +3146,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1P2H-0",
+              "nodeId": "2LRT-0",
               "size": [
                 544,
                 20.45
@@ -4056,11 +4056,11 @@
         "src/stories/HoverCard.stories.tsx",
         "src/usage/hover-card.usage.mjs"
       ],
-      "sourceHash": "f9c6d2f1532e404e",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "830b4dfb8673b57b",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 2,
-        "nodes": 19,
+        "nodes": 17,
         "approximated": 1,
         "bound": 55,
         "bindable": 55,
@@ -4072,15 +4072,15 @@
         {
           "id": "components-hovercard--default",
           "title": "Default",
-          "opened": "hover",
-          "nodes": 12,
+          "opened": "story",
+          "nodes": 11,
           "approximated": 1,
           "bound": 28,
           "bindable": 28,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PQ9-0",
+              "nodeId": "2LSH-0",
               "size": [
                 62.92,
                 16
@@ -4089,12 +4089,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1PQB-0",
+              "nodeId": "2LSJ-0",
               "size": [
                 256,
                 95.41
               ],
-              "htmlHash": "6f524055e91219cc"
+              "htmlHash": "56f8df8b50617773"
             }
           ]
         },
@@ -4102,14 +4102,14 @@
           "id": "components-hovercard--link-preview",
           "title": "Link Preview",
           "opened": "hover",
-          "nodes": 7,
+          "nodes": 6,
           "approximated": 0,
           "bound": 27,
           "bindable": 27,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PR3-0",
+              "nodeId": "2LT8-0",
               "size": [
                 71.69,
                 16
@@ -4118,12 +4118,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1PR5-0",
+              "nodeId": "2LTA-0",
               "size": [
                 256,
                 99.41
               ],
-              "htmlHash": "7edf6477a6f37a36"
+              "htmlHash": "ebf1cc86f46bded7"
             }
           ]
         }
@@ -4142,14 +4142,14 @@
         "src/stories/icon.stories.tsx",
         "src/usage/icon.usage.mjs"
       ],
-      "sourceHash": "42a1e57c78a396f0",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "fe3a928b80aeb411",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
-        "nodes": 314,
-        "approximated": 2,
-        "bound": 613,
-        "bindable": 613,
+        "nodes": 489,
+        "approximated": 51,
+        "bound": 865,
+        "bindable": 865,
         "bindingRate": 1
       },
       "notes": [],
@@ -4166,7 +4166,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PRS-0",
+              "nodeId": "2LTU-0",
               "size": [
                 24,
                 24
@@ -4186,7 +4186,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PS1-0",
+              "nodeId": "2LU3-0",
               "size": [
                 145.67,
                 19.41
@@ -4206,7 +4206,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PSE-0",
+              "nodeId": "2LUG-0",
               "size": [
                 20,
                 20
@@ -4219,19 +4219,19 @@
           "id": "components-icon--core-set",
           "title": "Core Set",
           "opened": "none",
-          "nodes": 308,
-          "approximated": 1,
-          "bound": 602,
-          "bindable": 602,
+          "nodes": 483,
+          "approximated": 50,
+          "bound": 854,
+          "bindable": 854,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1PSN-0",
+              "nodeId": "2LUP-0",
               "size": [
                 1200,
                 908.5
               ],
-              "htmlHash": "8fc9b3ea619a542f"
+              "htmlHash": "d89966d1e6c657a1"
             }
           ]
         }
@@ -5592,11 +5592,11 @@
         "src/stories/popover.stories.tsx",
         "src/usage/popover.usage.mjs"
       ],
-      "sourceHash": "dff84dacc9fdb4dd",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "874c0c8eb11c7534",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
-        "nodes": 54,
+        "nodes": 51,
         "approximated": 1,
         "bound": 233,
         "bindable": 243,
@@ -5611,14 +5611,14 @@
           "id": "components-popover--default",
           "title": "Default",
           "opened": "click",
-          "nodes": 17,
+          "nodes": 16,
           "approximated": 0,
           "bound": 67,
           "bindable": 71,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1R8S-0",
+              "nodeId": "2MEK-0",
               "size": [
                 161.14,
                 223.91
@@ -5627,12 +5627,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1R90-0",
+              "nodeId": "2MES-0",
               "size": [
                 288,
                 139.91
               ],
-              "htmlHash": "0d41b7ee3a08b9c2"
+              "htmlHash": "59e09e237c0146f8"
             }
           ]
         },
@@ -5640,14 +5640,14 @@
           "id": "components-popover--with-description",
           "title": "With Description",
           "opened": "click",
-          "nodes": 21,
+          "nodes": 20,
           "approximated": 0,
           "bound": 82,
           "bindable": 88,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1R9R-0",
+              "nodeId": "2MFG-0",
               "size": [
                 195.45,
                 245.31
@@ -5656,12 +5656,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1R9Z-0",
+              "nodeId": "2MFO-0",
               "size": [
                 288,
                 161.31
               ],
-              "htmlHash": "1e40c5a2f735b08c"
+              "htmlHash": "637481ad0ddd7678"
             }
           ]
         },
@@ -5669,14 +5669,14 @@
           "id": "components-popover--all-sides",
           "title": "All Sides",
           "opened": "click",
-          "nodes": 16,
+          "nodes": 15,
           "approximated": 1,
           "bound": 84,
           "bindable": 84,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RAU-0",
+              "nodeId": "2MGG-0",
               "size": [
                 512,
                 320
@@ -5685,12 +5685,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1RB9-0",
+              "nodeId": "2MGV-0",
               "size": [
                 288,
                 57.72
               ],
-              "htmlHash": "d1031981bd3e11bc"
+              "htmlHash": "c46e74ed7b660c7d"
             }
           ]
         }
@@ -5817,14 +5817,14 @@
         "src/stories/prompt-composer.stories.tsx",
         "src/usage/prompt-composer.usage.mjs"
       ],
-      "sourceHash": "530d9a688ebf62fb",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "ea0e7596e19b853f",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 10,
         "nodes": 137,
         "approximated": 5,
-        "bound": 377,
-        "bindable": 421,
+        "bound": 375,
+        "bindable": 419,
         "bindingRate": 0.895
       },
       "notes": [],
@@ -5844,7 +5844,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Y4X-0",
+              "nodeId": "2MHD-0",
               "size": [
                 576,
                 108
@@ -5864,7 +5864,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Y5L-0",
+              "nodeId": "2MI1-0",
               "size": [
                 576,
                 84
@@ -5884,7 +5884,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Y69-0",
+              "nodeId": "2MIP-0",
               "size": [
                 576,
                 108
@@ -5904,7 +5904,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Y6X-0",
+              "nodeId": "2MJD-0",
               "size": [
                 576,
                 108
@@ -5924,7 +5924,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Y7L-0",
+              "nodeId": "2MK1-0",
               "size": [
                 576,
                 133.41
@@ -5944,7 +5944,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Y89-0",
+              "nodeId": "2MKP-0",
               "size": [
                 576,
                 108
@@ -5959,17 +5959,17 @@
           "opened": "none",
           "nodes": 32,
           "approximated": 1,
-          "bound": 101,
-          "bindable": 107,
+          "bound": 100,
+          "bindable": 106,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1Y8W-0",
+              "nodeId": "2MLC-0",
               "size": [
                 576,
                 166
               ],
-              "htmlHash": "6752e483b974e4d7"
+              "htmlHash": "32f6d187a2f8ff68"
             }
           ]
         },
@@ -5979,17 +5979,17 @@
           "opened": "none",
           "nodes": 21,
           "approximated": 3,
-          "bound": 61,
-          "bindable": 74,
+          "bound": 60,
+          "bindable": 73,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1YAB-0",
+              "nodeId": "2MMR-0",
               "size": [
                 576,
                 142.41
               ],
-              "htmlHash": "7448a3f379fbb5a4"
+              "htmlHash": "c9f22a23e7b6eec7"
             }
           ]
         },
@@ -6004,7 +6004,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1YBB-0",
+              "nodeId": "2MNR-0",
               "size": [
                 576,
                 84
@@ -6024,7 +6024,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1YBZ-0",
+              "nodeId": "2MOF-0",
               "size": [
                 576,
                 108
@@ -6326,8 +6326,8 @@
         "src/stories/resizable.stories.tsx",
         "src/usage/resizable.usage.mjs"
       ],
-      "sourceHash": "55168fb4310cda43",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "ad0aa2087ed379d0",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 57,
@@ -6350,12 +6350,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RZD-0",
+              "nodeId": "2MPB-0",
               "size": [
                 448,
-                53.41
+                192
               ],
-              "htmlHash": "7e2015ef79488382"
+              "htmlHash": "e3c3b9a766ded17c"
             }
           ]
         },
@@ -6370,12 +6370,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1RZX-0",
+              "nodeId": "2MPV-0",
               "size": [
                 384,
-                3
+                256
               ],
-              "htmlHash": "2c76b745bb6880d1"
+              "htmlHash": "4f359a5bc7505279"
             }
           ]
         },
@@ -6390,12 +6390,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1S0H-0",
+              "nodeId": "2MQF-0",
               "size": [
                 448,
-                53.41
+                192
               ],
-              "htmlHash": "02f4eab106383222"
+              "htmlHash": "841f140abe8cdf27"
             }
           ]
         },
@@ -6410,12 +6410,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1S12-0",
+              "nodeId": "2MR0-0",
               "size": [
                 672,
-                53.41
+                192
               ],
-              "htmlHash": "9981f476108cc83b"
+              "htmlHash": "028ad41616cd5c9b"
             }
           ]
         }
@@ -6522,11 +6522,11 @@
         "src/stories/select.stories.tsx",
         "src/usage/select.usage.mjs"
       ],
-      "sourceHash": "e9182dc1e44e21e4",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "6c8855b6390dfba8",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 5,
-        "nodes": 129,
+        "nodes": 125,
         "approximated": 4,
         "bound": 491,
         "bindable": 492,
@@ -6541,14 +6541,14 @@
           "id": "components-select--default",
           "title": "Default",
           "opened": "story",
-          "nodes": 30,
+          "nodes": 29,
           "approximated": 1,
           "bound": 117,
           "bindable": 117,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1S6Z-0",
+              "nodeId": "2MS2-0",
               "size": [
                 256,
                 32
@@ -6557,12 +6557,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1S7B-0",
+              "nodeId": "2MSE-0",
               "size": [
                 256,
                 210.03
               ],
-              "htmlHash": "1510c7a531c2f719"
+              "htmlHash": "74923e657ea1c0fe"
             }
           ]
         },
@@ -6570,28 +6570,28 @@
           "id": "components-select--with-value",
           "title": "With Value",
           "opened": "click",
-          "nodes": 32,
+          "nodes": 31,
           "approximated": 1,
           "bound": 119,
           "bindable": 119,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1S8F-0",
+              "nodeId": "2MTF-0",
               "size": [
                 256,
                 32
               ],
-              "htmlHash": "9d6e4a316fe8e42f"
+              "htmlHash": "3d5800208d8ab7c3"
             },
             {
               "part": "panel-1",
-              "nodeId": "1S8R-0",
+              "nodeId": "2MTR-0",
               "size": [
                 256,
                 210.03
               ],
-              "htmlHash": "ca1b0373b8b753d2"
+              "htmlHash": "3023e3c22205dd07"
             }
           ]
         },
@@ -6599,14 +6599,14 @@
           "id": "components-select--with-label",
           "title": "With Label",
           "opened": "click",
-          "nodes": 32,
+          "nodes": 31,
           "approximated": 1,
           "bound": 122,
           "bindable": 123,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1S9Y-0",
+              "nodeId": "2MUV-0",
               "size": [
                 256,
                 51.59
@@ -6615,12 +6615,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1SAC-0",
+              "nodeId": "2MV9-0",
               "size": [
                 256,
                 210.03
               ],
-              "htmlHash": "76eea81c18ca6e3f"
+              "htmlHash": "752c0be8aa56472b"
             }
           ]
         },
@@ -6628,14 +6628,14 @@
           "id": "components-select--small",
           "title": "Small",
           "opened": "click",
-          "nodes": 30,
+          "nodes": 29,
           "approximated": 1,
           "bound": 117,
           "bindable": 117,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1SBG-0",
+              "nodeId": "2MWA-0",
               "size": [
                 256,
                 28
@@ -6644,12 +6644,12 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1SBS-0",
+              "nodeId": "2MWM-0",
               "size": [
                 256,
                 210.03
               ],
-              "htmlHash": "54bf7d1d5f2913ff"
+              "htmlHash": "e4923e9dea35a431"
             }
           ]
         },
@@ -6664,7 +6664,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1SCT-0",
+              "nodeId": "2MXK-0",
               "size": [
                 256,
                 32
@@ -6688,8 +6688,8 @@
         "src/stories/separator.stories.tsx",
         "src/usage/separator.usage.mjs"
       ],
-      "sourceHash": "9904d74878e95e26",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "0c4ea2f43bf6d8cc",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 37,
@@ -6712,7 +6712,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1SDD-0",
+              "nodeId": "2MY4-0",
               "size": [
                 256,
                 63.81
@@ -6732,7 +6732,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1SDS-0",
+              "nodeId": "2MYJ-0",
               "size": [
                 256,
                 108.22
@@ -6752,12 +6752,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1SEB-0",
+              "nodeId": "2MZ2-0",
               "size": [
                 256,
                 19.41
               ],
-              "htmlHash": "e2f6bf454d7074b8"
+              "htmlHash": "a97ea468ba10f1df"
             }
           ]
         },
@@ -6772,12 +6772,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1SEU-0",
+              "nodeId": "2MZL-0",
               "size": [
                 256,
                 155.22
               ],
-              "htmlHash": "811db4c12a885969"
+              "htmlHash": "36dcda1506937860"
             }
           ]
         }
@@ -7704,14 +7704,14 @@
         "src/stories/tabs.stories.tsx",
         "src/usage/tabs.usage.mjs"
       ],
-      "sourceHash": "70b5ac4ea8061445",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "ca9761d0ab642dcb",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 4,
         "nodes": 97,
         "approximated": 21,
-        "bound": 395,
-        "bindable": 423,
+        "bound": 394,
+        "bindable": 422,
         "bindingRate": 0.934
       },
       "notes": [],
@@ -7723,17 +7723,17 @@
           "opened": "none",
           "nodes": 13,
           "approximated": 3,
-          "bound": 64,
-          "bindable": 68,
+          "bound": 63,
+          "bindable": 67,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TCM-0",
+              "nodeId": "2N0H-0",
               "size": [
                 320,
-                126.81
+                110.81
               ],
-              "htmlHash": "ab892c24d852d63e"
+              "htmlHash": "bf25ed6e9764b588"
             }
           ]
         },
@@ -7748,7 +7748,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TD8-0",
+              "nodeId": "2N13-0",
               "size": [
                 320,
                 71.41
@@ -7768,7 +7768,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TDU-0",
+              "nodeId": "2N1P-0",
               "size": [
                 320,
                 82.22
@@ -7788,7 +7788,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TEF-0",
+              "nodeId": "2N2A-0",
               "size": [
                 320,
                 492.44
@@ -8264,8 +8264,8 @@
         "src/stories/tooltip.stories.tsx",
         "src/usage/tooltip.usage.mjs"
       ],
-      "sourceHash": "b60e1f775d7b586b",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "1d3c71e9126bdd07",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 22,
@@ -8288,7 +8288,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1YO3-0",
+              "nodeId": "2N4G-0",
               "size": [
                 83.66,
                 32
@@ -8297,7 +8297,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1YO8-0",
+              "nodeId": "2N4L-0",
               "size": [
                 129.78,
                 28
@@ -8317,7 +8317,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1YOL-0",
+              "nodeId": "2N4Y-0",
               "size": [
                 24,
                 35.19
@@ -8326,7 +8326,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1YOR-0",
+              "nodeId": "2N54-0",
               "size": [
                 263.7,
                 28
@@ -8346,7 +8346,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1YP4-0",
+              "nodeId": "2N5H-0",
               "size": [
                 247.66,
                 28
@@ -8355,7 +8355,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "1YPJ-0",
+              "nodeId": "2N5W-0",
               "size": [
                 100.3,
                 28
@@ -8379,8 +8379,8 @@
         "src/stories/usage-meter.stories.tsx",
         "src/usage/usage-meter.usage.mjs"
       ],
-      "sourceHash": "3ce9e6081bfa14e4",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "cd3de501a5bbdab8",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 5,
         "nodes": 97,
@@ -8403,7 +8403,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TU7-0",
+              "nodeId": "2N6B-0",
               "size": [
                 380,
                 271.2
@@ -8423,7 +8423,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TVJ-0",
+              "nodeId": "2N7N-0",
               "size": [
                 380,
                 34.8
@@ -8443,7 +8443,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TW6-0",
+              "nodeId": "2N8A-0",
               "size": [
                 380,
                 271.2
@@ -8463,7 +8463,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TXL-0",
+              "nodeId": "2N9P-0",
               "size": [
                 380,
                 18
@@ -8483,7 +8483,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TY3-0",
+              "nodeId": "2NA7-0",
               "size": [
                 380,
                 18
@@ -8507,8 +8507,8 @@
         "src/stories/patterns/ActivityFeed.stories.tsx",
         "src/usage/activity-feed.usage.mjs"
       ],
-      "sourceHash": "7fee9165d9d30baa",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "4dd4dc8a58e5bd2f",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 62,
@@ -8531,7 +8531,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1TYQ-0",
+              "nodeId": "2NAU-0",
               "size": [
                 420,
                 315.05
@@ -8736,8 +8736,8 @@
         "src/stories/patterns/AiSidePanel.stories.tsx",
         "src/usage/ai-side-panel.usage.mjs"
       ],
-      "sourceHash": "5941f3f6f5278166",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "7cfd92363cf4c8f8",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 112,
@@ -8762,12 +8762,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZGJ-0",
+              "nodeId": "2ND8-0",
               "size": [
                 384,
                 560
               ],
-              "htmlHash": "5c5bd8e6272cf2d3"
+              "htmlHash": "a55b885e64137777"
             }
           ]
         },
@@ -8782,12 +8782,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZIM-0",
+              "nodeId": "2NFB-0",
               "size": [
                 384,
                 560
               ],
-              "htmlHash": "45224b8d7775d9ed"
+              "htmlHash": "82cb096ebe2fa182"
             }
           ]
         },
@@ -8802,12 +8802,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZKH-0",
+              "nodeId": "2NH6-0",
               "size": [
                 384,
                 560
               ],
-              "htmlHash": "c67f3bf2767177e5"
+              "htmlHash": "a0d6a21ae0789d59"
             }
           ]
         }
@@ -8874,8 +8874,8 @@
         "src/stories/patterns/AnalyticsCharts.stories.tsx",
         "src/usage/analytics-charts.usage.mjs"
       ],
-      "sourceHash": "43efbf4a858f9059",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "9fa79ad39ff31b65",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 33,
@@ -8898,12 +8898,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1UXF-0",
+              "nodeId": "2NIB-0",
               "size": [
                 880,
                 316.3
               ],
-              "htmlHash": "71a44b347fa689e1"
+              "htmlHash": "cb48b5569a3b7773"
             }
           ]
         }
@@ -8972,14 +8972,14 @@
         "src/stories/patterns/BadgeOnCard.stories.tsx",
         "src/usage/badge-on-card.usage.mjs"
       ],
-      "sourceHash": "686de89701a142b3",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "d4156fed3ea307dc",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 8,
         "approximated": 0,
-        "bound": 57,
-        "bindable": 57,
+        "bound": 56,
+        "bindable": 56,
         "bindingRate": 1
       },
       "notes": [],
@@ -8991,17 +8991,17 @@
           "opened": "none",
           "nodes": 8,
           "approximated": 0,
-          "bound": 57,
-          "bindable": 57,
+          "bound": 56,
+          "bindable": 56,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1V4S-0",
+              "nodeId": "2NOO-0",
               "size": [
                 280,
-                76
+                52
               ],
-              "htmlHash": "8218e64a4df23e32"
+              "htmlHash": "9796ebe365043509"
             }
           ]
         }
@@ -9118,8 +9118,8 @@
         "src/stories/patterns/Chat.stories.tsx",
         "src/usage/chat.usage.mjs"
       ],
-      "sourceHash": "28d9323903c4e8f3",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "da05fc3c63fbe9a4",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 25,
@@ -9144,7 +9144,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1VLE-0",
+              "nodeId": "2NPB-0",
               "size": [
                 400,
                 480
@@ -9168,8 +9168,8 @@
         "src/stories/patterns/Checkout.stories.tsx",
         "src/usage/checkout.usage.mjs"
       ],
-      "sourceHash": "ab544cf63af1127c",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "7136a11e974ef06e",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 63,
@@ -9194,12 +9194,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1VMH-0",
+              "nodeId": "2NQE-0",
               "size": [
                 820,
                 461.67
               ],
-              "htmlHash": "be09c4ee7f56516d"
+              "htmlHash": "7fff43de57f98159"
             }
           ]
         }
@@ -9316,8 +9316,8 @@
         "src/stories/patterns/ConversationHistory.stories.tsx",
         "src/usage/conversation-history.usage.mjs"
       ],
-      "sourceHash": "63187b69289b2664",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "27d9d277eb8465aa",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 3,
         "nodes": 108,
@@ -9340,7 +9340,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZOV-0",
+              "nodeId": "2NSW-0",
               "size": [
                 300,
                 350
@@ -9360,7 +9360,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZQE-0",
+              "nodeId": "2NUF-0",
               "size": [
                 300,
                 582
@@ -9380,7 +9380,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZSS-0",
+              "nodeId": "2NWT-0",
               "size": [
                 300,
                 89.41
@@ -9454,8 +9454,8 @@
         "src/stories/patterns/DashboardShell.stories.tsx",
         "src/usage/dashboard.usage.mjs"
       ],
-      "sourceHash": "83fd8fad035ae525",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "c05b0a8e07892852",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 59,
@@ -9480,7 +9480,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1VXO-0",
+              "nodeId": "2NXE-0",
               "size": [
                 1232,
                 600
@@ -9604,8 +9604,8 @@
         "src/stories/patterns/Error404.stories.tsx",
         "src/usage/error-404.usage.mjs"
       ],
-      "sourceHash": "86c21ea7846de118",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "65e786b053f35049",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 11,
@@ -9630,7 +9630,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1W40-0",
+              "nodeId": "2O03-0",
               "size": [
                 1232,
                 500
@@ -9702,8 +9702,8 @@
         "src/stories/patterns/FeatureSection.stories.tsx",
         "src/usage/feature-section.usage.mjs"
       ],
-      "sourceHash": "c404ce6ca8a3292a",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "55dcfabde32a9236",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 22,
@@ -9726,7 +9726,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1W6C-0",
+              "nodeId": "2O0S-0",
               "size": [
                 1200,
                 406.63
@@ -9800,8 +9800,8 @@
         "src/stories/patterns/Footer.stories.tsx",
         "src/usage/footer.usage.mjs"
       ],
-      "sourceHash": "1c29070680c761c8",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "81434e87935ade60",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 33,
@@ -9824,12 +9824,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1W9L-0",
+              "nodeId": "2O1Z-0",
               "size": [
                 1232,
                 306.03
               ],
-              "htmlHash": "bc3b9af822756630"
+              "htmlHash": "ce052d9427fb4b5d"
             }
           ]
         }
@@ -9898,8 +9898,8 @@
         "src/stories/patterns/Hero.stories.tsx",
         "src/usage/hero.usage.mjs"
       ],
-      "sourceHash": "df8386be692c031e",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "fdb7f0003b1971eb",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 12,
@@ -9924,7 +9924,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1WBR-0",
+              "nodeId": "2O3B-0",
               "size": [
                 1232,
                 610.77
@@ -9996,8 +9996,8 @@
         "src/stories/patterns/Kanban.stories.tsx",
         "src/usage/kanban.usage.mjs"
       ],
-      "sourceHash": "853599a32b684dfb",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "09db12a69e5d91cd",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 70,
@@ -10020,7 +10020,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1WF8-0",
+              "nodeId": "2O43-0",
               "size": [
                 1200,
                 258.22
@@ -10044,8 +10044,8 @@
         "src/stories/patterns/ListDetail.stories.tsx",
         "src/usage/list-detail.usage.mjs"
       ],
-      "sourceHash": "b8803dfb962ce047",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "29b4c37e563f5857",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 44,
@@ -10068,7 +10068,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1WHY-0",
+              "nodeId": "2O6T-0",
               "size": [
                 1232,
                 520
@@ -10142,8 +10142,8 @@
         "src/stories/patterns/LoginMinimal.stories.tsx",
         "src/usage/login-minimal.usage.mjs"
       ],
-      "sourceHash": "014fd1fcde4936bb",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "d1c18b24c2f81426",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 14,
@@ -10168,12 +10168,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1WKP-0",
+              "nodeId": "2O8J-0",
               "size": [
                 320,
                 235.72
               ],
-              "htmlHash": "ae75cf1766d7bdc7"
+              "htmlHash": "5ec6e04a23896971"
             }
           ]
         }
@@ -10192,8 +10192,8 @@
         "src/stories/login-oauth.stories.tsx",
         "src/usage/login-oauth.usage.mjs"
       ],
-      "sourceHash": "920d953f8db02227",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "5ed49054b6a2470a",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 29,
@@ -10218,12 +10218,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1WLI-0",
+              "nodeId": "2O9C-0",
               "size": [
                 340,
                 423.13
               ],
-              "htmlHash": "f0ad89cc5015041a"
+              "htmlHash": "6eff50fa9000813e"
             }
           ]
         }
@@ -10242,8 +10242,8 @@
         "src/stories/patterns/LoginSplitPanel.stories.tsx",
         "src/usage/login-split-panel.usage.mjs"
       ],
-      "sourceHash": "a65420dd4e58bbfa",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "6e4beab74e609e36",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 34,
@@ -10268,12 +10268,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1WMW-0",
+              "nodeId": "2OAQ-0",
               "size": [
                 1232,
                 560
               ],
-              "htmlHash": "744e8b1bb1c4d1a1"
+              "htmlHash": "bb55603da07bd4bc"
             }
           ]
         }
@@ -10292,15 +10292,15 @@
         "src/stories/patterns/MailShell.stories.tsx",
         "src/usage/mail-shell.usage.mjs"
       ],
-      "sourceHash": "0d30b49e31a04bb8",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "b08c75ca4ead1326",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 74,
         "approximated": 2,
-        "bound": 242,
+        "bound": 243,
         "bindable": 246,
-        "bindingRate": 0.984
+        "bindingRate": 0.988
       },
       "notes": [],
       "lost": [
@@ -10313,17 +10313,17 @@
           "opened": "none",
           "nodes": 74,
           "approximated": 2,
-          "bound": 242,
+          "bound": 243,
           "bindable": 246,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1ZTD-0",
+              "nodeId": "2OCC-0",
               "size": [
                 1232,
                 560
               ],
-              "htmlHash": "3b91b38fd6668a2c"
+              "htmlHash": "75526f924a4de87f"
             }
           ]
         }
@@ -10342,8 +10342,8 @@
         "src/stories/patterns/Navbar.stories.tsx",
         "src/usage/navbar.usage.mjs"
       ],
-      "sourceHash": "86b9ba5a10b31c65",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "af24d8bfbf515c80",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 22,
@@ -10368,7 +10368,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1WRF-0",
+              "nodeId": "2OF9-0",
               "size": [
                 1232,
                 56
@@ -10392,8 +10392,8 @@
         "src/stories/patterns/Newsletter.stories.tsx",
         "src/usage/newsletter.usage.mjs"
       ],
-      "sourceHash": "98068898ae7cdaa0",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "e84e561f3a5ed159",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 13,
@@ -10418,7 +10418,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1WSF-0",
+              "nodeId": "2OG9-0",
               "size": [
                 560,
                 297.75
@@ -10442,11 +10442,11 @@
         "src/stories/patterns/Notifications.stories.tsx",
         "src/usage/notifications.usage.mjs"
       ],
-      "sourceHash": "000dc94f1736581f",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "a324e3a7ded03a2a",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
-        "nodes": 37,
+        "nodes": 38,
         "approximated": 0,
         "bound": 94,
         "bindable": 97,
@@ -10459,19 +10459,19 @@
           "id": "patterns-data-notifications--notifications",
           "title": "Notifications",
           "opened": "none",
-          "nodes": 37,
+          "nodes": 38,
           "approximated": 0,
           "bound": 94,
           "bindable": 97,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1WT7-0",
+              "nodeId": "2OH1-0",
               "size": [
                 360,
-                266.44
+                285.84
               ],
-              "htmlHash": "5f591a17c7c92a88"
+              "htmlHash": "fecd9192862d7124"
             }
           ]
         }
@@ -10738,14 +10738,14 @@
         "src/stories/patterns/ProfileCard.stories.tsx",
         "src/usage/profile-card.usage.mjs"
       ],
-      "sourceHash": "a3d81278dd66637c",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "9530882373112ec5",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
-        "nodes": 27,
+        "nodes": 26,
         "approximated": 0,
-        "bound": 105,
-        "bindable": 105,
+        "bound": 104,
+        "bindable": 104,
         "bindingRate": 1
       },
       "notes": [],
@@ -10757,19 +10757,19 @@
           "id": "patterns-data-profile-card--profile-card",
           "title": "Profile Card",
           "opened": "none",
-          "nodes": 27,
+          "nodes": 26,
           "approximated": 0,
-          "bound": 105,
-          "bindable": 105,
+          "bound": 104,
+          "bindable": 104,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1X2A-0",
+              "nodeId": "2OIM-0",
               "size": [
                 340,
-                348.83
+                331.83
               ],
-              "htmlHash": "240eda9035950fe1"
+              "htmlHash": "e6a09a715f0d34ac"
             }
           ]
         }
@@ -10788,8 +10788,8 @@
         "src/stories/patterns/SearchResults.stories.tsx",
         "src/usage/search-results.usage.mjs"
       ],
-      "sourceHash": "c521a3013f01d80e",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "de833e4fed700172",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 44,
@@ -10812,7 +10812,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1X3G-0",
+              "nodeId": "2OJQ-0",
               "size": [
                 440,
                 314.63
@@ -10886,8 +10886,8 @@
         "src/stories/patterns/SidebarNav.stories.tsx",
         "src/usage/sidebar-nav.usage.mjs"
       ],
-      "sourceHash": "6e03384f791ec5b9",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "1c1ce63242462294",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 90,
@@ -10910,12 +10910,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1YPY-0",
+              "nodeId": "2OLK-0",
               "size": [
                 1232,
-                900
+                560
               ],
-              "htmlHash": "e4a67f65b76df85d"
+              "htmlHash": "d7bbae916107bc12"
             }
           ]
         }
@@ -10934,8 +10934,8 @@
         "src/stories/patterns/Signup.stories.tsx",
         "src/usage/signup.usage.mjs"
       ],
-      "sourceHash": "0567008a23e599c6",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "3317699590056834",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 26,
@@ -10960,7 +10960,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1XAF-0",
+              "nodeId": "2OPG-0",
               "size": [
                 380,
                 368.08
@@ -11082,8 +11082,8 @@
         "src/stories/patterns/StatsBand.stories.tsx",
         "src/usage/stats-band.usage.mjs"
       ],
-      "sourceHash": "8e1f16f3310be014",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "17402b8537f0359b",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 25,
@@ -11106,12 +11106,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1XED-0",
+              "nodeId": "2OQJ-0",
               "size": [
                 880,
                 250.06
               ],
-              "htmlHash": "53f0a4a4d2e62dda"
+              "htmlHash": "5db90514f74973f0"
             }
           ]
         }
@@ -11178,14 +11178,14 @@
         "src/stories/patterns/TeamSection.stories.tsx",
         "src/usage/team-section.usage.mjs"
       ],
-      "sourceHash": "306f4ca12b3f9761",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "733291809b4c75bc",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 59,
         "approximated": 5,
-        "bound": 210,
-        "bindable": 211,
+        "bound": 206,
+        "bindable": 207,
         "bindingRate": 0.995
       },
       "notes": [],
@@ -11197,17 +11197,17 @@
           "opened": "none",
           "nodes": 59,
           "approximated": 5,
-          "bound": 210,
-          "bindable": 211,
+          "bound": 206,
+          "bindable": 207,
           "parts": [
             {
               "part": "main",
-              "nodeId": "1XGI-0",
+              "nodeId": "2ORL-0",
               "size": [
                 880,
-                316.14
+                308.14
               ],
-              "htmlHash": "d5111593e9a07285"
+              "htmlHash": "fde9bf13632fefcc"
             }
           ]
         }
@@ -11226,8 +11226,8 @@
         "src/stories/patterns/Testimonial.stories.tsx",
         "src/usage/testimonial.usage.mjs"
       ],
-      "sourceHash": "361d728fb4693400",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "f282a0a2b43e22a4",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 8,
@@ -11250,7 +11250,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1XIS-0",
+              "nodeId": "2OTV-0",
               "size": [
                 520,
                 348
@@ -11344,8 +11344,8 @@
         "src/stories/patterns/Wizard.stories.tsx",
         "src/usage/wizard.usage.mjs"
       ],
-      "sourceHash": "d67612efad271f5a",
-      "syncedAt": "2026-10-07",
+      "sourceHash": "5cd79da25e4cbd11",
+      "syncedAt": "2026-10-12",
       "counts": {
         "stories": 1,
         "nodes": 37,
@@ -11370,7 +11370,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "1XKR-0",
+              "nodeId": "2OUF-0",
               "size": [
                 460,
                 312.48

@@ -65,7 +65,8 @@ export function Checkout() {
           </Button>
         </CardFooter>
       </Card>
-      <Card size="sm">
+      {/* Default size, like Payment beside it, so the two titles share a top edge and a size. */}
+      <Card>
         <CardHeader>
           <CardTitle>Order summary</CardTitle>
         </CardHeader>

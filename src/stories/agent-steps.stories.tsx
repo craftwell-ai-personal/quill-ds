@@ -1,5 +1,6 @@
 import * as React from 'react'
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import { Button } from '@/components/ui/button'
 import { expect, fn, userEvent, waitFor, within } from 'storybook/test'
 import { AgentSteps, type AgentStep } from '../../registry/lib/agent-steps'
 import { usage } from '@/usage/agent-steps.usage.mjs'
@@ -123,7 +124,7 @@ export const AnnouncesProgress: Story = {
     return (
       <div className="grid gap-3">
         <AgentSteps {...args} steps={steps} />
-        <button type="button" onClick={advance}>Finish the running step</button>
+        <Button type="button" variant="outline" size="sm" className="w-fit" onClick={advance}>Finish the running step</Button>
       </div>
     )
   },

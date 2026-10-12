@@ -22,7 +22,7 @@ export function SplitPanel() {
       <div className="flex items-center justify-center p-8">
         <form className="flex w-full max-w-[340px] flex-col gap-5" onSubmit={(e) => e.preventDefault()}>
           <div className="flex flex-col gap-1 text-center">
-            <h1 className="font-heading text-xl text-foreground">Welcome back</h1>
+            <h1 className="fraunces-text font-heading text-xl text-foreground">Welcome back</h1>
             <p className="text-sm text-muted-foreground">Sign in to your team account.</p>
           </div>
           <div className="flex flex-col gap-1.5">

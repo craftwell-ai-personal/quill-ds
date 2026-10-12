@@ -252,7 +252,8 @@ export function AiPopover({
           whether the popover is open and which it is. Tab from it, while open, goes in to the popover's first stop,
           as it does from a trigger the popover is placed by. */}
       {children ? (
-        <PopoverTrigger render={children} nativeButton={nativeButton} {...(anchored ? {
+        // Highlighted text gets a Tab stop here, so it needs Quill's focus ring, not the browser's.
+        <PopoverTrigger render={children} nativeButton={nativeButton} className={nativeButton ? undefined : 'outline-hidden focus-visible:ring-3 focus-visible:ring-ring/50'} {...(anchored ? {
           ref: triggerRef,
           'aria-expanded': isOpen,
           'aria-controls': isOpen ? popupId : undefined,

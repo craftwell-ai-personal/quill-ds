@@ -10,7 +10,7 @@ A docs search panel — query input, result count, and a linked result list with
 - **data-table** — when results are structured records with multiple sortable columns, not a simple linked list.
 
 ### Rules
-- **Do:** State the result count in visible text ("4 results for \"token\"") so users know the query actually ran. **Don't:** Leave users guessing whether zero results means the search hasn't run yet or genuinely found nothing.
+- **Do:** State the result count in visible text (2 results for “token”) so users know the query actually ran. **Don't:** Leave users guessing whether zero results means the search hasn't run yet or genuinely found nothing.
 
 ### Accessibility
 - The search input has an explicit aria-label ("Search") since its visible placeholder text is not a substitute for a label.

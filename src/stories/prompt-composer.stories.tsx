@@ -1,5 +1,6 @@
 import * as React from 'react'
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
+import { Button } from '@/components/ui/button'
 import { expect, fn, userEvent, waitFor } from 'storybook/test'
 import { PromptComposer } from '../../registry/lib/prompt-composer'
 import { usage } from '@/usage/prompt-composer.usage.mjs'
@@ -361,7 +362,7 @@ export const MenuShrinksUnderTheCursor: Story = {
     return (
       <>
         <PromptComposer {...args} commands={commands} />
-        <button type="button" onClick={() => setCommands(ALL_COMMANDS.slice(0, 2))}>Fewer commands</button>
+        <Button type="button" variant="outline" size="sm" className="w-fit" onClick={() => setCommands(ALL_COMMANDS.slice(0, 2))}>Fewer commands</Button>
       </>
     )
   },

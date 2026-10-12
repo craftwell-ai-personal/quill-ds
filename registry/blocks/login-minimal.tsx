@@ -12,7 +12,7 @@ export function Minimal() {
         <span className="flex size-9 items-center justify-center rounded-md bg-primary text-sm font-medium text-primary-foreground">
           Q
         </span>
-        <h1 className="font-heading text-lg text-foreground">Sign in to Quill</h1>
+        <h1 className="fraunces-text font-heading text-lg text-foreground">Sign in to Quill</h1>
       </div>
       <div className="flex flex-col gap-1.5">
         <Label htmlFor="min-email">Email</Label>

@@ -27,6 +27,21 @@ export const inColumn = (className: string): Decorator =>
     </div>
   ))
 
+// Usage rules mark code with backticks (they are markdown in llms.txt); show those spans as code, not as literal `marks`.
+function withCode(text: string) {
+  return text.split('`').map((part, index) => (index % 2 ? <code key={index} className="font-mono text-[0.92em]">{part}</code> : part))
+}
+
+// The coloured cap on each frame. A thick top border on a rounded box tapers into the thin side borders at the
+// corners (a crescent); a strip clipped to the frame's outline follows the curve instead.
+function TopRule({ className }: { className: string }) {
+  return (
+    <span aria-hidden className="pointer-events-none absolute -inset-px overflow-hidden rounded-xl">
+      <span className={`block h-1 ${className}`} />
+    </span>
+  )
+}
+
 /**
  * Side-by-side Do/Don't frame for docs pages. The caption text comes from the
  * usage file by rule id, so the rendered example can never drift from the
@@ -51,16 +66,18 @@ export function DoDontPair({
   if (!rule) throw new Error(`No rule '${id}' in usage for '${usage.name}'`)
   return (
     <div data-quill-dodont className="mx-auto grid w-full max-w-[75rem] gap-4 sm:grid-cols-2">
-      <figure className="flex min-w-0 flex-col gap-3 rounded-xl border border-t-4 border-t-primary p-4">
+      <figure className="relative flex min-w-0 flex-col gap-3 rounded-xl border p-4 pt-5">
+        <TopRule className="bg-primary" />
         <div className={`min-w-0 max-w-full ${exampleClassName ?? ''}`.trim()}>{doExample}</div>
         <figcaption className="text-sm">
-          <strong>Do.</strong> {rule.do}
+          <strong>Do.</strong> {withCode(rule.do)}
         </figcaption>
       </figure>
-      <figure className="flex min-w-0 flex-col gap-3 rounded-xl border border-t-4 border-t-destructive p-4">
+      <figure className="relative flex min-w-0 flex-col gap-3 rounded-xl border p-4 pt-5">
+        <TopRule className="bg-destructive" />
         <div className={`min-w-0 max-w-full ${exampleClassName ?? ''}`.trim()}>{dontExample}</div>
         <figcaption className="text-sm">
-          <strong>Don&apos;t.</strong> {rule.dont}
+          <strong>Don&apos;t.</strong> {withCode(rule.dont)}
         </figcaption>
       </figure>
     </div>

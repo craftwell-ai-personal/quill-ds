@@ -13,6 +13,41 @@ within a minute, and that release is what triggers `library-sync` into the apps;
 manual tag races the bot and can leave a tag with no release behind it. The homepage
 footer reads `package.json` directly, so the displayed version updates with the bump.
 
+## [1.24.0] — 2026-10-11
+
+A visual-defect sweep of every Storybook story (714, in Dawn): each one captured and measured, then read by eye.
+
+### Added
+- `UsageMeter` takes `unitOne`, the word for exactly one ("credit"); it defaults to `unit` without its final "s", so one left reads "1 credit left", not "1 credits left".
+
+### Fixed
+- Keyboard focus showed the browser's own ring, not Quill's, on: the prompt composer's mode tabs (now an inset ring, so it never lays a bar over the box edge the tab joins), its attachment Remove and tool Turn off buttons, highlighted text that opens an AI popover, and links and buttons in the footer, navbar, dashboard, kanban, list-detail, search-results and signup blocks.
+- Conversation history: a row's focus ring wraps the whole row, ⋯ included, instead of stopping at the title.
+- Agent steps: the header lines up with the rows (the mark over the dots, the count over the times); it sat 4px outside both.
+- Prompt composer: in the / menu, a command without the AI mark keeps its label on the same edge as one with it.
+- AI side panel: the header keeps one height with or without History and Close (it lost 8px without them).
+- Sidebar navigation (and the app page example): the sidebar sits inside the shell, not fixed to the window, so it ends where the page does and keeps the page margin; the two header rules now meet.
+- Mail shell: the toolbar divider is centred on the icons, and Send matches the height of the reply field.
+- Separator: a vertical separator with a set height is centred in its row instead of sitting at the top (sidebar navigation, mail shell, the separator stories).
+- Notifications: a read row keeps the unread dot's space, so every time sits in one column.
+- Checkout: the order summary is a default-size card like Payment, so the two titles share a top edge and size.
+- Profile card: one divider above the footer, not two.
+- Badge on card and team section: no doubled top padding over the content.
+- Login (minimal, OAuth, split panel): small `h1` headings use the Fraunces text cut; the display cut crushed the word spaces at 18–20px.
+- Headings and short copy no longer leave one word on the last line (hero, feature section, testimonial, newsletter, footer, 404, chat bubbles).
+- Copy: the stats band counts five themes; the Engagements chart says engagements, not sales.
+- Figma twins follow: Analytics charts and Stats band copy, the Checkout order summary at default size, Mail inbox Send at default size, Profile card without the doubled divider, Team section without the extra top padding, and Notifications times in one column (the copy now fills the row, as in code). All 26 changed blocks re-stamped; the pattern content baseline re-read from the file. Paper redrawn for every changed piece.
+
+### Changed (Storybook only)
+- Do/Don't frames: the coloured cap follows the frame's corner instead of mitring into the side border; captions show `code` as code, not as literal backticks.
+- Tooltip, hover card and popover Do/Don't: the open overlay stays inside its frame.
+- Resizable: every story renders at its set height (the panel library's inline height had overridden it, leaving Vertical empty).
+- Select With value shows "Calligraphy", not the raw value "calligraphy".
+- Icon › Core set breaks long names after an underscore, not mid-word.
+- Chart Do/Don't: three y-axis ticks that always fit (it skipped 45).
+- Story helper buttons ("Stop", "Remove", "Leave", "Finish the running step"…) are Quill buttons, not unstyled browser buttons.
+- Tabs and activity feed stories lose the doubled top padding; the wizard Do/Don't stepper fits its card; accordion copy describes Quill (Raleway, not Inter; no product name).
+
 ## [1.23.4] — 2026-10-10
 
 ### Changed

@@ -27,7 +27,7 @@ export const TeamSection: Story = {
 function TeamCard({ initials, name, showAction }: { initials: string; name: string; showAction: boolean }) {
   return (
     <Card size="sm" className="w-[110px]">
-      <CardContent className="flex flex-col items-center gap-2 pt-2 text-center">
+      <CardContent className="flex flex-col items-center gap-2 text-center">
         <Avatar size="sm">
           <AvatarFallback>{initials}</AvatarFallback>
         </Avatar>

@@ -79,9 +79,10 @@ const MENU_GAP = 6
 // The same 4px, sideways: the menu hangs from the button's right edge, and a negative alignOffset of this carries it out to the row's outer edge (the border included).
 const MENU_INSET = 4
 
+// The row, not the title, draws the title's focus ring, so the ring wraps the ⋯ button as the row's fill does.
 // Every row has a 1px border (clear unless the chat is open), so the padding here is 1px under px-2.5 / py-1.5:
 // the title still starts 10px in, under its group heading, and the row is still 32px tall.
-const OPEN = 'min-w-0 flex-1 truncate rounded-lg px-[9px] py-[5px] text-left text-sm text-foreground no-underline outline-hidden focus-visible:ring-3 focus-visible:ring-ring/50 aria-[current]:font-medium'
+const OPEN = 'min-w-0 flex-1 truncate rounded-lg px-[9px] py-[5px] text-left text-sm text-foreground no-underline outline-hidden aria-[current]:font-medium'
 // Hidden until wanted, never out of reach: hover, keyboard focus anywhere in the row, the open chat, an open menu, and any touch screen show it.
 // mr-[3px] plus the row's 1px border keeps the button 4px inside the row's outer edge.
 const MORE = 'mr-[3px] shrink-0 text-ink-soft opacity-0 group-hover/row:opacity-100 group-focus-within/row:opacity-100 group-has-[[aria-current]]/row:opacity-100 aria-expanded:opacity-100 pointer-coarse:opacity-100'
@@ -461,7 +462,7 @@ export function ConversationHistory({
               return (
                 <li key={chat.id} data-slot="chat-row" data-chat-id={chat.id}
                   // The open chat gets a hairline as well as the fill: on the dark themes the fill alone is too faint to find.
-                  className="group/row flex min-h-8 items-center rounded-lg border border-transparent hover:bg-muted has-[[aria-current]]:border-border has-[[aria-current]]:bg-muted">
+                  className="group/row flex min-h-8 items-center rounded-lg border border-transparent hover:bg-muted has-[[aria-current]]:border-border has-[[aria-current]]:bg-muted has-[[data-slot=chat-open]:focus-visible]:ring-3 has-[[data-slot=chat-open]:focus-visible]:ring-ring/50">
                   {chat.href ? (
                     <a href={chat.href} data-slot="chat-open" aria-current={isCurrent ? 'page' : undefined} className={OPEN}
                       // A press with Cmd, Ctrl, Shift or Alt opens the chat in a new tab or window: this page's open chat has not changed.

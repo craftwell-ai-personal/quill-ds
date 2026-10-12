@@ -12,7 +12,7 @@ export const usage = {
   rules: [
     {
       id: 'announce-result-count',
-      do: 'State the result count in visible text ("4 results for \\"token\\"") so users know the query actually ran.',
+      do: 'State the result count in visible text (2 results for “token”) so users know the query actually ran.',
       dont: "Leave users guessing whether zero results means the search hasn't run yet or genuinely found nothing.",
       visual: true,
     },

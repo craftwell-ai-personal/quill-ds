@@ -25,7 +25,7 @@ export function TeamSection() {
       <div className="grid grid-cols-4 gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
         {team.map((m) => (
           <Card key={m.name} size="sm">
-            <CardContent className="flex flex-col items-center gap-3 pt-2 text-center">
+            <CardContent className="flex flex-col items-center gap-3 text-center">
               <Avatar size="lg">
                 <AvatarFallback>{m.initials}</AvatarFallback>
               </Avatar>

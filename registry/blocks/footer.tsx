@@ -13,7 +13,7 @@ export function Footer() {
       <div className="flex flex-col gap-10 md:flex-row md:justify-between">
         <div className="flex max-w-xs flex-col gap-2">
           <span className="font-heading text-xl">Quill</span>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-pretty text-muted-foreground">
             A calm, editorial design system for building by hand.
           </p>
         </div>
@@ -22,7 +22,7 @@ export function Footer() {
             <nav key={col.title} aria-label={col.title} className="flex flex-col gap-2">
               <span className="text-sm font-medium">{col.title}</span>
               {col.links.map((l) => (
-                <a key={l} href="#" className="text-sm text-muted-foreground hover:text-foreground">
+                <a key={l} href="#" className="rounded-sm text-sm text-muted-foreground hover:text-foreground outline-hidden focus-visible:ring-3 focus-visible:ring-ring/50">
                   {l}
                 </a>
               ))}
@@ -34,8 +34,8 @@ export function Footer() {
       <div className="flex flex-col items-center justify-between gap-2 text-xs text-muted-foreground sm:flex-row">
         <span>© 2026 Quill. All rights reserved.</span>
         <div className="flex gap-4">
-          <a href="#" className="hover:text-foreground">Privacy</a>
-          <a href="#" className="hover:text-foreground">Terms</a>
+          <a href="#" className="rounded-sm text-muted-foreground hover:text-foreground outline-hidden focus-visible:ring-3 focus-visible:ring-ring/50">Privacy</a>
+          <a href="#" className="rounded-sm text-muted-foreground hover:text-foreground outline-hidden focus-visible:ring-3 focus-visible:ring-ring/50">Terms</a>
         </div>
       </div>
     </footer>
