@@ -17,7 +17,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 // descriptions of one component (CRA-212).
 export function sourceFilesFor(u) {
   const candidates = u.kind === 'pattern'
-    ? [`registry/blocks/${u.name}.tsx`]
+    ? [`registry/blocks/${u.name}.tsx`, `registry/examples/${u.name}.tsx`]
     : [`src/components/ui/${u.name}.tsx`, `registry/lib/${u.name}.tsx`]
   return candidates.filter((f) => existsSync(join(root, f)))
 }

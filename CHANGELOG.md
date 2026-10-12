@@ -13,6 +13,13 @@ within a minute, and that release is what triggers `library-sync` into the apps;
 manual tag races the bot and can leave a tag with no release behind it. The homepage
 footer reads `package.json` directly, so the displayed version updates with the bump.
 
+## [1.27.0] — 2026-10-12
+
+### Added
+- **Usage guides for the three example pages** (`example-app-page`, `example-auth-page`, `example-marketing-page`). Every registry piece now has a guide: when to pick each page, how to tell the three apart (and from `dashboard`, `list-detail`, `tabs-page`, `ai-home`, `error-404`, `login`, `login-minimal` and `signup`), do/don't rules with ids, accessibility notes and the tokens each page leans on. The accessibility notes were measured on the pages in Storybook (landmarks, headings and tab order at desktop and phone width), not written from memory. They are published like the other 127 at `/usage/<name>.md` and `.json`, listed in `/usage/index.json`, linked from `llms.txt`, shipped as reference files in the agent-rules skill, and shown in each example's Storybook docs.
+- **MCP `get_component`** answers an example page with its guide followed by its composition order.
+- The registry entries' install docs are unchanged: they still open with the composition line (`Composition, top to bottom: …`).
+
 ## [1.26.1] — 2026-10-11
 
 ### Fixed

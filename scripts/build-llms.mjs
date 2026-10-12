@@ -135,7 +135,10 @@ export function renderLlms(t = tokens) {
   p()
   p('Each example is a whole page composed from the blocks above; its docs carry the composition order and the spacing rules. Install one and replace the sample content: `npx shadcn@latest add @quill/<name>`.')
   p()
-  for (const e of EXAMPLES) p(`- [${e.title}](${HOME}/r/${e.name}.json) — ${e.description} Composition: ${e.blocks.join(' → ')}.`)
+  for (const e of EXAMPLES) {
+    const guide = usageByName.has(e.name) ? ` · [usage guide](${HOME}/usage/${e.name}.md)` : ''
+    p(`- [${e.title}](${HOME}/r/${e.name}.json) — ${e.description} Composition: ${e.blocks.join(' → ')}.${guide}`)
+  }
   p()
 
   const primitives = ALL_USAGE.filter((u) => u.kind === 'component')

@@ -4,6 +4,7 @@ import { readFileSync, existsSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 
 import { ALL_USAGE } from '../src/usage/index.mjs'
+import { EXAMPLES } from '../src/usage/examples.mjs'
 import { renderUsagePage, renderUsageJson, renderUsageIndex, renderModulesDts, usageDocsField, renderCode, codeNames, usageHash, USAGE_DIR, CODE_DIR, REGISTRY_PATH, MODULES_DTS_PATH } from './build-usage.mjs'
 import { renderThemeDocs, accentNames, LLMS_URL } from '../src/usage/theme-docs.mjs'
 import { ALL_MODES, DEFAULT_MODE, DEFAULT_ACCENT } from '../src/tokens/themes.mjs'
@@ -76,6 +77,9 @@ test('registry.json carries the derived docs field, description, and use_when fo
   for (const u of ALL_USAGE) {
     const item = byName.get(u.name)
     if (!item) continue // primitives like button/dialog are not registry items
+    // example pages keep install docs and description from src/usage/examples.mjs (composition order first);
+    // registry-meta.test.mjs checks those
+    if (EXAMPLES.some((e) => e.name === u.name)) continue
     assert.equal(item.docs, usageDocsField(u), `registry item '${u.name}' docs is stale — run \`npm run build:usage\``)
     assert.equal(item.description, u.summary, `registry item '${u.name}' description diverges from its usage file summary`)
     if (item.type === 'registry:block') {

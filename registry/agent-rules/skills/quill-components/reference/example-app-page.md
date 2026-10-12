@@ -1,0 +1,29 @@
+# example-app-page (pattern)
+
+A whole signed-in app page, composed: the sidebar-nav shell around a page-header, then stat-cards, then a data-table.
+
+### When to use
+- You are building a signed-in screen about one collection of records (members, projects, invoices): what the page is, a few numbers about it, and the records themselves.
+- You want to start from a page whose shell, title and order are already right, and only replace the sample content.
+
+### Reach for instead
+- **example-marketing-page** — when the page is public and persuades a visitor to act: no signed-in shell, no records, read top to bottom and left through a call to action.
+- **example-auth-page** — when the screen has one task, signing in, and nothing else may share the viewport: no shell, no navigation, no numbers.
+- **dashboard** — when you need an application home with a search header and a fixed text sidebar rather than a page about one collection. It is its own shell, so never put it inside this page.
+- **list-detail** — when people work through the records one at a time and need the selected one open beside the list, not a table they scan.
+- **tabs-page** — when the page is settings split into panels (account, notifications, security), not a collection with numbers.
+
+### Rules
+- **Do:** Keep page-header first inside the shell: its breadcrumb and title say what the page is before any number appears. **Don't:** Open the page with the stat-cards row, the generic dashboard Quill avoids. Numbers sit inside a page that has already said what it is about.
+- **Do:** Pass the page content to sidebar-nav as its children, so the top bar, the main area and the 24px gap between pieces come from the shell. **Don't:** Wrap the page in a second shell (dashboard, another sidebar) or add your own padding around the children; the shell already provides both.
+- **Do:** Make each stat card a number about the records in the table below it, and rename the header, cards and columns together. **Don't:** Keep the sample content half-replaced: a "Project settings" title over member counts reads as two pages stitched together.
+
+### Accessibility
+- Landmarks: the shell gives a banner (the top bar with the sidebar toggle) and one main; page-header adds a navigation named "breadcrumb". The sidebar menu is not a landmark, so if your app has no other navigation landmark, wrap the menu in a nav with an aria-label.
+- Heading order: page-header holds the only heading, the h1. The stat-card titles and the table are not headings; give any section you add an h2 so the outline stays h1 → h2.
+- Focus order follows the composition: sidebar menu items, the sidebar toggle, the breadcrumb links, Duplicate and New, the table filter, Filter and Invite, then one labelled actions button per row. At phone width the sidebar is off-canvas, so focus starts at the toggle.
+- There is no skip link. Add one as the first focusable element, pointing at the main element, so keyboard users can pass the sidebar menu without tabbing through every item.
+
+### Design tokens
+`--sidebar` · `--sidebar-foreground` · `--sidebar-border` · `--background` · `--foreground` · `--muted-foreground` · `--border` · `--card` · `--primary` · `--space-4` · `--space-6`
+

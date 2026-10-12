@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/examples/example-auth-page.tsx",
-      "content": "import { SplitPanel } from '@/components/quill/login-split-panel'\n\n/**\n * An auth page, composed: login-split-panel alone. Signing in is one task, so\n * nothing else shares the viewport — no navbar, no footer, no promo strip.\n */\nexport function ExampleAuthPage() {\n  return (\n    <div className=\"min-h-screen bg-background text-foreground\">\n      <SplitPanel />\n    </div>\n  )\n}\n",
+      "content": "import { SplitPanel } from '@/components/quill/login-split-panel'\n\n// An auth page, composed: login-split-panel alone. Signing in is one task, so\n// nothing else shares the viewport — no navbar, no footer, no promo strip.\n/** A whole sign-in page, composed: login-split-panel alone on the page, with nothing competing with the one task. */\nexport function ExampleAuthPage() {\n  return (\n    <div className=\"min-h-screen bg-background text-foreground\">\n      <SplitPanel />\n    </div>\n  )\n}\n",
       "type": "registry:component",
       "target": "components/examples/example-auth-page.tsx"
     }

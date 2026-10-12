@@ -32,6 +32,8 @@ export function storyFileFor(name) {
     join(storiesDir, `${name}.stories.tsx`),
     join(storiesDir, `${pascal}.stories.tsx`),
     join(storiesDir, 'patterns', `${pascal}.stories.tsx`),
+    // composition examples keep their stories under examples/, named without the prefix
+    join(storiesDir, 'examples', `${pascal.replace(/^Example/, '')}.stories.tsx`),
   ]
   return candidates.find(existsSync)
 }
@@ -82,8 +84,9 @@ test('every story outside the allowlist has a usage file', () => {
 })
 
 // Composition examples (src/stories/examples) are registry examples, not
-// components: their docs come from src/usage/examples.mjs, so they carry no
-// usage module by design. The mapping is enforced both ways instead.
+// components: their install docs and composition order come from
+// src/usage/examples.mjs, and their usage guide from a usage module like any
+// other piece. The stories and examples.mjs are mirrored both ways.
 const pascalOf = (name) => name.split('-').map((s) => s[0].toUpperCase() + s.slice(1)).join('')
 test('composition example stories and src/usage/examples.mjs mirror each other', () => {
   const files = readdirSync(join(storiesDir, 'examples')).filter((f) => f.endsWith('.stories.tsx'))
