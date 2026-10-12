@@ -130,7 +130,8 @@ export function translateMargins({ axis, gap = 0, collapse = false }, children) 
     // `mx-auto` in a column centres the child; one auto side pushes it to the other edge
     const autos = [margin[crossStart] === 'auto', margin[crossEnd] === 'auto']
     if (autos[0] || autos[1]) align.push({ index, value: autos[0] && autos[1] ? 'center' : autos[0] ? 'flex-end' : 'flex-start' })
-    for (const side of [crossStart, crossEnd]) if (margin[side] > 0) lost.push(`${margin[side]}px ${side} margin across the ${axis} dropped`)
+    // a margin across the axis (a search box inset `m-1` in a column) has no flex spelling: a padded wrapper carries it
+    for (const side of [crossStart, crossEnd]) if (margin[side] > 0) wraps.push({ index, side, size: margin[side] })
     for (const side of [start, end, crossStart, crossEnd]) if (margin[side] < 0) lost.push(`negative ${side} margin (${margin[side]}px) dropped`)
     const before = margin[start]
     const previous = index > 0 ? children[index - 1].margin[end] : null
@@ -364,6 +365,19 @@ export function shorthand(values) {
  * Tailwind composes `box-shadow` from five variables, so a plain `shadow-sm` computes to four
  * invisible layers and the real one. Keep the layers that draw something.
  */
+/** A comma list split only at its top level: `linear-gradient(rgb(1, 2, 3), …), …` keeps each gradient whole. */
+export function splitLayers(value) {
+  const layers = ['']
+  let depth = 0
+  for (const character of value) {
+    if (character === '(') depth++
+    if (character === ')') depth--
+    if (character === ',' && depth === 0) layers.push('')
+    else layers[layers.length - 1] += character
+  }
+  return layers.map((layer) => layer.trim())
+}
+
 export function visibleShadows(value) {
   const layers = value.split(/,(?![^(]*\))/).map((layer) => layer.trim())
   const drawn = layers.filter((layer) => { const color = parseColor(layer.match(/#[0-9a-fA-F]{3,8}\b|\b(?:rgba?|oklab|oklch|color)\([^()]*\)/)?.[0] ?? ''); return !color || color.a > 0 })
@@ -673,6 +687,12 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
     const size = sizeStyles(node, context, { ...inherited, isRoot })
     if (node.tag === 'svg') return convertSvg(node, context, size)
     if (node.tag === 'img' || MEDIA.has(node.tag)) return convertMedia(node, context, size)
+    // A masked shape (the prompt composer's tab-base curve) is drawn from a photo of itself: Paper has no mask, and
+    // without one the shape's fill shows as a solid square. The photo already holds its fill, edge and see-through parts.
+    if (node.photo && images[node.photo]) {
+      const css = Object.entries(dropDefaults({ ...size, width: px(node.rect.w), height: px(node.rect.h), 'flex-shrink': '0' })).map(([property, value]) => `${property}:${value}`).join(';')
+      return emit({ tag: 'img', raw: `<img layer-name="${escapeAttr(label(node))}" src="${escapeAttr(images[node.photo])}" style="${escapeAttr(css)}">`, style: {}, children: [] })
+    }
 
     const layout = layoutOf(node)
     const flowing = node.children.filter((child) => !outOfFlow(child))
@@ -812,7 +832,15 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
         if (items.filter(isText).length && items.length > 1) note('approximated', node, `rich text split into ${items.length} one-style runs (it can no longer rewrap as a sentence)`)
         marginItems = []
         children = items.map((child, index) => {
-          if (!isText(child)) return convertChild(child)
+          if (!isText(child)) {
+            // An inline box's side margins travel with it on the line (a citation chip spaced off the words around it);
+            // a padded frame does the same, where a spacer could end up alone at the start of a wrapped line.
+            const converted = convertChild(child)
+            const { left, right } = marginOf(child)
+            const [before, after] = [left, right].map((value) => (typeof value === 'number' && value > 0 ? value : 0))
+            if (converted.raw || (!before && !after)) return converted
+            return emit({ tag: 'div', name: 'margin', style: dropDefaults({ display: 'flex', 'align-items': 'baseline', 'padding-left': before ? px(before) : undefined, 'padding-right': after ? px(after) : undefined }), children: [converted] })
+          }
           let text = normalizeText(child.text, node.used.whiteSpace)
           if (index === 0) text = text.trimStart()
           if (index === items.length - 1) text = text.trimEnd()
@@ -864,6 +892,10 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
           if (target.raw) target.raw = target.raw.replace(/style="/, `style="${Object.entries(place).map(([property, value]) => `${property}:${value}`).join(';')};`)
           else Object.assign(target.style, place)
         })
+        // Overlapping, so paint order shows: Paper paints later layers on top and has no z-index, so order them by
+        // theirs (the composer's tab row, z-10, covers the box's top edge it overlaps by 1.5px). The sort is stable.
+        const level = (child) => (child.used.position !== 'static' && child.used.zIndex !== 'auto' ? Number(child.used.zIndex) || 0 : 0)
+        children = marginItems.map((child, position) => ({ level: level(child), converted: children[position] })).sort((a, b) => a.level - b.level).map((entry) => entry.converted)
         traced = true
       } else {
         extraPadding = moved.padding
@@ -887,6 +919,28 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
         }
         children = children.map((child) => child.wrapper ?? child)
         for (const entry of moved.spacers.filter((candidate) => !candidate.grow).sort((a, b) => b.before - a.before)) children.splice(entry.before, 0, emit(spacer(axis, entry)))
+      }
+    }
+
+    // A raised child whose own pinned pieces spill over its neighbours (the selected composer tab, z-10, whose base
+    // curve reaches over the next tab) must be drawn after them, and Paper honours neither z-index nor positioning on an
+    // in-flow layer. Trace the row as the overlap case above does and order it by z-index; only this case, so ordinary
+    // rows keep their flex layout.
+    if (!traced) {
+      const sources = flowing.filter((child) => !isText(child))
+      const level = (child) => (child.used.position !== 'static' && child.used.zIndex !== 'auto' ? Number(child.used.zIndex) || 0 : 0)
+      const spills = (child) => child.children?.some((piece) => !isText(piece) && piece.used.position === 'absolute' && (piece.rect.x < child.rect.x - 0.5 || piece.rect.x + piece.rect.w > child.rect.x + child.rect.w + 0.5))
+      if (sources.length > 1 && sources.length === children.length && new Set(sources.map(level)).size > 1 && sources.some((child) => level(child) > 0 && spills(child))) {
+        note('approximated', node, 'a raised child overlaps its neighbours: the row is placed by measured position, ordered by z-index')
+        const placed = sources.map((child, position) => {
+          const target = children[position].wrapper ? children[position].children[0] : children[position]
+          const place = { position: 'absolute', left: px(child.rect.x - node.rect.x - num(node.used.borderLeftWidth)), top: px(child.rect.y - node.rect.y - num(node.used.borderTopWidth)), width: px(child.rect.w), height: px(child.rect.h) }
+          if (target.raw) target.raw = target.raw.replace(/style="/, `style="${Object.entries(place).map(([property, value]) => `${property}:${value}`).join(';')};`)
+          else Object.assign(target.style, place)
+          return { level: level(child), converted: target }
+        })
+        children = placed.sort((a, b) => a.level - b.level).map((entry) => entry.converted)
+        traced = true
       }
     }
 
@@ -926,6 +980,42 @@ export function convertTree(tree, tokenTable, { images = {} } = {}) {
       frame.overflow = 'hidden'
       frame.position = frame.position ?? 'relative'
       note('approximated', node, 'background-size is not kept by Paper: the gradient is a clipped child layer')
+    }
+    // A gradient edge (Quill's ai-edge): a fill clipped to the padding box over a gradient that shows through a
+    // see-through border. Paper has no background-clip, so the fill would cover the gradient and the edge vanish.
+    // An outer frame keeps the gradient and the place in the layout, padded by the border's width; an inner frame
+    // holds the fill (corners shrunk by the border) and everything the box lays out. (A fill laid in as an absolute
+    // layer would paint over the contents: positioned layers paint above unpositioned ones.)
+    const clips = node.used.backgroundClip?.split(',').map((clip) => clip.trim())
+    const layers = frame['background-image'] ? splitLayers(frame['background-image']) : []
+    const borders = sides(node.used, 'border', 'Width').map(num)
+    const seeThrough = sides(node.used, 'border', 'Color').every((color) => parseColor(color)?.a === 0)
+    if (clips?.[0] === 'padding-box' && clips[1] === 'border-box' && layers.length === 2 && seeThrough && borders.some((width) => width > 0)) {
+      const [top, right, bottom, left] = borders
+      const corner = (name, a, b) => px(Math.max(0, num(node.used[`border${name}Radius`]) - Math.max(a, b)))
+      const OUTER = ['width', 'height', 'min-width', 'max-width', 'min-height', 'max-height', 'flex-grow', 'flex-shrink', 'flex-basis', 'align-self', 'position', 'left', 'top', 'rotate', 'box-shadow', 'opacity', 'border-radius', 'outline', 'outline-offset']
+      const outer = { display: 'flex', 'flex-direction': 'column', 'background-image': layers[1], padding: [top, right, bottom, left].map(px).join(' ') }
+      // ai-edge's fill is spelled `linear-gradient(X, X)`, one colour: Paper gets it as the plain fill it is
+      const solid = layers[0].match(/^linear-gradient\((?:in [a-z]+ )?([^,]+(?:\([^)]*\))?),\s*([^,]+(?:\([^)]*\))?)\)$/)
+      const fill = solid && solid[1].trim() === solid[2].trim() ? { 'background-color': solid[1].trim(), 'background-image': undefined } : { 'background-image': layers[0] }
+      const inner = { ...frame, ...fill, 'flex-grow': '1', 'border-radius': [corner('TopLeft', top, left), corner('TopRight', top, right), corner('BottomRight', bottom, right), corner('BottomLeft', bottom, left)].join(' ') }
+      for (const property of OUTER) if (property in frame) { outer[property] = frame[property]; if (property !== 'border-radius') delete inner[property] }
+      for (const property of Object.keys(inner)) if (/^border(-(top|right|bottom|left))?$/.test(property)) delete inner[property]
+      // an inset shadow (a keyboard focus ring kept inside the tab) belongs over the fill, not under it
+      if (outer['box-shadow']) {
+        const shadows = splitLayers(outer['box-shadow'])
+        const insets = shadows.filter((shadow) => /\binset\b/.test(shadow))
+        if (insets.length) {
+          inner['box-shadow'] = insets.join(', ')
+          const rest = shadows.filter((shadow) => !insets.includes(shadow))
+          if (rest.length) outer['box-shadow'] = rest.join(', ')
+          else delete outer['box-shadow']
+        }
+      }
+      // absolute children (the tab's base curves) still measure from a positioned box
+      if (frame.position || floating.length) inner.position = 'relative'
+      note('approximated', node, 'gradient edge (background-clip) drawn as a gradient frame around a fill frame')
+      return emit({ tag: 'div', name: layerName(node), style: dropDefaults(outer), children: [emit({ tag: 'div', name: 'fill', style: dropDefaults(inner), children })] })
     }
     // Paper drops an absolutely positioned child unless its parent is positioned, as CSS does
     if (floating.length && !frame.position) frame.position = 'relative'
@@ -1019,6 +1109,7 @@ async function captureInPage({ usedProperties, specProperties, panelSelector, br
   }
   const trim = (value) => Math.round(value * 100) / 100
   const urls = new Set()
+  let masked = 0
   let rootOrigin = { x: 0, y: 0 }
 
   const hidden = (element, computed) => {
@@ -1150,6 +1241,12 @@ async function captureInPage({ usedProperties, specProperties, panelSelector, br
       if (unseenField(element, computed)) { node.ghost = true; return node }
       if (tag === 'svg') { node.svg = svgMarkup(element, computed); return node }
       if (tag === 'img') { node.src = element.currentSrc || element.src; node.alt = element.alt; if (node.src) urls.add(node.src); return node }
+      // an empty masked shape is photographed (see captureStory): Paper cannot cut a fill to a mask
+      if (computed.maskImage && computed.maskImage !== 'none' && !element.childNodes.length) {
+        node.photo = `paper-mask:${masked}`
+        element.setAttribute('data-paper-mask', String(masked++))
+        return node
+      }
       if (tag === 'input' || tag === 'textarea' || tag === 'select') {
         node.textless = tag === 'input' && ['checkbox', 'radio', 'range', 'color', 'file', 'image'].includes(element.type)
         node.value = tag === 'select' ? element.selectedOptions[0]?.textContent ?? '' : element.type === 'password' ? '•'.repeat(element.value.length) : element.value
@@ -1256,6 +1353,10 @@ export async function openStory(page, storyId, base = STORYBOOK) {
   await page.addStyleTag({ content: '*, *::before, *::after { animation: none !important; transition: none !important; }' })
   // one more beat for whatever the last interaction set moving (a menu mounting, a toast sliding in)
   await page.waitForTimeout(phase === 'unknown' ? 1500 : 600)
+  // Recharts draws its lines and bars in with a script, not CSS, so the freeze above misses it; its default run is
+  // 1.5s and a capture any sooner draws a line that stops partway. (Reduced motion would stop it, but would also
+  // flatten the AI shimmer text that Paper draws as it looks.)
+  if (await page.$('.recharts-wrapper')) await page.waitForTimeout(1600)
 }
 
 /** Storybook's error screen, as a one-line message; null when the story is showing. */
@@ -1318,6 +1419,11 @@ export async function captureStory(page, storyId, { base = STORYBOOK, screenshot
   if (!roots.length) throw new Error(`${storyId}: the story rendered nothing visible`)
   for (const [position, url] of unread.entries()) {
     try { images[url] = `data:image/png;base64,${(await page.locator(`[data-paper-image="${position}"]`).screenshot({ type: 'png' })).toString('base64')}` } catch { /* stays a placeholder, and is reported */ }
+  }
+  // a masked shape photographed as the page paints it, what lies behind included (it is drawn on top of the same)
+  for (const element of await page.$$('[data-paper-mask]')) {
+    const key = `paper-mask:${await element.getAttribute('data-paper-mask')}`
+    try { images[key] = `data:image/png;base64,${(await element.screenshot({ type: 'png' })).toString('base64')}` } catch { /* drawn unmasked, and reported */ }
   }
   if (screenshot) {
     // Paper draws all text with grayscale smoothing; without the same here, light-on-dark labels read a weight heavier.

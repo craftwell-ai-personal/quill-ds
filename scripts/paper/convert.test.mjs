@@ -107,12 +107,18 @@ test('a transform is read as the rotation Paper can hold, plus whether anything 
 })
 
 test('what cannot be carried is reported, not guessed', () => {
-  const moved = translateMargins({ axis: 'row', gap: 8 }, [child({ right: 4, top: 6 }), child({ left: -6 })])
+  const moved = translateMargins({ axis: 'row', gap: 8 }, [child({ right: 4 }), child({ left: -6 })])
   assert.deepEqual(moved.spacers, [])
   assert.equal(moved.negative, true)
-  assert.equal(moved.lost.length, 2)
-  assert.match(moved.lost.join('|'), /6px top margin across the row dropped/)
+  assert.equal(moved.lost.length, 1)
   assert.match(moved.lost.join('|'), /negative left margin \(-6px\) dropped/)
+})
+
+test('a margin across the axis is carried by a padded wrapper (a search box inset m-1 in a column panel)', () => {
+  const moved = translateMargins({ axis: 'column' }, [child({ top: 4, left: 4, right: 4 }), child({})])
+  assert.deepEqual(moved.padding, { top: 4, right: 0, bottom: 0, left: 0 })
+  assert.deepEqual(moved.wraps, [{ index: 0, side: 'left', size: 4 }, { index: 0, side: 'right', size: 4 }])
+  assert.deepEqual(moved.lost, [])
 })
 
 test('a margin smaller than the gap wraps each child in its own padding instead of a spacer', () => {

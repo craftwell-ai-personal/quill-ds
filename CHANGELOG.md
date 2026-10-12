@@ -18,6 +18,14 @@ footer reads `package.json` directly, so the displayed version updates with the 
 ### Fixed
 - **Carousel · Vertical story:** the cards now fill the 256px slide, so the Next button sits the same 20px below the card as the Previous button sits above it. Before, each card was only as tall as its number, leaving a large empty gap above the bottom button. Story-only change; the shipped carousel is unchanged.
 - **Carousel stories:** each card now sits in 4px of padding (`p-1`, as shadcn's own carousel examples do). The track crops at the slide edge, which cut off the card's 1px outer ring along its straight edges and left only the curved corners showing as dark crescents.
+- **Citations:** the source chip now keeps 6px clear on both sides (`mx-1.5`, was `ml-0.5`), so its 3px focus ring never touches the words around it.
+- **Paper sync, from review comments in Paper:**
+  - Recharts draws its lines and bars in with a script that the CSS freeze misses; the sync now waits it out, so a line chart no longer stops short of its last point.
+  - A margin on a chip sitting in a line of text (a citation) is kept, as padding around it.
+  - A margin across a box's main direction (the combobox search field's `m-1` inside its panel) is kept, as a padded wrapper, instead of dropped.
+  - A masked shape (the prompt composer's tab-base curves) is drawn from a photo of itself; Paper has no mask, so it showed as a solid square.
+  - Quill's gradient edge (`ai-edge`, a fill clipped to the padding box over a gradient) is drawn as a gradient frame around a fill frame; it used to vanish.
+  - Overlapping layers are ordered by z-index, so the composer's selected tab covers the box edge under it (the faint line across the tab) and its base curve sits over the neighbouring tab.
 - **Paper sync:** a rotated layer that is positioned absolutely is now placed correctly. Paper turns such a layer about its top-left corner (and ignores `transform-origin` there), while the browser turns it about its centre, so the Carousel's vertical buttons were drawn 28px left of centre and the Tooltip arrows a few pixels off. The converter now moves the layer to compensate. Carousel and Tooltip redrawn.
 
 ## [1.26.0] — 2026-10-11
