@@ -13,6 +13,11 @@ within a minute, and that release is what triggers `library-sync` into the apps;
 manual tag races the bot and can leave a tag with no release behind it. The homepage
 footer reads `package.json` directly, so the displayed version updates with the bump.
 
+## [1.25.1] — 2026-10-11
+
+### Fixed
+- Avatar group: the +N count is centred in its circle. Its old-style digits sat low and the + floated above the 4; the count now uses lining digits, and 2px of top padding offsets the room its line box keeps above cap height, measured on-centre at all three sizes. Theme rule, so apps get it with the stock avatar component.
+
 ## [1.25.0] — 2026-10-11
 
 Three design calls from the 1.24.0 sweep, chosen by Ryan from side-by-side pictures.
