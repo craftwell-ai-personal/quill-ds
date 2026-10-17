@@ -312,7 +312,7 @@ export function PromptComposer({
               ))}
             </ul>
           ) : null}
-          {dragging && dropTarget ? <p className="mx-3.5 mt-2 rounded-lg border-[1.5px] border-dashed border-input p-2 text-center text-xs text-muted-foreground">Drop files to attach</p> : null}
+          {dragging && dropTarget ? <p className="mx-3.5 mt-2 rounded-lg border border-dashed border-input p-2 text-center text-xs text-muted-foreground">Drop files to attach</p> : null}
           <Textarea
             aria-label={label}
             aria-invalid={status === 'error' || undefined}

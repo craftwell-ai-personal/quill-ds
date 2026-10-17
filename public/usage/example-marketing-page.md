@@ -14,7 +14,7 @@ A whole public marketing page, composed: navbar, hero, feature-section, pricing,
 
 ### Rules
 - **Do:** Give every section one idea: a heading and one composition (the feature grid, the pricing grid, one quote). **Don't:** Stack unrelated widgets in one section, or add a section that repeats the hero's promise in other words.
-- **Do:** Wrap a section you add the way pricing and testimonial are wrapped: py-24 (py-14 on mobile), px-12 (px-6 on mobile), inside the 1400px width. **Don't:** Give each section its own padding, or add padding around hero and feature-section, which already carry their own rhythm.
+- **Do:** Wrap a section you add the way pricing and testimonial are wrapped: py-24 (py-12 on mobile), px-12 (px-6 on mobile), inside the 1400px width. **Don't:** Give each section its own padding, or add padding around hero and feature-section, which already carry their own rhythm.
 - **Do:** Keep one primary call to action per view (Get started in the navbar and hero, the featured plan in pricing) with quieter ghost or outline buttons beside it. **Don't:** Make every button primary: when everything is the main action, nothing is.
 
 ### Accessibility

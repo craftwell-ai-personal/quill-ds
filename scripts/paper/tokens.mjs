@@ -86,6 +86,8 @@ const NOT_REPRESENTABLE = [
   [/^--(ease|dur|lift)/, 'motion: Paper has no easing, duration or transform token type (and a still frame has no motion)'],
   [/^--fraunces-/, 'font-variation-settings preset: no Paper type; written as a literal on each heading'],
   [/^--border-width-/, 'border width: no Paper type; it would sit among the spacing tokens and be offered for padding and gap'],
+  // Tailwind's keys for the ring/outline widths, offsets and bare-`border` default, each pointing at a border width
+  [/^--(default-)?(ring|outline)-(offset-)?width|^--outline-offset-|^--default-border-width$/, 'border width: no Paper type (these point the ring, outline and bare-border utilities at --border-width-*)'],
 ]
 
 export const firstFamily = (stack) => stack.split(',')[0].replace(/["']/g, '').trim()
@@ -135,6 +137,9 @@ export function mapTokens(values, { weights = [] } = {}) {
     if (blocked) { skipped.push({ name, reason: blocked[1] }); continue }
     // `--color-card: var(--card)` in the theme IS the token pushed as --color-card; a second copy would shadow it
     if (name.startsWith('--color-')) continue
+    // `--spacing-4: var(--space-4)` is the theme pointing Tailwind's `p-4` at the Quill step, which Paper
+    // already gets as --spacing-4 (from --space-4); a second copy would be the same name aliased to itself
+    if (/^--spacing-/.test(name) && value === `var(${name.replace('--spacing-', '--space-')})`) continue
     if (aliasTarget(value)) { aliases.push([name, value]); continue }
     // One family, no fallback stack: given `"Raleway", -apple-system, …` Paper accepts the token and then
     // draws the system font (verified). The first name is the face the design means.

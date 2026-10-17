@@ -7,7 +7,7 @@ import { Footer } from '@/components/quill/footer'
 
 // A marketing page, composed: navbar, then one idea per section — hero,
 // feature-section, pricing, testimonial — then the footer. Sections breathe at
-// the vertical rhythm (`py-24`, `py-14` on mobile) inside the 1400px marketing
+// the vertical rhythm (`py-24`, `py-12` on mobile) inside the 1400px marketing
 // width with `px-12` / `px-6` side padding; blocks that carry their own rhythm
 // (hero, feature-section) are left alone.
 /** A whole public marketing page, composed: navbar, hero, feature-section, pricing, testimonial and footer, one idea per section. */
@@ -18,10 +18,10 @@ export function ExampleMarketingPage() {
       <main className="flex flex-1 flex-col">
         <Hero />
         <FeatureSection />
-        <section className="mx-auto w-full max-w-[1400px] px-6 py-14 md:px-12 md:py-24">
+        <section className="mx-auto w-full max-w-[1400px] px-6 py-12 md:px-12 md:py-24">
           <Pricing />
         </section>
-        <section className="flex justify-center px-6 py-14 md:px-12 md:py-24">
+        <section className="flex justify-center px-6 py-12 md:px-12 md:py-24">
           <Testimonial />
         </section>
       </main>

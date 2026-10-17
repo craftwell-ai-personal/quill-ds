@@ -369,7 +369,7 @@
       "name": "example-marketing-page",
       "kind": "pattern",
       "summary": "A whole public marketing page, composed: navbar, hero, feature-section, pricing, testimonial and footer, one idea per section.",
-      "hash": "2f9327949d1c3fdfb7cdd438cc3e04436b3a6d5ae4cf68cb160746de7192eea7"
+      "hash": "c9bd976fd1d1192aff76e098b00ec1c9f219cfe36b3f22cb1cf83b4a3535a83b"
     },
     {
       "name": "faq",

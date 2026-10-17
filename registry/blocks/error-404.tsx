@@ -5,7 +5,7 @@ import { Icon } from '@/components/ui/icon'
 export function Error404() {
   return (
     <div className="flex h-[500px] w-full flex-col items-center justify-center gap-4 bg-background px-6 text-center text-foreground">
-      <span className="font-heading text-6xl text-muted-foreground">
+      <span className="font-heading text-4xl text-muted-foreground">
         404
       </span>
       <div className="flex flex-col gap-1">

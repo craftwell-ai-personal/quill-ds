@@ -298,12 +298,12 @@ Loaded from Google Fonts by the `@import` at the top of the shipped theme file. 
 <!-- generated:spacing:start -->
 A **4px base step** (`--space-1` = 0.25rem). Editorial rhythm — sections breathe.
 
-`--space-1` 4px · `--space-2` 8px · `--space-3` 12px · `--space-4` 16px · `--space-5` 20px · `--space-6` 24px · `--space-7` 28px · `--space-8` 32px · `--space-9` 36px · `--space-10` 40px · `--space-12` 48px · `--space-16` 64px · `--space-20` 80px · `--space-24` 96px
+`--space-0_5` 2px · `--space-1` 4px · `--space-1_5` 6px · `--space-2` 8px · `--space-2_5` 10px · `--space-3` 12px · `--space-3_5` 14px · `--space-4` 16px · `--space-5` 20px · `--space-6` 24px · `--space-7` 28px · `--space-8` 32px · `--space-9` 36px · `--space-10` 40px · `--space-12` 48px · `--space-16` 64px · `--space-20` 80px · `--space-24` 96px
 
-Components sit on `--space-4` / `--space-6`; sections breathe with `--space-24`. In a component write the class (`p-4`, `gap-6`): it is the same step, and no shipped component reads the variable. The variables are for hand-written CSS.
+Components sit on `--space-4` / `--space-6`; sections breathe with `--space-24`. In a component write the class (`p-4`, `gap-6`): it compiles to the variable (`padding: var(--space-4)`), so the class and the token are one thing. These steps are the whole scale: a Tailwind step outside it (`p-13`, `p-3.25`) or a bracket (`p-[13px]`) is off the system, and `quill-check` flags it with the nearest step. In hand-written CSS use the variable.
 
 ### Layout
-No layout tokens ship; use the values the site uses. Marketing max-width **1400px** (`max-w-[1400px]`), reading column **800px**, side padding **48px** on desktop (`px-12`) and **24px** on mobile (`px-6`), vertical section rhythm **96px** (`py-24`; `py-14` on mobile).
+No width or height tokens ship yet (`quill-check` lists those values as size gaps, without failing); use the values the site uses. Marketing max-width **1400px** (`max-w-[1400px]`), reading column **800px**, side padding **48px** on desktop (`px-12`) and **24px** on mobile (`px-6`), vertical section rhythm **96px** (`py-24`; `py-12` on mobile).
 
 ### Composition
 - Recurring section header: eyebrow → headline (one accent word) → right-aligned italic caption.

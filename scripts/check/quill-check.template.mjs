@@ -12,7 +12,7 @@ export const DATA = /*__DATA__*/ null
 
 // ------------------------------------------------------------------ files
 const SKIP_DIRS = new Set(['node_modules', '.next', 'dist', 'build', 'out', 'storybook-static', 'public', '.git', 'coverage'])
-const EXTS = new Set(['.tsx', '.jsx', '.ts', '.js', '.mdx', '.html'])
+const EXTS = new Set(['.tsx', '.jsx', '.ts', '.js', '.mdx', '.html', '.css'])
 // Never scan the check itself (its fix strings look like classes).
 const SELF = /(^|[\\/])quill-check(\.template)?\.mjs$/
 
@@ -53,10 +53,17 @@ export function baseOf(token) {
 
 // A utility we read is `prefix-something`: a bare word (`text`, `from`) is prose, not a class.
 // Bracket utilities of every prefix pass too: layout ones are counted in the summary.
+// Spacing, size and border-width utilities (rule 6) pass when a value follows the dash — a
+// number, a bracket, or a size word — so `p-13` is read and `top-level` or `end-to-end` is not.
+// (Before 1.28.0 they were never read at all, so `w-64` or `p-13` reached no rule.)
+const valueAfterDash = (re, base) => { const m = base.match(re); return !!m && (/^[\d[]/.test(m.at(-1)) || SIZE_WORD.test(m.at(-1)) || CONTAINER.test(m.at(-1))) }
 const looksLikeUtility = (base) => {
+  if (valueAfterDash(SPACE_RE, base) || valueAfterDash(SIZE_RE, base) || WIDTH_RE.test(base) || /^text-[6-9]xl$/.test(base)) return true
   const m = base.match(/^([a-z]+)-[a-z0-9([]/)
   return !!m && (PREFIX_SET.has(m[1]) || QUILL.has(base) || /-\[.+\]$/.test(base))
 }
+// A bare `rounded` is a class only among other classes: on its own it is the English word.
+const BARE_ROUNDED = /^rounded(-[tblrse]{1,2})?$/
 
 // Every whitespace-separated token inside a string literal that looks like a utility we read.
 // Template-literal holes become spaces so `${cond ? 'a' : 'b'}` never glues onto a class.
@@ -77,16 +84,20 @@ export function extractCandidates(text) {
   for (const m of text.matchAll(/'([^'\n]*)'|"([^"\n]*)"|`([^`]*)`/g)) {
     const literal = (m[1] ?? m[2] ?? m[3]).replace(/\$\{[^}]*\}/g, (h) => ' '.repeat(h.length))
     const start = m.index + 1
+    const found = []
+    const bare = []
     for (const t of literal.matchAll(/\S+/g)) {
       // prose punctuation glued to a class (`font-heading,`) is not part of it
       const token = t[0].replace(/[.,;:!?'"]+$/, '')
       if (!token) continue
       const base = baseOf(token)
-      if (!looksLikeUtility(base)) continue
+      const isBare = BARE_ROUNDED.test(base)
+      if (!isBare && !looksLikeUtility(base)) continue
       const idx = start + t.index
       const line = lineOf(idx)
-      out.push({ token, base, line: line + 1, col: idx - lineStarts[line] + 1 })
+      ;(isBare ? bare : found).push({ token, base, line: line + 1, col: idx - lineStarts[line] + 1 })
     }
+    out.push(...found, ...(found.length ? bare : []))
   }
   return out
 }
@@ -134,7 +145,8 @@ const motionFix = (kind) => kind === 'duration'
   : `→ ${DATA.tokens.motion.ease.map((v) => `ease-(${v})`).join(' · ')}`
 
 // Rule 4: a bracket value where Quill has a token. Returns a finding, 'layout' (counted), or
-// null (not a bracket). Widths on border/ring/outline are layout: Tailwind's own scale, no token.
+// null (not a bracket). Spacing, size and border-width brackets never reach it: rule 6 reads
+// those first. What is left on a layout prefix (`grid-cols-[…]`, `z-[5]`) has no token.
 export function bracketRule(base) {
   const m = base.match(/^([a-z]+)((?:-[a-z]+)*)-\[(.+)\]$/)
   if (!m) return null
@@ -175,6 +187,93 @@ export function bracketRule(base) {
   if (prefix === 'duration') return { rule: 'bracket', fix: motionFix('duration') }
   if (prefix === 'ease') return { rule: 'bracket', fix: motionFix('ease') }
   return 'layout'
+}
+
+// Rule 6: Quill's size scales. Spacing (padding, margin, gap, offsets), border width, type and
+// radius are Quill tokens, and the theme points each Tailwind utility at them — but Tailwind
+// still compiles a step Quill does not have (`p-13`, `p-3.25`, `border-5`) and every bracket, and
+// no theme can stop it. So: a step or bracket length outside the scale is a finding, with the
+// nearest step as the fix. Widths and heights have no Quill scale yet: a value outside the
+// spacing steps is a `size-gap`, listed with its file and line but never failing the check.
+const SPACE_RE = /^(p[xytrblse]?|m[xytrblse]?|gap(?:-[xy])?|space-[xy]|inset(?:-[xy])?|top|left|right|bottom|start|end|translate-[xy]|scroll-[mp][xytrblse]?|indent)-(.+)$/
+const SIZE_RE = /^(w|h|size|min-w|min-h|max-w|max-h|basis)-(.+)$/
+const WIDTH_RE = /^(border(?:-[xytrblse])?|divide-[xy]|ring|ring-offset|inset-ring|outline|outline-offset)-(\d+(?:\.\d+)?|\[.+\])$/
+// Values that are not a size choice: nothing, a hairline, a share of the parent, the viewport, the content.
+const SIZE_WORD = /^(0|px|auto|full|screen|svh|lvh|dvh|svw|lvw|dvw|min|max|fit|none|lh|\d+\/\d+)$/
+const CONTAINER = /^(3xs|2xs|xs|sm|md|lg|xl|[2-7]xl|prose)$/
+// A bare `border`, `ring`, `outline` or `divide-x` is 1px, so the 1px step is written without a number.
+const BARE_ONE = /^(border(-[xytrblse])?|divide-[xy]|ring|outline)$/
+const LENGTH = /^(-?[\d.]+)(px|rem)$/
+const lengthPx = (inner) => { const m = inner.match(LENGTH); return m ? parseFloat(m[1]) * (m[2] === 'rem' ? 16 : 1) : null }
+const stepsOf = (table) => Object.entries(table).sort((a, b) => a[1] - b[1])
+const nearestStep = (table, n) => [...stepsOf(table)].sort((a, b) => Math.abs(a[1] - n) - Math.abs(b[1] - n))[0]
+const fmt = (n) => `${Math.round(n * 100) / 100}px`
+const stepName = (prefix, k, sign = '') => (k === '1' && BARE_ONE.test(prefix) ? `${sign}${prefix}` : `${sign}${prefix}-${k}`)
+// The steps either side of an off-scale value: `p-13` (52px) → p-12 (48px) or p-16 (64px).
+const either = (prefix, table, n, sign) => {
+  const steps = stepsOf(table)
+  const below = steps.filter(([, v]) => v < n).at(-1)
+  const above = steps.find(([, v]) => v > n)
+  const name = ([k, v]) => `${stepName(prefix, k, sign)} (${fmt(v)})`
+  if (!above) return `→ ${name(below)}, Quill's largest step`
+  if (!below) return `→ ${name(above)}, Quill's smallest step`
+  return `→ ${name(below)} or ${name(above)}`
+}
+const nearestFix = (prefix, table, n, sign) => {
+  const [k, v] = nearestStep(table, n)
+  return Math.abs(v - n) < 0.05 ? `→ ${stepName(prefix, k, sign)} (the same ${fmt(v)})` : either(prefix, table, n, sign)
+}
+const TAILWIND_TEXT = { '6xl': 60, '7xl': 72, '8xl': 96, '9xl': 128 }
+const GAP_FIX ='→ no Quill size token yet: listed so the size scale can be drawn from real use; does not fail the check'
+
+export function sizeRule(base, token = base) {
+  const sign = /^!?-/.test(token.slice(token.lastIndexOf(':') + 1)) ? '-' : ''
+  const space = DATA.tokens.space
+  let m
+  if ((m = base.match(SPACE_RE))) {
+    const [, prefix, value] = m
+    if (SIZE_WORD.test(value) || value in space) return null
+    if (/^\d+(\.\d+)?$/.test(value)) return { rule: 'scale', fix: either(prefix, space, parseFloat(value) * 4, sign) }
+    const inner = value.match(/^\[(.+)\]$/)?.[1]
+    if (!inner) return null
+    const ref = inner.match(/^var\(--space-([\d_]+)\)$/)
+    if (ref) return { rule: 'bracket', fix: `→ ${sign}${prefix}-${ref[1].replace('_', '.')} (the same step)` }
+    const n = lengthPx(inner)
+    return n === null ? 'layout' : { rule: 'bracket', fix: nearestFix(prefix, space, Math.abs(n), sign || (n < 0 ? '-' : '')) }
+  }
+  if ((m = base.match(SIZE_RE))) {
+    const [, prefix, value] = m
+    if (SIZE_WORD.test(value) || value in space) return null
+    if (CONTAINER.test(value)) return { rule: 'size-gap', fix: `${GAP_FIX} (${base} is Tailwind's width scale)` }
+    if (/^\d+(\.\d+)?$/.test(value)) return { rule: 'size-gap', fix: GAP_FIX }
+    const inner = value.match(/^\[(.+)\]$/)?.[1]
+    if (!inner) return null
+    const n = lengthPx(inner)
+    if (n === null) return 'layout'
+    // a bracket that IS a spacing step has an exact answer, so that one is a finding
+    const [k, v] = nearestStep(space, n)
+    return Math.abs(v - n) < 0.05 ? { rule: 'bracket', fix: `→ ${prefix}-${k} (the same ${fmt(v)})` } : { rule: 'size-gap', fix: GAP_FIX }
+  }
+  if ((m = base.match(WIDTH_RE))) {
+    const [, prefix, value] = m
+    const widths = DATA.tokens.borderWidth
+    if (value in widths) return null
+    const inner = value.match(/^\[(.+)\]$/)?.[1]
+    const n = inner ? lengthPx(inner) : parseFloat(value)
+    if (n === null) return null // a colour or a variable in brackets: rule 4's
+    return { rule: inner ? 'bracket' : 'scale', fix: nearestFix(prefix, widths, n, sign) }
+  }
+  if ((m = base.match(/^text-([6-9]xl)$/))) {
+    // Tailwind's own sizes, which Quill's re-cut scale does not share a name with: its
+    // text-6xl (60px) is smaller than Quill's text-5xl (88px), so compare by size, not name.
+    const n = TAILWIND_TEXT[m[1]]
+    const [k, v] = nearestStep(DATA.tokens.text, n)
+    return { rule: 'scale', fix: `→ text-${k} (${fmt(v)}), the nearest Quill size; ${base} is Tailwind's own (${fmt(n)})` }
+  }
+  if ((m = base.match(/^rounded(-[tblrse]{1,2})?$/))) {
+    return { rule: 'scale', fix: `→ ${base}-sm (${fmt(DATA.tokens.radius.sm)}): a bare ${base} is Tailwind's own step, the same size` }
+  }
+  return null
 }
 
 // Rule 5 (classes): a retired Quill utility name. Longest name first so `indigo-brand-deep`
@@ -244,22 +343,83 @@ export function allowsFor(lines, lineNo) {
   return found
 }
 
-// ------------------------------------------------------------------ one file
-export function scanFile(file, text) {
-  const lines = text.split('\n')
-  const findings = []
-  let layout = 0
-  for (const c of extractCandidates(text)) {
-    const hit = retiredRule(c.base) ?? paletteRule(c.base)
-    if (hit) { findings.push({ file, line: c.line, col: c.col, rule: hit.rule, value: c.token, fix: hit.fix }); continue }
-    const b = bracketRule(c.base)
-    if (b === 'layout') layout++
-    else if (b) findings.push({ file, line: c.line, col: c.col, rule: b.rule, value: c.token, fix: b.fix })
+// ------------------------------------------------------------------ rule 7: lengths typed by hand
+// A padding, margin, gap, offset, radius, font size or border width written as a number in an
+// inline style (`style={{ padding: 13 }}`) or an app stylesheet (`padding: 13px`) is the same miss
+// as a bracket class, and gets the same answer: the Quill variable, `var(--space-3)`. Zero is not a
+// size choice, and a value already built from var() or calc() is left alone.
+const PROP_KINDS = [
+  ['space', /^(padding|margin)(-(top|right|bottom|left|inline|block)(-(start|end))?)?$|^(gap|row-gap|column-gap|top|right|bottom|left|inset(-(inline|block)(-(start|end))?)?|text-indent|scroll-(padding|margin)(-(top|right|bottom|left|inline|block)(-(start|end))?)?)$/],
+  ['size', /^((min-|max-)?(width|height|inline-size|block-size)|flex-basis)$/],
+  ['radius', /^border(-(top|bottom|start|end)-(left|right|start|end))?-radius$/],
+  ['text', /^font-size$/],
+  ['width', /^(border(-(top|right|bottom|left|inline|block)(-(start|end))?)?-width|outline-width|outline-offset)$/],
+  // a shorthand (`border: 1px solid …`): its length is the width
+  ['width', /^(border(-(top|right|bottom|left|inline|block)(-(start|end))?)?|outline)$/],
+]
+const KIND_TABLE = { space: 'space', size: 'space', radius: 'radius', text: 'text', width: 'borderWidth' }
+const KIND_VAR = { space: (k) => `--space-${k.replace('.', '_')}`, size: (k) => `--space-${k.replace('.', '_')}`, radius: (k) => `--radius-${k}`, text: (k) => `--text-${k}`, width: (k) => `--border-width-${k}` }
+const kebab = (prop) => prop.replace(/[A-Z]/g, (ch) => '-' + ch.toLowerCase())
+
+// One declaration → null (nothing typed by hand), or { gap, fix }. A number is px, as React reads it.
+export function valueRule(prop, value) {
+  const kind = PROP_KINDS.find(([, re]) => re.test(prop))?.[0]
+  if (!kind || /\$\{/.test(String(value))) return null
+  // split at the top level only, so a length inside var(…) or calc(…) stays with it and is left alone
+  const parts = typeof value === 'number' ? [`${value}px`] : String(value).trim().match(/(?:[^\s(]+|\([^)]*\))+/g) ?? []
+  const lengths = parts.map((part) => [part, lengthPx(part)]).filter(([, n]) => n !== null && n !== 0)
+  if (!lengths.length) return null
+  const swaps = lengths.map(([part, n]) => {
+    const [k, v] = nearestStep(DATA.tokens[KIND_TABLE[kind]], Math.abs(n))
+    const name = KIND_VAR[kind](k)
+    return { part, v, exact: Math.abs(v - Math.abs(n)) < 0.05, ref: n < 0 ? `calc(var(${name}) * -1)` : `var(${name})` }
+  })
+  if (kind === 'size' && !swaps.every((sw) => sw.exact)) return { gap: true, fix: GAP_FIX }
+  return { gap: false, fix: `→ ${swaps.map((sw) => `${sw.part} → ${sw.ref}${sw.exact ? '' : ` (${fmt(sw.v)}, the nearest step)`}`).join(', ')}` }
+}
+
+// Every `style={{ … }}` written in place. A style object built elsewhere (a helper that returns
+// one) is not read: the check sees text, not values.
+export function inlineStyleFindings(text) {
+  const out = []
+  for (const m of text.matchAll(/style=\{\{/g)) {
+    const bodyStart = m.index + m[0].length
+    let depth = 2
+    let i = bodyStart
+    for (; i < text.length && depth > 0; i++) { if (text[i] === '{') depth++; else if (text[i] === '}') depth-- }
+    const body = text.slice(bodyStart, i - 2)
+    for (const e of body.matchAll(/([A-Za-z]+)\s*:\s*(-?\d+(?:\.\d+)?(?![\w.])|'[^'\n]*'|"[^"\n]*")/g)) {
+      const raw = e[2]
+      const r = valueRule(kebab(e[1]), /^['"]/.test(raw) ? raw.slice(1, -1) : Number(raw))
+      if (r) out.push({ idx: bodyStart + e.index, rule: r.gap ? 'size-gap' : 'inline-style', value: `${e[1]}: ${raw}`, fix: r.fix })
+    }
   }
-  for (const f of rawColourFindings(lines)) findings.push({ file, ...f })
+  return out
+}
+
+const lineIndex = (text) => {
+  const starts = [0]
+  for (let i = 0; i < text.length; i++) if (text[i] === '\n') starts.push(i + 1)
+  return (idx) => {
+    let lo = 0
+    let hi = starts.length - 1
+    while (lo < hi) {
+      const mid = (lo + hi + 1) >> 1
+      if (starts[mid] <= idx) lo = mid
+      else hi = mid - 1
+    }
+    return { line: lo + 1, col: idx - starts[lo] + 1 }
+  }
+}
+
+// One class token through rules 5, 2, 6 and 4, in that order: a finding, 'layout', or null.
+const classRule = (c) => retiredRule(c.base) ?? paletteRule(c.base) ?? sizeRule(c.base, c.token) ?? bracketRule(c.base)
+
+// An allow on a finding's line, or above it, marks it allowed; an allow with no reason is a finding.
+function applyAllows(file, findings, allowsAt) {
   const seenAllow = new Set()
-  for (const f of findings) {
-    for (const a of allowsFor(lines, f.line)) {
+  for (const f of [...findings]) {
+    for (const a of allowsAt(f)) {
       if (a.rule !== f.rule) continue
       if (a.reason) f.allowed = a.reason
       else if (!seenAllow.has(a.line)) {
@@ -268,7 +428,90 @@ export function scanFile(file, text) {
       }
     }
   }
+}
+
+// ------------------------------------------------------------------ one file
+export function scanFile(file, text) {
+  const lines = text.split('\n')
+  const findings = []
+  let layout = 0
+  for (const c of extractCandidates(text)) {
+    const hit = classRule(c)
+    if (hit === 'layout') layout++
+    else if (hit) findings.push({ file, line: c.line, col: c.col, rule: hit.rule, value: c.token, fix: hit.fix })
+  }
+  const at = lineIndex(text)
+  for (const f of inlineStyleFindings(text)) { const { idx, ...rest } = f; findings.push({ file, ...at(idx), ...rest }) }
+  for (const f of rawColourFindings(lines)) findings.push({ file, ...f })
+  applyAllows(file, findings, (f) => allowsFor(lines, f.line))
   return { findings, layout }
+}
+
+// ------------------------------------------------------------------ one stylesheet
+// An app's own CSS. The theme file itself is skipped (it is where the raw values live), and so
+// is every custom-property definition and @theme block: a stylesheet the CLI merged Quill into
+// holds Quill's variables, which are the token definitions, not uses. Classes in `@apply` go
+// through the class rules. An allow covers its own line, the declaration right below it, or —
+// placed above a selector — that rule's whole block.
+const THEME_FILE = /(^|[\\/])quill(-theme)?\.css$/
+export function scanCss(file, text) {
+  const findings = []
+  const applies = []
+  let layout = 0
+  if (THEME_FILE.test(file) || text.includes('@quill-tokens:start')) return { findings, applies, layout }
+  const lines = text.split('\n')
+  const at = lineIndex(text)
+  const clean = text.replace(/\/\*[\s\S]*?\*\//g, (c) => c.replace(/[^\n]/g, ' '))
+  const stack = [] // { prelude, line } for every open block
+  let buf = ''
+  let bufStart = 0
+  const handle = (decl, start) => {
+    const lead = decl.length - decl.trimStart().length
+    const d = decl.trim()
+    if (!d || stack.some((b) => b.prelude.startsWith('@theme'))) return
+    const pos = at(start + lead)
+    const block = stack.at(-1)?.line ?? null
+    if (d.startsWith('@apply ')) {
+      for (const t of d.slice(7).matchAll(/\S+/g)) {
+        const token = t[0]
+        const loc = at(start + lead + 7 + t.index)
+        const c = { token, base: baseOf(token), ...loc }
+        applies.push(c)
+        const hit = classRule(c)
+        if (hit === 'layout') layout++
+        else if (hit) findings.push({ file, ...loc, rule: hit.rule, value: token, fix: hit.fix, block })
+      }
+      return
+    }
+    const m = d.match(/^([a-z-]+)\s*:\s*([\s\S]+)$/)
+    if (!m) return
+    const r = valueRule(m[1], m[2].replace(/\s*!important$/, ''))
+    if (r) findings.push({ file, ...pos, rule: r.gap ? 'size-gap' : 'css-value', value: `${m[1]}: ${m[2].trim()}`, fix: r.fix, block })
+  }
+  for (let i = 0; i < clean.length; i++) {
+    const ch = clean[i]
+    if (ch === '{') { stack.push({ prelude: buf.trim(), line: at(i).line }); buf = ''; bufStart = i + 1 }
+    else if (ch === ';' || ch === '}') {
+      if (stack.length) handle(buf, bufStart)
+      if (ch === '}') stack.pop()
+      buf = ''
+      bufStart = i + 1
+    } else buf += ch
+  }
+  const allowOn = (lineNo) => {
+    const text = lines[lineNo - 1] ?? ''
+    const m = text.match(ALLOW_RE)
+    return m ? [{ rule: m[1], reason: (m[2] ?? '').trim(), line: lineNo }] : []
+  }
+  // the nearest non-blank line above, if it is a comment of its own
+  const allowAbove = (lineNo) => {
+    let l = lineNo - 1
+    while (l >= 1 && !lines[l - 1].trim()) l--
+    return l >= 1 && /^\s*\/\*/.test(lines[l - 1]) ? allowOn(l) : []
+  }
+  applyAllows(file, findings, (f) => [...allowOn(f.line), ...allowAbove(f.line), ...(f.block ? [...allowOn(f.block), ...allowAbove(f.block)] : [])])
+  for (const f of findings) delete f.block
+  return { findings, applies, layout }
 }
 
 // ------------------------------------------------------------------ rule 1: ask the app's own Tailwind
@@ -326,13 +569,70 @@ export async function resolveWithTailwind({ cwd, css, candidates }) {
     return { base: dirname(p), content: readFileSync(p, 'utf8') }
   }
   const compiled = await tw.compile(readFileSync(entry, 'utf8'), { base: dirname(entry), loadStylesheet, loadModule: async () => ({ base: cwd, module: {} }) })
-  const out = compiled.build([...candidates, 'dark:bg-background'])
+  const out = compiled.build([...candidates, 'dark:bg-background', 'bg-background', ...RADIUS_KEYS.map((k) => `rounded-${k}`)])
   const unresolved = new Set([...candidates].filter((c) => !out.includes('.' + escapeClass(c))))
+  const wired = out.includes('.bg-background')
+  // what each rounded-* compiles to in THIS app: the value the inspector shows
+  const radii = Object.fromEntries(RADIUS_KEYS.map((k) => [k, out.match(new RegExp(`\\.rounded-${k}\\s*\\{\\s*border-radius:\\s*([^;]+);`))?.[1]?.trim() ?? null]))
   // Tailwind keeps the LAST @custom-variant dark. shadcn init writes a stock one (.dark only);
   // if it sits below Quill's, dark: stops following data-theme while everything else works.
   const darkRule = out.match(/\.dark\\:bg-background[^{]*/)?.[0] ?? ''
   const darkFollowsThemes = darkRule.includes('[data-theme=')
-  return { unresolved, entry, darkFollowsThemes }
+  return { unresolved, entry, darkFollowsThemes, wired, radii }
+}
+
+// ------------------------------------------------------------------ rule radius-override
+// `shadcn init` writes its own radius lines (`--radius-md: calc(var(--radius) * 0.8)`) and
+// `--radius: 0.625rem`. The CLI install replaces them; a theme FILE imported above them loses to
+// them, because the last definition wins: rounded-xl then renders 14px instead of Quill's 16px,
+// silently (measured in a fresh app, 2026-10-16). Read from the compiled CSS, so it is exact.
+const RADIUS_KEYS = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl']
+const QUILL_IMPORT = /@import\s+(url\()?["']?[^"')]*quill[^"')]*\.css/
+const MOVE_IMPORT = 'or make `@import "./quill-theme.css"` the last line of this file, so Quill\'s definitions come last and win'
+
+// A radius value in px: a length, or shadcn's shapes built on --radius. null when it cannot tell.
+export function radiusPx(value, base) {
+  const v = String(value).trim()
+  if (LENGTH.test(v)) return lengthPx(v)
+  if (v === 'var(--radius)') return base
+  const m = v.match(/^calc\(var\(--radius\)\s*([*+-])\s*([\d.]+)(px|rem)?\)$/)
+  if (!m) return null
+  const n = m[3] ? lengthPx(m[2] + m[3]) : parseFloat(m[2])
+  return m[1] === '*' ? base * n : m[1] === '+' ? base + n : base - n
+}
+
+// The app's entry stylesheet + what its rounded-* compile to → findings on the lines that override Quill.
+export function radiusFindings(file, text, radii) {
+  const lines = text.split('\n')
+  const lastLine = (re) => { for (let i = lines.length - 1; i >= 0; i--) if (re.test(lines[i])) return i; return -1 }
+  const importAt = lastLine(QUILL_IMPORT)
+  const quill = DATA.tokens.radius
+  const quillBase = DATA.tokens.radiusBase
+  const findings = []
+  // --radius itself: shadcn's primitives read it directly. The last declaration in the file wins,
+  // unless Quill's theme file is imported after it.
+  const baseAt = lastLine(/^\s*--radius\s*:/)
+  let base = quillBase
+  if (baseAt >= 0 && baseAt > importAt) {
+    const v = lines[baseAt].match(/--radius\s*:\s*([^;]+);/)?.[1]?.trim() ?? ''
+    const n = lengthPx(v)
+    if (n !== null) base = n
+    if (n !== null && Math.abs(n - quillBase) > 0.05) {
+      findings.push({ file, line: baseAt + 1, col: 1, rule: 'radius-override', value: `--radius: ${v}`, fix: `→ this is shadcn's --radius (${fmt(n)}), not Quill's (${fmt(quillBase)}), and it comes after Quill's theme, so it wins wherever --radius is read: delete the line, ${MOVE_IMPORT}` })
+    }
+  }
+  for (const k of RADIUS_KEYS) {
+    const v = radii[k]
+    if (!v || v === `var(--radius-${k})`) continue
+    const n = radiusPx(v, base)
+    const onRadius = /var\(--radius\)/.test(v)
+    if (!onRadius && n !== null && Math.abs(n - quill[k]) < 0.05) continue // Quill's own value, written as a length (themes before 1.28.0)
+    const at = lastLine(new RegExp(`^\\s*--radius-${k}\\s*:`))
+    const renders = n === null ? `rounded-${k} reads ${v}` : `rounded-${k} renders ${fmt(n)}`
+    const same = n !== null && Math.abs(n - quill[k]) < 0.05 ? ` (the same as Quill's ${fmt(quill[k])} today, only because --radius is ${fmt(base)})` : `, Quill's is ${fmt(quill[k])}`
+    findings.push({ file, line: at + 1 || 1, col: 1, rule: 'radius-override', value: at >= 0 ? lines[at].trim().replace(/;$/, '') : `rounded-${k}: ${v}`, fix: `→ shadcn's radius line overrides Quill's: ${renders}${same}. Delete it (Quill's theme defines every radius), ${MOVE_IMPORT}` })
+  }
+  return findings
 }
 
 const editDistance = (a, b) => {
@@ -354,10 +654,11 @@ export async function runCheck({ cwd = process.cwd(), dirs, includeUi = false, c
   for (const f of files) {
     const text = readFileSync(f, 'utf8')
     const rel = relative(cwd, f)
-    const r = scanFile(rel, text)
+    const css = extname(f) === '.css'
+    const r = css ? scanCss(rel, text) : scanFile(rel, text)
     findings.push(...r.findings)
     layout += r.layout
-    for (const c of extractCandidates(text)) (candidates.get(c.token) ?? candidates.set(c.token, []).get(c.token)).push({ file: rel, line: c.line, col: c.col })
+    for (const c of css ? r.applies : extractCandidates(text)) (candidates.get(c.token) ?? candidates.set(c.token, []).get(c.token)).push({ file: rel, line: c.line, col: c.col })
   }
   if (tailwind) {
     const flagged = new Set(findings.map((f) => f.value))
@@ -371,12 +672,16 @@ export async function runCheck({ cwd = process.cwd(), dirs, includeUi = false, c
         // Two ways to get here: the theme IS imported from this stylesheet but above the stock line,
         // or it is not imported from here at all (a layout.tsx import keeps the colours, which are
         // plain variables, while Tailwind never sees the variant). Say which.
-        const imported = entryText.some((l) => /@import\s+(url\()?["']?[^"')]*quill[^"')]*\.css/.test(l))
+        const imported = entryText.some((l) => QUILL_IMPORT.test(l))
         const fix = imported
-          ? "→ this stock line sits below Quill's and wins, so dark: fires only on .dark and never on data-theme: move the @import of quill-theme.css below it (or delete it — Quill's variant keeps .dark working)"
-          : "→ Quill's theme is not imported from this stylesheet (a layout.tsx import keeps its colours, but Tailwind never sees its dark variant), so dark: fires only on .dark and never on data-theme: add `@import \"./quill-theme.css\"` directly below this line"
+          ? "→ this stock line sits below Quill's and wins, so dark: fires only on .dark and never on data-theme: make the @import of quill-theme.css the last line of this file (or delete this line — Quill's variant keeps .dark working)"
+          : "→ Quill's theme is not imported from this stylesheet (a layout.tsx import keeps its colours, but Tailwind never sees its dark variant), so dark: fires only on .dark and never on data-theme: add `@import \"./quill-theme.css\"` as the last line of this file"
         findings.push({ file: relative(cwd, r.entry), line: stock + 1 || 1, col: 1, rule: 'dark-variant', value: '@custom-variant dark', fix })
       }
+      // Only where Quill's theme is in this stylesheet (imported, or merged in by the CLI): without it
+      // the radii are Tailwind's, and the dark-variant or unresolved finding already says why.
+      const entryCss = readFileSync(r.entry, 'utf8')
+      if (r.wired && (QUILL_IMPORT.test(entryCss) || /^\s*--space-4\s*:/m.test(entryCss))) findings.push(...radiusFindings(relative(cwd, r.entry), entryCss, r.radii))
       const dead = [...r.unresolved].filter((t) => !flagged.has(t))
       // Three or more Quill classes dead at once is not three typos — the theme is missing.
       const notWired = dead.filter((t) => QUILL.has(baseOf(t))).length >= 3
@@ -397,11 +702,14 @@ export async function runCheck({ cwd = process.cwd(), dirs, includeUi = false, c
 }
 
 // ------------------------------------------------------------------ output
-const RULE_LABEL = { unresolved: 'unresolved', palette: 'palette', 'raw-color': 'raw colour', bracket: 'bracket', retired: 'retired', 'dark-variant': 'dark:', 'allow-without-reason': 'allow' }
+const RULE_LABEL = { 'radius-override': 'radius', unresolved: 'unresolved', palette: 'palette', 'raw-color': 'raw colour', bracket: 'bracket', scale: 'off scale', 'inline-style': 'inline style', 'css-value': 'css value', 'size-gap': 'size gap', retired: 'retired', 'dark-variant': 'dark:', 'allow-without-reason': 'allow' }
+// A size gap is listed, never counted against the app: Quill has no width/height scale yet.
+export const isActive = (f) => !f.allowed && f.rule !== 'size-gap'
 
 export function formatText({ findings, layout, notes }, { quiet = false } = {}) {
   const lines = []
-  const active = findings.filter((f) => !f.allowed)
+  const active = findings.filter(isActive)
+  const gaps = findings.filter((f) => !f.allowed && f.rule === 'size-gap').length
   if (!quiet) {
     let current = null
     for (const f of findings) {
@@ -410,11 +718,12 @@ export function formatText({ findings, layout, notes }, { quiet = false } = {}) 
         if (lines.length) lines.push('')
         lines.push(f.file)
       }
-      lines.push(`  ${String(f.line).padStart(4)}  ${f.value.padEnd(28)}  ${RULE_LABEL[f.rule].padEnd(10)}  ${f.allowed ? `allowed — ${f.allowed}` : f.fix}`)
+      lines.push(`  ${String(f.line).padStart(4)}  ${f.value.padEnd(28)}  ${RULE_LABEL[f.rule].padEnd(12)}  ${f.allowed ? `allowed — ${f.allowed}` : f.fix}`)
     }
     if (lines.length) lines.push('')
   }
-  lines.push(`${active.length} finding${active.length === 1 ? '' : 's'} · ${findings.length - active.length} allowed · ${layout} layout size${layout === 1 ? '' : 's'} not checked`)
+  const allowed = findings.filter((f) => f.allowed).length
+  lines.push(`${active.length} finding${active.length === 1 ? '' : 's'} · ${allowed} allowed · ${gaps} size gap${gaps === 1 ? '' : 's'} (no Quill token yet; listed, not failing) · ${layout} layout size${layout === 1 ? '' : 's'} not checked`)
   for (const n of notes) lines.push(n)
   return lines.join('\n')
 }
@@ -429,7 +738,7 @@ export async function main(argv = process.argv.slice(2)) {
     else if (a === '--json') opts.json = true
     else if (a === '--quiet') opts.quiet = true
     else if (a === '--help' || a === '-h') {
-      console.log(`quill-check ${DATA.version}\n  node scripts/quill-check.mjs [--dir <path>]... [--css <tailwind entry>] [--include-ui] [--json] [--quiet]\n  Lists every place the code stepped outside Quill, with the fix to write. Exit 1 when anything is found.`)
+      console.log(`quill-check ${DATA.version}\n  node scripts/quill-check.mjs [--dir <path>]... [--css <tailwind entry>] [--include-ui] [--json] [--quiet]\n  Lists every place the code stepped outside Quill, with the fix to write. Exit 1 when anything is found (size gaps are listed, never counted).`)
       return 0
     } else {
       console.error(`unknown option ${a} — try --help`)
@@ -437,8 +746,10 @@ export async function main(argv = process.argv.slice(2)) {
     }
   }
   const result = await runCheck({ cwd: process.cwd(), dirs: opts.dirs.length ? opts.dirs : undefined, includeUi: opts.includeUi, css: opts.css })
-  const active = result.findings.filter((f) => !f.allowed).length
-  if (opts.json) console.log(JSON.stringify({ version: DATA.version, summary: { findings: active, allowed: result.findings.length - active, layout: result.layout, notes: result.notes }, findings: result.findings }, null, 1))
+  const active = result.findings.filter(isActive).length
+  const allowed = result.findings.filter((f) => f.allowed).length
+  const gaps = result.findings.filter((f) => !f.allowed && f.rule === 'size-gap').length
+  if (opts.json) console.log(JSON.stringify({ version: DATA.version, summary: { findings: active, allowed, gaps, layout: result.layout, notes: result.notes }, findings: result.findings }, null, 1))
   else console.log(formatText(result, { quiet: opts.quiet }))
   return active ? 1 : 0
 }

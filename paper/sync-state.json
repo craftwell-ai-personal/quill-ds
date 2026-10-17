@@ -6,7 +6,7 @@
     "url": "https://app.paper.design/file/01M4AC4WS8H77MJGWHJYZCR909"
   },
   "tokens": {
-    "count": 144,
+    "count": 145,
     "byType": {
       "color": 83,
       "fontFamily": 6,
@@ -14,22 +14,22 @@
       "fontWeight": 3,
       "lineHeight": 13,
       "letterSpacing": 3,
-      "spacing": 17,
+      "spacing": 18,
       "radius": 9
     },
-    "payloadHash": "aca158e47906f799",
-    "sourceHash": "0d8db8d5e26b218d",
+    "payloadHash": "f654b8097c9ab57d",
+    "sourceHash": "9e89e7ddb9c3f5cd",
     "theme": "light",
-    "notRepresentable": 33,
-    "syncedAt": "2026-10-12"
+    "notRepresentable": 56,
+    "syncedAt": "2026-10-17"
   },
   "foundations": {
     "page": "Foundations",
     "pageId": "p-1-0",
     "artboardId": "21M-0",
     "sections": 8,
-    "htmlHash": "74f3157a717123f0",
-    "syncedAt": "2026-10-12"
+    "htmlHash": "ff868135a9e99227",
+    "syncedAt": "2026-10-17"
   },
   "pages": {
     "Foundations": "p-1-0",
@@ -400,15 +400,15 @@
         "src/stories/agent-steps.stories.tsx",
         "src/usage/agent-steps.usage.mjs"
       ],
-      "sourceHash": "d77cb7d1db16e8d0",
-      "syncedAt": "2026-10-12",
+      "sourceHash": "bf04840e38eaca9f",
+      "syncedAt": "2026-10-17",
       "counts": {
         "stories": 4,
         "nodes": 111,
         "approximated": 0,
-        "bound": 276,
+        "bound": 284,
         "bindable": 284,
-        "bindingRate": 0.972
+        "bindingRate": 1
       },
       "notes": [],
       "lost": [],
@@ -419,17 +419,17 @@
           "opened": "none",
           "nodes": 51,
           "approximated": 0,
-          "bound": 118,
+          "bound": 120,
           "bindable": 120,
           "parts": [
             {
               "part": "main",
-              "nodeId": "455A-0",
+              "nodeId": "4I1X-0",
               "size": [
                 448,
                 224.44
               ],
-              "htmlHash": "9b12f666539ce15d"
+              "htmlHash": "4ba559d85e4eb7a5"
             }
           ]
         },
@@ -439,17 +439,17 @@
           "opened": "none",
           "nodes": 18,
           "approximated": 0,
-          "bound": 52,
+          "bound": 54,
           "bindable": 54,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4579-0",
+              "nodeId": "4I3W-0",
               "size": [
                 448,
                 90.81
               ],
-              "htmlHash": "5248f582979b9bd3"
+              "htmlHash": "be6c05c5bf71c65b"
             }
           ]
         },
@@ -459,17 +459,17 @@
           "opened": "none",
           "nodes": 15,
           "approximated": 0,
-          "bound": 40,
+          "bound": 42,
           "bindable": 42,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4582-0",
+              "nodeId": "4I4P-0",
               "size": [
                 448,
                 90.81
               ],
-              "htmlHash": "3afecdb294f41e5c"
+              "htmlHash": "c58d633382557f8c"
             }
           ]
         },
@@ -479,17 +479,17 @@
           "opened": "none",
           "nodes": 27,
           "approximated": 0,
-          "bound": 66,
+          "bound": 68,
           "bindable": 68,
           "parts": [
             {
               "part": "main",
-              "nodeId": "458S-0",
+              "nodeId": "4I5F-0",
               "size": [
                 448,
                 124.22
               ],
-              "htmlHash": "d2575f5423b99360"
+              "htmlHash": "7159a31197f2e70b"
             }
           ]
         }
@@ -5808,15 +5808,15 @@
         "src/stories/prompt-composer.stories.tsx",
         "src/usage/prompt-composer.usage.mjs"
       ],
-      "sourceHash": "186a880278677a35",
-      "syncedAt": "2026-10-12",
+      "sourceHash": "67a5ea5cca1266d4",
+      "syncedAt": "2026-10-17",
       "counts": {
         "stories": 10,
         "nodes": 149,
         "approximated": 13,
-        "bound": 370,
+        "bound": 384,
         "bindable": 416,
-        "bindingRate": 0.889
+        "bindingRate": 0.923
       },
       "notes": [],
       "lost": [
@@ -5829,17 +5829,17 @@
           "opened": "none",
           "nodes": 11,
           "approximated": 1,
-          "bound": 25,
+          "bound": 26,
           "bindable": 29,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4AMQ-0",
+              "nodeId": "4I6N-0",
               "size": [
                 576,
                 108
               ],
-              "htmlHash": "19400d027bd6b661"
+              "htmlHash": "ae483526288ba573"
             }
           ]
         },
@@ -5854,7 +5854,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4ANH-0",
+              "nodeId": "4I7E-0",
               "size": [
                 576,
                 84
@@ -5869,17 +5869,17 @@
           "opened": "none",
           "nodes": 11,
           "approximated": 1,
-          "bound": 27,
+          "bound": 28,
           "bindable": 30,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4AO8-0",
+              "nodeId": "4I85-0",
               "size": [
                 576,
                 108
               ],
-              "htmlHash": "e85d6c53bd02d87c"
+              "htmlHash": "0001a9df23e192b4"
             }
           ]
         },
@@ -5889,17 +5889,17 @@
           "opened": "none",
           "nodes": 11,
           "approximated": 1,
-          "bound": 25,
+          "bound": 26,
           "bindable": 29,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4AOZ-0",
+              "nodeId": "4I8W-0",
               "size": [
                 576,
                 108
               ],
-              "htmlHash": "8e3ae864c3856237"
+              "htmlHash": "19babed956242333"
             }
           ]
         },
@@ -5909,17 +5909,17 @@
           "opened": "none",
           "nodes": 15,
           "approximated": 1,
-          "bound": 32,
+          "bound": 33,
           "bindable": 36,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4APQ-0",
+              "nodeId": "4I9N-0",
               "size": [
                 576,
                 133.41
               ],
-              "htmlHash": "a9053b35e8fa90ff"
+              "htmlHash": "0296addc4cf5b9bb"
             }
           ]
         },
@@ -5929,17 +5929,17 @@
           "opened": "none",
           "nodes": 10,
           "approximated": 1,
-          "bound": 20,
+          "bound": 21,
           "bindable": 24,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4AQG-0",
+              "nodeId": "4IAD-0",
               "size": [
                 576,
                 108
               ],
-              "htmlHash": "33f8a9e6eb1e0877"
+              "htmlHash": "76165f2857e8580d"
             }
           ]
         },
@@ -5949,17 +5949,17 @@
           "opened": "none",
           "nodes": 33,
           "approximated": 2,
-          "bound": 98,
+          "bound": 101,
           "bindable": 106,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4AR6-0",
+              "nodeId": "4IB3-0",
               "size": [
                 576,
                 166
               ],
-              "htmlHash": "e0ad17cb53ef9778"
+              "htmlHash": "e5cb8df2f8eb8309"
             }
           ]
         },
@@ -5969,17 +5969,17 @@
           "opened": "none",
           "nodes": 24,
           "approximated": 4,
-          "bound": 60,
+          "bound": 65,
           "bindable": 71,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4ASO-0",
+              "nodeId": "4ICL-0",
               "size": [
                 576,
                 142.41
               ],
-              "htmlHash": "05e0b2d48a7cc474"
+              "htmlHash": "d04dd823d70f1807"
             }
           ]
         },
@@ -5994,7 +5994,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4ATX-0",
+              "nodeId": "4IDU-0",
               "size": [
                 576,
                 84
@@ -6009,17 +6009,17 @@
           "opened": "none",
           "nodes": 12,
           "approximated": 0,
-          "bound": 32,
+          "bound": 33,
           "bindable": 34,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4AUO-0",
+              "nodeId": "4IEL-0",
               "size": [
                 576,
                 108
               ],
-              "htmlHash": "6cf4bf4460cae69f"
+              "htmlHash": "f9addfa1824fd669"
             }
           ]
         }
@@ -8497,8 +8497,8 @@
         "src/stories/patterns/ActivityFeed.stories.tsx",
         "src/usage/activity-feed.usage.mjs"
       ],
-      "sourceHash": "4dd4dc8a58e5bd2f",
-      "syncedAt": "2026-10-12",
+      "sourceHash": "fee41ef8011a3008",
+      "syncedAt": "2026-10-17",
       "counts": {
         "stories": 1,
         "nodes": 70,
@@ -8521,12 +8521,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4D7J-0",
+              "nodeId": "4IFH-0",
               "size": [
                 420,
                 315.05
               ],
-              "htmlHash": "d2e8f05f38abb7fe"
+              "htmlHash": "2930d3b73cac712d"
             }
           ]
         }
@@ -8545,15 +8545,15 @@
         "src/stories/patterns/AiChat.stories.tsx",
         "src/usage/ai-chat.usage.mjs"
       ],
-      "sourceHash": "f15bc45fd05336f4",
-      "syncedAt": "2026-10-12",
+      "sourceHash": "965c40e6790ef039",
+      "syncedAt": "2026-10-17",
       "counts": {
         "stories": 5,
         "nodes": 442,
         "approximated": 37,
-        "bound": 1302,
+        "bound": 1339,
         "bindable": 1378,
-        "bindingRate": 0.945
+        "bindingRate": 0.972
       },
       "notes": [],
       "lost": [
@@ -8566,17 +8566,17 @@
           "opened": "none",
           "nodes": 86,
           "approximated": 8,
-          "bound": 262,
+          "bound": 266,
           "bindable": 277,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4DA5-0",
+              "nodeId": "4JBN-0",
               "size": [
                 1232,
                 640
               ],
-              "htmlHash": "2d09eac0bec7308d"
+              "htmlHash": "4edbcee4cd0947ce"
             }
           ]
         },
@@ -8586,17 +8586,17 @@
           "opened": "none",
           "nodes": 74,
           "approximated": 6,
-          "bound": 236,
+          "bound": 242,
           "bindable": 247,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4DDN-0",
+              "nodeId": "4JF5-0",
               "size": [
                 1232,
                 640
               ],
-              "htmlHash": "d59c155e43c9fe10"
+              "htmlHash": "b3ab3d26799e64dc"
             }
           ]
         },
@@ -8606,17 +8606,17 @@
           "opened": "none",
           "nodes": 55,
           "approximated": 4,
-          "bound": 162,
+          "bound": 176,
           "bindable": 183,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4DGE-0",
+              "nodeId": "4JHW-0",
               "size": [
                 1232,
                 640
               ],
-              "htmlHash": "ecd163580f3909da"
+              "htmlHash": "e079106be991f09b"
             }
           ]
         },
@@ -8626,17 +8626,17 @@
           "opened": "none",
           "nodes": 66,
           "approximated": 7,
-          "bound": 177,
+          "bound": 180,
           "bindable": 189,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4DIE-0",
+              "nodeId": "4JJW-0",
               "size": [
                 1232,
                 640
               ],
-              "htmlHash": "035aa866d483d2f6"
+              "htmlHash": "c4624f9f5a3d9f3f"
             }
           ]
         },
@@ -8646,17 +8646,17 @@
           "opened": "none",
           "nodes": 161,
           "approximated": 12,
-          "bound": 465,
+          "bound": 475,
           "bindable": 482,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4DL5-0",
+              "nodeId": "4JMN-0",
               "size": [
                 1232,
                 1367.25
               ],
-              "htmlHash": "9d8d98adba872889"
+              "htmlHash": "33007f9cc224882a"
             }
           ]
         }
@@ -9325,15 +9325,15 @@
         "src/stories/patterns/ConversationHistory.stories.tsx",
         "src/usage/conversation-history.usage.mjs"
       ],
-      "sourceHash": "27d9d277eb8465aa",
-      "syncedAt": "2026-10-12",
+      "sourceHash": "73c8ca4e6d95c43a",
+      "syncedAt": "2026-10-17",
       "counts": {
         "stories": 3,
         "nodes": 108,
         "approximated": 0,
-        "bound": 374,
+        "bound": 444,
         "bindable": 450,
-        "bindingRate": 0.831
+        "bindingRate": 0.987
       },
       "notes": [],
       "lost": [],
@@ -9344,17 +9344,17 @@
           "opened": "none",
           "nodes": 38,
           "approximated": 0,
-          "bound": 132,
+          "bound": 157,
           "bindable": 159,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4F0H-0",
+              "nodeId": "4JTA-0",
               "size": [
                 300,
                 350
               ],
-              "htmlHash": "57c514a87c91a2dc"
+              "htmlHash": "3fcd5b731d681e46"
             }
           ]
         },
@@ -9364,17 +9364,17 @@
           "opened": "none",
           "nodes": 63,
           "approximated": 0,
-          "bound": 210,
+          "bound": 255,
           "bindable": 257,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4F20-0",
+              "nodeId": "4JUT-0",
               "size": [
                 300,
                 582
               ],
-              "htmlHash": "f93029db05dc561e"
+              "htmlHash": "daee689ee2efc746"
             }
           ]
         },
@@ -9389,7 +9389,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4F4E-0",
+              "nodeId": "4JX7-0",
               "size": [
                 300,
                 89.41
@@ -9613,15 +9613,15 @@
         "src/stories/patterns/Error404.stories.tsx",
         "src/usage/error-404.usage.mjs"
       ],
-      "sourceHash": "84c6b3a5706e93b2",
-      "syncedAt": "2026-10-12",
+      "sourceHash": "c6c0056d9b79c857",
+      "syncedAt": "2026-10-17",
       "counts": {
         "stories": 1,
         "nodes": 11,
         "approximated": 0,
-        "bound": 45,
+        "bound": 47,
         "bindable": 47,
-        "bindingRate": 0.957
+        "bindingRate": 1
       },
       "notes": [],
       "lost": [
@@ -9634,17 +9634,17 @@
           "opened": "none",
           "nodes": 11,
           "approximated": 0,
-          "bound": 45,
+          "bound": 47,
           "bindable": 47,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4FC0-0",
+              "nodeId": "4IML-0",
               "size": [
                 1232,
                 500
               ],
-              "htmlHash": "bf4dfdc88fd0446d"
+              "htmlHash": "94fc3ed309d4cb72"
             }
           ]
         }
@@ -11506,8 +11506,8 @@
         "src/usage/example-marketing-page.usage.mjs",
         "src/usage/examples.mjs"
       ],
-      "sourceHash": "3bc4e6c240fdb535",
-      "syncedAt": "2026-10-12",
+      "sourceHash": "d3c047b8152a963e",
+      "syncedAt": "2026-10-17",
       "counts": {
         "stories": 1,
         "nodes": 176,
@@ -11532,7 +11532,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4HKR-0",
+              "nodeId": "4INA-0",
               "size": [
                 1232,
                 2439.94

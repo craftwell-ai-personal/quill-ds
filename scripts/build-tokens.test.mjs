@@ -35,8 +35,11 @@ test('renderCss reproduces primitive + dk + remap declarations', () => {
   assert.match(root, /--destructive:\s*var\(--terracotta-deep\);/)
   // @theme mappings + scale
   assert.match(theme, /--color-terracotta:\s*var\(--terracotta\);/)
-  assert.match(theme, /--radius-lg:\s*0\.5rem;/)
-  assert.match(theme, /--text-xl:\s*1\.5rem;/)
+  // the size scales hold their values in :root; @theme points each utility at them
+  assert.match(root, /--radius-lg:\s*0\.5rem;/)
+  assert.match(root, /--text-xl:\s*1\.5rem;/)
+  assert.match(theme, /--radius-lg:\s*var\(--radius-lg\);/)
+  assert.match(theme, /--text-xl:\s*var\(--text-xl\);/)
 })
 
 test('registryBlock emits the dark variant, @theme inline, :root and all theme blocks', () => {
@@ -170,12 +173,14 @@ test('every type size ships the line height its utility renders', () => {
   // pairing, inherited silently when Quill re-cut the sizes. Nothing declared it,
   // so hand-typed text styles drifted (Body/S at 160%).
   // `2xs` is Quill's own size with no pairing — it inherits, on purpose.
-  const { theme } = renderCss(tokens)
+  const { theme, root } = renderCss(tokens)
   for (const size of Object.keys(tokens.text)) {
-    const declared = new RegExp(`--text-${size}--line-height:\\s*([^;]+);`).exec(theme)
-    if (size === '2xs') { assert.equal(declared, null, '2xs inherits its line height'); continue }
+    const declared = new RegExp(`--text-${size}--line-height:\\s*([^;]+);`).exec(root)
+    const mapped = new RegExp(`--text-${size}--line-height:\\s*([^;]+);`).exec(theme)
+    if (size === '2xs') { assert.equal(declared ?? mapped, null, '2xs inherits its line height'); continue }
     assert.ok(declared, `--text-${size}--line-height should ship`)
     assert.equal(declared[1], tokens.textLeading[size])
+    assert.equal(mapped?.[1], `var(--text-${size}--line-height)`, `text-${size} reads the Quill variable`)
   }
 })
 
@@ -340,11 +345,13 @@ test('forced colours: one rule gives every focused element a 2px system-colour o
   // popover, a full-width row in a scrolling list) would have an outside outline cut off, so it asks for the
   // outline inside itself with `data-focus-inset`. Only the offset changes; the outline is the general one.
   assert.deepEqual(Object.keys(inside), [':focus-visible', '[data-focus-inset]:focus-visible'])
-  assert.deepEqual(inside[':focus-visible'], { outline: '2px solid Highlight', 'outline-offset': '2px' })
-  assert.deepEqual(inside['[data-focus-inset]:focus-visible'], { 'outline-offset': '-2px' })
+  // 2px, through the border-width token, so the rule an app inherits reads as Quill's value
+  assert.equal(tokens.borderWidth[2], '2px')
+  assert.deepEqual(inside[':focus-visible'], { outline: 'var(--border-width-2) solid Highlight', 'outline-offset': 'var(--border-width-2)' })
+  assert.deepEqual(inside['[data-focus-inset]:focus-visible'], { 'outline-offset': 'calc(var(--border-width-2) * -1)' })
   assert.equal(
     renderForcedColors(),
-    '@media (forced-colors: active) {\n  :focus-visible {\n    outline: 2px solid Highlight;\n    outline-offset: 2px;\n  }\n  [data-focus-inset]:focus-visible {\n    outline-offset: -2px;\n  }\n}',
+    '@media (forced-colors: active) {\n  :focus-visible {\n    outline: var(--border-width-2) solid Highlight;\n    outline-offset: var(--border-width-2);\n  }\n  [data-focus-inset]:focus-visible {\n    outline-offset: calc(var(--border-width-2) * -1);\n  }\n}',
   )
 })
 

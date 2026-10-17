@@ -361,7 +361,7 @@ export default function Home() {
 
       {/* ── Foundations ─────────────────────────────────────────────────── */}
       <section id="foundations" className="border-y border-[var(--line-faint)] bg-paper-warm">
-        <div className="mx-auto max-w-[1400px] px-12 py-24 max-sm:px-6 max-sm:py-14">
+        <div className="mx-auto max-w-[1400px] px-12 py-24 max-sm:px-6 max-sm:py-12">
           <SectionHeader
             eyebrow="Foundations"
             title={<>Paper, ink, and four <Accent>pigments</Accent>.</>}
@@ -455,7 +455,7 @@ export default function Home() {
 
       {/* ── Components ──────────────────────────────────────────────────── */}
       <section id="components" className="bg-background">
-        <div className="mx-auto max-w-[1400px] px-12 py-24 max-sm:px-6 max-sm:py-14">
+        <div className="mx-auto max-w-[1400px] px-12 py-24 max-sm:px-6 max-sm:py-12">
           <SectionHeader
             eyebrow="The collection"
             title={<>Every component, a <Accent>specimen</Accent>.</>}
@@ -587,7 +587,7 @@ export default function Home() {
 
       {/* ── Getting started ─────────────────────────────────────────────── */}
       <section id="start" className="bg-background">
-        <div className="mx-auto grid max-w-[1400px] grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] items-center gap-16 px-12 py-24 max-lg:grid-cols-1 max-sm:gap-8 max-sm:px-6 max-sm:py-14">
+        <div className="mx-auto grid max-w-[1400px] grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] items-center gap-16 px-12 py-24 max-lg:grid-cols-1 max-sm:gap-8 max-sm:px-6 max-sm:py-12">
           <div className="flex flex-col items-start gap-6">
             <span className="font-sans text-xs font-medium tracking-eyebrow uppercase text-ink-muted">Getting started</span>
             <h2 className="m-0 font-display text-3xl font-normal leading-heading tracking-display text-foreground [font-variation-settings:var(--fraunces-display)] max-sm:text-2xl">

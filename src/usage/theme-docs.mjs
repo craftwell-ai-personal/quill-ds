@@ -50,7 +50,7 @@ export function themeDocsParagraphs() {
 
     `Fonts — Raleway (body) and Fraunces (display) load through the theme file's @import; no next/font. Never load them again under another name: the theme matches literal names.`,
 
-    `Wiring — the CLI install merges the theme into your Tailwind stylesheet. A theme FILE must be imported from inside that stylesheet — \`@import "./quill-theme.css"\` after \`@import "tailwindcss"\` and below any \`@custom-variant dark\` line shadcn wrote (the last wins) — never from layout.tsx, where every Quill utility is dead.`,
+    `Wiring — the CLI install merges the theme into your Tailwind stylesheet. A theme FILE must be imported from inside that stylesheet, as its LAST line — \`@import "./quill-theme.css"\` — never from layout.tsx, where every Quill utility is dead. Last, because the last definition wins: shadcn init writes its own dark line and radius lines (\`--radius-md: calc(var(--radius) * 0.8)\`), and imported above them, they beat Quill's.`,
 
     `dark: utilities — stock primitives' dark: tweaks follow Quill's dark themes (and the .dark class) once the theme is wired; nothing to add by hand.`,
 

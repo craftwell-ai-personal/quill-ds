@@ -27,7 +27,8 @@ const shipped = quillTokens(JSON.parse(readFileSync(join(root, 'public/r/quill.j
 // lookahead version got wrong (it matched `--char`); camel-cased CLI flags
 // such as `--noEmit` yield nothing for the same reason.
 export function tokenNames(text) {
-  return [...new Set([...text.matchAll(/--[a-z][a-z0-9-]*[a-z0-9](?![A-Za-z0-9-])/g)].map((m) => m[0]))]
+  // `_` too: a half-step is `--space-2_5` (a dot is illegal in the name)
+  return [...new Set([...text.matchAll(/--[a-z][a-z0-9_-]*[a-z0-9](?![A-Za-z0-9_-])/g)].map((m) => m[0]))]
 }
 
 // CLI flags read like tokens; they are not.
