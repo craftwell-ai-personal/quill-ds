@@ -13,6 +13,7 @@
  * Every `--token` written here is checked against the shipped theme by
  * scripts/token-truth.test.mjs. A name that does not ship fails CI.
  */
+import { SIZE_JOBS } from './sizes.mjs'
 import { tokens } from '../tokens/quill.tokens.mjs'
 import { DEFAULT_ACCENT } from '../tokens/themes.mjs'
 
@@ -74,17 +75,27 @@ export function renderTypeSection(t = tokens) {
   return L.join('\n')
 }
 
-export function renderSpacingSection(t = tokens) {
+export function renderSpacingSection(t = tokens, { compact = false } = {}) {
   const steps = Object.entries(t.spacing).sort((a, b) => parseFloat(a[1]) - parseFloat(b[1]))
   const L = []
-  L.push(`A **4px base step** (\`--space-1\` = ${t.spacing['1']}). Editorial rhythm — sections breathe.`)
+  if (!compact) L.push(`A **4px base step** (\`--space-1\` = ${t.spacing['1']}). Editorial rhythm — sections breathe.`, '')
+  // The rules file every app session loads gets the short forms; llms.txt and DESIGN.md the full ones.
+  if (compact) L.push(`Steps (\`--space-N\` = N × 4px, classes \`p-N\`, \`gap-N\`…): ${steps.map(([k]) => k).join(' · ')}.`)
+  else L.push(steps.map(([k, v]) => `\`--space-${k.replace('.', '_')}\` ${px(v)}`).join(' · '))
   L.push('')
-  L.push(steps.map(([k, v]) => `\`--space-${k.replace('.', '_')}\` ${px(v)}`).join(' · '))
+  if (compact) L.push('Components sit on `--space-4` / `--space-6`; sections breathe with `--space-24`. Write the class (`p-4` → `var(--space-4)`); a step outside the list (`p-13`) or a bracket (`p-[13px]`) is off the system, and `quill-check` flags it.')
+  else L.push('Components sit on `--space-4` / `--space-6`; sections breathe with `--space-24`. In a component write the class (`p-4`, `gap-6`): it compiles to the variable (`padding: var(--space-4)`), so the class and the token are one thing. These steps are the whole scale: a Tailwind step outside it (`p-13`, `p-3.25`) or a bracket (`p-[13px]`) is off the system, and `quill-check` flags it with the nearest step. In hand-written CSS use the variable.')
   L.push('')
-  L.push('Components sit on `--space-4` / `--space-6`; sections breathe with `--space-24`. In a component write the class (`p-4`, `gap-6`): it compiles to the variable (`padding: var(--space-4)`), so the class and the token are one thing. These steps are the whole scale: a Tailwind step outside it (`p-13`, `p-3.25`) or a bracket (`p-[13px]`) is off the system, and `quill-check` flags it with the nearest step. In hand-written CSS use the variable.')
+  L.push('### Sizes')
+  L.push('Past the spacing steps, sizes are named for their job: `w-card`, `max-w-page`, `h-frame` (→ `var(--size-card)`). Widths go on `w-`, `max-w-`, `min-w-`, `basis-`; heights on `h-`, `min-h-`, `max-h-`, `size-`. A height is never padding or a width, and Tailwind\'s `max-w-md` or `w-64` is not Quill\'s: `quill-check` flags both.')
+  L.push('')
+  const sizeList = (group) => Object.entries(t.size[group]).map(([k, v]) => `- \`${group === 'width' ? 'w' : 'h'}-${k}\` ${px(v)} — ${SIZE_JOBS[group][k]}`)
+  const sizeLine = (group) => Object.entries(t.size[group]).map(([k, v]) => `${group === 'width' ? 'w' : 'h'}-${k} ${parseFloat(px(v))}`).join(' · ')
+  if (compact) L.push(`Widths (px): ${sizeLine('width')}.`, '', `Heights (px): ${sizeLine('height')}. What each is for: llms.txt, Sizes.`)
+  else L.push('Widths:', ...sizeList('width'), '', 'Heights:', ...sizeList('height'))
   L.push('')
   L.push('### Layout')
-  L.push('No width or height tokens ship yet (`quill-check` lists those values as size gaps, without failing); use the values the site uses. Marketing max-width **1400px** (`max-w-[1400px]`), reading column **800px**, side padding **48px** on desktop (`px-12`) and **24px** on mobile (`px-6`), vertical section rhythm **96px** (`py-24`; `py-12` on mobile).')
+  L.push(`${compact ? '' : 'Marketing pages sit in `max-w-page-wide` (1400px), app pages in `max-w-page` (880px), a reading column in `max-w-measure` (672px); s'}${compact ? 'S' : ''}ide padding **48px** on desktop (\`px-12\`) and **24px** on mobile (\`px-6\`), vertical section rhythm **96px** (\`py-24\`; \`py-12\` on mobile).`)
   L.push('')
   L.push('### Composition')
   L.push('- Recurring section header: eyebrow → headline (one accent word) → right-aligned italic caption.')
@@ -107,13 +118,13 @@ export function renderEffectsSection(t = tokens) {
   return L.join('\n')
 }
 
-export function renderFoundations(t = tokens) {
+export function renderFoundations(t = tokens, { compact = false } = {}) {
   return [
     '### Type',
     renderTypeSection(t).replace(/^### /gm, '#### '),
     '',
     '### Spacing & layout',
-    renderSpacingSection(t).replace(/^### /gm, '#### '),
+    renderSpacingSection(t, { compact }).replace(/^### /gm, '#### '),
     '',
     '### Effects',
     renderEffectsSection(t).replace(/^### /gm, '#### '),

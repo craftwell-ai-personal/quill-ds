@@ -146,6 +146,11 @@ const SIZE_UTILITIES = {
   'border-2': /border-width:\s*var\(--border-width-2\)/,
   'ring-2': /calc\(var\(--border-width-2\) \+ var\(--tw-ring-offset-width\)\)/,
   'outline-2': /outline-width:\s*var\(--border-width-2\)/,
+  'w-card': /width:\s*var\(--size-card\)/,
+  'max-w-page': /max-width:\s*var\(--size-page\)/,
+  'h-frame': /height:\s*var\(--size-frame\)/,
+  'min-h-touch': /min-height:\s*var\(--size-touch\)/,
+  'size-4.5': /width:\s*var\(--space-4_5\)/,
 }
 const ruleFor = (css, cls) => css.match(new RegExp(`\\.${escape(cls).replace(/\\/g, '\\\\')}\\s*\\{([^}]*)\\}`))?.[1] ?? ''
 
@@ -169,5 +174,5 @@ test('CLI channel: the merged cssVars point the same utilities at Quill variable
   for (const [cls, decl] of Object.entries(SIZE_UTILITIES)) assert.match(ruleFor(css, cls), decl, cls)
   assert.match(ruleFor(css, 'rounded-md'), /border-radius:\s*var\(--radius-md\)/)
   // the values ride in the merged :root, so each variable resolves in the app
-  for (const name of ['--space-3_5', '--radius-md', '--text-sm', '--text-sm--line-height', '--border-width-2']) assert.match(merged, new RegExp(`${name}:\\s*[^;]+;`), name)
+  for (const name of ['--space-3_5', '--radius-md', '--text-sm', '--text-sm--line-height', '--border-width-2', '--size-card', '--size-frame']) assert.match(merged, new RegExp(`${name}:\\s*[^;]+;`), name)
 })

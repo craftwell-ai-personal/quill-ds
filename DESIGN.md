@@ -298,12 +298,39 @@ Loaded from Google Fonts by the `@import` at the top of the shipped theme file. 
 <!-- generated:spacing:start -->
 A **4px base step** (`--space-1` = 0.25rem). Editorial rhythm — sections breathe.
 
-`--space-0_5` 2px · `--space-1` 4px · `--space-1_5` 6px · `--space-2` 8px · `--space-2_5` 10px · `--space-3` 12px · `--space-3_5` 14px · `--space-4` 16px · `--space-5` 20px · `--space-6` 24px · `--space-7` 28px · `--space-8` 32px · `--space-9` 36px · `--space-10` 40px · `--space-12` 48px · `--space-16` 64px · `--space-20` 80px · `--space-24` 96px
+`--space-0_5` 2px · `--space-1` 4px · `--space-1_5` 6px · `--space-2` 8px · `--space-2_5` 10px · `--space-3` 12px · `--space-3_5` 14px · `--space-4` 16px · `--space-4_5` 18px · `--space-5` 20px · `--space-6` 24px · `--space-7` 28px · `--space-8` 32px · `--space-9` 36px · `--space-10` 40px · `--space-12` 48px · `--space-16` 64px · `--space-20` 80px · `--space-24` 96px
 
 Components sit on `--space-4` / `--space-6`; sections breathe with `--space-24`. In a component write the class (`p-4`, `gap-6`): it compiles to the variable (`padding: var(--space-4)`), so the class and the token are one thing. These steps are the whole scale: a Tailwind step outside it (`p-13`, `p-3.25`) or a bracket (`p-[13px]`) is off the system, and `quill-check` flags it with the nearest step. In hand-written CSS use the variable.
 
+### Sizes
+Past the spacing steps, sizes are named for their job: `w-card`, `max-w-page`, `h-frame` (→ `var(--size-card)`). Widths go on `w-`, `max-w-`, `min-w-`, `basis-`; heights on `h-`, `min-h-`, `max-h-`, `size-`. A height is never padding or a width, and Tailwind's `max-w-md` or `w-64` is not Quill's: `quill-check` flags both.
+
+Widths:
+- `w-chip` 160px — the longest a source chip gets before its text truncates
+- `w-menu` 192px — dropdown menus
+- `w-chip-lg` 224px — the longest an attachment chip gets
+- `w-rail` 240px — side rails: an app’s left nav, a board column
+- `w-panel` 288px — popovers, pickers and list columns
+- `w-card-sm` 320px — narrow cards and forms: a minimal sign-in, a short blurb, a search field
+- `w-card` 384px — the standard card: sign-in, sign-up, notifications, an order summary
+- `w-card-lg` 448px — roomier cards: forms with more fields, a command palette, an activity feed
+- `w-card-xl` 560px — wide cards and the text under a headline: settings, FAQ, a cookie banner, a hero’s lead
+- `w-measure` 672px — a readable column: a big headline, the AI home
+- `w-thread` 768px — a chat thread
+- `w-page` 880px — a content page inside the app
+- `w-page-wide` 1400px — the marketing page
+
+Heights:
+- `h-touch` 44px — the smallest a control gets: the WCAG 2.5.5 touch target
+- `h-bar` 56px — a top navigation bar
+- `h-area-sm` 128px — a short content area
+- `h-area` 224px — a chart, or the most a text field grows before it scrolls
+- `h-frame-sm` 480px — a whole-screen block shown on its own, compact (chat, 404)
+- `h-frame` 560px — a whole-screen block shown on its own (mail, nav, list-detail, dashboard)
+- `h-frame-lg` 640px — a whole-screen block shown on its own, tall (AI chat)
+
 ### Layout
-No width or height tokens ship yet (`quill-check` lists those values as size gaps, without failing); use the values the site uses. Marketing max-width **1400px** (`max-w-[1400px]`), reading column **800px**, side padding **48px** on desktop (`px-12`) and **24px** on mobile (`px-6`), vertical section rhythm **96px** (`py-24`; `py-12` on mobile).
+Marketing pages sit in `max-w-page-wide` (1400px), app pages in `max-w-page` (880px), a reading column in `max-w-measure` (672px); side padding **48px** on desktop (`px-12`) and **24px** on mobile (`px-6`), vertical section rhythm **96px** (`py-24`; `py-12` on mobile).
 
 ### Composition
 - Recurring section header: eyebrow → headline (one accent word) → right-aligned italic caption.

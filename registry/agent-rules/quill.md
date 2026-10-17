@@ -76,14 +76,19 @@ Loaded from Google Fonts by the `@import` at the top of the shipped theme file. 
 - Sentence case in prose and headings; uppercase only for eyebrows.
 
 ### Spacing & layout
-A **4px base step** (`--space-1` = 0.25rem). Editorial rhythm — sections breathe.
+Steps (`--space-N` = N × 4px, classes `p-N`, `gap-N`…): 0.5 · 1 · 1.5 · 2 · 2.5 · 3 · 3.5 · 4 · 4.5 · 5 · 6 · 7 · 8 · 9 · 10 · 12 · 16 · 20 · 24.
 
-`--space-0_5` 2px · `--space-1` 4px · `--space-1_5` 6px · `--space-2` 8px · `--space-2_5` 10px · `--space-3` 12px · `--space-3_5` 14px · `--space-4` 16px · `--space-5` 20px · `--space-6` 24px · `--space-7` 28px · `--space-8` 32px · `--space-9` 36px · `--space-10` 40px · `--space-12` 48px · `--space-16` 64px · `--space-20` 80px · `--space-24` 96px
+Components sit on `--space-4` / `--space-6`; sections breathe with `--space-24`. Write the class (`p-4` → `var(--space-4)`); a step outside the list (`p-13`) or a bracket (`p-[13px]`) is off the system, and `quill-check` flags it.
 
-Components sit on `--space-4` / `--space-6`; sections breathe with `--space-24`. In a component write the class (`p-4`, `gap-6`): it compiles to the variable (`padding: var(--space-4)`), so the class and the token are one thing. These steps are the whole scale: a Tailwind step outside it (`p-13`, `p-3.25`) or a bracket (`p-[13px]`) is off the system, and `quill-check` flags it with the nearest step. In hand-written CSS use the variable.
+#### Sizes
+Past the spacing steps, sizes are named for their job: `w-card`, `max-w-page`, `h-frame` (→ `var(--size-card)`). Widths go on `w-`, `max-w-`, `min-w-`, `basis-`; heights on `h-`, `min-h-`, `max-h-`, `size-`. A height is never padding or a width, and Tailwind's `max-w-md` or `w-64` is not Quill's: `quill-check` flags both.
+
+Widths (px): w-chip 160 · w-menu 192 · w-chip-lg 224 · w-rail 240 · w-panel 288 · w-card-sm 320 · w-card 384 · w-card-lg 448 · w-card-xl 560 · w-measure 672 · w-thread 768 · w-page 880 · w-page-wide 1400.
+
+Heights (px): h-touch 44 · h-bar 56 · h-area-sm 128 · h-area 224 · h-frame-sm 480 · h-frame 560 · h-frame-lg 640. What each is for: llms.txt, Sizes.
 
 #### Layout
-No width or height tokens ship yet (`quill-check` lists those values as size gaps, without failing); use the values the site uses. Marketing max-width **1400px** (`max-w-[1400px]`), reading column **800px**, side padding **48px** on desktop (`px-12`) and **24px** on mobile (`px-6`), vertical section rhythm **96px** (`py-24`; `py-12` on mobile).
+Side padding **48px** on desktop (`px-12`) and **24px** on mobile (`px-6`), vertical section rhythm **96px** (`py-24`; `py-12` on mobile).
 
 #### Composition
 - Recurring section header: eyebrow → headline (one accent word) → right-aligned italic caption.

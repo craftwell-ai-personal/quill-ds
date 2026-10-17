@@ -64,7 +64,7 @@ function AppleMark() {
 /** Provider-first sign-in — Google, GitHub, and Apple buttons above an email fallback. */
 export function LoginOauth() {
   return (
-    <div className="flex w-[340px] flex-col gap-5">
+    <div className="flex w-card-sm flex-col gap-5">
       <div className="flex flex-col items-center gap-2 text-center">
         <span className="flex size-9 items-center justify-center rounded-md bg-primary text-sm font-medium text-primary-foreground">
           Q
@@ -75,16 +75,17 @@ export function LoginOauth() {
         </p>
       </div>
 
-      {/* Each label is at least as wide as the longest, so the three centred logos line up in one column. */}
-      <div className="flex flex-col gap-2">
-        <Button variant="outline" className="w-full justify-center gap-2">
-          <GoogleMark /> <span className="min-w-[8.75rem] text-left">Continue with Google</span>
+      {/* One grid the three buttons share (space · logo · label · space): the label column is as wide as the
+          longest label, so the centred logos line up in one column with no fixed width. */}
+      <div className="grid grid-cols-[1fr_auto_auto_1fr] gap-y-2">
+        <Button variant="outline" className="col-span-full grid grid-cols-subgrid gap-x-2 [&>svg]:col-start-2">
+          <GoogleMark /> <span className="col-start-3 text-left">Continue with Google</span>
         </Button>
-        <Button variant="outline" className="w-full justify-center gap-2">
-          <GitHubMark /> <span className="min-w-[8.75rem] text-left">Continue with GitHub</span>
+        <Button variant="outline" className="col-span-full grid grid-cols-subgrid gap-x-2 [&>svg]:col-start-2">
+          <GitHubMark /> <span className="col-start-3 text-left">Continue with GitHub</span>
         </Button>
-        <Button variant="outline" className="w-full justify-center gap-2">
-          <AppleMark /> <span className="min-w-[8.75rem] text-left">Continue with Apple</span>
+        <Button variant="outline" className="col-span-full grid grid-cols-subgrid gap-x-2 [&>svg]:col-start-2">
+          <AppleMark /> <span className="col-start-3 text-left">Continue with Apple</span>
         </Button>
       </div>
 

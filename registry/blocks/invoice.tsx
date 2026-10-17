@@ -22,7 +22,7 @@ const lines = [
 /** A printable invoice card — sender and recipient details, a ToneBadge payment status, a line-item table with totals, and a download action. */
 export function Invoice() {
   return (
-    <Card className="mx-auto w-full max-w-[640px]">
+    <Card className="mx-auto w-full max-w-measure">
       <CardHeader className="gap-3">
         <div className="flex items-start justify-between gap-4">
           <div className="flex flex-col gap-1">

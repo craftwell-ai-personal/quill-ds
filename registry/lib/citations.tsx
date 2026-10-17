@@ -21,7 +21,7 @@ export type Source = {
 // The focus ring is the stock Button's, so these plain buttons and links match the controls around them.
 // Truncation keeps a long title from turning one chip into a line-wide bar; the full title stays in the accessible name.
 // mx-1.5 leaves 3px clear outside the 3px focus ring on both sides, so the chip never touches the words around it however it is placed.
-const CHIP = 'mx-1.5 inline-block h-5 max-w-40 truncate rounded-md bg-muted px-2 text-center align-middle text-2xs font-semibold leading-5 text-ink-soft no-underline hover:bg-foreground hover:text-background outline-hidden focus-visible:ring-3 focus-visible:ring-ring/50'
+const CHIP = 'mx-1.5 inline-block h-5 max-w-chip truncate rounded-md bg-muted px-2 text-center align-middle text-2xs font-semibold leading-5 text-ink-soft no-underline hover:bg-foreground hover:text-background outline-hidden focus-visible:ring-3 focus-visible:ring-ring/50'
 const kindIcon = (s: Source) => (s.kind === 'web' ? 'language' : 'description')
 
 function where(s: Source) {
@@ -76,7 +76,7 @@ export function Citation({ source, className }: { source: Source; className?: st
       </HoverCardTrigger>
       {/* Focus can rest inside the card after a press in it; leaving it for anywhere but the chip or the card lets go. */}
       <HoverCardContent
-        className="grid w-72 gap-1"
+        className="grid w-panel gap-1"
         onBlur={(event) => {
           const next = event.relatedTarget as Node | null
           if (!pinned || next === chipRef.current || event.currentTarget.contains(next)) return
@@ -102,7 +102,7 @@ export function Sources({ sources, defaultOpen = false, className }: { sources: 
         className="inline-flex h-7 items-center gap-2 rounded-full border border-border bg-background pr-2.5 pl-1.5 text-xs font-semibold text-ink-soft hover:bg-muted outline-hidden focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50">
         <span aria-hidden className="flex">
           {sources.slice(0, 3).map((source, index) => (
-            <span key={index} className={cn('grid size-[18px] place-items-center rounded-full border-2 border-background bg-muted', index > 0 && '-ml-1.5')}>
+            <span key={index} className={cn('grid size-4.5 place-items-center rounded-full border-2 border-background bg-muted', index > 0 && '-ml-1.5')}>
               <Icon name={kindIcon(source)} size={10} />
             </span>
           ))}
@@ -114,7 +114,7 @@ export function Sources({ sources, defaultOpen = false, className }: { sources: 
         {sources.map((source, index) => {
           const body = (
             <>
-              <span aria-hidden className="grid size-[22px] place-items-center rounded-md bg-muted text-ink-soft"><Icon name={kindIcon(source)} size={14} /></span>
+              <span aria-hidden className="grid size-6 place-items-center rounded-md bg-muted text-ink-soft"><Icon name={kindIcon(source)} size={14} /></span>
               <span className="grid min-w-0">
                 <span className="truncate font-semibold">{source.title}</span>
                 {source.detail ? <span className="truncate text-xs text-muted-foreground">{source.detail}</span> : null}

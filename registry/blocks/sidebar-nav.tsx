@@ -45,7 +45,7 @@ export function SidebarNav({ children }: { children?: React.ReactNode }) {
     // The stock sidebar is fixed to the window (full height, top 0) while this shell is a 560px box, so the
     // sidebar ran past the main area and ignored the page's margin; it is placed inside the shell instead.
     <SidebarProvider className="min-h-0">
-      <div className="relative flex h-[560px] w-full [&_[data-slot=sidebar-container]]:absolute [&_[data-slot=sidebar-container]]:h-full">
+      <div className="relative flex h-frame w-full [&_[data-slot=sidebar-container]]:absolute [&_[data-slot=sidebar-container]]:h-full">
         <Sidebar collapsible="icon">
           <SidebarHeader className="px-4 py-3">
             <div className="flex items-center gap-2">
@@ -132,7 +132,7 @@ export function SidebarNav({ children }: { children?: React.ReactNode }) {
               <div className="grid grid-cols-3 gap-4 max-lg:grid-cols-1">
                 {['Active engagements', 'Review queue', 'Client notes'].map((title) => (
                   <Card key={title} size="sm">
-                    <CardContent className="flex h-32 flex-col gap-1">
+                    <CardContent className="flex h-area-sm flex-col gap-1">
                       <span className="text-sm font-medium text-foreground">{title}</span>
                       <span className="text-xs text-muted-foreground">Nothing pressing.</span>
                     </CardContent>

@@ -10,7 +10,7 @@ const stats = [
 /** A marketing band of headline statistics separated by vertical dividers on a card background. */
 export function StatsBand() {
   return (
-    <section className="mx-auto w-full max-w-[880px] rounded-xl bg-card px-8 py-10 ring-1 ring-foreground/10">
+    <section className="mx-auto w-full max-w-page rounded-xl bg-card px-8 py-10 ring-1 ring-foreground/10">
       <div className="flex flex-col items-center gap-2 text-center">
         <span className="text-xs font-medium tracking-eyebrow uppercase text-ink-muted">
           By the numbers

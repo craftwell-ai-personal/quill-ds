@@ -13,6 +13,20 @@ within a minute, and that release is what triggers `library-sync` into the apps;
 manual tag races the bot and can leave a tag with no release behind it. The homepage
 footer reads `package.json` directly, so the displayed version updates with the bump.
 
+## [1.29.0] — 2026-10-17
+
+### Added
+- **A Quill size scale: widths and heights, named for their job**, like the colour roles. Drawn from all 89 widths and heights Quill's shipped code used, and approved as a proposal first.
+  - **13 widths** (`w-`, `max-w-`, `min-w-`, `basis-`): `chip` 160 · `menu` 192 · `chip-lg` 224 · `rail` 240 · `panel` 288 · `card-sm` 320 · `card` 384 · `card-lg` 448 · `card-xl` 560 · `measure` 672 · `thread` 768 · `page` 880 · `page-wide` 1400.
+  - **7 heights** (`h-`, `min-h-`, `max-h-`, `size-`): `touch` 44 · `bar` 56 · `area-sm` 128 · `area` 224 · `frame-sm` 480 · `frame` 560 · `frame-lg` 640.
+  - Each compiles to its variable (`w-card` → `width: var(--size-card)`); the values live in `tokens.size`, and each step's job in `src/usage/sizes.mjs`, rendered into DESIGN.md, llms.txt and the agent rules.
+  - **Spacing step `4.5` (18px)**: the AI mark's size in buttons, menus and mode tabs.
+- **`quill-check` enforces widths and heights.** What 1.28.0 listed as size gaps are now findings, with the nearest step as the fix: a Tailwind step (`w-64` → `w-rail` or `w-panel`), Tailwind's own width scale (`max-w-md` → `max-w-card-lg`, the same 448px), a bracket length (`w-[317px]`), a size typed into an inline style or a stylesheet (`width: 317` → `var(--size-card-sm)`). A height step used as padding (`p-frame`) or as a width (`w-frame`) is a finding too.
+
+### Changed
+- **Quill's own code is on the size scale.** 44 of the 89 values were already a step; 30 move by 24px or less (the five 380px sign-in cards to 384, the 440px forms to 448); 12 move more, the largest being the checkout page (820 → 880). The sign-in-with buttons (`login-oauth`) line their logos up with a shared grid instead of a 140px minimum label width. Paper redrawn.
+- The agent rules file lists the spacing and size steps in a compact form, so it stays under its size cap; llms.txt and DESIGN.md keep each size's job in full.
+
 ## [1.28.0] — 2026-10-16
 
 ### Changed

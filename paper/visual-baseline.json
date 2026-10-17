@@ -3,19 +3,19 @@
  "platform": "darwin",
  "stories": {
   "blocks-login-with-oauth--default": {
-   "diffPct": 2.73,
+   "diffPct": 3.64,
    "paper": [
-    340,
+    320,
     425
    ],
    "storybook": [
-    340,
+    320,
     424
    ],
    "text": true,
    "values": "19/19",
    "piece": "login-oauth",
-   "at": "2026-10-07"
+   "at": "2026-10-17"
   },
   "components-accordion--default": {
    "diffPct": 1.69,
@@ -4458,34 +4458,34 @@
    "at": "2026-10-12"
   },
   "patterns-ai-ai-home--agent-tab": {
-   "diffPct": 0.14,
+   "diffPct": 0.16,
    "paper": [
     1232,
-    512
+    480
    ],
    "storybook": [
     1232,
-    512
+    480
    ],
    "text": false,
    "values": "13/21",
    "piece": "ai-home",
-   "at": "2026-10-12"
+   "at": "2026-10-17"
   },
   "patterns-ai-ai-home--default": {
-   "diffPct": 0.15,
+   "diffPct": 0.17,
    "paper": [
     1232,
-    512
+    480
    ],
    "storybook": [
     1232,
-    512
+    480
    ],
    "text": false,
    "values": "13/21",
    "piece": "ai-home",
-   "at": "2026-10-12"
+   "at": "2026-10-17"
   },
   "patterns-ai-ai-side-panel--default": {
    "diffPct": 3.74,
@@ -4683,19 +4683,19 @@
    "at": "2026-10-07"
   },
   "patterns-data-activity-feed--activity-feed": {
-   "diffPct": 2.68,
+   "diffPct": 2.54,
    "paper": [
-    420,
+    448,
     317
    ],
    "storybook": [
-    420,
+    448,
     316
    ],
    "text": true,
    "values": "11/11",
    "piece": "activity-feed",
-   "at": "2026-10-07"
+   "at": "2026-10-17"
   },
   "patterns-data-analytics-charts--analytics-charts": {
    "diffPct": 1.52,
@@ -4713,19 +4713,19 @@
    "at": "2026-10-07"
   },
   "patterns-data-badge-on-card--badge-on-card": {
-   "diffPct": 1.81,
+   "diffPct": 1.58,
    "paper": [
-    280,
+    320,
     52
    ],
    "storybook": [
-    280,
+    320,
     52
    ],
    "text": true,
    "values": "11/11",
    "piece": "badge-on-card",
-   "at": "2026-10-12"
+   "at": "2026-10-17"
   },
   "patterns-data-calendar-page--calendar-page": {
    "diffPct": 1.53,
@@ -4758,19 +4758,19 @@
    "at": "2026-10-07"
   },
   "patterns-data-chat--chat": {
-   "diffPct": 2.48,
+   "diffPct": 2.58,
    "paper": [
-    400,
+    384,
     480
    ],
    "storybook": [
-    400,
+    384,
     480
    ],
    "text": true,
    "values": "19/19",
    "piece": "chat",
-   "at": "2026-10-07"
+   "at": "2026-10-17"
   },
   "patterns-data-data-table--data-table": {
    "diffPct": 0.64,
@@ -4788,19 +4788,19 @@
    "at": "2026-10-07"
   },
   "patterns-data-invoice--invoice": {
-   "diffPct": 1.6,
+   "diffPct": 1.55,
    "paper": [
-    640,
+    672,
     436
    ],
    "storybook": [
-    640,
+    672,
     430
    ],
    "text": true,
    "values": "19/19",
    "piece": "invoice",
-   "at": "2026-10-07"
+   "at": "2026-10-17"
   },
   "patterns-data-kanban-board--kanban": {
    "diffPct": 0.7,
@@ -4818,49 +4818,49 @@
    "at": "2026-10-07"
   },
   "patterns-data-notifications--notifications": {
-   "diffPct": 1.88,
+   "diffPct": 2.02,
    "paper": [
-    360,
-    290
+    384,
+    270
    ],
    "storybook": [
-    360,
-    286
+    384,
+    267
    ],
    "text": true,
    "values": "19/19",
    "piece": "notifications",
-   "at": "2026-10-12"
+   "at": "2026-10-17"
   },
   "patterns-data-order-summary--order-summary": {
-   "diffPct": 3.22,
+   "diffPct": 3.29,
    "paper": [
-    400,
+    384,
     329
    ],
    "storybook": [
-    400,
+    384,
     327
    ],
    "text": true,
    "values": "19/19",
    "piece": "order-summary",
-   "at": "2026-10-07"
+   "at": "2026-10-17"
   },
   "patterns-data-profile-card--profile-card": {
-   "diffPct": 1.21,
+   "diffPct": 1.27,
    "paper": [
-    340,
+    320,
     333
    ],
    "storybook": [
-    340,
+    320,
     332
    ],
    "text": true,
    "values": "19/19",
    "piece": "profile-card",
-   "at": "2026-10-12"
+   "at": "2026-10-17"
   },
   "patterns-data-search-results--search-results": {
    "diffPct": 1.4,
@@ -4893,19 +4893,19 @@
    "at": "2026-10-07"
   },
   "patterns-forms-checkout--checkout": {
-   "diffPct": 2.47,
+   "diffPct": 2.55,
    "paper": [
-    820,
+    880,
     463.5
    ],
    "storybook": [
-    820,
+    880,
     462
    ],
    "text": true,
    "values": "19/19",
    "piece": "checkout",
-   "at": "2026-10-07"
+   "at": "2026-10-17"
   },
   "patterns-forms-contact-form--contact-form": {
    "diffPct": 3.54,
@@ -4968,19 +4968,19 @@
    "at": "2026-10-07"
   },
   "patterns-forms-wizard--wizard": {
-   "diffPct": 2.48,
+   "diffPct": 2.49,
    "paper": [
-    460,
+    448,
     314
    ],
    "storybook": [
-    460,
+    448,
     313
    ],
    "text": true,
    "values": "19/19",
    "piece": "wizard",
-   "at": "2026-10-07"
+   "at": "2026-10-17"
   },
   "patterns-marketing-announcement-banner--announcement-banner": {
    "diffPct": 1.82,
@@ -5088,34 +5088,34 @@
    "at": "2026-10-07"
   },
   "patterns-marketing-team-section--team-section": {
-   "diffPct": 0.95,
+   "diffPct": 0.93,
    "paper": [
     880,
-    318
+    333
    ],
    "storybook": [
     880,
-    317
+    331
    ],
    "text": true,
    "values": "19/19",
    "piece": "team-section",
-   "at": "2026-10-07"
+   "at": "2026-10-17"
   },
   "patterns-marketing-testimonial--testimonial": {
-   "diffPct": 0.36,
+   "diffPct": 2.06,
    "paper": [
-    520,
+    560,
     348
    ],
    "storybook": [
-    520,
+    560,
     348
    ],
    "text": true,
    "values": "11/11",
    "piece": "testimonial",
-   "at": "2026-10-07"
+   "at": "2026-10-17"
   },
   "patterns-nav-command-palette--command-palette": {
    "diffPct": 1.3,
@@ -5178,34 +5178,34 @@
    "at": "2026-10-07"
   },
   "patterns-shells-dashboard--dashboard": {
-   "diffPct": 0.46,
+   "diffPct": 0.51,
    "paper": [
     1232,
-    600
+    560
    ],
    "storybook": [
     1232,
-    600
+    560
    ],
    "text": true,
    "values": "12/18",
    "piece": "dashboard",
-   "at": "2026-10-07"
+   "at": "2026-10-17"
   },
   "patterns-shells-list-detail--list-detail": {
-   "diffPct": 0.59,
+   "diffPct": 0.55,
    "paper": [
     1232,
-    520
+    560
    ],
    "storybook": [
     1232,
-    520
+    560
    ],
    "text": true,
    "values": "11/18",
    "piece": "list-detail",
-   "at": "2026-10-07"
+   "at": "2026-10-17"
   },
   "patterns-shells-mail-inbox--mail-shell": {
    "diffPct": 1.1,
@@ -5268,79 +5268,79 @@
    "at": "2026-10-07"
   },
   "patterns-state-alerts--alerts": {
-   "diffPct": 1.87,
+   "diffPct": 1.71,
    "paper": [
-    512,
+    560,
     212
    ],
    "storybook": [
-    512,
+    560,
     209
    ],
    "text": true,
    "values": "13/13",
    "piece": "alerts",
-   "at": "2026-10-07"
+   "at": "2026-10-17"
   },
   "patterns-state-cookie-consent--cookie-consent": {
-   "diffPct": 2.9,
+   "diffPct": 2.69,
    "paper": [
-    520,
+    560,
     112
    ],
    "storybook": [
-    520,
+    560,
     111
    ],
    "text": true,
    "values": "19/19",
    "piece": "cookie-consent",
-   "at": "2026-10-07"
+   "at": "2026-10-17"
   },
   "patterns-state-empty-state--empty-state": {
-   "diffPct": 0.92,
+   "diffPct": 0.87,
    "paper": [
-    420,
+    448,
     247
    ],
    "storybook": [
-    420,
+    448,
     247
    ],
    "text": true,
    "values": "21/21",
    "piece": "empty-state",
-   "at": "2026-10-07"
+   "at": "2026-10-17"
   },
   "patterns-state-error-404--error-404": {
-   "diffPct": 0.16,
+   "diffPct": 0.31,
    "paper": [
     1232,
-    500
+    480
    ],
    "storybook": [
     1232,
-    500
+    480
    ],
    "text": true,
    "values": "18/18",
    "piece": "error-404",
-   "at": "2026-10-07"
+   "at": "2026-10-17"
   },
   "patterns-state-onboarding-checklist--onboarding": {
-   "diffPct": 1.81,
+   "diffPct": 1.71,
    "paper": [
-    400,
+    384,
     277
    ],
    "storybook": [
-    400,
+    384,
     277
    ],
    "text": true,
    "values": "19/19",
    "piece": "onboarding",
-   "at": "2026-10-07"
+   "at": "2026-10-17"
   }
  }
 }

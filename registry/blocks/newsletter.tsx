@@ -7,7 +7,7 @@ import { Icon } from '@/components/ui/icon'
 /** A centered newsletter-signup section — an email field, subscribe action, and social proof. */
 export function Newsletter() {
   return (
-    <section className="flex w-[560px] flex-col items-center gap-4 rounded-xl bg-card p-10 text-center ring-1 ring-foreground/10">
+    <section className="flex w-card-xl flex-col items-center gap-4 rounded-xl bg-card p-10 text-center ring-1 ring-foreground/10">
       <span className="flex size-10 items-center justify-center rounded-full bg-muted text-muted-foreground">
         <Icon name="mail" size={20} aria-hidden />
       </span>
@@ -18,7 +18,7 @@ export function Newsletter() {
           unsubscribe any time.
         </p>
       </div>
-      <form className="flex w-full max-w-[400px] items-start gap-2" onSubmit={(e) => e.preventDefault()}>
+      <form className="flex w-full max-w-card items-start gap-2" onSubmit={(e) => e.preventDefault()}>
         <div className="flex flex-1 flex-col gap-1 text-left">
           <Label htmlFor="newsletter-email" className="sr-only">
             Email address

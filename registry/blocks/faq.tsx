@@ -28,7 +28,7 @@ const faqs = [
 /** A centered FAQ section — an accordion of common questions with a contact call-to-action footer. */
 export function Faq() {
   return (
-    <section className="flex w-[560px] flex-col gap-6">
+    <section className="flex w-card-xl flex-col gap-6">
       <div className="flex flex-col items-center gap-2 text-center">
         <span className="text-xs font-medium tracking-eyebrow uppercase text-ink-muted">FAQ</span>
         <h2 className="font-heading text-2xl text-foreground">Common questions</h2>

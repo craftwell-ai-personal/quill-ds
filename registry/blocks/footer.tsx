@@ -11,7 +11,7 @@ export function Footer() {
   return (
     <footer className="w-full bg-background px-6 py-12 text-foreground">
       <div className="flex flex-col gap-10 md:flex-row md:justify-between">
-        <div className="flex max-w-xs flex-col gap-2">
+        <div className="flex max-w-card-sm flex-col gap-2">
           <span className="font-heading text-xl">Quill</span>
           <p className="text-sm text-pretty text-muted-foreground">
             A calm, editorial design system for building by hand.

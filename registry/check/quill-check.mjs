@@ -9,7 +9,7 @@ import { join, relative, resolve, dirname, extname } from 'node:path'
 import { createRequire } from 'node:module'
 
 export const DATA = {
- "version": "1.28.0",
+ "version": "1.29.0",
  "prefixes": [
   "bg",
   "text",
@@ -952,7 +952,87 @@ export const DATA = {
   "leading-reading",
   "tracking-display",
   "tracking-label",
-  "tracking-eyebrow"
+  "tracking-eyebrow",
+  "w-chip",
+  "max-w-chip",
+  "min-w-chip",
+  "basis-chip",
+  "w-menu",
+  "max-w-menu",
+  "min-w-menu",
+  "basis-menu",
+  "w-chip-lg",
+  "max-w-chip-lg",
+  "min-w-chip-lg",
+  "basis-chip-lg",
+  "w-rail",
+  "max-w-rail",
+  "min-w-rail",
+  "basis-rail",
+  "w-panel",
+  "max-w-panel",
+  "min-w-panel",
+  "basis-panel",
+  "w-card-sm",
+  "max-w-card-sm",
+  "min-w-card-sm",
+  "basis-card-sm",
+  "w-card",
+  "max-w-card",
+  "min-w-card",
+  "basis-card",
+  "w-card-lg",
+  "max-w-card-lg",
+  "min-w-card-lg",
+  "basis-card-lg",
+  "w-card-xl",
+  "max-w-card-xl",
+  "min-w-card-xl",
+  "basis-card-xl",
+  "w-measure",
+  "max-w-measure",
+  "min-w-measure",
+  "basis-measure",
+  "w-thread",
+  "max-w-thread",
+  "min-w-thread",
+  "basis-thread",
+  "w-page",
+  "max-w-page",
+  "min-w-page",
+  "basis-page",
+  "w-page-wide",
+  "max-w-page-wide",
+  "min-w-page-wide",
+  "basis-page-wide",
+  "h-touch",
+  "max-h-touch",
+  "min-h-touch",
+  "size-touch",
+  "h-bar",
+  "max-h-bar",
+  "min-h-bar",
+  "size-bar",
+  "h-area-sm",
+  "max-h-area-sm",
+  "min-h-area-sm",
+  "size-area-sm",
+  "h-area",
+  "max-h-area",
+  "min-h-area",
+  "size-area",
+  "h-frame-sm",
+  "max-h-frame-sm",
+  "min-h-frame-sm",
+  "size-frame-sm",
+  "h-frame",
+  "max-h-frame",
+  "min-h-frame",
+  "size-frame",
+  "h-frame-lg",
+  "max-h-frame-lg",
+  "min-h-frame-lg",
+  "size-frame-lg"
  ],
  "vars": {
   "--background": "background",
@@ -1030,7 +1110,8 @@ export const DATA = {
    "0.5": 2,
    "1.5": 6,
    "2.5": 10,
-   "3.5": 14
+   "3.5": 14,
+   "4.5": 18
   },
   "borderWidth": {
    "0": 0,
@@ -1038,6 +1119,58 @@ export const DATA = {
    "2": 2,
    "3": 3,
    "4": 4
+  },
+  "size": {
+   "width": {
+    "chip": 160,
+    "menu": 192,
+    "chip-lg": 224,
+    "rail": 240,
+    "panel": 288,
+    "card-sm": 320,
+    "card": 384,
+    "card-lg": 448,
+    "card-xl": 560,
+    "measure": 672,
+    "thread": 768,
+    "page": 880,
+    "page-wide": 1400
+   },
+   "height": {
+    "touch": 44,
+    "bar": 56,
+    "area-sm": 128,
+    "area": 224,
+    "frame-sm": 480,
+    "frame": 560,
+    "frame-lg": 640
+   }
+  },
+  "sizeJobs": {
+   "width": {
+    "chip": "the longest a source chip gets before its text truncates",
+    "menu": "dropdown menus",
+    "chip-lg": "the longest an attachment chip gets",
+    "rail": "side rails: an app’s left nav, a board column",
+    "panel": "popovers, pickers and list columns",
+    "card-sm": "narrow cards and forms: a minimal sign-in, a short blurb, a search field",
+    "card": "the standard card: sign-in, sign-up, notifications, an order summary",
+    "card-lg": "roomier cards: forms with more fields, a command palette, an activity feed",
+    "card-xl": "wide cards and the text under a headline: settings, FAQ, a cookie banner, a hero’s lead",
+    "measure": "a readable column: a big headline, the AI home",
+    "thread": "a chat thread",
+    "page": "a content page inside the app",
+    "page-wide": "the marketing page"
+   },
+   "height": {
+    "touch": "the smallest a control gets: the WCAG 2.5.5 touch target",
+    "bar": "a top navigation bar",
+    "area-sm": "a short content area",
+    "area": "a chart, or the most a text field grows before it scrolls",
+    "frame-sm": "a whole-screen block shown on its own, compact (chat, 404)",
+    "frame": "a whole-screen block shown on its own (mail, nav, list-detail, dashboard)",
+    "frame-lg": "a whole-screen block shown on its own, tall (AI chat)"
+   }
   },
   "text": {
    "2xs": 11.2,
@@ -1391,7 +1524,8 @@ export function baseOf(token) {
 // Spacing, size and border-width utilities (rule 6) pass when a value follows the dash — a
 // number, a bracket, or a size word — so `p-13` is read and `top-level` or `end-to-end` is not.
 // (Before 1.28.0 they were never read at all, so `w-64` or `p-13` reached no rule.)
-const valueAfterDash = (re, base) => { const m = base.match(re); return !!m && (/^[\d[]/.test(m.at(-1)) || SIZE_WORD.test(m.at(-1)) || CONTAINER.test(m.at(-1))) }
+const SIZE_NAME = (v) => v in DATA.tokens.size.width || v in DATA.tokens.size.height
+const valueAfterDash = (re, base) => { const m = base.match(re); return !!m && (/^[\d[]/.test(m.at(-1)) || SIZE_WORD.test(m.at(-1)) || CONTAINER.test(m.at(-1)) || SIZE_NAME(m.at(-1))) }
 const looksLikeUtility = (base) => {
   if (valueAfterDash(SPACE_RE, base) || valueAfterDash(SIZE_RE, base) || WIDTH_RE.test(base) || /^text-[6-9]xl$/.test(base)) return true
   const m = base.match(/^([a-z]+)-[a-z0-9([]/)
@@ -1528,14 +1662,21 @@ export function bracketRule(base) {
 // radius are Quill tokens, and the theme points each Tailwind utility at them — but Tailwind
 // still compiles a step Quill does not have (`p-13`, `p-3.25`, `border-5`) and every bracket, and
 // no theme can stop it. So: a step or bracket length outside the scale is a finding, with the
-// nearest step as the fix. Widths and heights have no Quill scale yet: a value outside the
-// spacing steps is a `size-gap`, listed with its file and line but never failing the check.
+// nearest step as the fix. Widths and heights (1.29.0) take the spacing steps or the size steps
+// named for their job (`w-card`, `max-w-page`, `h-frame`); a height step is a height, so on
+// padding (`p-frame`) or as a width (`w-frame`) it is a finding too.
 const SPACE_RE = /^(p[xytrblse]?|m[xytrblse]?|gap(?:-[xy])?|space-[xy]|inset(?:-[xy])?|top|left|right|bottom|start|end|translate-[xy]|scroll-[mp][xytrblse]?|indent)-(.+)$/
 const SIZE_RE = /^(w|h|size|min-w|min-h|max-w|max-h|basis)-(.+)$/
 const WIDTH_RE = /^(border(?:-[xytrblse])?|divide-[xy]|ring|ring-offset|inset-ring|outline|outline-offset)-(\d+(?:\.\d+)?|\[.+\])$/
 // Values that are not a size choice: nothing, a hairline, a share of the parent, the viewport, the content.
 const SIZE_WORD = /^(0|px|auto|full|screen|svh|lvh|dvh|svw|lvw|dvw|min|max|fit|none|lh|\d+\/\d+)$/
 const CONTAINER = /^(3xs|2xs|xs|sm|md|lg|xl|[2-7]xl|prose)$/
+// Tailwind's own width scale, in px, so `max-w-md` can be pointed at the nearest Quill size.
+const TAILWIND_CONTAINER = { '3xs': 256, '2xs': 288, xs: 320, sm: 384, md: 448, lg: 512, xl: 576, '2xl': 672, '3xl': 768, '4xl': 896, '5xl': 1024, '6xl': 1152, '7xl': 1280 }
+const WIDTH_PROPS = new Set(['w', 'min-w', 'max-w', 'basis'])
+// The steps a width or height utility may use: the spacing steps, then the size steps of its kind.
+const sizeTable = (group) => ({ ...DATA.tokens.space, ...DATA.tokens.size[group] })
+const job = (group, k) => DATA.tokens.sizeJobs[group][k] ?? ''
 // A bare `border`, `ring`, `outline` or `divide-x` is 1px, so the 1px step is written without a number.
 const BARE_ONE = /^(border(-[xytrblse])?|divide-[xy]|ring|outline)$/
 const LENGTH = /^(-?[\d.]+)(px|rem)$/
@@ -1559,7 +1700,6 @@ const nearestFix = (prefix, table, n, sign) => {
   return Math.abs(v - n) < 0.05 ? `→ ${stepName(prefix, k, sign)} (the same ${fmt(v)})` : either(prefix, table, n, sign)
 }
 const TAILWIND_TEXT = { '6xl': 60, '7xl': 72, '8xl': 96, '9xl': 128 }
-const GAP_FIX ='→ no Quill size token yet: listed so the size scale can be drawn from real use; does not fail the check'
 
 export function sizeRule(base, token = base) {
   const sign = /^!?-/.test(token.slice(token.lastIndexOf(':') + 1)) ? '-' : ''
@@ -1568,6 +1708,7 @@ export function sizeRule(base, token = base) {
   if ((m = base.match(SPACE_RE))) {
     const [, prefix, value] = m
     if (SIZE_WORD.test(value) || value in space) return null
+    if (value in DATA.tokens.size.height) return { rule: 'scale', fix: `${either(prefix, space, DATA.tokens.size.height[value], sign).replace(", Quill's largest step", '')}: ${value} is a height (${fmt(DATA.tokens.size.height[value])}, ${job('height', value)}), not a spacing step` }
     if (/^\d+(\.\d+)?$/.test(value)) return { rule: 'scale', fix: either(prefix, space, parseFloat(value) * 4, sign) }
     const inner = value.match(/^\[(.+)\]$/)?.[1]
     if (!inner) return null
@@ -1578,16 +1719,26 @@ export function sizeRule(base, token = base) {
   }
   if ((m = base.match(SIZE_RE))) {
     const [, prefix, value] = m
-    if (SIZE_WORD.test(value) || value in space) return null
-    if (CONTAINER.test(value)) return { rule: 'size-gap', fix: `${GAP_FIX} (${base} is Tailwind's width scale)` }
-    if (/^\d+(\.\d+)?$/.test(value)) return { rule: 'size-gap', fix: GAP_FIX }
+    const group = WIDTH_PROPS.has(prefix) ? 'width' : 'height' // size- sets both; it rides the spacing family, like heights
+    const table = sizeTable(group)
+    const other = group === 'width' ? 'height' : 'width'
+    if (SIZE_WORD.test(value) || value in table) return null
+    if (value in DATA.tokens.size[other]) {
+      const n = DATA.tokens.size[other][value]
+      return { rule: 'scale', fix: `${nearestFix(prefix, table, n, sign)}: ${value} is a ${other} step (${job(other, value)})` }
+    }
+    if (CONTAINER.test(value)) {
+      const n = TAILWIND_CONTAINER[value]
+      if (!n) return { rule: 'scale', fix: `→ ${prefix}-measure (${fmt(DATA.tokens.size.width.measure)}), Quill's readable column; ${base} is Tailwind's own` }
+      return { rule: 'scale', fix: `${nearestFix(prefix, table, n, sign)}; ${base} is Tailwind's own width scale (${fmt(n)})` }
+    }
+    if (/^\d+(\.\d+)?$/.test(value)) return { rule: 'scale', fix: nearestFix(prefix, table, parseFloat(value) * 4, sign) }
     const inner = value.match(/^\[(.+)\]$/)?.[1]
     if (!inner) return null
+    const ref = inner.match(/^var\(--(space|size)-([a-z0-9_-]+)\)$/)
+    if (ref) return { rule: 'bracket', fix: `→ ${prefix}-${ref[2].replace('_', '.')} (the same step)` }
     const n = lengthPx(inner)
-    if (n === null) return 'layout'
-    // a bracket that IS a spacing step has an exact answer, so that one is a finding
-    const [k, v] = nearestStep(space, n)
-    return Math.abs(v - n) < 0.05 ? { rule: 'bracket', fix: `→ ${prefix}-${k} (the same ${fmt(v)})` } : { rule: 'size-gap', fix: GAP_FIX }
+    return n === null ? 'layout' : { rule: 'bracket', fix: nearestFix(prefix, table, n, sign) }
   }
   if ((m = base.match(WIDTH_RE))) {
     const [, prefix, value] = m
@@ -1685,18 +1836,21 @@ export function allowsFor(lines, lineNo) {
 // size choice, and a value already built from var() or calc() is left alone.
 const PROP_KINDS = [
   ['space', /^(padding|margin)(-(top|right|bottom|left|inline|block)(-(start|end))?)?$|^(gap|row-gap|column-gap|top|right|bottom|left|inset(-(inline|block)(-(start|end))?)?|text-indent|scroll-(padding|margin)(-(top|right|bottom|left|inline|block)(-(start|end))?)?)$/],
-  ['size', /^((min-|max-)?(width|height|inline-size|block-size)|flex-basis)$/],
+  ['w', /^((min-|max-)?(width|inline-size)|flex-basis)$/],
+  ['h', /^(min-|max-)?(height|block-size)$/],
   ['radius', /^border(-(top|bottom|start|end)-(left|right|start|end))?-radius$/],
   ['text', /^font-size$/],
   ['width', /^(border(-(top|right|bottom|left|inline|block)(-(start|end))?)?-width|outline-width|outline-offset)$/],
   // a shorthand (`border: 1px solid …`): its length is the width
   ['width', /^(border(-(top|right|bottom|left|inline|block)(-(start|end))?)?|outline)$/],
 ]
-const KIND_TABLE = { space: 'space', size: 'space', radius: 'radius', text: 'text', width: 'borderWidth' }
-const KIND_VAR = { space: (k) => `--space-${k.replace('.', '_')}`, size: (k) => `--space-${k.replace('.', '_')}`, radius: (k) => `--radius-${k}`, text: (k) => `--text-${k}`, width: (k) => `--border-width-${k}` }
+const KIND_TABLE = { space: () => DATA.tokens.space, w: () => sizeTable('width'), h: () => sizeTable('height'), radius: () => DATA.tokens.radius, text: () => DATA.tokens.text, width: () => DATA.tokens.borderWidth }
+// a width or height step is a spacing step (`--space-4`) or a size step (`--size-card`)
+const stepVar = (k) => (k in DATA.tokens.space ? `--space-${k.replace('.', '_')}` : `--size-${k}`)
+const KIND_VAR = { space: stepVar, w: stepVar, h: stepVar, radius: (k) => `--radius-${k}`, text: (k) => `--text-${k}`, width: (k) => `--border-width-${k}` }
 const kebab = (prop) => prop.replace(/[A-Z]/g, (ch) => '-' + ch.toLowerCase())
 
-// One declaration → null (nothing typed by hand), or { gap, fix }. A number is px, as React reads it.
+// One declaration → null (nothing typed by hand), or { fix }. A number is px, as React reads it.
 export function valueRule(prop, value) {
   const kind = PROP_KINDS.find(([, re]) => re.test(prop))?.[0]
   if (!kind || /\$\{/.test(String(value))) return null
@@ -1705,12 +1859,11 @@ export function valueRule(prop, value) {
   const lengths = parts.map((part) => [part, lengthPx(part)]).filter(([, n]) => n !== null && n !== 0)
   if (!lengths.length) return null
   const swaps = lengths.map(([part, n]) => {
-    const [k, v] = nearestStep(DATA.tokens[KIND_TABLE[kind]], Math.abs(n))
+    const [k, v] = nearestStep(KIND_TABLE[kind](), Math.abs(n))
     const name = KIND_VAR[kind](k)
     return { part, v, exact: Math.abs(v - Math.abs(n)) < 0.05, ref: n < 0 ? `calc(var(${name}) * -1)` : `var(${name})` }
   })
-  if (kind === 'size' && !swaps.every((sw) => sw.exact)) return { gap: true, fix: GAP_FIX }
-  return { gap: false, fix: `→ ${swaps.map((sw) => `${sw.part} → ${sw.ref}${sw.exact ? '' : ` (${fmt(sw.v)}, the nearest step)`}`).join(', ')}` }
+  return { fix: `→ ${swaps.map((sw) => `${sw.part} → ${sw.ref}${sw.exact ? '' : ` (${fmt(sw.v)}, the nearest step)`}`).join(', ')}` }
 }
 
 // Every `style={{ … }}` written in place. A style object built elsewhere (a helper that returns
@@ -1726,7 +1879,7 @@ export function inlineStyleFindings(text) {
     for (const e of body.matchAll(/([A-Za-z]+)\s*:\s*(-?\d+(?:\.\d+)?(?![\w.])|'[^'\n]*'|"[^"\n]*")/g)) {
       const raw = e[2]
       const r = valueRule(kebab(e[1]), /^['"]/.test(raw) ? raw.slice(1, -1) : Number(raw))
-      if (r) out.push({ idx: bodyStart + e.index, rule: r.gap ? 'size-gap' : 'inline-style', value: `${e[1]}: ${raw}`, fix: r.fix })
+      if (r) out.push({ idx: bodyStart + e.index, rule: 'inline-style', value: `${e[1]}: ${raw}`, fix: r.fix })
     }
   }
   return out
@@ -1821,7 +1974,7 @@ export function scanCss(file, text) {
     const m = d.match(/^([a-z-]+)\s*:\s*([\s\S]+)$/)
     if (!m) return
     const r = valueRule(m[1], m[2].replace(/\s*!important$/, ''))
-    if (r) findings.push({ file, ...pos, rule: r.gap ? 'size-gap' : 'css-value', value: `${m[1]}: ${m[2].trim()}`, fix: r.fix, block })
+    if (r) findings.push({ file, ...pos, rule: 'css-value', value: `${m[1]}: ${m[2].trim()}`, fix: r.fix, block })
   }
   for (let i = 0; i < clean.length; i++) {
     const ch = clean[i]
@@ -2037,14 +2190,12 @@ export async function runCheck({ cwd = process.cwd(), dirs, includeUi = false, c
 }
 
 // ------------------------------------------------------------------ output
-const RULE_LABEL = { 'radius-override': 'radius', unresolved: 'unresolved', palette: 'palette', 'raw-color': 'raw colour', bracket: 'bracket', scale: 'off scale', 'inline-style': 'inline style', 'css-value': 'css value', 'size-gap': 'size gap', retired: 'retired', 'dark-variant': 'dark:', 'allow-without-reason': 'allow' }
-// A size gap is listed, never counted against the app: Quill has no width/height scale yet.
-export const isActive = (f) => !f.allowed && f.rule !== 'size-gap'
+const RULE_LABEL = { 'radius-override': 'radius', unresolved: 'unresolved', palette: 'palette', 'raw-color': 'raw colour', bracket: 'bracket', scale: 'off scale', 'inline-style': 'inline style', 'css-value': 'css value', retired: 'retired', 'dark-variant': 'dark:', 'allow-without-reason': 'allow' }
+export const isActive = (f) => !f.allowed
 
 export function formatText({ findings, layout, notes }, { quiet = false } = {}) {
   const lines = []
   const active = findings.filter(isActive)
-  const gaps = findings.filter((f) => !f.allowed && f.rule === 'size-gap').length
   if (!quiet) {
     let current = null
     for (const f of findings) {
@@ -2058,7 +2209,7 @@ export function formatText({ findings, layout, notes }, { quiet = false } = {}) 
     if (lines.length) lines.push('')
   }
   const allowed = findings.filter((f) => f.allowed).length
-  lines.push(`${active.length} finding${active.length === 1 ? '' : 's'} · ${allowed} allowed · ${gaps} size gap${gaps === 1 ? '' : 's'} (no Quill token yet; listed, not failing) · ${layout} layout size${layout === 1 ? '' : 's'} not checked`)
+  lines.push(`${active.length} finding${active.length === 1 ? '' : 's'} · ${allowed} allowed · ${layout} layout size${layout === 1 ? '' : 's'} not checked`)
   for (const n of notes) lines.push(n)
   return lines.join('\n')
 }
@@ -2073,7 +2224,7 @@ export async function main(argv = process.argv.slice(2)) {
     else if (a === '--json') opts.json = true
     else if (a === '--quiet') opts.quiet = true
     else if (a === '--help' || a === '-h') {
-      console.log(`quill-check ${DATA.version}\n  node scripts/quill-check.mjs [--dir <path>]... [--css <tailwind entry>] [--include-ui] [--json] [--quiet]\n  Lists every place the code stepped outside Quill, with the fix to write. Exit 1 when anything is found (size gaps are listed, never counted).`)
+      console.log(`quill-check ${DATA.version}\n  node scripts/quill-check.mjs [--dir <path>]... [--css <tailwind entry>] [--include-ui] [--json] [--quiet]\n  Lists every place the code stepped outside Quill, with the fix to write. Exit 1 when anything is found.`)
       return 0
     } else {
       console.error(`unknown option ${a} — try --help`)
@@ -2083,8 +2234,7 @@ export async function main(argv = process.argv.slice(2)) {
   const result = await runCheck({ cwd: process.cwd(), dirs: opts.dirs.length ? opts.dirs : undefined, includeUi: opts.includeUi, css: opts.css })
   const active = result.findings.filter(isActive).length
   const allowed = result.findings.filter((f) => f.allowed).length
-  const gaps = result.findings.filter((f) => !f.allowed && f.rule === 'size-gap').length
-  if (opts.json) console.log(JSON.stringify({ version: DATA.version, summary: { findings: active, allowed, gaps, layout: result.layout, notes: result.notes }, findings: result.findings }, null, 1))
+  if (opts.json) console.log(JSON.stringify({ version: DATA.version, summary: { findings: active, allowed, layout: result.layout, notes: result.notes }, findings: result.findings }, null, 1))
   else console.log(formatText(result, { quiet: opts.quiet }))
   return active ? 1 : 0
 }

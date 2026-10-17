@@ -14,7 +14,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 /** The standard email-and-password sign-in card, with remember-me and a forgot-password escape hatch. */
 export function Login() {
   return (
-    <Card className="w-[380px]">
+    <Card className="w-card">
       <CardHeader>
         <CardTitle>Sign in</CardTitle>
         <CardDescription>Welcome back — enter your details to continue.</CardDescription>

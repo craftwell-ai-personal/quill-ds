@@ -12,8 +12,13 @@ its own list (17 Tailwind steps plus `3.5`), Tailwind still compiles every step 
 (`p-13`, `p-3.25`) and every bracket, and no theme setting can stop that (measured: removing
 `--spacing` stops `p-13` but also kills `p-0` and every off-scale class already in use, and
 `border-13` and brackets compile whatever the theme says). So the check enforces the scale:
-rules 6 and 7 below. Widths and heights have no Quill scale yet; they are listed as size gaps
-(file and line, never failing) until Ryan approves one drawn from the values in use.
+rules 6 and 7 below.
+
+**Revised 2026-10-17 (1.29.0): widths and heights too.** 1.28.0 listed them as size gaps (file
+and line, never failing) while Quill had no scale for them. Ryan approved one drawn from the 89
+values in use: 13 widths and 7 heights named for their job (`w-card`, `max-w-page`, `h-frame`;
+values in `tokens.size`, jobs in `src/usage/sizes.mjs`), plus the spacing step `4.5`. Quill's code
+moved onto it, and the gaps became findings.
 
 ## Why
 
@@ -47,7 +52,7 @@ app/pricing/page.tsx
   22  text-[13px]         bracket   → text-sm
   40  text-indigo-brand   retired   → text-indigo (renamed in 0.9.60)
 
-3 findings · 1 allowed · 9 size gaps (no Quill token yet; listed, not failing) · 4 layout sizes not checked
+3 findings · 1 allowed · 4 layout sizes not checked
 ```
 
 ### What it scans
@@ -78,7 +83,7 @@ A bare `rounded` counts only among other classes. Variants (`md:`, `hover:`,
 | 4 | `bracket` | a bracket value on a property Quill has tokens for: colour prefixes, `text-` (size), `leading-`, `tracking-`, `rounded-`, `shadow-`, `font-`, `ease-`, `duration-` — including `text-[var(--x)]` when `x` has a utility | the token utility: exact match by value when one exists (`text-[13px]` → `text-sm`, `tracking-[0.15em]` → `tracking-eyebrow`, `text-[var(--accent-pigment-text)]` → `text-accent-pigment-text`), else the scale to choose from |
 | 5 | `retired` | Quill's deprecated names: `indigo-brand`, `indigo-brand-deep`, and `var(--x)` for the 11 retired variables in `tokens.retired` (gone from the CSS since 0.13.0) | the current name, and the version that retired it |
 | 6 | `scale`, `bracket` | a step outside Quill's scales: spacing (`p-13`, `p-3.25`, `-mt-13`), border/ring/outline width (`border-5`), type (`text-6xl`–`9xl`, Tailwind's own), bare `rounded`; and a bracket length on a spacing or border-width utility (`p-[13px]`, `gap-[22px]`, `border-[3px]`, `p-[var(--space-4)]`) | the steps either side with their size (`p-13` → `p-12 (48px) or p-16 (64px)`), or the exact step when the bracket is one (`border-[3px]` → `border-3`) |
-| 6 | `size-gap` (listed, not failing) | a width or height outside the spacing steps: a Tailwind step (`w-64`), Tailwind's width scale (`max-w-md`), a bracket length (`w-[317px]`), an inline `width: 317` | "no Quill size token yet". A size bracket that IS a spacing step (`h-[24px]`) is a `bracket` finding → `h-6` |
+| 6 | `scale`, `bracket` (widths and heights, 1.29.0) | a width or height that is neither a spacing step nor a size step of its kind: a Tailwind step (`w-64`), Tailwind's width scale (`max-w-md`, `max-w-prose`), a bracket length (`w-[317px]`); a height step used as padding or a gap (`p-frame`) or as a width (`w-frame`) | the steps either side, spacing and size together (`w-64` → `w-rail (240px) or w-panel (288px)`), the exact one when there is one (`max-w-md` → `max-w-card-lg`, the same 448px). Before 1.29.0 these were `size-gap`: listed, never failing |
 | — | `radius-override` | Quill's theme is in the app's stylesheet, but what `rounded-*` compiles to there is not Quill's: a radius line defined on shadcn's `--radius` (`--radius-md: calc(var(--radius) * 0.8)`, what `shadcn init` writes) wins over Quill's, or a `--radius` that is not Quill's comes after the theme. Read from the compiled CSS, like `dark-variant`. Added 1.28.0: a fresh app with the theme file imported below the dark line, as the docs then said, rendered `rounded-xl` at 14px instead of 16px, silently | the line, what it renders against Quill's value, and the fix: delete it, or make the theme import the last line of the stylesheet |
 | 7 | `inline-style`, `css-value` | a length typed by hand on padding, margin, gap, an offset, radius, font size or border width: in `style={{ … }}` written in place (`padding: 13`) or in an app `.css` file (`padding: 13px`), and `@apply` classes through rules 2–6 | the Quill variable per length, `13px → var(--space-3) (12px, the nearest step)`. Zero, and values built from `var()`/`calc()`, are left alone |
 
@@ -153,8 +158,8 @@ a check that is sometimes wrong is a check agents learn to ignore.
 
 Auto-fix (`bg-white` may mean card or page — the agent decides). Version staleness
 (library-sync owns updates). Structural detections (hand-built cards, raw `<button>`) — the
-pattern-scan bot's territory; a v2 can borrow its detectors. Flagging widths and heights (they
-are listed as size gaps until Quill has a size scale).
+pattern-scan bot's territory; a v2 can borrow its detectors. Icon sizes passed as a number
+(`<Icon size={18}>`): props are not classes, so the check cannot read them yet.
 
 ### Success
 

@@ -16,7 +16,7 @@ const steps = ['Account', 'Workspace', 'Invite']
 /** A multi-step setup card — a progress stepper, workspace fields, and back/continue navigation. */
 export function Wizard() {
   return (
-    <Card className="w-[460px]">
+    <Card className="w-card-lg">
       <CardHeader>
         <ol className="flex items-center gap-2">
           {steps.map((s, i) => {

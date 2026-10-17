@@ -62,7 +62,7 @@ export function AiChat({ onSubmit = () => {}, children, status = 'idle', onStop,
   const noTrailing = composerTrailing !== undefined && drawsNothing(composerTrailing)
 
   return (
-    <div className={noSidebar ? 'grid min-h-[40rem] bg-background' : 'grid min-h-[40rem] bg-background md:grid-cols-[15rem_minmax(0,1fr)]'}>
+    <div className={noSidebar ? 'grid min-h-frame-lg bg-background' : 'grid min-h-frame-lg bg-background md:grid-cols-[var(--size-rail)_minmax(0,1fr)]'}>
       {sidebar === undefined ? (
         <nav aria-label="Chats" className="hidden content-start gap-0.5 border-r border-border p-2 md:grid">
           <Button type="button" variant="outline" size="sm" className="mb-2 justify-start"><Icon name="add" />New chat</Button>
@@ -82,7 +82,7 @@ export function AiChat({ onSubmit = () => {}, children, status = 'idle', onStop,
       )}
       <section aria-label="Conversation" className="grid grid-rows-[minmax(0,1fr)_auto]">
         {/* A log is a polite live region, so each new turn is read out. It sits inside the "Conversation" region, which also holds the composer, so the region stays the page landmark. */}
-        <div role="log" aria-label="Messages" className="mx-auto grid w-full max-w-3xl content-start gap-5 px-4 py-6">
+        <div role="log" aria-label="Messages" className="mx-auto grid w-full max-w-thread content-start gap-5 px-4 py-6">
           {ownsThread ? children : (
             <>
               <UserMessage>How did signups do against target this quarter?</UserMessage>
@@ -110,7 +110,7 @@ export function AiChat({ onSubmit = () => {}, children, status = 'idle', onStop,
             </>
           )}
         </div>
-        <div className="sticky bottom-0 mx-auto grid w-full max-w-3xl gap-1.5 bg-background px-4 pt-2 pb-3">
+        <div className="sticky bottom-0 mx-auto grid w-full max-w-thread gap-1.5 bg-background px-4 pt-2 pb-3">
           <PromptComposer
             ref={composerRef}
             size="sm"

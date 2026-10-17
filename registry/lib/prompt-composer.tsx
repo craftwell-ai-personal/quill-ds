@@ -267,7 +267,7 @@ export function PromptComposer({
                       <span aria-hidden data-slot="tab-fillet" style={filletStyle('right', focused, notebook)} />
                     </>
                   ) : null}
-                  {m.ai ? <AiMark size={18} /> : m.icon ? <span aria-hidden className="inline-grid size-[18px] place-items-center [&>svg]:size-[18px]">{m.icon}</span> : null}
+                  {m.ai ? <AiMark size={18} /> : m.icon ? <span aria-hidden className="inline-grid size-4.5 place-items-center [&>svg]:size-4.5">{m.icon}</span> : null}
                   {m.label}
                 </button>
               )
@@ -296,7 +296,7 @@ export function PromptComposer({
           {attachments?.length ? (
             <ul className={cn('flex flex-wrap gap-2', size === 'lg' ? 'px-3.5 pt-3' : 'px-2.5 pt-2')} aria-label="Attached files">
               {attachments.map((a) => (
-                <li key={a.id} className="relative flex max-w-56 items-center gap-2 rounded-lg border border-border bg-card py-1.5 pr-8 pl-1.5 text-xs">
+                <li key={a.id} className="relative flex max-w-chip-lg items-center gap-2 rounded-lg border border-border bg-card py-1.5 pr-8 pl-1.5 text-xs">
                   {a.kind ? <span className="grid size-8 shrink-0 place-items-center rounded-md bg-muted text-2xs font-semibold text-ink-soft">{a.kind}</span> : null}
                   <span className="min-w-0">
                     <span className="block truncate font-semibold text-foreground">{a.name}</span>
@@ -345,13 +345,13 @@ export function PromptComposer({
             className={cn(
               // aria-invalid:* cancel the stock textarea's red ring; the AI edge and the alert carry the error. disabled:* cancel
               // the stock grey fill and fade, which covered only the text area; the whole box fades as one instead.
-              'max-h-52 resize-none border-0 bg-transparent shadow-none focus-visible:ring-0 disabled:bg-transparent disabled:opacity-100 dark:disabled:bg-transparent aria-invalid:border-transparent aria-invalid:ring-0 dark:bg-transparent dark:aria-invalid:border-transparent dark:aria-invalid:ring-0',
+              'max-h-area resize-none border-0 bg-transparent shadow-none focus-visible:ring-0 disabled:bg-transparent disabled:opacity-100 dark:disabled:bg-transparent aria-invalid:border-transparent aria-invalid:ring-0 dark:bg-transparent dark:aria-invalid:border-transparent dark:aria-invalid:ring-0',
               // md:text-* overrides the stock textarea's md:text-sm, which would shrink lg on desktop.
               notebook
                 ? // The rules live on the textarea so they scroll with the text (bg-local) and follow its padding. Each 32px line (leading-8) starts
                 // at the top padding (pt-3.5 = 14px) and its rule is the line's last pixel, so the background y offset must equal that padding.
                 'font-heading text-lg leading-8 md:text-lg pt-3.5 pl-6 placeholder:italic bg-local bg-[repeating-linear-gradient(to_bottom,transparent_0,transparent_31px,var(--line-soft)_31px,var(--line-soft)_32px)] bg-[position:0_14px]'
-                : size === 'lg' ? 'min-h-16 px-4 pt-3.5 text-base md:text-base' : 'min-h-11 px-3 pt-2.5 text-sm md:text-sm',
+                : size === 'lg' ? 'min-h-16 px-4 pt-3.5 text-base md:text-base' : 'min-h-touch px-3 pt-2.5 text-sm md:text-sm',
             )}
           />
           <div className={cn('flex items-center gap-1.5', size === 'lg' ? 'px-2.5 pb-2.5' : 'px-1.5 pb-1.5')}>

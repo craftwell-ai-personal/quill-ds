@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/blocks/badge-on-card.tsx",
-      "content": "import { Card, CardContent } from '@/components/ui/card'\nimport { Badge } from '@/components/ui/badge'\n\n/** Default, secondary, and destructive badges shown together on a card surface. */\nexport function BadgeOnCard() {\n  return (\n    <Card className=\"w-[280px]\">\n      <CardContent className=\"flex gap-2\">\n        <Badge>Default</Badge>\n        <Badge variant=\"secondary\">Secondary</Badge>\n        <Badge variant=\"destructive\">Destructive</Badge>\n      </CardContent>\n    </Card>\n  )\n}\n",
+      "content": "import { Card, CardContent } from '@/components/ui/card'\nimport { Badge } from '@/components/ui/badge'\n\n/** Default, secondary, and destructive badges shown together on a card surface. */\nexport function BadgeOnCard() {\n  return (\n    <Card className=\"w-card-sm\">\n      <CardContent className=\"flex gap-2\">\n        <Badge>Default</Badge>\n        <Badge variant=\"secondary\">Secondary</Badge>\n        <Badge variant=\"destructive\">Destructive</Badge>\n      </CardContent>\n    </Card>\n  )\n}\n",
       "type": "registry:component",
       "target": "components/quill/badge-on-card.tsx"
     }

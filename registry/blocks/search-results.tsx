@@ -13,7 +13,7 @@ const results = [
 /** A docs search panel — query input, result count, and a linked result list with breadcrumbs and type badges. */
 export function SearchResults() {
   return (
-    <div className="flex w-[440px] flex-col gap-3 text-foreground">
+    <div className="flex w-card-lg flex-col gap-3 text-foreground">
       <Input placeholder="Search the docs…" defaultValue="token" aria-label="Search" />
       <p className="text-xs text-muted-foreground">{results.length} results for “token”</p>
       <ul className="overflow-hidden rounded-lg border border-border">

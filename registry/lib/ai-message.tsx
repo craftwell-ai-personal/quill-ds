@@ -167,7 +167,7 @@ export function AiMessage({
           // While streaming, the last paragraph runs inline so the caret sits at the end of its last line.
           <div ref={bodyRef} data-slot="reply-body" className={cn('text-sm leading-relaxed text-foreground [&>*+*]:mt-2', streaming && '[&>p:last-of-type]:inline', levelRow === 'answer' && LEVEL_WITH_AVATAR)}>
             {children}
-            {streaming ? <span aria-hidden data-slot="caret" className="ml-0.5 inline-block h-[1.05em] w-[7px] animate-pulse bg-foreground align-[-0.15em] motion-reduce:animate-none" /> : null}
+            {streaming ? <span aria-hidden data-slot="caret" className="ml-0.5 inline-block h-[1.05em] w-2 animate-pulse bg-foreground align-[-0.15em] motion-reduce:animate-none" /> : null}
           </div>
         ) : null}
         {/* Stays mounted so the text arrives into a live region instead of appearing with it. While empty it is

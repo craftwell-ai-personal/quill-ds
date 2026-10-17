@@ -101,6 +101,7 @@ export function renderCss(t) {
   for (const [k, v] of Object.entries(t.spacing)) rootLines.push(`  --space-${varKey(k)}: ${v};`)
   for (const [k, v] of Object.entries(t.borderWidth)) rootLines.push(`  --border-width-${k}: ${v};`)
   for (const [k, v] of Object.entries(t.radius)) rootLines.push(`  --radius-${k}: ${v};`)
+  for (const [k, v] of Object.entries({ ...t.size.width, ...t.size.height })) rootLines.push(`  --size-${k}: ${v};`)
   for (const [k, v] of Object.entries(t.text)) {
     rootLines.push(`  --text-${k}: ${v};`)
     if (t.textLeading[k]) rootLines.push(`  --text-${k}--line-height: ${t.textLeading[k]};`)
@@ -150,6 +151,12 @@ export function renderCss(t) {
   // Measured with Tailwind 4.3.3, 2026-10-16.
   for (const k of Object.keys(t.spacing)) themeLines.push(`  --spacing-${varKey(k)}: var(--space-${varKey(k)});`)
   for (const k of Object.keys(t.radius)) themeLines.push(`  --radius-${k}: var(--radius-${k});`)
+  // Widths ride Tailwind's container family, which feeds w-, max-w-, min-w- and basis- only
+  // (`w-card` → `width: var(--size-card)`). Heights have no family of their own, so they ride
+  // the spacing one (h-, min-h-, max-h-, size-); that also makes `p-frame` compile, which
+  // quill-check flags. Measured with Tailwind 4.3.3, 2026-10-17.
+  for (const k of Object.keys(t.size.width)) themeLines.push(`  --container-${k}: var(--size-${k});`)
+  for (const k of Object.keys(t.size.height)) themeLines.push(`  --spacing-${k}: var(--size-${k});`)
   // Tailwind's own key for a size's line height (`--text-sm--line-height`), so the
   // `text-*` utilities pick it up with no new class to learn.
   for (const k of Object.keys(t.text)) {

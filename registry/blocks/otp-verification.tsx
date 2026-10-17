@@ -18,7 +18,7 @@ import { Button } from '@/components/ui/button'
 /** A six-digit one-time-passcode entry card for verifying an email, with expiry messaging and a resend action. */
 export function OtpVerification() {
   return (
-    <Card className="w-[380px]">
+    <Card className="w-card">
       <CardHeader className="text-center">
         <CardTitle>Check your email</CardTitle>
         <CardDescription>

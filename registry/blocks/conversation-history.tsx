@@ -475,7 +475,7 @@ export function ConversationHistory({
                       <DropdownMenuTrigger render={<Button type="button" variant="ghost" size="icon-xs" aria-label={`More for ${chat.title}`} className={MORE} />}>
                         <Icon name="more_horiz" className="size-4" />
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end" sideOffset={MENU_GAP} alignOffset={-MENU_INSET} className="w-44" finalFocus={finalFocus}>
+                      <DropdownMenuContent align="end" sideOffset={MENU_GAP} alignOffset={-MENU_INSET} className="w-menu" finalFocus={finalFocus}>
                         {canRename ? <DropdownMenuItem onClick={() => startRename(chat)}><Icon name={MENU_ICON.rename.icon} />Rename</DropdownMenuItem> : null}
                         {canPin ? <DropdownMenuItem onClick={() => togglePin(chat)}><Icon name={MENU_ICON.pin.icon} />{chat.pinned ? 'Unpin' : 'Pin'}</DropdownMenuItem> : null}
                         {canDelete && (canRename || canPin) ? <DropdownMenuSeparator /> : null}
@@ -509,7 +509,7 @@ export function ConversationHistory({
 export function ConversationSidebar({ children, title = 'Chats', className, ...list }: ConversationHistoryProps & { children?: React.ReactNode; title?: string }) {
   return (
     <SidebarProvider>
-      <div className={cn('flex h-[560px] w-full', className)}>
+      <div className={cn('flex h-frame w-full', className)}>
         <Sidebar collapsible="offcanvas">
           <SidebarContent className="p-2">
             <ConversationHistory {...list} />

@@ -492,3 +492,18 @@ test('the gradient rule names seven placements, the meter last', () => {
   assert.match(text, /in its seven placements/)
   assert.doesNotMatch(text, /[Ss]ix placements/)
 })
+
+test('every size step ships: its value in :root, widths on the container family, heights on the spacing family, each with a job', async () => {
+  const { SIZE_JOBS } = await import('../src/usage/sizes.mjs')
+  const { theme, root } = renderCss(tokens)
+  for (const [group, family] of [['width', 'container'], ['height', 'spacing']]) {
+    for (const [k, v] of Object.entries(tokens.size[group])) {
+      assert.match(root, new RegExp(`--size-${k}:\\s*${v.replace('.', '\\.')};`), `--size-${k} holds its value`)
+      assert.match(theme, new RegExp(`--${family}-${k}:\\s*var\\(--size-${k}\\);`), `${group} ${k} rides the ${family} family`)
+      assert.ok(SIZE_JOBS[group][k], `size ${k} needs a job in src/usage/sizes.mjs`)
+    }
+    assert.deepEqual(Object.keys(SIZE_JOBS[group]).sort(), Object.keys(tokens.size[group]).sort(), `src/usage/sizes.mjs names exactly the ${group} steps`)
+  }
+  // a name used for both a width and a height would make w-x and h-x two different sizes
+  assert.deepEqual(Object.keys(tokens.size.width).filter((k) => k in tokens.size.height), [])
+})

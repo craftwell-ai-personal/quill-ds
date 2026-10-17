@@ -7,7 +7,7 @@ export function AiButton({ children, ...props }: React.ComponentProps<typeof But
   return (
     <Button {...props}>
       {/* size-[18px]: Button sizes any svg without a size- class to 16px. */}
-      <AiMark size={18} className="size-[18px]" />
+      <AiMark size={18} className="size-4.5" />
       {children}
     </Button>
   )

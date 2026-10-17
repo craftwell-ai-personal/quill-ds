@@ -6,7 +6,7 @@ import { Icon } from '@/components/ui/icon'
 /** A compact, centered profile card — avatar initials, role, follower stats, and follow/message actions. */
 export function ProfileCard() {
   return (
-    <Card className="w-[340px]">
+    <Card className="w-card-sm">
       <CardContent className="flex flex-col items-center gap-3 pt-6 text-center">
         <div className="flex size-16 items-center justify-center rounded-full bg-muted text-xl font-medium text-muted-foreground">
           AL
