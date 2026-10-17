@@ -139,7 +139,7 @@ export function AgentSteps({ title, steps, onRetry, className }: {
                 ) : null}
               </div>
               {expandable ? (
-                <div id={detailId} hidden={!isOpen} className="mt-0.5 mb-1.5 ml-[1.875rem] border-l-2 border-border pl-2.5 text-xs text-muted-foreground">{step.detail}</div>
+                <div id={detailId} hidden={!isOpen} className="mt-0.5 mb-1.5 ml-8 border-l-2 border-border pl-2.5 text-xs text-muted-foreground">{step.detail}</div>
               ) : null}
             </li>
           )

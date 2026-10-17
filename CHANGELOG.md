@@ -13,6 +13,25 @@ within a minute, and that release is what triggers `library-sync` into the apps;
 manual tag races the bot and can leave a tag with no release behind it. The homepage
 footer reads `package.json` directly, so the displayed version updates with the bump.
 
+## [1.28.0] — 2026-10-16
+
+### Changed
+- **The inspector shows Quill tokens.** Every spacing, radius, type and border-width utility now compiles to a Quill variable instead of Tailwind's own math or a raw number: `p-4` → `padding: var(--space-4)` (was `calc(var(--spacing) * 4)`), `rounded-md` → `var(--radius-md)` (was `0.375rem`), `text-sm` → `var(--text-sm)` with `var(--text-sm--line-height)`, `border-2` → `var(--border-width-2)`. Bare `border`, `ring` and `outline` read `--border-width-1`; ring and outline widths and offsets read the border-width tokens. The radius and type values now live in `:root` as Quill variables, with `@theme inline` pointing each utility at them, through both install routes (the theme file and the CLI). No computed value changes: every class the repo uses, plus each scale's steps (1,597 classes), was rendered in Chromium before and after, through the theme file, the CLI-merged stylesheet and the site's stylesheet, in all five themes — 0 of 34.3 million computed values differ.
+- The theme's own rules use the tokens too (the AI edge and line, the forced-colours focus outline, the avatar-count nudge), so a stylesheet the CLI merged Quill into holds no hand-typed sizes.
+
+### Added
+- **Spacing step `3.5` (14px, `--space-3_5`).** The AI kit's inset: message, popover, panel and composer padding already sat on it 19 times. Pushed to Paper as `--spacing-3_5`.
+- **`quill-check` enforces the size scales** (rules 6 and 7):
+  - a Tailwind step outside Quill's spacing, border-width or type scale (`p-13`, `p-3.25`, `border-5`, `text-6xl`) or a bare `rounded` is a finding, with the steps either side and their sizes (`p-13` → `p-12 (48px) or p-16 (64px)`);
+  - a bracket length on a spacing or border-width utility (`p-[13px]`, `gap-[22px]`, `border-[3px]`) is a finding with the nearest step, or the exact one when the bracket is a step;
+  - a number typed into `style={{ … }}` (`padding: 13`, `borderRadius: 7`) and a hand-typed length in an app `.css` file (`padding: 13px`) get the Quill variable (`var(--space-3)`). `@apply` classes go through the class rules. The theme file, custom-property definitions and `@theme` blocks are skipped, so a CLI-merged stylesheet scans clean. An allow above a selector covers its block.
+  - Widths and heights have no Quill scale yet: a value outside the spacing steps (`w-64`, `max-w-md`, `w-[317px]`) is a **size gap**, listed with file and line but never failing the check, so a size scale can be drawn from real use.
+  - Fixed along the way: the check never read `p-`, `w-`, `h-` and the other spacing and size prefixes at all, so an off-scale `w-64` or `p-13` reached no rule.
+
+### Fixed
+- **Quill's radii could lose to shadcn's, silently.** `shadcn init` writes its own radius lines (`--radius-md: calc(var(--radius) * 0.8)`) and `--radius: 0.625rem`. The CLI install replaces them, but a theme FILE imported where the docs said, below the `@custom-variant dark` line, sits above them, and the last definition wins: in a fresh Next app, `rounded-sm/md/lg/xl/2xl` rendered 6/8/10/14/18px instead of Quill's 4/6/8/16/24 (measured in Chromium, and confirmed with a real `next build`). The docs now say to import the theme as the **last line** of the stylesheet, which wins for the radii and the dark variant alike (proven the same two ways), and a new `quill-check` rule, `radius-override`, names each overriding line with what it renders against Quill's value and the fix. The dark-variant fix text says "last line" too.
+- **Quill's own code is on the scales** (the check runs clean on it): Activity Feed's timeline line `left-[15px]` → `left-4`; AI Chat's follow-ups `pl-[2.375rem]` → `pl-10`; Agent Steps' detail `ml-[1.875rem]` → `ml-8`; Error 404's figure `text-6xl` (Tailwind's 60px) → `text-4xl` (64px); the composer's drop hint `border-[1.5px]` → `border` (Chrome already drew it at 1px); the marketing page and the homepage use `py-12` on phones (was the off-scale `py-14`), and the docs say so. Conversation History's rows take the nearest steps (`px-2.5 py-1 mr-1`, was `px-[9px] py-[5px] mr-[3px]`): titles sit 1px further in and the ⋯ button 1px further from the edge, and the rows stay 32px tall (their `min-h-8` holds them). Paper redrawn.
+
 ## [1.27.1] — 2026-10-13
 
 ### Changed

@@ -33,7 +33,7 @@
     },
     {
       "id": "marketing-page-keep-the-section-rhythm",
-      "do": "Wrap a section you add the way pricing and testimonial are wrapped: py-24 (py-14 on mobile), px-12 (px-6 on mobile), inside the 1400px width.",
+      "do": "Wrap a section you add the way pricing and testimonial are wrapped: py-24 (py-12 on mobile), px-12 (px-6 on mobile), inside the 1400px width.",
       "dont": "Give each section its own padding, or add padding around hero and feature-section, which already carry their own rhythm.",
       "visual": false
     },

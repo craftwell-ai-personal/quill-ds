@@ -42,6 +42,9 @@ function walkModal(group, prefix, fn) {
 // The names retired in 0.10.0 left the CSS in 0.13.0 (see `retired` in the source).
 const aliasGroups = (t) => [...Object.entries(t.status), ...Object.entries(t.semantic)]
 
+// A scale key as it appears in a variable name: `2.5` → `2_5` (dots are illegal there).
+const varKey = (k) => String(k).replace(/\./g, '_')
+
 export function renderCss(t) {
   const rootLines = []
   const prefixedLines = []
@@ -88,13 +91,20 @@ export function renderCss(t) {
   rootLines.push(...accentDefaultLines)
   rootLines.push(...Object.entries(t.status).map(([k, v]) => `  --${k}: ${v};`))
   rootLines.push(`  --radius: ${t.radiusBase};`)
-  // Spacing + border-width (documented scales; kept in :root, not @theme, so they
-  // don't collide with Tailwind's built-in numeric utilities).
+  // The size scales — spacing, border width, radius, type — hold their values here, in
+  // :root, and the @theme block below points each Tailwind utility at them. So an
+  // inspected `p-4` reads `padding: var(--space-4)`, not Tailwind's
+  // `calc(var(--spacing) * 4)`, and `rounded-md` reads `var(--radius-md)`, not `0.375rem`.
   // Dots are illegal in CSS custom-property names — a half-step key like "2.5"
   // must emit `--space-2_5`, or a strict minifier (LightningCSS, used by the
   // production build + downstream consumers) throws and drops the whole :root block.
-  for (const [k, v] of Object.entries(t.spacing)) rootLines.push(`  --space-${String(k).replace(/\./g, '_')}: ${v};`)
+  for (const [k, v] of Object.entries(t.spacing)) rootLines.push(`  --space-${varKey(k)}: ${v};`)
   for (const [k, v] of Object.entries(t.borderWidth)) rootLines.push(`  --border-width-${k}: ${v};`)
+  for (const [k, v] of Object.entries(t.radius)) rootLines.push(`  --radius-${k}: ${v};`)
+  for (const [k, v] of Object.entries(t.text)) {
+    rootLines.push(`  --text-${k}: ${v};`)
+    if (t.textLeading[k]) rootLines.push(`  --text-${k}--line-height: ${t.textLeading[k]};`)
+  }
   // In :root as well as @theme: `@theme inline` writes a value into its utility
   // and never emits the variable, and the base layer (body, h1–h6) reads these.
   for (const [k, v] of Object.entries(t.leading)) rootLines.push(`  --leading-${k}: ${v};`)
@@ -131,13 +141,30 @@ export function renderCss(t) {
     'accent-pigment-text': '--accent-pigment-text',
   }
   for (const [k, v] of Object.entries(paletteMap)) themeLines.push(`  --color-${k}: ${`var(${v})`};`)
-  for (const [k, v] of Object.entries(t.radius)) themeLines.push(`  --radius-${k}: ${v};`)
+  // Every size utility points at the :root scale above. `@theme inline` writes the
+  // value into the utility, and the value is the Quill variable, so the variable is
+  // what the inspector shows. (A self-reference like `--radius-md: var(--radius-md)` is
+  // fine here: an inline theme key is never emitted as a variable, so nothing cycles.)
+  // A named key beats Tailwind's multiplier: `p-4` reads `--spacing-4`, and only a step
+  // Quill does not have (`p-13`) still falls back to `calc(var(--spacing) * 13)`.
+  // Measured with Tailwind 4.3.3, 2026-10-16.
+  for (const k of Object.keys(t.spacing)) themeLines.push(`  --spacing-${varKey(k)}: var(--space-${varKey(k)});`)
+  for (const k of Object.keys(t.radius)) themeLines.push(`  --radius-${k}: var(--radius-${k});`)
   // Tailwind's own key for a size's line height (`--text-sm--line-height`), so the
   // `text-*` utilities pick it up with no new class to learn.
-  for (const [k, v] of Object.entries(t.text)) {
-    themeLines.push(`  --text-${k}: ${v};`)
-    if (t.textLeading[k]) themeLines.push(`  --text-${k}--line-height: ${t.textLeading[k]};`)
+  for (const k of Object.keys(t.text)) {
+    themeLines.push(`  --text-${k}: var(--text-${k});`)
+    if (t.textLeading[k]) themeLines.push(`  --text-${k}--line-height: var(--text-${k}--line-height);`)
   }
+  // Border, ring and outline widths, their bare forms (`border` is 1px, as Tailwind's is),
+  // and the ring and outline offsets. The offsets take the width tokens, not the space
+  // ones: both are pixels in Tailwind, and a rem step would drift in an app that changes
+  // its root font size. A bare integer Tailwind does not know (`border-13`) still compiles
+  // to 13px whatever the theme says; quill-check flags it.
+  for (const ns of ['border-width', 'ring-width', 'outline-width', 'ring-offset-width', 'outline-offset']) {
+    for (const k of Object.keys(t.borderWidth)) themeLines.push(`  --${ns}-${k}: var(--border-width-${k});`)
+  }
+  for (const ns of ['border-width', 'ring-width', 'outline-width']) themeLines.push(`  --default-${ns}: var(--border-width-1);`)
   for (const [k, v] of Object.entries(t.leading)) themeLines.push(`  --leading-${k}: ${v};`)
   for (const [k, v] of Object.entries(t.tracking)) themeLines.push(`  --tracking-${k}: ${v};`)
   // Shadow utilities route through the :root tokens (remapped in dark) —
@@ -228,12 +255,12 @@ export const AI_RULES = {
     color: 'transparent',
   },
   '@utility ai-edge': {
-    border: '1px solid transparent',
+    border: 'var(--border-width-1) solid transparent',
     background: `${PAD}, linear-gradient(115deg, ${mute(EDGE_FROM)}, ${mute('var(--ai-via)')} 50%, ${mute('var(--ai-to)')}) border-box`,
     '&:focus-within, &[data-lit]': { background: `${PAD}, linear-gradient(115deg, ${EDGE_STOPS}) border-box` },
   },
   '@utility ai-edge-working': {
-    border: '1px solid transparent',
+    border: 'var(--border-width-1) solid transparent',
     background: `${PAD}, linear-gradient(90deg, ${EDGE_SWEEP}) border-box`,
     'background-size': '100% 100%, 300% 100%',
     animation: 'ai-sweep 2.4s linear infinite',
@@ -246,8 +273,8 @@ export const AI_RULES = {
     'background-image': 'radial-gradient(60% 70% at 30% 40%, color-mix(in oklab, var(--ai-from) 18%, transparent), transparent 70%), radial-gradient(55% 65% at 75% 60%, color-mix(in oklab, var(--ai-to) 18%, transparent), transparent 70%)',
   },
   '@utility ai-line': {
-    height: '2px',
-    'border-radius': '2px',
+    height: 'var(--border-width-2)',
+    'border-radius': 'var(--radius-xs)',
     'background-image': `linear-gradient(90deg, ${AI_SWEEP})`,
     'background-size': '300% 100%',
     animation: 'ai-line 1.6s linear infinite',
@@ -302,13 +329,13 @@ export function renderAiUtilities(rules = AI_RULES) {
 // a transparent 2px outline the mode already paints) get the same single 2px outline, recoloured.
 export const FORCED_COLORS_RULES = {
   '@media (forced-colors: active)': {
-    ':focus-visible': { outline: '2px solid Highlight', 'outline-offset': '2px' },
+    ':focus-visible': { outline: 'var(--border-width-2) solid Highlight', 'outline-offset': 'var(--border-width-2)' },
     // The one opt-in, and it must stay AFTER the rule above. An outline 2px outside an element is cut off
     // when the element fills a parent that clips: the suggestion scroll area in `ai-popover` (its popup is
     // `overflow-hidden`), a full-width row in a scrolling list (`mail-shell`). Those draw their ring inside
     // themselves with a layered `-outline-offset-*` class, which the unlayered rule above overrides. An
     // element marked `data-focus-inset` gets the same outline drawn inside it instead.
-    '[data-focus-inset]:focus-visible': { 'outline-offset': '-2px' },
+    '[data-focus-inset]:focus-visible': { 'outline-offset': 'calc(var(--border-width-2) * -1)' },
   },
 }
 

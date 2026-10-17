@@ -19,8 +19,9 @@ export const CHECK_PATH = join(root, 'registry/check/quill-check.mjs')
 const TEMPLATE_PATH = join(root, 'scripts/check/quill-check.template.mjs')
 
 // Utility prefixes the check reads. Colour prefixes first (rules 2/3/4), then the token
-// namespaces Quill owns (rule 4). Layout prefixes are deliberately absent: Quill does not
-// own composition, so a `w-[420px]` has no better answer and is counted, never flagged.
+// namespaces Quill owns (rule 4). The spacing, size and border-width utilities are read by
+// their own patterns in the template (rule 6), because their first word (`p`, `w`, `top`) is
+// too common in prose to accept on its own: they need a value after the dash.
 export const COLOR_PREFIXES = ['bg', 'text', 'border', 'ring', 'outline', 'fill', 'stroke', 'from', 'to', 'via', 'decoration', 'divide', 'placeholder', 'caret', 'accent', 'shadow']
 export const PREFIXES = [...COLOR_PREFIXES, 'font', 'rounded', 'leading', 'tracking', 'ease', 'duration']
 
@@ -94,8 +95,12 @@ export function checkData(t = tokens) {
     quillClasses,
     vars,
     tokens: {
+      // the steps as utilities name them (`0.5`, not the variable's `0_5`), in px
+      space: Object.fromEntries(Object.entries(t.spacing).map(([k, v]) => [k, px(v)]).sort((a, b) => a[1] - b[1])),
+      borderWidth: Object.fromEntries(Object.entries(t.borderWidth).map(([k, v]) => [k, px(v)])),
       text: Object.fromEntries(Object.entries(t.text).map(([k, v]) => [k, px(v)])),
       radius: Object.fromEntries(Object.entries(t.radius).map(([k, v]) => [k, px(v)])),
+      radiusBase: px(t.radiusBase),
       tracking: Object.fromEntries(Object.entries(t.tracking).map(([k, v]) => [k, parseFloat(v)])),
       leading: Object.fromEntries(Object.entries(t.leading).map(([k, v]) => [k, parseFloat(v)])),
       shadow: shadows,

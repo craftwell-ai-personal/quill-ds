@@ -95,7 +95,7 @@ export function AiChat({ onSubmit = () => {}, children, status = 'idle', onStop,
                 <p>Signups beat target in July and August<Citation source={SOURCES[0]} /> but fell 12% short in September<Citation source={SOURCES[1]} />, so the quarter still closed 4% ahead.</p>
               </AiMessage>
               {turns.length === 0 ? (
-                <SuggestedPrompts className="pl-[2.375rem]" label="Follow-ups"
+                <SuggestedPrompts className="pl-10" label="Follow-ups"
                   suggestions={[{ label: 'Break September down by week' }, { label: 'Compare with Q2' }, { label: 'Draft a note to the team' }]}
                   onPick={(prompt) => { setValue(prompt); composerRef.current?.focus() }} />
               ) : null}

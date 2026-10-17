@@ -50,7 +50,7 @@ export function ActivityFeed() {
         <CardDescription>What happened while you were away.</CardDescription>
       </CardHeader>
       <CardContent>
-        <ol className="relative flex flex-col gap-5 before:absolute before:top-2 before:bottom-2 before:left-[15px] before:w-px before:bg-border">
+        <ol className="relative flex flex-col gap-5 before:absolute before:top-2 before:bottom-2 before:left-4 before:w-px before:bg-border">
           {events.map((e, i) => (
             <li key={i} className="relative flex items-start gap-3">
               <Avatar className="relative z-1 ring-4 ring-card">

@@ -76,16 +76,16 @@ const MENU_ICON = {
 // The "more" button is 24px in a 32px row (border included), so it sits 4px inside the row's outer edge.
 // 4 + 2 puts the menu 2px below the row (Ryan's note on the sketch, 2026-10-04).
 const MENU_GAP = 6
-// The same 4px, sideways: the menu hangs from the button's right edge, and a negative alignOffset of this carries it out to the row's outer edge (the border included).
-const MENU_INSET = 4
+// Sideways the button sits 5px in (mr-1 plus the row's 1px border): the menu hangs from the button's right edge, and a negative alignOffset of this carries it out to the row's outer edge (the border included).
+const MENU_INSET = 5
 
 // The row, not the title, draws the title's focus ring, so the ring wraps the ⋯ button as the row's fill does.
-// Every row has a 1px border (clear unless the chat is open), so the padding here is 1px under px-2.5 / py-1.5:
-// the title still starts 10px in, under its group heading, and the row is still 32px tall.
-const OPEN = 'min-w-0 flex-1 truncate rounded-lg px-[9px] py-[5px] text-left text-sm text-foreground no-underline outline-hidden aria-[current]:font-medium'
+// Every row has a 1px border (clear unless the chat is open). With px-2.5 inside it the title starts 11px in;
+// py-1 leaves the link shorter than the row's min-h-8, so the row stays 32px and the title stays centred.
+const OPEN = 'min-w-0 flex-1 truncate rounded-lg px-2.5 py-1 text-left text-sm text-foreground no-underline outline-hidden aria-[current]:font-medium'
 // Hidden until wanted, never out of reach: hover, keyboard focus anywhere in the row, the open chat, an open menu, and any touch screen show it.
-// mr-[3px] plus the row's 1px border keeps the button 4px inside the row's outer edge.
-const MORE = 'mr-[3px] shrink-0 text-ink-soft opacity-0 group-hover/row:opacity-100 group-focus-within/row:opacity-100 group-has-[[aria-current]]/row:opacity-100 aria-expanded:opacity-100 pointer-coarse:opacity-100'
+// mr-1 plus the row's 1px border keeps the button 5px inside the row's outer edge.
+const MORE = 'mr-1 shrink-0 text-ink-soft opacity-0 group-hover/row:opacity-100 group-focus-within/row:opacity-100 group-has-[[aria-current]]/row:opacity-100 aria-expanded:opacity-100 pointer-coarse:opacity-100'
 
 /** Pinned first, then Today, Yesterday, Previous 7 days, then one group per month, newest first. With `timeZone`, days and months are that zone's. */
 export function groupConversations(conversations: Conversation[], now: Date, locale = 'en-US', timeZone?: string): ConversationGroup[] {

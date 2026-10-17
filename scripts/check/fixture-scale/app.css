@@ -1,0 +1,17 @@
+/* Fixture for rule 7 in scripts/quill-check.test.mjs: an app's own stylesheet. Never shipped. */
+.card { padding: 13px; border-radius: 7px; margin: 0; gap: var(--space-2); }
+.title {
+  font-size: 0.85rem;
+  border: 2px solid var(--border);
+  width: 317px;
+}
+.chip { @apply p-13 rounded-md; }
+:root { --brand-gap: 13px; }
+@theme inline { --spacing-huge: 13px; }
+/* quill-check: allow css-value — the embed's iframe needs this exact inset */
+.embed {
+  inset: 7px;
+}
+@media (min-width: 768px) {
+  .card { padding: 2rem; }
+}

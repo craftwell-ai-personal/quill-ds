@@ -38,12 +38,14 @@ test('rules 2–5 flag one of each violation in the fixture (static mode) and no
   const { findings, layout } = await check.runCheck({ cwd: here, dirs: [join(here, 'check/fixture')], tailwind: false })
   const r = byRule(findings.filter((f) => !f.allowed))
   assert.deepEqual((r.palette ?? []).map((f) => f.value).sort(), ['bg-white', 'font-serif', 'md:hover:bg-red-600', 'text-black', 'text-gray-500'])
-  assert.deepEqual((r.bracket ?? []).map((f) => f.value).sort(), ['bg-[#F5EDDD]', 'rounded-[10px]', 'text-[13px]', 'text-[var(--accent-pigment-text)]', 'tracking-[0.15em]'])
+  assert.deepEqual((r.bracket ?? []).map((f) => f.value).sort(), ['bg-[#F5EDDD]', 'h-[24px]', 'rounded-[10px]', 'text-[13px]', 'text-[var(--accent-pigment-text)]', 'tracking-[0.15em]'])
   assert.deepEqual((r.retired ?? []).map((f) => f.value).sort(), ['text-indigo-brand', 'var(--text-strong)'])
   assert.deepEqual((r['raw-color'] ?? []).map((f) => f.value).sort(), ['rgb(245, 237, 221)'])
   assert.deepEqual((r['allow-without-reason'] ?? []).map((f) => f.value), ['palette'])
-  assert.deepEqual(Object.keys(r).sort(), ['allow-without-reason', 'bracket', 'palette', 'raw-color', 'retired'])
-  assert.equal(layout, 3, 'w-[420px], h-[24px], max-w-[880px] are counted, not flagged')
+  // widths with no Quill step are listed as size gaps; h-[24px] IS a step (h-6), so it is a finding
+  assert.deepEqual((r['size-gap'] ?? []).map((f) => f.value).sort(), ['max-w-[880px]', 'w-[420px]'])
+  assert.deepEqual(Object.keys(r).sort(), ['allow-without-reason', 'bracket', 'palette', 'raw-color', 'retired', 'size-gap'])
+  assert.equal(layout, 0)
   const allowed = findings.filter((f) => f.allowed)
   assert.equal(allowed.length, 1)
   assert.equal(allowed[0].value, '#4285F4')
@@ -63,6 +65,66 @@ test('fix text names the token or role an agent should write', async () => {
   assert.match(fix('var(--text-strong)'), /0\.10\.0.*0\.13\.0.*var\(--ink\)/)
   assert.match(fix('font-serif'), /font-heading/)
   assert.match(fix('bg-[#F5EDDD]'), /bg-background|bg-paper/)
+})
+
+// ---------------------------------------------------------------- rules 6 and 7: Quill's size scales
+const scaleRun = () => check.runCheck({ cwd: here, dirs: [join(here, 'check/fixture-scale')], tailwind: false })
+const valuesOf = (findings, rule, file) => findings.filter((f) => f.rule === rule && !f.allowed && (!file || f.file.endsWith(file))).map((f) => f.value).sort()
+
+test('rule 6: a Tailwind step or a bracket length outside Quill\'s scales is a finding; sizes are listed as gaps', async () => {
+  const { findings, layout } = await scaleRun()
+  assert.deepEqual(valuesOf(findings, 'scale', 'scale.tsx'), ['-mt-13', 'border-5', 'p-13', 'p-3.25', 'rounded', 'text-6xl'])
+  assert.deepEqual(valuesOf(findings, 'bracket', 'scale.tsx'), ['border-[3px]', 'gap-[22px]', 'h-[24px]', 'mt-[-3px]', 'p-[13px]', 'p-[var(--space-4)]'])
+  assert.deepEqual(valuesOf(findings, 'size-gap', 'scale.tsx'), ['max-w-md', 'w-64', 'w-[317px]', 'width: 317'])
+  assert.equal(layout, 2, 'w-[calc(100%-2rem)] and h-[1lh] are not lengths a token could replace: counted')
+  // the first line is all on-scale, and prose that looks like a class is not one
+  assert.ok(!findings.some((f) => f.file.endsWith('scale.tsx') && f.line === 5), 'nothing on the on-scale line')
+  assert.ok(!findings.some((f) => f.file.endsWith('scale.tsx') && f.line === 8 && f.value !== 'rounded'), 'only the bare rounded among classes on the prose line')
+  assert.equal(findings.filter((f) => f.value === 'rounded').length, 1, 'the bare word in the aria-label is prose')
+  const allowed = findings.filter((f) => f.allowed && f.file.endsWith('scale.tsx'))
+  assert.deepEqual(allowed.map((f) => f.value), ['p-11'])
+})
+
+test('rule 6: the fix is the nearest Quill step, with its size', async () => {
+  const { findings } = await scaleRun()
+  const fix = (v) => findings.find((f) => f.value === v)?.fix ?? ''
+  assert.match(fix('p-13'), /p-12 \(48px\) or p-16 \(64px\)/)
+  assert.match(fix('p-3.25'), /p-3 \(12px\) or p-3\.5 \(14px\)/)
+  assert.match(fix('-mt-13'), /-mt-12 \(48px\) or -mt-16 \(64px\)/)
+  assert.match(fix('mt-[-3px]'), /-mt-0\.5 \(2px\) or -mt-1 \(4px\)/)
+  assert.match(fix('gap-[22px]'), /gap-5 \(20px\) or gap-6 \(24px\)/)
+  assert.match(fix('h-[24px]'), /h-6 \(the same 24px\)/)
+  assert.match(fix('p-[var(--space-4)]'), /p-4 \(the same step\)/)
+  assert.match(fix('border-[3px]'), /border-3 \(the same 3px\)/)
+  assert.match(fix('border-5'), /border-4 \(4px\), Quill's largest step/)
+  assert.match(fix('text-6xl'), /text-4xl \(64px\), the nearest Quill size; text-6xl is Tailwind's own \(60px\)/)
+  assert.match(fix('rounded'), /rounded-sm \(4px\)/)
+  assert.match(fix('w-64'), /no Quill size token yet/)
+})
+
+test('rule 7: numbers typed into an inline style get the Quill variable', async () => {
+  const { findings } = await scaleRun()
+  assert.deepEqual(valuesOf(findings, 'inline-style'), ["border: '3px solid var(--border)'", 'borderRadius: 7', "fontSize: '14px'", "margin: '8px 12px'", 'padding: 13'])
+  const fix = (v) => findings.find((f) => f.value === v)?.fix ?? ''
+  assert.match(fix('padding: 13'), /13px → var\(--space-3\) \(12px, the nearest step\)/)
+  assert.match(fix("margin: '8px 12px'"), /8px → var\(--space-2\), 12px → var\(--space-3\)$/)
+  assert.match(fix('borderRadius: 7'), /var\(--radius-md\)/)
+  assert.match(fix("border: '3px solid var(--border)'"), /3px → var\(--border-width-3\)$/)
+})
+
+test('rule 7: an app stylesheet is read the same way; the theme file, variables and @theme are not', async () => {
+  const { findings } = await scaleRun()
+  assert.deepEqual(valuesOf(findings, 'css-value', 'app.css'), ['border-radius: 7px', 'border: 2px solid var(--border)', 'font-size: 0.85rem', 'padding: 13px', 'padding: 2rem'])
+  assert.deepEqual(valuesOf(findings, 'scale', 'app.css'), ['p-13'], '@apply goes through the class rules')
+  assert.deepEqual(valuesOf(findings, 'size-gap', 'app.css'), ['width: 317px'])
+  const fix = (v) => findings.find((f) => f.value === v)?.fix ?? ''
+  assert.match(fix('font-size: 0.85rem'), /0\.85rem → var\(--text-sm\)$/)
+  assert.match(fix('padding: 2rem'), /2rem → var\(--space-8\)$/)
+  assert.ok(!findings.some((f) => f.file.endsWith('quill-theme.css')), 'the theme file holds the raw values on purpose')
+  assert.ok(!findings.some((f) => /--brand-gap|--spacing-huge/.test(f.value)), 'variable definitions are tokens, not uses')
+  // an allow above a selector covers that rule's block
+  assert.deepEqual(findings.filter((f) => f.allowed && f.file.endsWith('app.css')).map((f) => [f.value, f.allowed]), [['inset: 7px', "the embed's iframe needs this exact inset"]])
+  assert.equal(findings.find((f) => f.value === 'padding: 13px').line, 2)
 })
 
 // ---------------------------------------------------------------- rule 1: the app's own Tailwind
@@ -108,7 +170,7 @@ test('CLI: text output groups by file with a fix per line, summary counts allows
   assert.equal(code, 1)
   assert.match(out, /^scripts\/check\/fixture\/fixture\.tsx$/m)
   assert.match(out, /^\s+\d+\s+bg-white\s+palette\s+→/m)
-  assert.match(out, /\d+ findings · 1 allowed · 3 layout sizes not checked/)
+  assert.match(out, /\d+ findings · 1 allowed · 2 size gaps \(no Quill token yet; listed, not failing\) · 0 layout sizes not checked/)
 })
 
 test('CLI: --json is machine-readable and exit 0 when every finding is allowed', () => {
@@ -140,7 +202,7 @@ test('CLI: --json arrives whole when the report is larger than a pipe buffer', (
 test("the check runs clean on Quill's own shipped blocks, lib and examples", async () => {
   const dirs = ['registry/blocks', 'registry/lib', 'registry/examples'].map((d) => join(repoRoot, d))
   const { findings, notes } = await check.runCheck({ cwd: repoRoot, dirs, css: join(repoRoot, 'src/app/globals.css') })
-  const active = findings.filter((f) => !f.allowed)
+  const active = findings.filter(check.isActive)
   assert.deepEqual(active.map((f) => `${f.file}:${f.line} ${f.value} [${f.rule}]`), [], "Quill's own code must satisfy the rules it enforces on apps")
   assert.deepEqual(notes, [])
 })
@@ -153,7 +215,7 @@ test('rule dark-variant: a stock @custom-variant dark line below the import over
   const dv = findings.filter((f) => f.rule === 'dark-variant')
   assert.equal(dv.length, 1)
   assert.equal(dv[0].line, 3)
-  assert.match(dv[0].fix, /below it/)
+  assert.match(dv[0].fix, /the last line of this file/)
   // and the fixed order is clean
   writeFileSync(join(dir, 'globals.css'), `@import "tailwindcss";\n@custom-variant dark (&:is(.dark *));\n@import "${join(repoRoot, 'registry/themes/quill.css')}";\n`)
   const ok = await check.runCheck({ cwd: repoRoot, dirs: [dir], css: join(dir, 'globals.css') })
@@ -172,8 +234,63 @@ test('rule dark-variant: a theme imported from the layout, not the stylesheet, g
   assert.equal(dv.length, 1)
   assert.equal(dv[0].line, 2)
   assert.match(dv[0].fix, /not imported from this stylesheet/)
-  assert.match(dv[0].fix, /directly below this line/)
+  assert.match(dv[0].fix, /as the last line of this file/)
   assert.doesNotMatch(dv[0].fix, /sits below Quill's/)
+  assert.equal(findings.filter((f) => f.rule === 'radius-override').length, 0, 'no Quill theme here: the radii are not Quill\'s to defend')
+})
+
+// ---------------------------------------------------------------- rule radius-override
+// What `shadcn init` writes (CLI 4.22, measured 2026-10-16), with Quill's theme FILE imported where
+// the docs used to say — below the dark line, which is above shadcn's radius block.
+const THEME = join(repoRoot, 'registry/themes/quill.css')
+const STOCK_RADIUS = '@theme inline {\n  --radius-sm: calc(var(--radius) * 0.6);\n  --radius-md: calc(var(--radius) * 0.8);\n  --radius-lg: var(--radius);\n  --radius-xl: calc(var(--radius) * 1.4);\n  --radius-2xl: calc(var(--radius) * 1.8);\n  --radius-3xl: calc(var(--radius) * 2.2);\n  --radius-4xl: calc(var(--radius) * 2.6);\n}\n\n:root {\n  --radius: 0.625rem;\n}\n'
+const radiusRun = async (css) => {
+  const dir = mkdtempSync(join(tmpdir(), 'quill-check-'))
+  writeFileSync(join(dir, 'globals.css'), css)
+  writeFileSync(join(dir, 'page.tsx'), 'export const P = () => <div className="bg-background rounded-xl">x</div>\n')
+  const { findings } = await check.runCheck({ cwd: repoRoot, dirs: [dir], css: join(dir, 'globals.css') })
+  return findings.filter((f) => f.rule === 'radius-override')
+}
+
+test('rule radius-override: shadcn\'s radius lines below the theme import override Quill\'s, and each one is named', async () => {
+  const found = await radiusRun(`@import "tailwindcss";\n@custom-variant dark (&:is(.dark *));\n@import "${THEME}";\n\n${STOCK_RADIUS}`)
+  assert.deepEqual(found.map((f) => f.value).sort(), ['--radius-2xl: calc(var(--radius) * 1.8)', '--radius-3xl: calc(var(--radius) * 2.2)', '--radius-4xl: calc(var(--radius) * 2.6)', '--radius-lg: var(--radius)', '--radius-md: calc(var(--radius) * 0.8)', '--radius-sm: calc(var(--radius) * 0.6)', '--radius-xl: calc(var(--radius) * 1.4)', '--radius: 0.625rem'])
+  const fix = (v) => found.find((f) => f.value.startsWith(v))?.fix ?? ''
+  assert.match(fix('--radius-xl'), /rounded-xl renders 14px, Quill's is 16px/)
+  assert.match(fix('--radius-sm'), /rounded-sm renders 6px, Quill's is 4px/)
+  assert.match(fix('--radius-lg'), /rounded-lg renders 10px, Quill's is 8px/)
+  assert.match(fix('--radius:'), /shadcn's --radius \(10px\), not Quill's \(8px\)/)
+  assert.match(fix('--radius-xl'), /the last line of this file/)
+  assert.equal(found.find((f) => f.value.startsWith('--radius-xl')).line, 9)
+})
+
+test('rule radius-override: with the theme imported as the last line, Quill\'s radii win and nothing is flagged', async () => {
+  assert.deepEqual(await radiusRun(`@import "tailwindcss";\n@custom-variant dark (&:is(.dark *));\n\n${STOCK_RADIUS}\n@import "${THEME}";\n`), [])
+})
+
+test('rule radius-override: a lone stock line still counts, and says when it only matches by coincidence', async () => {
+  // tech-careers on 2026-10-16: shadcn's lines below the import, and no --radius of its own, so --radius is Quill's 8px
+  const found = await radiusRun(`@import "tailwindcss";\n@import "${THEME}";\n@theme inline {\n  --radius-lg: var(--radius);\n  --radius-xl: calc(var(--radius) * 1.4);\n}\n`)
+  assert.deepEqual(found.map((f) => f.value), ['--radius-lg: var(--radius)', '--radius-xl: calc(var(--radius) * 1.4)'])
+  assert.match(found[0].fix, /the same as Quill's 8px today, only because --radius is 8px/)
+  assert.match(found[1].fix, /rounded-xl renders 11\.2px, Quill's is 16px/)
+})
+
+test('rule radius-override: the CLI install, which replaces shadcn\'s radius lines, is clean', async () => {
+  const { transformCssVars } = await import('@shadcn/registry/internal/utils/updaters/update-css-vars')
+  const { transformCss } = await import('@shadcn/registry/internal/utils/updaters/update-css')
+  const item = JSON.parse(readFileSync(join(repoRoot, 'public/r/quill.json'), 'utf8'))
+  const stock = `@import "tailwindcss";\n\n@custom-variant dark (&:is(.dark *));\n\n${STOCK_RADIUS}`
+  const merged = await transformCss(await transformCssVars(stock, item.cssVars, { tailwind: { cssVariables: true } }, { tailwindVersion: 'v4', overwriteCssVars: true }), item.css)
+  assert.deepEqual(await radiusRun(merged), [])
+})
+
+test('radiusPx reads shadcn\'s shapes', () => {
+  assert.equal(check.radiusPx('calc(var(--radius) * 1.4)', 10), 14)
+  assert.equal(check.radiusPx('calc(var(--radius) - 4px)', 10), 6)
+  assert.equal(check.radiusPx('var(--radius)', 8), 8)
+  assert.equal(check.radiusPx('0.375rem', 8), 6)
+  assert.equal(check.radiusPx('var(--radius-md)', 8), null)
 })
 
 test('CLI: run through a symlinked folder or a folder with a space, it still checks and fails', async () => {

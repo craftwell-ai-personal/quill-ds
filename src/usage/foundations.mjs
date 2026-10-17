@@ -75,18 +75,16 @@ export function renderTypeSection(t = tokens) {
 }
 
 export function renderSpacingSection(t = tokens) {
-  const steps = Object.entries(t.spacing)
-    .filter(([k]) => /^\d+$/.test(k))
-    .sort((a, b) => Number(a[0]) - Number(b[0]))
+  const steps = Object.entries(t.spacing).sort((a, b) => parseFloat(a[1]) - parseFloat(b[1]))
   const L = []
   L.push(`A **4px base step** (\`--space-1\` = ${t.spacing['1']}). Editorial rhythm — sections breathe.`)
   L.push('')
-  L.push(steps.map(([k, v]) => `\`--space-${k}\` ${px(v)}`).join(' · '))
+  L.push(steps.map(([k, v]) => `\`--space-${k.replace('.', '_')}\` ${px(v)}`).join(' · '))
   L.push('')
-  L.push('Components sit on `--space-4` / `--space-6`; sections breathe with `--space-24`. In a component write the class (`p-4`, `gap-6`): it is the same step, and no shipped component reads the variable. The variables are for hand-written CSS.')
+  L.push('Components sit on `--space-4` / `--space-6`; sections breathe with `--space-24`. In a component write the class (`p-4`, `gap-6`): it compiles to the variable (`padding: var(--space-4)`), so the class and the token are one thing. These steps are the whole scale: a Tailwind step outside it (`p-13`, `p-3.25`) or a bracket (`p-[13px]`) is off the system, and `quill-check` flags it with the nearest step. In hand-written CSS use the variable.')
   L.push('')
   L.push('### Layout')
-  L.push('No layout tokens ship; use the values the site uses. Marketing max-width **1400px** (`max-w-[1400px]`), reading column **800px**, side padding **48px** on desktop (`px-12`) and **24px** on mobile (`px-6`), vertical section rhythm **96px** (`py-24`; `py-14` on mobile).')
+  L.push('No width or height tokens ship yet (`quill-check` lists those values as size gaps, without failing); use the values the site uses. Marketing max-width **1400px** (`max-w-[1400px]`), reading column **800px**, side padding **48px** on desktop (`px-12`) and **24px** on mobile (`px-6`), vertical section rhythm **96px** (`py-24`; `py-12` on mobile).')
   L.push('')
   L.push('### Composition')
   L.push('- Recurring section header: eyebrow → headline (one accent word) → right-aligned italic caption.')
