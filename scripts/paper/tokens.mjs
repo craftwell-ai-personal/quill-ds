@@ -86,6 +86,7 @@ const NOT_REPRESENTABLE = [
   [/^--(ease|dur|lift)/, 'motion: Paper has no easing, duration or transform token type (and a still frame has no motion)'],
   [/^--fraunces-/, 'font-variation-settings preset: no Paper type; written as a literal on each heading'],
   [/^--border-width-/, 'border width: no Paper type; it would sit among the spacing tokens and be offered for padding and gap'],
+  [/^--size-/, 'width or height: no Paper type; it would sit among the spacing tokens and be offered for padding and gap'],
   // Tailwind's keys for the ring/outline widths, offsets and bare-`border` default, each pointing at a border width
   [/^--(default-)?(ring|outline)-(offset-)?width|^--outline-offset-|^--default-border-width$/, 'border width: no Paper type (these point the ring, outline and bare-border utilities at --border-width-*)'],
 ]

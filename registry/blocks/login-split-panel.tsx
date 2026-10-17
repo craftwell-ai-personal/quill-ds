@@ -8,7 +8,7 @@ import { Icon } from '@/components/ui/icon'
 /** A full-page, branded sign-in — a testimonial panel beside an email/password form with a magic-link option. */
 export function SplitPanel() {
   return (
-    <div className="grid h-[560px] w-full grid-cols-2 bg-background max-md:grid-cols-1">
+    <div className="grid h-frame w-full grid-cols-2 bg-background max-md:grid-cols-1">
       <div className="flex flex-col justify-between bg-primary p-8 text-primary-foreground max-md:hidden">
         <span className="font-heading text-lg">Quill</span>
         <blockquote className="flex flex-col gap-3">
@@ -20,7 +20,7 @@ export function SplitPanel() {
         </blockquote>
       </div>
       <div className="flex items-center justify-center p-8">
-        <form className="flex w-full max-w-[340px] flex-col gap-5" onSubmit={(e) => e.preventDefault()}>
+        <form className="flex w-full max-w-card-sm flex-col gap-5" onSubmit={(e) => e.preventDefault()}>
           <div className="flex flex-col gap-1 text-center">
             <h1 className="fraunces-text font-heading text-xl text-foreground">Welcome back</h1>
             <p className="text-sm text-muted-foreground">Sign in to your team account.</p>

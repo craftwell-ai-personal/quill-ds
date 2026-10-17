@@ -153,11 +153,28 @@ export const tokens = {
   spacing: {
     // half-steps + control sizes cover component dims (h-7=28, h-9=36, px-2.5=10, gap-1.5=6, py-0.5=2).
     // 3.5 (14px) is the AI kit's inset: message, popover, panel and composer padding all sit on it.
+    // 4.5 (18px) is the AI mark's size in buttons, menus and mode tabs.
     '0.5': '0.125rem', 1: '0.25rem', '1.5': '0.375rem', 2: '0.5rem', '2.5': '0.625rem',
-    3: '0.75rem', '3.5': '0.875rem', 4: '1rem', 5: '1.25rem', 6: '1.5rem', 7: '1.75rem', 8: '2rem',
+    3: '0.75rem', '3.5': '0.875rem', 4: '1rem', '4.5': '1.125rem', 5: '1.25rem', 6: '1.5rem', 7: '1.75rem', 8: '2rem',
     9: '2.25rem', 10: '2.5rem', 12: '3rem', 16: '4rem', 20: '5rem', 24: '6rem',
   },
   borderWidth: { 0: '0px', 1: '1px', 2: '2px', 3: '3px', 4: '4px' },
+  // Widths and heights past the spacing scale, named for their job the way the colour roles
+  // are (each job is written in src/usage/sizes.mjs). Drawn in 1.29.0 from every width and
+  // height Quill's shipped code used. Widths ride Tailwind's container family, so they work on
+  // w-, max-w-, min-w- and basis- only; heights ride the spacing family (h-, min-h-, max-h-,
+  // size-), and quill-check keeps them off padding and gaps.
+  size: {
+    width: {
+      chip: '10rem', menu: '12rem', 'chip-lg': '14rem', rail: '15rem', panel: '18rem',
+      'card-sm': '20rem', card: '24rem', 'card-lg': '28rem', 'card-xl': '35rem',
+      measure: '42rem', thread: '48rem', page: '55rem', 'page-wide': '87.5rem',
+    },
+    height: {
+      touch: '2.75rem', bar: '3.5rem', 'area-sm': '8rem', area: '14rem',
+      'frame-sm': '30rem', frame: '35rem', 'frame-lg': '40rem',
+    },
+  },
   text: {
     '2xs': '0.7rem', xs: '0.75rem', sm: '0.85rem', base: '0.95rem', lg: '1.15rem',
     xl: '1.5rem', '2xl': '2rem', '3xl': '3rem', '4xl': '4rem', '5xl': '5.5rem',

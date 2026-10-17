@@ -7,7 +7,7 @@ import { Icon } from '@/components/ui/icon'
 /** The bare-minimum sign-in — no card chrome, a single email field, sign-in by one-time code. */
 export function Minimal() {
   return (
-    <form className="flex w-[320px] flex-col gap-5" onSubmit={(e) => e.preventDefault()}>
+    <form className="flex w-card-sm flex-col gap-5" onSubmit={(e) => e.preventDefault()}>
       <div className="flex flex-col items-center gap-2 text-center">
         <span className="flex size-9 items-center justify-center rounded-md bg-primary text-sm font-medium text-primary-foreground">
           Q

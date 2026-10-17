@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/lib/ai-button.tsx",
-      "content": "import * as React from 'react'\nimport { Button } from '@/components/ui/button'\nimport { AiMark } from '@/components/ui/ai-mark'\n\n/** A stock Quill button that runs an AI action, marked with the AI sparkle; the label stays plain ink. */\nexport function AiButton({ children, ...props }: React.ComponentProps<typeof Button>) {\n  return (\n    <Button {...props}>\n      {/* size-[18px]: Button sizes any svg without a size- class to 16px. */}\n      <AiMark size={18} className=\"size-[18px]\" />\n      {children}\n    </Button>\n  )\n}\n",
+      "content": "import * as React from 'react'\nimport { Button } from '@/components/ui/button'\nimport { AiMark } from '@/components/ui/ai-mark'\n\n/** A stock Quill button that runs an AI action, marked with the AI sparkle; the label stays plain ink. */\nexport function AiButton({ children, ...props }: React.ComponentProps<typeof Button>) {\n  return (\n    <Button {...props}>\n      {/* size-[18px]: Button sizes any svg without a size- class to 16px. */}\n      <AiMark size={18} className=\"size-4.5\" />\n      {children}\n    </Button>\n  )\n}\n",
       "type": "registry:ui",
       "target": "components/ui/ai-button.tsx"
     }

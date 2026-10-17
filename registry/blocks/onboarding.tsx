@@ -19,7 +19,7 @@ const tasks = [
 export function Onboarding() {
   const done = tasks.filter((t) => t.done).length
   return (
-    <Card className="w-[400px]">
+    <Card className="w-card">
       <CardHeader>
         <CardTitle>Get set up</CardTitle>
         <CardDescription>

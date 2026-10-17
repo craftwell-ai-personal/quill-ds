@@ -5,7 +5,7 @@ import { Icon } from '@/components/ui/icon'
 /** Two dismissible announcement banners — an inline bordered page banner and a full-bleed primary-color variant. */
 export function AnnouncementBanner() {
   return (
-    <div className="mx-auto flex w-full max-w-[880px] flex-col gap-4">
+    <div className="mx-auto flex w-full max-w-page flex-col gap-4">
       {/* Inline page banner */}
       <div className="flex items-center justify-between gap-4 rounded-lg bg-card px-4 py-3 ring-1 ring-foreground/10 max-sm:flex-col max-sm:items-start">
         <div className="flex items-center gap-3">

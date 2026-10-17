@@ -12,7 +12,7 @@ const items: { icon: IconName; title: string; body: string; time: string; unread
 /** A notifications card listing recent events with icons, timestamps, unread indicators, and a mark-all-read action. */
 export function Notifications() {
   return (
-    <Card className="w-[360px]">
+    <Card className="w-card">
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle>Notifications</CardTitle>
         <Button variant="link" size="sm">

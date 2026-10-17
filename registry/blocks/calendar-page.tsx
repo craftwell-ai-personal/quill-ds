@@ -28,13 +28,13 @@ export function CalendarPage() {
           defaultMonth={new Date(2026, 6)}
           className="rounded-lg border border-border"
         />
-        <div className="flex w-[240px] flex-col gap-3">
+        <div className="flex w-rail flex-col gap-3">
           <span className="text-sm font-medium text-foreground">Tuesday, July 14</span>
           <Separator />
           <ul className="flex flex-col gap-3">
             {sessions.map((s) => (
               <li key={s.time} className="flex items-start gap-3">
-                <span className="w-11 shrink-0 pt-0.5 text-xs font-medium text-muted-foreground">
+                <span className="w-12 shrink-0 pt-0.5 text-xs font-medium text-muted-foreground">
                   {s.time}
                 </span>
                 <div className="flex flex-col items-start gap-1">

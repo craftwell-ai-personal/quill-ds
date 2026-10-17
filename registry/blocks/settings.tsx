@@ -16,7 +16,7 @@ import { Separator } from '@/components/ui/separator'
 /** A profile settings card — name fields, a bio textarea, and an email-notification toggle. */
 export function Settings() {
   return (
-    <Card className="w-[560px]">
+    <Card className="w-card-xl">
       <CardHeader>
         <CardTitle>Profile</CardTitle>
         <CardDescription>Update your public profile and notification preferences.</CardDescription>

@@ -99,7 +99,7 @@ export function renderAgentRules() {
 
   p('## Foundations')
   p()
-  p(renderFoundations())
+  p(renderFoundations(undefined, { compact: true }))
   p()
 
   p('## Principles')

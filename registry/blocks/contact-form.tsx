@@ -21,7 +21,7 @@ import {
 /** A get-in-touch card — name, email, a topic select, and a message field. */
 export function ContactForm() {
   return (
-    <Card className="w-[440px]">
+    <Card className="w-card-lg">
       <CardHeader>
         <CardTitle>Get in touch</CardTitle>
         <CardDescription>We usually reply within one working day.</CardDescription>

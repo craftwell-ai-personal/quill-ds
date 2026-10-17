@@ -27,7 +27,7 @@ export function DataTable() {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex items-center gap-2">
-        <div className="max-w-xs flex-1">
+        <div className="max-w-card-sm flex-1">
           <Input placeholder="Filter members…" />
         </div>
         <Button variant="outline" size="sm" className="ml-auto">

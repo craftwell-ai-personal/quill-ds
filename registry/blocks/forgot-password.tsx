@@ -14,7 +14,7 @@ import { Icon } from '@/components/ui/icon'
 /** A password-reset request card — an email field, a send-link action, and a way back to sign in. */
 export function ForgotPassword() {
   return (
-    <Card className="w-[380px]">
+    <Card className="w-card">
       <CardHeader>
         <CardTitle>Reset your password</CardTitle>
         <CardDescription>

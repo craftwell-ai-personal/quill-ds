@@ -39,7 +39,7 @@ const messages = [
 /** A two-pane mail client shell — a searchable message list and a reading pane with toolbar and inline reply. */
 export function MailShell() {
   return (
-    <div className="grid h-[560px] w-full grid-cols-[340px_minmax(0,1fr)] bg-background max-lg:grid-cols-1">
+    <div className="grid h-frame w-full grid-cols-[var(--size-card-sm)_minmax(0,1fr)] bg-background max-lg:grid-cols-1">
       {/* Message list */}
       <div className="flex min-h-0 flex-col border-r border-border">
         <div className="flex items-center justify-between gap-2 px-4 py-3">

@@ -42,7 +42,7 @@ const salesConfig = {
 /** A dashboard pair — an area chart of audience growth beside a bar chart of weekly sales, each on its own card. */
 export function AnalyticsCharts() {
   return (
-    <div className="mx-auto grid w-full max-w-[880px] grid-cols-[1.4fr_1fr] items-start gap-6 max-md:grid-cols-1">
+    <div className="mx-auto grid w-full max-w-page grid-cols-[1.4fr_1fr] items-start gap-6 max-md:grid-cols-1">
       <Card>
         <CardHeader>
           <div className="flex items-center justify-between gap-2">
@@ -52,7 +52,7 @@ export function AnalyticsCharts() {
           <CardDescription>Monthly readers and new subscribers.</CardDescription>
         </CardHeader>
         <CardContent>
-          <ChartContainer config={trafficConfig} className="h-56 w-full">
+          <ChartContainer config={trafficConfig} className="h-area w-full">
             <AreaChart data={traffic}>
               <XAxis dataKey="month" />
               <YAxis width={36} />
@@ -84,7 +84,7 @@ export function AnalyticsCharts() {
           <CardDescription>Weekly engagements this month.</CardDescription>
         </CardHeader>
         <CardContent>
-          <ChartContainer config={salesConfig} className="h-56 w-full">
+          <ChartContainer config={salesConfig} className="h-area w-full">
             <BarChart data={sales}>
               <XAxis dataKey="week" />
               <YAxis width={28} />

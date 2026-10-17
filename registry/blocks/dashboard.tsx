@@ -21,8 +21,8 @@ const nav: { label: string; icon: IconName; active?: boolean }[] = [
 /** An app shell with sidebar navigation, a search header, and KPI stat cards. */
 export function Dashboard() {
   return (
-    <div className="flex h-[600px] w-full bg-background text-foreground">
-      <aside className="flex w-56 shrink-0 flex-col gap-1 border-r border-border bg-sidebar p-3">
+    <div className="flex h-frame w-full bg-background text-foreground">
+      <aside className="flex w-rail shrink-0 flex-col gap-1 border-r border-border bg-sidebar p-3">
         <div className="px-2 py-3 font-heading text-lg">Quill</div>
         {nav.map((n) => (
           <button
@@ -38,7 +38,7 @@ export function Dashboard() {
       </aside>
       <div className="flex min-w-0 flex-1 flex-col">
         <header className="flex items-center gap-3 border-b border-border px-6 py-3">
-          <div className="relative flex-1 max-w-sm">
+          <div className="relative flex-1 max-w-card">
             <Input placeholder="Search…" className="w-full" />
           </div>
           <Button variant="ghost" size="icon" aria-label="Notifications">

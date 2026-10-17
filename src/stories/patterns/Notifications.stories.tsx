@@ -30,7 +30,7 @@ export const DoDont: Story = {
       usage={usage}
       id="icon-matches-type"
       doExample={
-        <Card className="w-[360px]">
+        <Card className="w-card">
           <CardContent className="flex flex-col gap-0 p-0">
             <div className="flex items-start gap-3 px-6 py-3">
               <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground">
@@ -55,7 +55,7 @@ export const DoDont: Story = {
         </Card>
       }
       dontExample={
-        <Card className="w-[360px]">
+        <Card className="w-card">
           <CardContent className="flex flex-col gap-0 p-0">
             <div className="flex items-start gap-3 px-6 py-3">
               <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground">

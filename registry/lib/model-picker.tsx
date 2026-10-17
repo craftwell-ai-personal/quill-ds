@@ -61,7 +61,7 @@ export function ModelPicker({
           </Button>
         }
       />
-      <DropdownMenuContent align="end" className="w-72">
+      <DropdownMenuContent align="end" className="w-panel">
         {/* Base UI: a GroupLabel must live inside a Group or RadioGroup. */}
         <DropdownMenuRadioGroup value={current.value} onValueChange={(v) => onValueChange(String(v))}>
           {auto ? row(auto) : null}

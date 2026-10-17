@@ -41,7 +41,7 @@ const events = [
 /** A card timeline of recent events — avatar, action text, and a relative timestamp per entry. */
 export function ActivityFeed() {
   return (
-    <Card className="w-[420px]">
+    <Card className="w-card-lg">
       <CardHeader>
         <div className="flex items-center justify-between gap-2">
           <CardTitle>Activity</CardTitle>

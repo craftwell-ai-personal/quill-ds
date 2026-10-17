@@ -135,7 +135,7 @@ export function ThemeSelector({
           </Button>
         }
       />
-      <DropdownMenuContent align="end" className="w-48">
+      <DropdownMenuContent align="end" className="w-menu">
         {/* Base UI: GroupLabel must live INSIDE a Group/RadioGroup. */}
         <DropdownMenuRadioGroup
           value={theme}

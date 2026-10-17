@@ -19,7 +19,7 @@ const lines = [
 /** A checkout order-summary card — line items, a promo code field, a total, and a pay-now button. */
 export function OrderSummary() {
   return (
-    <Card className="w-[400px]">
+    <Card className="w-card">
       <CardHeader>
         <CardTitle>Order summary</CardTitle>
       </CardHeader>

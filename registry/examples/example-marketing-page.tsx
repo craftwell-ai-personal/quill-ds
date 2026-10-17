@@ -18,7 +18,7 @@ export function ExampleMarketingPage() {
       <main className="flex flex-1 flex-col">
         <Hero />
         <FeatureSection />
-        <section className="mx-auto w-full max-w-[1400px] px-6 py-12 md:px-12 md:py-24">
+        <section className="mx-auto w-full max-w-page-wide px-6 py-12 md:px-12 md:py-24">
           <Pricing />
         </section>
         <section className="flex justify-center px-6 py-12 md:px-12 md:py-24">

@@ -32,10 +32,10 @@ export function AiHome({
   return (
     // Not place-content-center: that sizes the one column to its widest child (the
     // starter row, 592px), so the composer's max-w-2xl never reached 672px.
-    <section className="ai-glow grid min-h-[32rem] content-center justify-items-center gap-5 px-4 py-16">
+    <section className="ai-glow grid min-h-frame-sm content-center justify-items-center gap-5 px-4 py-16">
       {/* The approved sketch's heading: Fraunces' text cut at 24px, normal tracking — calmer than h1's display preset. */}
       <h1 className="fraunces-text text-center font-heading text-xl font-medium tracking-normal">{greeting}</h1>
-      <div className="w-full max-w-2xl">
+      <div className="w-full max-w-measure">
         <PromptComposer
           ref={composerRef}
           size="lg"
@@ -57,7 +57,7 @@ export function AiHome({
       <SuggestedPrompts
         layout="cards"
         label="Starters"
-        className="w-full max-w-2xl"
+        className="w-full max-w-measure"
         suggestions={starters.map((s) => ({ label: s.title, detail: s.detail, prompt: s.prompt }))}
         onPick={(prompt) => { setValue(prompt); composerRef.current?.focus() }}
       />

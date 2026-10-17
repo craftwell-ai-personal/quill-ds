@@ -4,7 +4,7 @@ import { Icon } from '@/components/ui/icon'
 /** A vertical stack of informational, success, and destructive alerts with icons. */
 export function Alerts() {
   return (
-    <div className="flex max-w-lg flex-col gap-4">
+    <div className="flex max-w-card-xl flex-col gap-4">
       <Alert>
         <Icon name="info" size={18} />
         <AlertTitle>Heads up</AlertTitle>

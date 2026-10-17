@@ -22,7 +22,7 @@ const recent: { icon: IconName; label: string }[] = [
 /** A searchable ⌘K command palette with grouped actions, recent items, and keyboard shortcuts. */
 export function CommandPalette() {
   return (
-    <Command className="w-[440px] rounded-xl shadow-md ring-1 ring-foreground/10">
+    <Command className="w-card-lg rounded-xl shadow-md ring-1 ring-foreground/10">
       <CommandInput placeholder="Type a command or search…" />
       <CommandList>
         <CommandGroup heading="Actions">

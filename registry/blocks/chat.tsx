@@ -12,7 +12,7 @@ const messages = [
 /** A one-on-one messaging panel — contact header, message bubbles, and a composer input. */
 export function Chat() {
   return (
-    <div className="flex h-[480px] w-[400px] flex-col rounded-xl bg-card text-foreground ring-1 ring-foreground/10">
+    <div className="flex h-frame-sm w-card flex-col rounded-xl bg-card text-foreground ring-1 ring-foreground/10">
       <div className="flex items-center gap-3 border-b border-border px-4 py-3">
         <div className="flex size-9 items-center justify-center rounded-full bg-muted text-sm font-medium text-muted-foreground">
           GH

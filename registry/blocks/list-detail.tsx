@@ -12,8 +12,8 @@ const threads = [
 /** An inbox-style split view — a selectable message list beside a detail pane with archive and delete actions. */
 export function ListDetail() {
   return (
-    <div className="flex h-[520px] w-full bg-background text-foreground">
-      <div className="flex w-72 shrink-0 flex-col border-r border-border">
+    <div className="flex h-frame w-full bg-background text-foreground">
+      <div className="flex w-panel shrink-0 flex-col border-r border-border">
         <div className="flex items-center justify-between px-4 py-3">
           <span className="font-medium">Inbox</span>
           <Badge variant="secondary">3</Badge>

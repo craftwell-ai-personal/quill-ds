@@ -282,7 +282,7 @@ export function AiPopover({
         } : popupRef}
         {...(anchored ? { id: popupId } : undefined)}
         finalFocus={anchored ? () => firstOnPage(returnFocus?.current, triggerRef.current, opener.current) ?? false : undefined}
-        className={cn('ai-wash w-96 max-w-[calc(100vw-2rem)] max-h-(--available-height) gap-0 overflow-hidden p-0 focus-visible:ring-3 focus-visible:ring-ring/50', className)}>
+        className={cn('ai-wash w-card max-w-[calc(100vw-2rem)] max-h-(--available-height) gap-0 overflow-hidden p-0 focus-visible:ring-3 focus-visible:ring-ring/50', className)}>
         <div className="flex shrink-0 items-center gap-2 px-3.5 pt-3 pb-1">
           <AiMark size={18} />
           {/* A paragraph, not the default h2: headings take the serif display preset. */}

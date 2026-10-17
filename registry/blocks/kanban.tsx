@@ -12,7 +12,7 @@ export function Kanban() {
   return (
     <div className="flex gap-4 text-foreground">
       {columns.map((col) => (
-        <div key={col.title} className="flex w-64 shrink-0 flex-col gap-3 rounded-xl bg-muted/50 p-3">
+        <div key={col.title} className="flex w-rail shrink-0 flex-col gap-3 rounded-xl bg-muted/50 p-3">
           <div className="flex items-center justify-between px-1">
             <span className="text-sm font-medium">{col.title}</span>
             <Badge variant="secondary">{col.cards.length}</Badge>

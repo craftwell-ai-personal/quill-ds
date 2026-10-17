@@ -16,7 +16,7 @@ import { Icon } from '@/components/ui/icon'
 /** A two-column checkout — payment method picker and card form beside an order summary sidebar. */
 export function Checkout() {
   return (
-    <div className="mx-auto grid w-full max-w-[820px] grid-cols-[1fr_300px] items-start gap-6 max-md:grid-cols-1">
+    <div className="mx-auto grid w-full max-w-page grid-cols-[1fr_var(--size-panel)] items-start gap-6 max-md:grid-cols-1">
       <Card>
         <CardHeader>
           <CardTitle>Payment</CardTitle>

@@ -38,13 +38,11 @@ test('rules 2–5 flag one of each violation in the fixture (static mode) and no
   const { findings, layout } = await check.runCheck({ cwd: here, dirs: [join(here, 'check/fixture')], tailwind: false })
   const r = byRule(findings.filter((f) => !f.allowed))
   assert.deepEqual((r.palette ?? []).map((f) => f.value).sort(), ['bg-white', 'font-serif', 'md:hover:bg-red-600', 'text-black', 'text-gray-500'])
-  assert.deepEqual((r.bracket ?? []).map((f) => f.value).sort(), ['bg-[#F5EDDD]', 'h-[24px]', 'rounded-[10px]', 'text-[13px]', 'text-[var(--accent-pigment-text)]', 'tracking-[0.15em]'])
+  assert.deepEqual((r.bracket ?? []).map((f) => f.value).sort(), ['bg-[#F5EDDD]', 'h-[24px]', 'max-w-[880px]', 'rounded-[10px]', 'text-[13px]', 'text-[var(--accent-pigment-text)]', 'tracking-[0.15em]', 'w-[420px]'])
   assert.deepEqual((r.retired ?? []).map((f) => f.value).sort(), ['text-indigo-brand', 'var(--text-strong)'])
   assert.deepEqual((r['raw-color'] ?? []).map((f) => f.value).sort(), ['rgb(245, 237, 221)'])
   assert.deepEqual((r['allow-without-reason'] ?? []).map((f) => f.value), ['palette'])
-  // widths with no Quill step are listed as size gaps; h-[24px] IS a step (h-6), so it is a finding
-  assert.deepEqual((r['size-gap'] ?? []).map((f) => f.value).sort(), ['max-w-[880px]', 'w-[420px]'])
-  assert.deepEqual(Object.keys(r).sort(), ['allow-without-reason', 'bracket', 'palette', 'raw-color', 'retired', 'size-gap'])
+  assert.deepEqual(Object.keys(r).sort(), ['allow-without-reason', 'bracket', 'palette', 'raw-color', 'retired'])
   assert.equal(layout, 0)
   const allowed = findings.filter((f) => f.allowed)
   assert.equal(allowed.length, 1)
@@ -71,11 +69,10 @@ test('fix text names the token or role an agent should write', async () => {
 const scaleRun = () => check.runCheck({ cwd: here, dirs: [join(here, 'check/fixture-scale')], tailwind: false })
 const valuesOf = (findings, rule, file) => findings.filter((f) => f.rule === rule && !f.allowed && (!file || f.file.endsWith(file))).map((f) => f.value).sort()
 
-test('rule 6: a Tailwind step or a bracket length outside Quill\'s scales is a finding; sizes are listed as gaps', async () => {
+test('rule 6: a Tailwind step or a bracket length outside Quill\'s scales is a finding, widths and heights included', async () => {
   const { findings, layout } = await scaleRun()
-  assert.deepEqual(valuesOf(findings, 'scale', 'scale.tsx'), ['-mt-13', 'border-5', 'p-13', 'p-3.25', 'rounded', 'text-6xl'])
-  assert.deepEqual(valuesOf(findings, 'bracket', 'scale.tsx'), ['border-[3px]', 'gap-[22px]', 'h-[24px]', 'mt-[-3px]', 'p-[13px]', 'p-[var(--space-4)]'])
-  assert.deepEqual(valuesOf(findings, 'size-gap', 'scale.tsx'), ['max-w-md', 'w-64', 'w-[317px]', 'width: 317'])
+  assert.deepEqual(valuesOf(findings, 'scale', 'scale.tsx'), ['-mt-13', 'border-5', 'max-w-md', 'max-w-prose', 'p-13', 'p-3.25', 'p-frame', 'rounded', 'text-6xl', 'w-64', 'w-frame'])
+  assert.deepEqual(valuesOf(findings, 'bracket', 'scale.tsx'), ['border-[3px]', 'gap-[22px]', 'h-[24px]', 'mt-[-3px]', 'p-[13px]', 'p-[var(--space-4)]', 'w-[317px]'])
   assert.equal(layout, 2, 'w-[calc(100%-2rem)] and h-[1lh] are not lengths a token could replace: counted')
   // the first line is all on-scale, and prose that looks like a class is not one
   assert.ok(!findings.some((f) => f.file.endsWith('scale.tsx') && f.line === 5), 'nothing on the on-scale line')
@@ -99,24 +96,31 @@ test('rule 6: the fix is the nearest Quill step, with its size', async () => {
   assert.match(fix('border-5'), /border-4 \(4px\), Quill's largest step/)
   assert.match(fix('text-6xl'), /text-4xl \(64px\), the nearest Quill size; text-6xl is Tailwind's own \(60px\)/)
   assert.match(fix('rounded'), /rounded-sm \(4px\)/)
-  assert.match(fix('w-64'), /no Quill size token yet/)
+  // widths and heights: the spacing steps, then the size steps named for their job
+  assert.match(fix('w-64'), /w-rail \(240px\) or w-panel \(288px\)/)
+  assert.match(fix('max-w-md'), /max-w-card-lg \(the same 448px\); max-w-md is Tailwind's own width scale \(448px\)/)
+  assert.match(fix('w-[317px]'), /w-panel \(288px\) or w-card-sm \(320px\)/)
+  assert.match(fix('max-w-prose'), /max-w-measure \(672px\)/)
+  // a height step is a height: not padding, not a width
+  assert.match(fix('p-frame'), /p-24 \(96px\): frame is a height \(560px, a whole-screen block/)
+  assert.match(fix('w-frame'), /w-card-xl \(the same 560px\): frame is a height step/)
 })
 
 test('rule 7: numbers typed into an inline style get the Quill variable', async () => {
   const { findings } = await scaleRun()
-  assert.deepEqual(valuesOf(findings, 'inline-style'), ["border: '3px solid var(--border)'", 'borderRadius: 7', "fontSize: '14px'", "margin: '8px 12px'", 'padding: 13'])
+  assert.deepEqual(valuesOf(findings, 'inline-style'), ["border: '3px solid var(--border)'", 'borderRadius: 7', "fontSize: '14px'", "margin: '8px 12px'", 'padding: 13', 'width: 317'])
   const fix = (v) => findings.find((f) => f.value === v)?.fix ?? ''
   assert.match(fix('padding: 13'), /13px → var\(--space-3\) \(12px, the nearest step\)/)
   assert.match(fix("margin: '8px 12px'"), /8px → var\(--space-2\), 12px → var\(--space-3\)$/)
   assert.match(fix('borderRadius: 7'), /var\(--radius-md\)/)
   assert.match(fix("border: '3px solid var(--border)'"), /3px → var\(--border-width-3\)$/)
+  assert.match(fix('width: 317'), /317px → var\(--size-card-sm\) \(320px, the nearest step\)/)
 })
 
 test('rule 7: an app stylesheet is read the same way; the theme file, variables and @theme are not', async () => {
   const { findings } = await scaleRun()
-  assert.deepEqual(valuesOf(findings, 'css-value', 'app.css'), ['border-radius: 7px', 'border: 2px solid var(--border)', 'font-size: 0.85rem', 'padding: 13px', 'padding: 2rem'])
+  assert.deepEqual(valuesOf(findings, 'css-value', 'app.css'), ['border-radius: 7px', 'border: 2px solid var(--border)', 'font-size: 0.85rem', 'padding: 13px', 'padding: 2rem', 'width: 317px'])
   assert.deepEqual(valuesOf(findings, 'scale', 'app.css'), ['p-13'], '@apply goes through the class rules')
-  assert.deepEqual(valuesOf(findings, 'size-gap', 'app.css'), ['width: 317px'])
   const fix = (v) => findings.find((f) => f.value === v)?.fix ?? ''
   assert.match(fix('font-size: 0.85rem'), /0\.85rem → var\(--text-sm\)$/)
   assert.match(fix('padding: 2rem'), /2rem → var\(--space-8\)$/)
@@ -170,7 +174,7 @@ test('CLI: text output groups by file with a fix per line, summary counts allows
   assert.equal(code, 1)
   assert.match(out, /^scripts\/check\/fixture\/fixture\.tsx$/m)
   assert.match(out, /^\s+\d+\s+bg-white\s+palette\s+→/m)
-  assert.match(out, /\d+ findings · 1 allowed · 2 size gaps \(no Quill token yet; listed, not failing\) · 0 layout sizes not checked/)
+  assert.match(out, /\d+ findings · 1 allowed · 0 layout sizes not checked/)
 })
 
 test('CLI: --json is machine-readable and exit 0 when every finding is allowed', () => {

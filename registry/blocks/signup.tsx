@@ -13,7 +13,7 @@ import { Button } from '@/components/ui/button'
 /** Standard account-creation card — name, email, password, and a link back to sign-in. */
 export function Signup() {
   return (
-    <Card className="w-[380px]">
+    <Card className="w-card">
       <CardHeader>
         <CardTitle>Create your account</CardTitle>
         <CardDescription>Start your 14-day free trial — no card required.</CardDescription>

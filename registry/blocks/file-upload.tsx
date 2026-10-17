@@ -20,7 +20,7 @@ const files = [
 /** An asset-upload card with a drag-and-drop dropzone and a progress-tracked upload queue. */
 export function FileUpload() {
   return (
-    <Card className="w-[440px]">
+    <Card className="w-card-lg">
       <CardHeader>
         <CardTitle>Upload assets</CardTitle>
         <CardDescription>SVG, PNG, PDF or ZIP — up to 25 MB each.</CardDescription>

@@ -13,7 +13,7 @@ import { Switch } from '@/components/ui/switch'
 /** A tabbed settings page with account, notifications, and security panels. */
 export function TabsPage() {
   return (
-    <div className="w-[560px]">
+    <div className="w-card-xl">
       <Tabs defaultValue="account">
         <TabsList>
           <TabsTrigger value="account">Account</TabsTrigger>
