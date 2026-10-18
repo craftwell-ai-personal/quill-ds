@@ -36,7 +36,7 @@ export function Pricing() {
           <CardContent className="flex flex-col gap-2">
             {p.features.map((f) => (
               <div key={f} className="flex items-center gap-2 text-sm text-foreground">
-                <Icon name="check" size={16} className="text-primary" />
+                <Icon name="check" className="size-icon-md text-primary" />
                 {f}
               </div>
             ))}

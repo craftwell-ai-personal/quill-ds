@@ -37,7 +37,7 @@ export const DoDont: Story = {
             Sign in
           </Button>
           <Button size="sm">
-            Get started <Icon name="arrow_forward" size={16} />
+            Get started <Icon name="arrow_forward" />
           </Button>
         </div>
       }
@@ -45,7 +45,7 @@ export const DoDont: Story = {
         <div className="flex items-center gap-2">
           <Button size="sm">Sign in</Button>
           <Button size="sm">
-            Get started <Icon name="arrow_forward" size={16} />
+            Get started <Icon name="arrow_forward" />
           </Button>
         </div>
       }

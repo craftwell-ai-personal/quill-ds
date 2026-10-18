@@ -114,7 +114,7 @@ export function QuestionCard({
     <div ref={cardRef} data-slot="question-card" role="group" aria-labelledby={`${baseId}-card-title`}
       className={cn('grid grid-cols-[minmax(0,1fr)] gap-2.5 rounded-xl border border-border bg-card px-4 py-3.5 text-sm shadow-sm', className)}>
       <div className="flex items-center gap-2">
-        <AiMark size={15} />
+        <AiMark size="icon-md" />
         <p id={`${baseId}-card-title`} className="min-w-0 flex-1 font-semibold break-words text-ink-soft">{title}</p>
       </div>
       <p id={`${baseId}-question`} className="font-semibold break-words text-foreground">{question}</p>

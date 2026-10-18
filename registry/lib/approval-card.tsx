@@ -100,7 +100,7 @@ export function ApprovalCard({
     <div ref={cardRef} data-slot="approval-card" role="group" aria-labelledby={titleId}
       className={cn('grid grid-cols-[minmax(0,1fr)] gap-2.5 rounded-xl border border-border bg-card px-4 py-3.5 text-sm shadow-sm', className)}>
       <div className="flex items-center gap-2">
-        <AiMark size={15} />
+        <AiMark size="icon-md" />
         <p id={titleId} className="min-w-0 flex-1 font-semibold break-words text-ink-soft">{title}</p>
       </div>
       {showTile ? (
@@ -144,7 +144,7 @@ export function ApprovalCard({
       )}
       {consequence && !decided ? (
         <p className="flex items-center gap-1.5 text-xs break-words text-muted-foreground">
-          <Icon name={destructive ? 'warning' : 'info'} size={14} />
+          <Icon name={destructive ? 'warning' : 'info'} className="size-icon-sm" />
           {consequence}
         </p>
       ) : null}

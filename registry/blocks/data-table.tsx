@@ -31,10 +31,10 @@ export function DataTable() {
           <Input placeholder="Filter members…" />
         </div>
         <Button variant="outline" size="sm" className="ml-auto">
-          <Icon name="filter_list" size={16} /> Filter
+          <Icon name="filter_list" /> Filter
         </Button>
         <Button size="sm">
-          <Icon name="add" size={16} /> Invite
+          <Icon name="add" /> Invite
         </Button>
       </div>
       <div className="overflow-hidden rounded-lg border border-border">
@@ -64,7 +64,7 @@ export function DataTable() {
                 </TableCell>
                 <TableCell>
                   <Button variant="ghost" size="icon" aria-label={`Actions for ${r.name}`}>
-                    <Icon name="more_horiz" size={18} />
+                    <Icon name="more_horiz" />
                   </Button>
                 </TableCell>
               </TableRow>

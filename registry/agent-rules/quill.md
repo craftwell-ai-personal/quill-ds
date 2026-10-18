@@ -87,6 +87,8 @@ Widths (px): w-chip 160 · w-menu 192 · w-chip-lg 224 · w-rail 240 · w-panel 
 
 Heights (px): h-touch 44 · h-bar 56 · h-area-sm 128 · h-area 224 · h-frame-sm 480 · h-frame 560 · h-frame-lg 640. What each is for: llms.txt, Sizes.
 
+Icons (px): `size-icon-` 3xs 8 · 2xs 10 · xs 12 · sm 14 · md 16 · lg 18 · xl 20 · 2xl 24 · 3xl 28; none = 1em; none in a Button, menu, Alert, Badge. `<AiMark size="icon-md" />`.
+
 #### Layout
 Side padding **48px** on desktop (`px-12`) and **24px** on mobile (`px-6`), vertical section rhythm **96px** (`py-24`; `py-12` on mobile).
 

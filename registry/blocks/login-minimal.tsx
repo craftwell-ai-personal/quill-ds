@@ -19,7 +19,7 @@ export function Minimal() {
         <Input id="min-email" type="email" placeholder="you@example.com" />
       </div>
       <Button className="w-full">
-        Continue <Icon name="arrow_forward" size={14} />
+        Continue <Icon name="arrow_forward" />
       </Button>
       <p className="text-center text-xs leading-relaxed text-muted-foreground">
         We&rsquo;ll email you a one-time code. No password needed.

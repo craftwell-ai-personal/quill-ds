@@ -37,10 +37,10 @@ export function PageHeader() {
         </div>
         <div className="flex gap-2">
           <Button variant="outline">
-            <Icon name="content_copy" size={16} /> Duplicate
+            <Icon name="content_copy" /> Duplicate
           </Button>
           <Button>
-            <Icon name="add" size={16} /> New
+            <Icon name="add" /> New
           </Button>
         </div>
       </div>

@@ -9,7 +9,7 @@ export function Newsletter() {
   return (
     <section className="flex w-card-xl flex-col items-center gap-4 rounded-xl bg-card p-10 text-center ring-1 ring-foreground/10">
       <span className="flex size-10 items-center justify-center rounded-full bg-muted text-muted-foreground">
-        <Icon name="mail" size={20} aria-hidden />
+        <Icon name="mail" className="size-icon-xl" aria-hidden />
       </span>
       <div className="flex flex-col gap-1">
         <h2 className="font-heading text-xl text-foreground">The Brief</h2>

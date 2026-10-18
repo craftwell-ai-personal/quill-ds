@@ -31,20 +31,20 @@ export const DoDont: Story = {
       doExample={
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Button>
-            Get started <Icon name="arrow_forward" size={18} />
+            Get started <Icon name="arrow_forward" />
           </Button>
           <Button variant="outline">
-            <Icon name="menu_book" size={18} /> Read the docs
+            <Icon name="menu_book" /> Read the docs
           </Button>
         </div>
       }
       dontExample={
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Button>
-            Get started <Icon name="arrow_forward" size={18} />
+            Get started <Icon name="arrow_forward" />
           </Button>
           <Button>
-            <Icon name="menu_book" size={18} /> Read the docs
+            <Icon name="menu_book" /> Read the docs
           </Button>
         </div>
       }

@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { readFileSync, existsSync } from 'node:fs'
+import { readFileSync, existsSync, readdirSync } from 'node:fs'
 import { renderCheck, checkData, CHECK_PATH } from './build-check.mjs'
 
 test('registry/check/quill-check.mjs is in sync with its sources (run `npm run build:check`)', () => {
@@ -200,6 +200,58 @@ test('CLI: --json arrives whole when the report is larger than a pipe buffer', (
   assert.ok(out.length > 65536, `the report should exceed the 64 KB pipe buffer, got ${out.length}`)
   const j = JSON.parse(out) // throws on a truncated report
   assert.equal(j.summary.findings, 1500)
+})
+
+// ---------------------------------------------------------------- rule 8: icon sizes
+test('rule 8: a typed or spacing size on an icon gets the icon step; inside a sizing part, no size', async () => {
+  const { findings } = await check.runCheck({ cwd: here, dirs: [join(here, 'check/fixture-icon')], tailwind: false })
+  const got = findings.map((f) => `${f.line} ${f.value} ${f.allowed ? 'allowed' : f.fix}`)
+  assert.deepEqual(got, [
+    '9 size={18} → className="size-icon-lg" (the same 18px)',
+    '10 size={15} → className="size-icon-sm" (14px) or className="size-icon-md" (16px)',
+    '11 size-4 → size-icon-md (the same 16px)',
+    '12 size={15} → size="icon-sm" (14px) or size="icon-md" (16px)',
+    '13 size-4 → size="icon-md" (the same 16px): the AI mark picks its drawing from its size prop',
+    '14 size={14} → no size: Button sets the size of the icons inside it',
+    // a closing tag right after text still closes the Button; `days <= 0` is not a tag
+    '17 size={20} → className="size-icon-xl" (the same 20px)',
+    // Badge sizes only a direct child svg
+    '18 size={12} → className="size-icon-xs" (the same 12px)',
+    '19 size={12} → no size: Badge sets the size of the icons inside it',
+    '20 size={18} → size="icon-lg" (the same 18px); inside CommandItem, take the size CommandItem gives its icons: it sets the size shown, the step picks the drawing',
+    '21 size-icon-2xl → no size: EmptyMedia sets the size of the icons inside it',
+    '25 size-icon-xl allowed',
+    '27 p-icon-md → p-4 (the same 16px): icon-md is an icon size, not a spacing step',
+  ])
+})
+
+test("rule 8's parts are the stock primitives that size their icons, read from their own svg rules", () => {
+  // Every `[&_svg…]:size-N` / `[&>svg…]:size-N` in src/components/ui, by the function or cva that holds it.
+  const ui = join(repoRoot, 'src/components/ui')
+  const any = new Set()
+  const child = new Set()
+  const variant = new Set()
+  for (const file of readdirSync(ui).filter((f) => f.endsWith('.tsx'))) {
+    const text = readFileSync(join(ui, file), 'utf8')
+    for (const chunk of text.split(/\n(?=function [A-Z]|const \w+ = cva)/)) {
+      const fn = chunk.match(/^function ([A-Z]\w*)/)?.[1]
+      const cva = chunk.match(/^const (\w+)Variants = cva/)?.[1]
+      const rules = [...chunk.matchAll(/(\[&_svg|\*:\[svg|\[&>svg)[^\s"]*\]:size-[\d.]+/g)].map((m) => m[1])
+      if (!rules.length) continue
+      const name = fn ?? cva.charAt(0).toUpperCase() + cva.slice(1)
+      // calendar and checkbox size the svg they draw themselves; no app places an icon there
+      if (['Calendar', 'Checkbox'].includes(name)) continue
+      // the media slots size icons only in their `icon` variant
+      if (/^(EmptyMedia|ItemMedia)$/.test(name)) { variant.add(name); continue }
+      const target = rules.includes('[&_svg') ? any : child
+      // cva names (`toggle`, `inputGroupAddon`, `sidebarMenuButton`) belong to these parts
+      const parts = { Toggle: ['Toggle', 'ToggleGroupItem'], InputGroupAddon: ['InputGroupAddon'], InputGroupButton: ['InputGroupButton'], SidebarMenuButton: ['SidebarMenuButton'], Badge: ['Badge'], Alert: ['Alert'], Button: ['Button'] }[name] ?? [name]
+      for (const p of parts) target.add(p)
+    }
+  }
+  assert.deepEqual([...check.SIZES_ANY].sort(), [...any].sort(), 'SIZES_ANY in quill-check.template.mjs')
+  assert.deepEqual([...check.SIZES_CHILD].sort(), [...child].sort(), 'SIZES_CHILD in quill-check.template.mjs')
+  assert.deepEqual([...check.SIZES_ICON_VARIANT].sort(), [...variant].sort(), 'SIZES_ICON_VARIANT in quill-check.template.mjs')
 })
 
 // ---------------------------------------------------------------- dogfood

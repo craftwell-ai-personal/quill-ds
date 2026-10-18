@@ -18,7 +18,7 @@ export const usage = {
     },
     {
       id: 'mark-keeps-its-gradient',
-      do: 'Let the mark draw its own gradient at every size; pass `size`, never a colour.',
+      do: 'Let the mark draw its own gradient at every size; pass `size` as a step of the icon scale (`size="icon-md"`, default `icon-lg`), never a colour. The step also picks the drawing: one star at `icon-md` and smaller, two above.',
       dont: 'Recolour the mark with a text colour or a single pigment — the gradient is what makes it read as AI.',
       visual: true,
     },

@@ -23,7 +23,7 @@ export function FeatureSection() {
         {features.map((f) => (
           <div key={f.title} className="flex flex-col gap-2">
             <div className="flex size-10 items-center justify-center rounded-lg bg-muted text-primary">
-              <Icon name={f.icon} size={22} />
+              <Icon name={f.icon} className="size-icon-2xl" />
             </div>
             <h3 className="text-lg font-medium">{f.title}</h3>
             <p className="text-sm text-muted-foreground">{f.body}</p>

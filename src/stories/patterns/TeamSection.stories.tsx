@@ -34,7 +34,7 @@ function TeamCard({ initials, name, showAction }: { initials: string; name: stri
         <span className="text-xs font-medium text-foreground">{name}</span>
         {showAction && (
           <Button variant="ghost" size="icon-xs" aria-label={`Email ${name}`}>
-            <Icon name="mail" size={14} />
+            <Icon name="mail" />
           </Button>
         )}
       </CardContent>

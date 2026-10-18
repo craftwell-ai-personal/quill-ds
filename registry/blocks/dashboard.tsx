@@ -31,7 +31,7 @@ export function Dashboard() {
               n.active ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
             }`}
           >
-            <Icon name={n.icon} size={18} />
+            <Icon name={n.icon} className="size-icon-lg" />
             {n.label}
           </button>
         ))}
@@ -42,7 +42,7 @@ export function Dashboard() {
             <Input placeholder="Search…" className="w-full" />
           </div>
           <Button variant="ghost" size="icon" aria-label="Notifications">
-            <Icon name="notifications" size={18} />
+            <Icon name="notifications" />
           </Button>
           <div className="flex size-8 items-center justify-center rounded-full bg-muted text-xs font-medium text-muted-foreground">
             AL
@@ -55,7 +55,7 @@ export function Dashboard() {
               <p className="text-sm text-muted-foreground">Welcome back, Ada.</p>
             </div>
             <Button>
-              <Icon name="add" size={16} /> New project
+              <Icon name="add" /> New project
             </Button>
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">

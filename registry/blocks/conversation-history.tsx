@@ -473,7 +473,7 @@ export function ConversationHistory({
                   {hasMenu ? (
                     <DropdownMenu onOpenChange={(open) => { if (open) handoff.current = undefined }}>
                       <DropdownMenuTrigger render={<Button type="button" variant="ghost" size="icon-xs" aria-label={`More for ${chat.title}`} className={MORE} />}>
-                        <Icon name="more_horiz" className="size-4" />
+                        <Icon name="more_horiz" className="size-icon-md" />
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end" sideOffset={MENU_GAP} alignOffset={-MENU_INSET} className="w-menu" finalFocus={finalFocus}>
                         {canRename ? <DropdownMenuItem onClick={() => startRename(chat)}><Icon name={MENU_ICON.rename.icon} />Rename</DropdownMenuItem> : null}

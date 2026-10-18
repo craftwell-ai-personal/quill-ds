@@ -284,7 +284,7 @@ export function AiPopover({
         finalFocus={anchored ? () => firstOnPage(returnFocus?.current, triggerRef.current, opener.current) ?? false : undefined}
         className={cn('ai-wash w-card max-w-[calc(100vw-2rem)] max-h-(--available-height) gap-0 overflow-hidden p-0 focus-visible:ring-3 focus-visible:ring-ring/50', className)}>
         <div className="flex shrink-0 items-center gap-2 px-3.5 pt-3 pb-1">
-          <AiMark size={18} />
+          <AiMark size="icon-lg" />
           {/* A paragraph, not the default h2: headings take the serif display preset. */}
           <PopoverTitle render={<p />} className="min-w-0 flex-1 text-sm font-semibold text-foreground">{title}</PopoverTitle>
         </div>

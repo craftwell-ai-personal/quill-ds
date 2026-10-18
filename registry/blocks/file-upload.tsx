@@ -30,7 +30,7 @@ export function FileUpload() {
           type="button"
           className="flex flex-col items-center gap-2 rounded-lg border border-dashed border-input bg-transparent px-6 py-10 text-center transition-colors hover:bg-muted focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
         >
-          <Icon name="cloud_upload" size={28} className="text-muted-foreground" aria-hidden />
+          <Icon name="cloud_upload" className="size-icon-3xl text-muted-foreground" aria-hidden />
           <span className="text-sm font-medium text-foreground">
             Drag files here or click to browse
           </span>
@@ -41,7 +41,7 @@ export function FileUpload() {
           {files.map((f) => (
             <li key={f.name} className="flex items-center gap-3">
               <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground">
-                <Icon name={f.state === 'done' ? 'check' : 'draft'} size={18} aria-hidden />
+                <Icon name={f.state === 'done' ? 'check' : 'draft'} className="size-icon-lg" aria-hidden />
               </span>
               <div className="flex min-w-0 flex-1 flex-col gap-1">
                 <div className="flex items-baseline justify-between gap-2">
@@ -53,7 +53,7 @@ export function FileUpload() {
                 )}
               </div>
               <Button variant="ghost" size="icon-sm" aria-label={`Remove ${f.name}`}>
-                <Icon name="close" size={16} />
+                <Icon name="close" />
               </Button>
             </li>
           ))}

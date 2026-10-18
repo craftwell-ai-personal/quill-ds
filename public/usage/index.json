@@ -42,7 +42,7 @@
       "name": "ai-mark",
       "kind": "component",
       "summary": "Quill's AI sparkle — the one icon that means AI, drawn in the AI gradient with a one-star cut for 16px and under.",
-      "hash": "8d65766e054d2e01d8271d9491756034a4a1ef6fbb0d0b8e5e92830dcb6964c9"
+      "hash": "1b6e7b738585e2c3c208613f16bb13a8fca510601e7e7b8fc9225c1f24ec833d"
     },
     {
       "name": "ai-message",
@@ -425,7 +425,7 @@
       "name": "icon",
       "kind": "component",
       "summary": "The Quill icon component — Material Symbols Outlined at weight 400, shipped as a self-contained core set of 98 names covering every icon the Quill blocks use.",
-      "hash": "4bfe5c59330dad8ea4821a5ac294033fbafd22c548ec4d5a05213c81f9ebaf3d"
+      "hash": "550df412747825a0278fc1651ee0c5bbe345046262e7fca1140ae99061340bd4"
     },
     {
       "name": "input",

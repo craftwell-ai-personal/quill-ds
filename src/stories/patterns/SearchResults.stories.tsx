@@ -38,7 +38,7 @@ export const DoDont: Story = {
             <li>
               <a href="#" className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-accent">
                 <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground">
-                  <Icon name="description" size={18} />
+                  <Icon name="description" className="size-icon-lg" />
                 </div>
                 <div className="flex flex-1 flex-col">
                   <span className="text-sm font-medium">Design tokens</span>
@@ -51,7 +51,7 @@ export const DoDont: Story = {
               <Separator />
               <a href="#" className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-accent">
                 <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground">
-                  <Icon name="description" size={18} />
+                  <Icon name="description" className="size-icon-lg" />
                 </div>
                 <div className="flex flex-1 flex-col">
                   <span className="text-sm font-medium">Button component</span>
@@ -70,7 +70,7 @@ export const DoDont: Story = {
             <li>
               <a href="#" className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-accent">
                 <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground">
-                  <Icon name="description" size={18} />
+                  <Icon name="description" className="size-icon-lg" />
                 </div>
                 <div className="flex flex-1 flex-col">
                   <span className="text-sm font-medium">Design tokens</span>
@@ -83,7 +83,7 @@ export const DoDont: Story = {
               <Separator />
               <a href="#" className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-accent">
                 <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground">
-                  <Icon name="description" size={18} />
+                  <Icon name="description" className="size-icon-lg" />
                 </div>
                 <div className="flex flex-1 flex-col">
                   <span className="text-sm font-medium">Button component</span>

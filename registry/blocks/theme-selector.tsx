@@ -131,7 +131,7 @@ export function ThemeSelector({
           <Button variant="outline" size="sm" aria-label={`Theme: ${active.label}`}>
             <ThemeGlyph icon={active.icon} />
             <span className="max-sm:hidden">{active.label}</span>
-            <Icon name="keyboard_arrow_down" size={14} className="text-muted-foreground" />
+            <Icon name="keyboard_arrow_down" className="text-muted-foreground" />
           </Button>
         }
       />

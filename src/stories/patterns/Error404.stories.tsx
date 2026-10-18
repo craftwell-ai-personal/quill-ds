@@ -43,7 +43,7 @@ export const DoDont: Story = {
           </div>
           <div className="flex gap-2">
             <Button variant="outline" size="sm">
-              <Icon name="arrow_forward" size={16} className="rotate-180" /> Go back
+              <Icon name="arrow_forward" className="rotate-180" /> Go back
             </Button>
             <Button size="sm">Take me home</Button>
           </div>

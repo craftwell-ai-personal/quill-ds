@@ -33,7 +33,7 @@ export function Wizard() {
                         : 'bg-muted text-muted-foreground'
                   }`}
                 >
-                  {state === 'done' ? <Icon name="check" size={14} /> : i + 1}
+                  {state === 'done' ? <Icon name="check" className="size-icon-sm" /> : i + 1}
                 </span>
                 <span className={`text-sm ${state === 'todo' ? 'text-muted-foreground' : 'text-foreground'}`}>
                   {s}
@@ -59,7 +59,7 @@ export function Wizard() {
       <CardFooter className="justify-between">
         <Button variant="ghost">Back</Button>
         <Button>
-          Continue <Icon name="arrow_forward" size={16} />
+          Continue <Icon name="arrow_forward" />
         </Button>
       </CardFooter>
     </Card>

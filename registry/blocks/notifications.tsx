@@ -25,7 +25,7 @@ export function Notifications() {
             {i > 0 && <Separator />}
             <div className="flex items-start gap-3 px-6 py-3">
               <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground">
-                <Icon name={it.icon} size={18} />
+                <Icon name={it.icon} className="size-icon-lg" />
               </div>
               <div className="flex flex-1 flex-col">
                 <span className="text-sm font-medium text-foreground">{it.title}</span>

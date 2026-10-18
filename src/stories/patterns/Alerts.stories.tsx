@@ -30,14 +30,14 @@ export const DoDont: Story = {
       id="severity-matches-consequence"
       doExample={
         <Alert variant="destructive">
-          <Icon name="warning" size={18} />
+          <Icon name="warning" />
           <AlertTitle>Payment failed</AlertTitle>
           <AlertDescription>We couldn’t process your card. Update your billing details.</AlertDescription>
         </Alert>
       }
       dontExample={
         <Alert variant="destructive">
-          <Icon name="info" size={18} />
+          <Icon name="info" />
           <AlertTitle>New course available</AlertTitle>
           <AlertDescription>Check out our latest workshop on typography fundamentals.</AlertDescription>
         </Alert>

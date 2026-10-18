@@ -20,7 +20,8 @@ const meta = {
   },
   argTypes: {
     name: { control: 'select', options: coreNames, description: 'A core-set name — the names that ship to apps' },
-    size: { control: 'number', description: 'Pixels; defaults to 1em so it follows the text' },
+    className: { control: 'select', options: ['', 'size-icon-xs', 'size-icon-sm', 'size-icon-md', 'size-icon-lg', 'size-icon-xl', 'size-icon-2xl', 'size-icon-3xl'], description: 'A step of the icon scale (`size-icon-md`); with none the icon is 1em and follows the text' },
+    size: { control: 'number', description: 'Pixels, off the icon scale: still works, and quill-check flags it' },
     'aria-label': { control: 'text', description: 'Set only when the icon stands alone; it becomes role="img"' },
   },
 } satisfies Meta<typeof Icon>
@@ -28,7 +29,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = { args: { name: 'check', size: 24 } }
+export const Default: Story = { args: { name: 'check', className: 'size-icon-2xl' } }
 
 export const InlineWithText: Story = {
   args: { name: 'check' },
@@ -39,7 +40,7 @@ export const InlineWithText: Story = {
   ),
 }
 
-export const Labelled: Story = { args: { name: 'search', size: 20, 'aria-label': 'Search' } }
+export const Labelled: Story = { args: { name: 'search', className: 'size-icon-xl', 'aria-label': 'Search' } }
 
 export const CoreSet: Story = {
   args: { name: 'check' },
@@ -48,7 +49,7 @@ export const CoreSet: Story = {
     <div className="grid grid-cols-4 gap-x-6 gap-y-5 sm:grid-cols-6 lg:grid-cols-8">
       {coreNames.map((name) => (
         <figure key={name} className="m-0 flex flex-col items-center gap-1.5 text-center">
-          <Icon name={name} size={22} />
+          <Icon name={name} className="size-icon-2xl" />
           {/* Break only after an underscore: break-all split names mid-word ("check_box_outline_b / lank"). */}
           <figcaption className="font-mono text-2xs text-muted-foreground break-words">
             {name.split('_').map((part, index) => (index ? <React.Fragment key={index}>_<wbr />{part}</React.Fragment> : part))}

@@ -53,7 +53,7 @@ export const DoDont: Story = {
           <CardFooter className="flex-col gap-2">
             <Button className="w-full">Send reset link</Button>
             <Button variant="ghost" className="w-full">
-              <Icon name="arrow_back" size={16} /> Back to sign in
+              <Icon name="arrow_back" /> Back to sign in
             </Button>
           </CardFooter>
         </Card>

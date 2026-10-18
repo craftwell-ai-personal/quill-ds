@@ -31,7 +31,7 @@ export const DoDont: Story = {
       doExample={
         <div className="flex w-[300px] items-start gap-3 rounded-xl bg-card ring-1 ring-foreground/10 p-4 text-foreground shadow-sm">
           <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground">
-            <Icon name="info" size={18} />
+            <Icon name="info" className="size-icon-lg" />
           </div>
           <div className="flex flex-col gap-3">
             <p className="text-sm text-muted-foreground">
@@ -49,7 +49,7 @@ export const DoDont: Story = {
       dontExample={
         <div className="flex w-[300px] items-start gap-3 rounded-xl bg-card ring-1 ring-foreground/10 p-4 text-foreground shadow-sm">
           <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground">
-            <Icon name="info" size={18} />
+            <Icon name="info" className="size-icon-lg" />
           </div>
           <div className="flex flex-col gap-3">
             <p className="text-sm text-muted-foreground">

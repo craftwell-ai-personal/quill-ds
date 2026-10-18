@@ -45,7 +45,7 @@ export function AiHome({
           onMic={onMic}
           leading={onAdd ? (
             <Button type="button" size="icon" variant="ghost" className="rounded-full border border-border" aria-label="Add files or context" onClick={onAdd}>
-              <Icon name="add" className="size-4" />
+              <Icon name="add" />
             </Button>
           ) : null}
           modes={[

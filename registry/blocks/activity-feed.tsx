@@ -63,7 +63,7 @@ export function ActivityFeed() {
                   <span className="font-medium text-foreground">{e.what}</span>
                 </p>
                 <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                  <Icon name={e.icon as never} size={12} aria-hidden /> {e.when}
+                  <Icon name={e.icon as never} className="size-icon-xs" aria-hidden /> {e.when}
                 </span>
               </div>
             </li>
