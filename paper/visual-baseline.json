@@ -225,7 +225,7 @@
    "text": true,
    "values": "5/5",
    "piece": "ai-feedback",
-   "at": "2026-10-07"
+   "at": "2026-10-20"
   },
   "components-aifeedback--default": {
    "diffPct": 0.98,
@@ -240,7 +240,7 @@
    "text": true,
    "values": "21/21",
    "piece": "ai-feedback",
-   "at": "2026-10-07"
+   "at": "2026-10-20"
   },
   "components-aifeedback--no-reasons": {
    "diffPct": 1.06,
@@ -255,22 +255,22 @@
    "text": true,
    "values": "21/21",
    "piece": "ai-feedback",
-   "at": "2026-10-07"
+   "at": "2026-10-20"
   },
   "components-aifeedback--under-the-answer": {
-   "diffPct": 0.88,
+   "diffPct": 2.14,
    "paper": [
     480,
-    90
+    91
    ],
    "storybook": [
     480,
-    91
+    92
    ],
    "text": true,
    "values": "21/21",
    "piece": "ai-feedback",
-   "at": "2026-10-07"
+   "at": "2026-10-20"
   },
   "components-aimark--default": {
    "diffPct": 0.08,
@@ -4368,19 +4368,19 @@
    "at": "2026-10-07"
   },
   "examples-marketing-page--marketing-page": {
-   "diffPct": 1.42,
+   "diffPct": 1.51,
    "paper": [
     1232,
-    2451
+    2426
    ],
    "storybook": [
     1232,
-    2440
+    2412
    ],
    "text": true,
    "values": "18/18",
    "piece": "example-marketing-page",
-   "at": "2026-10-07"
+   "at": "2026-10-20"
   },
   "patterns-ai-ai-chat--agent-pieces-in-one-thread": {
    "diffPct": 1.52,
