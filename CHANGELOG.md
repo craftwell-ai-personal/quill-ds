@@ -13,6 +13,11 @@ within a minute, and that release is what triggers `library-sync` into the apps;
 manual tag races the bot and can leave a tag with no release behind it. The homepage
 footer reads `package.json` directly, so the displayed version updates with the bump.
 
+## [1.31.2] — 2026-10-20
+
+### Changed
+- chore(deps): bump pixelmatch from 7.2.0 to 8.0.0
+
 ## [1.31.1] — 2026-10-20
 
 ### Changed
