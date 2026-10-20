@@ -54,7 +54,7 @@ export function ListDetail() {
           </div>
         </div>
         <Separator />
-        <div className="flex flex-col gap-4 overflow-auto p-6 text-sm leading-relaxed text-foreground">
+        <div className="flex flex-col gap-4 overflow-auto p-6 text-sm leading-reading text-foreground">
           <p>Hi Ada,</p>
           <p>
             Looks great — one note on timing: can we align the beta with the marketing push in week 6?

@@ -9,7 +9,7 @@ import { join, relative, resolve, dirname, extname } from 'node:path'
 import { createRequire } from 'node:module'
 
 export const DATA = {
- "version": "1.30.0",
+ "version": "1.31.0",
  "prefixes": [
   "bg",
   "text",
@@ -1059,7 +1059,21 @@ export const DATA = {
   "h-icon-2xl",
   "size-icon-3xl",
   "w-icon-3xl",
-  "h-icon-3xl"
+  "h-icon-3xl",
+  "duration-instant",
+  "duration-quick",
+  "duration-fast",
+  "duration-normal",
+  "duration-slow",
+  "ease-out",
+  "ease-soft",
+  "opacity-disabled",
+  "opacity-muted",
+  "z-base",
+  "z-above",
+  "z-raised",
+  "z-dropdown",
+  "z-overlay"
  ],
  "vars": {
   "--background": "background",
@@ -1266,14 +1280,50 @@ export const DATA = {
   ],
   "motion": {
    "duration": {
-    "--dur-fast": 200,
-    "--dur": 300,
-    "--dur-slow": 500
+    "instant": 100,
+    "quick": 150,
+    "fast": 200,
+    "normal": 300,
+    "slow": 500
    },
-   "ease": [
-    "--ease-out",
-    "--ease-soft"
-   ]
+   "ease": {
+    "out": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "soft": "cubic-bezier(0.22, 1, 0.36, 1)"
+   }
+  },
+  "opacity": {
+   "disabled": 50,
+   "muted": 80
+  },
+  "layer": {
+   "base": 0,
+   "above": 1,
+   "raised": 10,
+   "dropdown": 20,
+   "overlay": 50
+  },
+  "stock": {
+   "leading": {
+    "none": 1,
+    "tight": 1.25,
+    "snug": 1.375,
+    "normal": 1.5,
+    "relaxed": 1.625,
+    "loose": 2
+   },
+   "tracking": {
+    "tighter": -0.05,
+    "tight": -0.025,
+    "normal": 0,
+    "wide": 0.025,
+    "wider": 0.05,
+    "widest": 0.1
+   },
+   "ease": {
+    "in": "cubic-bezier(0.4, 0, 1, 1)",
+    "out": "cubic-bezier(0, 0, 0.2, 1)",
+    "in-out": "cubic-bezier(0.4, 0, 0.2, 1)"
+   }
   }
  },
  "retired": {
@@ -1575,8 +1625,10 @@ export function baseOf(token) {
 // (Before 1.28.0 they were never read at all, so `w-64` or `p-13` reached no rule.)
 const SIZE_NAME = (v) => v in DATA.tokens.size.width || v in DATA.tokens.size.height || v in DATA.tokens.size.icon
 const valueAfterDash = (re, base) => { const m = base.match(re); return !!m && (/^[\d[]/.test(m.at(-1)) || SIZE_WORD.test(m.at(-1)) || CONTAINER.test(m.at(-1)) || SIZE_NAME(m.at(-1))) }
+// z- and opacity- (1.31.0) likewise: a number, a bracket or a variable after the dash; the named ones are Quill classes.
+const LAYER_VALUE = /^(z|opacity)-(\d+(\.\d+)?|\[.+\]|\(--.+\))$/
 const looksLikeUtility = (base) => {
-  if (valueAfterDash(SPACE_RE, base) || valueAfterDash(SIZE_RE, base) || WIDTH_RE.test(base) || /^text-[6-9]xl$/.test(base)) return true
+  if (valueAfterDash(SPACE_RE, base) || valueAfterDash(SIZE_RE, base) || WIDTH_RE.test(base) || /^text-[6-9]xl$/.test(base) || LAYER_VALUE.test(base)) return true
   const m = base.match(/^([a-z]+)-[a-z0-9([]/)
   return !!m && (PREFIX_SET.has(m[1]) || QUILL.has(base) || /-\[.+\]$/.test(base))
 }
@@ -1649,7 +1701,7 @@ export function paletteRule(base) {
   return { rule: 'palette', fix }
 }
 
-const LAYOUT = new Set(['w', 'h', 'min', 'max', 'size', 'grid', 'inset', 'top', 'left', 'right', 'bottom', 'start', 'end', 'translate', 'p', 'px', 'py', 'pt', 'pr', 'pb', 'pl', 'ps', 'pe', 'm', 'mx', 'my', 'mt', 'mr', 'mb', 'ml', 'ms', 'me', 'gap', 'space', 'basis', 'col', 'row', 'aspect', 'z', 'order', 'flex', 'scroll', 'indent', 'columns', 'auto', 'content', 'origin', 'rotate', 'scale', 'skew', 'perspective', 'mask', 'clip', 'object', 'line', 'list', 'transition', 'delay', 'animate', 'will', 'backdrop', 'blur', 'brightness', 'contrast', 'opacity'])
+const LAYOUT = new Set(['w', 'h', 'min', 'max', 'size', 'grid', 'inset', 'top', 'left', 'right', 'bottom', 'start', 'end', 'translate', 'p', 'px', 'py', 'pt', 'pr', 'pb', 'pl', 'ps', 'pe', 'm', 'mx', 'my', 'mt', 'mr', 'mb', 'ml', 'ms', 'me', 'gap', 'space', 'basis', 'col', 'row', 'aspect', 'order', 'flex', 'scroll', 'indent', 'columns', 'auto', 'content', 'origin', 'rotate', 'scale', 'skew', 'perspective', 'mask', 'clip', 'object', 'line', 'list', 'transition', 'delay', 'animate', 'will', 'backdrop', 'blur', 'brightness', 'contrast'])
 const toPx = (v) => {
   const m = v.match(/^(-?[\d.]+)(px|rem|em)?$/)
   if (!m) return null
@@ -1658,13 +1710,11 @@ const toPx = (v) => {
 }
 const nearest = (table, n) => Object.entries(table).sort((a, b) => Math.abs(a[1] - n) - Math.abs(b[1] - n))[0]
 const scale = (util, table, unit) => Object.entries(table).map(([k, v]) => `${util}-${k} ${v}${unit}`).join(' · ')
-const motionFix = (kind) => kind === 'duration'
-  ? `→ ${Object.entries(DATA.tokens.motion.duration).map(([v, n]) => `duration-(${v}) ${n}ms`).join(' · ')}`
-  : `→ ${DATA.tokens.motion.ease.map((v) => `ease-(${v})`).join(' · ')}`
 
 // Rule 4: a bracket value where Quill has a token. Returns a finding, 'layout' (counted), or
 // null (not a bracket). Spacing, size and border-width brackets never reach it: rule 6 reads
-// those first. What is left on a layout prefix (`grid-cols-[…]`, `z-[5]`) has no token.
+// those first, and rule 9 reads motion, opacity and layers. What is left on a layout prefix
+// (`grid-cols-[…]`, `delay-[…]`) has no token.
 export function bracketRule(base) {
   const m = base.match(/^([a-z]+)((?:-[a-z]+)*)-\[(.+)\]$/)
   if (!m) return null
@@ -1702,8 +1752,6 @@ export function bracketRule(base) {
   }
   if (prefix === 'shadow') return { rule: 'bracket', fix: `→ one of ${DATA.tokens.shadow.map((s) => `shadow-${s}`).join(' · ')}` }
   if (prefix === 'font') return { rule: 'bracket', fix: inner.includes('family') ? '→ font-heading (Fraunces) or font-sans (Raleway) — the theme loads both' : '→ font-medium / font-semibold; Quill uses 400 / 500 / 600 only' }
-  if (prefix === 'duration') return { rule: 'bracket', fix: motionFix('duration') }
-  if (prefix === 'ease') return { rule: 'bracket', fix: motionFix('ease') }
   return 'layout'
 }
 
@@ -1808,6 +1856,94 @@ export function sizeRule(base, token = base) {
   }
   if ((m = base.match(/^rounded(-[tblrse]{1,2})?$/))) {
     return { rule: 'scale', fix: `→ ${base}-sm (${fmt(DATA.tokens.radius.sm)}): a bare ${base} is Tailwind's own step, the same size` }
+  }
+  return null
+}
+
+// Rule 9 (1.31.0): motion, Tailwind's own type steps, opacity and layers. Quill names each by
+// its job (`duration-fast`, `leading-reading`, `opacity-disabled`, `z-overlay`). The theme points
+// the stock numbers that equal a Quill step at it, so the stock parts read Quill without an edit,
+// but an agent writes the name: a number, a bracket or a stock step is a finding, the step its fix.
+const inMs = (n) => `${n}ms`
+const inPct = (n) => `${n}%`
+const asIs = (n) => String(n)
+const inEm = (n) => `${n}em`
+const curve = (v) => v.replace(/[\s_]/g, '')
+// The named step equal to n, or the named steps either side of it.
+const namedFix = (util, table, n, unit, sign = '') => {
+  const steps = Object.entries(table).sort((a, b) => a[1] - b[1])
+  const name = ([k, v]) => `${sign}${util}-${k} (${unit(v)})`
+  const same = steps.find(([, v]) => Math.abs(v - n) < 1e-6)
+  if (same) return `→ ${sign}${util}-${same[0]} (the same ${unit(same[1])})`
+  const below = steps.filter(([, v]) => v < n).at(-1)
+  const above = steps.find(([, v]) => v > n)
+  if (!above) return `→ ${name(below)}, Quill's largest step`
+  if (!below) return `→ ${name(above)}, Quill's smallest step`
+  return `→ ${name(below)} or ${name(above)}`
+}
+const allSteps = (util, table, unit) => `→ one of ${Object.entries(table).map(([k, v]) => `${util}-${k} ${unit(v)}`).join(' · ')}`
+// A reset is not a choice, like `p-0`: the type's own line height, or no added tracking.
+const TYPE_RESET = { leading: 'none', tracking: 'normal' }
+// Switches, not values: no transition, a constant speed, hidden or shown, the default stacking.
+const MOTION_WORD = /^(0|linear|initial)$/
+
+export function motionRule(base, token = base) {
+  const sign = /^!?-/.test(token.slice(token.lastIndexOf(':') + 1)) ? '-' : ''
+  const named = (v, table) => v in table || /^\(--.+\)$/.test(v)
+  const inner = (v) => v.match(/^\[(.+)\]$/)?.[1]
+  let m
+  if ((m = base.match(/^duration-(.+)$/))) {
+    const [, v] = m
+    const table = DATA.tokens.motion.duration
+    if (named(v, table) || MOTION_WORD.test(v)) return null
+    if (/^\d+$/.test(v)) return { rule: 'scale', fix: namedFix('duration', table, Number(v), inMs) }
+    const len = inner(v)?.match(/^([\d.]+)(ms|s)$/)
+    if (len) return { rule: 'bracket', fix: namedFix('duration', table, parseFloat(len[1]) * (len[2] === 's' ? 1000 : 1), inMs) }
+    return inner(v) ? { rule: 'bracket', fix: allSteps('duration', table, inMs) } : null
+  }
+  if ((m = base.match(/^ease-(.+)$/))) {
+    const [, v] = m
+    const quill = DATA.tokens.motion.ease
+    if (named(v, quill) || MOTION_WORD.test(v)) return null
+    const value = DATA.tokens.stock.ease[v] ?? inner(v)
+    if (!value) return null
+    const same = Object.entries(quill).find(([, c]) => curve(c) === curve(value))
+    const fix = same
+      ? `→ ease-${same[0]} (the same curve)`
+      : `→ ease-out (the house curve) or ease-soft (a soft landing); ${inner(v) ? 'this curve' : `ease-${v}`} is not one of Quill's`
+    return { rule: inner(v) ? 'bracket' : 'scale', fix }
+  }
+  if ((m = base.match(/^(leading|tracking)-([a-z]+)$/))) {
+    const [, util, v] = m
+    const stock = DATA.tokens.stock[util]
+    if (!(v in stock) || v in DATA.tokens[util] || TYPE_RESET[util] === v) return null
+    const n = stock[v]
+    const unit = util === 'leading' ? asIs : inEm
+    // tracking keeps its direction: wide text is never pointed at the tightened display step
+    const steps = Object.entries(DATA.tokens[util]).filter(([, q]) => util === 'leading' || Math.sign(q) === Math.sign(n))
+    const [k, q] = steps.sort((a, b) => Math.abs(a[1] - n) - Math.abs(b[1] - n))[0]
+    return { rule: 'scale', fix: Math.abs(q - n) < 1e-6 ? `→ ${util}-${k} (the same ${unit(q)})` : `→ ${util}-${k} (${unit(q)}), the nearest Quill step; ${base} is Tailwind's own (${unit(n)})` }
+  }
+  if ((m = base.match(/^opacity-(.+)$/))) {
+    const [, v] = m
+    const table = DATA.tokens.opacity
+    if (named(v, table) || /^(0|100)$/.test(v)) return null
+    if (/^\d+(\.\d+)?$/.test(v)) return { rule: 'scale', fix: namedFix('opacity', table, Number(v), inPct) }
+    const i = inner(v)
+    if (!i) return null
+    const n = i.endsWith('%') ? parseFloat(i) : Math.round(parseFloat(i) * 1000) / 10
+    if (Number.isNaN(n)) return { rule: 'bracket', fix: allSteps('opacity', table, inPct) }
+    if (n === 0 || n === 100) return { rule: 'bracket', fix: `→ opacity-${n}` }
+    return { rule: 'bracket', fix: namedFix('opacity', table, n, inPct) }
+  }
+  if ((m = base.match(/^z-(.+)$/))) {
+    const [, v] = m
+    const table = DATA.tokens.layer
+    if (named(v, table) || v === 'auto') return null
+    const i = inner(v)
+    const n = /^\d+$/.test(v) ? Number(v) : i && /^-?\d+$/.test(i) ? Number(i) : null
+    if (n === null) return i ? { rule: 'bracket', fix: allSteps('z', table, asIs) } : null
+    return { rule: i ? 'bracket' : 'scale', fix: namedFix('z', table, Math.abs(n), asIs, sign || (n < 0 ? '-' : '')) }
   }
   return null
 }
@@ -2078,8 +2214,8 @@ const lineIndex = (text) => {
   }
 }
 
-// One class token through rules 5, 2, 6 and 4, in that order: a finding, 'layout', or null.
-const classRule = (c) => retiredRule(c.base) ?? paletteRule(c.base) ?? sizeRule(c.base, c.token) ?? bracketRule(c.base)
+// One class token through rules 5, 2, 6, 9 and 4, in that order: a finding, 'layout', or null.
+const classRule = (c) => retiredRule(c.base) ?? paletteRule(c.base) ?? sizeRule(c.base, c.token) ?? motionRule(c.base, c.token) ?? bracketRule(c.base)
 
 // An allow on a finding's line, or above it, marks it allowed; an allow with no reason is a finding.
 function applyAllows(file, findings, allowsAt) {

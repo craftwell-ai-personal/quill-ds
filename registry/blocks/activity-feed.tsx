@@ -53,11 +53,11 @@ export function ActivityFeed() {
         <ol className="relative flex flex-col gap-5 before:absolute before:top-2 before:bottom-2 before:left-4 before:w-px before:bg-border">
           {events.map((e, i) => (
             <li key={i} className="relative flex items-start gap-3">
-              <Avatar className="relative z-1 ring-4 ring-card">
+              <Avatar className="relative z-above ring-4 ring-card">
                 <AvatarFallback>{e.who}</AvatarFallback>
               </Avatar>
               <div className="flex min-w-0 flex-1 flex-col gap-0.5 pt-1">
-                <p className="text-sm leading-snug">
+                <p className="text-sm leading-ui">
                   <span className="font-medium text-foreground">{e.name}</span>{' '}
                   <span className="text-muted-foreground">{e.action}</span>{' '}
                   <span className="font-medium text-foreground">{e.what}</span>

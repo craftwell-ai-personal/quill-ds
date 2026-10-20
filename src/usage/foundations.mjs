@@ -37,6 +37,10 @@ const TEXT_USE = {
 }
 
 const LEADING_USE = { display: 'hero and h1 lines', heading: 'h2–h6', ui: 'controls and dense UI text', reading: 'body and long-form copy' }
+const DURATION_USE = { quick: 'a bare `transition-*`' }
+const ms = (v) => `${Math.round(parseFloat(v) * 1000)}ms`
+const OPACITY_USE = { disabled: 'any disabled control', muted: 'secondary text on a coloured panel' }
+const LAYER_USE = { base: 'the page', above: 'over a sibling', raised: 'a focused or selected item over its neighbours, a sticky bar', dropdown: 'a menu opened inside a component', overlay: 'anything in a portal: popovers, menus, dialogs, sheets, tooltips, stacked in the order they open' }
 const TRACKING_USE = { display: 'Fraunces headings', label: 'small uppercase labels and badges', eyebrow: 'eyebrows above a headline' }
 
 export function renderTypeSection(t = tokens) {
@@ -65,10 +69,10 @@ export function renderTypeSection(t = tokens) {
   L.push('- A `text-*` class sets its line height with its size (the Line column, shipped as `--text-sm--line-height` and so on), so bare UI text needs no `leading-*`.')
   L.push(`- **Leading roles** — ${Object.entries(t.leading).map(([k, v]) => `\`leading-${k}\` ${v} (${LEADING_USE[k] ?? ''})`).join(' · ')}.`)
   L.push(`- **Tracking roles** — ${Object.entries(t.tracking).map(([k, v]) => `\`tracking-${k}\` ${v.replace('-', '−')} (${TRACKING_USE[k] ?? ''})`).join(' · ')}.`)
-  L.push('- Each role is a class and a variable (`leading-reading`, `--leading-reading`). They are named for the text they set: `leading-snug`, `tracking-tight` and `tracking-wide` are Tailwind\'s own and keep Tailwind\'s values, so never redefine them. `body` and `h1`–`h6` already carry their roles from the base layer.')
+  L.push('- Each role is a class and a variable (`leading-reading`, `--leading-reading`), named for the text it sets. Tailwind\'s own steps (`leading-snug`, `tracking-wide`…) are off the system; `leading-none` and `tracking-normal` are resets. `body` and `h1`–`h6` already carry their roles from the base layer.')
   L.push('- **Headings** — Fraunces at weight 400 (never heavy or bold), tight tracking; `h1` in `--fraunces-display`, every other heading and `font-heading` text in `--fraunces-text`.')
   L.push(`- **The one accent word** — italicize exactly one word per headline in the accent (\`--accent-pigment-text\`, ${DEFAULT_ACCENT} by default) with \`--fraunces-accent\`. Never two.`)
-  L.push('- **Body / UI** — Raleway 400/500/600; relaxed leading for reading copy.')
+  L.push('- **Body / UI** — Raleway 400/500/600; `leading-reading` for reading copy.')
   L.push('- **Eyebrows / labels** — Raleway, uppercase, `--text-xs`, `tracking-eyebrow`, `--ink-muted`; the accent variant carries a short leading dash.')
   L.push('- **Captions** — small Fraunces italic in `--ink-muted` with `--fraunces-caption`.')
   L.push('- Sentence case in prose and headings; uppercase only for eyebrows.')
@@ -112,7 +116,7 @@ export function renderSpacingSection(t = tokens, { compact = false } = {}) {
   return L.join('\n')
 }
 
-export function renderEffectsSection(t = tokens) {
+export function renderEffectsSection(t = tokens, { compact = false } = {}) {
   const L = []
   L.push('### Corner radii')
   L.push(Object.entries(t.radius).map(([k, v]) => `\`--radius-${k}\` ${px(v)}`).join(' · ') + `; \`--radius\` (${t.radiusBase}) is the shadcn base.`)
@@ -122,7 +126,19 @@ export function renderEffectsSection(t = tokens) {
   L.push('Shadows are ink-tinted, layered and re-cut per theme — never a hard black drop. `--shadow-xs` hairline lift · `--shadow-sm` low surfaces · `--shadow` raised popovers and menus · `--shadow-lg` dialogs · `--shadow-pop` the strongest lifted state. Cards sit flat on the paper with a hairline ring, no shadow.')
   L.push('')
   L.push('### Motion')
-  L.push(`House easing \`--ease-out\` (\`${t.motion.easeOut}\`); soft \`--ease-soft\` (\`${t.motion.easeSoft}\`). Durations \`--dur-fast\` ${t.motion.durFast} · \`--dur\` ${t.motion.dur} · \`--dur-slow\` ${t.motion.durSlow}. Lifts \`--lift\` (${t.motion.lift}) and \`--lift-sm\` (${t.motion.liftSm}) for hover on interactive surfaces; presses settle 1px down. Nothing bounces, nothing loops; respect \`prefers-reduced-motion\`.`)
+  if (compact) {
+    // The agent-rules cut: the names and values; what each is for lives in llms.txt, Effects.
+    L.push(`\`duration-\` ${Object.entries(t.duration).map(([k, key]) => `${k} ${ms(t.motion[key]).replace('ms', '')}`).join(' · ')} ms; \`ease-out\` (default) · \`ease-soft\`. Hover lifts \`--lift\` / \`--lift-sm\`; no bounce, no loops; respect \`prefers-reduced-motion\`.`)
+    L.push('')
+    L.push('### Opacity and layers')
+    L.push(`${Object.entries(t.opacity).map(([k, v]) => `\`opacity-${k}\` ${v}`).join(' · ')}. \`z-\` ${Object.entries(t.layer).map(([k, v]) => `${k} ${v}`).join(' · ')} (overlay: portals). Numbers, brackets: off the system.`)
+    return L.join('\n')
+  }
+  const durs = Object.entries(t.duration).map(([k, key]) => `\`duration-${k}\` ${ms(t.motion[key])}${DURATION_USE[k] ? ` (${DURATION_USE[k]})` : ''}`).join(' · ')
+  L.push(`Durations: ${durs}; variables \`--duration-*\` (\`--dur-*\` still works). Curves: \`ease-out\` (\`${t.motion.easeOut}\`, every transition\'s default) · \`ease-soft\` (\`${t.motion.easeSoft}\`, a soft landing). A number (\`duration-200\`) or a stock curve (\`ease-in-out\`) is off the system. Lifts \`--lift\` (${t.motion.lift}) and \`--lift-sm\` (${t.motion.liftSm}) for hover on interactive surfaces; presses settle 1px down. Nothing bounces, nothing loops; respect \`prefers-reduced-motion\`.`)
+  L.push('')
+  L.push('### Opacity and layers')
+  L.push(`${Object.entries(t.opacity).map(([k, v]) => `\`opacity-${k}\` ${v} (${OPACITY_USE[k]})`).join(' · ')}; \`opacity-0\` / \`opacity-100\` hide and show. Layers: ${Object.entries(t.layer).map(([k, v]) => `\`z-${k}\` ${v} (${LAYER_USE[k]})`).join(' · ')}. A number or bracket (\`z-50\`, \`opacity-[.6]\`) is off the system.`)
   return L.join('\n')
 }
 
@@ -135,7 +151,7 @@ export function renderFoundations(t = tokens, { compact = false } = {}) {
     renderSpacingSection(t, { compact }).replace(/^### /gm, '#### '),
     '',
     '### Effects',
-    renderEffectsSection(t).replace(/^### /gm, '#### '),
+    renderEffectsSection(t, { compact }).replace(/^### /gm, '#### '),
   ].join('\n')
 }
 

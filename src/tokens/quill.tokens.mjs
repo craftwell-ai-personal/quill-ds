@@ -246,9 +246,21 @@ export const tokens = {
   motion: {
     easeOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
     easeSoft: 'cubic-bezier(0.22, 1, 0.36, 1)',
-    durFast: '0.2s', dur: '0.3s', durSlow: '0.5s',
+    // instant and quick (1.31.0) are what the code already ran on: the stock popups open in
+    // 100ms, and every bare transition-* took Tailwind's 150ms default.
+    durInstant: '0.1s', durQuick: '0.15s', durFast: '0.2s', dur: '0.3s', durSlow: '0.5s',
     lift: 'translateY(-4px)', liftSm: 'translateY(-2px)',
   },
+  // The durations by name, for the duration-* utilities and the --duration-* aliases
+  // (`duration-fast`, `var(--duration-fast)`). Each names a motion key above, so --dur-*
+  // keeps working in apps that already use it.
+  duration: { instant: 'durInstant', quick: 'durQuick', fast: 'durFast', normal: 'dur', slow: 'durSlow' },
+  // Opacity, named for its job (1.31.0). 0 and 100 are show and hide, not a choice, and need no name.
+  opacity: { disabled: '50%', muted: '80%' },
+  // Stacking, by layer (1.31.0). The values are the ones the stock parts already use, so
+  // nothing changes what covers what: every popup, menu, dialog, sheet and tooltip shares
+  // overlay and stacks in the order it opened.
+  layer: { base: '0', above: '1', raised: '10', dropdown: '20', overlay: '50' },
   // WONK (the off-kilter glyph set) is ON by default in the font, so a preset that
   // does not name it gets WONK 1 — which is why text and caption set it to 0: the
   // docs reserve the off-kilter forms for the accent word. text pins no optical

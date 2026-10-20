@@ -214,7 +214,7 @@ export function PromptComposer({
     <div className={cn('grid gap-1.5', className)}>
       <div className="relative">
         {options.length ? (
-          <Command ref={menuRef} className={cn('absolute inset-x-0 z-20 h-auto rounded-xl border border-border shadow-lg', menuBelow ? 'top-full mt-2' : 'bottom-full mb-2')} data-side={menuBelow ? 'bottom' : 'top'} shouldFilter={false}
+          <Command ref={menuRef} className={cn('absolute inset-x-0 z-dropdown h-auto rounded-xl border border-border shadow-lg', menuBelow ? 'top-full mt-2' : 'bottom-full mb-2')} data-side={menuBelow ? 'bottom' : 'top'} shouldFilter={false}
             value={options[activeIndex]?.value} onMouseDown={(e) => e.preventDefault()} onValueChange={(v) => setActive(Math.max(0, options.findIndex((o) => o.value === v)))}>
             <CommandList>
               <CommandEmpty>No matches</CommandEmpty>
@@ -232,7 +232,7 @@ export function PromptComposer({
         ) : null}
         {showModes && modes?.length ? (
           // pl-6 (24px) = the box's 16px corner + the tab's 8px base curve, so the curve meets the box's straight edge.
-          <div role="tablist" aria-label="Mode" className="relative z-10 -mb-px flex gap-0.5 pl-6">
+          <div role="tablist" aria-label="Mode" className="relative z-raised -mb-px flex gap-0.5 pl-6">
             {modes.map((m) => {
               const selected = m.value === currentMode
               return (
@@ -251,10 +251,10 @@ export function PromptComposer({
                     // ring stays inside the tab and does not lay a bar across the box edge the tab joins.
                     'relative inline-flex items-center gap-1.5 rounded-t-lg px-3.5 pt-1.5 pb-2 text-sm font-semibold outline-hidden focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-ring/50',
                     // The selected tab shares the AI edge; the after: strip covers the box's top
-                    // edge under it so tab and box read as one shape (approved 2026-10-02). z-10 keeps its
+                    // edge under it so tab and box read as one shape (approved 2026-10-02). z-raised keeps its
                     // base curves above a neighbouring tab, which would otherwise paint over the right one.
                     selected
-                      ? 'z-10 ai-edge text-foreground after:absolute after:inset-x-0 after:-bottom-px after:h-0.5 after:bg-background'
+                      ? 'z-raised ai-edge text-foreground after:absolute after:inset-x-0 after:-bottom-px after:h-0.5 after:bg-background'
                       // Unselected tabs keep a subtle muted fill and a hairline outline so they still
                       // read as tabs (the fill alone vanishes on the dark themes), and stop 1px short
                       // so the box's gradient edge runs in front of them; only the selected tab joins the box.
@@ -287,7 +287,7 @@ export function PromptComposer({
               // The margin rule and border replace the AI edge; focus-within stands in for the textarea's cancelled ring.
               ? 'relative overflow-hidden rounded-l-sm rounded-r-xl border border-input bg-background focus-within:border-ring focus-within:ring-2 focus-within:ring-ring/40'
               : cn('rounded-xl', working ? 'ai-edge-working' : 'ai-edge'),
-            disabled && 'cursor-not-allowed opacity-60',
+            disabled && 'cursor-not-allowed opacity-disabled',
           )}
         >
           {notebook ? <span aria-hidden className="absolute inset-y-0 left-0 w-1 bg-[linear-gradient(180deg,var(--ai-from),var(--ai-via),var(--ai-to))]" /> : null}

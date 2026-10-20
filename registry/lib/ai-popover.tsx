@@ -303,7 +303,7 @@ export function AiPopover({
           ) : ready ? (
             // The divider line, not the control line: the tile is read-only content, told apart from the popover by
             // its fill. The control line is kept for things people press or type in.
-            <div data-slot="suggestion" className="rounded-lg border border-border bg-background px-3 py-2 text-sm leading-relaxed [overflow-wrap:anywhere] text-foreground">{suggestion}</div>
+            <div data-slot="suggestion" className="rounded-lg border border-border bg-background px-3 py-2 text-sm leading-reading [overflow-wrap:anywhere] text-foreground">{suggestion}</div>
           ) : null}
         </div>
         <div className="flex shrink-0 flex-wrap items-center gap-1.5 px-3.5 pt-2.5 pb-3.5">

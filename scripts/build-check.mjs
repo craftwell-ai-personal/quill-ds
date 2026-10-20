@@ -10,7 +10,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { tokens } from '../src/tokens/quill.tokens.mjs'
-import { renderCss } from './build-tokens.mjs'
+import { renderCss, TAILWIND_STEPS } from './build-tokens.mjs'
 import { ROLE_INTENTS, STATUS_INTENTS } from '../src/usage/roles.mjs'
 import { SIZE_JOBS } from '../src/usage/sizes.mjs'
 import { isMain } from './lib/is-main.mjs'
@@ -58,8 +58,9 @@ export function checkData(t = tokens) {
   const sizes = names('text-')
   const radii = names('radius-')
   const shadows = names('shadow-')
-  const leadings = names('leading-')
-  const trackings = names('tracking-')
+  // Quill's own steps only: the theme also carries the stock names it redirects (`leading-normal`).
+  const leadings = names('leading-').filter((k) => k in t.leading)
+  const trackings = names('tracking-').filter((k) => k in t.tracking)
   const quillClasses = [
     ...colours.flatMap((c) => COLOR_PREFIXES.map((p) => `${p}-${c}`)),
     ...fonts.map((f) => `font-${f}`),
@@ -71,6 +72,10 @@ export function checkData(t = tokens) {
     ...Object.keys(t.size.width).flatMap((k) => ['w', 'max-w', 'min-w', 'basis'].map((p) => `${p}-${k}`)),
     ...Object.keys(t.size.height).flatMap((k) => ['h', 'max-h', 'min-h', 'size'].map((p) => `${p}-${k}`)),
     ...Object.keys(t.size.icon).flatMap((k) => ['size', 'w', 'h'].map((p) => `${p}-${k}`)),
+    ...Object.keys(t.duration).map((k) => `duration-${k}`),
+    'ease-out', 'ease-soft',
+    ...Object.keys(t.opacity).map((k) => `opacity-${k}`),
+    ...Object.keys(t.layer).map((k) => `z-${k}`),
   ]
   // `--color-X: var(--Y)` → a bracketed `text-[var(--Y)]` already has the utility `text-X`.
   const vars = Object.fromEntries(
@@ -87,11 +92,10 @@ export function checkData(t = tokens) {
   }
   const swatches = Object.fromEntries(colours.map((c) => [c, resolveHex(c)]).filter(([, h]) => h))
   const roles = Object.fromEntries(Object.entries({ ...ROLE_INTENTS, ...STATUS_INTENTS }).map(([k, v]) => [k, firstSentence(v.use)]))
-  // Motion ships as variables only (no duration-*/ease-* utilities), so the fix for a
-  // bracketed value is Tailwind's variable shorthand: duration-(--dur-fast).
+  // Motion by utility name since 1.31.0 (`duration-fast`, `ease-soft`), in ms and as curves.
   const motion = {
-    duration: Object.fromEntries(Object.entries(t.motion).filter(([k]) => k.startsWith('dur')).map(([k, v]) => [`--${k === 'dur' ? 'dur' : k.replace(/^dur/, 'dur-').toLowerCase()}`, ms(v)])),
-    ease: Object.keys(t.motion).filter((k) => k.startsWith('ease')).map((k) => `--${k.replace(/^ease/, 'ease-').toLowerCase()}`),
+    duration: Object.fromEntries(Object.entries(t.duration).map(([k, key]) => [k, ms(t.motion[key])])),
+    ease: { out: t.motion.easeOut, soft: t.motion.easeSoft },
   }
   return {
     version: JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).version,
@@ -111,6 +115,10 @@ export function checkData(t = tokens) {
       leading: Object.fromEntries(Object.entries(t.leading).map(([k, v]) => [k, parseFloat(v)])),
       shadow: shadows,
       motion,
+      opacity: Object.fromEntries(Object.entries(t.opacity).map(([k, v]) => [k, parseFloat(v)])),
+      layer: Object.fromEntries(Object.entries(t.layer).map(([k, v]) => [k, Number(v)])),
+      // Tailwind's own named steps, so `leading-relaxed` can be pointed at the nearest Quill one
+      stock: { leading: TAILWIND_STEPS.leading, tracking: TAILWIND_STEPS.tracking, ease: TAILWIND_STEPS.ease },
     },
     retired: {
       classes: RETIRED_CLASSES,

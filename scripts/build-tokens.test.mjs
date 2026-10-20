@@ -2,7 +2,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { transform } from 'lightningcss'
 import { readFileSync } from 'node:fs'
-import { renderCss, injectMarkers, cssVarName, registryBlock, registryPayload, renderManager, darkVariant, MODES, renderAiUtilities, AI_UTILITIES, AI_RULES, FORCED_COLORS_RULES, renderForcedColors } from './build-tokens.mjs'
+import { renderCss, injectMarkers, cssVarName, registryBlock, registryPayload, renderManager, darkVariant, MODES, renderAiUtilities, AI_UTILITIES, AI_RULES, FORCED_COLORS_RULES, renderForcedColors, stockRedirects, TAILWIND_STEPS } from './build-tokens.mjs'
 import { tokens } from '../src/tokens/quill.tokens.mjs'
 import { renderPrinciples } from '../src/usage/foundations.mjs'
 
@@ -187,14 +187,58 @@ test('every type size ships the line height its utility renders', () => {
 test('the leading and tracking roles ship as utilities and as variables', () => {
   const { theme, root } = renderCss(tokens)
   for (const [k, v] of Object.entries(tokens.leading)) {
-    assert.match(theme, new RegExp(`--leading-${k}:\\s*${v.replace('.', '\\.')};`), `leading-${k} utility`)
+    assert.match(theme, new RegExp(`--leading-${k}:\\s*var\\(--leading-${k}\\);`), `leading-${k} reads the Quill variable`)
     // In :root too: `@theme inline` never emits a variable, and the base layer reads these.
     assert.match(root, new RegExp(`--leading-${k}:\\s*${v.replace('.', '\\.')};`), `--leading-${k} variable`)
   }
   for (const [k, v] of Object.entries(tokens.tracking)) {
-    assert.match(theme, new RegExp(`--tracking-${k}:\\s*${v.replace('.', '\\.')};`), `tracking-${k} utility`)
+    assert.match(theme, new RegExp(`--tracking-${k}:\\s*var\\(--tracking-${k}\\);`), `tracking-${k} reads the Quill variable`)
     assert.match(root, new RegExp(`--tracking-${k}:\\s*${v.replace('.', '\\.')};`), `--tracking-${k} variable`)
   }
+})
+
+test('motion, opacity and layers ship as named utilities that read Quill variables', () => {
+  const { theme, root } = renderCss(tokens)
+  const line = (block, name) => block.match(new RegExp(`^\\s*--${name}:\\s*(.+);$`, 'm'))?.[1]
+  for (const [k, key] of Object.entries(tokens.duration)) {
+    assert.ok(key in tokens.motion, `duration ${k} names a motion key`)
+    assert.equal(line(theme, `transition-duration-${k}`), `var(--duration-${k})`, `duration-${k}`)
+    assert.match(line(root, `duration-${k}`), /^var\(--dur(-[a-z]+)?\)$/, `--duration-${k} aliases a --dur-* variable`)
+  }
+  for (const k of Object.keys(tokens.opacity)) assert.equal(line(theme, `opacity-${k}`), `var(--opacity-${k})`)
+  for (const [k, v] of Object.entries(tokens.layer)) {
+    assert.equal(line(theme, `z-index-${k}`), `var(--z-index-${k})`)
+    assert.equal(line(root, `z-index-${k}`), v)
+  }
+  // A bare transition-* ran on Tailwind's 150ms and its curve before 1.31.0; it still does, by name.
+  assert.equal(line(theme, 'default-transition-duration'), 'var(--duration-quick)')
+  assert.equal(tokens.motion[tokens.duration.quick], '0.15s')
+  assert.equal(line(theme, 'default-transition-timing-function'), 'var(--ease-out)')
+  assert.equal(tokens.motion.easeOut, TAILWIND_STEPS.ease['in-out'], "Tailwind's default curve is Quill's ease-out")
+})
+
+test('a stock name is redirected only to a Quill step of exactly its value', () => {
+  // The stock parts are never edited, so their `opacity-50` and `z-50` read Quill through
+  // these. A redirect to a different value would change how the parts look, silently.
+  const redirects = stockRedirects(tokens)
+  const ms = (v) => parseFloat(v) * 1000
+  const valueOf = (quill) => {
+    let m
+    if ((m = quill.match(/^duration-(.+)$/))) return ms(tokens.motion[tokens.duration[m[1]]])
+    if ((m = quill.match(/^opacity-(.+)$/))) return parseFloat(tokens.opacity[m[1]])
+    if ((m = quill.match(/^z-index-(.+)$/))) return Number(tokens.layer[m[1]])
+    if ((m = quill.match(/^leading-(.+)$/))) return parseFloat(tokens.leading[m[1]])
+    if ((m = quill.match(/^tracking-(.+)$/))) return parseFloat(tokens.tracking[m[1]])
+    if (quill === 'ease-out') return tokens.motion.easeOut
+  }
+  const stockValue = (stock) => {
+    let m
+    if ((m = stock.match(/^(?:transition-duration|opacity|z-index)-(\d+)$/))) return Number(m[1])
+    if ((m = stock.match(/^(leading|tracking|ease)-(.+)$/))) return TAILWIND_STEPS[m[1]][m[2]]
+  }
+  for (const [stock, quill] of Object.entries(redirects)) assert.equal(stockValue(stock), valueOf(quill), `${stock} → ${quill}`)
+  // and the ones the stock parts lean on are there
+  for (const k of ['transition-duration-100', 'transition-duration-150', 'opacity-50', 'z-index-50', 'z-index-10', 'leading-normal', 'tracking-widest', 'ease-in-out']) assert.ok(k in redirects, k)
 })
 
 test('a leading or tracking role never reuses one of Tailwind\'s own names', () => {

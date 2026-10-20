@@ -13,6 +13,28 @@ within a minute, and that release is what triggers `library-sync` into the apps;
 manual tag races the bot and can leave a tag with no release behind it. The homepage
 footer reads `package.json` directly, so the displayed version updates with the bump.
 
+## [1.31.0] — 2026-10-19
+
+### Added
+- **Motion, opacity and layers are named utilities, and every value reads a Quill token.** Until now no class or block used Quill's motion variables: every transition ran on Tailwind's 150ms default and its raw curve.
+  - **Durations:** `duration-instant` 100ms · `duration-quick` 150ms · `duration-fast` 200ms · `duration-normal` 300ms · `duration-slow` 500ms. Each compiles to `var(--duration-*)`, a new alias of `--dur-*`. `--dur-fast`, `--dur` and `--dur-slow` keep working, and `--dur-instant` and `--dur-quick` are new: they are what the code already ran on, so no timing changes. A bare `transition-*` now reads `--duration-quick` and `--ease-out`, the same 150ms and the same curve as before.
+  - **Curves:** `ease-out` (the house curve) and `ease-soft`, both reading Quill's variables.
+  - **Opacity:** `opacity-disabled` 50% · `opacity-muted` 80%.
+  - **Layers:** `z-base` 0 · `z-above` 1 · `z-raised` 10 · `z-dropdown` 20 · `z-overlay` 50. The values are the ones the stock parts use, so nothing changes what covers what; every popup, menu, dialog, sheet and tooltip shares `overlay` and stacks in the order it opened.
+  - **The stock parts read them with no edit.** A stock name whose value equals a Quill step points at it: `opacity-50` → `var(--opacity-disabled)`, `z-50` → `var(--z-index-overlay)`, `duration-100` → `var(--duration-instant)`, `leading-normal` → `var(--leading-ui)`, `tracking-widest` → `var(--tracking-label)`, `ease-in-out` → `var(--ease-out)`. A test holds every redirect to an exactly equal value.
+  - The leading and tracking roles now compile to their variables (`leading-reading` → `var(--leading-reading)`), not the bare number.
+- **`quill-check` rule 9.** A number, a bracket or one of Tailwind's own steps is a finding, with the Quill name as the fix:
+  - `duration-200 → duration-fast (the same 200ms)` and `ease-in-out → ease-out (the same curve)`.
+  - `leading-relaxed → leading-reading (1.7), the nearest Quill step`.
+  - `opacity-50 → opacity-disabled` and `z-50 → z-overlay`.
+  - Switches pass: `duration-0`, `ease-linear`, `opacity-0` / `opacity-100` and `z-auto`, plus the type resets `leading-none` and `tracking-normal`.
+
+### Changed
+- **Quill's own blocks use Quill's leading steps.** 9 `leading-relaxed` (1.625) moved to `leading-reading` (1.7), so body copy gains about 1px per line. Of the 3 `leading-snug` (1.375), the activity feed's rows moved to `leading-ui` (1.5), and the two pull quotes (the testimonial and the login split panel) to `leading-heading` (1.2), the step for display type.
+- **The prompt composer's disabled state is `opacity-disabled` (50%),** like every other disabled control; it was 60%.
+- The composer's z-indexes, the activity feed's avatar and the login split panel's attribution line moved to the named steps at the same values; nothing changes on screen. The Do/Don't stories' copies of the blocks moved with them.
+- The agent rules carry motion, opacity and layers as one line each; what each is for is in llms.txt, Effects.
+
 ## [1.30.0] — 2026-10-19
 
 ### Added

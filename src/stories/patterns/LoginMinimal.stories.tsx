@@ -49,7 +49,7 @@ export const MinimalDoDont: Story = {
         <div className="relative isolate flex h-[320px] w-[320px] items-center justify-center overflow-hidden rounded-md">
           <div
             aria-hidden
-            className="absolute inset-0 -z-10 grid grid-cols-5 grid-rows-5 gap-1 p-1"
+            className="absolute inset-0 -z-raised grid grid-cols-5 grid-rows-5 gap-1 p-1"
           >
             {Array.from({ length: 25 }).map((_, i) => (
               <div

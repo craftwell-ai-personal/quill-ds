@@ -21,8 +21,13 @@ test('the inlined data carries every table the rules read', () => {
   assert.ok(d.roles.card.length > 20 && d.roles.card.length <= 110)
   assert.deepEqual(d.palette.bg.white, ['background', 'card'])
   assert.match(d.swatches.background, /^#[0-9A-F]{6}$/)
-  assert.deepEqual(d.tokens.motion.ease, ['--ease-out', '--ease-soft'])
-  assert.equal(d.tokens.motion.duration['--dur-fast'], 200)
+  assert.deepEqual(Object.keys(d.tokens.motion.ease), ['out', 'soft'])
+  assert.deepEqual(d.tokens.motion.duration, { instant: 100, quick: 150, fast: 200, normal: 300, slow: 500 })
+  assert.deepEqual(d.tokens.opacity, { disabled: 50, muted: 80 })
+  assert.deepEqual(d.tokens.layer, { base: 0, above: 1, raised: 10, dropdown: 20, overlay: 50 })
+  // the stock names the theme redirects (leading-normal → leading-ui) are not Quill's own classes
+  assert.ok(d.quillClasses.includes('leading-ui') && !d.quillClasses.includes('leading-normal'))
+  for (const c of ['duration-fast', 'ease-soft', 'opacity-disabled', 'z-overlay']) assert.ok(d.quillClasses.includes(c), c)
 })
 
 // ---------------------------------------------------------------- the checker itself
@@ -222,6 +227,31 @@ test('rule 8: a typed or spacing size on an icon gets the icon step; inside a si
     '21 size-icon-2xl → no size: EmptyMedia sets the size of the icons inside it',
     '25 size-icon-xl allowed',
     '27 p-icon-md → p-4 (the same 16px): icon-md is an icon size, not a spacing step',
+  ])
+})
+
+test('rule 9: a number, a bracket or a stock step for motion, type, opacity or layers gets the Quill name', async () => {
+  const { findings } = await check.runCheck({ cwd: here, dirs: [join(here, 'check/fixture-motion')], tailwind: false })
+  const got = findings.map((f) => `${f.line} ${f.value} ${f.allowed ? 'allowed' : f.fix}`)
+  assert.deepEqual(got, [
+    '7 duration-200 → duration-fast (the same 200ms)',
+    '7 duration-250 → duration-fast (200ms) or duration-normal (300ms)',
+    '7 duration-[0.35s] → duration-normal (300ms) or duration-slow (500ms)',
+    '7 ease-in-out → ease-out (the same curve)',
+    "7 ease-in → ease-out (the house curve) or ease-soft (a soft landing); ease-in is not one of Quill's",
+    '7 ease-[cubic-bezier(0.22,1,0.36,1)] → ease-soft (the same curve)',
+    "8 leading-relaxed → leading-reading (1.7), the nearest Quill step; leading-relaxed is Tailwind's own (1.625)",
+    '8 leading-normal → leading-ui (the same 1.5)',
+    // wide text is pointed at a wide step, never at the tightened display one
+    "8 tracking-wide → tracking-label (0.1em), the nearest Quill step; tracking-wide is Tailwind's own (0.025em)",
+    '8 tracking-widest → tracking-label (the same 0.1em)',
+    '9 opacity-50 → opacity-disabled (the same 50%)',
+    '9 disabled:opacity-60 → opacity-disabled (50%) or opacity-muted (80%)',
+    "9 opacity-[0.07] → opacity-disabled (50%), Quill's smallest step",
+    '9 z-50 → z-overlay (the same 50)',
+    '9 -z-10 → -z-raised (the same 10)',
+    '9 z-[5] → z-above (1) or z-raised (10)',
+    '12 duration-700 allowed',
   ])
 })
 

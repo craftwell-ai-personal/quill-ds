@@ -21,7 +21,7 @@ export function Minimal() {
       <Button className="w-full">
         Continue <Icon name="arrow_forward" />
       </Button>
-      <p className="text-center text-xs leading-relaxed text-muted-foreground">
+      <p className="text-center text-xs leading-reading text-muted-foreground">
         We&rsquo;ll email you a one-time code. No password needed.
       </p>
     </form>

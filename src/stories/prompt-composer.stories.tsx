@@ -147,7 +147,7 @@ export const Disabled: Story = {
     await expect(getComputedStyle(textbox).backgroundColor).toBe('rgba(0, 0, 0, 0)')
     await expect(getComputedStyle(textbox).opacity).toBe('1')
     const box = textbox.closest('[data-slot="prompt-composer"]') as HTMLElement
-    await expect(getComputedStyle(box).opacity).toBe('0.6')
+    await expect(getComputedStyle(box).opacity).toBe('0.5') // opacity-disabled, like every disabled control (1.31.0)
   },
 }
 
