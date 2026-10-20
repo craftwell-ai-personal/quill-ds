@@ -13,7 +13,7 @@ within a minute, and that release is what triggers `library-sync` into the apps;
 manual tag races the bot and can leave a tag with no release behind it. The homepage
 footer reads `package.json` directly, so the displayed version updates with the bump.
 
-## [1.30.0] — 2026-10-17
+## [1.30.0] — 2026-10-19
 
 ### Added
 - **An icon scale, the same as Mantis's.** Nine steps, named for their size: `icon-3xs` 8 · `icon-2xs` 10 · `icon-xs` 12 · `icon-sm` 14 · `icon-md` 16 · `icon-lg` 18 · `icon-xl` 20 · `icon-2xl` 24 · `icon-3xl` 28. An icon takes one as a class, `<Icon name="info" className="size-icon-lg" />`, which compiles to `var(--size-icon-lg)`; with no class it stays `1em` and follows the text beside it. The values live in `tokens.size.icon`, and each step's job in `src/usage/sizes.mjs`.
@@ -26,6 +26,13 @@ footer reads `package.json` directly, so the displayed version updates with the 
 
 ### Not changed
 - `<Icon size={16}>` still works, so apps that pass numbers keep rendering; `quill-check` flags them in each app's own check. Removing number support would be a breaking change, kept for a later major version.
+
+## [1.29.1] — 2026-10-19
+
+### Changed
+- chore(deps): bump the storybook group across 1 directory with 7 updates
+- chore(deps): bump the react group across 1 directory with 2 updates
+- chore(deps): bump the next group with 2 updates
 
 ## [1.29.0] — 2026-10-17
 
