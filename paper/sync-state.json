@@ -685,14 +685,14 @@
         "src/usage/ai-feedback.usage.mjs"
       ],
       "sourceHash": "61e1390eb1cd44bb",
-      "syncedAt": "2026-10-12",
+      "syncedAt": "2026-10-20",
       "counts": {
         "stories": 4,
         "nodes": 49,
         "approximated": 6,
-        "bound": 165,
+        "bound": 170,
         "bindable": 170,
-        "bindingRate": 0.971
+        "bindingRate": 1
       },
       "notes": [],
       "lost": [
@@ -705,17 +705,17 @@
           "opened": "none",
           "nodes": 16,
           "approximated": 1,
-          "bound": 70,
+          "bound": 72,
           "bindable": 72,
           "parts": [
             {
               "part": "main",
-              "nodeId": "45CX-0",
+              "nodeId": "4WB0-0",
               "size": [
                 480,
                 208
               ],
-              "htmlHash": "3d473698a0db8964"
+              "htmlHash": "e6636fd2277dcf81"
             }
           ]
         },
@@ -730,7 +730,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "45DQ-0",
+              "nodeId": "4WBT-0",
               "size": [
                 480,
                 20
@@ -745,17 +745,17 @@
           "opened": "none",
           "nodes": 12,
           "approximated": 1,
-          "bound": 52,
+          "bound": 54,
           "bindable": 54,
           "parts": [
             {
               "part": "main",
-              "nodeId": "45E4-0",
+              "nodeId": "4WC7-0",
               "size": [
                 480,
                 166
               ],
-              "htmlHash": "7ba554cc1a0c9bed"
+              "htmlHash": "f19c205b6c3c8b3d"
             }
           ]
         },
@@ -765,17 +765,17 @@
           "opened": "none",
           "nodes": 17,
           "approximated": 2,
-          "bound": 31,
+          "bound": 32,
           "bindable": 32,
           "parts": [
             {
               "part": "main",
-              "nodeId": "45ER-0",
+              "nodeId": "4WCU-0",
               "size": [
                 480,
-                90.08
+                91.11
               ],
-              "htmlHash": "de9b81abef888f0c"
+              "htmlHash": "215886606931996d"
             }
           ]
         }
@@ -11507,14 +11507,14 @@
         "src/usage/examples.mjs"
       ],
       "sourceHash": "c685f9ca553326d1",
-      "syncedAt": "2026-10-17",
+      "syncedAt": "2026-10-20",
       "counts": {
         "stories": 1,
         "nodes": 176,
         "approximated": 4,
-        "bound": 595,
+        "bound": 596,
         "bindable": 601,
-        "bindingRate": 0.99
+        "bindingRate": 0.992
       },
       "notes": [],
       "lost": [
@@ -11527,17 +11527,17 @@
           "opened": "none",
           "nodes": 176,
           "approximated": 4,
-          "bound": 595,
+          "bound": 596,
           "bindable": 601,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4QS5-0",
+              "nodeId": "4WDV-0",
               "size": [
                 1232,
-                2439.94
+                2411.89
               ],
-              "htmlHash": "da2e5476b72f3007"
+              "htmlHash": "45773bd3eae868ad"
             }
           ]
         }
