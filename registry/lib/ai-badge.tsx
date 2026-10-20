@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 export function AiBadge({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
     <Badge variant="outline" className={cn('gap-1 border-input bg-background text-ink-soft', className)}>
-      <AiMark size={13} />
+      <AiMark size="icon-xs" />
       {children}
     </Badge>
   )

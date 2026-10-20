@@ -13,6 +13,20 @@ within a minute, and that release is what triggers `library-sync` into the apps;
 manual tag races the bot and can leave a tag with no release behind it. The homepage
 footer reads `package.json` directly, so the displayed version updates with the bump.
 
+## [1.30.0] — 2026-10-19
+
+### Added
+- **An icon scale, the same as Mantis's.** Nine steps, named for their size: `icon-3xs` 8 · `icon-2xs` 10 · `icon-xs` 12 · `icon-sm` 14 · `icon-md` 16 · `icon-lg` 18 · `icon-xl` 20 · `icon-2xl` 24 · `icon-3xl` 28. An icon takes one as a class, `<Icon name="info" className="size-icon-lg" />`, which compiles to `var(--size-icon-lg)`; with no class it stays `1em` and follows the text beside it. The values live in `tokens.size.icon`, and each step's job in `src/usage/sizes.mjs`.
+- **`<AiMark size="icon-md" />`.** The AI mark takes the step as a prop, because it picks its drawing from its size (one star at `icon-md` and under, two above). Its default is `icon-lg` (18px, as before). A number still works.
+- **`quill-check` rule 8, icon sizes.** A typed size on an icon (`size={18}`) or a spacing class (`size-4`) is a finding, with the icon step as the fix (`→ className="size-icon-lg"`). An icon sized inside a part that sizes its icons (a Button, a menu item, a select, a tab, an Alert, a Badge…) is a finding too: `→ no size: Button sets the size of the icons inside it`. The parts are read from the stock primitives' own rules, and a test re-derives the list. An icon step used as padding (`p-icon-md`) is an off-scale finding.
+
+### Changed
+- **Quill's own icons are on the scale.** Of the 79 icon sizes typed as numbers, 43 sat inside a part that sets the size anyway (23 of them never showed), so they are gone; nothing changes on screen. Of the 36 that decide a size, 27 were already on a step and 9 move by 2px or less: four 13px icons to 12, four AI marks in card and message headers 15 → 16, the feature-section icons 22 → 24. The AI mark in the composer's command list keeps its 16px but now draws its one-star cut (it was typed 18, so it drew two stars, shrunk to 16). Seven icons sized with spacing classes moved to the icon classes; the composer's mic keeps its larger 20px glyph as `size-icon-xl`, with a written exception. The Do/Don't stories' copies of the blocks moved with them.
+- The Icon guide's sizing rule now teaches the icon scale (`size-from-the-icon-scale`, replacing `size-with-the-prop`), and a new rule, `no-size-inside-a-part`, says to leave an icon's size to the part it sits in.
+
+### Not changed
+- `<Icon size={16}>` still works, so apps that pass numbers keep rendering; `quill-check` flags them in each app's own check. Removing number support would be a breaking change, kept for a later major version.
+
 ## [1.29.1] — 2026-10-19
 
 ### Changed

@@ -16,10 +16,10 @@ export function AnnouncementBanner() {
         </div>
         <div className="flex shrink-0 items-center gap-1">
           <Button variant="link" size="sm">
-            Read it <Icon name="arrow_forward" size={14} />
+            Read it <Icon name="arrow_forward" />
           </Button>
           <Button variant="ghost" size="icon-sm" aria-label="Dismiss announcement">
-            <Icon name="close" size={16} />
+            <Icon name="close" />
           </Button>
         </div>
       </div>
@@ -39,7 +39,7 @@ export function AnnouncementBanner() {
             aria-label="Dismiss workshop banner"
             className="text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
           >
-            <Icon name="close" size={16} />
+            <Icon name="close" />
           </Button>
         </div>
       </div>

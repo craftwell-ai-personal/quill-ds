@@ -25,7 +25,7 @@ function FeatureTile({ icon, title }: { icon: 'palette' | 'dashboard' | 'check_c
   return (
     <div className="flex flex-col items-center gap-1 text-center">
       <div className="flex size-8 items-center justify-center rounded-lg bg-muted text-primary">
-        <Icon name={icon} size={18} />
+        <Icon name={icon} className="size-icon-lg" />
       </div>
       <span className="text-xs font-medium">{title}</span>
     </div>

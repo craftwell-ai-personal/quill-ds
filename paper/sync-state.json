@@ -18,10 +18,10 @@
       "radius": 9
     },
     "payloadHash": "4b86f69e238c44ac",
-    "sourceHash": "559138ebe66aa32c",
+    "sourceHash": "77f988712fd28959",
     "theme": "light",
-    "notRepresentable": 96,
-    "syncedAt": "2026-10-17"
+    "notRepresentable": 114,
+    "syncedAt": "2026-10-18"
   },
   "foundations": {
     "page": "Foundations",
@@ -29,7 +29,7 @@
     "artboardId": "21M-0",
     "sections": 8,
     "htmlHash": "49cd2d4103c3b552",
-    "syncedAt": "2026-10-17"
+    "syncedAt": "2026-10-18"
   },
   "pages": {
     "Foundations": "p-1-0",
@@ -400,8 +400,8 @@
         "src/stories/agent-steps.stories.tsx",
         "src/usage/agent-steps.usage.mjs"
       ],
-      "sourceHash": "bf04840e38eaca9f",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "33277e29a1c7936b",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 4,
         "nodes": 111,
@@ -424,12 +424,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4PP5-0",
+              "nodeId": "4R9F-0",
               "size": [
                 448,
                 224.44
               ],
-              "htmlHash": "4ba559d85e4eb7a5"
+              "htmlHash": "43b8741468de614c"
             }
           ]
         },
@@ -444,12 +444,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4PR4-0",
+              "nodeId": "4RBE-0",
               "size": [
                 448,
                 90.81
               ],
-              "htmlHash": "be6c05c5bf71c65b"
+              "htmlHash": "d12634f49d50fbc4"
             }
           ]
         },
@@ -464,12 +464,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4PRX-0",
+              "nodeId": "4RC7-0",
               "size": [
                 448,
                 90.81
               ],
-              "htmlHash": "c58d633382557f8c"
+              "htmlHash": "0a85deef8fe60233"
             }
           ]
         },
@@ -484,12 +484,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4PSN-0",
+              "nodeId": "4RCX-0",
               "size": [
                 448,
                 124.22
               ],
-              "htmlHash": "7159a31197f2e70b"
+              "htmlHash": "b22717f6f8fc9e8b"
             }
           ]
         }
@@ -508,8 +508,8 @@
         "src/stories/ai-badge.stories.tsx",
         "src/usage/ai-badge.usage.mjs"
       ],
-      "sourceHash": "24a0fff831c8882c",
-      "syncedAt": "2026-10-12",
+      "sourceHash": "95b0096bb0c3c053",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 3,
         "nodes": 12,
@@ -532,7 +532,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "45A0-0",
+              "nodeId": "4RE5-0",
               "size": [
                 75.13,
                 20
@@ -552,7 +552,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "45AB-0",
+              "nodeId": "4REG-0",
               "size": [
                 95.23,
                 20
@@ -572,7 +572,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "45AM-0",
+              "nodeId": "4RER-0",
               "size": [
                 182.17,
                 20
@@ -596,8 +596,8 @@
         "src/stories/ai-button.stories.tsx",
         "src/usage/ai-button.usage.mjs"
       ],
-      "sourceHash": "0fcb99b15348246a",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "f0e2ca249612d5e9",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 3,
         "nodes": 21,
@@ -620,7 +620,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4K8C-0",
+              "nodeId": "4RFA-0",
               "size": [
                 84.83,
                 32
@@ -640,7 +640,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4K8O-0",
+              "nodeId": "4RFM-0",
               "size": [
                 117.8,
                 32
@@ -660,7 +660,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4K90-0",
+              "nodeId": "4RFY-0",
               "size": [
                 534.86,
                 36
@@ -794,14 +794,14 @@
         "src/stories/ai-mark.stories.tsx",
         "src/usage/ai-mark.usage.mjs"
       ],
-      "sourceHash": "2274d9f43d347024",
-      "syncedAt": "2026-10-12",
+      "sourceHash": "b1ebc2c6da4bcc65",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 2,
-        "nodes": 8,
+        "nodes": 7,
         "approximated": 0,
-        "bound": 8,
-        "bindable": 8,
+        "bound": 7,
+        "bindable": 7,
         "bindingRate": 1
       },
       "notes": [],
@@ -818,7 +818,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "45FS-0",
+              "nodeId": "4RH2-0",
               "size": [
                 18,
                 18
@@ -831,19 +831,19 @@
           "id": "components-aimark--sizes",
           "title": "Sizes",
           "opened": "none",
-          "nodes": 7,
+          "nodes": 6,
           "approximated": 0,
-          "bound": 7,
-          "bindable": 7,
+          "bound": 6,
+          "bindable": 6,
           "parts": [
             {
               "part": "main",
-              "nodeId": "45G2-0",
+              "nodeId": "4RHC-0",
               "size": [
-                231,
-                48
+                162,
+                28
               ],
-              "htmlHash": "097277eca646481e"
+              "htmlHash": "95ac5e1f044903cb"
             }
           ]
         }
@@ -862,8 +862,8 @@
         "src/stories/ai-message.stories.tsx",
         "src/usage/ai-message.usage.mjs"
       ],
-      "sourceHash": "6842925803ba7021",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "84469c23b9a895cb",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 7,
         "nodes": 101,
@@ -886,12 +886,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4KA4-0",
+              "nodeId": "4RI5-0",
               "size": [
                 576,
                 165.56
               ],
-              "htmlHash": "daafb197290d4437"
+              "htmlHash": "6efbba8cc6451557"
             }
           ]
         },
@@ -906,12 +906,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4KB6-0",
+              "nodeId": "4RJ7-0",
               "size": [
                 576,
                 137.56
               ],
-              "htmlHash": "38332a33b40bbc67"
+              "htmlHash": "4c91f48fd9ebe70f"
             }
           ]
         },
@@ -926,12 +926,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4KC1-0",
+              "nodeId": "4RK2-0",
               "size": [
                 576,
                 85.72
               ],
-              "htmlHash": "ed05246f4601c988"
+              "htmlHash": "f1d0bfca5344daf6"
             }
           ]
         },
@@ -946,12 +946,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4KCR-0",
+              "nodeId": "4RKS-0",
               "size": [
                 576,
                 63.41
               ],
-              "htmlHash": "db25ae40f0214363"
+              "htmlHash": "4834d519907343e9"
             }
           ]
         },
@@ -966,12 +966,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4KDG-0",
+              "nodeId": "4RLH-0",
               "size": [
                 576,
                 112.08
               ],
-              "htmlHash": "457f885735592c34"
+              "htmlHash": "dce646b8653e8578"
             }
           ]
         },
@@ -986,12 +986,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4KE8-0",
+              "nodeId": "4RM9-0",
               "size": [
                 576,
                 50
               ],
-              "htmlHash": "f3ed150eeef58029"
+              "htmlHash": "4d396f94a13a3062"
             }
           ]
         },
@@ -1006,12 +1006,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4KEU-0",
+              "nodeId": "4RMV-0",
               "size": [
                 576,
                 81.11
               ],
-              "htmlHash": "8ff7df6e6388d12d"
+              "htmlHash": "0855e2b6087fd02e"
             }
           ]
         }
@@ -1098,8 +1098,8 @@
         "src/stories/ai-popover.stories.tsx",
         "src/usage/ai-popover.usage.mjs"
       ],
-      "sourceHash": "ea4a824006bec786",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "ba7e5c3efb75f829",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 3,
         "nodes": 67,
@@ -1124,7 +1124,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4KFQ-0",
+              "nodeId": "4RNR-0",
               "size": [
                 416,
                 66.23
@@ -1133,7 +1133,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "4KG9-0",
+              "nodeId": "4ROA-0",
               "size": [
                 384,
                 181.64
@@ -1153,7 +1153,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4KH1-0",
+              "nodeId": "4RP2-0",
               "size": [
                 416,
                 66.23
@@ -1162,7 +1162,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "4KHK-0",
+              "nodeId": "4RPL-0",
               "size": [
                 384,
                 97.41
@@ -1182,7 +1182,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4KIA-0",
+              "nodeId": "4RQB-0",
               "size": [
                 416,
                 32
@@ -1191,7 +1191,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "4KIM-0",
+              "nodeId": "4RQN-0",
               "size": [
                 384,
                 181.64
@@ -1215,15 +1215,15 @@
         "src/stories/ai-thinking.stories.tsx",
         "src/usage/ai-thinking.usage.mjs"
       ],
-      "sourceHash": "299332cfa0effbce",
-      "syncedAt": "2026-10-12",
+      "sourceHash": "93582ca9c8cfa644",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 3,
         "nodes": 19,
         "approximated": 1,
-        "bound": 53,
+        "bound": 54,
         "bindable": 54,
-        "bindingRate": 0.981
+        "bindingRate": 1
       },
       "notes": [],
       "lost": [],
@@ -1239,7 +1239,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "45QY-0",
+              "nodeId": "4RRH-0",
               "size": [
                 320,
                 47.41
@@ -1254,17 +1254,17 @@
           "opened": "none",
           "nodes": 9,
           "approximated": 1,
-          "bound": 27,
+          "bound": 28,
           "bindable": 28,
           "parts": [
             {
               "part": "main",
-              "nodeId": "45RG-0",
+              "nodeId": "4RRZ-0",
               "size": [
                 320,
                 95.41
               ],
-              "htmlHash": "9b9e125361328c89"
+              "htmlHash": "f6f451e316d78896"
             }
           ]
         },
@@ -1279,7 +1279,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "45RZ-0",
+              "nodeId": "4RSI-0",
               "size": [
                 320,
                 19.41
@@ -1549,15 +1549,15 @@
         "src/stories/approval-card.stories.tsx",
         "src/usage/approval-card.usage.mjs"
       ],
-      "sourceHash": "4480c8ffe48c332f",
-      "syncedAt": "2026-10-12",
+      "sourceHash": "1a4cb21ffe435cfa",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 3,
         "nodes": 70,
         "approximated": 0,
-        "bound": 226,
+        "bound": 232,
         "bindable": 232,
-        "bindingRate": 0.974
+        "bindingRate": 1
       },
       "notes": [],
       "lost": [
@@ -1570,17 +1570,17 @@
           "opened": "none",
           "nodes": 29,
           "approximated": 0,
-          "bound": 96,
+          "bound": 98,
           "bindable": 98,
           "parts": [
             {
               "part": "main",
-              "nodeId": "45Y5-0",
+              "nodeId": "4RSY-0",
               "size": [
                 480,
                 256.44
               ],
-              "htmlHash": "34bf2af37bdc95fe"
+              "htmlHash": "d6674ab8402c8b54"
             }
           ]
         },
@@ -1590,17 +1590,17 @@
           "opened": "none",
           "nodes": 15,
           "approximated": 0,
-          "bound": 49,
+          "bound": 51,
           "bindable": 51,
           "parts": [
             {
               "part": "main",
-              "nodeId": "45ZD-0",
+              "nodeId": "4RU6-0",
               "size": [
                 480,
                 117.41
               ],
-              "htmlHash": "25f55663fb488159"
+              "htmlHash": "56b7a0a64c32be13"
             }
           ]
         },
@@ -1610,17 +1610,17 @@
           "opened": "none",
           "nodes": 26,
           "approximated": 0,
-          "bound": 81,
+          "bound": 83,
           "bindable": 83,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4605-0",
+              "nodeId": "4RUY-0",
               "size": [
                 480,
                 256.44
               ],
-              "htmlHash": "da31a7d0aaabe33d"
+              "htmlHash": "36e3326fba939b66"
             }
           ]
         }
@@ -3053,8 +3053,8 @@
         "src/stories/citations.stories.tsx",
         "src/usage/citations.usage.mjs"
       ],
-      "sourceHash": "225d98f57a912039",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "8e36c1c3ecd3fa30",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 4,
         "nodes": 82,
@@ -3077,7 +3077,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4KJG-0",
+              "nodeId": "4RW7-0",
               "size": [
                 544,
                 107.36
@@ -3097,7 +3097,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4KKF-0",
+              "nodeId": "4RX6-0",
               "size": [
                 544,
                 204.22
@@ -3117,7 +3117,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4KLY-0",
+              "nodeId": "4RYP-0",
               "size": [
                 544,
                 97.41
@@ -3137,7 +3137,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4KMP-0",
+              "nodeId": "4RZG-0",
               "size": [
                 544,
                 20.45
@@ -4133,8 +4133,8 @@
         "src/stories/icon.stories.tsx",
         "src/usage/icon.usage.mjs"
       ],
-      "sourceHash": "fe3a928b80aeb411",
-      "syncedAt": "2026-10-12",
+      "sourceHash": "bbcb99e3bc018eb9",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 4,
         "nodes": 489,
@@ -4157,7 +4157,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "48VG-0",
+              "nodeId": "4S02-0",
               "size": [
                 24,
                 24
@@ -4177,7 +4177,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "48VP-0",
+              "nodeId": "4S0B-0",
               "size": [
                 145.67,
                 19.41
@@ -4197,7 +4197,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "48W2-0",
+              "nodeId": "4S0O-0",
               "size": [
                 20,
                 20
@@ -4217,12 +4217,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "48WB-0",
+              "nodeId": "4S0X-0",
               "size": [
                 1200,
-                908.5
+                934.5
               ],
-              "htmlHash": "d89966d1e6c657a1"
+              "htmlHash": "d838f0b9447c94b4"
             }
           ]
         }
@@ -5168,8 +5168,8 @@
         "src/stories/model-picker.stories.tsx",
         "src/usage/model-picker.usage.mjs"
       ],
-      "sourceHash": "e0cd165607d40891",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "00862a760af1e1c3",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 2,
         "nodes": 46,
@@ -5195,7 +5195,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4KNE-0",
+              "nodeId": "4SKS-0",
               "size": [
                 544,
                 84
@@ -5204,7 +5204,7 @@
             },
             {
               "part": "panel-1",
-              "nodeId": "4KO5-0",
+              "nodeId": "4SLJ-0",
               "size": [
                 288,
                 249
@@ -5224,7 +5224,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4KPD-0",
+              "nodeId": "4SMR-0",
               "size": [
                 96.64,
                 28
@@ -5808,8 +5808,8 @@
         "src/stories/prompt-composer.stories.tsx",
         "src/usage/prompt-composer.usage.mjs"
       ],
-      "sourceHash": "4ea6f86adee66544",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "65bf480526a0f1fc",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 10,
         "nodes": 149,
@@ -5834,7 +5834,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4PTV-0",
+              "nodeId": "4SN7-0",
               "size": [
                 576,
                 108
@@ -5854,7 +5854,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4PUM-0",
+              "nodeId": "4SNY-0",
               "size": [
                 576,
                 84
@@ -5874,7 +5874,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4PVD-0",
+              "nodeId": "4SOP-0",
               "size": [
                 576,
                 108
@@ -5894,7 +5894,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4PW4-0",
+              "nodeId": "4SPG-0",
               "size": [
                 576,
                 108
@@ -5914,7 +5914,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4PWV-0",
+              "nodeId": "4SQ7-0",
               "size": [
                 576,
                 133.41
@@ -5934,7 +5934,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4PXL-0",
+              "nodeId": "4SQX-0",
               "size": [
                 576,
                 108
@@ -5954,12 +5954,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4PYB-0",
+              "nodeId": "4SRN-0",
               "size": [
                 576,
                 166
               ],
-              "htmlHash": "d851fc120764b734"
+              "htmlHash": "6eaa78ca215daa66"
             }
           ]
         },
@@ -5974,7 +5974,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4PZT-0",
+              "nodeId": "4ST5-0",
               "size": [
                 576,
                 142.41
@@ -5994,7 +5994,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4Q12-0",
+              "nodeId": "4SUE-0",
               "size": [
                 576,
                 84
@@ -6014,7 +6014,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4Q1T-0",
+              "nodeId": "4SV5-0",
               "size": [
                 576,
                 108
@@ -6038,15 +6038,15 @@
         "src/stories/question-card.stories.tsx",
         "src/usage/question-card.usage.mjs"
       ],
-      "sourceHash": "381f611a9d43bdcd",
-      "syncedAt": "2026-10-12",
+      "sourceHash": "1d06e5717aeb51f7",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 6,
         "nodes": 224,
         "approximated": 23,
-        "bound": 725,
+        "bound": 737,
         "bindable": 742,
-        "bindingRate": 0.977
+        "bindingRate": 0.993
       },
       "notes": [],
       "lost": [
@@ -6059,17 +6059,17 @@
           "opened": "none",
           "nodes": 42,
           "approximated": 4,
-          "bound": 134,
+          "bound": 136,
           "bindable": 137,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4AVK-0",
+              "nodeId": "4SW1-0",
               "size": [
                 480,
                 321.03
               ],
-              "htmlHash": "c9d23d5e49f382c3"
+              "htmlHash": "bac23877f360f7f1"
             }
           ]
         },
@@ -6079,17 +6079,17 @@
           "opened": "none",
           "nodes": 45,
           "approximated": 4,
-          "bound": 148,
+          "bound": 150,
           "bindable": 151,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4AX6-0",
+              "nodeId": "4SXN-0",
               "size": [
                 480,
                 361.03
               ],
-              "htmlHash": "1a9fdfc81f082394"
+              "htmlHash": "82a472cb090027aa"
             }
           ]
         },
@@ -6099,17 +6099,17 @@
           "opened": "none",
           "nodes": 38,
           "approximated": 4,
-          "bound": 120,
+          "bound": 122,
           "bindable": 123,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4AYV-0",
+              "nodeId": "4SZC-0",
               "size": [
                 480,
                 321.03
               ],
-              "htmlHash": "59dcd3bdea0a6a62"
+              "htmlHash": "4ff3f21196bee79c"
             }
           ]
         },
@@ -6119,17 +6119,17 @@
           "opened": "none",
           "nodes": 21,
           "approximated": 1,
-          "bound": 71,
+          "bound": 73,
           "bindable": 73,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4B0D-0",
+              "nodeId": "4T0U-0",
               "size": [
                 480,
                 190.22
               ],
-              "htmlHash": "06c56369db7d60ab"
+              "htmlHash": "adac1fb3ab808a59"
             }
           ]
         },
@@ -6139,17 +6139,17 @@
           "opened": "none",
           "nodes": 38,
           "approximated": 6,
-          "bound": 120,
+          "bound": 122,
           "bindable": 123,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4B1A-0",
+              "nodeId": "4T1R-0",
               "size": [
                 480,
                 305.03
               ],
-              "htmlHash": "e4738e128dd19189"
+              "htmlHash": "1a3d8f7c9fb21923"
             }
           ]
         },
@@ -6159,17 +6159,17 @@
           "opened": "none",
           "nodes": 40,
           "approximated": 4,
-          "bound": 132,
+          "bound": 134,
           "bindable": 135,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4B2S-0",
+              "nodeId": "4T39-0",
               "size": [
                 480,
                 321.03
               ],
-              "htmlHash": "7694bbd291a080d2"
+              "htmlHash": "859a76adecdc168b"
             }
           ]
         }
@@ -7410,8 +7410,8 @@
         "src/stories/suggested-prompts.stories.tsx",
         "src/usage/suggested-prompts.usage.mjs"
       ],
-      "sourceHash": "2bc5bdb7aa69e83b",
-      "syncedAt": "2026-10-12",
+      "sourceHash": "6b588439513cac1d",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 3,
         "nodes": 42,
@@ -7434,7 +7434,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4CBP-0",
+              "nodeId": "4T4Y-0",
               "size": [
                 640,
                 32
@@ -7454,7 +7454,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4CCA-0",
+              "nodeId": "4T5J-0",
               "size": [
                 640,
                 59.41
@@ -7474,7 +7474,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4CD6-0",
+              "nodeId": "4T6F-0",
               "size": [
                 640,
                 81.81
@@ -8497,8 +8497,8 @@
         "src/stories/patterns/ActivityFeed.stories.tsx",
         "src/usage/activity-feed.usage.mjs"
       ],
-      "sourceHash": "2d494ccab560b4a2",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "6142e9584ca06da6",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 70,
@@ -8521,7 +8521,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4Q2P-0",
+              "nodeId": "4T77-0",
               "size": [
                 448,
                 315.05
@@ -8675,8 +8675,8 @@
         "src/stories/patterns/AiHome.stories.tsx",
         "src/usage/ai-home.usage.mjs"
       ],
-      "sourceHash": "09b099ca150b7df7",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "0d4f01bc31c078e1",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 2,
         "nodes": 92,
@@ -8701,7 +8701,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4LIW-0",
+              "nodeId": "4T9T-0",
               "size": [
                 1232,
                 480
@@ -8721,7 +8721,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4LKW-0",
+              "nodeId": "4TBT-0",
               "size": [
                 1232,
                 480
@@ -8745,15 +8745,15 @@
         "src/stories/patterns/AiSidePanel.stories.tsx",
         "src/usage/ai-side-panel.usage.mjs"
       ],
-      "sourceHash": "8977a9575629e255",
-      "syncedAt": "2026-10-12",
+      "sourceHash": "50b51a1ac21cb5a9",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 3,
         "nodes": 117,
         "approximated": 9,
-        "bound": 298,
+        "bound": 311,
         "bindable": 336,
-        "bindingRate": 0.887
+        "bindingRate": 0.926
       },
       "notes": [],
       "lost": [
@@ -8766,17 +8766,17 @@
           "opened": "none",
           "nodes": 49,
           "approximated": 4,
-          "bound": 122,
+          "bound": 127,
           "bindable": 137,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4DVX-0",
+              "nodeId": "4TDY-0",
               "size": [
                 384,
                 560
               ],
-              "htmlHash": "4918d19832dfd850"
+              "htmlHash": "9a4583871004debc"
             }
           ]
         },
@@ -8786,17 +8786,17 @@
           "opened": "none",
           "nodes": 44,
           "approximated": 4,
-          "bound": 111,
+          "bound": 116,
           "bindable": 126,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4DY2-0",
+              "nodeId": "4TG3-0",
               "size": [
                 384,
                 560
               ],
-              "htmlHash": "667a49dec82154a6"
+              "htmlHash": "feeec1366839b201"
             }
           ]
         },
@@ -8806,17 +8806,17 @@
           "opened": "none",
           "nodes": 24,
           "approximated": 1,
-          "bound": 65,
+          "bound": 68,
           "bindable": 73,
           "parts": [
             {
               "part": "main",
-              "nodeId": "4DZZ-0",
+              "nodeId": "4TI0-0",
               "size": [
                 384,
                 560
               ],
-              "htmlHash": "da44a9bf2b1e7ff0"
+              "htmlHash": "c7979e46265fe89c"
             }
           ]
         }
@@ -8835,8 +8835,8 @@
         "src/stories/patterns/Alerts.stories.tsx",
         "src/usage/alerts.usage.mjs"
       ],
-      "sourceHash": "a37b27e0b443f993",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "7d500ba27562184f",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 22,
@@ -8859,7 +8859,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4LN1-0",
+              "nodeId": "4TJ6-0",
               "size": [
                 560,
                 208.44
@@ -8931,8 +8931,8 @@
         "src/stories/patterns/AnnouncementBanner.stories.tsx",
         "src/usage/announcement-banner.usage.mjs"
       ],
-      "sourceHash": "5a50653db6c940f3",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "ce888821b518981f",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 21,
@@ -8957,7 +8957,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4LUC-0",
+              "nodeId": "4TK8-0",
               "size": [
                 880,
                 120
@@ -9127,8 +9127,8 @@
         "src/stories/patterns/Chat.stories.tsx",
         "src/usage/chat.usage.mjs"
       ],
-      "sourceHash": "ec64c02a8b1b16c4",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "4623cb41b09c4ccd",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 25,
@@ -9153,7 +9153,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4M2U-0",
+              "nodeId": "4TL8-0",
               "size": [
                 384,
                 480
@@ -9177,8 +9177,8 @@
         "src/stories/patterns/Checkout.stories.tsx",
         "src/usage/checkout.usage.mjs"
       ],
-      "sourceHash": "bdcd51cc052f60ef",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "c4f9fc09c51da8f8",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 63,
@@ -9203,7 +9203,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4M3X-0",
+              "nodeId": "4TMB-0",
               "size": [
                 880,
                 461.67
@@ -9227,8 +9227,8 @@
         "src/stories/patterns/CommandPalette.stories.tsx",
         "src/usage/command-palette.usage.mjs"
       ],
-      "sourceHash": "c9d25216ce5f1be7",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "b33b2ffb75a37942",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 43,
@@ -9251,7 +9251,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4M6F-0",
+              "nodeId": "4TOT-0",
               "size": [
                 448,
                 274.03
@@ -9325,8 +9325,8 @@
         "src/stories/patterns/ConversationHistory.stories.tsx",
         "src/usage/conversation-history.usage.mjs"
       ],
-      "sourceHash": "7ffa558e2be018d5",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "619146c9cd167b06",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 3,
         "nodes": 108,
@@ -9349,7 +9349,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4QMY-0",
+              "nodeId": "4TQO-0",
               "size": [
                 300,
                 350
@@ -9369,7 +9369,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4QOH-0",
+              "nodeId": "4TS7-0",
               "size": [
                 300,
                 582
@@ -9389,7 +9389,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4QQV-0",
+              "nodeId": "4TUL-0",
               "size": [
                 300,
                 89.41
@@ -9413,8 +9413,8 @@
         "src/stories/patterns/CookieConsent.stories.tsx",
         "src/usage/cookie-consent.usage.mjs"
       ],
-      "sourceHash": "73c0e72ae1f3f957",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "346d52d6533ba377",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 12,
@@ -9439,7 +9439,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4MEF-0",
+              "nodeId": "4TV6-0",
               "size": [
                 560,
                 110.81
@@ -9463,8 +9463,8 @@
         "src/stories/patterns/DashboardShell.stories.tsx",
         "src/usage/dashboard.usage.mjs"
       ],
-      "sourceHash": "fc95aebea94d6cf5",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "f50bc4fa295f9e95",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 59,
@@ -9489,7 +9489,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4MF4-0",
+              "nodeId": "4TVV-0",
               "size": [
                 1232,
                 560
@@ -9513,8 +9513,8 @@
         "src/stories/patterns/DataTable.stories.tsx",
         "src/usage/data-table.usage.mjs"
       ],
-      "sourceHash": "d4ad7e1a6ebf6c46",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "325e3caba48a0997",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 77,
@@ -9539,7 +9539,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4MHT-0",
+              "nodeId": "4TYK-0",
               "size": [
                 1200,
                 295.13
@@ -9563,8 +9563,8 @@
         "src/stories/patterns/EmptyState.stories.tsx",
         "src/usage/empty-state.usage.mjs"
       ],
-      "sourceHash": "d21a8fb56702ea05",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "3d3fd02405ea80e1",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 9,
@@ -9589,7 +9589,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4MKS-0",
+              "nodeId": "4U1J-0",
               "size": [
                 448,
                 246.03
@@ -9613,8 +9613,8 @@
         "src/stories/patterns/Error404.stories.tsx",
         "src/usage/error-404.usage.mjs"
       ],
-      "sourceHash": "224ad1bccd61abb6",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "25ea1078f6069b6f",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 11,
@@ -9639,7 +9639,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4QRG-0",
+              "nodeId": "4U27-0",
               "size": [
                 1232,
                 480
@@ -9711,8 +9711,8 @@
         "src/stories/patterns/FeatureSection.stories.tsx",
         "src/usage/feature-section.usage.mjs"
       ],
-      "sourceHash": "c0fc15c6692e20a6",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "51b2c5d8ea1c47f9",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 22,
@@ -9735,12 +9735,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4MNS-0",
+              "nodeId": "4U2W-0",
               "size": [
                 1200,
                 406.63
               ],
-              "htmlHash": "4aa54d25d61b201f"
+              "htmlHash": "a305cd4867144e2a"
             }
           ]
         }
@@ -9759,8 +9759,8 @@
         "src/stories/patterns/FileUpload.stories.tsx",
         "src/usage/file-upload.usage.mjs"
       ],
-      "sourceHash": "81a60d604a3a14bb",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "be4abf56a3b673c7",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 46,
@@ -9785,7 +9785,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4MOZ-0",
+              "nodeId": "4U43-0",
               "size": [
                 448,
                 483.7
@@ -9857,8 +9857,8 @@
         "src/stories/patterns/ForgotPassword.stories.tsx",
         "src/usage/forgot-password.usage.mjs"
       ],
-      "sourceHash": "d20ca700783b2f83",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "06479f73d0cd0f70",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 16,
@@ -9883,7 +9883,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4MSD-0",
+              "nodeId": "4U65-0",
               "size": [
                 384,
                 268.3
@@ -9907,8 +9907,8 @@
         "src/stories/patterns/Hero.stories.tsx",
         "src/usage/hero.usage.mjs"
       ],
-      "sourceHash": "5f6c22bae3d03ec3",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "aa325ecea9205beb",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 12,
@@ -9933,7 +9933,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4MT7-0",
+              "nodeId": "4U6Z-0",
               "size": [
                 1232,
                 610.77
@@ -9957,8 +9957,8 @@
         "src/stories/patterns/Invoice.stories.tsx",
         "src/usage/invoice.usage.mjs"
       ],
-      "sourceHash": "b55aa43a1a9365a8",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "476bd0a544ac78ff",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 71,
@@ -9981,7 +9981,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4MTZ-0",
+              "nodeId": "4U7R-0",
               "size": [
                 672,
                 429.97
@@ -10005,8 +10005,8 @@
         "src/stories/patterns/Kanban.stories.tsx",
         "src/usage/kanban.usage.mjs"
       ],
-      "sourceHash": "9c57c4702a3f8b34",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "8fe6b6393fa30f52",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 70,
@@ -10029,7 +10029,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4MWO-0",
+              "nodeId": "4UAG-0",
               "size": [
                 1200,
                 258.22
@@ -10053,8 +10053,8 @@
         "src/stories/patterns/ListDetail.stories.tsx",
         "src/usage/list-detail.usage.mjs"
       ],
-      "sourceHash": "7763252949d61925",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "e87c765e4cf09911",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 44,
@@ -10077,7 +10077,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4MZE-0",
+              "nodeId": "4UD6-0",
               "size": [
                 1232,
                 560
@@ -10151,8 +10151,8 @@
         "src/stories/patterns/LoginMinimal.stories.tsx",
         "src/usage/login-minimal.usage.mjs"
       ],
-      "sourceHash": "ee2f3c1bf1de0b2b",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "2a92d42111cfb4ce",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 14,
@@ -10177,7 +10177,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4N25-0",
+              "nodeId": "4UEW-0",
               "size": [
                 320,
                 235.72
@@ -10251,8 +10251,8 @@
         "src/stories/patterns/LoginSplitPanel.stories.tsx",
         "src/usage/login-split-panel.usage.mjs"
       ],
-      "sourceHash": "cc07528abac71551",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "f7594ab268fdfd21",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 34,
@@ -10277,7 +10277,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4N4F-0",
+              "nodeId": "4UFP-0",
               "size": [
                 1232,
                 560
@@ -10301,8 +10301,8 @@
         "src/stories/patterns/MailShell.stories.tsx",
         "src/usage/mail-shell.usage.mjs"
       ],
-      "sourceHash": "651b0e9d15dbe87f",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "fedddffd20276290",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 74,
@@ -10327,7 +10327,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4N61-0",
+              "nodeId": "4UHB-0",
               "size": [
                 1232,
                 560
@@ -10351,8 +10351,8 @@
         "src/stories/patterns/Navbar.stories.tsx",
         "src/usage/navbar.usage.mjs"
       ],
-      "sourceHash": "6f80f62b7c32620e",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "01d6d973b7419d3e",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 22,
@@ -10377,7 +10377,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4N8Y-0",
+              "nodeId": "4UK8-0",
               "size": [
                 1232,
                 56
@@ -10401,8 +10401,8 @@
         "src/stories/patterns/Newsletter.stories.tsx",
         "src/usage/newsletter.usage.mjs"
       ],
-      "sourceHash": "6587fdd34b1a1bb0",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "1d19031ebd5a1d91",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 13,
@@ -10427,7 +10427,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4N9Y-0",
+              "nodeId": "4UL8-0",
               "size": [
                 560,
                 297.75
@@ -10451,8 +10451,8 @@
         "src/stories/patterns/Notifications.stories.tsx",
         "src/usage/notifications.usage.mjs"
       ],
-      "sourceHash": "b8d1ec8ea72f4178",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "1f298a70b0904699",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 38,
@@ -10475,7 +10475,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4NAQ-0",
+              "nodeId": "4UM0-0",
               "size": [
                 384,
                 266.44
@@ -10499,8 +10499,8 @@
         "src/stories/patterns/Onboarding.stories.tsx",
         "src/usage/onboarding.usage.mjs"
       ],
-      "sourceHash": "734ae65dc3cb1e53",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "d10d2303f23a9c80",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 26,
@@ -10523,12 +10523,12 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4NCB-0",
+              "nodeId": "4UNL-0",
               "size": [
                 384,
                 276.3
               ],
-              "htmlHash": "b1d8da02cf6a7bb0"
+              "htmlHash": "519ca66226f34380"
             }
           ]
         }
@@ -10547,8 +10547,8 @@
         "src/stories/patterns/OrderSummary.stories.tsx",
         "src/usage/order-summary.usage.mjs"
       ],
-      "sourceHash": "88e9bbe898a8188b",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "dbadc588b7896c37",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 27,
@@ -10573,7 +10573,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4NDF-0",
+              "nodeId": "4UOP-0",
               "size": [
                 384,
                 326.73
@@ -10647,8 +10647,8 @@
         "src/stories/patterns/PageHeader.stories.tsx",
         "src/usage/page-header.usage.mjs"
       ],
-      "sourceHash": "68ce6fd238d01906",
-      "syncedAt": "2026-10-12",
+      "sourceHash": "26c0fe3c9ed97ffb",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 24,
@@ -10673,7 +10673,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4G66-0",
+              "nodeId": "4UPU-0",
               "size": [
                 1200,
                 97.47
@@ -10697,8 +10697,8 @@
         "src/stories/patterns/Pricing.stories.tsx",
         "src/usage/pricing.usage.mjs"
       ],
-      "sourceHash": "5473c51ab51a4895",
-      "syncedAt": "2026-10-12",
+      "sourceHash": "bd25df8530851549",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 75,
@@ -10723,7 +10723,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4G7A-0",
+              "nodeId": "4UQY-0",
               "size": [
                 1200,
                 328.52
@@ -10747,8 +10747,8 @@
         "src/stories/patterns/ProfileCard.stories.tsx",
         "src/usage/profile-card.usage.mjs"
       ],
-      "sourceHash": "1f17fbd5e9a12100",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "93483397c14adeb7",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 26,
@@ -10773,7 +10773,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4NFP-0",
+              "nodeId": "4UTZ-0",
               "size": [
                 320,
                 331.83
@@ -10797,8 +10797,8 @@
         "src/stories/patterns/SearchResults.stories.tsx",
         "src/usage/search-results.usage.mjs"
       ],
-      "sourceHash": "be39e027a0846cdc",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "4548b7fab46b5df9",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 44,
@@ -10821,7 +10821,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4NGT-0",
+              "nodeId": "4UV3-0",
               "size": [
                 448,
                 314.63
@@ -11187,8 +11187,8 @@
         "src/stories/patterns/TeamSection.stories.tsx",
         "src/usage/team-section.usage.mjs"
       ],
-      "sourceHash": "869cfde94270b749",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "79e294acededd55b",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 59,
@@ -11211,7 +11211,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4NSK-0",
+              "nodeId": "4UWX-0",
               "size": [
                 880,
                 330.22
@@ -11283,8 +11283,8 @@
         "src/stories/patterns/ThemeSelector.stories.tsx",
         "src/usage/theme-selector.usage.mjs"
       ],
-      "sourceHash": "f5770ae933411343",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "06e2c818e87e5467",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 2,
         "nodes": 27,
@@ -11309,7 +11309,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4NVE-0",
+              "nodeId": "4UZ7-0",
               "size": [
                 92.05,
                 28
@@ -11329,7 +11329,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4NVS-0",
+              "nodeId": "4UZL-0",
               "size": [
                 520,
                 366.5
@@ -11353,8 +11353,8 @@
         "src/stories/patterns/Wizard.stories.tsx",
         "src/usage/wizard.usage.mjs"
       ],
-      "sourceHash": "cd7b8a686a533009",
-      "syncedAt": "2026-10-17",
+      "sourceHash": "8c9f8a06e7d49f60",
+      "syncedAt": "2026-10-18",
       "counts": {
         "stories": 1,
         "nodes": 37,
@@ -11379,7 +11379,7 @@
           "parts": [
             {
               "part": "main",
-              "nodeId": "4NWT-0",
+              "nodeId": "4V0M-0",
               "size": [
                 448,
                 312.48

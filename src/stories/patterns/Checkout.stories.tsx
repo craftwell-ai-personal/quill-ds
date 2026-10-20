@@ -30,7 +30,7 @@ export const DoDont: Story = {
       id="lock-icon-signals-secure-submit"
       doExample={
         <Button>
-          Pay $58.00 <Icon name="lock" size={14} />
+          Pay $58.00 <Icon name="lock" />
         </Button>
       }
       dontExample={<Button>Pay $58.00</Button>}

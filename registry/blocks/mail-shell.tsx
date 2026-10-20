@@ -80,17 +80,17 @@ export function MailShell() {
       <div className="flex min-h-0 flex-col max-lg:hidden">
         <div className="flex items-center gap-1 border-b border-border px-4 py-2">
           <Button variant="ghost" size="icon-sm" aria-label="Archive">
-            <Icon name="archive" size={18} />
+            <Icon name="archive" />
           </Button>
           <Button variant="ghost" size="icon-sm" aria-label="Delete">
-            <Icon name="delete" size={18} />
+            <Icon name="delete" />
           </Button>
           <Separator orientation="vertical" className="mx-1 h-4 data-vertical:self-center" />
           <Button variant="ghost" size="icon-sm" aria-label="Reply">
-            <Icon name="reply" size={18} />
+            <Icon name="reply" />
           </Button>
           <Button variant="ghost" size="icon-sm" aria-label="Forward">
-            <Icon name="forward" size={18} />
+            <Icon name="forward" />
           </Button>
           <span className="ml-auto text-xs text-muted-foreground">1 of 24</span>
         </div>
@@ -129,7 +129,7 @@ export function MailShell() {
           <Input id="mail-reply" placeholder="Reply to Ada…" className="flex-1" />
           {/* Default size, so Send matches the 32px field beside it. */}
           <Button>
-            Send <Icon name="send" size={14} />
+            Send <Icon name="send" />
           </Button>
         </div>
       </div>

@@ -35,7 +35,7 @@ export function Checkout() {
                 className="flex cursor-pointer flex-col items-center gap-2 rounded-lg border border-border p-3 font-medium transition-colors has-data-checked:border-ring has-data-checked:bg-muted"
               >
                 <RadioGroupItem id={`pay-${m.value}`} value={m.value} className="sr-only" />
-                <Icon name={m.icon as never} size={20} className="text-muted-foreground" aria-hidden />
+                <Icon name={m.icon as never} className="size-icon-xl text-muted-foreground" aria-hidden />
                 {m.label}
               </Label>
             ))}
@@ -61,7 +61,7 @@ export function Checkout() {
         </CardContent>
         <CardFooter className="justify-end">
           <Button className="w-full">
-            Pay $58.00 <Icon name="lock" size={14} />
+            Pay $58.00 <Icon name="lock" />
           </Button>
         </CardFooter>
       </Card>

@@ -26,4 +26,16 @@ export const SIZE_JOBS = {
     frame: 'a whole-screen block shown on its own (mail, nav, list-detail, dashboard)',
     'frame-lg': 'a whole-screen block shown on its own, tall (AI chat)',
   },
+  // Mantis's icon scale, so the names are sizes, not jobs: an icon's size follows the text beside it.
+  icon: {
+    'icon-3xs': 'the smallest mark; unused in Quill, kept so the scale matches Mantis',
+    'icon-2xs': 'a mark inside a chip: a citation source’s kind',
+    'icon-xs': 'status marks in tight rows (step ✓ and ✕, activity), beside 12px text',
+    'icon-sm': 'beside small text: disclosure chevrons, an info mark',
+    'icon-md': 'beside body text: a check in a list, an inline error, a spinner',
+    'icon-lg': 'the lead icon of a row: a notification, a file, a search result',
+    'icon-xl': 'an icon in a small tile',
+    'icon-2xl': 'the icon that leads a feature tile or an empty state',
+    'icon-3xl': 'the icon that leads an upload area',
+  },
 }

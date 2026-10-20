@@ -38,9 +38,9 @@ const hasDetail = (step: AgentStep) => step.detail !== undefined && step.detail 
 
 // Progress is moss and terracotta, never the AI gradient. The deep cuts clear 3:1 on the card in every theme.
 function StepDot({ status }: { status: AgentStepStatus }) {
-  if (status === 'running') return <Icon name="progress_activity" size={16} className="animate-spin text-moss-deep motion-reduce:animate-none" />
-  if (status === 'done') return <span className="grid size-4 place-items-center rounded-full bg-moss-deep text-paper"><Icon name="check" size={12} /></span>
-  if (status === 'failed') return <span className="grid size-4 place-items-center rounded-full bg-terracotta-deep text-paper"><Icon name="close" size={12} /></span>
+  if (status === 'running') return <Icon name="progress_activity" className="size-icon-md animate-spin text-moss-deep motion-reduce:animate-none" />
+  if (status === 'done') return <span className="grid size-4 place-items-center rounded-full bg-moss-deep text-paper"><Icon name="check" className="size-icon-xs" /></span>
+  if (status === 'failed') return <span className="grid size-4 place-items-center rounded-full bg-terracotta-deep text-paper"><Icon name="close" className="size-icon-xs" /></span>
   return <span className="size-4 rounded-full border-2 border-input" />
 }
 
@@ -92,7 +92,7 @@ export function AgentSteps({ title, steps, onRetry, className }: {
       className={cn('grid gap-2.5 rounded-xl border border-border bg-card px-4 py-3.5 text-sm shadow-sm', className)}>
       {/* px-1 matches the rows' inset, so the mark lines up with the dots and the count with the times. */}
       <div className="flex items-center gap-2 px-1">
-        <AiMark size={15} />
+        <AiMark size="icon-md" />
         <p id={`${baseId}-title`} className="min-w-0 flex-1 font-semibold text-ink-soft">{title}</p>
         {/* Hidden from screen readers only while the status region below is saying the same count. */}
         <p data-slot="step-count" aria-hidden={spoken ? true : undefined} className="shrink-0 text-xs font-medium text-muted-foreground tabular-nums">{count}</p>
@@ -112,7 +112,7 @@ export function AgentSteps({ title, steps, onRetry, className }: {
               <span className="min-w-0 flex-1">
                 <span className="sr-only">{STATE_LABEL[status]}: </span>
                 <span data-slot="step-text">{step.label}</span>
-                {expandable ? <Icon name="chevron_right" size={14} className={cn('ml-1 align-[-0.15em] text-muted-foreground transition-transform motion-reduce:transition-none', isOpen && 'rotate-90')} /> : null}
+                {expandable ? <Icon name="chevron_right" className={cn('size-icon-sm', 'ml-1 align-[-0.15em] text-muted-foreground transition-transform motion-reduce:transition-none', isOpen && 'rotate-90')} /> : null}
               </span>
               {meta ? (
                 // The outer box is one row-line tall so the smaller note still sits on the label's first line.

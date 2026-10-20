@@ -8,18 +8,36 @@ const SMALL = 'M18.4 0.8Q19.25 4.95 23.4 5.8Q19.25 6.65 18.4 10.8Q17.55 6.65 13.
 // At 16px and under two stars blur together, so draw one.
 const SOLO = 'M12 1Q13.9 10.1 23 12Q13.9 13.9 12 23Q10.1 13.9 1 12Q10.1 10.1 12 1Z'
 
+// The icon scale's steps, in px, so the mark can pick its drawing from a step name. Written as
+// whole class names so Tailwind finds them. w-/h- rather than size-: a part that sizes its icons
+// (a Button, a Badge) skips an svg whose class says size-, and the mark should follow the part.
+const STEPS = {
+  'icon-3xs': [8, 'w-icon-3xs h-icon-3xs'],
+  'icon-2xs': [10, 'w-icon-2xs h-icon-2xs'],
+  'icon-xs': [12, 'w-icon-xs h-icon-xs'],
+  'icon-sm': [14, 'w-icon-sm h-icon-sm'],
+  'icon-md': [16, 'w-icon-md h-icon-md'],
+  'icon-lg': [18, 'w-icon-lg h-icon-lg'],
+  'icon-xl': [20, 'w-icon-xl h-icon-xl'],
+  'icon-2xl': [24, 'w-icon-2xl h-icon-2xl'],
+  'icon-3xl': [28, 'w-icon-3xl h-icon-3xl'],
+} as const
+export type AiMarkSize = keyof typeof STEPS
+
+// Sized by a step of the icon scale (`size="icon-md"`); a number still works but is off the scale.
 /** Quill's AI sparkle — the one icon that means AI, drawn in the AI gradient with a one-star cut for 16px and under. */
-export function AiMark({ size = 18, label, className }: { size?: number; label?: string; className?: string }) {
+export function AiMark({ size = 'icon-lg', label, className }: { size?: AiMarkSize | number; label?: string; className?: string }) {
   // useId keeps gradient ids unique per instance; a shared id renders every
   // later mark black once the first leaves the page.
   const id = React.useId().replace(/:/g, '')
-  const paths = size <= 16 ? [SOLO] : [BIG, SMALL]
+  const [px, stepClass] = typeof size === 'number' ? [size, ''] : STEPS[size]
+  const paths = px <= 16 ? [SOLO] : [BIG, SMALL]
   return (
     <svg
-      width={size}
-      height={size}
+      width={px}
+      height={px}
       viewBox="0 0 24 24"
-      className={cn('inline-block shrink-0', className)}
+      className={cn('inline-block shrink-0', stepClass, className)}
       {...(label ? { role: 'img', 'aria-label': label } : { 'aria-hidden': true })}
     >
       <defs>

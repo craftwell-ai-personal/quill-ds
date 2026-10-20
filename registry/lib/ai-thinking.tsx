@@ -65,7 +65,7 @@ export function AiThinking({ status, label = 'Thinking', activity, seconds, step
         <button type="button" aria-expanded={open} aria-controls={listId} onClick={() => setOpen((o) => !o)}
           // px-1 gives the focus ring room around the chevron and the last letter; -mx-1 keeps the chevron in line with the steps below.
           className="-mx-1 inline-flex w-fit items-center gap-1 rounded-sm px-1 text-sm text-muted-foreground hover:text-foreground outline-hidden focus-visible:ring-3 focus-visible:ring-ring/50">
-          <Icon name="chevron_right" size={14} className={cn('transition-transform motion-reduce:transition-none', open && 'rotate-90')} />
+          <Icon name="chevron_right" className={cn('size-icon-sm', 'transition-transform motion-reduce:transition-none', open && 'rotate-90')} />
           {summary}
         </button>
       ) : (

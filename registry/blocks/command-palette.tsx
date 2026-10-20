@@ -28,7 +28,7 @@ export function CommandPalette() {
         <CommandGroup heading="Actions">
           {actions.map((a) => (
             <CommandItem key={a.label}>
-              <Icon name={a.icon} size={16} />
+              <Icon name={a.icon} />
               <span>{a.label}</span>
               {a.shortcut && <CommandShortcut>{a.shortcut}</CommandShortcut>}
             </CommandItem>
@@ -38,7 +38,7 @@ export function CommandPalette() {
         <CommandGroup heading="Recent">
           {recent.map((r) => (
             <CommandItem key={r.label}>
-              <Icon name={r.icon} size={16} />
+              <Icon name={r.icon} />
               <span>{r.label}</span>
             </CommandItem>
           ))}

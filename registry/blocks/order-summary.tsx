@@ -43,7 +43,7 @@ export function OrderSummary() {
       </CardContent>
       <CardFooter>
         <Button className="w-full">
-          <Icon name="credit_card" size={16} /> Pay now
+          <Icon name="credit_card" /> Pay now
         </Button>
       </CardFooter>
     </Card>

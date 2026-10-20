@@ -44,7 +44,7 @@ export function SuggestedPrompts({
             <button type="button" onClick={() => pick(s)}
               className="flex w-full items-center gap-2.5 border-t border-border px-1 py-2.5 text-left text-sm hover:bg-card outline-hidden focus-visible:ring-3 focus-visible:ring-ring/50">
               {s.label}
-              <Icon name="arrow_forward" size={16} className="ml-auto text-muted-foreground" />
+              <Icon name="arrow_forward" className="size-icon-md ml-auto text-muted-foreground" />
             </button>
           ) : (
             <button type="button" onClick={() => pick(s)}

@@ -76,7 +76,7 @@ export function Invoice() {
       <CardFooter className="justify-between">
         <span className="text-xs text-muted-foreground">Thank you — see you next issue.</span>
         <Button variant="outline" size="sm">
-          <Icon name="download" size={16} /> Download PDF
+          <Icon name="download" /> Download PDF
         </Button>
       </CardFooter>
     </Card>

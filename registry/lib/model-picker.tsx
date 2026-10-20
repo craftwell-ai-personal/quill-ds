@@ -57,7 +57,7 @@ export function ModelPicker({
         render={
           <Button type="button" variant="ghost" size="sm" className={cn('rounded-full text-ink-soft', className)} aria-label={`${label}: ${current.label}`}>
             {current.label}
-            <Icon name="keyboard_arrow_down" size={14} />
+            <Icon name="keyboard_arrow_down" />
           </Button>
         }
       />

@@ -31,7 +31,7 @@ export function Kanban() {
             ))}
           </div>
           <button className="flex items-center gap-1.5 rounded-lg px-1 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground outline-hidden focus-visible:ring-3 focus-visible:ring-ring/50">
-            <Icon name="add" size={16} /> Add card
+            <Icon name="add" className="size-icon-md" /> Add card
           </button>
         </div>
       ))}

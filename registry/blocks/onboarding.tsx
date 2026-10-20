@@ -40,7 +40,7 @@ export function Onboarding() {
                 t.done ? 'bg-primary text-primary-foreground' : 'border border-input'
               }`}
             >
-              {t.done && <Icon name="check" size={13} />}
+              {t.done && <Icon name="check" className="size-icon-xs" />}
             </span>
             <span className={`flex-1 text-sm ${t.done ? 'text-muted-foreground line-through' : 'text-foreground'}`}>
               {t.label}

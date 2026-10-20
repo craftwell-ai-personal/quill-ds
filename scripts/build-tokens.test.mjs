@@ -493,10 +493,10 @@ test('the gradient rule names seven placements, the meter last', () => {
   assert.doesNotMatch(text, /[Ss]ix placements/)
 })
 
-test('every size step ships: its value in :root, widths on the container family, heights on the spacing family, each with a job', async () => {
+test('every size step ships: its value in :root, widths on the container family, heights and icons on the spacing family, each with a job', async () => {
   const { SIZE_JOBS } = await import('../src/usage/sizes.mjs')
   const { theme, root } = renderCss(tokens)
-  for (const [group, family] of [['width', 'container'], ['height', 'spacing']]) {
+  for (const [group, family] of [['width', 'container'], ['height', 'spacing'], ['icon', 'spacing']]) {
     for (const [k, v] of Object.entries(tokens.size[group])) {
       assert.match(root, new RegExp(`--size-${k}:\\s*${v.replace('.', '\\.')};`), `--size-${k} holds its value`)
       assert.match(theme, new RegExp(`--${family}-${k}:\\s*var\\(--size-${k}\\);`), `${group} ${k} rides the ${family} family`)
@@ -505,5 +505,21 @@ test('every size step ships: its value in :root, widths on the container family,
     assert.deepEqual(Object.keys(SIZE_JOBS[group]).sort(), Object.keys(tokens.size[group]).sort(), `src/usage/sizes.mjs names exactly the ${group} steps`)
   }
   // a name used for both a width and a height would make w-x and h-x two different sizes
-  assert.deepEqual(Object.keys(tokens.size.width).filter((k) => k in tokens.size.height), [])
+  const names = ['width', 'height', 'icon'].flatMap((group) => Object.keys(tokens.size[group]))
+  assert.deepEqual(names.filter((k, i) => names.indexOf(k) !== i), [], 'no size name is used by two groups')
+})
+
+test('the AI mark knows every icon step, at the same size', () => {
+  // ai-mark.tsx ships to apps without the token source, so it carries the steps as px + classes
+  const source = readFileSync(new URL('../registry/lib/ai-mark.tsx', import.meta.url), 'utf8')
+  const steps = Object.fromEntries([...source.matchAll(/'(icon-[0-9a-z]+)': \[(\d+), '([^']+)'\]/g)].map((m) => [m[1], [Number(m[2]), m[3]]]))
+  assert.deepEqual(Object.keys(steps), Object.keys(tokens.size.icon))
+  for (const [k, v] of Object.entries(tokens.size.icon)) assert.deepEqual(steps[k], [parseFloat(v) * 16, `w-${k} h-${k}`], k)
+})
+
+test("the icon steps are Mantis's icon scale, name for name", () => {
+  // Mantis (mantis/tokens/mantis.tokens.mjs, size.icon-*) is not in this repo, so its scale is
+  // written out here: change both systems together.
+  const px = Object.fromEntries(Object.entries(tokens.size.icon).map(([k, v]) => [k, parseFloat(v) * 16]))
+  assert.deepEqual(px, { 'icon-3xs': 8, 'icon-2xs': 10, 'icon-xs': 12, 'icon-sm': 14, 'icon-md': 16, 'icon-lg': 18, 'icon-xl': 20, 'icon-2xl': 24, 'icon-3xl': 28 })
 })

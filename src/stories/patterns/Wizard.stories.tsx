@@ -45,7 +45,7 @@ export const DoDont: Story = {
                           : 'bg-muted text-muted-foreground'
                     }`}
                   >
-                    {state === 'done' ? <Icon name="check" size={14} /> : i + 1}
+                    {state === 'done' ? <Icon name="check" className="size-icon-sm" /> : i + 1}
                   </span>
                   <span className={`text-sm ${state === 'todo' ? 'text-muted-foreground' : 'text-foreground'}`}>
                     {s}

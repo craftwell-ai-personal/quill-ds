@@ -94,6 +94,14 @@ export function renderSpacingSection(t = tokens, { compact = false } = {}) {
   if (compact) L.push(`Widths (px): ${sizeLine('width')}.`, '', `Heights (px): ${sizeLine('height')}. What each is for: llms.txt, Sizes.`)
   else L.push('Widths:', ...sizeList('width'), '', 'Heights:', ...sizeList('height'))
   L.push('')
+  const iconLine = Object.entries(t.size.icon).map(([k, v]) => `${k.slice(5)} ${parseFloat(px(v))}`).join(' · ')
+  if (compact) L.push(`Icons (px): \`size-icon-\` ${iconLine}; none = 1em; none in a Button, menu, Alert, Badge. \`<AiMark size="icon-md" />\`.`)
+  else {
+    L.push('### Icon sizes')
+    L.push('An icon with no class is `1em`: it follows the text beside it. When it needs its own size, give it a class from the icon scale (`<Icon className="size-icon-md" />` → `var(--size-icon-md)`), the same nine steps as Mantis. Inside a Button, menu item, select, tab, Alert or Badge give it no size at all: the part sets its icons. The AI mark takes the step as a prop (`<AiMark size="icon-md" />`), because it picks its drawing from its size. A typed number (`size={18}`) or a spacing class (`size-4`) on an icon is off the system, and `quill-check` flags it.')
+    L.push('', ...Object.entries(t.size.icon).map(([k, v]) => `- \`size-${k}\` ${px(v)} — ${SIZE_JOBS.icon[k]}`))
+  }
+  L.push('')
   L.push('### Layout')
   L.push(`${compact ? '' : 'Marketing pages sit in `max-w-page-wide` (1400px), app pages in `max-w-page` (880px), a reading column in `max-w-measure` (672px); s'}${compact ? 'S' : ''}ide padding **48px** on desktop (\`px-12\`) and **24px** on mobile (\`px-6\`), vertical section rhythm **96px** (\`py-24\`; \`py-12\` on mobile).`)
   L.push('')

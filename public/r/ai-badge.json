@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/lib/ai-badge.tsx",
-      "content": "import * as React from 'react'\nimport { Badge } from '@/components/ui/badge'\nimport { AiMark } from '@/components/ui/ai-mark'\nimport { cn } from '@/lib/utils'\n\n/** A small outline pill with the AI sparkle that marks content an AI made or suggested — \"AI draft\", \"Suggested\". */\nexport function AiBadge({ children, className }: { children: React.ReactNode; className?: string }) {\n  return (\n    <Badge variant=\"outline\" className={cn('gap-1 border-input bg-background text-ink-soft', className)}>\n      <AiMark size={13} />\n      {children}\n    </Badge>\n  )\n}\n",
+      "content": "import * as React from 'react'\nimport { Badge } from '@/components/ui/badge'\nimport { AiMark } from '@/components/ui/ai-mark'\nimport { cn } from '@/lib/utils'\n\n/** A small outline pill with the AI sparkle that marks content an AI made or suggested — \"AI draft\", \"Suggested\". */\nexport function AiBadge({ children, className }: { children: React.ReactNode; className?: string }) {\n  return (\n    <Badge variant=\"outline\" className={cn('gap-1 border-input bg-background text-ink-soft', className)}>\n      <AiMark size=\"icon-xs\" />\n      {children}\n    </Badge>\n  )\n}\n",
       "type": "registry:ui",
       "target": "components/ui/ai-badge.tsx"
     }

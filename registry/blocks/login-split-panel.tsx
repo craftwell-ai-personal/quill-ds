@@ -45,7 +45,7 @@ export function SplitPanel() {
             <Separator className="flex-1" />
           </div>
           <Button variant="outline" className="w-full">
-            <Icon name="mail" size={16} /> Continue with a magic link
+            <Icon name="mail" /> Continue with a magic link
           </Button>
         </form>
       </div>

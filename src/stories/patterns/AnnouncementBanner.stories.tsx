@@ -36,7 +36,7 @@ export const DoDont: Story = {
             <p className="text-sm text-foreground">Issue 004 of The Brief just shipped.</p>
           </div>
           <Button variant="ghost" size="icon-sm" aria-label="Dismiss announcement">
-            <Icon name="close" size={16} />
+            <Icon name="close" />
           </Button>
         </div>
       }

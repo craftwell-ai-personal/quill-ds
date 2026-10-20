@@ -46,10 +46,10 @@ export function ListDetail() {
           </div>
           <div className="flex gap-2">
             <Button variant="ghost" size="icon" aria-label="Archive">
-              <Icon name="folder_open" size={18} />
+              <Icon name="folder_open" />
             </Button>
             <Button variant="ghost" size="icon" aria-label="Delete">
-              <Icon name="delete" size={18} />
+              <Icon name="delete" />
             </Button>
           </div>
         </div>

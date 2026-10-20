@@ -6,8 +6,8 @@ import { AiMark } from '@/components/ui/ai-mark'
 export function AiButton({ children, ...props }: React.ComponentProps<typeof Button>) {
   return (
     <Button {...props}>
-      {/* size-[18px]: Button sizes any svg without a size- class to 16px. */}
-      <AiMark size={18} className="size-4.5" />
+      {/* quill-check: allow icon-size — the mark is 18px, above the Button's 16px icons; Button skips an svg with a size- class */}
+      <AiMark size="icon-lg" className="size-icon-lg" />
       {children}
     </Button>
   )

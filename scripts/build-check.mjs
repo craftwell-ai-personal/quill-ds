@@ -70,6 +70,7 @@ export function checkData(t = tokens) {
     ...trackings.map((x) => `tracking-${x}`),
     ...Object.keys(t.size.width).flatMap((k) => ['w', 'max-w', 'min-w', 'basis'].map((p) => `${p}-${k}`)),
     ...Object.keys(t.size.height).flatMap((k) => ['h', 'max-h', 'min-h', 'size'].map((p) => `${p}-${k}`)),
+    ...Object.keys(t.size.icon).flatMap((k) => ['size', 'w', 'h'].map((p) => `${p}-${k}`)),
   ]
   // `--color-X: var(--Y)` → a bracketed `text-[var(--Y)]` already has the utility `text-X`.
   const vars = Object.fromEntries(
@@ -101,7 +102,7 @@ export function checkData(t = tokens) {
       // the steps as utilities name them (`0.5`, not the variable's `0_5`), in px
       space: Object.fromEntries(Object.entries(t.spacing).map(([k, v]) => [k, px(v)]).sort((a, b) => a[1] - b[1])),
       borderWidth: Object.fromEntries(Object.entries(t.borderWidth).map(([k, v]) => [k, px(v)])),
-      size: Object.fromEntries(['width', 'height'].map((g) => [g, Object.fromEntries(Object.entries(t.size[g]).map(([k, v]) => [k, px(v)]))])),
+      size: Object.fromEntries(['width', 'height', 'icon'].map((g) => [g, Object.fromEntries(Object.entries(t.size[g]).map(([k, v]) => [k, px(v)]))])),
       sizeJobs: SIZE_JOBS,
       text: Object.fromEntries(Object.entries(t.text).map(([k, v]) => [k, px(v)])),
       radius: Object.fromEntries(Object.entries(t.radius).map(([k, v]) => [k, px(v)])),

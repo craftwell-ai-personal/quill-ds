@@ -41,18 +41,18 @@ export const DoDont: Story = {
           <CommandList>
             <CommandGroup heading="Actions">
               <CommandItem>
-                <Icon name="add" size={16} />
+                <Icon name="add" />
                 <span>New project</span>
               </CommandItem>
               <CommandItem>
-                <Icon name="search" size={16} />
+                <Icon name="search" />
                 <span>Search docs</span>
               </CommandItem>
             </CommandGroup>
             <CommandSeparator />
             <CommandGroup heading="Recent">
               <CommandItem>
-                <Icon name="folder_open" size={16} />
+                <Icon name="folder_open" />
                 <span>Acme site</span>
               </CommandItem>
             </CommandGroup>
@@ -65,15 +65,15 @@ export const DoDont: Story = {
           <CommandList>
             <CommandGroup>
               <CommandItem>
-                <Icon name="add" size={16} />
+                <Icon name="add" />
                 <span>New project</span>
               </CommandItem>
               <CommandItem>
-                <Icon name="search" size={16} />
+                <Icon name="search" />
                 <span>Search docs</span>
               </CommandItem>
               <CommandItem>
-                <Icon name="folder_open" size={16} />
+                <Icon name="folder_open" />
                 <span>Acme site</span>
               </CommandItem>
             </CommandGroup>

@@ -174,6 +174,13 @@ export const tokens = {
       touch: '2.75rem', bar: '3.5rem', 'area-sm': '8rem', area: '14rem',
       'frame-sm': '30rem', frame: '35rem', 'frame-lg': '40rem',
     },
+    // Icon sizes, the same nine steps and names as Mantis's icon scale (approved 2026-10-17), so
+    // the two systems size icons alike. `icon-` leads each name because they share the h-/size-
+    // utilities with the heights above.
+    icon: {
+      'icon-3xs': '0.5rem', 'icon-2xs': '0.625rem', 'icon-xs': '0.75rem', 'icon-sm': '0.875rem', 'icon-md': '1rem',
+      'icon-lg': '1.125rem', 'icon-xl': '1.25rem', 'icon-2xl': '1.5rem', 'icon-3xl': '1.75rem',
+    },
   },
   text: {
     '2xs': '0.7rem', xs: '0.75rem', sm: '0.85rem', base: '0.95rem', lg: '1.15rem',

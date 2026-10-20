@@ -34,7 +34,7 @@ export const DoDont: Story = {
           <CardContent className="flex flex-col gap-0 p-0">
             <div className="flex items-start gap-3 px-6 py-3">
               <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground">
-                <Icon name="group" size={18} />
+                <Icon name="group" className="size-icon-lg" />
               </div>
               <div className="flex flex-1 flex-col">
                 <span className="text-sm font-medium text-foreground">New member joined</span>
@@ -44,7 +44,7 @@ export const DoDont: Story = {
             <Separator />
             <div className="flex items-start gap-3 px-6 py-3">
               <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground">
-                <Icon name="check_circle" size={18} />
+                <Icon name="check_circle" className="size-icon-lg" />
               </div>
               <div className="flex flex-1 flex-col">
                 <span className="text-sm font-medium text-foreground">Deploy succeeded</span>
@@ -59,7 +59,7 @@ export const DoDont: Story = {
           <CardContent className="flex flex-col gap-0 p-0">
             <div className="flex items-start gap-3 px-6 py-3">
               <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground">
-                <Icon name="notifications" size={18} />
+                <Icon name="notifications" className="size-icon-lg" />
               </div>
               <div className="flex flex-1 flex-col">
                 <span className="text-sm font-medium text-foreground">New member joined</span>
@@ -69,7 +69,7 @@ export const DoDont: Story = {
             <Separator />
             <div className="flex items-start gap-3 px-6 py-3">
               <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground">
-                <Icon name="notifications" size={18} />
+                <Icon name="notifications" className="size-icon-lg" />
               </div>
               <div className="flex flex-1 flex-col">
                 <span className="text-sm font-medium text-foreground">Deploy succeeded</span>

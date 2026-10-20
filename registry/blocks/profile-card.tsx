@@ -31,10 +31,10 @@ export function ProfileCard() {
       </CardContent>
       <CardFooter className="gap-2 pt-4">
         <Button className="flex-1">
-          <Icon name="add" size={16} /> Follow
+          <Icon name="add" /> Follow
         </Button>
         <Button variant="outline" className="flex-1">
-          <Icon name="mail" size={16} /> Message
+          <Icon name="mail" /> Message
         </Button>
       </CardFooter>
     </Card>

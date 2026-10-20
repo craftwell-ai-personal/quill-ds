@@ -9,7 +9,7 @@ import { join, relative, resolve, dirname, extname } from 'node:path'
 import { createRequire } from 'node:module'
 
 export const DATA = {
- "version": "1.29.1",
+ "version": "1.30.0",
  "prefixes": [
   "bg",
   "text",
@@ -1032,7 +1032,34 @@ export const DATA = {
   "h-frame-lg",
   "max-h-frame-lg",
   "min-h-frame-lg",
-  "size-frame-lg"
+  "size-frame-lg",
+  "size-icon-3xs",
+  "w-icon-3xs",
+  "h-icon-3xs",
+  "size-icon-2xs",
+  "w-icon-2xs",
+  "h-icon-2xs",
+  "size-icon-xs",
+  "w-icon-xs",
+  "h-icon-xs",
+  "size-icon-sm",
+  "w-icon-sm",
+  "h-icon-sm",
+  "size-icon-md",
+  "w-icon-md",
+  "h-icon-md",
+  "size-icon-lg",
+  "w-icon-lg",
+  "h-icon-lg",
+  "size-icon-xl",
+  "w-icon-xl",
+  "h-icon-xl",
+  "size-icon-2xl",
+  "w-icon-2xl",
+  "h-icon-2xl",
+  "size-icon-3xl",
+  "w-icon-3xl",
+  "h-icon-3xl"
  ],
  "vars": {
   "--background": "background",
@@ -1144,6 +1171,17 @@ export const DATA = {
     "frame-sm": 480,
     "frame": 560,
     "frame-lg": 640
+   },
+   "icon": {
+    "icon-3xs": 8,
+    "icon-2xs": 10,
+    "icon-xs": 12,
+    "icon-sm": 14,
+    "icon-md": 16,
+    "icon-lg": 18,
+    "icon-xl": 20,
+    "icon-2xl": 24,
+    "icon-3xl": 28
    }
   },
   "sizeJobs": {
@@ -1170,6 +1208,17 @@ export const DATA = {
     "frame-sm": "a whole-screen block shown on its own, compact (chat, 404)",
     "frame": "a whole-screen block shown on its own (mail, nav, list-detail, dashboard)",
     "frame-lg": "a whole-screen block shown on its own, tall (AI chat)"
+   },
+   "icon": {
+    "icon-3xs": "the smallest mark; unused in Quill, kept so the scale matches Mantis",
+    "icon-2xs": "a mark inside a chip: a citation source’s kind",
+    "icon-xs": "status marks in tight rows (step ✓ and ✕, activity), beside 12px text",
+    "icon-sm": "beside small text: disclosure chevrons, an info mark",
+    "icon-md": "beside body text: a check in a list, an inline error, a spinner",
+    "icon-lg": "the lead icon of a row: a notification, a file, a search result",
+    "icon-xl": "an icon in a small tile",
+    "icon-2xl": "the icon that leads a feature tile or an empty state",
+    "icon-3xl": "the icon that leads an upload area"
    }
   },
   "text": {
@@ -1524,7 +1573,7 @@ export function baseOf(token) {
 // Spacing, size and border-width utilities (rule 6) pass when a value follows the dash — a
 // number, a bracket, or a size word — so `p-13` is read and `top-level` or `end-to-end` is not.
 // (Before 1.28.0 they were never read at all, so `w-64` or `p-13` reached no rule.)
-const SIZE_NAME = (v) => v in DATA.tokens.size.width || v in DATA.tokens.size.height
+const SIZE_NAME = (v) => v in DATA.tokens.size.width || v in DATA.tokens.size.height || v in DATA.tokens.size.icon
 const valueAfterDash = (re, base) => { const m = base.match(re); return !!m && (/^[\d[]/.test(m.at(-1)) || SIZE_WORD.test(m.at(-1)) || CONTAINER.test(m.at(-1)) || SIZE_NAME(m.at(-1))) }
 const looksLikeUtility = (base) => {
   if (valueAfterDash(SPACE_RE, base) || valueAfterDash(SIZE_RE, base) || WIDTH_RE.test(base) || /^text-[6-9]xl$/.test(base)) return true
@@ -1709,6 +1758,7 @@ export function sizeRule(base, token = base) {
     const [, prefix, value] = m
     if (SIZE_WORD.test(value) || value in space) return null
     if (value in DATA.tokens.size.height) return { rule: 'scale', fix: `${either(prefix, space, DATA.tokens.size.height[value], sign).replace(", Quill's largest step", '')}: ${value} is a height (${fmt(DATA.tokens.size.height[value])}, ${job('height', value)}), not a spacing step` }
+    if (value in DATA.tokens.size.icon) return { rule: 'scale', fix: `${nearestFix(prefix, space, DATA.tokens.size.icon[value], sign)}: ${value} is an icon size, not a spacing step` }
     if (/^\d+(\.\d+)?$/.test(value)) return { rule: 'scale', fix: either(prefix, space, parseFloat(value) * 4, sign) }
     const inner = value.match(/^\[(.+)\]$/)?.[1]
     if (!inner) return null
@@ -1722,7 +1772,7 @@ export function sizeRule(base, token = base) {
     const group = WIDTH_PROPS.has(prefix) ? 'width' : 'height' // size- sets both; it rides the spacing family, like heights
     const table = sizeTable(group)
     const other = group === 'width' ? 'height' : 'width'
-    if (SIZE_WORD.test(value) || value in table) return null
+    if (SIZE_WORD.test(value) || value in table || value in DATA.tokens.size.icon) return null
     if (value in DATA.tokens.size[other]) {
       const n = DATA.tokens.size[other][value]
       return { rule: 'scale', fix: `${nearestFix(prefix, table, n, sign)}: ${value} is a ${other} step (${job(other, value)})` }
@@ -1885,6 +1935,134 @@ export function inlineStyleFindings(text) {
   return out
 }
 
+// ------------------------------------------------------------------ rule 8: icon sizes
+// An icon takes its size from a class on the icon scale (`<Icon className="size-icon-md" />`),
+// the same nine steps as Mantis; with none it is 1em and follows the text beside it. The AI mark
+// takes the step as a prop (`<AiMark size="icon-md" />`), because it picks its drawing from it.
+// Inside a part that sizes its icons (a Button, a menu item, an Alert, a Badge…) an icon takes no
+// size: the part's wins, or the icon's fights it. The check reads text, so it sees a part only
+// when the icon is written inside it in the same file. (1.30.0)
+// The parts, from the stock primitives' own svg rules (quill-check.test.mjs re-derives them):
+// these size every svg inside them…
+export const SIZES_ANY = new Set(['Button', 'ButtonGroupText', 'ComboboxItem', 'ComboboxTrigger', 'CommandItem', 'ContextMenuCheckboxItem', 'ContextMenuItem', 'ContextMenuRadioItem', 'ContextMenuSubTrigger', 'DropdownMenuCheckboxItem', 'DropdownMenuItem', 'DropdownMenuRadioItem', 'DropdownMenuSubTrigger', 'InputGroupText', 'InputOTPSeparator', 'Kbd', 'MenubarCheckboxItem', 'MenubarItem', 'MenubarRadioItem', 'MenubarSubTrigger', 'NavigationMenuLink', 'PaginationEllipsis', 'SelectItem', 'SelectScrollDownButton', 'SelectScrollUpButton', 'SelectTrigger', 'SidebarMenuButton', 'TabsTrigger', 'Toggle', 'ToggleGroupItem'])
+// …these only an svg that is their direct child…
+export const SIZES_CHILD = new Set(['Alert', 'AlertDialogMedia', 'AvatarBadge', 'AvatarGroupCount', 'Badge', 'BreadcrumbEllipsis', 'BreadcrumbSeparator', 'InputGroupAddon', 'InputGroupButton', 'SidebarGroupAction', 'SidebarGroupLabel', 'SidebarMenuAction', 'SidebarMenuSubButton'])
+// …and these only in their `variant="icon"`.
+export const SIZES_ICON_VARIANT = new Set(['EmptyMedia', 'ItemMedia'])
+
+// The `>` that closes a JSX opening tag: the first one outside braces and quotes.
+function tagEnd(text, from) {
+  let depth = 0
+  let quote = null
+  for (let i = from; i < text.length; i++) {
+    const ch = text[i]
+    if (quote) { if (ch === quote && text[i - 1] !== '\\') quote = null; continue }
+    if (ch === '"' || ch === "'" || ch === '`') quote = ch
+    else if (ch === '{') depth++
+    else if (ch === '}') depth--
+    else if (ch === '>' && depth === 0) return i
+  }
+  return -1
+}
+// One attribute of an opening tag: its raw value (`{18}`, `"md"`) and where it starts.
+function attrOf(tag, name) {
+  const m = tag.match(new RegExp(`\\s${name}=`))
+  if (!m) return null
+  const start = m.index + m[0].length
+  const open = tag[start]
+  let end = start
+  if (open === '"' || open === "'") end = tag.indexOf(open, start + 1)
+  else if (open === '{') { let depth = 0; for (end = start; end < tag.length; end++) { if (tag[end] === '{') depth++; else if (tag[end] === '}' && --depth === 0) break } }
+  else return null
+  return { raw: tag.slice(start, end + 1), at: m.index + 1 }
+}
+const iconSteps = () => DATA.tokens.size.icon
+const iconFix = (n, write) => {
+  const [k, v] = nearestStep(iconSteps(), n)
+  if (Math.abs(v - n) < 0.05) return `→ ${write(k)} (the same ${fmt(v)})`
+  const steps = stepsOf(iconSteps())
+  const below = steps.filter(([, s]) => s < n).at(-1)
+  const above = steps.find(([, s]) => s > n)
+  return `→ ${[below, above].filter(Boolean).map(([key, s]) => `${write(key)} (${fmt(s)})`).join(' or ')}`
+}
+const asClass = (k) => `className="size-${k}"`
+const asProp = (k) => `size="${k}"`
+// A typed size in px: `{18}`, `"18"`, `"18px"`, `"1.25rem"`. null for `"1em"`, a variable or a step name.
+const typedPx = (raw) => {
+  const v = raw.replace(/^\{\s*['"`]?|['"`]?\s*\}$|^['"]|['"]$/g, '').trim()
+  if (/^\d+(\.\d+)?$/.test(v)) return parseFloat(v)
+  return lengthPx(v)
+}
+// The size classes in a className value, wherever its string literals sit (`cn('a', b && 'size-4')`).
+const sizeClassesIn = (raw) => {
+  const out = []
+  for (const lit of raw.matchAll(/'([^'\n]*)'|"([^"\n]*)"|`([^`]*)`/g)) {
+    const body = lit[1] ?? lit[2] ?? lit[3]
+    for (const t of body.matchAll(/\S+/g)) {
+      const base = baseOf(t[0])
+      const m = base.match(/^(size|w|h)-(.+)$/)
+      if (m) out.push({ token: t[0], prefix: m[1], value: m[2], offset: lit.index + 1 + t.index })
+    }
+  }
+  return out
+}
+const classPx = (value) => {
+  if (value in DATA.tokens.space) return DATA.tokens.space[value]
+  if (value in iconSteps()) return iconSteps()[value]
+  const inner = value.match(/^\[(.+)\]$/)?.[1]
+  return inner ? lengthPx(inner) : null
+}
+
+export function iconFindings(text) {
+  const out = []
+  const stack = [] // open elements, innermost last: { name, variant }
+  // A closing tag can follow text (`New chat</Button>`); an opening one never follows a name, so
+  // `a<b`, `days <= 0` and `Array<Item>` are not tags.
+  for (const m of text.matchAll(/<\/([A-Za-z][\w.]*)?\s*>|(?<![\w.)\]])<([A-Za-z][\w.]*)(?=[\s/>])|(?<![\w.)\]])<>/g)) {
+    if (m[0].startsWith('</')) {
+      const at = stack.map((e) => e.name).lastIndexOf(m[1] ?? '')
+      if (at >= 0) stack.length = at
+      continue
+    }
+    const name = m[2] ?? ''
+    const end = tagEnd(text, m.index + m[0].length)
+    if (end < 0) continue
+    const tag = text.slice(m.index, end + 1)
+    const selfClosing = tag.endsWith('/>')
+    if (name === 'Icon' || name === 'AiMark') {
+      const size = attrOf(tag, 'size')
+      const cls = attrOf(tag, 'className')
+      const classes = cls ? sizeClassesIn(cls.raw) : []
+      const parent = stack.at(-1)
+      const part = parent && SIZES_CHILD.has(parent.name) ? parent.name
+        : [...stack].reverse().find((e) => SIZES_ANY.has(e.name) || (SIZES_ICON_VARIANT.has(e.name) && e.variant === 'icon'))?.name
+      const sizeTyped = size && typedPx(size.raw) !== null
+      if (name === 'Icon' && part && (sizeTyped || classes.length)) {
+        const first = sizeTyped ? { idx: m.index + size.at, value: `size=${size.raw}` } : { idx: m.index + cls.at + 'className='.length + classes[0].offset, value: classes[0].token }
+        out.push({ idx: first.idx, rule: 'icon-size', value: first.value, fix: `→ no size: ${part} sets the size of the icons inside it` })
+      } else {
+        if (sizeTyped) {
+          const n = typedPx(size.raw)
+          // the AI mark keeps its size inside a part: the part sets the size shown, the step picks the drawing
+          const inPart = name === 'AiMark' && part ? `; inside ${part}, take the size ${part} gives its icons: it sets the size shown, the step picks the drawing` : ''
+          out.push({ idx: m.index + size.at, rule: 'icon-size', value: `size=${size.raw}`, fix: iconFix(n, name === 'Icon' ? asClass : asProp) + inPart })
+        }
+        for (const c of classes) {
+          if (name === 'Icon' && c.prefix === 'size' && c.value in iconSteps()) continue
+          const n = classPx(c.value)
+          if (n === null) continue
+          const fix = name === 'Icon'
+            ? iconFix(n, (k) => `size-${k}`)
+            : `${iconFix(n, asProp)}: the AI mark picks its drawing from its size prop`
+          out.push({ idx: m.index + cls.at + 'className='.length + c.offset, rule: 'icon-size', value: c.token, fix })
+        }
+      }
+    }
+    if (!selfClosing) stack.push({ name, variant: attrOf(tag, 'variant')?.raw.replace(/^["'{]+|["'}]+$/g, '') })
+  }
+  return out
+}
+
 const lineIndex = (text) => {
   const starts = [0]
   for (let i = 0; i < text.length; i++) if (text[i] === '\n') starts.push(i + 1)
@@ -1930,6 +2108,7 @@ export function scanFile(file, text) {
   }
   const at = lineIndex(text)
   for (const f of inlineStyleFindings(text)) { const { idx, ...rest } = f; findings.push({ file, ...at(idx), ...rest }) }
+  for (const f of iconFindings(text)) { const { idx, ...rest } = f; findings.push({ file, ...at(idx), ...rest }) }
   for (const f of rawColourFindings(lines)) findings.push({ file, ...f })
   applyAllows(file, findings, (f) => allowsFor(lines, f.line))
   return { findings, layout }
@@ -2190,7 +2369,7 @@ export async function runCheck({ cwd = process.cwd(), dirs, includeUi = false, c
 }
 
 // ------------------------------------------------------------------ output
-const RULE_LABEL = { 'radius-override': 'radius', unresolved: 'unresolved', palette: 'palette', 'raw-color': 'raw colour', bracket: 'bracket', scale: 'off scale', 'inline-style': 'inline style', 'css-value': 'css value', retired: 'retired', 'dark-variant': 'dark:', 'allow-without-reason': 'allow' }
+const RULE_LABEL = { 'radius-override': 'radius', unresolved: 'unresolved', palette: 'palette', 'raw-color': 'raw colour', bracket: 'bracket', scale: 'off scale', 'inline-style': 'inline style', 'css-value': 'css value', retired: 'retired', 'dark-variant': 'dark:', 'allow-without-reason': 'allow', 'icon-size': 'icon size' }
 export const isActive = (f) => !f.allowed
 
 export function formatText({ findings, layout, notes }, { quiet = false } = {}) {

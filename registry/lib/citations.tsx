@@ -83,7 +83,7 @@ export function Citation({ source, className }: { source: Source; className?: st
           release()
         }}
       >
-        <span className="flex items-center gap-1.5 text-xs text-muted-foreground"><Icon name={kindIcon(source)} size={13} />{where(source)}</span>
+        <span className="flex items-center gap-1.5 text-xs text-muted-foreground"><Icon name={kindIcon(source)} className="size-icon-xs" />{where(source)}</span>
         <span className="font-semibold">{source.title}</span>
         {source.snippet ? <span className="text-muted-foreground">{source.snippet}</span> : null}
       </HoverCardContent>
@@ -103,7 +103,7 @@ export function Sources({ sources, defaultOpen = false, className }: { sources: 
         <span aria-hidden className="flex">
           {sources.slice(0, 3).map((source, index) => (
             <span key={index} className={cn('grid size-4.5 place-items-center rounded-full border-2 border-background bg-muted', index > 0 && '-ml-1.5')}>
-              <Icon name={kindIcon(source)} size={10} />
+              <Icon name={kindIcon(source)} className="size-icon-2xs" />
             </span>
           ))}
         </span>
@@ -114,7 +114,7 @@ export function Sources({ sources, defaultOpen = false, className }: { sources: 
         {sources.map((source, index) => {
           const body = (
             <>
-              <span aria-hidden className="grid size-6 place-items-center rounded-md bg-muted text-ink-soft"><Icon name={kindIcon(source)} size={14} /></span>
+              <span aria-hidden className="grid size-6 place-items-center rounded-md bg-muted text-ink-soft"><Icon name={kindIcon(source)} className="size-icon-sm" /></span>
               <span className="grid min-w-0">
                 <span className="truncate font-semibold">{source.title}</span>
                 {source.detail ? <span className="truncate text-xs text-muted-foreground">{source.detail}</span> : null}

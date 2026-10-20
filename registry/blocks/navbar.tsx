@@ -25,7 +25,7 @@ export function Navbar() {
           Sign in
         </Button>
         <Button size="sm">
-          Get started <Icon name="arrow_forward" size={16} />
+          Get started <Icon name="arrow_forward" />
         </Button>
       </div>
     </nav>

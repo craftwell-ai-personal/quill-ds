@@ -38,7 +38,7 @@ export function Chat() {
       <div className="flex items-center gap-2 border-t border-border p-3">
         <Input placeholder="Message…" className="flex-1" aria-label="Message" />
         <Button size="icon" aria-label="Send">
-          <Icon name="arrow_forward" size={18} />
+          <Icon name="arrow_forward" />
         </Button>
       </div>
     </div>

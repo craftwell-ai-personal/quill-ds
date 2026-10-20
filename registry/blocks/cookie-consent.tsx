@@ -6,7 +6,7 @@ export function CookieConsent() {
   return (
     <div className="flex w-card-xl items-start gap-3 rounded-xl bg-card p-4 text-foreground shadow-md ring-1 ring-foreground/10">
       <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground">
-        <Icon name="info" size={18} />
+        <Icon name="info" className="size-icon-lg" />
       </div>
       <div className="flex flex-col gap-3">
         <p className="text-sm text-muted-foreground">

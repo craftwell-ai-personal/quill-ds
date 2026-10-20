@@ -329,6 +329,19 @@ Heights:
 - `h-frame` 560px — a whole-screen block shown on its own (mail, nav, list-detail, dashboard)
 - `h-frame-lg` 640px — a whole-screen block shown on its own, tall (AI chat)
 
+### Icon sizes
+An icon with no class is `1em`: it follows the text beside it. When it needs its own size, give it a class from the icon scale (`<Icon className="size-icon-md" />` → `var(--size-icon-md)`), the same nine steps as Mantis. Inside a Button, menu item, select, tab, Alert or Badge give it no size at all: the part sets its icons. The AI mark takes the step as a prop (`<AiMark size="icon-md" />`), because it picks its drawing from its size. A typed number (`size={18}`) or a spacing class (`size-4`) on an icon is off the system, and `quill-check` flags it.
+
+- `size-icon-3xs` 8px — the smallest mark; unused in Quill, kept so the scale matches Mantis
+- `size-icon-2xs` 10px — a mark inside a chip: a citation source’s kind
+- `size-icon-xs` 12px — status marks in tight rows (step ✓ and ✕, activity), beside 12px text
+- `size-icon-sm` 14px — beside small text: disclosure chevrons, an info mark
+- `size-icon-md` 16px — beside body text: a check in a list, an inline error, a spinner
+- `size-icon-lg` 18px — the lead icon of a row: a notification, a file, a search result
+- `size-icon-xl` 20px — an icon in a small tile
+- `size-icon-2xl` 24px — the icon that leads a feature tile or an empty state
+- `size-icon-3xl` 28px — the icon that leads an upload area
+
 ### Layout
 Marketing pages sit in `max-w-page-wide` (1400px), app pages in `max-w-page` (880px), a reading column in `max-w-measure` (672px); side padding **48px** on desktop (`px-12`) and **24px** on mobile (`px-6`), vertical section rhythm **96px** (`py-24`; `py-12` on mobile).
 

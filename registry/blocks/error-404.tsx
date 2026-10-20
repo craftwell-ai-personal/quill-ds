@@ -16,7 +16,7 @@ export function Error404() {
       </div>
       <div className="flex gap-2">
         <Button variant="outline">
-          <Icon name="arrow_back" size={16} /> Go back
+          <Icon name="arrow_back" /> Go back
         </Button>
         <Button>Take me home</Button>
       </div>

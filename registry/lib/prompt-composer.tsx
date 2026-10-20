@@ -222,7 +222,7 @@ export function PromptComposer({
                 {options.map((c) => (
                   <CommandItem key={c.value} value={c.value} onSelect={() => pick(c)} className="gap-2.5">
                     {/* An empty slot the mark's width (the item draws every svg at 16px) keeps labels on one edge when only some commands carry it. */}
-                    {c.ai ? <AiMark size={18} /> : options.some((o) => o.ai) ? <span aria-hidden className="size-4 shrink-0" /> : null}
+                    {c.ai ? <AiMark size="icon-md" /> : options.some((o) => o.ai) ? <span aria-hidden className="size-4 shrink-0" /> : null}
                     <span className="grid"><span>{c.label}</span>{c.description ? <span className="text-xs text-muted-foreground">{c.description}</span> : null}</span>
                   </CommandItem>
                 ))}
@@ -267,7 +267,7 @@ export function PromptComposer({
                       <span aria-hidden data-slot="tab-fillet" style={filletStyle('right', focused, notebook)} />
                     </>
                   ) : null}
-                  {m.ai ? <AiMark size={18} /> : m.icon ? <span aria-hidden className="inline-grid size-4.5 place-items-center [&>svg]:size-4.5">{m.icon}</span> : null}
+                  {m.ai ? <AiMark size="icon-lg" /> : m.icon ? <span aria-hidden className="inline-grid size-4.5 place-items-center [&>svg]:size-4.5">{m.icon}</span> : null}
                   {m.label}
                 </button>
               )
@@ -305,7 +305,7 @@ export function PromptComposer({
                   {onRemoveAttachment ? (
                     <button type="button" aria-label={`Remove ${a.name}`} onClick={() => onRemoveAttachment(a.id)}
                       className="absolute top-1/2 right-1 grid size-6 -translate-y-1/2 place-items-center rounded-full text-muted-foreground hover:bg-muted hover:text-foreground outline-hidden focus-visible:ring-3 focus-visible:ring-ring/50">
-                      <Icon name="close" className="size-3.5" />
+                      <Icon name="close" className="size-icon-sm" />
                     </button>
                   ) : null}
                 </li>
@@ -358,12 +358,12 @@ export function PromptComposer({
             {leading}
             {tools?.map((t) => (
               <span key={t.id} className="inline-flex h-7 items-center gap-1.5 rounded-full border border-border bg-card pr-1 pl-2 text-xs font-semibold text-foreground">
-                <AiMark size={13} />
+                <AiMark size="icon-xs" />
                 {t.label}
                 {onRemoveTool ? (
                   <button type="button" aria-label={`Turn off ${t.label}`} onClick={() => onRemoveTool(t.id)}
                     className="grid size-5 place-items-center rounded-full text-muted-foreground hover:bg-muted hover:text-foreground outline-hidden focus-visible:ring-3 focus-visible:ring-ring/50">
-                    <Icon name="close" className="size-3" />
+                    <Icon name="close" className="size-icon-xs" />
                   </button>
                 ) : null}
               </span>
@@ -378,15 +378,16 @@ export function PromptComposer({
             ) : null}
             {working ? (
               <Button type="button" size="icon" className="rounded-full" aria-label="Stop" onClick={onStop}>
-                <Icon name="stop" className="size-4" />
+                <Icon name="stop" />
               </Button>
             ) : !hasText && onMic ? (
               <Button type="button" size="icon" variant="ghost" className="rounded-full" aria-label="Dictate" onClick={onMic} disabled={disabled}>
-                <Icon name="mic" className="size-5" />
+                {/* quill-check: allow icon-size — the mic glyph is drawn larger than the Button's 16px icons (approved 2026-10-02) */}
+                <Icon name="mic" className="size-icon-xl" />
               </Button>
             ) : (
               <Button type="button" size="icon" className="rounded-full" aria-label="Send" onClick={submit} disabled={!hasText || disabled}>
-                <Icon name="arrow_upward" className="size-4" />
+                <Icon name="arrow_upward" />
               </Button>
             )}
           </div>
@@ -394,7 +395,7 @@ export function PromptComposer({
       </div>
       {status === 'error' && error ? (
         <p id={errorId} role="alert" className="flex items-start gap-1.5 px-1 text-sm text-destructive">
-          <Icon name="error" size={16} className="mt-0.5 shrink-0" />
+          <Icon name="error" className="size-icon-md mt-0.5 shrink-0" />
           {error}
         </p>
       ) : null}

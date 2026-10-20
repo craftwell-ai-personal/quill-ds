@@ -101,7 +101,7 @@ export function renderCss(t) {
   for (const [k, v] of Object.entries(t.spacing)) rootLines.push(`  --space-${varKey(k)}: ${v};`)
   for (const [k, v] of Object.entries(t.borderWidth)) rootLines.push(`  --border-width-${k}: ${v};`)
   for (const [k, v] of Object.entries(t.radius)) rootLines.push(`  --radius-${k}: ${v};`)
-  for (const [k, v] of Object.entries({ ...t.size.width, ...t.size.height })) rootLines.push(`  --size-${k}: ${v};`)
+  for (const [k, v] of Object.entries({ ...t.size.width, ...t.size.height, ...t.size.icon })) rootLines.push(`  --size-${k}: ${v};`)
   for (const [k, v] of Object.entries(t.text)) {
     rootLines.push(`  --text-${k}: ${v};`)
     if (t.textLeading[k]) rootLines.push(`  --text-${k}--line-height: ${t.textLeading[k]};`)
@@ -157,6 +157,9 @@ export function renderCss(t) {
   // quill-check flags. Measured with Tailwind 4.3.3, 2026-10-17.
   for (const k of Object.keys(t.size.width)) themeLines.push(`  --container-${k}: var(--size-${k});`)
   for (const k of Object.keys(t.size.height)) themeLines.push(`  --spacing-${k}: var(--size-${k});`)
+  // Icon sizes ride the spacing family too, so one name serves size-, w- and h-
+  // (`size-icon-md` → `width: var(--size-icon-md)`).
+  for (const k of Object.keys(t.size.icon)) themeLines.push(`  --spacing-${k}: var(--size-${k});`)
   // Tailwind's own key for a size's line height (`--text-sm--line-height`), so the
   // `text-*` utilities pick it up with no new class to learn.
   for (const k of Object.keys(t.text)) {

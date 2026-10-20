@@ -6,17 +6,17 @@ export function Alerts() {
   return (
     <div className="flex max-w-card-xl flex-col gap-4">
       <Alert>
-        <Icon name="info" size={18} />
+        <Icon name="info" />
         <AlertTitle>Heads up</AlertTitle>
         <AlertDescription>Your trial ends in 3 days — upgrade to keep your projects.</AlertDescription>
       </Alert>
       <Alert>
-        <Icon name="check_circle" size={18} />
+        <Icon name="check_circle" />
         <AlertTitle>Changes saved</AlertTitle>
         <AlertDescription>Your profile has been updated successfully.</AlertDescription>
       </Alert>
       <Alert variant="destructive">
-        <Icon name="warning" size={18} />
+        <Icon name="warning" />
         <AlertTitle>Payment failed</AlertTitle>
         <AlertDescription>We couldn’t process your card. Update your billing details.</AlertDescription>
       </Alert>

@@ -35,7 +35,7 @@ export function TeamSection() {
                 <Badge variant="secondary">{m.badge}</Badge>
               </div>
               <Button variant="ghost" size="icon-sm" aria-label={`Email ${m.name}`}>
-                <Icon name="mail" size={16} />
+                <Icon name="mail" />
               </Button>
             </CardContent>
           </Card>

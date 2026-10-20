@@ -285,22 +285,22 @@
    "text": true,
    "values": "0/0",
    "piece": "ai-mark",
-   "at": "2026-10-07"
+   "at": "2026-10-18"
   },
   "components-aimark--sizes": {
-   "diffPct": 0.21,
+   "diffPct": 0,
    "paper": [
-    231,
-    48
+    162,
+    28
    ],
    "storybook": [
-    231,
-    48
+    162,
+    28
    ],
    "text": true,
    "values": "0/0",
    "piece": "ai-mark",
-   "at": "2026-10-07"
+   "at": "2026-10-18"
   },
   "components-aimessage--hidden-name": {
    "diffPct": 2.12,
@@ -1998,19 +1998,19 @@
    "at": "2026-10-07"
   },
   "components-icon--core-set": {
-   "diffPct": 1.74,
+   "diffPct": 1.91,
    "paper": [
     1200,
-    924
+    950
    ],
    "storybook": [
     1200,
-    909
+    935
    ],
    "text": true,
    "values": "5/5",
    "piece": "icon",
-   "at": "2026-10-07"
+   "at": "2026-10-18"
   },
   "components-icon--default": {
    "diffPct": 0,
@@ -2025,7 +2025,7 @@
    "text": true,
    "values": "0/0",
    "piece": "icon",
-   "at": "2026-10-07"
+   "at": "2026-10-18"
   },
   "components-icon--inline-with-text": {
    "diffPct": 10.33,
@@ -2040,7 +2040,7 @@
    "text": true,
    "values": "5/5",
    "piece": "icon",
-   "at": "2026-10-07"
+   "at": "2026-10-18"
   },
   "components-icon--labelled": {
    "diffPct": 0,
@@ -2055,7 +2055,7 @@
    "text": true,
    "values": "0/0",
    "piece": "icon",
-   "at": "2026-10-07"
+   "at": "2026-10-18"
   },
   "components-input--all-variants": {
    "diffPct": 0,

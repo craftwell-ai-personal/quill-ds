@@ -23,9 +23,15 @@
       "visual": false
     },
     {
-      "id": "size-with-the-prop",
-      "do": "Size through the `size` prop — a pixel number, or leave the `1em` default so the glyph follows the surrounding text.",
-      "dont": "Scale an icon with a `transform` or a width/height class — the reserved box stops matching the glyph and the layout shifts.",
+      "id": "size-from-the-icon-scale",
+      "do": "Leave the size off so the glyph is `1em` and follows the text beside it. When it needs its own size, give it a step of the icon scale as a class: `<Icon name=\"info\" className=\"size-icon-lg\" />` (`size-icon-xs` 12 · `sm` 14 · `md` 16 · `lg` 18 · `xl` 20 · `2xl` 24 · `3xl` 28).",
+      "dont": "Type a pixel number (`size={18}`) or a spacing class (`size-4`): the inspector shows a bare number instead of the icon token, and `quill-check` flags both. Never scale an icon with a `transform`; the reserved box stops matching the glyph.",
+      "visual": false
+    },
+    {
+      "id": "no-size-inside-a-part",
+      "do": "Give an icon inside a Button, menu item, select, tab, Alert or Badge no size at all: the part sizes its icons to its own size (16px in a normal Button, 14 in `sm`).",
+      "dont": "Size an icon inside one of those parts: the Button or menu either ignores it or lets it fight its own size, and the icons in a row stop matching.",
       "visual": false
     },
     {
