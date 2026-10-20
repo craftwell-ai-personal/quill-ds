@@ -5103,19 +5103,19 @@
    "at": "2026-10-17"
   },
   "patterns-marketing-testimonial--testimonial": {
-   "diffPct": 2.06,
+   "diffPct": 4.22,
    "paper": [
     560,
-    348
+    323
    ],
    "storybook": [
     560,
-    348
+    320
    ],
    "text": true,
    "values": "11/11",
    "piece": "testimonial",
-   "at": "2026-10-17"
+   "at": "2026-10-20"
   },
   "patterns-nav-command-palette--command-palette": {
    "diffPct": 1.3,
