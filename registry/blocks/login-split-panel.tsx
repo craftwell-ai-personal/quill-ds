@@ -12,11 +12,11 @@ export function SplitPanel() {
       <div className="flex flex-col justify-between bg-primary p-8 text-primary-foreground max-md:hidden">
         <span className="font-heading text-lg">Quill</span>
         <blockquote className="flex flex-col gap-3">
-          <p className="font-heading text-xl leading-snug">
+          <p className="font-heading text-xl leading-heading">
             &ldquo;The most crafted-feeling system we&rsquo;ve ever shipped on. It reads like a
             notebook, not a dashboard.&rdquo;
           </p>
-          <footer className="text-sm opacity-80">Sofia Almeida — Head of Product, Northwind</footer>
+          <footer className="text-sm opacity-muted">Sofia Almeida — Head of Product, Northwind</footer>
         </blockquote>
       </div>
       <div className="flex items-center justify-center p-8">

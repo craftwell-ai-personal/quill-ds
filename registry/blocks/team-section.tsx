@@ -18,7 +18,7 @@ export function TeamSection() {
       <div className="flex flex-col items-center gap-2 text-center">
         <span className="text-xs font-medium tracking-eyebrow uppercase text-ink-muted">The team</span>
         <h2 className="font-heading text-2xl text-foreground">Curated collections, crafted by intelligence</h2>
-        <p className="max-w-card-lg text-sm leading-relaxed text-muted-foreground">
+        <p className="max-w-card-lg text-sm leading-reading text-muted-foreground">
           A small team who believe interfaces should feel like well-kept notebooks.
         </p>
       </div>

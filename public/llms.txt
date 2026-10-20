@@ -1,6 +1,6 @@
 # Quill Design System
 
-> Warm neutral grounds, moss accents, Fraunces display type, and ink-toned type. A low-contrast editorial theme for digital products. A self-hosted shadcn registry with a five-theme, four-accent token layer, WCAG 2.1 AA targets, and 55 composable blocks. Version 1.30.0.
+> Warm neutral grounds, moss accents, Fraunces display type, and ink-toned type. A low-contrast editorial theme for digital products. A self-hosted shadcn registry with a five-theme, four-accent token layer, WCAG 2.1 AA targets, and 55 composable blocks. Version 1.31.0.
 
 Install any item with the shadcn CLI against `https://www.quilldesignsystem.com/r/<name>.json` (e.g. `npx shadcn@latest add https://www.quilldesignsystem.com/r/quill.json` for the theme, then blocks). Primitives are stock shadcn restyled by the theme layer — Quill ships the theme, 18 components of its own (`agent-steps`, `ai-badge`, `ai-button`, `ai-feedback`, `ai-mark`, `ai-message`, `ai-notice`, `ai-popover`, `ai-thinking`, `approval-card`, `citations`, `icon`, `model-picker`, `prompt-composer`, `question-card`, `suggested-prompts`, `tone-badge` and `usage-meter`, from `@quill/`), and the blocks below, not re-copied primitives.
 
@@ -142,10 +142,10 @@ Loaded from Google Fonts by the `@import` at the top of the shipped theme file. 
 - A `text-*` class sets its line height with its size (the Line column, shipped as `--text-sm--line-height` and so on), so bare UI text needs no `leading-*`.
 - **Leading roles** — `leading-display` 1.05 (hero and h1 lines) · `leading-heading` 1.2 (h2–h6) · `leading-ui` 1.5 (controls and dense UI text) · `leading-reading` 1.7 (body and long-form copy).
 - **Tracking roles** — `tracking-display` −0.03em (Fraunces headings) · `tracking-label` 0.1em (small uppercase labels and badges) · `tracking-eyebrow` 0.15em (eyebrows above a headline).
-- Each role is a class and a variable (`leading-reading`, `--leading-reading`). They are named for the text they set: `leading-snug`, `tracking-tight` and `tracking-wide` are Tailwind's own and keep Tailwind's values, so never redefine them. `body` and `h1`–`h6` already carry their roles from the base layer.
+- Each role is a class and a variable (`leading-reading`, `--leading-reading`), named for the text it sets. Tailwind's own steps (`leading-snug`, `tracking-wide`…) are off the system; `leading-none` and `tracking-normal` are resets. `body` and `h1`–`h6` already carry their roles from the base layer.
 - **Headings** — Fraunces at weight 400 (never heavy or bold), tight tracking; `h1` in `--fraunces-display`, every other heading and `font-heading` text in `--fraunces-text`.
 - **The one accent word** — italicize exactly one word per headline in the accent (`--accent-pigment-text`, moss by default) with `--fraunces-accent`. Never two.
-- **Body / UI** — Raleway 400/500/600; relaxed leading for reading copy.
+- **Body / UI** — Raleway 400/500/600; `leading-reading` for reading copy.
 - **Eyebrows / labels** — Raleway, uppercase, `--text-xs`, `tracking-eyebrow`, `--ink-muted`; the accent variant carries a short leading dash.
 - **Captions** — small Fraunces italic in `--ink-muted` with `--fraunces-caption`.
 - Sentence case in prose and headings; uppercase only for eyebrows.
@@ -214,7 +214,10 @@ Cards use `rounded-xl`, buttons and inputs `rounded-lg`, pills `rounded-full`.
 Shadows are ink-tinted, layered and re-cut per theme — never a hard black drop. `--shadow-xs` hairline lift · `--shadow-sm` low surfaces · `--shadow` raised popovers and menus · `--shadow-lg` dialogs · `--shadow-pop` the strongest lifted state. Cards sit flat on the paper with a hairline ring, no shadow.
 
 #### Motion
-House easing `--ease-out` (`cubic-bezier(0.4, 0, 0.2, 1)`); soft `--ease-soft` (`cubic-bezier(0.22, 1, 0.36, 1)`). Durations `--dur-fast` 0.2s · `--dur` 0.3s · `--dur-slow` 0.5s. Lifts `--lift` (translateY(-4px)) and `--lift-sm` (translateY(-2px)) for hover on interactive surfaces; presses settle 1px down. Nothing bounces, nothing loops; respect `prefers-reduced-motion`.
+Durations: `duration-instant` 100ms · `duration-quick` 150ms (a bare `transition-*`) · `duration-fast` 200ms · `duration-normal` 300ms · `duration-slow` 500ms; variables `--duration-*` (`--dur-*` still works). Curves: `ease-out` (`cubic-bezier(0.4, 0, 0.2, 1)`, every transition's default) · `ease-soft` (`cubic-bezier(0.22, 1, 0.36, 1)`, a soft landing). A number (`duration-200`) or a stock curve (`ease-in-out`) is off the system. Lifts `--lift` (translateY(-4px)) and `--lift-sm` (translateY(-2px)) for hover on interactive surfaces; presses settle 1px down. Nothing bounces, nothing loops; respect `prefers-reduced-motion`.
+
+#### Opacity and layers
+`opacity-disabled` 50% (any disabled control) · `opacity-muted` 80% (secondary text on a coloured panel); `opacity-0` / `opacity-100` hide and show. Layers: `z-base` 0 (the page) · `z-above` 1 (over a sibling) · `z-raised` 10 (a focused or selected item over its neighbours, a sticky bar) · `z-dropdown` 20 (a menu opened inside a component) · `z-overlay` 50 (anything in a portal: popovers, menus, dialogs, sheets, tooltips, stacked in the order they open). A number or bracket (`z-50`, `opacity-[.6]`) is off the system.
 
 ## Principles
 

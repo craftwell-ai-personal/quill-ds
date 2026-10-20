@@ -67,10 +67,10 @@ Loaded from Google Fonts by the `@import` at the top of the shipped theme file. 
 - A `text-*` class sets its line height with its size (the Line column, shipped as `--text-sm--line-height` and so on), so bare UI text needs no `leading-*`.
 - **Leading roles** — `leading-display` 1.05 (hero and h1 lines) · `leading-heading` 1.2 (h2–h6) · `leading-ui` 1.5 (controls and dense UI text) · `leading-reading` 1.7 (body and long-form copy).
 - **Tracking roles** — `tracking-display` −0.03em (Fraunces headings) · `tracking-label` 0.1em (small uppercase labels and badges) · `tracking-eyebrow` 0.15em (eyebrows above a headline).
-- Each role is a class and a variable (`leading-reading`, `--leading-reading`). They are named for the text they set: `leading-snug`, `tracking-tight` and `tracking-wide` are Tailwind's own and keep Tailwind's values, so never redefine them. `body` and `h1`–`h6` already carry their roles from the base layer.
+- Each role is a class and a variable (`leading-reading`, `--leading-reading`), named for the text it sets. Tailwind's own steps (`leading-snug`, `tracking-wide`…) are off the system; `leading-none` and `tracking-normal` are resets. `body` and `h1`–`h6` already carry their roles from the base layer.
 - **Headings** — Fraunces at weight 400 (never heavy or bold), tight tracking; `h1` in `--fraunces-display`, every other heading and `font-heading` text in `--fraunces-text`.
 - **The one accent word** — italicize exactly one word per headline in the accent (`--accent-pigment-text`, moss by default) with `--fraunces-accent`. Never two.
-- **Body / UI** — Raleway 400/500/600; relaxed leading for reading copy.
+- **Body / UI** — Raleway 400/500/600; `leading-reading` for reading copy.
 - **Eyebrows / labels** — Raleway, uppercase, `--text-xs`, `tracking-eyebrow`, `--ink-muted`; the accent variant carries a short leading dash.
 - **Captions** — small Fraunces italic in `--ink-muted` with `--fraunces-caption`.
 - Sentence case in prose and headings; uppercase only for eyebrows.
@@ -106,7 +106,10 @@ Cards use `rounded-xl`, buttons and inputs `rounded-lg`, pills `rounded-full`.
 Shadows are ink-tinted, layered and re-cut per theme — never a hard black drop. `--shadow-xs` hairline lift · `--shadow-sm` low surfaces · `--shadow` raised popovers and menus · `--shadow-lg` dialogs · `--shadow-pop` the strongest lifted state. Cards sit flat on the paper with a hairline ring, no shadow.
 
 #### Motion
-House easing `--ease-out` (`cubic-bezier(0.4, 0, 0.2, 1)`); soft `--ease-soft` (`cubic-bezier(0.22, 1, 0.36, 1)`). Durations `--dur-fast` 0.2s · `--dur` 0.3s · `--dur-slow` 0.5s. Lifts `--lift` (translateY(-4px)) and `--lift-sm` (translateY(-2px)) for hover on interactive surfaces; presses settle 1px down. Nothing bounces, nothing loops; respect `prefers-reduced-motion`.
+`duration-` instant 100 · quick 150 · fast 200 · normal 300 · slow 500 ms; `ease-out` (default) · `ease-soft`. Hover lifts `--lift` / `--lift-sm`; no bounce, no loops; respect `prefers-reduced-motion`.
+
+#### Opacity and layers
+`opacity-disabled` 50% · `opacity-muted` 80%. `z-` base 0 · above 1 · raised 10 · dropdown 20 · overlay 50 (overlay: portals). Numbers, brackets: off the system.
 
 ## Principles
 

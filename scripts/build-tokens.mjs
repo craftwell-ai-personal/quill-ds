@@ -42,6 +42,39 @@ function walkModal(group, prefix, fn) {
 // The names retired in 0.10.0 left the CSS in 0.13.0 (see `retired` in the source).
 const aliasGroups = (t) => [...Object.entries(t.status), ...Object.entries(t.semantic)]
 
+// A motion key as a variable: `durFast` → `--dur-fast`, `dur` → `--dur`.
+const motionVar = (key) => '--' + key.replace(/[A-Z]/g, (ch) => '-' + ch.toLowerCase())
+
+// Tailwind 4.3.3's own named steps, for the ones Quill has under another name.
+export const TAILWIND_STEPS = {
+  leading: { none: 1, tight: 1.25, snug: 1.375, normal: 1.5, relaxed: 1.625, loose: 2 },
+  tracking: { tighter: -0.05, tight: -0.025, normal: 0, wide: 0.025, wider: 0.05, widest: 0.1 },
+  ease: { in: 'cubic-bezier(0.4, 0, 1, 1)', out: 'cubic-bezier(0, 0, 0.2, 1)', 'in-out': 'cubic-bezier(0.4, 0, 0.2, 1)' },
+}
+
+// A stock name whose value is exactly a Quill step reads that step: theme key → Quill variable.
+// Numbers are Tailwind's own (`duration-200` is 200ms, `opacity-50` is 50%, `z-50` is 50); the
+// named steps come from TAILWIND_STEPS. `ease-out` is Quill's already (it names --ease-out).
+export function stockRedirects(t) {
+  const out = {}
+  const ms = (v) => Math.round(parseFloat(v) * (v.endsWith('ms') ? 1 : 1000))
+  for (const [k, key] of Object.entries(t.duration)) out[`transition-duration-${ms(t.motion[key])}`] = `duration-${k}`
+  for (const [k, v] of Object.entries(t.opacity)) out[`opacity-${parseFloat(v)}`] = `opacity-${k}`
+  for (const [k, v] of Object.entries(t.layer)) out[`z-index-${v}`] = `z-index-${k}`
+  for (const [stock, v] of Object.entries(TAILWIND_STEPS.leading)) {
+    const quill = Object.entries(t.leading).find(([, q]) => parseFloat(q) === v)
+    if (quill && stock !== quill[0]) out[`leading-${stock}`] = `leading-${quill[0]}`
+  }
+  for (const [stock, v] of Object.entries(TAILWIND_STEPS.tracking)) {
+    const quill = Object.entries(t.tracking).find(([, q]) => parseFloat(q) === v)
+    if (quill && stock !== quill[0]) out[`tracking-${stock}`] = `tracking-${quill[0]}`
+  }
+  for (const [stock, v] of Object.entries(TAILWIND_STEPS.ease)) {
+    if (stock !== 'out' && v === t.motion.easeOut) out[`ease-${stock}`] = 'ease-out'
+  }
+  return out
+}
+
 // A scale key as it appears in a variable name: `2.5` → `2_5` (dots are illegal there).
 const varKey = (k) => String(k).replace(/\./g, '_')
 
@@ -66,10 +99,15 @@ export function renderCss(t) {
   // Motion + fraunces (mode-independent).
   const motion = {
     '--ease-out': t.motion.easeOut, '--ease-soft': t.motion.easeSoft,
+    '--dur-instant': t.motion.durInstant, '--dur-quick': t.motion.durQuick,
     '--dur-fast': t.motion.durFast, '--dur': t.motion.dur, '--dur-slow': t.motion.durSlow,
     '--lift': t.motion.lift, '--lift-sm': t.motion.liftSm,
   }
   for (const [k, v] of Object.entries(motion)) rootLines.push(`  ${k}: ${v};`)
+  // The names say what they are; --dur-* stays, since apps already read it.
+  for (const [k, key] of Object.entries(t.duration)) rootLines.push(`  --duration-${k}: var(${motionVar(key)});`)
+  for (const [k, v] of Object.entries(t.opacity)) rootLines.push(`  --opacity-${k}: ${v};`)
+  for (const [k, v] of Object.entries(t.layer)) rootLines.push(`  --z-index-${k}: ${v};`)
   for (const [k, v] of Object.entries(t.fraunces)) rootLines.push(`  --fraunces-${k}: ${v};`)
   // Semantic + shadcn aliases + radius base. Alias lines are ALSO re-declared
   // inside every [data-theme] block below: a custom property that references
@@ -175,8 +213,22 @@ export function renderCss(t) {
     for (const k of Object.keys(t.borderWidth)) themeLines.push(`  --${ns}-${k}: var(--border-width-${k});`)
   }
   for (const ns of ['border-width', 'ring-width', 'outline-width']) themeLines.push(`  --default-${ns}: var(--border-width-1);`)
-  for (const [k, v] of Object.entries(t.leading)) themeLines.push(`  --leading-${k}: ${v};`)
-  for (const [k, v] of Object.entries(t.tracking)) themeLines.push(`  --tracking-${k}: ${v};`)
+  for (const k of Object.keys(t.leading)) themeLines.push(`  --leading-${k}: var(--leading-${k});`)
+  for (const k of Object.keys(t.tracking)) themeLines.push(`  --tracking-${k}: var(--tracking-${k});`)
+  // Motion, opacity and layers (1.31.0). Tailwind 4.3.3 reads durations from
+  // --transition-duration-*, layers from --z-index-* and opacity from --opacity-*, so each
+  // Quill name becomes a utility (`duration-fast`, `z-overlay`, `opacity-disabled`). The
+  // same keys redirect the stock names whose value equals a Quill step, which is how the
+  // stock parts (never edited) read Quill tokens: `opacity-50` → var(--opacity-disabled).
+  // Measured with Tailwind 4.3.3, 2026-10-19.
+  for (const k of Object.keys(t.duration)) themeLines.push(`  --transition-duration-${k}: var(--duration-${k});`)
+  for (const k of ['out', 'soft']) themeLines.push(`  --ease-${k}: var(--ease-${k});`)
+  for (const k of Object.keys(t.opacity)) themeLines.push(`  --opacity-${k}: var(--opacity-${k});`)
+  for (const k of Object.keys(t.layer)) themeLines.push(`  --z-index-${k}: var(--z-index-${k});`)
+  for (const [stock, quill] of Object.entries(stockRedirects(t))) themeLines.push(`  --${stock}: var(--${quill});`)
+  // A bare transition-* takes these: Tailwind's 150ms and its curve, which equal quick and out.
+  themeLines.push('  --default-transition-duration: var(--duration-quick);')
+  themeLines.push('  --default-transition-timing-function: var(--ease-out);')
   // Shadow utilities route through the :root tokens (remapped in dark) —
   // without these, Tailwind's shadow-* fall back to its cool-black defaults
   // and never flip in dark mode. Tailwind's 7-step scale maps onto our 5.

@@ -106,7 +106,7 @@ export function LoginOauth() {
         <Button className="w-full">Continue with email</Button>
       </form>
 
-      <p className="text-center text-xs leading-relaxed text-muted-foreground">
+      <p className="text-center text-xs leading-reading text-muted-foreground">
         By continuing you agree to the Terms and Privacy Policy.
       </p>
     </div>

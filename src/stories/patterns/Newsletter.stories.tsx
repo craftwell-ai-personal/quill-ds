@@ -32,7 +32,7 @@ export const DoDont: Story = {
       doExample={
         <div className="flex w-[320px] flex-col items-center gap-3 rounded-xl bg-card p-6 text-center ring-1 ring-foreground/10">
           <h3 className="font-heading text-lg text-foreground">The Brief</h3>
-          <p className="text-sm leading-relaxed text-muted-foreground">
+          <p className="text-sm leading-reading text-muted-foreground">
             One letter a month on design systems and the teams that ship them. No spam — unsubscribe
             any time.
           </p>
@@ -48,7 +48,7 @@ export const DoDont: Story = {
       dontExample={
         <div className="flex w-[320px] flex-col items-center gap-3 rounded-xl bg-card p-6 text-center ring-1 ring-foreground/10">
           <h3 className="font-heading text-lg text-foreground">The Brief</h3>
-          <p className="text-sm leading-relaxed text-muted-foreground">
+          <p className="text-sm leading-reading text-muted-foreground">
             One letter a month on design systems and the teams that ship them.
           </p>
           <div className="flex w-full gap-2">

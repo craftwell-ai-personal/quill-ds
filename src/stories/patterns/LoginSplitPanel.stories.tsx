@@ -49,7 +49,7 @@ export const SplitPanelDoDont: Story = {
         <div className="grid w-[280px] grid-cols-2 gap-2 overflow-hidden rounded-md border">
           <div className="flex flex-col justify-between bg-primary p-2 text-primary-foreground">
             <span className="font-heading text-[10px]">Quill</span>
-            <p className="text-[9px] leading-tight opacity-80">
+            <p className="text-[9px] leading-heading opacity-muted">
               &ldquo;The most crafted-feeling system we&rsquo;ve shipped on.&rdquo;
             </p>
           </div>

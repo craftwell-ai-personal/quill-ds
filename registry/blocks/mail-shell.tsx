@@ -109,7 +109,7 @@ export function MailShell() {
         <Separator />
         <div className="min-h-0 flex-1 overflow-auto px-6 py-5">
           <h3 className="font-heading text-lg text-foreground">Scope for the Q3 engagement</h3>
-          <div className="mt-3 flex flex-col gap-3 text-sm leading-relaxed text-muted-foreground">
+          <div className="mt-3 flex flex-col gap-3 text-sm leading-reading text-muted-foreground">
             <p>
               Revised deliverables are in the shared folder — the component inventory held up
               even at the smallest breakpoint, and the dark variants read exactly as we hoped.
