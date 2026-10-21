@@ -13,6 +13,11 @@ within a minute, and that release is what triggers `library-sync` into the apps;
 manual tag races the bot and can leave a tag with no release behind it. The homepage
 footer reads `package.json` directly, so the displayed version updates with the bump.
 
+## [1.31.6] — 2026-10-21
+
+### Changed
+- chore(deps): bump @modelcontextprotocol/server from 2.2.0 to 2.3.1
+
 ## [1.31.5] — 2026-10-21
 
 ### Changed
