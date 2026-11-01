@@ -225,7 +225,7 @@
    "text": true,
    "values": "5/5",
    "piece": "ai-feedback",
-   "at": "2026-10-20"
+   "at": "2026-10-07"
   },
   "components-aifeedback--default": {
    "diffPct": 0.98,
@@ -240,7 +240,7 @@
    "text": true,
    "values": "21/21",
    "piece": "ai-feedback",
-   "at": "2026-10-20"
+   "at": "2026-10-07"
   },
   "components-aifeedback--no-reasons": {
    "diffPct": 1.06,
@@ -255,22 +255,22 @@
    "text": true,
    "values": "21/21",
    "piece": "ai-feedback",
-   "at": "2026-10-20"
+   "at": "2026-10-07"
   },
   "components-aifeedback--under-the-answer": {
-   "diffPct": 2.14,
+   "diffPct": 0.88,
    "paper": [
     480,
-    91
+    90
    ],
    "storybook": [
     480,
-    92
+    91
    ],
    "text": true,
    "values": "21/21",
    "piece": "ai-feedback",
-   "at": "2026-10-20"
+   "at": "2026-10-07"
   },
   "components-aimark--default": {
    "diffPct": 0.08,
@@ -285,22 +285,22 @@
    "text": true,
    "values": "0/0",
    "piece": "ai-mark",
-   "at": "2026-10-18"
+   "at": "2026-10-07"
   },
   "components-aimark--sizes": {
-   "diffPct": 0,
+   "diffPct": 0.21,
    "paper": [
-    162,
-    28
+    231,
+    48
    ],
    "storybook": [
-    162,
-    28
+    231,
+    48
    ],
    "text": true,
    "values": "0/0",
    "piece": "ai-mark",
-   "at": "2026-10-18"
+   "at": "2026-10-07"
   },
   "components-aimessage--hidden-name": {
    "diffPct": 2.12,
@@ -1998,19 +1998,19 @@
    "at": "2026-10-07"
   },
   "components-icon--core-set": {
-   "diffPct": 1.91,
+   "diffPct": 1.74,
    "paper": [
     1200,
-    950
+    924
    ],
    "storybook": [
     1200,
-    935
+    909
    ],
    "text": true,
    "values": "5/5",
    "piece": "icon",
-   "at": "2026-10-18"
+   "at": "2026-10-07"
   },
   "components-icon--default": {
    "diffPct": 0,
@@ -2025,7 +2025,7 @@
    "text": true,
    "values": "0/0",
    "piece": "icon",
-   "at": "2026-10-18"
+   "at": "2026-10-07"
   },
   "components-icon--inline-with-text": {
    "diffPct": 10.33,
@@ -2040,7 +2040,7 @@
    "text": true,
    "values": "5/5",
    "piece": "icon",
-   "at": "2026-10-18"
+   "at": "2026-10-07"
   },
   "components-icon--labelled": {
    "diffPct": 0,
@@ -2055,7 +2055,7 @@
    "text": true,
    "values": "0/0",
    "piece": "icon",
-   "at": "2026-10-18"
+   "at": "2026-10-07"
   },
   "components-input--all-variants": {
    "diffPct": 0,
@@ -4368,19 +4368,19 @@
    "at": "2026-10-07"
   },
   "examples-marketing-page--marketing-page": {
-   "diffPct": 1.51,
+   "diffPct": 1.42,
    "paper": [
     1232,
-    2426
+    2451
    ],
    "storybook": [
     1232,
-    2412
+    2440
    ],
    "text": true,
    "values": "18/18",
    "piece": "example-marketing-page",
-   "at": "2026-10-20"
+   "at": "2026-10-07"
   },
   "patterns-ai-ai-chat--agent-pieces-in-one-thread": {
    "diffPct": 1.52,
@@ -5103,19 +5103,19 @@
    "at": "2026-10-17"
   },
   "patterns-marketing-testimonial--testimonial": {
-   "diffPct": 4.22,
+   "diffPct": 2.06,
    "paper": [
     560,
-    323
+    348
    ],
    "storybook": [
     560,
-    320
+    348
    ],
    "text": true,
    "values": "11/11",
    "piece": "testimonial",
-   "at": "2026-10-20"
+   "at": "2026-10-17"
   },
   "patterns-nav-command-palette--command-palette": {
    "diffPct": 1.3,
