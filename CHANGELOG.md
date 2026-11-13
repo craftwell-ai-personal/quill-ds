@@ -13,6 +13,12 @@ within a minute, and that release is what triggers `library-sync` into the apps;
 manual tag races the bot and can leave a tag with no release behind it. The homepage
 footer reads `package.json` directly, so the displayed version updates with the bump.
 
+## [1.31.11] — 2026-11-13
+
+### Changed
+- chore(deps): bump hono from 4.13.13 to 4.13.18
+- chore(deps): bump @hono/node-server from 2.1.5 to 2.1.8
+
 ## [1.31.10] — 2026-11-09
 
 ### Changed
