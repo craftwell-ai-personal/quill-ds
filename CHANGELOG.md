@@ -13,6 +13,11 @@ within a minute, and that release is what triggers `library-sync` into the apps;
 manual tag races the bot and can leave a tag with no release behind it. The homepage
 footer reads `package.json` directly, so the displayed version updates with the bump.
 
+## [1.31.13] — 2026-11-24
+
+### Changed
+- chore(deps): bump the storybook group with 7 updates
+
 ## [1.31.12] — 2026-11-16
 
 ### Changed
